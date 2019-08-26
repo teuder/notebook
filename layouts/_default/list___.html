@@ -1,0 +1,5 @@
+{{ range $key, $value := .Data.Terms }}
+    <div class="tags_item">
+        <a href="{{ $key | urlize }}">{{ $key }} <span class="tags_number">{{ len $value }}</span></a>
+    </div>
+{{ end }}
