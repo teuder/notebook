@@ -33,7 +33,19 @@
 </nav>
 </div>
 <div class="content-container">
-<main><h1>raster</h1><footer><p class="powered">Powered by <a href="https://gohugo.io">Hugo</a>. Theme by <a href="https://themes.gohugo.io/hugo-theme-techdoc/">TechDoc</a>. Designed by <a href="https://github.com/thingsym/hugo-theme-techdoc">Thingsym</a>.</p>
+<main><h3>raster</h3>
+
+<h1 id="raster-パッケージ">raster パッケージ</h1>
+
+<pre><code># GooTiffの読み込み
+data &lt;- raster(&quot;path/data.tif&quot;)
+</code></pre>
+
+<p>値と座標のデータフレームに変換する</p>
+
+<pre><code>df &lt;- rasterToPoint(data)
+</code></pre>
+<footer><p class="powered">Powered by <a href="https://gohugo.io">Hugo</a>. Theme by <a href="https://themes.gohugo.io/hugo-theme-techdoc/">TechDoc</a>. Designed by <a href="https://github.com/thingsym/hugo-theme-techdoc">Thingsym</a>.</p>
 </footer>
 </main><div class="sidebar">
 <nav>
