@@ -6,7 +6,7 @@ publishdate : 2010-08-22
 menu:
   main:
 #    parent: Hoge
-weight: 100
+weight: 10
 ---
 
 
