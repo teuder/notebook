@@ -33,47 +33,7 @@
 </nav>
 </div>
 <div class="content-container">
-<main><h1>sf</h1>
-
-<h1 id="sf-パッケージ">sf パッケージ</h1>
-
-<h1 id="定義されたクラス">定義されたクラス</h1>
-
-<ul>
-<li>sfgクラス：個別の地物</li>
-<li>sfcクラス：sfgオブジェクトのリスト、リストの各要素が１地物に相当</li>
-<li>sf クラス：sfcオブジェクトをgeometory列としてもつデータフレーム、１行が１地物、geometory列以外の列は地物がもつ値</li>
-</ul>
-
-<h1 id="地物の型">地物の型</h1>
-
-<ul>
-<li>POINT：点</li>
-<li>LINESTRING：線分</li>
-<li>POLYGON：多角形</li>
-<li>MULTIPOINT：点の集合</li>
-<li>MULTILINESTRING：線分の集合</li>
-<li>GEOMETORYCOLLECTION：様々な型のデータの集合</li>
-</ul>
-
-<h1 id="処理関数">処理関数</h1>
-
-<p>sfオブジェクトの切り抜き
-st_crop()</p>
-
-<p>地物の型の変換
-st_cast()</p>
-
-<p>sfオブジェクトをデータフレームに変換する</p>
-
-<p>df &lt;- as.data.frame(data_sf)
-この時、dfにはgeometory列が残る（geometory列=sfcオブジェクト）</p>
-
-<p>sfオブジェクトからgeometory列を削除すると値だけのデータフレームになる
-df &lt;- st_set_geometory(data_sf, NULL)</p>
-
-<p>st_set_geometory()はデータフレームにgeometory列をくっつける関数だけど、NULLを渡すとsfからgeomeotry列を削除できる。</p>
-<footer><p class="powered">Powered by <a href="https://gohugo.io">Hugo</a>. Theme by <a href="https://themes.gohugo.io/hugo-theme-techdoc/">TechDoc</a>. Designed by <a href="https://github.com/thingsym/hugo-theme-techdoc">Thingsym</a>.</p>
+<main><h1>sf</h1><footer><p class="powered">Powered by <a href="https://gohugo.io">Hugo</a>. Theme by <a href="https://themes.gohugo.io/hugo-theme-techdoc/">TechDoc</a>. Designed by <a href="https://github.com/thingsym/hugo-theme-techdoc">Thingsym</a>.</p>
 </footer>
 </main><div class="sidebar">
 <nav>
