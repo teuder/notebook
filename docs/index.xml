@@ -12,6 +12,24 @@
     
     
     <item>
+      <title>About</title>
+      <link>https://teuder.github.io/notes/about/</link>
+      <pubDate>Thu, 22 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://teuder.github.io/notes/about/</guid>
+      <description>Masaki E. Tsuda 津田 真樹（つだ まさき） Twitter : teuder</description>
+    </item>
+    
+    <item>
+      <title>Hugo</title>
+      <link>https://teuder.github.io/notes/hugo/</link>
+      <pubDate>Thu, 22 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://teuder.github.io/notes/hugo/</guid>
+      <description>Hugoはマークダウンから静的サイトのためのhtmlを生成するソフトウェア Hugoフォルダの構成 /contents フォルダの中にサイトの内容を記述したマーク</description>
+    </item>
+    
+    <item>
       <title>git</title>
       <link>https://teuder.github.io/notes/git/git/</link>
       <pubDate>Mon, 26 Aug 2019 00:00:00 +0000</pubDate>
@@ -45,15 +63,6 @@
       
       <guid>https://teuder.github.io/notes/gis/geographical_analysis/</guid>
       <description>Rパッケージ紹介 https://cran.r-project.org/web/views/Spatial.html https://cran.r-project.org/web/views/SpatioTemporal.html https://www.r-spatial.org/ パッケージ 一般 sp：地理空間のクラスやメソッドを提供している sf : OGC Simple Featuresという標準に従って開発されている。</description>
-    </item>
-    
-    <item>
-      <title>About</title>
-      <link>https://teuder.github.io/notes/about/</link>
-      <pubDate>Thu, 22 Aug 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://teuder.github.io/notes/about/</guid>
-      <description>Masaki E. Tsuda 津田 真樹 つだ まさき Twitter : teuder</description>
     </item>
     
     <item>
