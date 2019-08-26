@@ -1,7 +1,7 @@
 ---
-title : {{ replace .Name "-" " " | title }}
-date : {{ now.Format "2006-01-02" }}
-publishdate : {{ now.Format "2006-01-02" }}
+title : Test2
+date : 2019-08-26
+publishdate : 2019-08-26
 draft : true
 weight: 10
 # menu:
@@ -13,7 +13,6 @@ tags :
 - hello
 - world
 - hoge
-
 ---
 
 

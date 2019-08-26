@@ -22,5 +22,27 @@ vvvv
 aaa</description>
     </item>
     
+    <item>
+      <title>Hello_world!</title>
+      <link>https://teuder.github.io/notes/blog/hello_world-copy/</link>
+      <pubDate>Tue, 17 Oct 2017 14:00:45 +0000</pubDate>
+      
+      <guid>https://teuder.github.io/notes/blog/hello_world-copy/</guid>
+      <description>aaaaaa
+vvvv
+aaa</description>
+    </item>
+    
+    <item>
+      <title>Hello_world!!</title>
+      <link>https://teuder.github.io/notes/blog/hello_world-copy-2/</link>
+      <pubDate>Tue, 17 Oct 2017 14:00:45 +0000</pubDate>
+      
+      <guid>https://teuder.github.io/notes/blog/hello_world-copy-2/</guid>
+      <description>aaaaaa
+vvvv
+aaa</description>
+    </item>
+    
   </channel>
 </rss>
