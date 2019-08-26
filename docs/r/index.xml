@@ -17,7 +17,7 @@
       <pubDate>Mon, 26 Aug 2019 00:00:00 +0000</pubDate>
       
       <guid>https://teuder.github.io/notes/r/raster/</guid>
-      <description>raster パッケージ # GooTiffの読み込み data &amp;lt;- raster(&amp;#34;path/data.tif&amp;#34;) 値と座標のデータフレームに変換する df &amp;lt;- rasterToPoint(data)</description>
+      <description>raster パッケージ # GooTiffの読み込み data &amp;lt;- raster(&amp;quot;path/data.tif&amp;quot;) 値と座標のデータフレームに変換する df &amp;lt;- rasterToPoint(data)</description>
     </item>
     
     <item>
