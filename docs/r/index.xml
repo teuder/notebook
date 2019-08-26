@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>R on Masaki E. Tsuda</title>
+    <link>https://teuder.github.io/notes/r/</link>
+    <description>Recent content in R on Masaki E. Tsuda</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja-JP</language>
+    <lastBuildDate>Mon, 26 Aug 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://teuder.github.io/notes/r/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>raster</title>
+      <link>https://teuder.github.io/notes/r/raster/</link>
+      <pubDate>Mon, 26 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://teuder.github.io/notes/r/raster/</guid>
+      <description>raster パッケージ # GooTiffの読み込み data &amp;lt;- raster(&amp;quot;path/data.tif&amp;quot;) 値と座標のデータフレームに変換する df &amp;lt;- rasterToPoint(data)</description>
+    </item>
+    
+    <item>
+      <title>sf</title>
+      <link>https://teuder.github.io/notes/r/sf/</link>
+      <pubDate>Mon, 26 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://teuder.github.io/notes/r/sf/</guid>
+      <description>sf パッケージ 定義されたクラス sfgクラス：個別の地物 sfcクラス：sfgオブジェクトのリスト、リストの各要素が１地物に相当 sf クラス：sfcオ</description>
+    </item>
+    
+  </channel>
+</rss>

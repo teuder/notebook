@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <url>
+    <loc>https://teuder.github.io/notes/blog/</loc>
+    <lastmod>2019-08-26T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://teuder.github.io/notes/gis/</loc>
+    <lastmod>2019-08-26T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://teuder.github.io/notes/git/</loc>
+    <lastmod>2019-08-26T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://teuder.github.io/notes/git/git/</loc>
+    <lastmod>2019-08-26T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://teuder.github.io/notes/r/</loc>
+    <lastmod>2019-08-26T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://teuder.github.io/notes/r/raster/</loc>
+    <lastmod>2019-08-26T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://teuder.github.io/notes/r/sf/</loc>
+    <lastmod>2019-08-26T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://teuder.github.io/notes/gis/geographical_analysis/</loc>
+    <lastmod>2019-08-26T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://teuder.github.io/notes/about/</loc>
+    <lastmod>2019-08-22T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://teuder.github.io/notes/</loc>
+    <lastmod>2018-08-26T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://teuder.github.io/notes/tags/hello/</loc>
+    <lastmod>2017-10-17T14:00:45+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://teuder.github.io/notes/blog/hello_world/</loc>
+    <lastmod>2017-10-17T14:00:45+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://teuder.github.io/notes/tags/</loc>
+    <lastmod>2017-10-17T14:00:45+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://teuder.github.io/notes/tags/world/</loc>
+    <lastmod>2017-10-17T14:00:45+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://teuder.github.io/notes/categories/</loc>
+  </url>
+  
+</urlset>
