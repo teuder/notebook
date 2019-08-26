@@ -1,5 +1,4 @@
 baseURL = "https://teuder.github.io/notes/"
-canonifyurls = true
 publishDir = "docs" # for github pages
 
 languageCode = "ja-JP"
