@@ -66,5 +66,5 @@ enableMissingTranslationPlaceholders = false
 
 [[menu.main]]
     name = "Tags"
-    url = "/tags.html"
+    url = "/Tags"
     weight = 100
