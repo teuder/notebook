@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://teuder.github.io/notes/r/</loc>
+    <lastmod>2019-08-26T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://teuder.github.io/notes/about/</loc>
     <lastmod>2019-08-22T00:00:00+00:00</lastmod>
   </url>
@@ -18,22 +23,7 @@
   </url>
   
   <url>
-    <loc>https://teuder.github.io/notes/gis/</loc>
-    <lastmod>2019-08-26T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://teuder.github.io/notes/git/</loc>
-    <lastmod>2019-08-26T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://teuder.github.io/notes/git/git/</loc>
-    <lastmod>2019-08-26T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://teuder.github.io/notes/r/</loc>
     <lastmod>2019-08-26T00:00:00+00:00</lastmod>
   </url>
   
@@ -49,6 +39,16 @@
   
   <url>
     <loc>https://teuder.github.io/notes/gis/geographical_analysis/</loc>
+    <lastmod>2019-08-26T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://teuder.github.io/notes/gis/</loc>
+    <lastmod>2019-08-26T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://teuder.github.io/notes/git/</loc>
     <lastmod>2019-08-26T00:00:00+00:00</lastmod>
   </url>
   
