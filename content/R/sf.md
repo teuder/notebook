@@ -29,17 +29,19 @@ weight : 20
 # 処理関数
 
 sfオブジェクトの切り抜き
-st_crop() 
+
+`st_crop() `
 
 地物の型の変換
-st_cast()
 
-sfオブジェクトをデータフレームに変換する
+`st_cast()`
 
-df <- as.data.frame(data_sf)
-この時、dfにはgeometory列が残る（geometory列=sfcオブジェクト）
+sfオブジェクトをデータフレームに変換する（この時、dfにはgeometory列（リスト列=sfcオブジェクト）が残る）
 
-sfオブジェクトからgeometory列を削除すると値だけのデータフレームになる
-df <- st_set_geometory(data_sf, NULL)
+`df <- as.data.frame(data_sf)`
 
-st_set_geometory()はデータフレームにgeometory列をくっつける関数だけど、NULLを渡すとsfからgeomeotry列を削除できる。
+sfオブジェクトからgeometory列を削除すると値（=地物の属性）だけのデータフレームになる
+
+`df <- st_set_geometory(data_sf, NULL)`
+
+`st_set_geometory()` はデータフレームにgeometory列をくっつける関数だけど、NULLを渡すとsfオブジェクトからgeomeotry列を削除できる。

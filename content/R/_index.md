@@ -6,3 +6,10 @@ publishdate : 2019-08-26
 weight : 10
 ---
 
+
+
+
+# バージョン管理
+
+- [RSwitch](https://rud.is/rswitch/) R本体のバージョン管理 https://twitter.com/hrbrmstr
+- renv, packrat : パッケージのバージョン管理
