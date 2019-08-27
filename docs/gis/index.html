@@ -34,10 +34,173 @@
 </div>
 <div class="content-container">
 <main><h1>GIS</h1>
-<li>
-<a href="https://teuder.github.io/notes/gis/geographical_analysis/">地理情報解析</a>
-</li>
 
+<h1 id="rパッケージ">Rパッケージ</h1>
+
+<h1 id="パッケージの一覧">パッケージの一覧</h1>
+
+<ul>
+<li><a href="https://cran.r-project.org/web/views/Spatial.html">https://cran.r-project.org/web/views/Spatial.html</a></li>
+<li><a href="https://cran.r-project.org/web/views/SpatioTemporal.html">https://cran.r-project.org/web/views/SpatioTemporal.html</a></li>
+<li><a href="https://www.r-spatial.org/">https://www.r-spatial.org/</a></li>
+</ul>
+
+<h2 id="一般">一般</h2>
+
+<ul>
+<li>sp：地理空間のクラスやメソッドを提供している</li>
+<li>sf : OGC Simple Featuresという標準に従って開発されている。<a href="https://r-spatial.github.io/sf/index.html">sfパッケージの公式サイト</a>、OGCが定義するファイル形式の読み書き（WKT, WKB）</li>
+<li>starts : 多次元arrayで時空間データを表現</li>
+<li>raster : ラスターデータの可視化と分析</li>
+<li>spatial.tools : rasterを拡張して並列計算など</li>
+<li>rgdal : GDALライブラリがサポートするラスターデータ, OGRライブラリがサポートするベクターデータへのバインディング、GeoJSON や Shapefile の読み書き、 PROJ.4がサポートする投影法</li>
+<li>rgeos : Geometry Engine - Open Source (&lsquo;GEOS&rsquo;)ライブラリへのバインディング</li>
+<li>GISTools : 空間データをマッピングしたり加工したり</li>
+</ul>
+
+<h2 id="データの読み書き">データの読み書き</h2>
+
+<ul>
+<li>maps : mapdata, mapproj パッケージと共に地理空間データベースを提供</li>
+<li>maptools : ESRI ArcGIS/ArcView shapefiles の読み書きなど、地理情報オブジェクトの扱い、GSHHGの海岸線データベースへのアクセス？？</li>
+<li>shapefiles : ESRI ArcGIS/ArcView shapefiles の読み書き</li>
+<li>rpostgis : PostGISが有効化されたPostgreSQLへのコネクション</li>
+<li>rgrass7 : GRASS v7 とのコネクション</li>
+<li>RQGIS : RからQGISの機能を利用する</li>
+</ul>
+
+<h2 id="データの取得">データの取得</h2>
+
+<ul>
+<li>geosapi : GeoServerのAPIからデータを取得する？</li>
+<li>geonapi : GeoNetworkのAPIからデータを取得する？</li>
+<li>rgbif : Global Biodiversity Information Facility (GBIF) にあるデータへのアクセス</li>
+</ul>
+
+<h2 id="計算">計算</h2>
+
+<ul>
+<li>lwgeom : PostGISで使われている liblwgeom へのバインディング</li>
+<li>gdalUtils : GDAL Utilityへのラッパー？</li>
+<li>gdistance : grid間の距離やルートを計算する？</li>
+<li>geosphere : 距離、面積、角度などの計算？</li>
+<li>cshapes : 距離行列の計算</li>
+<li>spsurvey : 地理的調査のためのサンプリング手法など？</li>
+<li>trip : 動物のトラッキングデータ分析</li>
+<li>magclass : 時空間解析</li>
+<li>taRifx : ユーティリティ関数</li>
+<li>geoaxe : オブジェクトを小さく分割する</li>
+<li>lawn : Turfjs ブラウザの地理空間解析ライブラリのクライアント</li>
+<li>rcosmo : 球体に対する計算を提供</li>
+<li>areal : Areal Weighted Interpolation の実装</li>
+</ul>
+
+<h2 id="データのエラー調査">データのエラー調査</h2>
+
+<ul>
+<li>landsat : 衛星画像の補正？</li>
+<li>cleangeo : 空間オブジェクトのエラーの調査？</li>
+</ul>
+
+<h2 id="カラーパレット">カラーパレット</h2>
+
+<ul>
+<li>RColorBrewer : Mapでいい感じのカラーパレットを提供</li>
+<li>viridis : 視覚障害者にも優しいカラーパレットを提供</li>
+<li>classInt : １次元の変数の値を階級に分けるのに使う？？</li>
+</ul>
+
+<h2 id="可視化">可視化</h2>
+
+<ul>
+<li>rasterVis : rasterの可視化</li>
+<li>quickmapr : sp, sfオブジェクトをとりあえず可視化できる</li>
+<li>cartography : いろんな地図作成？</li>
+<li>mapmisc : 軽量な地図作成？</li>
+</ul>
+
+<h2 id="可視化ウェブ">可視化ウェブ</h2>
+
+<ul>
+<li>mapView, leaflet, leafletR インタラクティブな地図の可視化</li>
+<li>RgoogleMaps : Googleマップに問い合わせしたり、Googleマップの画像を背景にしたプロットを描く</li>
+<li>plotGoogleMaps : Googleマップに描画する</li>
+<li>plotKML : オブジェクトをKMLで書き出してGoogle Earthで読み込めるようにする？？</li>
+<li>ggmap : Google MapやOpen Street Map に描画する？</li>
+<li>mapedit : Shinyでleafletで書いた地図を編集できるようにする？？</li>
+</ul>
+
+<h2 id="cartograms-地図を変形させる可視化">Cartograms 地図を変形させる可視化？</h2>
+
+<p>cartogram : 面積を風船のように伸び縮みさせる</p>
+
+<h2 id="point-pattern-analysis">Point Pattern Analysis</h2>
+
+<ul>
+<li>spatial, spatstat</li>
+<li>spatgraphs : 点のパターンのグラフ解析</li>
+</ul>
+
+<h2 id="空間統計">空間統計</h2>
+
+<ul>
+<li>gstat, geoR, geoRglm : 統計量、統計モデル？</li>
+<li>vardiag : Variogram を書く</li>
+</ul>
+
+<h2 id="disease-mapping-and-areal-data-analysis">Disease mapping and areal data analysis</h2>
+
+<p><a href="https://cran.r-project.org/web/views/Spatial.html">https://cran.r-project.org/web/views/Spatial.html</a></p>
+
+<h2 id="spatial-regression">Spatial regression</h2>
+
+<p><a href="https://cran.r-project.org/web/views/Spatial.html">https://cran.r-project.org/web/views/Spatial.html</a></p>
+
+<h2 id="ecological-analysis">Ecological analysis</h2>
+
+<p><a href="https://cran.r-project.org/web/views/Spatial.html">https://cran.r-project.org/web/views/Spatial.html</a></p>
+
+<h1 id="ファイル形式">ファイル形式</h1>
+
+<ul>
+<li>GeoJSON</li>
+<li>WKT, WKB</li>
+<li>Shapefile</li>
+<li>PostGIS</li>
+</ul>
+
+<h1 id="地理解析の学習">地理解析の学習</h1>
+
+<ul>
+<li><a href="https://www.esrij.com/gis-guide/">GIS基礎知識</a></li>
+<li><a href="https://geocompr.robinlovelace.net/">Geocomputation with R</a></li>
+<li><a href="https://keen-swartz-3146c4.netlify.com/index.html">Spatial Data Science</a></li>
+<li><a href="https://spacetimewithr.org/">Spatio-Temporal Statistics with R</a></li>
+<li><a href="https://cran.r-project.org/doc/contrib/intro-spatial-rl.pdf">Introduction to visualising spatial data in R</a></li>
+<li><a href="http://club.informatix.co.jp/">空間情報クラブ</a></li>
+</ul>
+
+<h1 id="スライド">スライド</h1>
+
+<h1 id="データソース">データソース</h1>
+
+<ul>
+<li><a href="http://www.marineregions.org/downloads.php">MarineRegions.org</a> 海洋関係のShapefileを公開</li>
+<li><a href="http://geoserver.org/">GeoServer</a></li>
+<li><a href="https://geonetwork-opensource.org/">GeoNetwork</a></li>
+<li><a href="http://www.naturalearthdata.com/">Natural Earth</a></li>
+<li><a href="http://nlftp.mlit.go.jp/ksj/">国土数値情報</a></li>
+</ul>
+
+<h1 id="団体コミュニティ">団体コミュニティ</h1>
+
+<ul>
+<li><a href="http://www.opengeospatial.org/">Open Geospatial Consortium</a> 地理情報関係の標準化団体</li>
+<li><a href="https://www.osgeo.jp/">OSGeo</a></li>
+<li><a href="http://trac.osgeo.org/osgeo4w/wiki/OSGeo4W_jp">OSGeo4W</a> WindowsのためにOSSのGIS関連ソフトをビルドしているらしい</li>
+</ul>
+
+<h1 id="リンク">リンク</h1>
 
 
 
@@ -59,10 +222,6 @@
 
 
 <li class="parent active"><a href="/notes/gis/">GIS</a>
-<ul class="sub-menu">
-<li class=""><a href="/notes/gis/geographical_analysis/">地理情報解析</a></li>
-</ul>
-  
 </li>
 
 <li class=""><a href="/notes/git/">git</a>

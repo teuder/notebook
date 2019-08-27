@@ -58,21 +58,23 @@
 
 <h1 id="処理関数">処理関数</h1>
 
-<p>sfオブジェクトの切り抜き
-st_crop()</p>
+<p>sfオブジェクトの切り抜き</p>
 
-<p>地物の型の変換
-st_cast()</p>
+<p><code>st_crop()</code></p>
 
-<p>sfオブジェクトをデータフレームに変換する</p>
+<p>地物の型の変換</p>
 
-<p>df &lt;- as.data.frame(data_sf)
-この時、dfにはgeometory列が残る（geometory列=sfcオブジェクト）</p>
+<p><code>st_cast()</code></p>
 
-<p>sfオブジェクトからgeometory列を削除すると値だけのデータフレームになる
-df &lt;- st_set_geometory(data_sf, NULL)</p>
+<p>sfオブジェクトをデータフレームに変換する（この時、dfにはgeometory列（リスト列=sfcオブジェクト）が残る）</p>
 
-<p>st_set_geometory()はデータフレームにgeometory列をくっつける関数だけど、NULLを渡すとsfからgeomeotry列を削除できる。</p>
+<p><code>df &lt;- as.data.frame(data_sf)</code></p>
+
+<p>sfオブジェクトからgeometory列を削除すると値（=地物の属性）だけのデータフレームになる</p>
+
+<p><code>df &lt;- st_set_geometory(data_sf, NULL)</code></p>
+
+<p><code>st_set_geometory()</code> はデータフレームにgeometory列をくっつける関数だけど、NULLを渡すとsfオブジェクトからgeomeotry列を削除できる。</p>
 <footer><p class="powered">Powered by <a href="https://gohugo.io">Hugo</a>. Theme by <a href="https://themes.gohugo.io/hugo-theme-techdoc/">TechDoc</a>. Designed by <a href="https://github.com/thingsym/hugo-theme-techdoc">Thingsym</a>.</p>
 </footer>
 </main><div class="sidebar">
@@ -91,10 +93,6 @@ df &lt;- st_set_geometory(data_sf, NULL)</p>
 
 
 <li class=""><a href="/notes/gis/">GIS</a>
-<ul class="">
-<li class=""><a href="/notes/gis/geographical_analysis/">地理情報解析</a></li>
-</ul>
-  
 </li>
 
 <li class=""><a href="/notes/git/">git</a>
