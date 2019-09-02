@@ -13,3 +13,13 @@ weight : 10
 
 - [RSwitch](https://rud.is/rswitch/) R本体のバージョン管理 https://twitter.com/hrbrmstr
 - renv, packrat : パッケージのバージョン管理
+
+
+# ソースコードを確認
+
+lookup パッケージ
+
+```
+devtools::install_github("jimhester/lookup")
+lookup::lookup(dplyr::summarise)
+```

@@ -77,6 +77,7 @@ weight : 50
 
 ## 可視化 
 
+ - ggspatial : ggplot2で可視化する時の便利ツール
  - rasterVis : rasterの可視化
  - quickmapr : sp, sfオブジェクトをとりあえず可視化できる
  - cartography : いろんな地図作成？
@@ -131,7 +132,7 @@ https://cran.r-project.org/web/views/Spatial.html
 # 地理解析の学習
 
 - [GIS基礎知識](https://www.esrij.com/gis-guide/)
-- [Geocomputation with R](https://geocompr.robinlovelace.net/)
+- [Geocomputation with R](https://geocompr.robinlovelace.net/) Rでの地理情報解析の方法がめっちゃ充実、sfパッケージベース
 - [Spatial Data Science](https://keen-swartz-3146c4.netlify.com/index.html)
 - [Spatio-Temporal Statistics with R](https://spacetimewithr.org/)
 - [Introduction to visualising spatial data in R](https://cran.r-project.org/doc/contrib/intro-spatial-rl.pdf)

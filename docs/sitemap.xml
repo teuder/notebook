@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://teuder.github.io/notes/homebrew/</loc>
+    <lastmod>2019-09-02T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://teuder.github.io/notes/r/</loc>
     <lastmod>2019-08-26T00:00:00+00:00</lastmod>
   </url>
