@@ -13,11 +13,11 @@
     
     <item>
       <title>homebrew</title>
-      <link>https://teuder.github.io/notes/homebrew/</link>
+      <link>https://teuder.github.io/notes/miscellaneous/homebrew/</link>
       <pubDate>Mon, 02 Sep 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://teuder.github.io/notes/homebrew/</guid>
-      <description>homebrew インストール先： /usr/local/Cellar もう少し詳細には： /usr/local/Cellar/パッケージ名/バージョン</description>
+      <guid>https://teuder.github.io/notes/miscellaneous/homebrew/</guid>
+      <description>基本コマンド brew search [TEXT|/REGEX/] brew info [FORMULA...] brew install FORMULA brew update brew upgrade [FORMULA...] brew uninstall FORMULA... brew list [FORMULA...] インストール先： /usr/local/Cellar もう少し詳細には： /usr/local/Cellar/パッケージ名/バ</description>
     </item>
     
     <item>
@@ -31,19 +31,19 @@
     
     <item>
       <title>Hugo</title>
-      <link>https://teuder.github.io/notes/hugo/</link>
+      <link>https://teuder.github.io/notes/miscellaneous/hugo/</link>
       <pubDate>Thu, 22 Aug 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://teuder.github.io/notes/hugo/</guid>
+      <guid>https://teuder.github.io/notes/miscellaneous/hugo/</guid>
       <description>Hugoはマークダウンから静的サイトのためのhtmlを生成するソフトウェア Hugoフォルダの構成 /contents フォルダの中にサイトの内容を記述したマーク</description>
     </item>
     
     <item>
       <title>git</title>
-      <link>https://teuder.github.io/notes/git/git/</link>
+      <link>https://teuder.github.io/notes/miscellaneous/git/</link>
       <pubDate>Mon, 26 Aug 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://teuder.github.io/notes/git/git/</guid>
+      <guid>https://teuder.github.io/notes/miscellaneous/git/</guid>
       <description>Git Gitの基本コマンド</description>
     </item>
     
