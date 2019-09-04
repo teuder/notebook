@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>DBI - Masaki E. Tsuda</title>
+<meta name="description" content="for my personal use">
+<meta name="generator" content="Hugo 0.57.2" />
+<link href="https://teuder.github.io/notes/index.xml" rel="alternate" type="application/rss+xml">
+<link rel="canonical" href="https://teuder.github.io/notes/r/dbi/">
+<link rel="stylesheet" href="https://teuder.github.io/notes/css/theme.min.css">
+<script src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+<link rel="stylesheet" href="https://teuder.github.io/notes/css/chroma.min.css">
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://teuder.github.io/notes/js/functions.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery.easing@1.4.1/jquery.easing.min.js"></script>
+<script src="https://teuder.github.io/notes/js/jquery.backtothetop/jquery.backtothetop.min.js"></script></head>
+<body>
+<div class="container"><header>
+<h1>Masaki E. Tsuda</h1>
+
+ <span class="version">Version X.Y.Z</span>
+<a href="https://github.com/teuder/notes" class="github"><i class="fab fa-github"></i></a>
+<p class="description">for my personal use</p>
+
+</header>
+<div class="menu">
+<nav>
+<ul>
+<li><a href="/notes/about/">About</a></li>
+<li><a href="/notes/tags">Tags</a></li></ul>
+</nav>
+</div>
+<div class="content-container">
+<main><h3>DBI</h3>
+
+<p>DBIパッケージはRからデータベース（DB）とやりとりするためのインターフェースを提供している。これにより、ドライバーを切り替えるだけで、共通のインターフェースを用いて様々な種類のDBサーバーとやりとりすることができる。</p>
+
+<p>DBIパッケージはRとデータベース（DB）がやりとりするための基本的な関数を提供している。それぞれの関数の引数などは各DBのドライバーを提供している別のパッケージ（ RPostgreSQL や bigquery など）によって動作が細かく指定できるように拡張されているので、そちらのマニュアルを参照すること。</p>
+
+<h2 id="オブジェクト">オブジェクト</h2>
+
+<p>DBIパッケージでは主に下の３種類のオブジェクトが登場する。</p>
+
+<p><strong>DBIDriver: ドライバー・オブジェクト drv</strong></p>
+
+<ul>
+<li>dbDriver()</li>
+<li>RSQLite::RSQLite(), RPostgreSQL::RPostgreSQL(), RMySQL::RMySQL(), bigrquery::bigquery() などの関数が返すオブジェクト</li>
+</ul>
+
+<p><strong>DBIConnection: DBコネクション・オブジェクト con</strong></p>
+
+<p>dbConnect()が返すオブジェクト</p>
+
+<p><strong>DBIResult: クエリ結果のオブジェクト res</strong></p>
+
+<p>dbSendquery()が返すオブジェクト</p>
+
+<h2 id="ドライバ-コネクション-クエリ結果の情報-dbgetinfo">ドライバ・コネクション・クエリ結果の情報：dbGetInfo()</h2>
+
+<p>dbGetInfo()</p>
+
+<h2 id="接続したいdbへのドライバーをを用意する">接続したいDBへのドライバーをを用意する</h2>
+
+<p>DBIパッケージに対応した、各DBへのドライバを、提供するパッケージをインストールする。</p>
+
+<ul>
+<li>RPostgreSQL</li>
+<li>RMySQL</li>
+<li>RSQLite</li>
+<li>bigquery</li>
+</ul>
+
+<p>ドライバを用意する。下の２つの方法は等価。</p>
+
+<pre><code>drv &lt;- PostgreSQL()
+drv &lt;- dbDriver(&quot;PostgreSQL&quot;)
+</code></pre>
+
+<p>ドライバを閉じる：dbUnloadDriver</p>
+
+<pre><code>dbUnloadDriver(drv) 
+</code></pre>
+
+<h2 id="dbサーバーへ接続する-dbconnect">DBサーバーへ接続する：dbConnect</h2>
+
+<p>ドライバーは例えば以下がある。各パッケージをインストールする。</p>
+
+<ul>
+<li>RSQLite::RSQLite()</li>
+<li>RPostgreSQL::RPostgreSQL()</li>
+<li>RMySQL::RMySQL()</li>
+</ul>
+
+<p>例）PostgreSQLへの接続</p>
+
+<pre><code>drv &lt;- PostgreSQL()
+con &lt;- dbConnect(drv, host=&quot;localhost&quot;, user= &quot;edd&quot;, password=&quot;.....&quot;, dbname=&quot;...&quot;)
+</code></pre>
+
+<p>パスワードをRのソースに直接記述するのはセキュリティ上よろしくない。ファイルに書いておいてそれを読み出すようにする。そうすればRのソースを共有する場合にも安心である。</p>
+
+<p>例えば &ldquo;.pgpass&rdquo; というファイルにパスワードを保存してきそれを読み出す場合</p>
+
+<pre><code>password &lt;- scan(&quot;.pgpass&quot;, what=&quot;&quot;)
+</code></pre>
+
+<p><strong>接続の設定</strong></p>
+
+<p>PostgreSQL() は接続の設定を変えられる。</p>
+
+<p><code>PostgreSQL(max.con = 16, fetch.default.rec = 500, force.reload = FALSE)</code></p>
+
+<ul>
+<li>max.con：最大コネクション数</li>
+<li>fetch.default.rec：データを取得するときに一度に送信するレコード数。fetch()はこの値を利用する。</li>
+<li>force.reload：クライアントのコードをリロードするか。イミフ</li>
+</ul>
+
+<h2 id="コネクションの情報を表示する">コネクションの情報を表示する</h2>
+
+<p><code>summary(con)</code></p>
+
+<h2 id="コネクションを解除する">コネクションを解除する</h2>
+
+<p><code>dbDisconnect(con)   ## Closes the connection</code></p>
+
+<h2 id="データフレームの内容からテーブルを作成する-dbwritetable">データフレームの内容からテーブルを作成する：dbWriteTable</h2>
+
+<pre><code>dbWriteTable(con, &quot;iris&quot;, iris, row.names=FALSE)
+dbWriteTable(conn, name, value, ...)
+</code></pre>
+
+<ul>
+<li>overwrite=TRUE : テーブルを上書きする</li>
+
+<li><p>append=TRUE    : 新しい行を追加する</p>
+
+<pre><code>dbWriteTable(con,
+name = &quot;sillytable&quot;, #テーブル名
+value = data.frame( #値
+    time=seq(Sys.time(), by=&quot;1 day&quot;, length=10),
+    value=rnorm(10)),
+row.names=FALSE)
+</code></pre></li>
+</ul>
+
+<h2 id="テーブルのリスト-dblisttables">テーブルのリスト：dbListTables</h2>
+
+<p><code>dbListTables(con)</code></p>
+
+<h2 id="テーブルのカラム名-dblistfields">テーブルのカラム名：dbListFields</h2>
+
+<p><code>dbListFields(con, &quot;iris&quot;)</code></p>
+
+<p>DBのデータを取得する</p>
+
+<p>テーブルを指定して読み込む：dbReadTable
+iris1 &lt;- dbReadTable(con, &ldquo;iris&rdquo;)</p>
+
+<p>クエリの結果を読み込む：dbGetQuery
+data &lt;- dbGetQuery(con, &ldquo;SELECT * FROM iris ORDER BY weighted DESC LIMIT 5&rdquo;)</p>
+
+<p>クエリの送信とデータの取得を分離する：dbSendQuery &amp; fetch
+上と同様クエリの結果を取得するが、クエリの送信とデータの取得を分離する。</p>
+
+<p>クエリを送信する
+rs &lt;- dbSendQuery(con, &ldquo;SELECT * FROM iris&rdquo;)</p>
+
+<p>最初の10レコードだけ取得する
+iris3.first10 &lt;- fetch(rs, 10)</p>
+
+<p>残りを全て取得する
+iris3.rest &lt;- fetch(rs, -1)</p>
+
+<p>【重要】ローカルとリモート確保されたリソースを開放する
+dbClearResult(rs)</p>
+
+<p>fetch はカーソルを移動させながらデータを取得する。なのでこの場合 iris3.first10とiris3.restを合わせると（rbind(iris3.first10, iris3.rest)）全てのレコードになる。</p>
+
+<p>dbSendQueryの結果はリモートのリソースを消費するので必要がなくなったら dbClearResult すること。</p>
+
+<p>ファイルからクエリを読み込んで実行する
+fileName&lt;-&ldquo;test.sql&rdquo;
+q&lt;-readChar(fileName, file.info(fileName)$size)</p>
+
+<p>res &lt;- dbSendQuery(con, q)</p>
+
+<p>クエリ結果のリソースを開放する：dbClearResult
+rs &lt;- dbSendQuery(con, &ldquo;SELECT * FROM iris&rdquo;) #最初のクエリ
+rs &lt;- dbSendQuery(con, &ldquo;SELECT * FROM hoge&rdquo;) #エラー</p>
+
+<p>最初のクエリの結果を全て取得していないうちに、
+同じコネクションで別のクエリを実行しようとしてもできない。</p>
+
+<p>実行する場合には、最初のクエリの結果をクリアする必要がある。
+dbClearResult(con, rs)
+rs &lt;- dbSendQuery(con, &ldquo;SELECT * FROM hoge&rdquo;) #OK</p>
+
+<p>resの結果の取得が完了していない
+【重要】ローカルとリモート確保されたリソースを開放する
+dbClearResult(rs)</p>
+
+<p>テーブルを削除する：dbRemoveTable
+dbRemoveTable(conn,&ldquo;table1&rdquo;)</p>
+
+<p>カラム情報を表示する：dbColumnInfo(res, &hellip;)
+dbColumnInfo(rs)</p>
+
+<h2 id="name-sclass-type-len-precision-scale-nullok">name    Sclass   type len precision scale nullOK</h2>
+
+<h2 id="1-sepal-length-double-float8-8-1-1-true">1 Sepal.Length    double FLOAT8   8        -1    -1   TRUE</h2>
+
+<h2 id="2-sepal-width-double-float8-8-1-1-true">2  Sepal.Width    double FLOAT8   8        -1    -1   TRUE</h2>
+
+<h2 id="3-petal-length-double-float8-8-1-1-true">3 Petal.Length    double FLOAT8   8        -1    -1   TRUE</h2>
+
+<h2 id="4-petal-width-double-float8-8-1-1-true">4  Petal.Width    double FLOAT8   8        -1    -1   TRUE</h2>
+
+<h2 id="5-species-character-text-1-1-1-true">5      Species character   TEXT  -1        -1    -1   TRUE</h2>
+
+<p>結果の元クエリを表示：dbGetStatement
+dbGetStatement(rs)</p>
+
+<h2 id="1-select-from-iris">[1] &ldquo;SELECT * FROM iris&rdquo;</h2>
+
+<p>ローカルにあるクエリ結果のレコード数：dbGetRowCount(rs)</p>
+
+<h2 id="1-10">[1] 10</h2>
+
+<h1 id="just-get-the-first-10-records">&hellip; just get the first 10 records</h1>
+
+<p>結果のうち、ローカルに送られてきたレコード数？</p>
+
+<p>テーブルの存在を確認：dbExistsTable
+dbExistsTable(con, c(&ldquo;tmp&rdquo;,&ldquo;test_tbl&rdquo;))</p>
+
+<p>dbClearResult()
+dbListResults(conn, &hellip;)
+dbSendQuery()するとサーバーでクエリが実行され、サーバー上に結果が保存されるらしい、そのままにしておくとメモリなどのリソースを消費するので、必要なくなった結果は適宜開放する。</p>
+
+<p>クエリ結果オブジェクトのリスト：dbListResults
+現在のコネクションでアクティブな DBIResult のリストを返す。</p>
+
+<p>dbClearResults(dbListResults(con)[[1]])</p>
+
+<p>現在開いているコネクション・オブジェクトのリスト：dbListConnections</p>
+
+<p>オブジェクトの型を調べる：dbDataType</p>
+
+<p>DBのでの例外（エラー情報）を取得する：dbGetException</p>
+
+<p>データ変更クエリにより影響を受ける行数：dbGetRowsAffected</p>
+
+<p>クエリ結果に対する処理が完了しているか？：dbHasCompleted</p>
+
+<p>DBオブジェクトの状態が正常かチェックする：dbIsValid</p>
+<footer><p class="powered">Powered by <a href="https://gohugo.io">Hugo</a>. Theme by <a href="https://themes.gohugo.io/hugo-theme-techdoc/">TechDoc</a>. Designed by <a href="https://github.com/thingsym/hugo-theme-techdoc">Thingsym</a>.</p>
+</footer>
+</main><div class="sidebar">
+<nav>
+<ul>
+<li class=""><a href="https://teuder.github.io/notes/">Home</a></li>
+
+<li class="parent"><a href="/notes/r/">R</a>
+<ul class="sub-menu">
+<li class="active"><a href="/notes/r/dbi/">DBI</a></li>
+<li class=""><a href="/notes/r/ggplot2/">ggplot2</a></li>
+<li class=""><a href="/notes/r/raster/">raster</a></li>
+<li class=""><a href="/notes/r/sf/">sf</a></li>
+</ul>
+  
+</li>
+
+<li class=""><a href="/notes/gis/">GIS</a>
+</li>
+
+<li class=""><a href="/notes/miscellaneous/">miscellaneous</a>
+<ul class="">
+<li class=""><a href="/notes/miscellaneous/bigquery/">BigQuery</a></li>
+<li class=""><a href="/notes/miscellaneous/vscode/">vscode</a></li>
+<li class=""><a href="/notes/miscellaneous/homebrew/">homebrew</a></li>
+<li class=""><a href="/notes/miscellaneous/hugo/">Hugo</a></li>
+<li class=""><a href="/notes/miscellaneous/git/">git</a></li>
+</ul>
+  
+</li>
+</ul>
+</nav>
+
+
+<div class="sidebar-footer"></div>
+</div>
+</div><a href="#" id="backtothetop-fixed" class="backtothetop"
+ data-backtothetop-duration="600"
+ data-backtothetop-easing="easeOutQuart"
+ data-backtothetop-fixed-fadeIn="1000"
+ data-backtothetop-fixed-fadeOut="1000"
+ data-backtothetop-fixed-bottom="10"
+ data-backtothetop-fixed-right="20">
+<span class="fa-layers fa-fw">
+<i class="fas fa-circle"></i>
+<i class="fas fa-arrow-circle-up"></i>
+</span></a>
+</div>
+</body>
+</html>

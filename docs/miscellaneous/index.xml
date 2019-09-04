@@ -12,6 +12,24 @@
     
     
     <item>
+      <title>BigQuery</title>
+      <link>https://teuder.github.io/notes/miscellaneous/bigquery/</link>
+      <pubDate>Wed, 04 Sep 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://teuder.github.io/notes/miscellaneous/bigquery/</guid>
+      <description>レギュラーSQLをデフォルトにする クエリの前に #standardSQL の記述を追加する。逆にレガシーにしたい場合は #legacySQL を記述する。 #standardSQL SELECT weight_pounds, state, year, gestation_weeks FROM `bigquery-public-data.samples.natality` ORDER BY weight_pounds DESC LIMIT 10; .bigqueryrc に以</description>
+    </item>
+    
+    <item>
+      <title>vscode</title>
+      <link>https://teuder.github.io/notes/miscellaneous/vscode/</link>
+      <pubDate>Tue, 03 Sep 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://teuder.github.io/notes/miscellaneous/vscode/</guid>
+      <description>正規表現検索・置換 検索置換のショートカット opt cmd F 検索BOXの横の .* ボタンを押す 正規表現の記号 記号 意味 例 ^ 行頭 $ 行末 . 任意の１文字 .* 任意の１文</description>
+    </item>
+    
+    <item>
       <title>homebrew</title>
       <link>https://teuder.github.io/notes/miscellaneous/homebrew/</link>
       <pubDate>Mon, 02 Sep 2019 00:00:00 +0000</pubDate>

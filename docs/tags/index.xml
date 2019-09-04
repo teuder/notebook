@@ -6,37 +6,9 @@
     <description>Recent content in Tags on Masaki E. Tsuda</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-JP</language>
-    <lastBuildDate>Tue, 17 Oct 2017 14:00:45 +0000</lastBuildDate>
     
 	<atom:link href="https://teuder.github.io/notes/tags/index.xml" rel="self" type="application/rss+xml" />
     
-    
-    <item>
-      <title>hello</title>
-      <link>https://teuder.github.io/notes/tags/hello/</link>
-      <pubDate>Tue, 17 Oct 2017 14:00:45 +0000</pubDate>
-      
-      <guid>https://teuder.github.io/notes/tags/hello/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>hoge</title>
-      <link>https://teuder.github.io/notes/tags/hoge/</link>
-      <pubDate>Tue, 17 Oct 2017 14:00:45 +0000</pubDate>
-      
-      <guid>https://teuder.github.io/notes/tags/hoge/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>world</title>
-      <link>https://teuder.github.io/notes/tags/world/</link>
-      <pubDate>Tue, 17 Oct 2017 14:00:45 +0000</pubDate>
-      
-      <guid>https://teuder.github.io/notes/tags/world/</guid>
-      <description></description>
-    </item>
     
   </channel>
 </rss>

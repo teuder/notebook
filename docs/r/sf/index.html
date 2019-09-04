@@ -28,7 +28,6 @@
 <nav>
 <ul>
 <li><a href="/notes/about/">About</a></li>
-<li><a href="/notes/blog/">Blog</a></li>
 <li><a href="/notes/tags">Tags</a></li></ul>
 </nav>
 </div>
@@ -75,6 +74,32 @@
 <p><code>df &lt;- st_set_geometory(data_sf, NULL)</code></p>
 
 <p><code>st_set_geometory()</code> はデータフレームにgeometory列をくっつける関数だけど、NULLを渡すとsfオブジェクトからgeomeotry列を削除できる。</p>
+
+<p><code>st_intersects(x, y, sparse = TRUE, ...)</code></p>
+
+<p><code>st_disjoint(x, y = x, sparse = TRUE, prepared = TRUE)</code></p>
+
+<p><code>st_touches(x, y, sparse = TRUE, prepared = TRUE)</code></p>
+
+<p><code>st_crosses(x, y, sparse = TRUE, prepared = TRUE)</code></p>
+
+<p><code>st_within(x, y, sparse = TRUE, prepared = TRUE)</code></p>
+
+<p><code>st_contains(x, y, sparse = TRUE, prepared = TRUE)</code></p>
+
+<p><code>st_contains_properly(x, y, sparse = TRUE, prepared = TRUE)</code></p>
+
+<p><code>st_overlaps(x, y, sparse = TRUE, prepared = TRUE)</code></p>
+
+<p><code>st_equals(x, y, sparse = TRUE, prepared = FALSE)</code></p>
+
+<p><code>st_covers(x, y, sparse = TRUE, prepared = TRUE)</code></p>
+
+<p><code>st_covered_by(x, y, sparse = TRUE, prepared = TRUE)</code></p>
+
+<p><code>st_equals_exact(x, y, par, sparse = TRUE, prepared = FALSE)</code></p>
+
+<p><code>st_is_within_distance(x, y, dist, sparse = TRUE)</code></p>
 <footer><p class="powered">Powered by <a href="https://gohugo.io">Hugo</a>. Theme by <a href="https://themes.gohugo.io/hugo-theme-techdoc/">TechDoc</a>. Designed by <a href="https://github.com/thingsym/hugo-theme-techdoc">Thingsym</a>.</p>
 </footer>
 </main><div class="sidebar">
@@ -84,19 +109,21 @@
 
 <li class="parent"><a href="/notes/r/">R</a>
 <ul class="sub-menu">
+<li class=""><a href="/notes/r/dbi/">DBI</a></li>
+<li class=""><a href="/notes/r/ggplot2/">ggplot2</a></li>
 <li class=""><a href="/notes/r/raster/">raster</a></li>
 <li class="active"><a href="/notes/r/sf/">sf</a></li>
 </ul>
   
 </li>
 
-
-
 <li class=""><a href="/notes/gis/">GIS</a>
 </li>
 
 <li class=""><a href="/notes/miscellaneous/">miscellaneous</a>
 <ul class="">
+<li class=""><a href="/notes/miscellaneous/bigquery/">BigQuery</a></li>
+<li class=""><a href="/notes/miscellaneous/vscode/">vscode</a></li>
 <li class=""><a href="/notes/miscellaneous/homebrew/">homebrew</a></li>
 <li class=""><a href="/notes/miscellaneous/hugo/">Hugo</a></li>
 <li class=""><a href="/notes/miscellaneous/git/">git</a></li>

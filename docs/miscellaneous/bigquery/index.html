@@ -3,11 +3,11 @@
 <head><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<title>Tags - Masaki E. Tsuda</title>
+<title>BigQuery - Masaki E. Tsuda</title>
 <meta name="description" content="for my personal use">
 <meta name="generator" content="Hugo 0.57.2" />
 <link href="https://teuder.github.io/notes/index.xml" rel="alternate" type="application/rss+xml">
-<link rel="canonical" href="https://teuder.github.io/notes/tags/">
+<link rel="canonical" href="https://teuder.github.io/notes/miscellaneous/bigquery/">
 <link rel="stylesheet" href="https://teuder.github.io/notes/css/theme.min.css">
 <script src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
 <link rel="stylesheet" href="https://teuder.github.io/notes/css/chroma.min.css">
@@ -32,9 +32,26 @@
 </nav>
 </div>
 <div class="content-container">
-<main><h1>Tags</h1>
+<main><h3>BigQuery</h3>
 
+<h2 id="レギュラーsqlをデフォルトにする">レギュラーSQLをデフォルトにする</h2>
 
+<p>クエリの前に <code>#standardSQL</code> の記述を追加する。逆にレガシーにしたい場合は <code>#legacySQL</code> を記述する。</p>
+<div class="highlight"><pre class="chroma"><code class="language-sql" data-lang="sql"><span class="o">#</span><span class="n">standardSQL</span>
+<span class="k">SELECT</span>
+  <span class="n">weight_pounds</span><span class="p">,</span> <span class="k">state</span><span class="p">,</span> <span class="k">year</span><span class="p">,</span> <span class="n">gestation_weeks</span>
+<span class="k">FROM</span>
+  <span class="o">`</span><span class="n">bigquery</span><span class="o">-</span><span class="k">public</span><span class="o">-</span><span class="k">data</span><span class="p">.</span><span class="n">samples</span><span class="p">.</span><span class="n">natality</span><span class="o">`</span>
+<span class="k">ORDER</span> <span class="k">BY</span> <span class="n">weight_pounds</span> <span class="k">DESC</span>
+<span class="k">LIMIT</span> <span class="mi">10</span><span class="p">;</span></code></pre></div>
+<p><code>.bigqueryrc</code> に以下を記述</p>
+
+<pre><code>[query]
+--use_legacy_sql=false
+
+[mk]
+--use_legacy_sql=false
+</code></pre>
 <footer><p class="powered">Powered by <a href="https://gohugo.io">Hugo</a>. Theme by <a href="https://themes.gohugo.io/hugo-theme-techdoc/">TechDoc</a>. Designed by <a href="https://github.com/thingsym/hugo-theme-techdoc">Thingsym</a>.</p>
 </footer>
 </main><div class="sidebar">
@@ -55,9 +72,9 @@
 <li class=""><a href="/notes/gis/">GIS</a>
 </li>
 
-<li class=""><a href="/notes/miscellaneous/">miscellaneous</a>
-<ul class="">
-<li class=""><a href="/notes/miscellaneous/bigquery/">BigQuery</a></li>
+<li class="parent"><a href="/notes/miscellaneous/">miscellaneous</a>
+<ul class="sub-menu">
+<li class="active"><a href="/notes/miscellaneous/bigquery/">BigQuery</a></li>
 <li class=""><a href="/notes/miscellaneous/vscode/">vscode</a></li>
 <li class=""><a href="/notes/miscellaneous/homebrew/">homebrew</a></li>
 <li class=""><a href="/notes/miscellaneous/hugo/">Hugo</a></li>

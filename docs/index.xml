@@ -1,15 +1,33 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Masaki E. Tsuda</title>
+    <title>Introduction on Masaki E. Tsuda</title>
     <link>https://teuder.github.io/notes/</link>
-    <description>Recent content on Masaki E. Tsuda</description>
+    <description>Recent content in Introduction on Masaki E. Tsuda</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-JP</language>
     <lastBuildDate>Sun, 26 Aug 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://teuder.github.io/notes/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>BigQuery</title>
+      <link>https://teuder.github.io/notes/miscellaneous/bigquery/</link>
+      <pubDate>Wed, 04 Sep 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://teuder.github.io/notes/miscellaneous/bigquery/</guid>
+      <description>レギュラーSQLをデフォルトにする クエリの前に #standardSQL の記述を追加する。逆にレガシーにしたい場合は #legacySQL を記述する。 #standardSQL SELECT weight_pounds, state, year, gestation_weeks FROM `bigquery-public-data.samples.natality` ORDER BY weight_pounds DESC LIMIT 10; .bigqueryrc に以</description>
+    </item>
+    
+    <item>
+      <title>vscode</title>
+      <link>https://teuder.github.io/notes/miscellaneous/vscode/</link>
+      <pubDate>Tue, 03 Sep 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://teuder.github.io/notes/miscellaneous/vscode/</guid>
+      <description>正規表現検索・置換 検索置換のショートカット opt cmd F 検索BOXの横の .* ボタンを押す 正規表現の記号 記号 意味 例 ^ 行頭 $ 行末 . 任意の１文字 .* 任意の１文</description>
+    </item>
     
     <item>
       <title>homebrew</title>
@@ -39,6 +57,24 @@
     </item>
     
     <item>
+      <title>DBI</title>
+      <link>https://teuder.github.io/notes/r/dbi/</link>
+      <pubDate>Wed, 04 Sep 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://teuder.github.io/notes/r/dbi/</guid>
+      <description>DBIパッケージはRからデータベース（DB）とやりとりするためのインターフェースを提供している。これにより、ドライバーを切り替えるだけで、共</description>
+    </item>
+    
+    <item>
+      <title>ggplot2</title>
+      <link>https://teuder.github.io/notes/r/ggplot2/</link>
+      <pubDate>Tue, 03 Sep 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://teuder.github.io/notes/r/ggplot2/</guid>
+      <description>ggplot2: Elegant Graphics for Data Analysis</description>
+    </item>
+    
+    <item>
       <title>git</title>
       <link>https://teuder.github.io/notes/miscellaneous/git/</link>
       <pubDate>Mon, 26 Aug 2019 00:00:00 +0000</pubDate>
@@ -63,39 +99,6 @@
       
       <guid>https://teuder.github.io/notes/r/sf/</guid>
       <description>sf パッケージ 定義されたクラス sfgクラス：個別の地物 sfcクラス：sfgオブジェクトのリスト、リストの各要素が１地物に相当 sf クラス：sfcオ</description>
-    </item>
-    
-    <item>
-      <title>Hello_world</title>
-      <link>https://teuder.github.io/notes/blog/hello_world/</link>
-      <pubDate>Tue, 17 Oct 2017 14:00:45 +0000</pubDate>
-      
-      <guid>https://teuder.github.io/notes/blog/hello_world/</guid>
-      <description>aaaaaa
-vvvv
-aaa</description>
-    </item>
-    
-    <item>
-      <title>Hello_world!</title>
-      <link>https://teuder.github.io/notes/blog/hello_world-copy/</link>
-      <pubDate>Tue, 17 Oct 2017 14:00:45 +0000</pubDate>
-      
-      <guid>https://teuder.github.io/notes/blog/hello_world-copy/</guid>
-      <description>aaaaaa
-vvvv
-aaa</description>
-    </item>
-    
-    <item>
-      <title>Hello_world!!</title>
-      <link>https://teuder.github.io/notes/blog/hello_world-copy-2/</link>
-      <pubDate>Tue, 17 Oct 2017 14:00:45 +0000</pubDate>
-      
-      <guid>https://teuder.github.io/notes/blog/hello_world-copy-2/</guid>
-      <description>aaaaaa
-vvvv
-aaa</description>
     </item>
     
   </channel>

@@ -3,6 +3,16 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://teuder.github.io/notes/miscellaneous/bigquery/</loc>
+    <lastmod>2019-09-04T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://teuder.github.io/notes/miscellaneous/vscode/</loc>
+    <lastmod>2019-09-03T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://teuder.github.io/notes/miscellaneous/homebrew/</loc>
     <lastmod>2019-09-02T00:00:00+00:00</lastmod>
   </url>
@@ -23,8 +33,13 @@
   </url>
   
   <url>
-    <loc>https://teuder.github.io/notes/blog/</loc>
-    <lastmod>2019-08-26T00:00:00+00:00</lastmod>
+    <loc>https://teuder.github.io/notes/r/dbi/</loc>
+    <lastmod>2019-09-04T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://teuder.github.io/notes/r/ggplot2/</loc>
+    <lastmod>2019-09-03T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -58,42 +73,11 @@
   </url>
   
   <url>
-    <loc>https://teuder.github.io/notes/tags/hello/</loc>
-    <lastmod>2017-10-17T14:00:45+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://teuder.github.io/notes/blog/hello_world/</loc>
-    <lastmod>2017-10-17T14:00:45+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://teuder.github.io/notes/blog/hello_world-copy/</loc>
-    <lastmod>2017-10-17T14:00:45+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://teuder.github.io/notes/blog/hello_world-copy-2/</loc>
-    <lastmod>2017-10-17T14:00:45+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://teuder.github.io/notes/tags/hoge/</loc>
-    <lastmod>2017-10-17T14:00:45+00:00</lastmod>
+    <loc>https://teuder.github.io/notes/categories/</loc>
   </url>
   
   <url>
     <loc>https://teuder.github.io/notes/tags/</loc>
-    <lastmod>2017-10-17T14:00:45+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://teuder.github.io/notes/tags/world/</loc>
-    <lastmod>2017-10-17T14:00:45+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://teuder.github.io/notes/categories/</loc>
   </url>
   
 </urlset>

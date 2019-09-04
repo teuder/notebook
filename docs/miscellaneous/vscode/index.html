@@ -3,11 +3,11 @@
 <head><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<title>Tags - Masaki E. Tsuda</title>
+<title>vscode - Masaki E. Tsuda</title>
 <meta name="description" content="for my personal use">
 <meta name="generator" content="Hugo 0.57.2" />
 <link href="https://teuder.github.io/notes/index.xml" rel="alternate" type="application/rss+xml">
-<link rel="canonical" href="https://teuder.github.io/notes/tags/">
+<link rel="canonical" href="https://teuder.github.io/notes/miscellaneous/vscode/">
 <link rel="stylesheet" href="https://teuder.github.io/notes/css/theme.min.css">
 <script src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
 <link rel="stylesheet" href="https://teuder.github.io/notes/css/chroma.min.css">
@@ -32,9 +32,73 @@
 </nav>
 </div>
 <div class="content-container">
-<main><h1>Tags</h1>
+<main><h3>vscode</h3>
 
+<h1 id="正規表現検索-置換">正規表現検索・置換</h1>
 
+<h2 id="検索置換のショートカット">検索置換のショートカット</h2>
+
+<p><code>opt cmd F</code></p>
+
+<p>検索BOXの横の .* ボタンを押す</p>
+
+<h2 id="正規表現の記号">正規表現の記号</h2>
+
+<table>
+<thead>
+<tr>
+<th>記号</th>
+<th>意味</th>
+<th>例</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>^</code></td>
+<td>行頭</td>
+<td></td>
+</tr>
+
+<tr>
+<td><code>$</code></td>
+<td>行末</td>
+<td></td>
+</tr>
+
+<tr>
+<td><code>.</code></td>
+<td>任意の１文字</td>
+<td></td>
+</tr>
+
+<tr>
+<td><code>.*</code></td>
+<td>任意の１文字が0文字以上連続する</td>
+<td></td>
+</tr>
+
+<tr>
+<td><code>.+</code></td>
+<td>任意の１文字が１文字以上連続する</td>
+<td></td>
+</tr>
+
+<tr>
+<td><code>[]</code></td>
+<td><code>[]</code>内の任意の１文字</td>
+<td><code>[ABC]+</code> AまたはBまたはCが1文字以上連続する</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="検索で認識された文字列を置換の際に使う">検索で認識された文字列を置換の際に使う</h2>
+
+<p>検索BOXで正規表現を()でくくり、置換BOXの中で$1や$2で指定する。</p>
+
+<p>検索BOX： 「(.+)と(.+)」</p>
+
+<p>置換BOX： 【$1】が【$2】</p>
 <footer><p class="powered">Powered by <a href="https://gohugo.io">Hugo</a>. Theme by <a href="https://themes.gohugo.io/hugo-theme-techdoc/">TechDoc</a>. Designed by <a href="https://github.com/thingsym/hugo-theme-techdoc">Thingsym</a>.</p>
 </footer>
 </main><div class="sidebar">
@@ -55,10 +119,10 @@
 <li class=""><a href="/notes/gis/">GIS</a>
 </li>
 
-<li class=""><a href="/notes/miscellaneous/">miscellaneous</a>
-<ul class="">
+<li class="parent"><a href="/notes/miscellaneous/">miscellaneous</a>
+<ul class="sub-menu">
 <li class=""><a href="/notes/miscellaneous/bigquery/">BigQuery</a></li>
-<li class=""><a href="/notes/miscellaneous/vscode/">vscode</a></li>
+<li class="active"><a href="/notes/miscellaneous/vscode/">vscode</a></li>
 <li class=""><a href="/notes/miscellaneous/homebrew/">homebrew</a></li>
 <li class=""><a href="/notes/miscellaneous/hugo/">Hugo</a></li>
 <li class=""><a href="/notes/miscellaneous/git/">git</a></li>
