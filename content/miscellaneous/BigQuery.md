@@ -3,10 +3,6 @@ title : "BigQuery"
 date : 2019-09-04
 publishdate : 2019-09-04
 type: docs
-# menu : main
-# menu:
-#   main:
-#    parent: Hoge
 weight: 10
 ---
 
