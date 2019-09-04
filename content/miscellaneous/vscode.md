@@ -3,9 +3,10 @@ title : "vscode"
 date : 2019-09-03
 publishdate : 2019-09-03
 weight : 10
+type: docs
 ---
 
-
+# Visual Studio Code
 
 # 正規表現検索・置換
 

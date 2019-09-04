@@ -2,6 +2,7 @@
 title : "BigQuery"
 date : 2019-09-04
 publishdate : 2019-09-04
+type: docs
 # menu : main
 # menu:
 #   main:
@@ -9,12 +10,13 @@ publishdate : 2019-09-04
 weight: 10
 ---
 
-
+# BigQuery
 
 
 ## レギュラーSQLをデフォルトにする
 
 クエリの前に `#standardSQL` の記述を追加する。逆にレガシーにしたい場合は `#legacySQL` を記述する。
+
 
 ```{sql}
 #standardSQL
@@ -25,7 +27,6 @@ FROM
 ORDER BY weight_pounds DESC
 LIMIT 10;
 ```
-
 
 `.bigqueryrc` に以下を記述
 

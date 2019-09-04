@@ -2,49 +2,49 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>R on Masaki E. Tsuda</title>
-    <link>https://teuder.github.io/notes/r/</link>
+    <link>https://teuder.github.io/notes/R/</link>
     <description>Recent content in R on Masaki E. Tsuda</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-JP</language>
     <lastBuildDate>Mon, 26 Aug 2019 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="https://teuder.github.io/notes/r/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://teuder.github.io/notes/R/index.xml" rel="self" type="application/rss+xml" />
     
-    
-    <item>
-      <title>DBI</title>
-      <link>https://teuder.github.io/notes/r/dbi/</link>
-      <pubDate>Wed, 04 Sep 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://teuder.github.io/notes/r/dbi/</guid>
-      <description>DBIパッケージはRからデータベース（DB）とやりとりするためのインターフェースを提供している。これにより、ドライバーを切り替えるだけで、共</description>
-    </item>
     
     <item>
       <title>ggplot2</title>
-      <link>https://teuder.github.io/notes/r/ggplot2/</link>
+      <link>https://teuder.github.io/notes/R/ggplot2/</link>
       <pubDate>Tue, 03 Sep 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://teuder.github.io/notes/r/ggplot2/</guid>
-      <description>ggplot2: Elegant Graphics for Data Analysis</description>
+      <guid>https://teuder.github.io/notes/R/ggplot2/</guid>
+      <description>ggplot2 ggplot2: Elegant Graphics for Data Analysis</description>
     </item>
     
     <item>
       <title>raster</title>
-      <link>https://teuder.github.io/notes/r/raster/</link>
+      <link>https://teuder.github.io/notes/R/raster/</link>
       <pubDate>Mon, 26 Aug 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://teuder.github.io/notes/r/raster/</guid>
-      <description>raster パッケージ # GooTiffの読み込み data &amp;lt;- raster(&amp;quot;path/data.tif&amp;quot;) 値と座標のデータフレームに変換する df &amp;lt;- rasterToPoint(data)</description>
+      <guid>https://teuder.github.io/notes/R/raster/</guid>
+      <description>raster # GooTiffの読み込み data &amp;lt;- raster(&amp;#34;path/data.tif&amp;#34;) 値と座標のデータフレームに変換する df &amp;lt;- rasterToPoint(data)</description>
     </item>
     
     <item>
       <title>sf</title>
-      <link>https://teuder.github.io/notes/r/sf/</link>
+      <link>https://teuder.github.io/notes/R/sf/</link>
       <pubDate>Mon, 26 Aug 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://teuder.github.io/notes/r/sf/</guid>
-      <description>sf パッケージ 定義されたクラス sfgクラス：個別の地物 sfcクラス：sfgオブジェクトのリスト、リストの各要素が１地物に相当 sf クラス：sfcオ</description>
+      <guid>https://teuder.github.io/notes/R/sf/</guid>
+      <description>sf 定義されたクラス sfgクラス：個別の地物 sfcクラス：sfgオブジェクトのリスト、リストの各要素が１地物に相当 sf クラス：sfcオブジェクト</description>
+    </item>
+    
+    <item>
+      <title>DBI</title>
+      <link>https://teuder.github.io/notes/R/DBI/</link>
+      <pubDate>Wed, 04 Sep 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://teuder.github.io/notes/R/DBI/</guid>
+      <description>DBI DBIパッケージはRからデータベース（DB）とやりとりするためのインターフェースを提供している。これにより、ドライバーを切り替えるだけで、</description>
     </item>
     
   </channel>

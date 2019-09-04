@@ -1,85 +1,335 @@
 <!DOCTYPE html>
 <html lang="ja">
-<head><meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<title>ggplot2 - Masaki E. Tsuda</title>
-<meta name="description" content="for my personal use">
-<meta name="generator" content="Hugo 0.57.2" />
-<link href="https://teuder.github.io/notes/index.xml" rel="alternate" type="application/rss+xml">
-<link rel="canonical" href="https://teuder.github.io/notes/r/ggplot2/">
-<link rel="stylesheet" href="https://teuder.github.io/notes/css/theme.min.css">
-<script src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
-<link rel="stylesheet" href="https://teuder.github.io/notes/css/chroma.min.css">
-<script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
-<script src="https://teuder.github.io/notes/js/functions.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/jquery.easing@1.4.1/jquery.easing.min.js"></script>
-<script src="https://teuder.github.io/notes/js/jquery.backtothetop/jquery.backtothetop.min.js"></script></head>
+
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ggplot2 | Masaki E. Tsuda</title>
+
+
+<link rel="stylesheet" href="/notes/book.min.6c7317d2e8552a0ac3ea8fd4ba500c3dfb1cc9c74e7afd73eee6d729751fad30.css" integrity="sha256-bHMX0uhVKgrD6o/UulAMPfscycdOev1z7ubXKXUfrTA=">
+
+
+<script defer src="/notes/search.min.154fe6cc23730cbcd9a693b75be107b15147e10dee089be14d108251d8ae5cd6.js" integrity="sha256-FU/mzCNzDLzZppO3W&#43;EHsVFH4Q3uCJvhTRCCUdiuXNY="></script>
+
+
+
+<link rel="icon" href="/notes/favicon.png" type="image/x-icon">
+
+
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+  
+</head>
+
 <body>
-<div class="container"><header>
-<h1>Masaki E. Tsuda</h1>
+  <input type="checkbox" class="hidden" id="menu-control" />
+  <main class="flex container">
 
- <span class="version">Version X.Y.Z</span>
-<a href="https://github.com/teuder/notes" class="github"><i class="fab fa-github"></i></a>
-<p class="description">for my personal use</p>
+    <aside class="book-menu fixed">
+      <nav>
+<h2 class="book-brand">
+  <a href="https://teuder.github.io/notes/">Masaki E. Tsuda</a>
+</h2>
 
+
+<div class="book-search">
+  <input type="text" placeholder="Search" id="book-search-input" maxlength="64" readonly />
+  <div class="book-search-spinner spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+
+
+
+
+
+    
+
+  
+
+
+
+
+
+
+  <ul>
+  
+    
+
+  <li >
+    
+      
+
+  <a href="/notes/docs/" >
+      About
+  </a>
+
+
+    
+
+    
+
+  <ul>
+    
+    
+  </ul>
+
+
+  </li>
+
+
+  
+    
+
+  <li >
+    
+      
+
+  <a href="/notes/R/" >
+      R
+  </a>
+
+
+    
+
+    
+
+  <ul>
+    
+    
+    <li>
+      
+
+  <a href="/notes/R/ggplot2/"  class="active">
+      ggplot2
+  </a>
+
+
+    </li>
+    
+    <li>
+      
+
+  <a href="/notes/R/raster/" >
+      raster
+  </a>
+
+
+    </li>
+    
+    <li>
+      
+
+  <a href="/notes/R/sf/" >
+      sf
+  </a>
+
+
+    </li>
+    
+    <li>
+      
+
+  <a href="/notes/R/DBI/" >
+      DBI
+  </a>
+
+
+    </li>
+    
+  </ul>
+
+
+  </li>
+
+
+  
+    
+
+  <li >
+    
+      
+
+  <a href="/notes/GIS/" >
+      GIS
+  </a>
+
+
+    
+
+    
+
+  <ul>
+    
+    
+  </ul>
+
+
+  </li>
+
+
+  
+    
+
+  <li >
+    
+      
+
+  <a href="/notes/miscellaneous/" >
+      miscellaneous
+  </a>
+
+
+    
+
+    
+
+  <ul>
+    
+    
+    <li>
+      
+
+  <a href="/notes/miscellaneous/BigQuery/" >
+      BigQuery
+  </a>
+
+
+    </li>
+    
+    <li>
+      
+
+  <a href="/notes/miscellaneous/vscode/" >
+      vscode
+  </a>
+
+
+    </li>
+    
+    <li>
+      
+
+  <a href="/notes/miscellaneous/homebrew/" >
+      homebrew
+  </a>
+
+
+    </li>
+    
+    <li>
+      
+
+  <a href="/notes/miscellaneous/hugo/" >
+      Hugo
+  </a>
+
+
+    </li>
+    
+    <li>
+      
+
+  <a href="/notes/miscellaneous/git/" >
+      git
+  </a>
+
+
+    </li>
+    
+  </ul>
+
+
+  </li>
+
+
+  
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+<script>
+(function() {
+  var menu = document.querySelector("aside.book-menu nav");
+  addEventListener("beforeunload", function(event) {
+    localStorage.setItem("menu.scrollTop", menu.scrollTop);
+  });
+  menu.scrollTop = localStorage.getItem("menu.scrollTop");
+})();
+</script>
+
+    </aside>
+
+    <div class="book-page">
+      <header class="flex align-center justify-between book-header">
+  <label for="menu-control">
+    <img src="/notes/svg/menu.svg" alt="Menu" />
+  </label>
+  <strong>ggplot2</strong>
 </header>
-<div class="menu">
-<nav>
-<ul>
-<li><a href="/notes/about/">About</a></li>
-<li><a href="/notes/tags">Tags</a></li></ul>
-</nav>
-</div>
-<div class="content-container">
-<main><h3>ggplot2</h3><p><a href="https://ggplot2-book.org/">ggplot2: Elegant Graphics for Data Analysis</a></p>
-<footer><p class="powered">Powered by <a href="https://gohugo.io">Hugo</a>. Theme by <a href="https://themes.gohugo.io/hugo-theme-techdoc/">TechDoc</a>. Designed by <a href="https://github.com/thingsym/hugo-theme-techdoc">Thingsym</a>.</p>
-</footer>
-</main><div class="sidebar">
-<nav>
-<ul>
-<li class=""><a href="https://teuder.github.io/notes/">Home</a></li>
 
-<li class="parent"><a href="/notes/r/">R</a>
-<ul class="sub-menu">
-<li class=""><a href="/notes/r/dbi/">DBI</a></li>
-<li class="active"><a href="/notes/r/ggplot2/">ggplot2</a></li>
-<li class=""><a href="/notes/r/raster/">raster</a></li>
-<li class=""><a href="/notes/r/sf/">sf</a></li>
-</ul>
+      
+<article class="markdown">
+
+<h1 id="ggplot2">ggplot2</h1>
+
+<p><a href="https://ggplot2-book.org/">ggplot2: Elegant Graphics for Data Analysis</a></p>
+</article>
+
+      
+<div class="book-footer justify-between">
   
-</li>
-
-<li class=""><a href="/notes/gis/">GIS</a>
-</li>
-
-<li class=""><a href="/notes/miscellaneous/">miscellaneous</a>
-<ul class="">
-<li class=""><a href="/notes/miscellaneous/bigquery/">BigQuery</a></li>
-<li class=""><a href="/notes/miscellaneous/vscode/">vscode</a></li>
-<li class=""><a href="/notes/miscellaneous/homebrew/">homebrew</a></li>
-<li class=""><a href="/notes/miscellaneous/hugo/">Hugo</a></li>
-<li class=""><a href="/notes/miscellaneous/git/">git</a></li>
-</ul>
+  <div>
+    
+    <a href="https://github.com/teuder/notes/commit/9d3b2b0f818e506a77b545dc026d79d617c4e909" title='Last modified 2019-09-04 by Masaki E. Tsuda' target="_blank" rel="noopener">
+      <img src="/notes/svg/calendar.svg" alt="Changed" /> 2019-09-04
+    </a>
+  </div>
   
-</li>
+  
+  <div>
+    <a href="https://github.com/teuder/notes/edit/master/content/R/ggplot2.md" target="_blank" rel="noopener">
+      <img src="/notes/svg/edit.svg" alt="Edit" /> Edit this page
+    </a>
+  </div>
+  
+</div>
+
+
+      
+    </div>
+
+    
+  
+
+  <aside class="book-toc level-3 fixed">
+    <nav id="TableOfContents">
+<ul>
+<li><a href="#ggplot2">ggplot2</a></li>
 </ul>
 </nav>
+  </aside>
 
 
-<div class="sidebar-footer"></div>
-</div>
-</div><a href="#" id="backtothetop-fixed" class="backtothetop"
- data-backtothetop-duration="600"
- data-backtothetop-easing="easeOutQuart"
- data-backtothetop-fixed-fadeIn="1000"
- data-backtothetop-fixed-fadeOut="1000"
- data-backtothetop-fixed-bottom="10"
- data-backtothetop-fixed-right="20">
-<span class="fa-layers fa-fw">
-<i class="fas fa-circle"></i>
-<i class="fas fa-arrow-circle-up"></i>
-</span></a>
-</div>
+
+  </main>
+
+  
+  
 </body>
+
 </html>

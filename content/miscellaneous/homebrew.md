@@ -3,6 +3,7 @@ title : homebrew
 date : 2019-09-02
 publishdate : 2019-09-02
 weight: 10
+type: docs
 # menu:
 #   main:
 #     parent: Hoge
@@ -10,11 +11,12 @@ weight: 10
 # prev: chapter2/2
 ---
 
+# homebrew
+
 # 基本コマンド
 
   `brew search [TEXT|/REGEX/]`
-
-
+  
   `brew info [FORMULA...]`
   
   `brew install FORMULA`

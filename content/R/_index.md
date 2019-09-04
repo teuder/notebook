@@ -3,11 +3,12 @@ title: "R"
 draft: false
 date : 2019-08-26
 publishdate : 2019-08-26
-weight : 10
+weight : 2
+bookHidden: false
+type: docs
 ---
 
-
-
+# R
 
 # バージョン管理
 

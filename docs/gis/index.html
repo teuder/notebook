@@ -1,42 +1,294 @@
 <!DOCTYPE html>
 <html lang="ja">
-<head><meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<title>GIS - Masaki E. Tsuda</title>
-<meta name="description" content="for my personal use">
-<meta name="generator" content="Hugo 0.57.2" />
-<link href="https://teuder.github.io/notes/index.xml" rel="alternate" type="application/rss+xml">
-<link rel="canonical" href="https://teuder.github.io/notes/gis/">
-<link rel="stylesheet" href="https://teuder.github.io/notes/css/theme.min.css">
-<script src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
-<link rel="stylesheet" href="https://teuder.github.io/notes/css/chroma.min.css">
-<script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
-<script src="https://teuder.github.io/notes/js/functions.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/jquery.easing@1.4.1/jquery.easing.min.js"></script>
-<script src="https://teuder.github.io/notes/js/jquery.backtothetop/jquery.backtothetop.min.js"></script></head>
+
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GIS | Masaki E. Tsuda</title>
+
+
+<link rel="stylesheet" href="/notes/book.min.6c7317d2e8552a0ac3ea8fd4ba500c3dfb1cc9c74e7afd73eee6d729751fad30.css" integrity="sha256-bHMX0uhVKgrD6o/UulAMPfscycdOev1z7ubXKXUfrTA=">
+
+
+<script defer src="/notes/search.min.154fe6cc23730cbcd9a693b75be107b15147e10dee089be14d108251d8ae5cd6.js" integrity="sha256-FU/mzCNzDLzZppO3W&#43;EHsVFH4Q3uCJvhTRCCUdiuXNY="></script>
+
+
+
+<link rel="icon" href="/notes/favicon.png" type="image/x-icon">
+
+
+<link rel="alternate" type="application/rss+xml" href="https://teuder.github.io/notes/GIS/index.xml" title="Masaki E. Tsuda" />
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+  
+</head>
+
 <body>
-<div class="container"><header>
-<h1>Masaki E. Tsuda</h1>
+  <input type="checkbox" class="hidden" id="menu-control" />
+  <main class="flex container">
 
- <span class="version">Version X.Y.Z</span>
-<a href="https://github.com/teuder/notes" class="github"><i class="fab fa-github"></i></a>
-<p class="description">for my personal use</p>
+    <aside class="book-menu fixed">
+      <nav>
+<h2 class="book-brand">
+  <a href="https://teuder.github.io/notes/">Masaki E. Tsuda</a>
+</h2>
 
-</header>
-<div class="menu">
-<nav>
-<ul>
-<li><a href="/notes/about/">About</a></li>
-<li><a href="/notes/tags">Tags</a></li></ul>
-</nav>
+
+<div class="book-search">
+  <input type="text" placeholder="Search" id="book-search-input" maxlength="64" readonly />
+  <div class="book-search-spinner spinner hidden"></div>
+  <ul id="book-search-results"></ul>
 </div>
-<div class="content-container">
-<main><h1>GIS</h1>
 
-<h1 id="rパッケージ">Rパッケージ</h1>
 
-<h1 id="パッケージの一覧">パッケージの一覧</h1>
+
+
+
+    
+
+  
+
+
+
+
+
+
+  <ul>
+  
+    
+
+  <li >
+    
+      
+
+  <a href="/notes/docs/" >
+      About
+  </a>
+
+
+    
+
+    
+
+  <ul>
+    
+    
+  </ul>
+
+
+  </li>
+
+
+  
+    
+
+  <li >
+    
+      
+
+  <a href="/notes/R/" >
+      R
+  </a>
+
+
+    
+
+    
+
+  <ul>
+    
+    
+    <li>
+      
+
+  <a href="/notes/R/ggplot2/" >
+      ggplot2
+  </a>
+
+
+    </li>
+    
+    <li>
+      
+
+  <a href="/notes/R/raster/" >
+      raster
+  </a>
+
+
+    </li>
+    
+    <li>
+      
+
+  <a href="/notes/R/sf/" >
+      sf
+  </a>
+
+
+    </li>
+    
+    <li>
+      
+
+  <a href="/notes/R/DBI/" >
+      DBI
+  </a>
+
+
+    </li>
+    
+  </ul>
+
+
+  </li>
+
+
+  
+    
+
+  <li >
+    
+      
+
+  <a href="/notes/GIS/"  class="active">
+      GIS
+  </a>
+
+
+    
+
+    
+
+  <ul>
+    
+    
+  </ul>
+
+
+  </li>
+
+
+  
+    
+
+  <li >
+    
+      
+
+  <a href="/notes/miscellaneous/" >
+      miscellaneous
+  </a>
+
+
+    
+
+    
+
+  <ul>
+    
+    
+    <li>
+      
+
+  <a href="/notes/miscellaneous/BigQuery/" >
+      BigQuery
+  </a>
+
+
+    </li>
+    
+    <li>
+      
+
+  <a href="/notes/miscellaneous/vscode/" >
+      vscode
+  </a>
+
+
+    </li>
+    
+    <li>
+      
+
+  <a href="/notes/miscellaneous/homebrew/" >
+      homebrew
+  </a>
+
+
+    </li>
+    
+    <li>
+      
+
+  <a href="/notes/miscellaneous/hugo/" >
+      Hugo
+  </a>
+
+
+    </li>
+    
+    <li>
+      
+
+  <a href="/notes/miscellaneous/git/" >
+      git
+  </a>
+
+
+    </li>
+    
+  </ul>
+
+
+  </li>
+
+
+  
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+<script>
+(function() {
+  var menu = document.querySelector("aside.book-menu nav");
+  addEventListener("beforeunload", function(event) {
+    localStorage.setItem("menu.scrollTop", menu.scrollTop);
+  });
+  menu.scrollTop = localStorage.getItem("menu.scrollTop");
+})();
+</script>
+
+    </aside>
+
+    <div class="book-page">
+      <header class="flex align-center justify-between book-header">
+  <label for="menu-control">
+    <img src="/notes/svg/menu.svg" alt="Menu" />
+  </label>
+  <strong>GIS</strong>
+</header>
+
+      
+<article class="markdown">
+
+<h1 id="gis">GIS</h1>
+
+<h1 id="gis関係のrパッケージの一覧">GIS関係のRパッケージの一覧</h1>
 
 <ul>
 <li><a href="https://cran.r-project.org/web/views/Spatial.html">https://cran.r-project.org/web/views/Spatial.html</a></li>
@@ -201,56 +453,71 @@
 </ul>
 
 <h1 id="リンク">リンク</h1>
+</article>
+
+      
+<div class="book-footer justify-between">
+  
+  <div>
+    
+    <a href="https://github.com/teuder/notes/commit/34cb47f55210688e3ca266eb7b064e106ddaa602" title='Last modified 2019-09-03 by Masaki Tsuda' target="_blank" rel="noopener">
+      <img src="/notes/svg/calendar.svg" alt="Changed" /> 2019-09-03
+    </a>
+  </div>
+  
+  
+  <div>
+    <a href="https://github.com/teuder/notes/edit/master/content/GIS/_index.md" target="_blank" rel="noopener">
+      <img src="/notes/svg/edit.svg" alt="Edit" /> Edit this page
+    </a>
+  </div>
+  
+</div>
 
 
+      
+    </div>
 
-<footer><p class="powered">Powered by <a href="https://gohugo.io">Hugo</a>. Theme by <a href="https://themes.gohugo.io/hugo-theme-techdoc/">TechDoc</a>. Designed by <a href="https://github.com/thingsym/hugo-theme-techdoc">Thingsym</a>.</p>
-</footer>
-</main><div class="sidebar">
-<nav>
+    
+  
+
+  <aside class="book-toc level-3 fixed">
+    <nav id="TableOfContents">
 <ul>
-<li class=""><a href="https://teuder.github.io/notes/">Home</a></li>
-
-<li class=""><a href="/notes/r/">R</a>
-<ul class="">
-<li class=""><a href="/notes/r/dbi/">DBI</a></li>
-<li class=""><a href="/notes/r/ggplot2/">ggplot2</a></li>
-<li class=""><a href="/notes/r/raster/">raster</a></li>
-<li class=""><a href="/notes/r/sf/">sf</a></li>
-</ul>
-  
-</li>
-
-<li class="parent active"><a href="/notes/gis/">GIS</a>
-</li>
-
-<li class=""><a href="/notes/miscellaneous/">miscellaneous</a>
-<ul class="">
-<li class=""><a href="/notes/miscellaneous/bigquery/">BigQuery</a></li>
-<li class=""><a href="/notes/miscellaneous/vscode/">vscode</a></li>
-<li class=""><a href="/notes/miscellaneous/homebrew/">homebrew</a></li>
-<li class=""><a href="/notes/miscellaneous/hugo/">Hugo</a></li>
-<li class=""><a href="/notes/miscellaneous/git/">git</a></li>
-</ul>
-  
-</li>
+<li><a href="#gis">GIS</a></li>
+<li><a href="#gis関係のrパッケージの一覧">GIS関係のRパッケージの一覧</a>
+<ul>
+<li><a href="#一般">一般</a></li>
+<li><a href="#データの読み書き">データの読み書き</a></li>
+<li><a href="#データの取得">データの取得</a></li>
+<li><a href="#計算">計算</a></li>
+<li><a href="#データのエラー調査">データのエラー調査</a></li>
+<li><a href="#カラーパレット">カラーパレット</a></li>
+<li><a href="#可視化">可視化</a></li>
+<li><a href="#可視化ウェブ">可視化ウェブ</a></li>
+<li><a href="#cartograms-地図を変形させる可視化">Cartograms 地図を変形させる可視化？</a></li>
+<li><a href="#point-pattern-analysis">Point Pattern Analysis</a></li>
+<li><a href="#空間統計">空間統計</a></li>
+<li><a href="#disease-mapping-and-areal-data-analysis">Disease mapping and areal data analysis</a></li>
+<li><a href="#spatial-regression">Spatial regression</a></li>
+<li><a href="#ecological-analysis">Ecological analysis</a></li>
+</ul></li>
+<li><a href="#ファイル形式">ファイル形式</a></li>
+<li><a href="#地理解析の学習">地理解析の学習</a></li>
+<li><a href="#スライド">スライド</a></li>
+<li><a href="#データソース">データソース</a></li>
+<li><a href="#団体コミュニティ">団体コミュニティ</a></li>
+<li><a href="#リンク">リンク</a></li>
 </ul>
 </nav>
+  </aside>
 
 
-<div class="sidebar-footer"></div>
-</div>
-</div><a href="#" id="backtothetop-fixed" class="backtothetop"
- data-backtothetop-duration="600"
- data-backtothetop-easing="easeOutQuart"
- data-backtothetop-fixed-fadeIn="1000"
- data-backtothetop-fixed-fadeOut="1000"
- data-backtothetop-fixed-bottom="10"
- data-backtothetop-fixed-right="20">
-<span class="fa-layers fa-fw">
-<i class="fas fa-circle"></i>
-<i class="fas fa-arrow-circle-up"></i>
-</span></a>
-</div>
+
+  </main>
+
+  
+  
 </body>
+
 </html>

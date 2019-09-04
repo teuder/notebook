@@ -1,13 +1,13 @@
 ---
 title: Introduction
 type: docs
-date: 2018-08-26
-publishdate: 2018-08-28
+date: 2019-09-02
 ---
 
+# Hello
+
+for personal use
 
 
-# Welcome
 
-ここは津田のメモ置き場です
 

@@ -1,72 +1,61 @@
-baseURL = "https://teuder.github.io/notes/"
-publishDir = "docs" # for github pages
-title = "Masaki E. Tsuda"
-theme = "hugo-theme-techdoc"
+baseURL = 'https://teuder.github.io/notes/'
+title = 'Masaki E. Tsuda'
+theme = 'book'
 
+# for github pages
+publishDir = "docs" 
 
+# Language
 languageCode = "ja-JP"
 DefaultContentLanguage = "ja"
-
-
 hasCJKLanguage = true
-metaDataFormat = "yaml"
 
-pygmentsUseClasses = true
-pygmentsCodefences = true
+# Book configuration
+disablePathToLower = true
+enableGitInfo = true
 
-defaultContentLanguageInSubdir= false
-enableMissingTranslationPlaceholders = false
+# Code highlight
+pygmentsStyle = 'monokailight'
+pygmentsCodeFences = true
 
-
-
-[taxonomies]
-    tag = "tags"
-    category = "categories"
+#Other
+disableKinds = ['taxonomy', 'taxonomyTerm']
 
 
 
 
-[Params]
+[params]
+  # (Optional, default 6) Set how many table of contents levels to be showed on page.
+  # Use false to hide ToC, note that 0 will default to 6 (https://gohugo.io/functions/default/)
+  # You can also specify this parameter per page in front matter
+  BookToC = 3
 
-    # Souce Code repository section
-    description = "for my personal use"
-    github_repository = "https://github.com/teuder/notes"
-    version = "X.Y.Z"
+  # (Optional, default none) Set leaf bundle to render as side menu
+  # When not specified file structure and weights will be used
+  # BookMenuBundle = '/menu'
 
-    # Documentation repository section
-    # documentation repository (set edit link to documentation repository)
-    github_doc_repository = "https://github.com/teuder/notes"
+  # (Optional, default docs) Specify section of content to render as menu
+  # You can also set value to '*' to render all sections to menu
+  BookSection = '*'
 
-    # Analytic section
-    google_analytics_id = "" # Your Google Analytics tracking id
-    tag_manager_container_id = "" # Your Google Tag Manager container id
-    google_site_verification = "" # Your Google Site Verification for Search Console
+  # (Optional) This value is duplicate of $link-color for making active link highlight in menu bundle mode
+  # BookMenuBundleActiveLinkColor = '\#004ed0'
 
-    # Theme settings section
-    dateformat = "2006-01-02" 
-    
-    # path name excluded from documentation menu
-    menu_exclusion = ["archives", "blog","entry", "post", "posts"]
+  # Set source repository location.
+  # Used for 'Last Modified' and 'Edit this page' links.
+  BookRepo = 'https://github.com/teuder/notes'
 
+  # Enable "Edit this page" links for 'doc' page type.
+  # Disabled by default. Uncomment to enable. Requires 'BookRepo' param.
+  # Path must point to 'content' directory of repo.
+  BookEditPath = 'edit/master/content'
 
-# Global menu section
-# [[menu.main]]
-#     name = "Home"
-#     url = "/"
-#     weight = 1
+  # Configure the date format used on the pages
+  # - In git information
+  # - In blog posts
+  # BookDateFormat = 'Jan 2, 2006'
+  BookDateFormat = '2006-01-02'
 
-# [[menu.main]]
-#     name = "Twitter"
-#     url = "https://twitter.com/teuder"
-#     weight = 2
-
-# [[menu.main]]
-#     name = "Blog"
-#     url = "/Blog"
-#     weight = 3
-
-
-[[menu.main]]
-    name = "Tags"
-    url = "/Tags"
-    weight = 100
+  # (Optional, default true) Enables search function with lunr.js, 
+  # Index is built on fly, therefore it might slowdown your website.
+  BookSearch = true

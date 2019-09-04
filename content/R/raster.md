@@ -3,14 +3,15 @@ title : "raster"
 date : 2019-08-26
 publishdate : 2019-08-26
 weight : 20
+type: docs
 ---
 
 
 
-# raster パッケージ
+# raster 
 
 
-```
+```{r}
 # GooTiffの読み込み
 data <- raster("path/data.tif")
 ```

@@ -4,6 +4,7 @@ date : 2019-09-02
 publishdate : 2019-09-02
 draft : false
 weight: 100
+type: docs
 # menu:
 #   main:
 #     parent: Hoge
@@ -14,7 +15,7 @@ weight: 100
 
 
 
-# 気になるツール
+# miscellaneous
 
 tmux : ターミナル多重化
 

@@ -3,13 +3,14 @@ title: "GIS"
 draft: false
 date : 2019-08-26
 publishdate : 2019-08-26
-weight : 50
+weight : 3
+type: docs
 ---
 
 
-# Rパッケージ
+# GIS
 
-# パッケージの一覧
+# GIS関係のRパッケージの一覧
 
 - https://cran.r-project.org/web/views/Spatial.html
 - https://cran.r-project.org/web/views/SpatioTemporal.html

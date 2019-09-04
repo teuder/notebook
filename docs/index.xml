@@ -6,18 +6,18 @@
     <description>Recent content in Introduction on Masaki E. Tsuda</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-JP</language>
-    <lastBuildDate>Sun, 26 Aug 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 02 Sep 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://teuder.github.io/notes/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>BigQuery</title>
-      <link>https://teuder.github.io/notes/miscellaneous/bigquery/</link>
+      <link>https://teuder.github.io/notes/miscellaneous/BigQuery/</link>
       <pubDate>Wed, 04 Sep 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://teuder.github.io/notes/miscellaneous/bigquery/</guid>
-      <description>レギュラーSQLをデフォルトにする クエリの前に #standardSQL の記述を追加する。逆にレガシーにしたい場合は #legacySQL を記述する。 #standardSQL SELECT weight_pounds, state, year, gestation_weeks FROM `bigquery-public-data.samples.natality` ORDER BY weight_pounds DESC LIMIT 10; .bigqueryrc に以</description>
+      <guid>https://teuder.github.io/notes/miscellaneous/BigQuery/</guid>
+      <description>BigQuery レギュラーSQLをデフォルトにする クエリの前に #standardSQL の記述を追加する。逆にレガシーにしたい場合は #legacySQL を記述する。 #standardSQL SELECT weight_pounds, state, year, gestation_weeks FROM `bigquery-public-data.samples.natality` ORDER BY weight_pounds DESC LIMIT 10; .bigqueryrc に</description>
     </item>
     
     <item>
@@ -26,7 +26,7 @@
       <pubDate>Tue, 03 Sep 2019 00:00:00 +0000</pubDate>
       
       <guid>https://teuder.github.io/notes/miscellaneous/vscode/</guid>
-      <description>正規表現検索・置換 検索置換のショートカット opt cmd F 検索BOXの横の .* ボタンを押す 正規表現の記号 記号 意味 例 ^ 行頭 $ 行末 . 任意の１文字 .* 任意の１文</description>
+      <description>Visual Studio Code 正規表現検索・置換 検索置換のショートカット opt cmd F 検索BOXの横の .* ボタンを押す 正規表現の記号 記号 意味 例 ^ 行頭 $ 行末 . 任意の１文字 .* 任意</description>
     </item>
     
     <item>
@@ -35,16 +35,7 @@
       <pubDate>Mon, 02 Sep 2019 00:00:00 +0000</pubDate>
       
       <guid>https://teuder.github.io/notes/miscellaneous/homebrew/</guid>
-      <description>基本コマンド brew search [TEXT|/REGEX/] brew info [FORMULA...] brew install FORMULA brew update brew upgrade [FORMULA...] brew uninstall FORMULA... brew list [FORMULA...] インストール先： /usr/local/Cellar もう少し詳細には： /usr/local/Cellar/パッケージ名/バ</description>
-    </item>
-    
-    <item>
-      <title>About</title>
-      <link>https://teuder.github.io/notes/about/</link>
-      <pubDate>Thu, 22 Aug 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://teuder.github.io/notes/about/</guid>
-      <description>Masaki E. Tsuda 津田 真樹（つだ まさき） Twitter : teuder</description>
+      <description>homebrew 基本コマンド brew search [TEXT|/REGEX/] brew info [FORMULA...] brew install FORMULA brew update brew upgrade [FORMULA...] brew uninstall FORMULA... brew list [FORMULA...] インストール先： /usr/local/Cellar もう少し詳細には： /usr/local/Cellar/パッケージ名/</description>
     </item>
     
     <item>
@@ -53,25 +44,16 @@
       <pubDate>Thu, 22 Aug 2019 00:00:00 +0000</pubDate>
       
       <guid>https://teuder.github.io/notes/miscellaneous/hugo/</guid>
-      <description>Hugoはマークダウンから静的サイトのためのhtmlを生成するソフトウェア Hugoフォルダの構成 /contents フォルダの中にサイトの内容を記述したマーク</description>
-    </item>
-    
-    <item>
-      <title>DBI</title>
-      <link>https://teuder.github.io/notes/r/dbi/</link>
-      <pubDate>Wed, 04 Sep 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://teuder.github.io/notes/r/dbi/</guid>
-      <description>DBIパッケージはRからデータベース（DB）とやりとりするためのインターフェースを提供している。これにより、ドライバーを切り替えるだけで、共</description>
+      <description>Hugo Hugoはマークダウンから静的サイトのためのhtmlを生成するソフトウェア Hugoフォルダの構成 /contents フォルダの中にサイトの内容を記述したマー</description>
     </item>
     
     <item>
       <title>ggplot2</title>
-      <link>https://teuder.github.io/notes/r/ggplot2/</link>
+      <link>https://teuder.github.io/notes/R/ggplot2/</link>
       <pubDate>Tue, 03 Sep 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://teuder.github.io/notes/r/ggplot2/</guid>
-      <description>ggplot2: Elegant Graphics for Data Analysis</description>
+      <guid>https://teuder.github.io/notes/R/ggplot2/</guid>
+      <description>ggplot2 ggplot2: Elegant Graphics for Data Analysis</description>
     </item>
     
     <item>
@@ -85,20 +67,29 @@
     
     <item>
       <title>raster</title>
-      <link>https://teuder.github.io/notes/r/raster/</link>
+      <link>https://teuder.github.io/notes/R/raster/</link>
       <pubDate>Mon, 26 Aug 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://teuder.github.io/notes/r/raster/</guid>
-      <description>raster パッケージ # GooTiffの読み込み data &amp;lt;- raster(&amp;quot;path/data.tif&amp;quot;) 値と座標のデータフレームに変換する df &amp;lt;- rasterToPoint(data)</description>
+      <guid>https://teuder.github.io/notes/R/raster/</guid>
+      <description>raster # GooTiffの読み込み data &amp;lt;- raster(&amp;#34;path/data.tif&amp;#34;) 値と座標のデータフレームに変換する df &amp;lt;- rasterToPoint(data)</description>
     </item>
     
     <item>
       <title>sf</title>
-      <link>https://teuder.github.io/notes/r/sf/</link>
+      <link>https://teuder.github.io/notes/R/sf/</link>
       <pubDate>Mon, 26 Aug 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://teuder.github.io/notes/r/sf/</guid>
-      <description>sf パッケージ 定義されたクラス sfgクラス：個別の地物 sfcクラス：sfgオブジェクトのリスト、リストの各要素が１地物に相当 sf クラス：sfcオ</description>
+      <guid>https://teuder.github.io/notes/R/sf/</guid>
+      <description>sf 定義されたクラス sfgクラス：個別の地物 sfcクラス：sfgオブジェクトのリスト、リストの各要素が１地物に相当 sf クラス：sfcオブジェクト</description>
+    </item>
+    
+    <item>
+      <title>DBI</title>
+      <link>https://teuder.github.io/notes/R/DBI/</link>
+      <pubDate>Wed, 04 Sep 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://teuder.github.io/notes/R/DBI/</guid>
+      <description>DBI DBIパッケージはRからデータベース（DB）とやりとりするためのインターフェースを提供している。これにより、ドライバーを切り替えるだけで、</description>
     </item>
     
   </channel>

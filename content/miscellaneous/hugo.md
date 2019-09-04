@@ -2,6 +2,7 @@
 title : "Hugo"
 date : 2019-08-22
 publishdate : 2019-08-22
+type: docs
 # menu : main
 # menu:
 #   main:
@@ -9,6 +10,7 @@ publishdate : 2019-08-22
 weight: 10
 ---
 
+# Hugo
 
 Hugoはマークダウンから静的サイトのためのhtmlを生成するソフトウェア
 
