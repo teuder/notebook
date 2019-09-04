@@ -1,0 +1,69 @@
+baseURL = "https://teuder.github.io/notes/"
+publishDir = "docs" # for github pages
+
+languageCode = "ja-JP"
+DefaultContentLanguage = "ja"
+
+
+hasCJKLanguage = true
+metaDataFormat = "yaml"
+
+pygmentsUseClasses = true
+pygmentsCodefences = true
+
+defaultContentLanguageInSubdir= false
+enableMissingTranslationPlaceholders = false
+
+
+
+[taxonomies]
+    tag = "tags"
+    category = "categories"
+
+
+
+
+[Params]
+
+    # Souce Code repository section
+    description = "for my personal use"
+    github_repository = "https://github.com/teuder/notes"
+    version = "X.Y.Z"
+
+    # Documentation repository section
+    # documentation repository (set edit link to documentation repository)
+    github_doc_repository = "https://github.com/teuder/notes"
+
+    # Analytic section
+    google_analytics_id = "" # Your Google Analytics tracking id
+    tag_manager_container_id = "" # Your Google Tag Manager container id
+    google_site_verification = "" # Your Google Site Verification for Search Console
+
+    # Theme settings section
+    dateformat = "2006-01-02" 
+    
+    # path name excluded from documentation menu
+    menu_exclusion = ["archives", "blog","entry", "post", "posts"]
+
+
+# Global menu section
+# [[menu.main]]
+#     name = "Home"
+#     url = "/"
+#     weight = 1
+
+# [[menu.main]]
+#     name = "Twitter"
+#     url = "https://twitter.com/teuder"
+#     weight = 2
+
+# [[menu.main]]
+#     name = "Blog"
+#     url = "/Blog"
+#     weight = 3
+
+
+[[menu.main]]
+    name = "Tags"
+    url = "/Tags"
+    weight = 100

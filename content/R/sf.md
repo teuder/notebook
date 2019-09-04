@@ -45,3 +45,30 @@ sfオブジェクトからgeometory列を削除すると値（=地物の属性�
 `df <- st_set_geometory(data_sf, NULL)`
 
 `st_set_geometory()` はデータフレームにgeometory列をくっつける関数だけど、NULLを渡すとsfオブジェクトからgeomeotry列を削除できる。
+
+
+`st_intersects(x, y, sparse = TRUE, ...)`
+
+`st_disjoint(x, y = x, sparse = TRUE, prepared = TRUE)`
+
+`st_touches(x, y, sparse = TRUE, prepared = TRUE)`
+
+`st_crosses(x, y, sparse = TRUE, prepared = TRUE)`
+
+`st_within(x, y, sparse = TRUE, prepared = TRUE)`
+
+`st_contains(x, y, sparse = TRUE, prepared = TRUE)`
+
+`st_contains_properly(x, y, sparse = TRUE, prepared = TRUE)`
+
+`st_overlaps(x, y, sparse = TRUE, prepared = TRUE)`
+
+`st_equals(x, y, sparse = TRUE, prepared = FALSE)`
+
+`st_covers(x, y, sparse = TRUE, prepared = TRUE)`
+
+`st_covered_by(x, y, sparse = TRUE, prepared = TRUE)`
+
+`st_equals_exact(x, y, par, sparse = TRUE, prepared = FALSE)`
+
+`st_is_within_distance(x, y, dist, sparse = TRUE)`

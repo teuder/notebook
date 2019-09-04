@@ -1,7 +1,7 @@
 ---
 title : "Hugo"
 date : 2019-08-22
-publishdate : 2010-08-22
+publishdate : 2019-08-22
 # menu : main
 # menu:
 #   main:

@@ -23,3 +23,9 @@ lookup パッケージ
 devtools::install_github("jimhester/lookup")
 lookup::lookup(dplyr::summarise)
 ```
+
+# オブジェクトを調べる
+
+`class()` `typeof()` `mode()`
+
+`str()` `attributes()`
