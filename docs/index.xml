@@ -13,10 +13,10 @@
     
     <item>
       <title>BigQuery</title>
-      <link>https://teuder.github.io/notes/miscellaneous/BigQuery/</link>
+      <link>https://teuder.github.io/notes/miscellaneous/bigquery/</link>
       <pubDate>Wed, 04 Sep 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://teuder.github.io/notes/miscellaneous/BigQuery/</guid>
+      <guid>https://teuder.github.io/notes/miscellaneous/bigquery/</guid>
       <description>BigQuery レギュラーSQLをデフォルトにする クエリの前に #standardSQL の記述を追加する。逆にレガシーにしたい場合は #legacySQL を記述する。 #standardSQL SELECT weight_pounds, state, year, gestation_weeks FROM `bigquery-public-data.samples.natality` ORDER BY weight_pounds DESC LIMIT 10; .bigqueryrc に</description>
     </item>
     
@@ -49,10 +49,10 @@
     
     <item>
       <title>ggplot2</title>
-      <link>https://teuder.github.io/notes/R/ggplot2/</link>
+      <link>https://teuder.github.io/notes/r/ggplot2/</link>
       <pubDate>Tue, 03 Sep 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://teuder.github.io/notes/R/ggplot2/</guid>
+      <guid>https://teuder.github.io/notes/r/ggplot2/</guid>
       <description>ggplot2 ggplot2: Elegant Graphics for Data Analysis</description>
     </item>
     
@@ -67,28 +67,28 @@
     
     <item>
       <title>raster</title>
-      <link>https://teuder.github.io/notes/R/raster/</link>
+      <link>https://teuder.github.io/notes/r/raster/</link>
       <pubDate>Mon, 26 Aug 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://teuder.github.io/notes/R/raster/</guid>
+      <guid>https://teuder.github.io/notes/r/raster/</guid>
       <description>raster # GooTiffの読み込み data &amp;lt;- raster(&amp;#34;path/data.tif&amp;#34;) 値と座標のデータフレームに変換する df &amp;lt;- rasterToPoint(data)</description>
     </item>
     
     <item>
       <title>sf</title>
-      <link>https://teuder.github.io/notes/R/sf/</link>
+      <link>https://teuder.github.io/notes/r/sf/</link>
       <pubDate>Mon, 26 Aug 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://teuder.github.io/notes/R/sf/</guid>
+      <guid>https://teuder.github.io/notes/r/sf/</guid>
       <description>sf 定義されたクラス sfgクラス：個別の地物 sfcクラス：sfgオブジェクトのリスト、リストの各要素が１地物に相当 sf クラス：sfcオブジェクト</description>
     </item>
     
     <item>
       <title>DBI</title>
-      <link>https://teuder.github.io/notes/R/DBI/</link>
+      <link>https://teuder.github.io/notes/r/dbi/</link>
       <pubDate>Wed, 04 Sep 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://teuder.github.io/notes/R/DBI/</guid>
+      <guid>https://teuder.github.io/notes/r/dbi/</guid>
       <description>DBI DBIパッケージはRからデータベース（DB）とやりとりするためのインターフェースを提供している。これにより、ドライバーを切り替えるだけで、</description>
     </item>
     

@@ -11,7 +11,7 @@ DefaultContentLanguage = "ja"
 hasCJKLanguage = true
 
 # Book configuration
-disablePathToLower = true
+disablePathToLower = false
 enableGitInfo = true
 
 # Code highlight
