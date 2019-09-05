@@ -130,67 +130,87 @@ dbWriteTable(con,
 
 `dbListTables(con)`
 
+
 ## テーブルのカラム名：dbListFields
 
 `dbListFields(con, "iris")`
 
 
-DBのデータを取得する
+## DBのデータを取得する
 
-テーブルを指定して読み込む：dbReadTable
-iris1 <- dbReadTable(con, "iris")
+### テーブルを指定して読み込む：dbReadTable
 
-クエリの結果を読み込む：dbGetQuery
-data <- dbGetQuery(con, "SELECT * FROM iris ORDER BY weighted DESC LIMIT 5")
+`iris1 <- dbReadTable(con, "iris")`
 
-クエリの送信とデータの取得を分離する：dbSendQuery & fetch
+### クエリの結果を読み込む：dbGetQuery
+
+`data <- dbGetQuery(con, "SELECT * FROM iris ORDER BY weighted DESC LIMIT 5")`
+
+### クエリの送信とデータの取得を分離する：dbSendQuery & fetch
+
 上と同様クエリの結果を取得するが、クエリの送信とデータの取得を分離する。
 
 クエリを送信する
-rs <- dbSendQuery(con, "SELECT * FROM iris")
+
+`rs <- dbSendQuery(con, "SELECT * FROM iris")`
 
 最初の10レコードだけ取得する
-iris3.first10 <- fetch(rs, 10)
+
+`iris3.first10 <- fetch(rs, 10)`
 
 残りを全て取得する 
-iris3.rest <- fetch(rs, -1)
 
-【重要】ローカルとリモート確保されたリソースを開放する
-dbClearResult(rs)
+`iris3.rest <- fetch(rs, -1)`
+
+fetch はカーソルを移動させながらデータを取得する。なので上記の場合には `iris3.first10` と `iris3.rest` 合体させると全レコードになる。
+
+`rbind(iris3.first10, iris3.rest)`
+
+**【重要】ローカルとリモート確保されたリソースを開放する**
+
+dbSendQueryの結果はリモートのリソースを消費するので必要がなくなったら `dbClearResult(rs)` すること。
+
+`dbClearResult(rs)`
 
 
 
-fetch はカーソルを移動させながらデータを取得する。なのでこの場合 iris3.first10とiris3.restを合わせると（rbind(iris3.first10, iris3.rest)）全てのレコードになる。
 
-dbSendQueryの結果はリモートのリソースを消費するので必要がなくなったら dbClearResult すること。
+## ファイルからクエリを読み込んで実行する
 
-ファイルからクエリを読み込んで実行する
+```{r}
 fileName<-"test.sql"
 q<-readChar(fileName, file.info(fileName)$size)
-
 res <- dbSendQuery(con, q)
+```
 
-クエリ結果のリソースを開放する：dbClearResult
-rs <- dbSendQuery(con, "SELECT * FROM iris") #最初のクエリ
-rs <- dbSendQuery(con, "SELECT * FROM hoge") #エラー
+## クエリ結果のリソースを開放する：dbClearResult
 
-最初のクエリの結果を全て取得していないうちに、
-同じコネクションで別のクエリを実行しようとしてもできない。
+前のクエリの結果を全て取得していないうちに、同じコネクションで、次のクエリを実行しようとしてもできない。
 
-実行する場合には、最初のクエリの結果をクリアする必要がある。
+```{r}
+rs <- dbSendQuery(con, "SELECT * FROM iris") #前のクエリ
+rs <- dbSendQuery(con, "SELECT * FROM hoge") #次のクエリ（エラー）
+```
+
+実行する場合には、前のクエリの結果をクリアする必要がある。
+
+```{r}
 dbClearResult(con, rs) 
 rs <- dbSendQuery(con, "SELECT * FROM hoge") #OK
+```
 
-resの結果の取得が完了していない
-【重要】ローカルとリモート確保されたリソースを開放する
-dbClearResult(rs)
-
+dbSendQuery()するとサーバーでクエリが実行され、サーバー上に結果が保存されるらしい、そのままにしておくとメモリなどのリソースを消費するので、必要なくなった結果は適宜開放する。
 
 
-テーブルを削除する：dbRemoveTable
+## テーブルを削除する：dbRemoveTable
+
+```
 dbRemoveTable(conn,"table1")
+```
 
-カラム情報を表示する：dbColumnInfo(res, ...)
+## カラム情報を表示する：dbColumnInfo(res, ...)
+
+```
 dbColumnInfo(rs)
 ##           name    Sclass   type len precision scale nullOK
 ## 1 Sepal.Length    double FLOAT8   8        -1    -1   TRUE
@@ -198,44 +218,60 @@ dbColumnInfo(rs)
 ## 3 Petal.Length    double FLOAT8   8        -1    -1   TRUE
 ## 4  Petal.Width    double FLOAT8   8        -1    -1   TRUE
 ## 5      Species character   TEXT  -1        -1    -1   TRUE
+```
 
-結果の元クエリを表示：dbGetStatement
+
+## 結果の元クエリを表示：dbGetStatement
+
+```
 dbGetStatement(rs)
 ## [1] "SELECT * FROM iris"
+```
 
 
-ローカルにあるクエリ結果のレコード数：dbGetRowCount(rs)
+## ローカルにあるクエリ結果のレコード数：dbGetRowCount(rs)
+
+```
+dbGetRowCount(rs)
 ## [1] 10
 #   ... just get the first 10 records
+```
 
 結果のうち、ローカルに送られてきたレコード数？
 
 
 
-テーブルの存在を確認：dbExistsTable
+## テーブルの存在を確認：dbExistsTable
+
+```
 dbExistsTable(con, c("tmp","test_tbl"))
+```
 
 
-dbClearResult()
-dbListResults(conn, ...)
-dbSendQuery()するとサーバーでクエリが実行され、サーバー上に結果が保存されるらしい、そのままにしておくとメモリなどのリソースを消費するので、必要なくなった結果は適宜開放する。
 
-クエリ結果オブジェクトのリスト：dbListResults
+## クエリ結果オブジェクトのリスト：dbListResults
+
 現在のコネクションでアクティブな DBIResult のリストを返す。
 
+```
 dbClearResults(dbListResults(con)[[1]])
+```
 
 
 
-現在開いているコネクション・オブジェクトのリスト：dbListConnections
-
-オブジェクトの型を調べる：dbDataType
-
-DBのでの例外（エラー情報）を取得する：dbGetException
-
-データ変更クエリにより影響を受ける行数：dbGetRowsAffected
-
-クエリ結果に対する処理が完了しているか？：dbHasCompleted
+## 現在開いているコネクション・オブジェクトのリスト：dbListConnections
 
 
-DBオブジェクトの状態が正常かチェックする：dbIsValid
+## オブジェクトの型を調べる：dbDataType
+
+
+## DBのでの例外（エラー情報）を取得する：dbGetException
+
+
+## データ変更クエリにより影響を受ける行数：dbGetRowsAffected
+
+
+## クエリ結果に対する処理が完了しているか？：dbHasCompleted
+
+
+## DBオブジェクトの状態が正常かチェックする：dbIsValid

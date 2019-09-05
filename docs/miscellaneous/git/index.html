@@ -10,7 +10,7 @@
 <link rel="stylesheet" href="/notes/book.min.6c7317d2e8552a0ac3ea8fd4ba500c3dfb1cc9c74e7afd73eee6d729751fad30.css" integrity="sha256-bHMX0uhVKgrD6o/UulAMPfscycdOev1z7ubXKXUfrTA=">
 
 
-<script defer src="/notes/search.min.95a6a181dc130c3b089fba48faf4697d486b735fec795b5344ad9866d7180475.js" integrity="sha256-laahgdwTDDsIn7pI&#43;vRpfUhrc1/seVtTRK2YZtcYBHU="></script>
+<script defer src="/notes/search.min.1389cea7b5e2f603f68ef0de54ea71f6a782e1468c94d4bb5cebd6409de5c05d.js" integrity="sha256-E4nOp7Xi9gP2jvDeVOpx9qeC4UaMlNS7XOvWQJ3lwF0="></script>
 
 
 
@@ -288,6 +288,36 @@ https://github.com/alex-shpak/hugo-book
 <h1 id="git">Git</h1>
 
 <p><a href="https://qiita.com/konweb/items/621722f67fdd8f86a017">Gitの基本コマンド</a></p>
+
+<h1 id="ブランチの作成-branch">ブランチの作成 : branch</h1>
+
+<pre><code>git branch ブランチ名 # ブランチの作成
+git checkout -b ブランチ名 #ブランチの作成とそのブランチへの切り替え
+</code></pre>
+
+<h1 id="ブランチの切り替え-checkout">ブランチの切り替え : checkout</h1>
+
+<pre><code>git checkout ブランチ名
+</code></pre>
+
+<h1 id="リモートレポジトリに反映する-push">リモートレポジトリに反映する : push</h1>
+
+<p>現状のローカルレポジトリの最新 commit のフォルダの状態をリモート</p>
+
+<pre><code>git push レポジトリ ブランチ
+</code></pre>
+
+<p>例：<code>git origin master</code></p>
+
+<h1 id="githubへのプルリク">Githubへのプルリク</h1>
+
+<p><a href="https://qiita.com/samurairunner/items/7442521bce2d6ac9330b">初心者向けGithubへのPullRequest方法</a></p>
+
+<p>リモートリポジトリをローカルに <code>clone</code> する。</p>
+
+<p>git clone <a href="https://github.com/teuder/test.git">https://github.com/teuder/test.git</a></p>
+
+<p>【cloneされたリモートリポジトリ】 = 【<code>origin</code> リポジトリ】</p>
 </article>
 
       
@@ -320,6 +350,10 @@ https://github.com/alex-shpak/hugo-book
     <nav id="TableOfContents">
 <ul>
 <li><a href="#git">Git</a></li>
+<li><a href="#ブランチの作成-branch">ブランチの作成 : branch</a></li>
+<li><a href="#ブランチの切り替え-checkout">ブランチの切り替え : checkout</a></li>
+<li><a href="#リモートレポジトリに反映する-push">リモートレポジトリに反映する : push</a></li>
+<li><a href="#githubへのプルリク">Githubへのプルリク</a></li>
 </ul>
 </nav>
   </aside>

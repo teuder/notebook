@@ -53,7 +53,7 @@
       <pubDate>Mon, 26 Aug 2019 00:00:00 +0000</pubDate>
       
       <guid>https://teuder.github.io/notes/miscellaneous/git/</guid>
-      <description>Git Gitの基本コマンド</description>
+      <description>Git Gitの基本コマンド ブランチの作成 : branch git branch ブランチ名 # ブランチの作成 git checkout -b ブランチ名 #ブランチの作成とそのブランチへの切り替え ブランチの切</description>
     </item>
     
   </channel>

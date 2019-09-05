@@ -10,7 +10,7 @@
 <link rel="stylesheet" href="/notes/book.min.6c7317d2e8552a0ac3ea8fd4ba500c3dfb1cc9c74e7afd73eee6d729751fad30.css" integrity="sha256-bHMX0uhVKgrD6o/UulAMPfscycdOev1z7ubXKXUfrTA=">
 
 
-<script defer src="/notes/search.min.95a6a181dc130c3b089fba48faf4697d486b735fec795b5344ad9866d7180475.js" integrity="sha256-laahgdwTDDsIn7pI&#43;vRpfUhrc1/seVtTRK2YZtcYBHU="></script>
+<script defer src="/notes/search.min.1389cea7b5e2f603f68ef0de54ea71f6a782e1468c94d4bb5cebd6409de5c05d.js" integrity="sha256-E4nOp7Xi9gP2jvDeVOpx9qeC4UaMlNS7XOvWQJ3lwF0="></script>
 
 
 
@@ -407,108 +407,110 @@ row.names=FALSE)
 
 <p><code>dbListFields(con, &quot;iris&quot;)</code></p>
 
-<p>DBのデータを取得する</p>
+<h2 id="dbのデータを取得する">DBのデータを取得する</h2>
 
-<p>テーブルを指定して読み込む：dbReadTable
-iris1 &lt;- dbReadTable(con, &ldquo;iris&rdquo;)</p>
+<h3 id="テーブルを指定して読み込む-dbreadtable">テーブルを指定して読み込む：dbReadTable</h3>
 
-<p>クエリの結果を読み込む：dbGetQuery
-data &lt;- dbGetQuery(con, &ldquo;SELECT * FROM iris ORDER BY weighted DESC LIMIT 5&rdquo;)</p>
+<p><code>iris1 &lt;- dbReadTable(con, &quot;iris&quot;)</code></p>
 
-<p>クエリの送信とデータの取得を分離する：dbSendQuery &amp; fetch
-上と同様クエリの結果を取得するが、クエリの送信とデータの取得を分離する。</p>
+<h3 id="クエリの結果を読み込む-dbgetquery">クエリの結果を読み込む：dbGetQuery</h3>
 
-<p>クエリを送信する
-rs &lt;- dbSendQuery(con, &ldquo;SELECT * FROM iris&rdquo;)</p>
+<p><code>data &lt;- dbGetQuery(con, &quot;SELECT * FROM iris ORDER BY weighted DESC LIMIT 5&quot;)</code></p>
 
-<p>最初の10レコードだけ取得する
-iris3.first10 &lt;- fetch(rs, 10)</p>
+<h3 id="クエリの送信とデータの取得を分離する-dbsendquery-fetch">クエリの送信とデータの取得を分離する：dbSendQuery &amp; fetch</h3>
 
-<p>残りを全て取得する
-iris3.rest &lt;- fetch(rs, -1)</p>
+<p>上と同様クエリの結果を取得するが、クエリの送信とデータの取得を分離する。</p>
 
-<p>【重要】ローカルとリモート確保されたリソースを開放する
-dbClearResult(rs)</p>
+<p>クエリを送信する</p>
 
-<p>fetch はカーソルを移動させながらデータを取得する。なのでこの場合 iris3.first10とiris3.restを合わせると（rbind(iris3.first10, iris3.rest)）全てのレコードになる。</p>
+<p><code>rs &lt;- dbSendQuery(con, &quot;SELECT * FROM iris&quot;)</code></p>
 
-<p>dbSendQueryの結果はリモートのリソースを消費するので必要がなくなったら dbClearResult すること。</p>
+<p>最初の10レコードだけ取得する</p>
 
-<p>ファイルからクエリを読み込んで実行する
-fileName&lt;-&ldquo;test.sql&rdquo;
-q&lt;-readChar(fileName, file.info(fileName)$size)</p>
+<p><code>iris3.first10 &lt;- fetch(rs, 10)</code></p>
 
-<p>res &lt;- dbSendQuery(con, q)</p>
+<p>残りを全て取得する</p>
 
-<p>クエリ結果のリソースを開放する：dbClearResult
-rs &lt;- dbSendQuery(con, &ldquo;SELECT * FROM iris&rdquo;) #最初のクエリ
-rs &lt;- dbSendQuery(con, &ldquo;SELECT * FROM hoge&rdquo;) #エラー</p>
+<p><code>iris3.rest &lt;- fetch(rs, -1)</code></p>
 
-<p>最初のクエリの結果を全て取得していないうちに、
-同じコネクションで別のクエリを実行しようとしてもできない。</p>
+<p>fetch はカーソルを移動させながらデータを取得する。なので上記の場合には <code>iris3.first10</code> と <code>iris3.rest</code> 合体させると全レコードになる。</p>
 
-<p>実行する場合には、最初のクエリの結果をクリアする必要がある。
-dbClearResult(con, rs)
-rs &lt;- dbSendQuery(con, &ldquo;SELECT * FROM hoge&rdquo;) #OK</p>
+<p><code>rbind(iris3.first10, iris3.rest)</code></p>
 
-<p>resの結果の取得が完了していない
-【重要】ローカルとリモート確保されたリソースを開放する
-dbClearResult(rs)</p>
+<p><strong>【重要】ローカルとリモート確保されたリソースを開放する</strong></p>
 
-<p>テーブルを削除する：dbRemoveTable
-dbRemoveTable(conn,&ldquo;table1&rdquo;)</p>
+<p>dbSendQueryの結果はリモートのリソースを消費するので必要がなくなったら <code>dbClearResult(rs)</code> すること。</p>
 
-<p>カラム情報を表示する：dbColumnInfo(res, &hellip;)
-dbColumnInfo(rs)</p>
+<p><code>dbClearResult(rs)</code></p>
 
-<h2 id="name-sclass-type-len-precision-scale-nullok">name    Sclass   type len precision scale nullOK</h2>
+<h2 id="ファイルからクエリを読み込んで実行する">ファイルからクエリを読み込んで実行する</h2>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">fileName<span style="color:#f92672">&lt;-</span><span style="color:#d88200">&#34;test.sql&#34;</span>
+<span style="color:#00a8c8">q</span><span style="color:#f92672">&lt;-</span><span style="color:#00a8c8">readChar</span><span style="color:#111">(</span>fileName<span style="color:#111">,</span> <span style="color:#00a8c8">file.info</span><span style="color:#111">(</span>fileName<span style="color:#111">)</span><span style="color:#f92672">$</span>size<span style="color:#111">)</span>
+res <span style="color:#f92672">&lt;-</span> dbSendQuery<span style="color:#111">(</span>con<span style="color:#111">,</span> <span style="color:#00a8c8">q</span><span style="color:#111">)</span></code></pre></div>
+<h2 id="クエリ結果のリソースを開放する-dbclearresult">クエリ結果のリソースを開放する：dbClearResult</h2>
 
-<h2 id="1-sepal-length-double-float8-8-1-1-true">1 Sepal.Length    double FLOAT8   8        -1    -1   TRUE</h2>
+<p>前のクエリの結果を全て取得していないうちに、同じコネクションで、次のクエリを実行しようとしてもできない。</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">rs <span style="color:#f92672">&lt;-</span> dbSendQuery<span style="color:#111">(</span>con<span style="color:#111">,</span> <span style="color:#d88200">&#34;SELECT * FROM iris&#34;</span><span style="color:#111">)</span> <span style="color:#75715e">#前のクエリ</span>
+rs <span style="color:#f92672">&lt;-</span> dbSendQuery<span style="color:#111">(</span>con<span style="color:#111">,</span> <span style="color:#d88200">&#34;SELECT * FROM hoge&#34;</span><span style="color:#111">)</span> <span style="color:#75715e">#次のクエリ（エラー）</span></code></pre></div>
+<p>実行する場合には、前のクエリの結果をクリアする必要がある。</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">dbClearResult<span style="color:#111">(</span>con<span style="color:#111">,</span> rs<span style="color:#111">)</span> 
+rs <span style="color:#f92672">&lt;-</span> dbSendQuery<span style="color:#111">(</span>con<span style="color:#111">,</span> <span style="color:#d88200">&#34;SELECT * FROM hoge&#34;</span><span style="color:#111">)</span> <span style="color:#75715e">#OK</span></code></pre></div>
+<p>dbSendQuery()するとサーバーでクエリが実行され、サーバー上に結果が保存されるらしい、そのままにしておくとメモリなどのリソースを消費するので、必要なくなった結果は適宜開放する。</p>
 
-<h2 id="2-sepal-width-double-float8-8-1-1-true">2  Sepal.Width    double FLOAT8   8        -1    -1   TRUE</h2>
+<h2 id="テーブルを削除する-dbremovetable">テーブルを削除する：dbRemoveTable</h2>
 
-<h2 id="3-petal-length-double-float8-8-1-1-true">3 Petal.Length    double FLOAT8   8        -1    -1   TRUE</h2>
+<pre><code>dbRemoveTable(conn,&quot;table1&quot;)
+</code></pre>
 
-<h2 id="4-petal-width-double-float8-8-1-1-true">4  Petal.Width    double FLOAT8   8        -1    -1   TRUE</h2>
+<h2 id="カラム情報を表示する-dbcolumninfo-res">カラム情報を表示する：dbColumnInfo(res, &hellip;)</h2>
 
-<h2 id="5-species-character-text-1-1-1-true">5      Species character   TEXT  -1        -1    -1   TRUE</h2>
+<pre><code>dbColumnInfo(rs)
+##           name    Sclass   type len precision scale nullOK
+## 1 Sepal.Length    double FLOAT8   8        -1    -1   TRUE
+## 2  Sepal.Width    double FLOAT8   8        -1    -1   TRUE
+## 3 Petal.Length    double FLOAT8   8        -1    -1   TRUE
+## 4  Petal.Width    double FLOAT8   8        -1    -1   TRUE
+## 5      Species character   TEXT  -1        -1    -1   TRUE
+</code></pre>
 
-<p>結果の元クエリを表示：dbGetStatement
-dbGetStatement(rs)</p>
+<h2 id="結果の元クエリを表示-dbgetstatement">結果の元クエリを表示：dbGetStatement</h2>
 
-<h2 id="1-select-from-iris">[1] &ldquo;SELECT * FROM iris&rdquo;</h2>
+<pre><code>dbGetStatement(rs)
+## [1] &quot;SELECT * FROM iris&quot;
+</code></pre>
 
-<p>ローカルにあるクエリ結果のレコード数：dbGetRowCount(rs)</p>
+<h2 id="ローカルにあるクエリ結果のレコード数-dbgetrowcount-rs">ローカルにあるクエリ結果のレコード数：dbGetRowCount(rs)</h2>
 
-<h2 id="1-10">[1] 10</h2>
-
-<h1 id="just-get-the-first-10-records">&hellip; just get the first 10 records</h1>
+<pre><code>dbGetRowCount(rs)
+## [1] 10
+#   ... just get the first 10 records
+</code></pre>
 
 <p>結果のうち、ローカルに送られてきたレコード数？</p>
 
-<p>テーブルの存在を確認：dbExistsTable
-dbExistsTable(con, c(&ldquo;tmp&rdquo;,&ldquo;test_tbl&rdquo;))</p>
+<h2 id="テーブルの存在を確認-dbexiststable">テーブルの存在を確認：dbExistsTable</h2>
 
-<p>dbClearResult()
-dbListResults(conn, &hellip;)
-dbSendQuery()するとサーバーでクエリが実行され、サーバー上に結果が保存されるらしい、そのままにしておくとメモリなどのリソースを消費するので、必要なくなった結果は適宜開放する。</p>
+<pre><code>dbExistsTable(con, c(&quot;tmp&quot;,&quot;test_tbl&quot;))
+</code></pre>
 
-<p>クエリ結果オブジェクトのリスト：dbListResults
-現在のコネクションでアクティブな DBIResult のリストを返す。</p>
+<h2 id="クエリ結果オブジェクトのリスト-dblistresults">クエリ結果オブジェクトのリスト：dbListResults</h2>
 
-<p>dbClearResults(dbListResults(con)[[1]])</p>
+<p>現在のコネクションでアクティブな DBIResult のリストを返す。</p>
 
-<p>現在開いているコネクション・オブジェクトのリスト：dbListConnections</p>
+<pre><code>dbClearResults(dbListResults(con)[[1]])
+</code></pre>
 
-<p>オブジェクトの型を調べる：dbDataType</p>
+<h2 id="現在開いているコネクション-オブジェクトのリスト-dblistconnections">現在開いているコネクション・オブジェクトのリスト：dbListConnections</h2>
 
-<p>DBのでの例外（エラー情報）を取得する：dbGetException</p>
+<h2 id="オブジェクトの型を調べる-dbdatatype">オブジェクトの型を調べる：dbDataType</h2>
 
-<p>データ変更クエリにより影響を受ける行数：dbGetRowsAffected</p>
+<h2 id="dbのでの例外-エラー情報-を取得する-dbgetexception">DBのでの例外（エラー情報）を取得する：dbGetException</h2>
 
-<p>クエリ結果に対する処理が完了しているか？：dbHasCompleted</p>
+<h2 id="データ変更クエリにより影響を受ける行数-dbgetrowsaffected">データ変更クエリにより影響を受ける行数：dbGetRowsAffected</h2>
 
-<p>DBオブジェクトの状態が正常かチェックする：dbIsValid</p>
+<h2 id="クエリ結果に対する処理が完了しているか-dbhascompleted">クエリ結果に対する処理が完了しているか？：dbHasCompleted</h2>
+
+<h2 id="dbオブジェクトの状態が正常かチェックする-dbisvalid">DBオブジェクトの状態が正常かチェックする：dbIsValid</h2>
 </article>
 
       
@@ -551,16 +553,27 @@ dbSendQuery()するとサーバーでクエリが実行され、サーバー上�
 <li><a href="#データフレームの内容からテーブルを作成する-dbwritetable">データフレームの内容からテーブルを作成する：dbWriteTable</a></li>
 <li><a href="#テーブルのリスト-dblisttables">テーブルのリスト：dbListTables</a></li>
 <li><a href="#テーブルのカラム名-dblistfields">テーブルのカラム名：dbListFields</a></li>
-<li><a href="#name-sclass-type-len-precision-scale-nullok">name    Sclass   type len precision scale nullOK</a></li>
-<li><a href="#1-sepal-length-double-float8-8-1-1-true">1 Sepal.Length    double FLOAT8   8        -1    -1   TRUE</a></li>
-<li><a href="#2-sepal-width-double-float8-8-1-1-true">2  Sepal.Width    double FLOAT8   8        -1    -1   TRUE</a></li>
-<li><a href="#3-petal-length-double-float8-8-1-1-true">3 Petal.Length    double FLOAT8   8        -1    -1   TRUE</a></li>
-<li><a href="#4-petal-width-double-float8-8-1-1-true">4  Petal.Width    double FLOAT8   8        -1    -1   TRUE</a></li>
-<li><a href="#5-species-character-text-1-1-1-true">5      Species character   TEXT  -1        -1    -1   TRUE</a></li>
-<li><a href="#1-select-from-iris">[1] &ldquo;SELECT * FROM iris&rdquo;</a></li>
-<li><a href="#1-10">[1] 10</a></li>
+<li><a href="#dbのデータを取得する">DBのデータを取得する</a>
+<ul>
+<li><a href="#テーブルを指定して読み込む-dbreadtable">テーブルを指定して読み込む：dbReadTable</a></li>
+<li><a href="#クエリの結果を読み込む-dbgetquery">クエリの結果を読み込む：dbGetQuery</a></li>
+<li><a href="#クエリの送信とデータの取得を分離する-dbsendquery-fetch">クエリの送信とデータの取得を分離する：dbSendQuery &amp; fetch</a></li>
 </ul></li>
-<li><a href="#just-get-the-first-10-records">&hellip; just get the first 10 records</a></li>
+<li><a href="#ファイルからクエリを読み込んで実行する">ファイルからクエリを読み込んで実行する</a></li>
+<li><a href="#クエリ結果のリソースを開放する-dbclearresult">クエリ結果のリソースを開放する：dbClearResult</a></li>
+<li><a href="#テーブルを削除する-dbremovetable">テーブルを削除する：dbRemoveTable</a></li>
+<li><a href="#カラム情報を表示する-dbcolumninfo-res">カラム情報を表示する：dbColumnInfo(res, &hellip;)</a></li>
+<li><a href="#結果の元クエリを表示-dbgetstatement">結果の元クエリを表示：dbGetStatement</a></li>
+<li><a href="#ローカルにあるクエリ結果のレコード数-dbgetrowcount-rs">ローカルにあるクエリ結果のレコード数：dbGetRowCount(rs)</a></li>
+<li><a href="#テーブルの存在を確認-dbexiststable">テーブルの存在を確認：dbExistsTable</a></li>
+<li><a href="#クエリ結果オブジェクトのリスト-dblistresults">クエリ結果オブジェクトのリスト：dbListResults</a></li>
+<li><a href="#現在開いているコネクション-オブジェクトのリスト-dblistconnections">現在開いているコネクション・オブジェクトのリスト：dbListConnections</a></li>
+<li><a href="#オブジェクトの型を調べる-dbdatatype">オブジェクトの型を調べる：dbDataType</a></li>
+<li><a href="#dbのでの例外-エラー情報-を取得する-dbgetexception">DBのでの例外（エラー情報）を取得する：dbGetException</a></li>
+<li><a href="#データ変更クエリにより影響を受ける行数-dbgetrowsaffected">データ変更クエリにより影響を受ける行数：dbGetRowsAffected</a></li>
+<li><a href="#クエリ結果に対する処理が完了しているか-dbhascompleted">クエリ結果に対する処理が完了しているか？：dbHasCompleted</a></li>
+<li><a href="#dbオブジェクトの状態が正常かチェックする-dbisvalid">DBオブジェクトの状態が正常かチェックする：dbIsValid</a></li>
+</ul></li>
 </ul>
 </nav>
   </aside>
