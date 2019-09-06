@@ -4,11 +4,6 @@ date : 2019-09-02
 publishdate : 2019-09-02
 weight: 10
 type: docs
-# menu:
-#   main:
-#     parent: Hoge
-# next: chapter2/1
-# prev: chapter2/2
 ---
 
 # homebrew
