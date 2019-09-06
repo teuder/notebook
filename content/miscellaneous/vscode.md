@@ -8,6 +8,16 @@ type: docs
 
 # Visual Studio Code
 
+# ショートカット
+
+[【Mac版】 VSCode キーボードショートカット](https://qiita.com/naru0504/items/99495c4482cd158ddca8)
+
+- タブの移動 `opt cmd →` 
+
+
+
+
+
 # 正規表現検索・置換
 
 ## 検索置換のショートカット

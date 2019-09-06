@@ -1,94 +1,94 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Introduction on Masaki E. Tsuda</title>
-    <link>https://teuder.github.io/notes/</link>
-    <description>Recent content in Introduction on Masaki E. Tsuda</description>
+    <title>Introduction on notebook</title>
+    <link>https://teuder.github.io/notebook/</link>
+    <description>Recent content in Introduction on notebook</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-JP</language>
     <lastBuildDate>Mon, 02 Sep 2019 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="https://teuder.github.io/notes/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://teuder.github.io/notebook/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>BigQuery</title>
-      <link>https://teuder.github.io/notes/miscellaneous/bigquery/</link>
+      <link>https://teuder.github.io/notebook/miscellaneous/bigquery/</link>
       <pubDate>Wed, 04 Sep 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://teuder.github.io/notes/miscellaneous/bigquery/</guid>
+      <guid>https://teuder.github.io/notebook/miscellaneous/bigquery/</guid>
       <description>BigQuery レギュラーSQLをデフォルトにする クエリの前に #standardSQL の記述を追加する。逆にレガシーにしたい場合は #legacySQL を記述する。 #standardSQL SELECT weight_pounds, state, year, gestation_weeks FROM `bigquery-public-data.samples.natality` ORDER BY weight_pounds DESC LIMIT 10; .bigqueryrc に</description>
     </item>
     
     <item>
       <title>vscode</title>
-      <link>https://teuder.github.io/notes/miscellaneous/vscode/</link>
+      <link>https://teuder.github.io/notebook/miscellaneous/vscode/</link>
       <pubDate>Tue, 03 Sep 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://teuder.github.io/notes/miscellaneous/vscode/</guid>
-      <description>Visual Studio Code 正規表現検索・置換 検索置換のショートカット opt cmd F 検索BOXの横の .* ボタンを押す 正規表現の記号 記号 意味 例 ^ 行頭 $ 行末 . 任意の１文字 .* 任意</description>
+      <guid>https://teuder.github.io/notebook/miscellaneous/vscode/</guid>
+      <description>Visual Studio Code ショートカット 【Mac版】 VSCode キーボードショートカット タブの移動 opt cmd → 正規表現検索・置換 検索置換のショートカット opt cmd F 検索BOXの横の .*</description>
     </item>
     
     <item>
       <title>homebrew</title>
-      <link>https://teuder.github.io/notes/mac/homebrew/</link>
+      <link>https://teuder.github.io/notebook/mac/homebrew/</link>
       <pubDate>Mon, 02 Sep 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://teuder.github.io/notes/mac/homebrew/</guid>
+      <guid>https://teuder.github.io/notebook/mac/homebrew/</guid>
       <description>homebrew 基本コマンド brew search [TEXT|/REGEX/] brew info [FORMULA...] brew install FORMULA brew update brew upgrade [FORMULA...] brew uninstall FORMULA... brew list [FORMULA...] インストール先： /usr/local/Cellar もう少し詳細には： /usr/local/Cellar/パッケージ名/</description>
     </item>
     
     <item>
       <title>Hugo</title>
-      <link>https://teuder.github.io/notes/miscellaneous/hugo/</link>
+      <link>https://teuder.github.io/notebook/miscellaneous/hugo/</link>
       <pubDate>Thu, 22 Aug 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://teuder.github.io/notes/miscellaneous/hugo/</guid>
+      <guid>https://teuder.github.io/notebook/miscellaneous/hugo/</guid>
       <description>Hugo Hugoはマークダウンから静的サイトのためのhtmlを生成するソフトウェア Hugoフォルダの構成 /contents フォルダの中にサイトの内容を記述したマー</description>
     </item>
     
     <item>
       <title>ggplot2</title>
-      <link>https://teuder.github.io/notes/r/ggplot2/</link>
+      <link>https://teuder.github.io/notebook/r/ggplot2/</link>
       <pubDate>Tue, 03 Sep 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://teuder.github.io/notes/r/ggplot2/</guid>
+      <guid>https://teuder.github.io/notebook/r/ggplot2/</guid>
       <description>ggplot2 ggplot2: Elegant Graphics for Data Analysis</description>
     </item>
     
     <item>
       <title>git</title>
-      <link>https://teuder.github.io/notes/miscellaneous/git/</link>
+      <link>https://teuder.github.io/notebook/miscellaneous/git/</link>
       <pubDate>Mon, 26 Aug 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://teuder.github.io/notes/miscellaneous/git/</guid>
+      <guid>https://teuder.github.io/notebook/miscellaneous/git/</guid>
       <description>Git Gitの基本コマンド ブランチの作成 : branch git branch ブランチ名 # ブランチの作成 git checkout -b ブランチ名 #ブランチの作成とそのブランチへの切り替え ブランチの切</description>
     </item>
     
     <item>
       <title>raster</title>
-      <link>https://teuder.github.io/notes/r/raster/</link>
+      <link>https://teuder.github.io/notebook/r/raster/</link>
       <pubDate>Mon, 26 Aug 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://teuder.github.io/notes/r/raster/</guid>
+      <guid>https://teuder.github.io/notebook/r/raster/</guid>
       <description>raster # GooTiffの読み込み data &amp;lt;- raster(&amp;#34;path/data.tif&amp;#34;) 値と座標のデータフレームに変換する df &amp;lt;- rasterToPoint(data)</description>
     </item>
     
     <item>
       <title>sf</title>
-      <link>https://teuder.github.io/notes/r/sf/</link>
+      <link>https://teuder.github.io/notebook/r/sf/</link>
       <pubDate>Mon, 26 Aug 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://teuder.github.io/notes/r/sf/</guid>
+      <guid>https://teuder.github.io/notebook/r/sf/</guid>
       <description>sf 定義されたクラス sfgクラス：個別の地物 sfcクラス：sfgオブジェクトのリスト、リストの各要素が１地物に相当 sf クラス：sfcオブジェクト</description>
     </item>
     
     <item>
       <title>DBI</title>
-      <link>https://teuder.github.io/notes/r/dbi/</link>
+      <link>https://teuder.github.io/notebook/r/dbi/</link>
       <pubDate>Wed, 04 Sep 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://teuder.github.io/notes/r/dbi/</guid>
+      <guid>https://teuder.github.io/notebook/r/dbi/</guid>
       <description>DBI DBIパッケージはRからデータベース（DB）とやりとりするためのインターフェースを提供している。これにより、ドライバーを切り替えるだけで、</description>
     </item>
     

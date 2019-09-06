@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Mac on Masaki E. Tsuda</title>
-    <link>https://teuder.github.io/notes/mac/</link>
-    <description>Recent content in Mac on Masaki E. Tsuda</description>
+    <title>Mac on notebook</title>
+    <link>https://teuder.github.io/notebook/mac/</link>
+    <description>Recent content in Mac on notebook</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-JP</language>
     <lastBuildDate>Fri, 06 Sep 2019 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="https://teuder.github.io/notes/mac/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://teuder.github.io/notebook/mac/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>homebrew</title>
-      <link>https://teuder.github.io/notes/mac/homebrew/</link>
+      <link>https://teuder.github.io/notebook/mac/homebrew/</link>
       <pubDate>Mon, 02 Sep 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://teuder.github.io/notes/mac/homebrew/</guid>
+      <guid>https://teuder.github.io/notebook/mac/homebrew/</guid>
       <description>homebrew 基本コマンド brew search [TEXT|/REGEX/] brew info [FORMULA...] brew install FORMULA brew update brew upgrade [FORMULA...] brew uninstall FORMULA... brew list [FORMULA...] インストール先： /usr/local/Cellar もう少し詳細には： /usr/local/Cellar/パッケージ名/</description>
     </item>
     

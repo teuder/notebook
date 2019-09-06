@@ -1,49 +1,49 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>R on Masaki E. Tsuda</title>
-    <link>https://teuder.github.io/notes/r/</link>
-    <description>Recent content in R on Masaki E. Tsuda</description>
+    <title>R on notebook</title>
+    <link>https://teuder.github.io/notebook/r/</link>
+    <description>Recent content in R on notebook</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-JP</language>
     <lastBuildDate>Mon, 26 Aug 2019 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="https://teuder.github.io/notes/r/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://teuder.github.io/notebook/r/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>ggplot2</title>
-      <link>https://teuder.github.io/notes/r/ggplot2/</link>
+      <link>https://teuder.github.io/notebook/r/ggplot2/</link>
       <pubDate>Tue, 03 Sep 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://teuder.github.io/notes/r/ggplot2/</guid>
+      <guid>https://teuder.github.io/notebook/r/ggplot2/</guid>
       <description>ggplot2 ggplot2: Elegant Graphics for Data Analysis</description>
     </item>
     
     <item>
       <title>raster</title>
-      <link>https://teuder.github.io/notes/r/raster/</link>
+      <link>https://teuder.github.io/notebook/r/raster/</link>
       <pubDate>Mon, 26 Aug 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://teuder.github.io/notes/r/raster/</guid>
+      <guid>https://teuder.github.io/notebook/r/raster/</guid>
       <description>raster # GooTiffの読み込み data &amp;lt;- raster(&amp;#34;path/data.tif&amp;#34;) 値と座標のデータフレームに変換する df &amp;lt;- rasterToPoint(data)</description>
     </item>
     
     <item>
       <title>sf</title>
-      <link>https://teuder.github.io/notes/r/sf/</link>
+      <link>https://teuder.github.io/notebook/r/sf/</link>
       <pubDate>Mon, 26 Aug 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://teuder.github.io/notes/r/sf/</guid>
+      <guid>https://teuder.github.io/notebook/r/sf/</guid>
       <description>sf 定義されたクラス sfgクラス：個別の地物 sfcクラス：sfgオブジェクトのリスト、リストの各要素が１地物に相当 sf クラス：sfcオブジェクト</description>
     </item>
     
     <item>
       <title>DBI</title>
-      <link>https://teuder.github.io/notes/r/dbi/</link>
+      <link>https://teuder.github.io/notebook/r/dbi/</link>
       <pubDate>Wed, 04 Sep 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://teuder.github.io/notes/r/dbi/</guid>
+      <guid>https://teuder.github.io/notebook/r/dbi/</guid>
       <description>DBI DBIパッケージはRからデータベース（DB）とやりとりするためのインターフェースを提供している。これにより、ドライバーを切り替えるだけで、</description>
     </item>
     
