@@ -10,9 +10,13 @@ type: docs
 
 # ショートカット
 
+ショートカットエディタ `Preferences >> Keyboard Shortcuts`
+
 [【Mac版】 VSCode キーボードショートカット](https://qiita.com/naru0504/items/99495c4482cd158ddca8)
 
+- コマンドパレット `shift cmd P`
 - タブの移動 `opt cmd →` 
+- 単語単位でカーソル移動 `opt →`
 
 
 

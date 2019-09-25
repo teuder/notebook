@@ -30,3 +30,7 @@ lookup::lookup(dplyr::summarise)
 `class()` `typeof()` `mode()`
 
 `str()` `attributes()`
+
+# きになるパッケージ
+
+gganimate

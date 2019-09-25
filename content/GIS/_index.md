@@ -10,6 +10,51 @@ type: docs
 
 # GIS
 
+# 地理解析の学習
+
+- [GIS基礎知識](https://www.esrij.com/gis-guide/)
+- [Geocomputation with R](https://geocompr.robinlovelace.net/) Rでの地理情報解析の方法がめっちゃ充実、sfパッケージベース
+- [Spatial Data Science](https://keen-swartz-3146c4.netlify.com/index.html)
+- [Spatio-Temporal Statistics with R](https://spacetimewithr.org/)
+- [Introduction to visualising spatial data in R](https://cran.r-project.org/doc/contrib/intro-spatial-rl.pdf)
+- [空間情報クラブ](http://club.informatix.co.jp/)
+
+
+# スライド
+
+
+# データソース
+
+- [MarineRegions.org](http://www.marineregions.org/downloads.php) 海洋関係のShapefileを公開
+- [GeoServer](http://geoserver.org/)
+- [GeoNetwork](https://geonetwork-opensource.org/)
+- [Natural Earth](http://www.naturalearthdata.com/)
+- [国土数値情報](http://nlftp.mlit.go.jp/ksj/)
+- [OCEAN DATA VIEWER](https://data.unep-wcmc.org/about)
+
+
+# 団体コミュニティ
+
+- [Open Geospatial Consortium](http://www.opengeospatial.org/) 地理情報関係の標準化団体
+- [OSGeo](https://www.osgeo.jp/)
+- [OSGeo4W](http://trac.osgeo.org/osgeo4w/wiki/OSGeo4W_jp) WindowsのためにOSSのGIS関連ソフトをビルドしているらしい
+
+# ファイル形式
+
+- GeoJSON
+- WKT, WKB
+- Shapefile
+- PostGIS
+- GeoTiff
+
+
+
+
+# リンク
+
+
+
+
 # GIS関係のRパッケージの一覧
 
 - https://cran.r-project.org/web/views/Spatial.html
@@ -118,49 +163,4 @@ https://cran.r-project.org/web/views/Spatial.html
 ## Ecological analysis
 
 https://cran.r-project.org/web/views/Spatial.html
-
-
-
-
-# ファイル形式
-
-- GeoJSON
-- WKT, WKB
-- Shapefile
-- PostGIS
-
-
-# 地理解析の学習
-
-- [GIS基礎知識](https://www.esrij.com/gis-guide/)
-- [Geocomputation with R](https://geocompr.robinlovelace.net/) Rでの地理情報解析の方法がめっちゃ充実、sfパッケージベース
-- [Spatial Data Science](https://keen-swartz-3146c4.netlify.com/index.html)
-- [Spatio-Temporal Statistics with R](https://spacetimewithr.org/)
-- [Introduction to visualising spatial data in R](https://cran.r-project.org/doc/contrib/intro-spatial-rl.pdf)
-- [空間情報クラブ](http://club.informatix.co.jp/)
-
-
-# スライド
-
-
-# データソース
-
-- [MarineRegions.org](http://www.marineregions.org/downloads.php) 海洋関係のShapefileを公開
-- [GeoServer](http://geoserver.org/)
-- [GeoNetwork](https://geonetwork-opensource.org/)
-- [Natural Earth](http://www.naturalearthdata.com/)
-- [国土数値情報](http://nlftp.mlit.go.jp/ksj/)
-
-
-# 団体コミュニティ
-
-- [Open Geospatial Consortium](http://www.opengeospatial.org/) 地理情報関係の標準化団体
-- [OSGeo](https://www.osgeo.jp/)
-- [OSGeo4W](http://trac.osgeo.org/osgeo4w/wiki/OSGeo4W_jp) WindowsのためにOSSのGIS関連ソフトをビルドしているらしい
-
-
-# リンク
-
-
-
 
