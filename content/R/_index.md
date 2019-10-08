@@ -31,6 +31,10 @@ lookup::lookup(dplyr::summarise)
 
 `str()` `attributes()`
 
+# 並列計算
+
+furrr
+
 # きになるパッケージ
 
 gganimate
