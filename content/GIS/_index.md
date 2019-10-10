@@ -8,9 +8,25 @@ type: docs
 ---
 
 
-# GIS
+# GIS & Remote Sensing
 
-# 地理解析の学習
+# 情報収集
+
+## ポータルサイト
+
+- [JAXA 衛星利用推進サイト](http://www.sapc.jaxa.jp/)
+- [宙畑](https://sorabatake.jp/)
+- [リモートセンシング技術センター](https://www.restec.or.jp/)
+
+## 団体コミュニティ
+
+- [Open Geospatial Consortium](http://www.opengeospatial.org/) 地理情報関係の標準化団体
+- [OSGeo.jp](https://www.osgeo.jp/)
+- [OSGeo4W](http://trac.osgeo.org/osgeo4w/wiki/OSGeo4W_jp) WindowsのためにOSSのGIS関連ソフトをビルドしているらしい
+
+## 学習サイト
+
+### GIS
 
 - [GIS基礎知識](https://www.esrij.com/gis-guide/)
 - [Geocomputation with R](https://geocompr.robinlovelace.net/) Rでの地理情報解析の方法がめっちゃ充実、sfパッケージベース
@@ -19,8 +35,9 @@ type: docs
 - [Introduction to visualising spatial data in R](https://cran.r-project.org/doc/contrib/intro-spatial-rl.pdf)
 - [空間情報クラブ](http://club.informatix.co.jp/)
 
+### リモセン
 
-# スライド
+- [衛星観測の専門用語](http://www.mri-jma.go.jp/Dep/sv/3ken/shinmoe2011/sar/man/sar_man.pdf)
 
 
 # データソース
@@ -31,13 +48,15 @@ type: docs
 - [Natural Earth](http://www.naturalearthdata.com/)
 - [国土数値情報](http://nlftp.mlit.go.jp/ksj/)
 - [OCEAN DATA VIEWER](https://data.unep-wcmc.org/about)
+- [気象データ高度利用ポータルサイト](https://www.data.jma.go.jp/developer/index.html)
+
+## 衛星データ
+
+- [NOAA CLASS](https://www.bou.class.noaa.gov/saa/products/welcome)
+- [LAADS DAAC](https://ladsweb.modaps.eosdis.nasa.gov/)
+- [G-Portal](https://gportal.jaxa.jp/gpr/)
 
 
-# 団体コミュニティ
-
-- [Open Geospatial Consortium](http://www.opengeospatial.org/) 地理情報関係の標準化団体
-- [OSGeo](https://www.osgeo.jp/)
-- [OSGeo4W](http://trac.osgeo.org/osgeo4w/wiki/OSGeo4W_jp) WindowsのためにOSSのGIS関連ソフトをビルドしているらしい
 
 # ファイル形式
 
@@ -46,121 +65,28 @@ type: docs
 - Shapefile
 - PostGIS
 - GeoTiff
+- HDF5
 
 
+# 衛星
+
+- [衛星総覧](https://www.restec.or.jp/satellite)
+- 気象変動観測衛星しきさい
+- Suomi-NPP
+- JPSS1(NOAA20)
+
+# センサー
+
+- VIIRS
+- SAR
 
 
-# リンク
+# 衛星情報解析サービス
 
+- Google Earth Engine
+- Tellus
 
+# 企業
 
-
-# GIS関係のRパッケージの一覧
-
-- https://cran.r-project.org/web/views/Spatial.html
-- https://cran.r-project.org/web/views/SpatioTemporal.html
-- https://www.r-spatial.org/
-
-
-## 一般
-
- - sp：地理空間のクラスやメソッドを提供している
- - sf : OGC Simple Featuresという標準に従って開発されている。[sfパッケージの公式サイト](https://r-spatial.github.io/sf/index.html)、OGCが定義するファイル形式の読み書き（WKT, WKB）
- - starts : 多次元arrayで時空間データを表現
- - raster : ラスターデータの可視化と分析
- - spatial.tools : rasterを拡張して並列計算など
- - rgdal : GDALライブラリがサポートするラスターデータ, OGRライブラリがサポートするベクターデータへのバインディング、GeoJSON や Shapefile の読み書き、 PROJ.4がサポートする投影法
- - rgeos : Geometry Engine - Open Source ('GEOS')ライブラリへのバインディング
- - GISTools : 空間データをマッピングしたり加工したり
-
-
-## データの読み書き
-
- - maps : mapdata, mapproj パッケージと共に地理空間データベースを提供
- - maptools : ESRI ArcGIS/ArcView shapefiles の読み書きなど、地理情報オブジェクトの扱い、GSHHGの海岸線データベースへのアクセス？？
- - shapefiles : ESRI ArcGIS/ArcView shapefiles の読み書き
- - rpostgis : PostGISが有効化されたPostgreSQLへのコネクション
- - rgrass7 : GRASS v7 とのコネクション
- - RQGIS : RからQGISの機能を利用する 
- 
-## データの取得
-
- - geosapi : GeoServerのAPIからデータを取得する？
- - geonapi : GeoNetworkのAPIからデータを取得する？
- - rgbif : Global Biodiversity Information Facility (GBIF) にあるデータへのアクセス
-
-
-
-## 計算
-
- - lwgeom : PostGISで使われている liblwgeom へのバインディング
- - gdalUtils : GDAL Utilityへのラッパー？
- - gdistance : grid間の距離やルートを計算する？
- - geosphere : 距離、面積、角度などの計算？
- - cshapes : 距離行列の計算
- - spsurvey : 地理的調査のためのサンプリング手法など？
- - trip : 動物のトラッキングデータ分析
- - magclass : 時空間解析
- - taRifx : ユーティリティ関数
- - geoaxe : オブジェクトを小さく分割する
- - lawn : Turfjs ブラウザの地理空間解析ライブラリのクライアント
- - rcosmo : 球体に対する計算を提供
- - areal : Areal Weighted Interpolation の実装
-
-
-## データのエラー調査
-
- - landsat : 衛星画像の補正？
- - cleangeo : 空間オブジェクトのエラーの調査？
-
-
-
-## カラーパレット
-
- - RColorBrewer : Mapでいい感じのカラーパレットを提供
- - viridis : 視覚障害者にも優しいカラーパレットを提供
- - classInt : １次元の変数の値を階級に分けるのに使う？？
-
-## 可視化 
-
- - ggspatial : ggplot2で可視化する時の便利ツール
- - rasterVis : rasterの可視化
- - quickmapr : sp, sfオブジェクトをとりあえず可視化できる
- - cartography : いろんな地図作成？
- - mapmisc : 軽量な地図作成？
-
-## 可視化ウェブ
-
- - mapView, leaflet, leafletR インタラクティブな地図の可視化
- - RgoogleMaps : Googleマップに問い合わせしたり、Googleマップの画像を背景にしたプロットを描く
- - plotGoogleMaps : Googleマップに描画する
- - plotKML : オブジェクトをKMLで書き出してGoogle Earthで読み込めるようにする？？
- - ggmap : Google MapやOpen Street Map に描画する？
- - mapedit : Shinyでleafletで書いた地図を編集できるようにする？？
-
-## Cartograms 地図を変形させる可視化？
-
-cartogram : 面積を風船のように伸び縮みさせる
-
-## Point Pattern Analysis
-
-- spatial, spatstat
-- spatgraphs : 点のパターンのグラフ解析
-
-## 空間統計
-
-- gstat, geoR, geoRglm : 統計量、統計モデル？
-- vardiag : Variogram を書く
-
-## Disease mapping and areal data analysis
-
-https://cran.r-project.org/web/views/Spatial.html
-
-## Spatial regression
-
-https://cran.r-project.org/web/views/Spatial.html
-
-## Ecological analysis
-
-https://cran.r-project.org/web/views/Spatial.html
+- Orbital Insight
 

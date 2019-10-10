@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Remote Sensing &amp; GIS on notebook</title>
+    <link>https://teuder.github.io/notebook/remote_sensing/</link>
+    <description>Recent content in Remote Sensing &amp; GIS on notebook</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja-JP</language>
+    <lastBuildDate>Sat, 14 Sep 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://teuder.github.io/notebook/remote_sensing/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>VIIRS</title>
+      <link>https://teuder.github.io/notebook/remote_sensing/viirs/</link>
+      <pubDate>Sat, 14 Sep 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://teuder.github.io/notebook/remote_sensing/viirs/</guid>
+      <description>VIIRS 赤外線を含む波長光を受信するセンサー、Suomi-NPP, NOAA-20(JPSS-1)の２つの衛星に搭載されている。 （NOAA-20とJ</description>
+    </item>
+    
+  </channel>
+</rss>

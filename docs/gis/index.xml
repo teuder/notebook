@@ -11,5 +11,14 @@
 	<atom:link href="https://teuder.github.io/notebook/gis/index.xml" rel="self" type="application/rss+xml" />
     
     
+    <item>
+      <title>GIS関連Rパッケージ</title>
+      <link>https://teuder.github.io/notebook/gis/r_package/</link>
+      <pubDate>Mon, 26 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://teuder.github.io/notebook/gis/r_package/</guid>
+      <description>GIS関係のRパッケージの一覧 https://cran.r-project.org/web/views/Spatial.html https://cran.r-project.org/web/views/SpatioTemporal.html https://www.r-spatial.org/ 一般 sp：地理空間のクラスやメソッドを提供している sf : OGC Simple Featuresという標準に従って開発されてい</description>
+    </item>
+    
   </channel>
 </rss>

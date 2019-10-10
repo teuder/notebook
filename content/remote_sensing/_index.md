@@ -1,5 +1,5 @@
 ---
-title: "Remote Sensing"
+title: "Remote Sensing & GIS"
 draft: false
 date : 2019-09-14
 publishdate : 2019-09-14
@@ -8,9 +8,9 @@ type: docs
 ---
 
 
-# Remote Sensing
+# Remote Sensing & GIS
 
-リモートセンシングとは衛星から地球を観測する技術のこと。
+リモートセンシングとは衛星から地球を観測する技術のこと。GISと密接に関連しているので一緒に
 
 # 用語
 
@@ -18,10 +18,15 @@ type: docs
 
 # 組織
 
+## 衛星観測
+
 - NOAA
 - NASA
 - JAXA
 
+## GIS
+
+- [OSGeo.jp](https://www.osgeo.jp/)
 
 # 衛星
 
@@ -43,12 +48,13 @@ type: docs
 - [G-Portal](https://gportal.jaxa.jp/gpr/)
 
 
-# サービス
+# 衛星情報解析サービス
 
 - Google Earth Engine
 - Tellus
 
 # 情報ポータル
 
+- [JAXA 衛星利用推進サイト](http://www.sapc.jaxa.jp/)
 - [宙畑](https://sorabatake.jp/)
 - [リモートセンシング技術センター](https://www.restec.or.jp/)

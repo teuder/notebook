@@ -12,6 +12,24 @@
     
     
     <item>
+      <title>VIIRS</title>
+      <link>https://teuder.github.io/notebook/remote_sensing/viirs/</link>
+      <pubDate>Sat, 14 Sep 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://teuder.github.io/notebook/remote_sensing/viirs/</guid>
+      <description>VIIRS 赤外線を含む波長光を受信するセンサー、Suomi-NPP, NOAA-20(JPSS-1)の２つの衛星に搭載されている。 （NOAA-20とJ</description>
+    </item>
+    
+    <item>
+      <title>GIS関連Rパッケージ</title>
+      <link>https://teuder.github.io/notebook/gis/r_package/</link>
+      <pubDate>Mon, 26 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://teuder.github.io/notebook/gis/r_package/</guid>
+      <description>GIS関係のRパッケージの一覧 https://cran.r-project.org/web/views/Spatial.html https://cran.r-project.org/web/views/SpatioTemporal.html https://www.r-spatial.org/ 一般 sp：地理空間のクラスやメソッドを提供している sf : OGC Simple Featuresという標準に従って開発されてい</description>
+    </item>
+    
+    <item>
       <title>BigQuery</title>
       <link>https://teuder.github.io/notebook/miscellaneous/bigquery/</link>
       <pubDate>Wed, 04 Sep 2019 00:00:00 +0000</pubDate>
@@ -26,7 +44,7 @@
       <pubDate>Tue, 03 Sep 2019 00:00:00 +0000</pubDate>
       
       <guid>https://teuder.github.io/notebook/miscellaneous/vscode/</guid>
-      <description>Visual Studio Code ショートカット 【Mac版】 VSCode キーボードショートカット タブの移動 opt cmd → 正規表現検索・置換 検索置換のショートカット opt cmd F 検索BOXの横の .*</description>
+      <description>Visual Studio Code ショートカット ショートカットエディタ Preferences &amp;gt;&amp;gt; Keyboard Shortcuts 【Mac版】 VSCode キーボードショートカット コマンドパレット shift cmd P タブの移動 opt cmd → 単語単位でカー</description>
     </item>
     
     <item>
@@ -48,12 +66,21 @@
     </item>
     
     <item>
+      <title>rhdf5</title>
+      <link>https://teuder.github.io/notebook/r/rhdf5/</link>
+      <pubDate>Tue, 17 Sep 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://teuder.github.io/notebook/r/rhdf5/</guid>
+      <description>rhdf5 HDF5形式のファイルを扱うためのパッケージ CRANにはなく bioconductor のパッケージらしいので、bioconductor のレポジトリからインストール</description>
+    </item>
+    
+    <item>
       <title>ggplot2</title>
       <link>https://teuder.github.io/notebook/r/ggplot2/</link>
       <pubDate>Tue, 03 Sep 2019 00:00:00 +0000</pubDate>
       
       <guid>https://teuder.github.io/notebook/r/ggplot2/</guid>
-      <description>ggplot2 ggplot2: Elegant Graphics for Data Analysis</description>
+      <description>ggplot2 ggplot2: Elegant Graphics for Data Analysis 基本 基本関数 ベース ggplot() プロットするデータを含むデータフレームを渡す、mapping 引数には、使用する変数名などを aes() 関数を介して渡</description>
     </item>
     
     <item>
@@ -81,6 +108,16 @@
       
       <guid>https://teuder.github.io/notebook/r/sf/</guid>
       <description>sf 定義されたクラス sfgクラス：個別の地物 sfcクラス：sfgオブジェクトのリスト、リストの各要素が１地物に相当 sf クラス：sfcオブジェクト</description>
+    </item>
+    
+    <item>
+      <title>anaconda</title>
+      <link>https://teuder.github.io/notebook/python/anaconda/</link>
+      <pubDate>Tue, 01 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://teuder.github.io/notebook/python/anaconda/</guid>
+      <description>Anaconda minoconda
+https://conda.io/projects/conda/en/latest/user-guide/concepts/environments.html</description>
     </item>
     
     <item>
