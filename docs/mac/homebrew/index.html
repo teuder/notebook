@@ -3,19 +3,20 @@
 
 <head>
   <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><meta property="og:title" content="homebrew" />
+<meta property="og:description" content="homebrew 基本コマンド brew search [TEXT|/REGEX/] brew info [FORMULA...] brew install FORMULA brew update brew upgrade [FORMULA...] brew uninstall FORMULA... brew list [FORMULA...] インストール先： /usr/local/Cellar もう少し詳細には： /usr/local/Cellar/パッケージ名/" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://teuder.github.io/notebook/mac/homebrew/" />
+<meta property="article:published_time" content="2019-09-02T00:00:00+00:00" />
+<meta property="article:modified_time" content="2019-09-06T15:24:04+09:00" />
 <title>homebrew | notebook</title>
-
-
-<link rel="stylesheet" href="/notebook/book.min.6c7317d2e8552a0ac3ea8fd4ba500c3dfb1cc9c74e7afd73eee6d729751fad30.css" integrity="sha256-bHMX0uhVKgrD6o/UulAMPfscycdOev1z7ubXKXUfrTA=">
-
-
-<script defer src="/notebook/search.min.8eaff07951d4a906ceb659d490d8e4042e73e5d604767a7263be320283758e7b.js" integrity="sha256-jq/weVHUqQbOtlnUkNjkBC5z5dYEdnpyY74yAoN1jns="></script>
-
-
-
 <link rel="icon" href="/notebook/favicon.png" type="image/x-icon">
 
+
+<link rel="stylesheet" href="/notebook/book.min.1b994bd28c6ce2255f069b6bf6837b4d396307637fc48d61dcb2a6caac26e031.css" integrity="sha256-G5lL0oxs4iVfBptr9oN7TTljB2N/xI1h3LKmyqwm4DE=">
+
+
+<script defer src="/notebook/search.min.2d8fb6e2fe0b7cb60d83f8cfd9f3ffb383ba396cf8989092e50e0fbcb8267cc1.js" integrity="sha256-LY&#43;24v4LfLYNg/jP2fP/s4O6OWz4mJCS5Q4PvLgmfME="></script>
 
 <!--
 Made with Book Theme
@@ -32,12 +33,13 @@ https://github.com/alex-shpak/hugo-book
     <aside class="book-menu fixed">
       <nav>
 <h2 class="book-brand">
-  <a href="https://teuder.github.io/notebook/">notebook</a>
+  <a href="https://teuder.github.io/notebook/"><span>notebook</span>
+  </a>
 </h2>
 
 
 <div class="book-search">
-  <input type="text" placeholder="Search" id="book-search-input" maxlength="64" readonly />
+  <input type="text" placeholder="Search" id="book-search-input" maxlength="64" />
   <div class="book-search-spinner spinner hidden"></div>
   <ul id="book-search-results"></ul>
 </div>
@@ -72,10 +74,55 @@ https://github.com/alex-shpak/hugo-book
 
     
 
+
+
+
+  
   <ul>
     
+  </ul>
+  
+
+
+
+  </li>
+
+
+  
+    
+
+  <li >
+    
+      
+
+  <a href="/notebook/python/" >
+      Python
+  </a>
+
+
+    
+
+    
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+
+  <a href="/notebook/python/anaconda/" >
+      anaconda
+  </a>
+
+</li>
+      
     
   </ul>
+  
+
 
 
   </li>
@@ -97,50 +144,105 @@ https://github.com/alex-shpak/hugo-book
 
     
 
+
+
+
+  
   <ul>
     
-    
-    <li>
       
+        <li>
+
+  <a href="/notebook/r/rhdf5/" >
+      rhdf5
+  </a>
+
+</li>
+      
+    
+      
+        <li>
 
   <a href="/notebook/r/ggplot2/" >
       ggplot2
   </a>
 
-
-    </li>
-    
-    <li>
+</li>
       
+    
+      
+        <li>
 
   <a href="/notebook/r/raster/" >
       raster
   </a>
 
-
-    </li>
-    
-    <li>
+</li>
       
+    
+      
+        <li>
 
   <a href="/notebook/r/sf/" >
       sf
   </a>
 
-
-    </li>
-    
-    <li>
+</li>
       
+    
+      
+        <li>
 
   <a href="/notebook/r/dbi/" >
       DBI
   </a>
 
-
-    </li>
+</li>
+      
     
   </ul>
+  
+
+
+
+  </li>
+
+
+  
+    
+
+  <li >
+    
+      
+
+  <a href="/notebook/remote_sensing/" >
+      Remote Sensing &amp; GIS
+  </a>
+
+
+    
+
+    
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+
+  <a href="/notebook/remote_sensing/viirs/" >
+      VIIRS
+  </a>
+
+</li>
+      
+    
+  </ul>
+  
+
 
 
   </li>
@@ -162,10 +264,25 @@ https://github.com/alex-shpak/hugo-book
 
     
 
+
+
+
+  
   <ul>
     
+      
+        <li>
+
+  <a href="/notebook/gis/r_package/" >
+      GIS関連Rパッケージ
+  </a>
+
+</li>
+      
     
   </ul>
+  
+
 
 
   </li>
@@ -187,20 +304,25 @@ https://github.com/alex-shpak/hugo-book
 
     
 
+
+
+
+  
   <ul>
     
-    
-    <li>
       
+        <li>
 
   <a href="/notebook/mac/homebrew/"  class="active">
       homebrew
   </a>
 
-
-    </li>
+</li>
+      
     
   </ul>
+  
+
 
 
   </li>
@@ -222,50 +344,55 @@ https://github.com/alex-shpak/hugo-book
 
     
 
+
+
+
+  
   <ul>
     
-    
-    <li>
       
+        <li>
 
   <a href="/notebook/miscellaneous/bigquery/" >
       BigQuery
   </a>
 
-
-    </li>
-    
-    <li>
+</li>
       
+    
+      
+        <li>
 
   <a href="/notebook/miscellaneous/vscode/" >
       vscode
   </a>
 
-
-    </li>
-    
-    <li>
+</li>
       
+    
+      
+        <li>
 
   <a href="/notebook/miscellaneous/hugo/" >
       Hugo
   </a>
 
-
-    </li>
-    
-    <li>
+</li>
       
+    
+      
+        <li>
 
   <a href="/notebook/miscellaneous/git/" >
       git
   </a>
 
-
-    </li>
+</li>
+      
     
   </ul>
+  
+
 
 
   </li>
@@ -338,16 +465,20 @@ https://github.com/alex-shpak/hugo-book
   
   <div>
     
-    <a href="https://github.com/teuder/notes/commit/2b8b502b6a80ce4c1ff1baaab479d31165e33c10" title='Last modified 2019-09-06 by Masaki E. Tsuda' target="_blank" rel="noopener">
-      <img src="/notebook/svg/calendar.svg" alt="Changed" /> 2019-09-06
+    <a class="flex align-center" href="https://github.com/teuder/notebook/commit/2b8b502b6a80ce4c1ff1baaab479d31165e33c10" title='Last modified 2019-09-06 by Masaki E. Tsuda' target="_blank" rel="noopener">
+      <img src="/notebook/svg/calendar.svg" alt="Changed" />
+      <span>2019-09-06</span>
     </a>
   </div>
   
   
   <div>
-    <a href="https://github.com/teuder/notes/edit/master/content/Mac/homebrew.md" target="_blank" rel="noopener">
-      <img src="/notebook/svg/edit.svg" alt="Edit" /> Edit this page
+    
+    <a class="flex align-center" href="https://github.com/teuder/notebook/edit/master/content/Mac/homebrew.md" target="_blank" rel="noopener">
+      <img src="/notebook/svg/edit.svg" alt="Edit" />
+      <span>Edit this page</span>
     </a>
+    
   </div>
   
 </div>
@@ -372,7 +503,6 @@ https://github.com/alex-shpak/hugo-book
 
   </main>
 
-  
   
 </body>
 

@@ -3,13 +3,13 @@
 
 <head>
   <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0"><meta property="og:title" content="vscode" />
-<meta property="og:description" content="Visual Studio Code ショートカット ショートカットエディタ Preferences &gt;&gt; Keyboard Shortcuts 【Mac版】 VSCode キーボードショートカット コマンドパレット shift cmd P タブの移動 opt cmd → 単語単位でカー" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><meta property="og:title" content="VIIRS" />
+<meta property="og:description" content="VIIRS 赤外線を含む波長光を受信するセンサー、Suomi-NPP, NOAA-20(JPSS-1)の２つの衛星に搭載されている。 （NOAA-20とJ" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://teuder.github.io/notebook/miscellaneous/vscode/" />
-<meta property="article:published_time" content="2019-09-03T00:00:00+00:00" />
+<meta property="og:url" content="https://teuder.github.io/notebook/remote_sensing/viirs/" />
+<meta property="article:published_time" content="2019-09-14T00:00:00+00:00" />
 <meta property="article:modified_time" content="2019-09-24T17:50:14-07:00" />
-<title>vscode | notebook</title>
+<title>VIIRS | notebook</title>
 <link rel="icon" href="/notebook/favicon.png" type="image/x-icon">
 
 
@@ -233,7 +233,7 @@ https://github.com/alex-shpak/hugo-book
       
         <li>
 
-  <a href="/notebook/remote_sensing/viirs/" >
+  <a href="/notebook/remote_sensing/viirs/"  class="active">
       VIIRS
   </a>
 
@@ -363,7 +363,7 @@ https://github.com/alex-shpak/hugo-book
       
         <li>
 
-  <a href="/notebook/miscellaneous/vscode/"  class="active">
+  <a href="/notebook/miscellaneous/vscode/" >
       vscode
   </a>
 
@@ -431,91 +431,49 @@ https://github.com/alex-shpak/hugo-book
   <label for="menu-control">
     <img src="/notebook/svg/menu.svg" alt="Menu" />
   </label>
-  <strong>vscode</strong>
+  <strong>VIIRS</strong>
 </header>
 
       
 <article class="markdown">
 
-<h1 id="visual-studio-code">Visual Studio Code</h1>
+<h1 id="viirs">VIIRS</h1>
 
-<h1 id="ショートカット">ショートカット</h1>
+<p>赤外線を含む波長光を受信するセンサー、Suomi-NPP, NOAA-20(JPSS-1)の２つの衛星に搭載されている。</p>
 
-<p>ショートカットエディタ <code>Preferences &gt;&gt; Keyboard Shortcuts</code></p>
-
-<p><a href="https://qiita.com/naru0504/items/99495c4482cd158ddca8">【Mac版】 VSCode キーボードショートカット</a></p>
+<p>（NOAA-20とJPSS-1は同じ衛星、JPSS-1からNOAA-20に名前が変わった。）どちらの衛星もNASAとNOAAの共同プロジェクト Joint Polar Satellite System (JPSS) により打ち上げられたもの。</p>
 
 <ul>
-<li>コマンドパレット <code>shift cmd P</code></li>
-<li>タブの移動 <code>opt cmd →</code></li>
-<li>単語単位でカーソル移動 <code>opt →</code></li>
+<li><a href="https://ncc.nesdis.noaa.gov/VIIRS/">Visible Infrared Imaging Radiometer Suite (VIIRS)</a></li>
 </ul>
 
-<h1 id="正規表現検索-置換">正規表現検索・置換</h1>
+<p>こちらにもVIIRSのデータプロダクトがある。船の検出は誤検出が多い？元NOAAの人たちでGFWのNight Light Detection はここのデータを使っている。</p>
 
-<h2 id="検索置換のショートカット">検索置換のショートカット</h2>
+<ul>
+<li><p><a href="https://payneinstitute.mines.edu/eog/">Earth Observation Group</a></p>
 
-<p><code>opt cmd F</code></p>
+<ul>
+<li><a href="https://eogdata.mines.edu/wwwdata/viirs_products/vbd/v23/global-saa/current/">https://eogdata.mines.edu/wwwdata/viirs_products/vbd/v23/global-saa/current/</a></li>
+<li><a href="https://eogdata.mines.edu/wwwdata/viirs_products/vbd/v23/global-saa/nrt/">https://eogdata.mines.edu/wwwdata/viirs_products/vbd/v23/global-saa/nrt/</a></li>
+<li><a href="https://www.mdpi.com/2072-4292/7/3/3020">Automatic Boat Identification System for VIIRS Low Light Imaging Data</a></li>
+<li>Feng-Chi Hsu (@davidhsu), Christopher D. Elvidge</li>
+</ul></li>
 
-<p>検索BOXの横の .* ボタンを押す</p>
+<li><p><a href="http://www.ssec.wisc.edu/datacenter/npp/ASIA.html">S-NPP衛星軌道情報</a></p></li>
+</ul>
 
-<h2 id="正規表現の記号">正規表現の記号</h2>
+<h1 id="データ取得">データ取得</h1>
 
-<table>
-<thead>
-<tr>
-<th>記号</th>
-<th>意味</th>
-<th>例</th>
-</tr>
-</thead>
+<ul>
+<li><a href="https://www.bou.class.noaa.gov/saa/products/search?sub_id=0&amp;datatype_family=VIIRS_SDR&amp;submit.x=25&amp;submit.y=3">VIIRS SDR</a></li>
+<li><a href="https://www.bou.class.noaa.gov/saa/products/search?sub_id=0&amp;datatype_family=VIIRS_EDR&amp;submit.x=24&amp;submit.y=11">VIIRS EDS</a></li>
+</ul>
 
-<tbody>
-<tr>
-<td><code>^</code></td>
-<td>行頭</td>
-<td></td>
-</tr>
+<h1 id="論文">論文</h1>
 
-<tr>
-<td><code>$</code></td>
-<td>行末</td>
-<td></td>
-</tr>
-
-<tr>
-<td><code>.</code></td>
-<td>任意の１文字</td>
-<td></td>
-</tr>
-
-<tr>
-<td><code>.*</code></td>
-<td>任意の１文字が0文字以上連続する</td>
-<td></td>
-</tr>
-
-<tr>
-<td><code>.+</code></td>
-<td>任意の１文字が１文字以上連続する</td>
-<td></td>
-</tr>
-
-<tr>
-<td><code>[]</code></td>
-<td><code>[]</code>内の任意の１文字</td>
-<td><code>[ABC]+</code> AまたはBまたはCが1文字以上連続する</td>
-</tr>
-</tbody>
-</table>
-
-<h2 id="検索で認識された文字列を置換の際に使う">検索で認識された文字列を置換の際に使う</h2>
-
-<p>検索BOXで正規表現を()でくくり、置換BOXの中で$1や$2で指定する。</p>
-
-<p>検索BOX： 「(.+)と(.+)」</p>
-
-<p>置換BOX： 【$1】が【$2】</p>
+<ul>
+<li><a href="https://www.mdpi.com/2072-4292/11/9/995">Cross-Matching VIIRS Boat Detections with Vessel Monitoring System Tracks in Indonesia</a></li>
+</ul>
 </article>
 
       
@@ -532,7 +490,7 @@ https://github.com/alex-shpak/hugo-book
   
   <div>
     
-    <a class="flex align-center" href="https://github.com/teuder/notebook/edit/master/content/miscellaneous/vscode.md" target="_blank" rel="noopener">
+    <a class="flex align-center" href="https://github.com/teuder/notebook/edit/master/content/remote_sensing/viirs.md" target="_blank" rel="noopener">
       <img src="/notebook/svg/edit.svg" alt="Edit" />
       <span>Edit this page</span>
     </a>
@@ -551,14 +509,9 @@ https://github.com/alex-shpak/hugo-book
   <aside class="book-toc level-3 fixed">
     <nav id="TableOfContents">
 <ul>
-<li><a href="#visual-studio-code">Visual Studio Code</a></li>
-<li><a href="#ショートカット">ショートカット</a></li>
-<li><a href="#正規表現検索-置換">正規表現検索・置換</a>
-<ul>
-<li><a href="#検索置換のショートカット">検索置換のショートカット</a></li>
-<li><a href="#正規表現の記号">正規表現の記号</a></li>
-<li><a href="#検索で認識された文字列を置換の際に使う">検索で認識された文字列を置換の際に使う</a></li>
-</ul></li>
+<li><a href="#viirs">VIIRS</a></li>
+<li><a href="#データ取得">データ取得</a></li>
+<li><a href="#論文">論文</a></li>
 </ul>
 </nav>
   </aside>
