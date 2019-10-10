@@ -12,12 +12,30 @@
     
     
     <item>
+      <title>SAR</title>
+      <link>https://teuder.github.io/notebook/gis/sar/</link>
+      <pubDate>Thu, 10 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://teuder.github.io/notebook/gis/sar/</guid>
+      <description>SAR 合成開口レーダ（SAR）のキホン～事例、分かること、センサ、衛星、波長～ 合成開口レーザー（SAR:Synthetic Aperture Radar）は、マイ</description>
+    </item>
+    
+    <item>
+      <title>用語</title>
+      <link>https://teuder.github.io/notebook/gis/terminology/</link>
+      <pubDate>Thu, 10 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://teuder.github.io/notebook/gis/terminology/</guid>
+      <description>用語 Panchromatic PAN 白黒の画像 Multispectral カラー画像 可視光 Visible VIS 近赤外線 Near InfraRed NIR 可視光と近赤外線をまとめて VNIR バンド センサーが感受する電磁波の波長帯域、バンドによって見</description>
+    </item>
+    
+    <item>
       <title>VIIRS</title>
-      <link>https://teuder.github.io/notebook/remote_sensing/viirs/</link>
+      <link>https://teuder.github.io/notebook/gis/viirs/</link>
       <pubDate>Sat, 14 Sep 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://teuder.github.io/notebook/remote_sensing/viirs/</guid>
-      <description>VIIRS 赤外線を含む波長光を受信するセンサー、Suomi-NPP, NOAA-20(JPSS-1)の２つの衛星に搭載されている。 （NOAA-20とJ</description>
+      <guid>https://teuder.github.io/notebook/gis/viirs/</guid>
+      <description>VIIRS 衛星が撮影した夜の地球「夜間光」がお金に変わる!? 概要と利用事例 赤外線を含む波長光を受信するセンサー、Suomi-NPP, NOAA-20(</description>
     </item>
     
     <item>

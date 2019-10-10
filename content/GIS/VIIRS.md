@@ -10,6 +10,8 @@ type: docs
 
 # VIIRS
 
+[衛星が撮影した夜の地球「夜間光」がお金に変わる!? 概要と利用事例](https://sorabatake.jp/240/)
+
 赤外線を含む波長光を受信するセンサー、Suomi-NPP, NOAA-20(JPSS-1)の２つの衛星に搭載されている。
 
 （NOAA-20とJPSS-1は同じ衛星、JPSS-1からNOAA-20に名前が変わった。）どちらの衛星もNASAとNOAAの共同プロジェクト Joint Polar Satellite System (JPSS) により打ち上げられたもの。

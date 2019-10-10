@@ -3,13 +3,13 @@
 
 <head>
   <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0"><meta property="og:title" content="raster" />
-<meta property="og:description" content="raster # GooTiffの読み込み data &lt;- raster(&#34;path/data.tif&#34;) 値と座標のデータフレームに変換する df &lt;- rasterToPoint(data)" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><meta property="og:title" content="VIIRS" />
+<meta property="og:description" content="VIIRS 衛星が撮影した夜の地球「夜間光」がお金に変わる!? 概要と利用事例 赤外線を含む波長光を受信するセンサー、Suomi-NPP, NOAA-20(" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://teuder.github.io/notebook/r/raster/" />
-<meta property="article:published_time" content="2019-08-26T00:00:00+00:00" />
-<meta property="article:modified_time" content="2019-09-04T15:16:00+09:00" />
-<title>raster | notebook</title>
+<meta property="og:url" content="https://teuder.github.io/notebook/gis/viirs/" />
+<meta property="article:published_time" content="2019-09-14T00:00:00+00:00" />
+<meta property="article:modified_time" content="2019-09-14T00:00:00+00:00" />
+<title>VIIRS | notebook</title>
 <link rel="icon" href="/notebook/favicon.png" type="image/x-icon">
 
 
@@ -173,7 +173,7 @@ https://github.com/alex-shpak/hugo-book
       
         <li>
 
-  <a href="/notebook/r/raster/"  class="active">
+  <a href="/notebook/r/raster/" >
       raster
   </a>
 
@@ -253,7 +253,7 @@ https://github.com/alex-shpak/hugo-book
       
         <li>
 
-  <a href="/notebook/gis/viirs/" >
+  <a href="/notebook/gis/viirs/"  class="active">
       VIIRS
   </a>
 
@@ -421,36 +421,60 @@ https://github.com/alex-shpak/hugo-book
   <label for="menu-control">
     <img src="/notebook/svg/menu.svg" alt="Menu" />
   </label>
-  <strong>raster</strong>
+  <strong>VIIRS</strong>
 </header>
 
       
 <article class="markdown">
 
-<h1 id="raster">raster</h1>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#75715e"># GooTiffの読み込み</span>
-data <span style="color:#f92672">&lt;-</span> raster<span style="color:#111">(</span><span style="color:#d88200">&#34;path/data.tif&#34;</span><span style="color:#111">)</span></code></pre></div>
-<p>値と座標のデータフレームに変換する</p>
+<h1 id="viirs">VIIRS</h1>
 
-<pre><code>df &lt;- rasterToPoint(data)
-</code></pre>
+<p><a href="https://sorabatake.jp/240/">衛星が撮影した夜の地球「夜間光」がお金に変わる!? 概要と利用事例</a></p>
+
+<p>赤外線を含む波長光を受信するセンサー、Suomi-NPP, NOAA-20(JPSS-1)の２つの衛星に搭載されている。</p>
+
+<p>（NOAA-20とJPSS-1は同じ衛星、JPSS-1からNOAA-20に名前が変わった。）どちらの衛星もNASAとNOAAの共同プロジェクト Joint Polar Satellite System (JPSS) により打ち上げられたもの。</p>
+
+<ul>
+<li><a href="https://ncc.nesdis.noaa.gov/VIIRS/">Visible Infrared Imaging Radiometer Suite (VIIRS)</a></li>
+</ul>
+
+<p>こちらにもVIIRSのデータプロダクトがある。船の検出は誤検出が多い？元NOAAの人たちでGFWのNight Light Detection はここのデータを使っている。</p>
+
+<ul>
+<li><p><a href="https://payneinstitute.mines.edu/eog/">Earth Observation Group</a></p>
+
+<ul>
+<li><a href="https://eogdata.mines.edu/wwwdata/viirs_products/vbd/v23/global-saa/current/">https://eogdata.mines.edu/wwwdata/viirs_products/vbd/v23/global-saa/current/</a></li>
+<li><a href="https://eogdata.mines.edu/wwwdata/viirs_products/vbd/v23/global-saa/nrt/">https://eogdata.mines.edu/wwwdata/viirs_products/vbd/v23/global-saa/nrt/</a></li>
+<li><a href="https://www.mdpi.com/2072-4292/7/3/3020">Automatic Boat Identification System for VIIRS Low Light Imaging Data</a></li>
+<li>Feng-Chi Hsu (@davidhsu), Christopher D. Elvidge</li>
+</ul></li>
+
+<li><p><a href="http://www.ssec.wisc.edu/datacenter/npp/ASIA.html">S-NPP衛星軌道情報</a></p></li>
+</ul>
+
+<h1 id="データ取得">データ取得</h1>
+
+<ul>
+<li><a href="https://www.bou.class.noaa.gov/saa/products/search?sub_id=0&amp;datatype_family=VIIRS_SDR&amp;submit.x=25&amp;submit.y=3">VIIRS SDR</a></li>
+<li><a href="https://www.bou.class.noaa.gov/saa/products/search?sub_id=0&amp;datatype_family=VIIRS_EDR&amp;submit.x=24&amp;submit.y=11">VIIRS EDS</a></li>
+</ul>
+
+<h1 id="論文">論文</h1>
+
+<ul>
+<li><a href="https://www.mdpi.com/2072-4292/11/9/995">Cross-Matching VIIRS Boat Detections with Vessel Monitoring System Tracks in Indonesia</a></li>
+</ul>
 </article>
 
       
-<div class="book-footer justify-between">
-  
-  <div>
-    
-    <a class="flex align-center" href="https://github.com/teuder/notebook/commit/9f20318902b108ff35ea4806ed509b169c245ab0" title='Last modified 2019-09-04 by Masaki E. Tsuda' target="_blank" rel="noopener">
-      <img src="/notebook/svg/calendar.svg" alt="Changed" />
-      <span>2019-09-04</span>
-    </a>
-  </div>
+<div class="book-footer justify-end">
   
   
   <div>
     
-    <a class="flex align-center" href="https://github.com/teuder/notebook/edit/master/content/R/raster.md" target="_blank" rel="noopener">
+    <a class="flex align-center" href="https://github.com/teuder/notebook/edit/master/content/GIS/VIIRS.md" target="_blank" rel="noopener">
       <img src="/notebook/svg/edit.svg" alt="Edit" />
       <span>Edit this page</span>
     </a>
@@ -469,7 +493,9 @@ data <span style="color:#f92672">&lt;-</span> raster<span style="color:#111">(</
   <aside class="book-toc level-3 fixed">
     <nav id="TableOfContents">
 <ul>
-<li><a href="#raster">raster</a></li>
+<li><a href="#viirs">VIIRS</a></li>
+<li><a href="#データ取得">データ取得</a></li>
+<li><a href="#論文">論文</a></li>
 </ul>
 </nav>
   </aside>

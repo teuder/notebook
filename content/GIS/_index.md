@@ -1,5 +1,5 @@
 ---
-title: "GIS"
+title: "GIS & Remote Sensing"
 draft: false
 date : 2019-08-26
 publishdate : 2019-08-26
