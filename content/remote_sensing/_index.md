@@ -18,15 +18,18 @@ type: docs
 
 # 組織
 
-
 - NOAA
 - NASA
 - JAXA
-- [リモートセンシング技術センター](https://www.restec.or.jp/)
+
 
 # 衛星
 
-[衛星総覧](https://www.restec.or.jp/satellite)
+- [衛星総覧](https://www.restec.or.jp/satellite)
+
+- 気象変動観測衛星しきさい
+- Suomi-NPP
+- JPSS1(NOAA20)
 
 # センサー
 
@@ -37,4 +40,15 @@ type: docs
 
 - [NOAA CLASS](https://www.bou.class.noaa.gov/saa/products/welcome)
 - [LAADS DAAC](https://ladsweb.modaps.eosdis.nasa.gov/)
+- [G-Portal](https://gportal.jaxa.jp/gpr/)
 
+
+# サービス
+
+- Google Earth Engine
+- Tellus
+
+# 情報ポータル
+
+- [宙畑](https://sorabatake.jp/)
+- [リモートセンシング技術センター](https://www.restec.or.jp/)
