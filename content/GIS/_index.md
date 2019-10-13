@@ -53,9 +53,9 @@ type: docs
 ## 衛星データ
 
 - [NOAA CLASS](https://www.bou.class.noaa.gov/saa/products/welcome)
+    -[NOAA CLASS Data access tutrial](https://www.avl.class.noaa.gov/notification/pdfs/CLASS%20Data%20Access%20Tutorial_042015.pdf)
 - [LAADS DAAC](https://ladsweb.modaps.eosdis.nasa.gov/)
 - [G-Portal](https://gportal.jaxa.jp/gpr/)
-
 
 
 # ファイル形式
@@ -90,3 +90,8 @@ type: docs
 
 - Orbital Insight
 
+# 地図サービス
+
+[JapanMapCompare](https://mapcompare.jp/3/14/35.6795/139.7672/tPale/osm/tOrt)
+
+日本の地図サービスの画像を比較できる

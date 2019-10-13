@@ -10,10 +10,9 @@ type: docs
 
 # R
 
-# バージョン管理
+# コーディングスタイル
 
-- [RSwitch](https://rud.is/rswitch/) R本体のバージョン管理 https://twitter.com/hrbrmstr
-- renv, packrat : パッケージのバージョン管理
+[The tidyverse style guide](https://style.tidyverse.org/)
 
 
 # ソースコードを確認
@@ -25,16 +24,31 @@ devtools::install_github("jimhester/lookup")
 lookup::lookup(dplyr::summarise)
 ```
 
+# バージョン管理
+
+- [RSwitch](https://rud.is/rswitch/) R本体のバージョン管理 https://twitter.com/hrbrmstr
+- renv, packrat : パッケージのバージョン管理
+
+# 並列計算
+
+`furrr` : `purrr` と同様の使い方で並列に計算できる
+
+# 可視化
+
+[Data to Viz](https://www.data-to-viz.com/)
+
+
+
+
+# きになるパッケージ
+
+## 可視化
+
+- gganimate : gifアニメ
+- export : ggplotオブジェクトをパワポに変換する
+
 # オブジェクトを調べる
 
 `class()` `typeof()` `mode()`
 
 `str()` `attributes()`
-
-# 並列計算
-
-furrr
-
-# きになるパッケージ
-
-gganimate

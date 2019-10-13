@@ -4,11 +4,11 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0"><meta property="og:title" content="VIIRS" />
-<meta property="og:description" content="VIIRS 衛星が撮影した夜の地球「夜間光」がお金に変わる!? 概要と利用事例 赤外線を含む波長光を受信するセンサー、Suomi-NPP, NOAA-20(" />
+<meta property="og:description" content="VIIRS Visible Infrared Imaging Radiometer Suite 赤外線を含む波長光を受信するセンサー、Suomi-NPP（SNPP）, NOAA-20(JPSS-1)の２つの衛星に搭載されている" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://teuder.github.io/notebook/gis/viirs/" />
 <meta property="article:published_time" content="2019-09-14T00:00:00+00:00" />
-<meta property="article:modified_time" content="2019-09-14T00:00:00+00:00" />
+<meta property="article:modified_time" content="2019-10-10T19:06:27+09:00" />
 <title>VIIRS | notebook</title>
 <link rel="icon" href="/notebook/favicon.png" type="image/x-icon">
 
@@ -16,7 +16,7 @@
 <link rel="stylesheet" href="/notebook/book.min.1b994bd28c6ce2255f069b6bf6837b4d396307637fc48d61dcb2a6caac26e031.css" integrity="sha256-G5lL0oxs4iVfBptr9oN7TTljB2N/xI1h3LKmyqwm4DE=">
 
 
-<script defer src="/notebook/search.min.29fa101a4ccb1af724900c2a0850e973f38200c8a622dcf09c330323b60e0e09.js" integrity="sha256-KfoQGkzLGvckkAwqCFDpc/OCAMimItzwnDMDI7YODgk="></script>
+<script defer src="/notebook/search.min.7062cb51097f1262121f5a07381c50d3e7572b9fbb4e733d34cd2f22ac43f2bc.js" integrity="sha256-cGLLUQl/EmISH1oHOBxQ0&#43;dXK5&#43;7TnM9NM0vIqxD8rw="></script>
 
 <!--
 Made with Book Theme
@@ -199,6 +199,36 @@ https://github.com/alex-shpak/hugo-book
 
 </li>
       
+    
+  </ul>
+  
+
+
+
+  </li>
+
+
+  
+    
+
+  <li >
+    
+      
+
+  <a href="/notebook/datascience/" >
+      Data Science
+  </a>
+
+
+    
+
+    
+
+
+
+
+  
+  <ul>
     
   </ul>
   
@@ -429,47 +459,66 @@ https://github.com/alex-shpak/hugo-book
 
 <h1 id="viirs">VIIRS</h1>
 
+<p>Visible Infrared Imaging Radiometer Suite</p>
+
+<p>赤外線を含む波長光を受信するセンサー、Suomi-NPP（SNPP）, NOAA-20(JPSS-1)の２つの衛星に搭載されている。（NOAA-20とJPSS-1は同じ衛星、JPSS-1からNOAA-20に名前が変わった。）どちらの衛星もNASAとNOAAの共同プロジェクト Joint Polar Satellite System (JPSS) により打ち上げられたもの。SNPP は JPSS-1のための実験衛星という位置づけらしい。</p>
+
+<p>VIIRSを搭載した衛星は今後しばらく（2030以降まで）は運用を続けられる予定。SNPPのデータは2012年から利用可能。NOAA-20の</p>
+
+<ul>
+<li><a href="https://ncc.nesdis.noaa.gov/VIIRS/index.php">SNPP VIIRS</a>
+
+<ul>
+<li><a href="http://rammb.cira.colostate.edu/projects/npp/Beginner_Guide_to_VIIRS_Imagery_Data.pdf">Begginer Guide to VIIRS data</a></li>
+</ul></li>
+<li><a href="https://ncc.nesdis.noaa.gov/VIIRS/">NOAA-20 VIIRS</a></li>
+</ul>
+
+<p><a href="http://www.ssec.wisc.edu/datacenter/npp/ASIA.html">S-NPP衛星軌道情報</a></p>
+
 <p><a href="https://sorabatake.jp/240/">衛星が撮影した夜の地球「夜間光」がお金に変わる!? 概要と利用事例</a></p>
 
-<p>赤外線を含む波長光を受信するセンサー、Suomi-NPP, NOAA-20(JPSS-1)の２つの衛星に搭載されている。</p>
+<h1 id="生データ取得">生データ取得</h1>
 
-<p>（NOAA-20とJPSS-1は同じ衛星、JPSS-1からNOAA-20に名前が変わった。）どちらの衛星もNASAとNOAAの共同プロジェクト Joint Polar Satellite System (JPSS) により打ち上げられたもの。</p>
-
-<ul>
-<li><a href="https://ncc.nesdis.noaa.gov/VIIRS/">Visible Infrared Imaging Radiometer Suite (VIIRS)</a></li>
-</ul>
-
-<p>こちらにもVIIRSのデータプロダクトがある。船の検出は誤検出が多い？元NOAAの人たちでGFWのNight Light Detection はここのデータを使っている。</p>
-
-<ul>
-<li><p><a href="https://payneinstitute.mines.edu/eog/">Earth Observation Group</a></p>
-
-<ul>
-<li><a href="https://eogdata.mines.edu/wwwdata/viirs_products/vbd/v23/global-saa/current/">https://eogdata.mines.edu/wwwdata/viirs_products/vbd/v23/global-saa/current/</a></li>
-<li><a href="https://eogdata.mines.edu/wwwdata/viirs_products/vbd/v23/global-saa/nrt/">https://eogdata.mines.edu/wwwdata/viirs_products/vbd/v23/global-saa/nrt/</a></li>
-<li><a href="https://www.mdpi.com/2072-4292/7/3/3020">Automatic Boat Identification System for VIIRS Low Light Imaging Data</a></li>
-<li>Feng-Chi Hsu (@davidhsu), Christopher D. Elvidge</li>
-</ul></li>
-
-<li><p><a href="http://www.ssec.wisc.edu/datacenter/npp/ASIA.html">S-NPP衛星軌道情報</a></p></li>
-</ul>
-
-<h1 id="データ取得">データ取得</h1>
+<h2 id="nasa-class">NASA CLASS</h2>
 
 <ul>
 <li><a href="https://www.bou.class.noaa.gov/saa/products/search?sub_id=0&amp;datatype_family=VIIRS_SDR&amp;submit.x=25&amp;submit.y=3">VIIRS SDR</a></li>
 <li><a href="https://www.bou.class.noaa.gov/saa/products/search?sub_id=0&amp;datatype_family=VIIRS_EDR&amp;submit.x=24&amp;submit.y=11">VIIRS EDS</a></li>
 </ul>
 
-<h1 id="論文">論文</h1>
+<h1 id="データプロダクト-サービス">データプロダクト・サービス</h1>
 
 <ul>
+<li><a href="https://payneinstitute.mines.edu/eog/viirs/">Cololad School of Mines: Earth Observation Group : VIIRS</a>
+
+<ul>
+<li><a href="https://eogdata.mines.edu/wwwdata/viirs_products/vbd/v23/global-saa/current/">https://eogdata.mines.edu/wwwdata/viirs_products/vbd/v23/global-saa/current/</a></li>
+<li><a href="https://eogdata.mines.edu/wwwdata/viirs_products/vbd/v23/global-saa/nrt/">https://eogdata.mines.edu/wwwdata/viirs_products/vbd/v23/global-saa/nrt/</a>
+<br /></li>
+</ul></li>
+</ul>
+
+<h1 id="viirs-を利用した論文">VIIRS を利用した論文</h1>
+
+<h2 id="夜間の漁船光の検出">夜間の漁船光の検出</h2>
+
+<ul>
+<li><a href="https://www.mdpi.com/2072-4292/7/3/3020">Automatic Boat Identification System for VIIRS Low Light Imaging Data</a></li>
 <li><a href="https://www.mdpi.com/2072-4292/11/9/995">Cross-Matching VIIRS Boat Detections with Vessel Monitoring System Tracks in Indonesia</a></li>
 </ul>
 </article>
 
       
-<div class="book-footer justify-end">
+<div class="book-footer justify-between">
+  
+  <div>
+    
+    <a class="flex align-center" href="https://github.com/teuder/notebook/commit/610fbd76606b07a36e3f7acff2d1c7a4e9510bda" title='Last modified 2019-10-10 by Masaki Tsuda' target="_blank" rel="noopener">
+      <img src="/notebook/svg/calendar.svg" alt="Changed" />
+      <span>2019-10-10</span>
+    </a>
+  </div>
   
   
   <div>
@@ -494,8 +543,15 @@ https://github.com/alex-shpak/hugo-book
     <nav id="TableOfContents">
 <ul>
 <li><a href="#viirs">VIIRS</a></li>
-<li><a href="#データ取得">データ取得</a></li>
-<li><a href="#論文">論文</a></li>
+<li><a href="#生データ取得">生データ取得</a>
+<ul>
+<li><a href="#nasa-class">NASA CLASS</a></li>
+</ul></li>
+<li><a href="#データプロダクト-サービス">データプロダクト・サービス</a></li>
+<li><a href="#viirs-を利用した論文">VIIRS を利用した論文</a>
+<ul>
+<li><a href="#夜間の漁船光の検出">夜間の漁船光の検出</a></li>
+</ul></li>
 </ul>
 </nav>
   </aside>

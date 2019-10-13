@@ -3,13 +3,13 @@
 
 <head>
   <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0"><meta property="og:title" content="R" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><meta property="og:title" content="Data Science" />
 <meta property="og:description" content="" />
 <meta property="og:type" content="website" />
-<meta property="og:url" content="https://teuder.github.io/notebook/r/" />
+<meta property="og:url" content="https://teuder.github.io/notebook/datascience/" />
 
 <meta property="og:updated_time" content="2019-08-26T00:00:00+00:00" />
-<title>R | notebook</title>
+<title>Data Science | notebook</title>
 <link rel="icon" href="/notebook/favicon.png" type="image/x-icon">
 
 
@@ -18,7 +18,7 @@
 
 <script defer src="/notebook/search.min.7062cb51097f1262121f5a07381c50d3e7572b9fbb4e733d34cd2f22ac43f2bc.js" integrity="sha256-cGLLUQl/EmISH1oHOBxQ0&#43;dXK5&#43;7TnM9NM0vIqxD8rw="></script>
 
-<link rel="alternate" type="application/rss+xml" href="https://teuder.github.io/notebook/r/index.xml" title="notebook" />
+<link rel="alternate" type="application/rss+xml" href="https://teuder.github.io/notebook/datascience/index.xml" title="notebook" />
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -136,7 +136,7 @@ https://github.com/alex-shpak/hugo-book
     
       
 
-  <a href="/notebook/r/"  class="active">
+  <a href="/notebook/r/" >
       R
   </a>
 
@@ -216,7 +216,7 @@ https://github.com/alex-shpak/hugo-book
     
       
 
-  <a href="/notebook/datascience/" >
+  <a href="/notebook/datascience/"  class="active">
       Data Science
   </a>
 
@@ -452,72 +452,28 @@ https://github.com/alex-shpak/hugo-book
   <label for="menu-control">
     <img src="/notebook/svg/menu.svg" alt="Menu" />
   </label>
-  <strong>R</strong>
+  <strong>Data Science</strong>
 </header>
 
       
 <article class="markdown">
 
-<h1 id="r">R</h1>
+<h1 id="data-science">Data Science</h1>
 
-<h1 id="コーディングスタイル">コーディングスタイル</h1>
+<h1 id="データ作成">データ作成</h1>
 
-<p><a href="https://style.tidyverse.org/">The tidyverse style guide</a></p>
+<p><a href="http://drawdata.xyz/">drawdata.xyz</a></p>
 
-<h1 id="ソースコードを確認">ソースコードを確認</h1>
-
-<p>lookup パッケージ</p>
-
-<pre><code>devtools::install_github(&quot;jimhester/lookup&quot;)
-lookup::lookup(dplyr::summarise)
-</code></pre>
-
-<h1 id="バージョン管理">バージョン管理</h1>
-
-<ul>
-<li><a href="https://rud.is/rswitch/">RSwitch</a> R本体のバージョン管理 <a href="https://twitter.com/hrbrmstr">https://twitter.com/hrbrmstr</a></li>
-<li>renv, packrat : パッケージのバージョン管理</li>
-</ul>
-
-<h1 id="並列計算">並列計算</h1>
-
-<p><code>furrr</code> : <code>purrr</code> と同様の使い方で並列に計算できる</p>
-
-<h1 id="可視化">可視化</h1>
-
-<p><a href="https://www.data-to-viz.com/">Data to Viz</a></p>
-
-<h1 id="きになるパッケージ">きになるパッケージ</h1>
-
-<h2 id="可視化-1">可視化</h2>
-
-<ul>
-<li>gganimate : gifアニメ</li>
-<li>export : ggplotオブジェクトをパワポに変換する</li>
-</ul>
-
-<h1 id="オブジェクトを調べる">オブジェクトを調べる</h1>
-
-<p><code>class()</code> <code>typeof()</code> <code>mode()</code></p>
-
-<p><code>str()</code> <code>attributes()</code></p>
+<p>手でグラフをお絵描きして対応するデータをダウンロードできる</p>
 </article>
 
       
-<div class="book-footer justify-between">
-  
-  <div>
-    
-    <a class="flex align-center" href="https://github.com/teuder/notebook/commit/570d31b0d86e3f9861e3b5a78a2617e5df1357aa" title='Last modified 2019-10-08 by Masaki Tsuda' target="_blank" rel="noopener">
-      <img src="/notebook/svg/calendar.svg" alt="Changed" />
-      <span>2019-10-08</span>
-    </a>
-  </div>
+<div class="book-footer justify-end">
   
   
   <div>
     
-    <a class="flex align-center" href="https://github.com/teuder/notebook/edit/master/content/R/_index.md" target="_blank" rel="noopener">
+    <a class="flex align-center" href="https://github.com/teuder/notebook/edit/master/content/DataScience/_index.md" target="_blank" rel="noopener">
       <img src="/notebook/svg/edit.svg" alt="Edit" />
       <span>Edit this page</span>
     </a>
@@ -536,17 +492,8 @@ lookup::lookup(dplyr::summarise)
   <aside class="book-toc level-3 fixed">
     <nav id="TableOfContents">
 <ul>
-<li><a href="#r">R</a></li>
-<li><a href="#コーディングスタイル">コーディングスタイル</a></li>
-<li><a href="#ソースコードを確認">ソースコードを確認</a></li>
-<li><a href="#バージョン管理">バージョン管理</a></li>
-<li><a href="#並列計算">並列計算</a></li>
-<li><a href="#可視化">可視化</a></li>
-<li><a href="#きになるパッケージ">きになるパッケージ</a>
-<ul>
-<li><a href="#可視化-1">可視化</a></li>
-</ul></li>
-<li><a href="#オブジェクトを調べる">オブジェクトを調べる</a></li>
+<li><a href="#data-science">Data Science</a></li>
+<li><a href="#データ作成">データ作成</a></li>
 </ul>
 </nav>
   </aside>
