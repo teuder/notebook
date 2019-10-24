@@ -40,10 +40,13 @@ VIIRSを搭載した衛星は今後しばらく（2030以降まで）は運用�
 # データプロダクト・サービス
 
 - [Cololad School of Mines: Earth Observation Group : VIIRS](https://payneinstitute.mines.edu/eog/viirs/)
+    - VIIRSを利用した、夜間の焱、夜間光（月次、年次）、夜間の漁船光の検出のデータを提供している
+    - 元々はNOAAのグループだったが Cololad School of Mines に移籍した。[NOAA時代のサイト](https://www.ngdc.noaa.gov/eog/index.html)
   - https://eogdata.mines.edu/wwwdata/viirs_products/vbd/v23/global-saa/current/
   - https://eogdata.mines.edu/wwwdata/viirs_products/vbd/v23/global-saa/nrt/
   
 
+https://payneinstitute.mines.edu/eog/viirs/
 
 
 # VIIRS を利用した論文

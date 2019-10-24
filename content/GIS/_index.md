@@ -50,6 +50,8 @@ type: docs
 - [OCEAN DATA VIEWER](https://data.unep-wcmc.org/about)
 - [気象データ高度利用ポータルサイト](https://www.data.jma.go.jp/developer/index.html)
 
+- [GISデータ入手先一覧](https://kanji14134.github.io/blog/2018/12/gis%E3%83%87%E3%83%BC%E3%82%BF%E5%85%A5%E6%89%8B%E5%85%88%E4%B8%80%E8%A6%A7/)
+
 ## 衛星データ
 
 - [NOAA CLASS](https://www.bou.class.noaa.gov/saa/products/welcome)
