@@ -35,7 +35,7 @@
       <pubDate>Sat, 14 Sep 2019 00:00:00 +0000</pubDate>
       
       <guid>https://teuder.github.io/notebook/gis/viirs/</guid>
-      <description>VIIRS Visible Infrared Imaging Radiometer Suite 赤外線を含む波長光を受信するセンサー、Suomi-NPP（SNPP）, NOAA-20(JPSS-1)の２つの衛星に搭載されている</description>
+      <description>VIIRS Visible Infrared Imaging Radiometer Suite 赤外線〜可視光を含む波長の光を受信する22個のセンサーからなる装置。様々な波長で観測することにより地表や海洋の色や夜間の光を観測</description>
     </item>
     
     <item>
@@ -107,7 +107,7 @@
       <pubDate>Mon, 26 Aug 2019 00:00:00 +0000</pubDate>
       
       <guid>https://teuder.github.io/notebook/miscellaneous/git/</guid>
-      <description>Git Gitの基本コマンド ブランチの作成 : branch git branch ブランチ名 # ブランチの作成 git checkout -b ブランチ名 #ブランチの作成とそのブランチへの切り替え ブランチの切</description>
+      <description>Git Gitの基本コマンド ファイルを特定のコミットの時に戻す git checkout [コミット番号] [ファイルパス] ブランチの作成 : branch git branch ブランチ名 # ブランチの作成</description>
     </item>
     
     <item>
@@ -126,6 +126,15 @@
       
       <guid>https://teuder.github.io/notebook/r/sf/</guid>
       <description>sf 定義されたクラス sfgクラス：個別の地物 sfcクラス：sfgオブジェクトのリスト、リストの各要素が１地物に相当 sf クラス：sfcオブジェクト</description>
+    </item>
+    
+    <item>
+      <title>stars</title>
+      <link>https://teuder.github.io/notebook/r/stars/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://teuder.github.io/notebook/r/stars/</guid>
+      <description>stars 時空間のハイパーキューブを扱うためのパッケージらしい stars sfオブジェクトをラスター化する st_rasterize(sf, template = st_as_stars(st_bbox(sf), values = NA_real_, ...), file = tempfile(), driver = &amp;quot;GTiff&amp;quot;, options = character(0), ...) template : ラスターのグ</description>
     </item>
     
     <item>

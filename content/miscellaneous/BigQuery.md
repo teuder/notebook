@@ -33,3 +33,23 @@ LIMIT 10;
 [mk]
 --use_legacy_sql=false
 ```
+
+
+# 基本文法
+
+[標準SQLの演算子](https://cloud.google.com/bigquery/docs/reference/standard-sql/operators?hl=ja)
+
+
+# Data set を作成する
+
+```
+bq --location=location mk \
+--dataset \
+--default_table_expiration integer1 \
+--default_partition_expiration integer2 \
+--description description \
+project_id:dataset
+```
+
+- `--location-US`
+- `--default_table_expiration integer1`

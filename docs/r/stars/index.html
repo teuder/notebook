@@ -3,13 +3,12 @@
 
 <head>
   <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0"><meta property="og:title" content="git" />
-<meta property="og:description" content="Git Gitの基本コマンド ファイルを特定のコミットの時に戻す git checkout [コミット番号] [ファイルパス] ブランチの作成 : branch git branch ブランチ名 # ブランチの作成" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><meta property="og:title" content="stars" />
+<meta property="og:description" content="stars 時空間のハイパーキューブを扱うためのパッケージらしい stars sfオブジェクトをラスター化する st_rasterize(sf, template = st_as_stars(st_bbox(sf), values = NA_real_, ...), file = tempfile(), driver = &quot;GTiff&quot;, options = character(0), ...) template : ラスターのグ" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://teuder.github.io/notebook/miscellaneous/git/" />
-<meta property="article:published_time" content="2019-08-26T00:00:00+00:00" />
-<meta property="article:modified_time" content="2019-09-05T19:10:58+09:00" />
-<title>git | notebook</title>
+<meta property="og:url" content="https://teuder.github.io/notebook/r/stars/" />
+
+<title>stars | notebook</title>
 <link rel="icon" href="/notebook/favicon.png" type="image/x-icon">
 
 
@@ -193,7 +192,7 @@ https://github.com/alex-shpak/hugo-book
       
         <li>
 
-  <a href="/notebook/r/stars/" >
+  <a href="/notebook/r/stars/"  class="active">
       stars
   </a>
 
@@ -413,7 +412,7 @@ https://github.com/alex-shpak/hugo-book
       
         <li>
 
-  <a href="/notebook/miscellaneous/git/"  class="active">
+  <a href="/notebook/miscellaneous/git/" >
       git
   </a>
 
@@ -461,69 +460,59 @@ https://github.com/alex-shpak/hugo-book
   <label for="menu-control">
     <img src="/notebook/svg/menu.svg" alt="Menu" />
   </label>
-  <strong>git</strong>
+  <strong>stars</strong>
 </header>
 
       
 <article class="markdown">
 
-<h1 id="git">Git</h1>
+<h1 id="stars">stars</h1>
 
-<p><a href="https://qiita.com/konweb/items/621722f67fdd8f86a017">Gitの基本コマンド</a></p>
+<p>時空間のハイパーキューブを扱うためのパッケージらしい</p>
 
-<h1 id="ファイルを特定のコミットの時に戻す">ファイルを特定のコミットの時に戻す</h1>
+<p><a href="https://github.com/r-spatial/stars">stars</a></p>
 
-<pre><code>git checkout [コミット番号] [ファイルパス]
+<p>sfオブジェクトをラスター化する</p>
+
+<pre><code>st_rasterize(sf, template = st_as_stars(st_bbox(sf), values = NA_real_,
+  ...), file = tempfile(), driver = &quot;GTiff&quot;, options = character(0),
+  ...)
 </code></pre>
 
-<h1 id="ブランチの作成-branch">ブランチの作成 : branch</h1>
+<ul>
+<li><p><code>template</code> : ラスターのグリッドを指定する</p>
 
-<pre><code>git branch ブランチ名 # ブランチの作成
-git checkout -b ブランチ名 #ブランチの作成とそのブランチへの切り替え
-</code></pre>
+<ul>
+<li><code>st_as_stars(.x = st_bbox(sf), nx = 4064, ny = 3232,values = NA_real_)</code></li>
+<li>.x にはバウンディングボックスを指定する</li>
+<li>nx, ny には縦横のグリッドの数</li>
 
-<h1 id="ブランチの切り替え-checkout">ブランチの切り替え : checkout</h1>
-
-<pre><code>git checkout ブランチ名
-</code></pre>
-
-<h1 id="リモートレポジトリに反映する-push">リモートレポジトリに反映する : push</h1>
-
-<p>現状のローカルレポジトリの最新 commit のフォルダの状態をリモート</p>
-
-<pre><code>git push レポジトリ ブランチ
-</code></pre>
-
-<p>例：<code>git origin master</code></p>
-
-<h1 id="githubへのプルリク">Githubへのプルリク</h1>
-
-<p>プルリク（pull request）は git ではなく Github や Gitlab における概念</p>
-
-<p><a href="https://qiita.com/samurairunner/items/7442521bce2d6ac9330b">初心者向けGithubへのPullRequest方法</a></p>
-
-<p>リモートリポジトリをローカルに <code>clone</code> する。</p>
-
-<p>git clone <a href="https://github.com/teuder/test.git">https://github.com/teuder/test.git</a></p>
-
-<p>【cloneされたリモートリポジトリ】 = 【<code>origin</code> リポジトリ】</p>
+<li><p>value は欠測値を埋める</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql connection=con, output.var="eog_fra_df"" data-lang="sql connection=con, output.var="eog_fra_df"">SELECT
+date
+,id_eog
+,id_fra
+,lon
+,lat
+,rad
+,Lon_DNB
+,Lat_DNB
+,Rad_DNB
+,distance
+,IF(distance &lt; 100, 1, 0) AS match_flg
+FROM
+scratch_masaki.eog_fra_distance_info_ecs</code></pre></div></li>
+</ul></li>
+</ul>
 </article>
 
       
-<div class="book-footer justify-between">
-  
-  <div>
-    
-    <a class="flex align-center" href="https://github.com/teuder/notebook/commit/51594df7789ea52f4b3b6cde92c04d4f39ec0f9f" title='Last modified 2019-09-05 by Masaki E. Tsuda' target="_blank" rel="noopener">
-      <img src="/notebook/svg/calendar.svg" alt="Changed" />
-      <span>2019-09-05</span>
-    </a>
-  </div>
+<div class="book-footer justify-end">
   
   
   <div>
     
-    <a class="flex align-center" href="https://github.com/teuder/notebook/edit/master/content/miscellaneous/git.md" target="_blank" rel="noopener">
+    <a class="flex align-center" href="https://github.com/teuder/notebook/edit/master/content/R/stars.md" target="_blank" rel="noopener">
       <img src="/notebook/svg/edit.svg" alt="Edit" />
       <span>Edit this page</span>
     </a>
@@ -542,12 +531,7 @@ git checkout -b ブランチ名 #ブランチの作成とそのブランチへ�
   <aside class="book-toc level-3 fixed">
     <nav id="TableOfContents">
 <ul>
-<li><a href="#git">Git</a></li>
-<li><a href="#ファイルを特定のコミットの時に戻す">ファイルを特定のコミットの時に戻す</a></li>
-<li><a href="#ブランチの作成-branch">ブランチの作成 : branch</a></li>
-<li><a href="#ブランチの切り替え-checkout">ブランチの切り替え : checkout</a></li>
-<li><a href="#リモートレポジトリに反映する-push">リモートレポジトリに反映する : push</a></li>
-<li><a href="#githubへのプルリク">Githubへのプルリク</a></li>
+<li><a href="#stars">stars</a></li>
 </ul>
 </nav>
   </aside>

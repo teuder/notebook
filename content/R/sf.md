@@ -92,3 +92,8 @@ predicate whether `x` touches/contains/within/ `y`
 `st_equals_exact(x, y, par, sparse = TRUE, prepared = FALSE)`
 
 `st_is_within_distance(x, y, dist, sparse = TRUE)`
+
+# sfオブジェクトの書き出し
+
+
+st_write

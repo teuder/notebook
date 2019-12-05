@@ -42,7 +42,7 @@ type: docs
 
 # データソース
 
-- [MarineRegions.org](http://www.marineregions.org/downloads.php) 海洋関係のShapefileを公開
+- [MarineRegions.org](http://www.marineregions.org/downloads.php) 海洋関係の Shapefile を公開している
 - [GeoServer](http://geoserver.org/)
 - [GeoNetwork](https://geonetwork-opensource.org/)
 - [Natural Earth](http://www.naturalearthdata.com/)

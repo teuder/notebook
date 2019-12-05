@@ -4,11 +4,11 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0"><meta property="og:title" content="VIIRS" />
-<meta property="og:description" content="VIIRS Visible Infrared Imaging Radiometer Suite 赤外線を含む波長光を受信するセンサー、Suomi-NPP（SNPP）, NOAA-20(JPSS-1)の２つの衛星に搭載されている" />
+<meta property="og:description" content="VIIRS Visible Infrared Imaging Radiometer Suite 赤外線〜可視光を含む波長の光を受信する22個のセンサーからなる装置。様々な波長で観測することにより地表や海洋の色や夜間の光を観測" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://teuder.github.io/notebook/gis/viirs/" />
 <meta property="article:published_time" content="2019-09-14T00:00:00+00:00" />
-<meta property="article:modified_time" content="2019-10-13T11:16:05+09:00" />
+<meta property="article:modified_time" content="2019-10-24T12:10:45+09:00" />
 <title>VIIRS | notebook</title>
 <link rel="icon" href="/notebook/favicon.png" type="image/x-icon">
 
@@ -16,7 +16,7 @@
 <link rel="stylesheet" href="/notebook/book.min.1b994bd28c6ce2255f069b6bf6837b4d396307637fc48d61dcb2a6caac26e031.css" integrity="sha256-G5lL0oxs4iVfBptr9oN7TTljB2N/xI1h3LKmyqwm4DE=">
 
 
-<script defer src="/notebook/search.min.bb750e3df81aed290c39968ac628279e9bd27def5c7982b56a2e034365cb0179.js" integrity="sha256-u3UOPfga7SkMOZaKxignnpvSfe9ceYK1ai4DQ2XLAXk="></script>
+<script defer src="/notebook/search.min.e660df3191b3590f8908528e15a3fe146e6968c34c193760f3f4d24bf5996573.js" integrity="sha256-5mDfMZGzWQ&#43;JCFKOFaP&#43;FG5paMNMGTdg8/TSS/WZZXM="></script>
 
 <!--
 Made with Book Theme
@@ -185,6 +185,16 @@ https://github.com/alex-shpak/hugo-book
 
   <a href="/notebook/r/sf/" >
       sf
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/r/stars/" >
+      stars
   </a>
 
 </li>
@@ -461,30 +471,105 @@ https://github.com/alex-shpak/hugo-book
 
 <p>Visible Infrared Imaging Radiometer Suite</p>
 
-<p>赤外線を含む波長光を受信するセンサー、Suomi-NPP（SNPP）, NOAA-20(JPSS-1)の２つの衛星に搭載されている。（NOAA-20とJPSS-1は同じ衛星、JPSS-1からNOAA-20に名前が変わった。）どちらの衛星もNASAとNOAAの共同プロジェクト Joint Polar Satellite System (JPSS) により打ち上げられたもの。SNPP は JPSS-1のための実験衛星という位置づけらしい。</p>
+<p>赤外線〜可視光を含む波長の光を受信する22個のセンサーからなる装置。様々な波長で観測することにより地表や海洋の色や夜間の光を観測する。雲、エアロゾル、氷、海の色、植生、夜間光などの分析に利用できる。</p>
 
-<p>VIIRSを搭載した衛星は今後しばらく（2030以降まで）は運用を続けられる予定。SNPPのデータは2012年から利用可能。NOAA-20の</p>
+<p>Suomi-NPP（SNPP）, NOAA-20(JPSS-1)の２つの衛星に搭載されている。どちらの衛星もNASAとNOAAの共同プロジェクト Joint Polar Satellite System (JPSS) により打ち上げられ運用されている。（NOAA-20 と JPSS-1は同じ衛星、JPSS-1 から NOAA-20 に名前が変わった。SNPP は JPSS-1のための実験衛星という位置付けらしい。）</p>
+
+<p>SNPPのデータは2012年から利用可能で、VIIRSを搭載した衛星は今後しばらく（2030以降まで）は運用を続けられる予定。</p>
+
+<h1 id="viirs-データ情報">VIIRS データ情報</h1>
+
+<p><a href="http://rammb.cira.colostate.edu/projects/npp/Beginner_Guide_to_VIIRS_Imagery_Data.pdf">Begginer Guide to VIIRS data</a> 最初にこれを読む</p>
 
 <ul>
+<li>SDR : 22個のセンサーから得られた値を保存したデータ（波長の強さ）</li>
+<li>EDR : センサーから得られた値を加工して得られたデータ（雲マスク、植生など）</li>
 <li><a href="https://ncc.nesdis.noaa.gov/VIIRS/index.php">SNPP VIIRS</a>
 
 <ul>
-<li><a href="http://rammb.cira.colostate.edu/projects/npp/Beginner_Guide_to_VIIRS_Imagery_Data.pdf">Begginer Guide to VIIRS data</a></li>
+<li><a href="https://www.star.nesdis.noaa.gov/jpss/documents/UserGuides/VIIRS_SDR_Users_Guide.pdf">VIIRS_SDR_Users_Guide</a></li>
+<li><a href="https://ncc.nesdis.noaa.gov/documents/documentation/viirs-sdr-dataformat.pdf">VIIRS SDR Data format</a></li>
 </ul></li>
-<li><a href="https://ncc.nesdis.noaa.gov/VIIRS/">NOAA-20 VIIRS</a></li>
 </ul>
+
+<p><a href="https://ncc.nesdis.noaa.gov/VIIRS/">NOAA-20 VIIRS</a></p>
+
+<p><a href="https://viirsland.gsfc.nasa.gov/">NASA VIIRS LAND</a></p>
 
 <p><a href="http://www.ssec.wisc.edu/datacenter/npp/ASIA.html">S-NPP衛星軌道情報</a></p>
 
+<p>JPSSのサイトに、利用できるデータプロダクトの一覧がある
+<a href="https://www.star.nesdis.noaa.gov/jpss/JPSS_products.php">https://www.star.nesdis.noaa.gov/jpss/JPSS_products.php</a></p>
+
 <p><a href="https://sorabatake.jp/240/">衛星が撮影した夜の地球「夜間光」がお金に変わる!? 概要と利用事例</a></p>
+
+<h2 id="データ形式">データ形式</h2>
+
+<p>JPSSのデータフォーマットのドキュメントは Common Data Format Control Book –
+External (<code>CDFCB-X</code>) と呼ばれているらしい。VIIRSドキュメントのコードは <code>474</code> 、VIIRSのデータフォーマットのドキュメントコードは <code>474-00001</code></p>
+
+<p><a href="https://www.datarefuge.org/sv/dataset/polar-orbiting-missions">JPSSのドキュメントがDataRefugeにある</a>。 DataRefugeは環境や気候関係のデータのアーカイブを進めている？トランプ大統領が気候変動に関するデータの公開を制限しようとした時に対策として生まれた運動？？</p>
+
+<ul>
+<li>CDFCB-X Volume I: Overview
+
+<ul>
+<li>474-00001-01_JPSS-CDFCB-X-Vol-I_0124D</li>
+<li>474-00001-01_jpss-cdfcb-x-vol-i_0200c.pdf こっちのが新しいらしい</li>
+</ul></li>
+<li>CDFCB-X Volume II: Raw Data Record Formats</li>
+<li>CDFCB-X Volume III: Sensor Data Record/Temperature Data Record Formats</li>
+<li>CDFCB-X Volume IV: Environmental Data Record/Intermediate Product/Application Related Product Formats
+
+<ul>
+<li>CDFCB-X Volume IV Part 1: Overview, IPs, ARPs, and Common Geolocation Data</li>
+<li>CDFCB-X Volume IV Part 2: Imagery, Atmospheric, and Cloud EDRs</li>
+<li>CDFCB-X Volume IV Part 3: Land and Ocean/Water EDRs</li>
+<li>CDFCB-X Volume IV Part 4: Earth Radiation Budget and Space EDRs</li>
+</ul></li>
+<li>CDFCB-X Volume V: Metadata</li>
+<li>CDFCB-X Volume VI: Ancillary Data, Auxiliary Data, Messages, and Reports</li>
+<li>CDFCB-X Volume VII: 廃止</li>
+<li>CDFCB-X Volume VIII: Look Up Tables and Processing Coefficients</li>
+</ul>
+
+<h3 id="sdr">SDR</h3>
+
+<h3 id="edr">EDR</h3>
+
+<h4 id="cloud-mask">Cloud Mask</h4>
+
+<p>なぜか Cloud Mask EDR のデータ形式のドキュメントは、<code>474-00001</code> の中にない！</p>
+
+<p><code>474-00448-02-11_JPSS-DD-Vol-II-Part-11_0200E.pdf</code></p>
+
+<p>ファイル名は VICMO</p>
+
+<p>Cloud Mask が EDR になったのは 2017 年から、それ以前は Cloud Mask Intermediate Product と呼ばれていた（ファイル名は IICMO）。</p>
+
+<p>IICMOのドキュメントは <code>474-00062_OAD-VIIRS-Cloud-Mask-IP_G.pdf</code></p>
 
 <h1 id="生データ取得">生データ取得</h1>
 
-<h2 id="nasa-class">NASA CLASS</h2>
+<h2 id="noaa-class">NOAA CLASS</h2>
+
+<p>SDR, EDRの生データを取得できるが、APIで自動取得することができない&hellip;</p>
 
 <ul>
 <li><a href="https://www.bou.class.noaa.gov/saa/products/search?sub_id=0&amp;datatype_family=VIIRS_SDR&amp;submit.x=25&amp;submit.y=3">VIIRS SDR</a></li>
 <li><a href="https://www.bou.class.noaa.gov/saa/products/search?sub_id=0&amp;datatype_family=VIIRS_EDR&amp;submit.x=24&amp;submit.y=11">VIIRS EDS</a></li>
+</ul>
+
+<h2 id="nasa-laads">NASA LAADS</h2>
+
+<p>NOAA CLASS 同様のSDR/EDRが入手できるが、どうも何らかの処理が加えられているように見える。ただスクレイピングによりデータ取得を自動化できる。</p>
+
+<ul>
+<li><a href="https://ladsweb.modaps.eosdis.nasa.gov/missions-and-measurements/viirs/">NASA LAADS VIIRS</a>
+
+<ul>
+<li><a href="https://ladsweb.modaps.eosdis.nasa.gov/search/order/1/VIIRS:Suomi-NPP">VIIRS:Suomi-NPP</a></li>
+</ul></li>
 </ul>
 
 <h1 id="データプロダクト-サービス">データプロダクト・サービス</h1>
@@ -518,9 +603,9 @@ https://github.com/alex-shpak/hugo-book
   
   <div>
     
-    <a class="flex align-center" href="https://github.com/teuder/notebook/commit/effb3df32a2140d7276611cb7f9a51510ec092d1" title='Last modified 2019-10-13 by Masaki Tsuda' target="_blank" rel="noopener">
+    <a class="flex align-center" href="https://github.com/teuder/notebook/commit/634ba2d02d2fdc16dfd101d1e351f56046184965" title='Last modified 2019-10-24 by Masaki Tsuda' target="_blank" rel="noopener">
       <img src="/notebook/svg/calendar.svg" alt="Changed" />
-      <span>2019-10-13</span>
+      <span>2019-10-24</span>
     </a>
   </div>
   
@@ -547,9 +632,21 @@ https://github.com/alex-shpak/hugo-book
     <nav id="TableOfContents">
 <ul>
 <li><a href="#viirs">VIIRS</a></li>
+<li><a href="#viirs-データ情報">VIIRS データ情報</a>
+<ul>
+<li><a href="#データ形式">データ形式</a>
+<ul>
+<li><a href="#sdr">SDR</a></li>
+<li><a href="#edr">EDR</a>
+<ul>
+<li><a href="#cloud-mask">Cloud Mask</a></li>
+</ul></li>
+</ul></li>
+</ul></li>
 <li><a href="#生データ取得">生データ取得</a>
 <ul>
-<li><a href="#nasa-class">NASA CLASS</a></li>
+<li><a href="#noaa-class">NOAA CLASS</a></li>
+<li><a href="#nasa-laads">NASA LAADS</a></li>
 </ul></li>
 <li><a href="#データプロダクト-サービス">データプロダクト・サービス</a></li>
 <li><a href="#viirs-を利用した論文">VIIRS を利用した論文</a>

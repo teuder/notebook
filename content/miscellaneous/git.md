@@ -16,7 +16,11 @@ type: docs
 
 
 
+# ファイルを特定のコミットの時に戻す
 
+```
+git checkout [コミット番号] [ファイルパス]
+```
 
 
 # ブランチの作成 : branch
@@ -48,6 +52,8 @@ git push レポジトリ ブランチ
 
 
 # Githubへのプルリク
+
+プルリク（pull request）は git ではなく Github や Gitlab における概念
 
 [初心者向けGithubへのPullRequest方法](https://qiita.com/samurairunner/items/7442521bce2d6ac9330b)
 

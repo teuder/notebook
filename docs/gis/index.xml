@@ -35,7 +35,7 @@
       <pubDate>Sat, 14 Sep 2019 00:00:00 +0000</pubDate>
       
       <guid>https://teuder.github.io/notebook/gis/viirs/</guid>
-      <description>VIIRS Visible Infrared Imaging Radiometer Suite 赤外線を含む波長光を受信するセンサー、Suomi-NPP（SNPP）, NOAA-20(JPSS-1)の２つの衛星に搭載されている</description>
+      <description>VIIRS Visible Infrared Imaging Radiometer Suite 赤外線〜可視光を含む波長の光を受信する22個のセンサーからなる装置。様々な波長で観測することにより地表や海洋の色や夜間の光を観測</description>
     </item>
     
     <item>

@@ -25,6 +25,7 @@ type: docs
  - rgeos : Geometry Engine - Open Source ('GEOS')ライブラリへのバインディング
  - GISTools : 空間データをマッピングしたり加工したり
 
+ - metR : 気象関係のデータの扱いを容易にするパッケージらしい
 
 ## データの読み書き
 

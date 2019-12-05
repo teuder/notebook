@@ -100,6 +100,11 @@ scale_fill_gradientn(..., colours, values = NULL, space = "Lab",
 ## 離散値に対する色つけ
 
 
+## 複数のカラーパレットを使用する
+
+```
+ggnewscale::new_scale()
+```
 
 # 軸の変換
 

@@ -48,6 +48,15 @@
     </item>
     
     <item>
+      <title>stars</title>
+      <link>https://teuder.github.io/notebook/r/stars/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://teuder.github.io/notebook/r/stars/</guid>
+      <description>stars 時空間のハイパーキューブを扱うためのパッケージらしい stars sfオブジェクトをラスター化する st_rasterize(sf, template = st_as_stars(st_bbox(sf), values = NA_real_, ...), file = tempfile(), driver = &amp;quot;GTiff&amp;quot;, options = character(0), ...) template : ラスターのグ</description>
+    </item>
+    
+    <item>
       <title>DBI</title>
       <link>https://teuder.github.io/notebook/r/dbi/</link>
       <pubDate>Wed, 04 Sep 2019 00:00:00 +0000</pubDate>
