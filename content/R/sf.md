@@ -97,3 +97,22 @@ predicate whether `x` touches/contains/within/ `y`
 
 
 st_write
+
+
+# ggplot2
+
+プロット時に投影図法を指定する
+
+```r
+library(sf)
+library(ggplot2)
+
+land <- read_sf("data/ne_10m_land/ne_10m_land.shp")
+land_crop <- st_crop(land, c(xmax=180, xmin=-180, ymin = -80, ymax=80))
+
+ggplot(land_crop)+
+  geom_sf()+
+  #coord_sf(crs = sf::st_crs('+proj=moll')) # モルワイデ図法
+  coord_sf(crs = sf::st_crs('+proj=wag6')) # Wagner VI projection
+```
+

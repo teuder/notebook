@@ -37,8 +37,8 @@ LIMIT 10;
 
 # 基本文法
 
-[標準SQLの演算子](https://cloud.google.com/bigquery/docs/reference/standard-sql/operators?hl=ja)
-
+- [標準SQLの演算子](https://cloud.google.com/bigquery/docs/reference/standard-sql/operators?hl=ja)
+- [標準SQLの関数と演算子](https://cloud.google.com/bigquery/docs/reference/standard-sql/functions-and-operators?hl=ja)
 
 # Data set を作成する
 
@@ -51,5 +51,37 @@ bq --location=location mk \
 project_id:dataset
 ```
 
-- `--location-US`
-- `--default_table_expiration integer1`
+- `location` US など
+- `integer1` テーブル自動削除までの秒数を指定する、デフォルトでは 3600 、0に設定すると自動削除しない
+- `integer2` テーブルに対するパーティションの自動削除までの秒数
+- `description` データセットの説明、`'` か `"` で括る
+- `project_id:dataset` データセットを作成したいプロジェクトIDと作成するデータセットの名前
+
+# Web IU のキーボードショートカット
+
+Mac の場合は Ctrl の代わりに Cmd にする
+
+|キー|アクション|
+|----|----|
+|Ctrl Enter|現在のクエリを実行|
+|Tab|現在の単語をオートコンプリート|
+|選択 Tab|選択範囲のインデントを上げる|
+|選択 Shift Tab|選択範囲のインデントを下げる|
+|Ctrl|テーブル名をハイライト表示|
+|Ctrl テーブル名をクリック|テーブル スキーマを開く|
+|Ctrl E|選択項目からクエリを実行|
+|Ctrl /|選択行をコメントアウト|
+|Ctrl Shift F|クエリを書式設定|
+
+[Web IU のキーボードショートカット](https://cloud.google.com/bigquery/docs/bigquery-web-ui#keyboard_shortcuts)
+
+# 実数を丸める関数
+
+- `ROUND()`
+- `CEILING()`
+- `FLOOR()`
+- `TRUNC()`
+
+[丸め関数の挙動](https://cloud.google.com/bigquery/docs/reference/standard-sql/functions-and-operators?hl=ja#floor)
+
+![Pythonの丸め関数の挙動、多分BigQueryと同じ](ceil_floor_trunc_round.jpeg "Pythonの丸め関数の挙動")
