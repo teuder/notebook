@@ -8,7 +8,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://teuder.github.io/notebook/miscellaneous/bigquery/" />
 <meta property="article:published_time" content="2019-09-04T00:00:00+00:00" />
-<meta property="article:modified_time" content="2019-09-04T15:21:27+09:00" />
+<meta property="article:modified_time" content="2019-12-24T12:18:35+09:00" />
 <title>BigQuery | notebook</title>
 <link rel="icon" href="/notebook/favicon.png" type="image/x-icon">
 
@@ -16,7 +16,7 @@
 <link rel="stylesheet" href="/notebook/book.min.1b994bd28c6ce2255f069b6bf6837b4d396307637fc48d61dcb2a6caac26e031.css" integrity="sha256-G5lL0oxs4iVfBptr9oN7TTljB2N/xI1h3LKmyqwm4DE=">
 
 
-<script defer src="/notebook/search.min.e660df3191b3590f8908528e15a3fe146e6968c34c193760f3f4d24bf5996573.js" integrity="sha256-5mDfMZGzWQ&#43;JCFKOFaP&#43;FG5paMNMGTdg8/TSS/WZZXM="></script>
+<script defer src="/notebook/search.min.7ffc8c7341d7e52911f443dff38a4a35d7a300226eb294ef9db9191e39279d6b.js" integrity="sha256-f/yMc0HX5SkR9EPf84pKNdejACJuspTvnbkZHjknnWs="></script>
 
 <!--
 Made with Book Theme
@@ -193,6 +193,16 @@ https://github.com/alex-shpak/hugo-book
       
         <li>
 
+  <a href="/notebook/r/gganimate/" >
+      gganimate
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
   <a href="/notebook/r/stars/" >
       stars
   </a>
@@ -209,6 +219,36 @@ https://github.com/alex-shpak/hugo-book
 
 </li>
       
+    
+  </ul>
+  
+
+
+
+  </li>
+
+
+  
+    
+
+  <li >
+    
+      
+
+  <a href="/notebook/fishries/" >
+      Fishries
+  </a>
+
+
+    
+
+    
+
+
+
+
+  
+  <ul>
     
   </ul>
   
@@ -490,7 +530,10 @@ https://github.com/alex-shpak/hugo-book
 
 <h1 id="基本文法">基本文法</h1>
 
-<p><a href="https://cloud.google.com/bigquery/docs/reference/standard-sql/operators?hl=ja">標準SQLの演算子</a></p>
+<ul>
+<li><a href="https://cloud.google.com/bigquery/docs/reference/standard-sql/operators?hl=ja">標準SQLの演算子</a></li>
+<li><a href="https://cloud.google.com/bigquery/docs/reference/standard-sql/functions-and-operators?hl=ja">標準SQLの関数と演算子</a></li>
+</ul>
 
 <h1 id="data-set-を作成する">Data set を作成する</h1>
 
@@ -503,9 +546,87 @@ project_id:dataset
 </code></pre>
 
 <ul>
-<li><code>--location-US</code></li>
-<li><code>--default_table_expiration integer1</code></li>
+<li><code>location</code> US など</li>
+<li><code>integer1</code> テーブル自動削除までの秒数を指定する、デフォルトでは 3600 、0に設定すると自動削除しない</li>
+<li><code>integer2</code> テーブルに対するパーティションの自動削除までの秒数</li>
+<li><code>description</code> データセットの説明、<code>'</code> か <code>&quot;</code> で括る</li>
+<li><code>project_id:dataset</code> データセットを作成したいプロジェクトIDと作成するデータセットの名前</li>
 </ul>
+
+<h1 id="web-iu-のキーボードショートカット">Web IU のキーボードショートカット</h1>
+
+<p>Mac の場合は Ctrl の代わりに Cmd にする</p>
+
+<table>
+<thead>
+<tr>
+<th>キー</th>
+<th>アクション</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>Ctrl Enter</td>
+<td>現在のクエリを実行</td>
+</tr>
+
+<tr>
+<td>Tab</td>
+<td>現在の単語をオートコンプリート</td>
+</tr>
+
+<tr>
+<td>選択 Tab</td>
+<td>選択範囲のインデントを上げる</td>
+</tr>
+
+<tr>
+<td>選択 Shift Tab</td>
+<td>選択範囲のインデントを下げる</td>
+</tr>
+
+<tr>
+<td>Ctrl</td>
+<td>テーブル名をハイライト表示</td>
+</tr>
+
+<tr>
+<td>Ctrl テーブル名をクリック</td>
+<td>テーブル スキーマを開く</td>
+</tr>
+
+<tr>
+<td>Ctrl E</td>
+<td>選択項目からクエリを実行</td>
+</tr>
+
+<tr>
+<td>Ctrl /</td>
+<td>選択行をコメントアウト</td>
+</tr>
+
+<tr>
+<td>Ctrl Shift F</td>
+<td>クエリを書式設定</td>
+</tr>
+</tbody>
+</table>
+
+<p><a href="https://cloud.google.com/bigquery/docs/bigquery-web-ui#keyboard_shortcuts">Web IU のキーボードショートカット</a></p>
+
+<h1 id="実数を丸める関数">実数を丸める関数</h1>
+
+<ul>
+<li><code>ROUND()</code></li>
+<li><code>CEILING()</code></li>
+<li><code>FLOOR()</code></li>
+<li><code>TRUNC()</code></li>
+</ul>
+
+<p><a href="https://cloud.google.com/bigquery/docs/reference/standard-sql/functions-and-operators?hl=ja#floor">丸め関数の挙動</a></p>
+
+<p><img src="ceil_floor_trunc_round.jpeg" alt="Pythonの丸め関数の挙動、多分BigQueryと同じ" title="Pythonの丸め関数の挙動" /></p>
 </article>
 
       
@@ -513,9 +634,9 @@ project_id:dataset
   
   <div>
     
-    <a class="flex align-center" href="https://github.com/teuder/notebook/commit/ad55e8bcfafa4be4fb89433f1e170cbb1c7c0274" title='Last modified 2019-09-04 by Masaki E. Tsuda' target="_blank" rel="noopener">
+    <a class="flex align-center" href="https://github.com/teuder/notebook/commit/23046fc0b7abc28fe6cd10fcb0fbad52b83a3151" title='Last modified 2019-12-24 by Masaki Tsuda' target="_blank" rel="noopener">
       <img src="/notebook/svg/calendar.svg" alt="Changed" />
-      <span>2019-09-04</span>
+      <span>2019-12-24</span>
     </a>
   </div>
   
@@ -547,6 +668,8 @@ project_id:dataset
 </ul></li>
 <li><a href="#基本文法">基本文法</a></li>
 <li><a href="#data-set-を作成する">Data set を作成する</a></li>
+<li><a href="#web-iu-のキーボードショートカット">Web IU のキーボードショートカット</a></li>
+<li><a href="#実数を丸める関数">実数を丸める関数</a></li>
 </ul>
 </nav>
   </aside>
