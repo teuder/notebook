@@ -12,6 +12,24 @@
     
     
     <item>
+      <title>environment</title>
+      <link>https://teuder.github.io/notebook/python/environment/</link>
+      <pubDate>Fri, 17 Jan 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://teuder.github.io/notebook/python/environment/</guid>
+      <description>Python 環境設定 Python 本体のインストールとバージョン管理 pyenv python本体のバージョン管理、インストール イントールと設定 brew install pyenv ~/.zshrc などに以下の記述を追加</description>
+    </item>
+    
+    <item>
+      <title>Python in VScode</title>
+      <link>https://teuder.github.io/notebook/python/vscode/</link>
+      <pubDate>Fri, 17 Jan 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://teuder.github.io/notebook/python/vscode/</guid>
+      <description>Python in VScode VScode で Python を使う時の Tips 参考：VS Code でPython，Jupyter を動かす 拡張機能 Python 必須 はじめに コマンドパレットで select interpreter と入力 VScodeと一</description>
+    </item>
+    
+    <item>
       <title>anaconda</title>
       <link>https://teuder.github.io/notebook/python/anaconda/</link>
       <pubDate>Tue, 01 Oct 2019 00:00:00 +0000</pubDate>

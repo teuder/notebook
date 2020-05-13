@@ -109,3 +109,8 @@ ggnewscale::new_scale()
 # 軸の変換
 
 [geom_barやgeom_histgramでの軸の変換](https://qiita.com/nozma/items/2954b21e7136b3011580)
+
+
+# 複数の図をまとめる
+
+`patchwork`

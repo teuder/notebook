@@ -88,7 +88,9 @@ password <- scan(".pgpass", what="")
 
 PostgreSQL() は接続の設定を変えられる。
 
-`PostgreSQL(max.con = 16, fetch.default.rec = 500, force.reload = FALSE)`
+```
+PostgreSQL(max.con = 16, fetch.default.rec = 500, force.reload = FALSE)
+```
 
 - max.con：最大コネクション数
 - fetch.default.rec：データを取得するときに一度に送信するレコード数。fetch()はこの値を利用する。
@@ -96,11 +98,15 @@ PostgreSQL() は接続の設定を変えられる。
 
 ## コネクションの情報を表示する
 
-`summary(con)`
+```
+summary(con)
+```
 
 ## コネクションを解除する
 
-`dbDisconnect(con)   ## Closes the connection`
+```
+dbDisconnect(con)   ## Closes the connection
+```
 
 
 
@@ -128,23 +134,31 @@ dbWriteTable(con,
 
 ## テーブルのリスト：dbListTables
 
-`dbListTables(con)`
+```
+dbListTables(con)
+```
 
 
 ## テーブルのカラム名：dbListFields
 
-`dbListFields(con, "iris")`
+```
+dbListFields(con, "iris")
+```
 
 
 ## DBのデータを取得する
 
 ### テーブルを指定して読み込む：dbReadTable
 
-`iris1 <- dbReadTable(con, "iris")`
+```
+iris1 <- dbReadTable(con, "iris")
+```
 
 ### クエリの結果を読み込む：dbGetQuery
 
-`data <- dbGetQuery(con, "SELECT * FROM iris ORDER BY weighted DESC LIMIT 5")`
+```
+data <- dbGetQuery(con, "SELECT * FROM iris ORDER BY weighted DESC LIMIT 5")
+```
 
 ### クエリの送信とデータの取得を分離する：dbSendQuery & fetch
 
@@ -152,25 +166,35 @@ dbWriteTable(con,
 
 クエリを送信する
 
-`rs <- dbSendQuery(con, "SELECT * FROM iris")`
+```
+rs <- dbSendQuery(con, "SELECT * FROM iris")
+```
 
 最初の10レコードだけ取得する
 
-`iris3.first10 <- fetch(rs, 10)`
+```
+iris3.first10 <- fetch(rs, 10)
+```
 
 残りを全て取得する 
 
-`iris3.rest <- fetch(rs, -1)`
+```
+iris3.rest <- fetch(rs, -1)
+```
 
 fetch はカーソルを移動させながらデータを取得する。なので上記の場合には `iris3.first10` と `iris3.rest` 合体させると全レコードになる。
 
-`rbind(iris3.first10, iris3.rest)`
+```
+rbind(iris3.first10, iris3.rest)
+```
 
 **【重要】ローカルとリモート確保されたリソースを開放する**
 
 dbSendQueryの結果はリモートのリソースを消費するので必要がなくなったら `dbClearResult(rs)` すること。
 
-`dbClearResult(rs)`
+```
+dbClearResult(rs)
+```
 
 
 
@@ -199,7 +223,7 @@ dbClearResult(con, rs)
 rs <- dbSendQuery(con, "SELECT * FROM hoge") #OK
 ```
 
-dbSendQuery()するとサーバーでクエリが実行され、サーバー上に結果が保存されるらしい、そのままにしておくとメモリなどのリソースを消費するので、必要なくなった結果は適宜開放する。
+`dbSendQuery()` するとサーバーでクエリが実行され、サーバー上に結果が保存されるらしい、そのままにしておくとメモリなどのリソースを消費するので、必要なくなった結果は適宜開放する。
 
 
 ## テーブルを削除する：dbRemoveTable

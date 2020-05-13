@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0"><meta property="og:title" content="git" />
-<meta property="og:description" content="Git Gitの基本コマンド ファイルを特定のコミットの時に戻す git checkout [コミット番号] [ファイルパス] ブランチの作成 : branch git branch ブランチ名 # ブランチの作成" />
+<meta property="og:description" content="Git Gitの基本コマンド .gitignoreの仕様詳解 レポジトリを作成する、コピーする init : 既存のフォルダをレポジトリにする git init して登録されたフ" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://teuder.github.io/notebook/miscellaneous/git/" />
 <meta property="article:published_time" content="2019-08-26T00:00:00+00:00" />
@@ -16,7 +16,7 @@
 <link rel="stylesheet" href="/notebook/book.min.1b994bd28c6ce2255f069b6bf6837b4d396307637fc48d61dcb2a6caac26e031.css" integrity="sha256-G5lL0oxs4iVfBptr9oN7TTljB2N/xI1h3LKmyqwm4DE=">
 
 
-<script defer src="/notebook/search.min.7ffc8c7341d7e52911f443dff38a4a35d7a300226eb294ef9db9191e39279d6b.js" integrity="sha256-f/yMc0HX5SkR9EPf84pKNdejACJuspTvnbkZHjknnWs="></script>
+<script defer src="/notebook/search.min.65b233c1d8cc9f449621b4e785a42902d15dcf0c5c879d0d4f57f369e2632cc0.js" integrity="sha256-ZbIzwdjMn0SWIbTnhaQpAtFdzwxch50NT1fzaeJjLMA="></script>
 
 <!--
 Made with Book Theme
@@ -113,6 +113,26 @@ https://github.com/alex-shpak/hugo-book
       
         <li>
 
+  <a href="/notebook/python/environment/" >
+      environment
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/python/vscode/" >
+      Python in VScode
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
   <a href="/notebook/python/anaconda/" >
       anaconda
   </a>
@@ -193,8 +213,48 @@ https://github.com/alex-shpak/hugo-book
       
         <li>
 
+  <a href="/notebook/r/bigrquery/" >
+      bigrquery
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
   <a href="/notebook/r/gganimate/" >
       gganimate
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/r/lubridate/" >
+      lubridate
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/r/reticulate/" >
+      reticulate
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/r/rstudio/" >
+      RStudio
   </a>
 
 </li>
@@ -219,36 +279,6 @@ https://github.com/alex-shpak/hugo-book
 
 </li>
       
-    
-  </ul>
-  
-
-
-
-  </li>
-
-
-  
-    
-
-  <li >
-    
-      
-
-  <a href="/notebook/fishries/" >
-      Fishries
-  </a>
-
-
-    
-
-    
-
-
-
-
-  
-  <ul>
     
   </ul>
   
@@ -309,6 +339,16 @@ https://github.com/alex-shpak/hugo-book
 
   
   <ul>
+    
+      
+        <li>
+
+  <a href="/notebook/gis/bigquerygis/" >
+      BigQuery GIS
+  </a>
+
+</li>
+      
     
       
         <li>
@@ -433,6 +473,16 @@ https://github.com/alex-shpak/hugo-book
       
         <li>
 
+  <a href="/notebook/miscellaneous/jupyter/" >
+      jupyter
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
   <a href="/notebook/miscellaneous/vscode/" >
       vscode
   </a>
@@ -511,30 +561,99 @@ https://github.com/alex-shpak/hugo-book
 
 <p><a href="https://qiita.com/konweb/items/621722f67fdd8f86a017">Gitの基本コマンド</a></p>
 
-<h1 id="ファイルを特定のコミットの時に戻す">ファイルを特定のコミットの時に戻す</h1>
+<p><a href="https://qiita.com/anqooqie/items/110957797b3d5280c44f">.gitignoreの仕様詳解</a></p>
 
-<pre><code>git checkout [コミット番号] [ファイルパス]
+<h1 id="レポジトリを作成する-コピーする">レポジトリを作成する、コピーする</h1>
+
+<h2 id="init-既存のフォルダをレポジトリにする">init : 既存のフォルダをレポジトリにする</h2>
+
+<p>git init して登録されたフォルダが、大元のレポジトリになる？</p>
+
+<p>他の人は、このレポジトリをクローンすることで、開発に参加できる</p>
+
+<h2 id="clone-既存のレポジトリをコピーする">clone : 既存のレポジトリをコピーする</h2>
+
+<p>既にあるレポジトリの内容をコピーして、ローカルにレポジトリのクローンを作成する</p>
+
+<p>このクローンに、変更を加えることで、元レポジトリの開発に参加できる</p>
+
+<h1 id="既にあるレポジトリへの操作">既にあるレポジトリへの操作</h1>
+
+<h2 id="add">add</h2>
+
+<p>作成したファイルを git の管理下に追加する（ステージングする）。一度追加したら同じファイルを再度追加する必要はない</p>
+
+<pre><code>git add path_to_file
+git add . # カレント以下の全てのファイル
+git add *.java # 拡張子が .java
 </code></pre>
 
-<h1 id="ブランチの作成-branch">ブランチの作成 : branch</h1>
+<h2 id="commit">commit</h2>
 
-<pre><code>git branch ブランチ名 # ブランチの作成
-git checkout -b ブランチ名 #ブランチの作成とそのブランチへの切り替え
+<p>ステージングしたファイルの変更内容を記録する（コミットする）</p>
+
+<pre><code>git commit -m 'コメント'
 </code></pre>
 
-<h1 id="ブランチの切り替え-checkout">ブランチの切り替え : checkout</h1>
+<h2 id="push-リモートレポジトリに反映する">push リモートレポジトリに反映する</h2>
 
-<pre><code>git checkout ブランチ名
-</code></pre>
-
-<h1 id="リモートレポジトリに反映する-push">リモートレポジトリに反映する : push</h1>
-
-<p>現状のローカルレポジトリの最新 commit のフォルダの状態をリモート</p>
+<p>現状のローカルレポジトリの最新 コミット 状態を、リモートレポジトリに反映する（プッシュする）</p>
 
 <pre><code>git push レポジトリ ブランチ
 </code></pre>
 
 <p>例：<code>git origin master</code></p>
+
+<h2 id="ブランチの作成-branch">ブランチの作成 : branch</h2>
+
+<pre><code>git branch ブランチ名 # ブランチの作成
+git checkout -b ブランチ名 #ブランチの作成とそのブランチへの切り替え
+</code></pre>
+
+<h2 id="ブランチの切り替え-checkout">ブランチの切り替え : checkout</h2>
+
+<p>ブランチを切り替えると、フォルダの中身の状態が、その</p>
+
+<pre><code>git checkout ブランチ名
+</code></pre>
+
+<h2 id="ファイル-フォルダを特定のコミットの状態に戻す">ファイル/フォルダを特定のコミットの状態に戻す</h2>
+
+<pre><code>git checkout [コミット番号] [ファイルパス]
+</code></pre>
+
+<h1 id="ローカルで削除したファイル-フォルダを-リモートレポジトリからも削除する">ローカルで削除したファイル・フォルダを、リモートレポジトリからも削除する</h1>
+
+<p>ローカルフォルダには、ファイルやフォルダがあっても、リモートレポジトリにはアップロードされないようにしたい。
+既に、リモートレポジトリにアップロードされてしまったファイル・フォルダを、リモートレポジトリから削除したい</p>
+
+<ul>
+<li>後から、<code>.gitignore</code> に追加削除した場合</li>
+<li><code>.gitignore</code> の内容と関係なく、後から、特定のファイル・フォルダを除外したい場合</li>
+</ul>
+
+<p><code>.gitignore</code> に新たにファイルやフォルダを追加した場合も同じ</p>
+
+<p>あるいは、以前は追跡していたファイル・フォルダの追跡をやめて、リモートレポジトリから削除したい場合</p>
+
+<pre><code># .gitignore に追加した後、あるいは、ファイルやフォルダを削除した後
+
+# キャッシュを削除する
+git rm --cached    /path/to/消したいファイル.txt
+git rm --cached -r /path/to/消したいフォルダ
+
+# .gitignore を編集したなら
+git add .gitignore
+
+# 
+git status
+
+# コミット
+git commit -m &quot;remove some files&quot;
+
+# リモートに反映
+git push origin master
+</code></pre>
 
 <h1 id="githubへのプルリク">Githubへのプルリク</h1>
 
@@ -583,10 +702,21 @@ git checkout -b ブランチ名 #ブランチの作成とそのブランチへ�
     <nav id="TableOfContents">
 <ul>
 <li><a href="#git">Git</a></li>
-<li><a href="#ファイルを特定のコミットの時に戻す">ファイルを特定のコミットの時に戻す</a></li>
+<li><a href="#レポジトリを作成する-コピーする">レポジトリを作成する、コピーする</a>
+<ul>
+<li><a href="#init-既存のフォルダをレポジトリにする">init : 既存のフォルダをレポジトリにする</a></li>
+<li><a href="#clone-既存のレポジトリをコピーする">clone : 既存のレポジトリをコピーする</a></li>
+</ul></li>
+<li><a href="#既にあるレポジトリへの操作">既にあるレポジトリへの操作</a>
+<ul>
+<li><a href="#add">add</a></li>
+<li><a href="#commit">commit</a></li>
+<li><a href="#push-リモートレポジトリに反映する">push リモートレポジトリに反映する</a></li>
 <li><a href="#ブランチの作成-branch">ブランチの作成 : branch</a></li>
 <li><a href="#ブランチの切り替え-checkout">ブランチの切り替え : checkout</a></li>
-<li><a href="#リモートレポジトリに反映する-push">リモートレポジトリに反映する : push</a></li>
+<li><a href="#ファイル-フォルダを特定のコミットの状態に戻す">ファイル/フォルダを特定のコミットの状態に戻す</a></li>
+</ul></li>
+<li><a href="#ローカルで削除したファイル-フォルダを-リモートレポジトリからも削除する">ローカルで削除したファイル・フォルダを、リモートレポジトリからも削除する</a></li>
 <li><a href="#githubへのプルリク">Githubへのプルリク</a></li>
 </ul>
 </nav>

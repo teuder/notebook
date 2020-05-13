@@ -35,7 +35,7 @@
       <pubDate>Mon, 26 Aug 2019 00:00:00 +0000</pubDate>
       
       <guid>https://teuder.github.io/notebook/r/raster/</guid>
-      <description>raster # GooTiffの読み込み data &amp;lt;- raster(&amp;#34;path/data.tif&amp;#34;) 値と座標のデータフレームに変換する df &amp;lt;- rasterToPoint(data)</description>
+      <description>raster # GooTiffの読み込み data &amp;lt;- raster::raster(&amp;#34;path/data.tif&amp;#34;) 値と座標のデータフレームに変換する df &amp;lt;- raster::rasterToPoint(data) 緯度経度と値のデータフレームからラスタデータを作成する test &amp;lt;- raster::rasterize(x = data[c(&amp;quot;lon&amp;quot;,&amp;quot;lat&amp;quot;)], #</description>
     </item>
     
     <item>
@@ -44,7 +44,16 @@
       <pubDate>Mon, 26 Aug 2019 00:00:00 +0000</pubDate>
       
       <guid>https://teuder.github.io/notebook/r/sf/</guid>
-      <description>sf 定義されたクラス sfgクラス：個別の地物 sfcクラス：sfgオブジェクトのリスト、リストの各要素が１地物に相当 sf クラス：sfcオブジェクト</description>
+      <description>sf 定義されたクラス sfg：個別の地物オブジェクト sfc：sfgオブジェクトのリスト、リストの各要素が１地物に相当 sf：sfcオブジェクトをg</description>
+    </item>
+    
+    <item>
+      <title>bigrquery</title>
+      <link>https://teuder.github.io/notebook/r/bigrquery/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://teuder.github.io/notebook/r/bigrquery/</guid>
+      <description>bigrquery R から BigQuery を操作するためのパッケージ ds &amp;lt;- DBI::dbConnect( drv = bigrquery::bigquery(), project = &amp;quot;project_name&amp;quot;, dataset = &amp;quot;dataset_name&amp;quot;, use_legacy_sql = FALSE ) ds &amp;lt;- bq_dataset( project = &amp;quot;project_name&amp;quot;, dataset = &amp;quot;dataset_name&amp;quot;,)</description>
     </item>
     
     <item>
@@ -53,7 +62,34 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://teuder.github.io/notebook/r/gganimate/</guid>
-      <description> gganimate </description>
+      <description>gganimate transition_manual() コマ撮りアニメのように、１枚１枚のコマが切り替わるようなアニメーション transition_manual(frames, ..., cumulative = FALSE) frames でコマ分けに使いたいカラムを指定する。 cumulative = TRUE なら前のコ</description>
+    </item>
+    
+    <item>
+      <title>lubridate</title>
+      <link>https://teuder.github.io/notebook/r/lubridate/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://teuder.github.io/notebook/r/lubridate/</guid>
+      <description>lubridate 日付を扱うパッケージ 文字列から Date, POSIXct オブジェクトの生成 ymd(..., quiet = FALSE, tz = NULL, locale = Sys.getlocale(&amp;quot;LC_TIME&amp;quot;), truncated = 0) ymd_hms(..., quiet = FALSE, tz = &amp;quot;UTC&amp;quot;, locale = Sys.getlocale(&amp;quot;LC_TIME&amp;quot;), truncated = 0) ymd_hm(..., quiet = FALSE, tz = &amp;quot;UTC&amp;quot;, locale = Sys.getlocale(&amp;quot;LC_TIME&amp;quot;), truncated = 0) ymd_h(..., quiet = FALSE,</description>
+    </item>
+    
+    <item>
+      <title>reticulate</title>
+      <link>https://teuder.github.io/notebook/r/reticulate/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://teuder.github.io/notebook/r/reticulate/</guid>
+      <description>reticulate R から Python を呼び出すためのパッケージ 使用する Python を指定する .Rprofile で RETICULATE_PYTHON 環境変数に、使用するPythonを指定するのが安全 Sys.setenv(RETICULATE_PYTHON = &#39;/usr/local/bin/python3&#39;)</description>
+    </item>
+    
+    <item>
+      <title>RStudio</title>
+      <link>https://teuder.github.io/notebook/r/rstudio/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://teuder.github.io/notebook/r/rstudio/</guid>
+      <description>RStudio RStudio Server のアップデート RStudio Server のパージョンを新しくする 実行中のRセッションの確認 sudo rstudio-server active-sessions 実行中のRセッションの停止 sudo rstudio-server suspend-all オフラインモードにする sudo rstudio-server offline</description>
     </item>
     
     <item>

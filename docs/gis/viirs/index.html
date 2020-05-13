@@ -16,7 +16,7 @@
 <link rel="stylesheet" href="/notebook/book.min.1b994bd28c6ce2255f069b6bf6837b4d396307637fc48d61dcb2a6caac26e031.css" integrity="sha256-G5lL0oxs4iVfBptr9oN7TTljB2N/xI1h3LKmyqwm4DE=">
 
 
-<script defer src="/notebook/search.min.7ffc8c7341d7e52911f443dff38a4a35d7a300226eb294ef9db9191e39279d6b.js" integrity="sha256-f/yMc0HX5SkR9EPf84pKNdejACJuspTvnbkZHjknnWs="></script>
+<script defer src="/notebook/search.min.65b233c1d8cc9f449621b4e785a42902d15dcf0c5c879d0d4f57f369e2632cc0.js" integrity="sha256-ZbIzwdjMn0SWIbTnhaQpAtFdzwxch50NT1fzaeJjLMA="></script>
 
 <!--
 Made with Book Theme
@@ -113,6 +113,26 @@ https://github.com/alex-shpak/hugo-book
       
         <li>
 
+  <a href="/notebook/python/environment/" >
+      environment
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/python/vscode/" >
+      Python in VScode
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
   <a href="/notebook/python/anaconda/" >
       anaconda
   </a>
@@ -193,8 +213,48 @@ https://github.com/alex-shpak/hugo-book
       
         <li>
 
+  <a href="/notebook/r/bigrquery/" >
+      bigrquery
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
   <a href="/notebook/r/gganimate/" >
       gganimate
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/r/lubridate/" >
+      lubridate
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/r/reticulate/" >
+      reticulate
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/r/rstudio/" >
+      RStudio
   </a>
 
 </li>
@@ -219,36 +279,6 @@ https://github.com/alex-shpak/hugo-book
 
 </li>
       
-    
-  </ul>
-  
-
-
-
-  </li>
-
-
-  
-    
-
-  <li >
-    
-      
-
-  <a href="/notebook/fishries/" >
-      Fishries
-  </a>
-
-
-    
-
-    
-
-
-
-
-  
-  <ul>
     
   </ul>
   
@@ -309,6 +339,16 @@ https://github.com/alex-shpak/hugo-book
 
   
   <ul>
+    
+      
+        <li>
+
+  <a href="/notebook/gis/bigquerygis/" >
+      BigQuery GIS
+  </a>
+
+</li>
+      
     
       
         <li>
@@ -433,6 +473,16 @@ https://github.com/alex-shpak/hugo-book
       
         <li>
 
+  <a href="/notebook/miscellaneous/jupyter/" >
+      jupyter
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
   <a href="/notebook/miscellaneous/vscode/" >
       vscode
   </a>
@@ -517,38 +567,65 @@ https://github.com/alex-shpak/hugo-book
 
 <p>SNPPのデータは2012年から利用可能で、VIIRSを搭載した衛星は今後しばらく（2030以降まで）は運用を続けられる予定。</p>
 
-<h1 id="viirs-データ情報">VIIRS データ情報</h1>
+<h1 id="衛星">衛星</h1>
 
-<p><a href="http://rammb.cira.colostate.edu/projects/npp/Beginner_Guide_to_VIIRS_Imagery_Data.pdf">Begginer Guide to VIIRS data</a> 最初にこれを読む</p>
+<h2 id="suomi-npp">Suomi-NPP</h2>
 
-<ul>
-<li>SDR : 22個のセンサーから得られた値を保存したデータ（波長の強さ）</li>
-<li>EDR : センサーから得られた値を加工して得られたデータ（雲マスク、植生など）</li>
-<li><a href="https://ncc.nesdis.noaa.gov/VIIRS/index.php">SNPP VIIRS</a>
+<p><a href="https://www.restec.or.jp/satellite/suomi-npp">https://www.restec.or.jp/satellite/suomi-npp</a>
+<a href="https://directory.eoportal.org/web/eoportal/satellite-missions/s/suomi-npp">https://directory.eoportal.org/web/eoportal/satellite-missions/s/suomi-npp</a></p>
 
-<ul>
-<li><a href="https://www.star.nesdis.noaa.gov/jpss/documents/UserGuides/VIIRS_SDR_Users_Guide.pdf">VIIRS_SDR_Users_Guide</a></li>
-<li><a href="https://ncc.nesdis.noaa.gov/documents/documentation/viirs-sdr-dataformat.pdf">VIIRS SDR Data format</a></li>
-</ul></li>
-</ul>
+<p>回帰日数（repeat cycle）は 16 日と書いてあるけど、CLASSのデータの範囲を見ると、2017-06-01 と 2017-06-12 はほぼ同じ地点を通過するので、周期は11日ではないのか？？</p>
 
-<p><a href="https://ncc.nesdis.noaa.gov/VIIRS/">NOAA-20 VIIRS</a></p>
+<p>準回帰軌道である。
+- 太陽同期軌道(Sun-synchronous orbit)でもあるので、太陽同期準回帰軌道と言える。</p>
 
-<p><a href="https://viirsland.gsfc.nasa.gov/">NASA VIIRS LAND</a></p>
+<p>Sun-synchronous near-circular polar orbit</p>
 
 <p><a href="http://www.ssec.wisc.edu/datacenter/npp/ASIA.html">S-NPP衛星軌道情報</a></p>
+
+<h2 id="noaa-20">NOAA-20</h2>
+
+<p><a href="https://www.restec.or.jp/satellite/jpss-series">https://www.restec.or.jp/satellite/jpss-series</a></p>
+
+<h1 id="viirs-データ情報">VIIRS データ情報</h1>
+
+<p>VIIRSポータルサイト</p>
+
+<ul>
+<li><a href="https://ncc.nesdis.noaa.gov/VIIRS/index.php">SNPP VIIRS</a></li>
+<li><a href="https://viirsland.gsfc.nasa.gov/">NASA VIIRS LAND</a></li>
+</ul>
+
+<p>最初にこれを読む</p>
+
+<p><a href="http://rammb.cira.colostate.edu/projects/npp/Beginner_Guide_to_VIIRS_Imagery_Data.pdf">Beginner Guide to VIIRS data</a></p>
+
+<p>このドキュメントが、わかりやすくVIIRSのデータの詳細を理解するのに役だちそう</p>
+
+<ul>
+<li><a href="https://ncc.nesdis.noaa.gov/documents/documentation/viirs-users-guide-tech-report-142a-v1.3.pdf">VIIRS_SDR_Users_Guide v1.3</a></li>
+</ul>
+
+<h2 id="データプロダクト">データプロダクト</h2>
+
+<p>SNPPのデータは大きく３つに分けられる、一般ユーザーはSDRとEDRを使う</p>
+
+<ul>
+<li>RDR (Raw Data Records) : センサーから取得された生データ（一般ユーザーには必要ない）</li>
+<li>SDR (Sensor Data Records) : センサー値を適切に処理して得られた物理量や品質フラグなどのデータ（一般ユーザーにとっての生データ）</li>
+<li>EDR (Environmental Data Records) : センサーから得られた値をさらに加工して得られたデータ（雲マスク、植生など）</li>
+</ul>
 
 <p>JPSSのサイトに、利用できるデータプロダクトの一覧がある
 <a href="https://www.star.nesdis.noaa.gov/jpss/JPSS_products.php">https://www.star.nesdis.noaa.gov/jpss/JPSS_products.php</a></p>
 
-<p><a href="https://sorabatake.jp/240/">衛星が撮影した夜の地球「夜間光」がお金に変わる!? 概要と利用事例</a></p>
+<h2 id="データのドキュメント">データのドキュメント</h2>
 
-<h2 id="データ形式">データ形式</h2>
-
-<p>JPSSのデータフォーマットのドキュメントは Common Data Format Control Book –
-External (<code>CDFCB-X</code>) と呼ばれているらしい。VIIRSドキュメントのコードは <code>474</code> 、VIIRSのデータフォーマットのドキュメントコードは <code>474-00001</code></p>
+<p><a href="https://www.jpss.noaa.gov/sciencedocs.html">JPSSの公式サイトにあるSNPPのドキュメント集</a></p>
 
 <p><a href="https://www.datarefuge.org/sv/dataset/polar-orbiting-missions">JPSSのドキュメントがDataRefugeにある</a>。 DataRefugeは環境や気候関係のデータのアーカイブを進めている？トランプ大統領が気候変動に関するデータの公開を制限しようとした時に対策として生まれた運動？？</p>
+
+<p>JPSSのデータフォーマットのドキュメントは Common Data Format Control Book - External (<code>CDFCB-X</code>) と呼ばれているらしい。VIIRSドキュメントのコードは <code>474</code> 、VIIRSのデータフォーマットのドキュメントコードは <code>474-00001</code></p>
 
 <ul>
 <li>CDFCB-X Volume I: Overview
@@ -573,23 +650,118 @@ External (<code>CDFCB-X</code>) と呼ばれているらしい。VIIRSドキュ�
 <li>CDFCB-X Volume VIII: Look Up Tables and Processing Coefficients</li>
 </ul>
 
+<p>HDF5に格納されているデータの定義は以下のドキュメントにまとまっている</p>
+
+<p>Joint Polar Satellite System (JPSS) Algorithm Specification Volume II: Data Dictionary for VIIRS RDR/SDR</p>
+
+<p>HDF5ファイルに格納されているデータの定義については以下のドキュメントに概要がある</p>
+
+<ul>
+<li><a href="https://ncc.nesdis.noaa.gov/documents/documentation/viirs-sdr-dataformat.pdf">VIIRS SDR Data format</a></li>
+<li><a href="https://www.jpss.noaa.gov/sciencedocuments/sciencedocs/2016-12/474-00448-02-06_JPSS-DD-Vol-II-Part-6_0200F.pdf">Joint Polar Satellite System (JPSS) Algorithm Specification Volume II: Data Dictionary for VIIRS RDR/SDR.</a></li>
+</ul>
+
 <h3 id="sdr">SDR</h3>
+
+<h4 id="i-band-svi01-svi05">I-band (SVI01 - SVI05)</h4>
+
+<p>SVI01, SVI02, SVI03, SVI04, SVI05</p>
+
+<p>位置情報</p>
+
+<p>– GIMGO: projected onto smooth ellipsoid (WGS84 ellipsoid)
+– GITCO: parallax-corrected for terrain</p>
+
+<h4 id="m-band-svm01-svm16">M-band (SVM01 - SVM16)</h4>
+
+<p>SVM01, SVM02, SVM03, SVM04, SVM05, SVM06, SVM07, SVM08, SVM09, SVM10, SVM11, SVM12, SVM13, SVM14, SVM15, SVM16</p>
+
+<p>位置情報</p>
+
+<p>– GMODO: projected onto smooth ellipsoid
+– GMTCO: parallax-corrected for terrain</p>
+
+<h4 id="day-night-band-svdnb">Day Night Band (SVDNB)</h4>
+
+<p>全てのM-band (M1~M16)の波長のセンサーの信号を統合して（恐らく）、最も感度と強さのレンジを高めたプロダクト</p>
+
+<p>ファイル記号 : <code>SVDNB</code></p>
+
+<p>位置情報</p>
+
+<p>– GDNBO: projected onto smooth ellipsoid (as of May 2013 there is a discussion of whether or not to produce a terrain-corrected geolocation)</p>
 
 <h3 id="edr">EDR</h3>
 
-<h4 id="cloud-mask">Cloud Mask</h4>
+<p><a href="http://rammb.cira.colostate.edu/projects/npp/VIIRS_Imagery_EDR_Users_Guide.pdf">EDR User Guide</a></p>
+
+<h4 id="i-band-edr">I-band EDR</h4>
+
+<p>I-band のSDR (SVI01, SVI02, SVI03, SVI04, SVI05) はそれぞれ対応するEDR (VI1BO, VI2BO, VI3BO, VI4BO, VI5BO) がある</p>
+
+<p>VI1BO, VI2BO, VI3BO, VI4BO, VI5BO</p>
+
+<h4 id="m-band-edr">M-band EDR</h4>
+
+<p>M-band は６つのバンドについて対応するEDRがある</p>
+
+<ul>
+<li>SVM01 (SDR) &ndash;&gt; VM01O (EDR) reflectance</li>
+<li>SVM04 (SDR) &ndash;&gt; VM02O (EDR) reflectance</li>
+<li>SVM09 (SDR) &ndash;&gt; VM03O (EDR) reflectance</li>
+<li>SVM14 (SDR) &ndash;&gt; VM04O (EDR) brightness temperature</li>
+<li>SVM15 (SDR) &ndash;&gt; VM05O (EDR) brightness temperature</li>
+<li>SVM16 (SDR) &ndash;&gt; VM06O (EDR) brightness temperature</li>
+</ul>
+
+<p>M-band EDR のための入力SDRは変更される可能性がある。EDRのメタデータ band_id を見ると、どのSDRが使われたのかわかる</p>
+
+<p>I-band M-band EDRs は SDR を the Ground-Track Mercator projection に再投影し直したもの</p>
+
+<h4 id="dnb-edr">DNB EDR</h4>
+
+<p>DNBのEDRは Near-Constant Contrast (NCC) product と呼ばれる</p>
+
+<p>ファイル記号 : <code>VNCCO</code></p>
+
+<p>局所的な明るさを標準化して、夜と昼にかかわらず、光の反射率（reflectance）の分布を可視化する
+（理想的には、夜と昼にかかわらず同じような画像を出力するはずだが、技術的には難しい）</p>
+
+<p>DNB の EDRは、SDRの輝度を反射率に変換して、ground-track Mercator projection に再投影したもの、</p>
+
+<p>つまり、DNB の EDRは反射率 (reflectance) しか持っていない、DNB の SDR は輝度しか持っていない</p>
+
+<p>輝度（radiance）</p>
+
+<p>位置情報</p>
+
+<p>– GIGTO: I-band EDR geolocation
+– GMGTO: M-band EDR geolocation
+– GNCCO: Day/Night Band EDR (NCC) geolocation</p>
+
+<h4 id="cloud-mask-vicmo">Cloud Mask (VICMO)</h4>
 
 <p>なぜか Cloud Mask EDR のデータ形式のドキュメントは、<code>474-00001</code> の中にない！</p>
 
+<p><a href="https://www.jpss.noaa.gov/sciencedocuments/sciencedocs/2016-12/474-00448-02-11_JPSS-DD-Vol-II-Part-11_0200E.pdf">JPSS Algorithm Specification, Volume II: Data Dictionary for the Cloud Mask</a></p>
+
 <p><code>474-00448-02-11_JPSS-DD-Vol-II-Part-11_0200E.pdf</code></p>
 
-<p>ファイル名は VICMO</p>
+<p>ファイル名は</p>
 
-<p>Cloud Mask が EDR になったのは 2017 年から、それ以前は Cloud Mask Intermediate Product と呼ばれていた（ファイル名は IICMO）。</p>
+<p>Cloud Mask が EDR になったのは 2017 年から、それ以前は Cloud Mask Intermediate Product と呼ばれていた（ファイル名は IICMO）。基本的な内容は同じらしい</p>
 
-<p>IICMOのドキュメントは <code>474-00062_OAD-VIIRS-Cloud-Mask-IP_G.pdf</code></p>
+<p><a href="https://www.jpss.noaa.gov/sciencedocuments/sciencedocs/2017-06/474-00062_OAD-VIIRS-Cloud-Mask-EDR_J.pdf">IICMOのドキュメント</a></p>
+
+<p>は <code>474-00062_OAD-VIIRS-Cloud-Mask-IP_G.pdf</code></p>
 
 <h1 id="生データ取得">生データ取得</h1>
+
+<h2 id="ウィスコンシン">ウィスコンシン</h2>
+
+<p>直近１週間分のデータ</p>
+
+<p><a href="ftp://ftp.ssec.wisc.edu/pub/eosdb/npp/viirs/">ftp://ftp.ssec.wisc.edu/pub/eosdb/npp/viirs/</a></p>
 
 <h2 id="noaa-class">NOAA CLASS</h2>
 
@@ -636,6 +808,10 @@ External (<code>CDFCB-X</code>) と呼ばれているらしい。VIIRSドキュ�
 <li><a href="https://www.mdpi.com/2072-4292/7/3/3020">Automatic Boat Identification System for VIIRS Low Light Imaging Data</a></li>
 <li><a href="https://www.mdpi.com/2072-4292/11/9/995">Cross-Matching VIIRS Boat Detections with Vessel Monitoring System Tracks in Indonesia</a></li>
 </ul>
+
+<h1 id="一般記事">一般記事</h1>
+
+<p><a href="https://sorabatake.jp/240/">衛星が撮影した夜の地球「夜間光」がお金に変わる!? 概要と利用事例</a></p>
 </article>
 
       
@@ -672,19 +848,34 @@ External (<code>CDFCB-X</code>) と呼ばれているらしい。VIIRSドキュ�
     <nav id="TableOfContents">
 <ul>
 <li><a href="#viirs">VIIRS</a></li>
+<li><a href="#衛星">衛星</a>
+<ul>
+<li><a href="#suomi-npp">Suomi-NPP</a></li>
+<li><a href="#noaa-20">NOAA-20</a></li>
+</ul></li>
 <li><a href="#viirs-データ情報">VIIRS データ情報</a>
 <ul>
-<li><a href="#データ形式">データ形式</a>
+<li><a href="#データプロダクト">データプロダクト</a></li>
+<li><a href="#データのドキュメント">データのドキュメント</a>
 <ul>
-<li><a href="#sdr">SDR</a></li>
+<li><a href="#sdr">SDR</a>
+<ul>
+<li><a href="#i-band-svi01-svi05">I-band (SVI01 - SVI05)</a></li>
+<li><a href="#m-band-svm01-svm16">M-band (SVM01 - SVM16)</a></li>
+<li><a href="#day-night-band-svdnb">Day Night Band (SVDNB)</a></li>
+</ul></li>
 <li><a href="#edr">EDR</a>
 <ul>
-<li><a href="#cloud-mask">Cloud Mask</a></li>
+<li><a href="#i-band-edr">I-band EDR</a></li>
+<li><a href="#m-band-edr">M-band EDR</a></li>
+<li><a href="#dnb-edr">DNB EDR</a></li>
+<li><a href="#cloud-mask-vicmo">Cloud Mask (VICMO)</a></li>
 </ul></li>
 </ul></li>
 </ul></li>
 <li><a href="#生データ取得">生データ取得</a>
 <ul>
+<li><a href="#ウィスコンシン">ウィスコンシン</a></li>
 <li><a href="#noaa-class">NOAA CLASS</a></li>
 <li><a href="#nasa-laads">NASA LAADS</a></li>
 </ul></li>
@@ -693,6 +884,7 @@ External (<code>CDFCB-X</code>) と呼ばれているらしい。VIIRSドキュ�
 <ul>
 <li><a href="#夜間の漁船光の検出">夜間の漁船光の検出</a></li>
 </ul></li>
+<li><a href="#一般記事">一般記事</a></li>
 </ul>
 </nav>
   </aside>

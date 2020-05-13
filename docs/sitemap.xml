@@ -18,8 +18,8 @@
   </url>
   
   <url>
-    <loc>https://teuder.github.io/notebook/fishries/</loc>
-    <lastmod>2019-12-24T12:18:21+09:00</lastmod>
+    <loc>https://teuder.github.io/notebook/gis/bigquerygis/</loc>
+    <lastmod>2019-12-25T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -63,6 +63,11 @@
   </url>
   
   <url>
+    <loc>https://teuder.github.io/notebook/miscellaneous/jupyter/</loc>
+    <lastmod>2019-09-03T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://teuder.github.io/notebook/miscellaneous/vscode/</loc>
     <lastmod>2019-09-24T17:50:14-07:00</lastmod>
   </url>
@@ -103,8 +108,24 @@
   </url>
   
   <url>
+    <loc>https://teuder.github.io/notebook/r/bigrquery/</loc>
+  </url>
+  
+  <url>
     <loc>https://teuder.github.io/notebook/r/gganimate/</loc>
     <lastmod>2019-12-24T12:18:21+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://teuder.github.io/notebook/r/lubridate/</loc>
+  </url>
+  
+  <url>
+    <loc>https://teuder.github.io/notebook/r/reticulate/</loc>
+  </url>
+  
+  <url>
+    <loc>https://teuder.github.io/notebook/r/rstudio/</loc>
   </url>
   
   <url>
@@ -115,6 +136,16 @@
   <url>
     <loc>https://teuder.github.io/notebook/miscellaneous/</loc>
     <lastmod>2019-09-04T15:16:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://teuder.github.io/notebook/python/environment/</loc>
+    <lastmod>2020-01-17T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://teuder.github.io/notebook/python/vscode/</loc>
+    <lastmod>2020-01-17T00:00:00+00:00</lastmod>
   </url>
   
   <url>

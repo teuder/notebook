@@ -41,7 +41,7 @@ type: docs
  - geosapi : GeoServerのAPIからデータを取得する？
  - geonapi : GeoNetworkのAPIからデータを取得する？
  - rgbif : Global Biodiversity Information Facility (GBIF) にあるデータへのアクセス
-
+ - rnaturalearth : よく使う地図データをRからすぐにアクセスできるようにする sp, sf オブジェクトで提供
 
 
 ## 計算
