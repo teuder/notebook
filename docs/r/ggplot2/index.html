@@ -13,10 +13,10 @@
 <link rel="icon" href="/notebook/favicon.png" type="image/x-icon">
 
 
-<link rel="stylesheet" href="/notebook/book.min.1b994bd28c6ce2255f069b6bf6837b4d396307637fc48d61dcb2a6caac26e031.css" integrity="sha256-G5lL0oxs4iVfBptr9oN7TTljB2N/xI1h3LKmyqwm4DE=">
+<link rel="stylesheet" href="/notebook/book.min.07c38dce7b6800da2a75a565d4d975e38f837294e24d00b5aae363037012d64b.css" integrity="sha256-B8ONzntoANoqdaVl1Nl144&#43;DcpTiTQC1quNjA3AS1ks=">
 
 
-<script defer src="/notebook/search.min.65b233c1d8cc9f449621b4e785a42902d15dcf0c5c879d0d4f57f369e2632cc0.js" integrity="sha256-ZbIzwdjMn0SWIbTnhaQpAtFdzwxch50NT1fzaeJjLMA="></script>
+<script defer src="/notebook/search.min.4258be4e8779d488f48eca1fd717805bfa47a62dc65a417d68187ae7be71e2c2.js" integrity="sha256-Qli&#43;Tod51Ij0jsof1xeAW/pHpi3GWkF9aBh6575x4sI="></script>
 
 <!--
 Made with Book Theme
@@ -555,34 +555,19 @@ https://github.com/alex-shpak/hugo-book
 </header>
 
       
-<article class="markdown">
-
-<h1 id="ggplot2">ggplot2</h1>
-
+<article class="markdown"><h1 id="ggplot2">ggplot2</h1>
 <p><a href="https://ggplot2-book.org/">ggplot2: Elegant Graphics for Data Analysis</a></p>
-
 <h1 id="基本">基本</h1>
-
 <h1 id="基本関数">基本関数</h1>
-
 <h2 id="ベース-ggplot">ベース ggplot()</h2>
-
 <p>プロットするデータを含むデータフレームを渡す、<code>mapping</code> 引数には、使用する変数名などを <code>aes()</code> 関数を介して渡す。</p>
-
 <pre><code>ggplot(data = NULL, mapping = aes(), ...)
-</code></pre>
-
-<h3 id="aes">aes()</h3>
-
+</code></pre><h3 id="aes">aes()</h3>
 <p>点・線などのプロットや塗りつぶしの色などに <strong>「使用する変数」</strong> を指定する。<code>ggplot()</code> や <code>geom_*()</code> の <code>mapping</code> 変数に渡す。基本的には 各 <code>geom_*()</code> 関数内で指定するのが明確だと思う</p>
-
 <pre><code>aes(x, y, ...)
-</code></pre>
-
-<h2 id="geom">geom_*()</h2>
-
-<h2 id="画像を保存する-ggsave">画像を保存する : ggsave()</h2>
-
+</code></pre><h2 id="geom_">geom_*()</h2>
+<h2 id="heading"></h2>
+<h2 id="画像を保存する--ggsave">画像を保存する : ggsave()</h2>
 <pre><code>gsave(
     filename,
     plot = last_plot(),
@@ -595,25 +580,19 @@ https://github.com/alex-shpak/hugo-book
     dpi = 300,
     limitsize = TRUE,
      ...)
-</code></pre>
-
-<ul>
+</code></pre><ul>
 <li>filename : ファイル名、拡張子で出力形式は自動で判別される</li>
 <li>plot : プロットしたいggplotオブジェクト、デフォルトでは最後にプロットしたもの</li>
-<li>device : 出力形式：&rdquo;eps&rdquo;, &ldquo;ps&rdquo;, &ldquo;tex&rdquo; (pictex), &ldquo;pdf&rdquo;, &ldquo;jpeg&rdquo;, &ldquo;tiff&rdquo;, &ldquo;png&rdquo;, &ldquo;bmp&rdquo;, &ldquo;svg&rdquo; or &ldquo;wmf&rdquo; (windows only)</li>
+<li>device : 出力形式：&ldquo;eps&rdquo;, &ldquo;ps&rdquo;, &ldquo;tex&rdquo; (pictex), &ldquo;pdf&rdquo;, &ldquo;jpeg&rdquo;, &ldquo;tiff&rdquo;, &ldquo;png&rdquo;, &ldquo;bmp&rdquo;, &ldquo;svg&rdquo; or &ldquo;wmf&rdquo; (windows only)</li>
 <li>path : 保存先のパス filename と合体する</li>
-<li>scale : 指定した出力サイズを scale 倍する</li>
+<li>scale	: 指定した出力サイズを scale 倍する</li>
 <li>width, height, units : 出力サイズ units (&ldquo;in&rdquo;, &ldquo;cm&rdquo;, or &ldquo;mm&rdquo;)</li>
 <li>dpi : ラスター画像の解像度、文字列でも指定できる &ldquo;retina&rdquo; (320), &ldquo;print&rdquo; (300), or &ldquo;screen&rdquo; (72)</li>
 <li>limitsize : TRUEだと 50x50インチより大きいサイズでプロットしない、エラーを防ぐため</li>
 </ul>
-
 <h1 id="カラーパレット">カラーパレット</h1>
-
 <h2 id="連続値に対する色つけ">連続値に対する色つけ</h2>
-
-<h3 id="scale-colour-gradient">scale_colour_gradient()</h3>
-
+<h3 id="scale_colour_gradient">scale_colour_gradient()</h3>
 <pre><code>scale_colour_gradient(..., low = &quot;#132B43&quot;, high = &quot;#56B1F7&quot;,
   space = &quot;Lab&quot;, na.value = &quot;grey50&quot;, guide = &quot;colourbar&quot;,
   aesthetics = &quot;colour&quot;)
@@ -637,21 +616,12 @@ scale_colour_gradientn(..., colours, values = NULL, space = &quot;Lab&quot;,
 scale_fill_gradientn(..., colours, values = NULL, space = &quot;Lab&quot;,
   na.value = &quot;grey50&quot;, guide = &quot;colourbar&quot;, aesthetics = &quot;fill&quot;,
   colors)
-</code></pre>
-
-<h2 id="離散値に対する色つけ">離散値に対する色つけ</h2>
-
+</code></pre><h2 id="離散値に対する色つけ">離散値に対する色つけ</h2>
 <h2 id="複数のカラーパレットを使用する">複数のカラーパレットを使用する</h2>
-
 <pre><code>ggnewscale::new_scale()
-</code></pre>
-
-<h1 id="軸の変換">軸の変換</h1>
-
+</code></pre><h1 id="軸の変換">軸の変換</h1>
 <p><a href="https://qiita.com/nozma/items/2954b21e7136b3011580">geom_barやgeom_histgramでの軸の変換</a></p>
-
 <h1 id="複数の図をまとめる">複数の図をまとめる</h1>
-
 <p><code>patchwork</code></p>
 </article>
 
@@ -687,30 +657,26 @@ scale_fill_gradientn(..., colours, values = NULL, space = &quot;Lab&quot;,
 
   <aside class="book-toc level-3 fixed">
     <nav id="TableOfContents">
-<ul>
-<li><a href="#ggplot2">ggplot2</a></li>
-<li><a href="#基本">基本</a></li>
-<li><a href="#基本関数">基本関数</a>
-<ul>
-<li><a href="#ベース-ggplot">ベース ggplot()</a>
-<ul>
-<li><a href="#aes">aes()</a></li>
-</ul></li>
-<li><a href="#geom">geom_*()</a></li>
-<li><a href="#画像を保存する-ggsave">画像を保存する : ggsave()</a></li>
-</ul></li>
-<li><a href="#カラーパレット">カラーパレット</a>
-<ul>
-<li><a href="#連続値に対する色つけ">連続値に対する色つけ</a>
-<ul>
-<li><a href="#scale-colour-gradient">scale_colour_gradient()</a></li>
-</ul></li>
-<li><a href="#離散値に対する色つけ">離散値に対する色つけ</a></li>
-<li><a href="#複数のカラーパレットを使用する">複数のカラーパレットを使用する</a></li>
-</ul></li>
-<li><a href="#軸の変換">軸の変換</a></li>
-<li><a href="#複数の図をまとめる">複数の図をまとめる</a></li>
-</ul>
+  <ul>
+    <li><a href="#ベース-ggplot">ベース ggplot()</a>
+      <ul>
+        <li><a href="#aes">aes()</a></li>
+      </ul>
+    </li>
+    <li><a href="#geom_">geom_*()</a></li>
+    <li><a href="#heading"></a></li>
+    <li><a href="#画像を保存する--ggsave">画像を保存する : ggsave()</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#連続値に対する色つけ">連続値に対する色つけ</a>
+      <ul>
+        <li><a href="#scale_colour_gradient">scale_colour_gradient()</a></li>
+      </ul>
+    </li>
+    <li><a href="#離散値に対する色つけ">離散値に対する色つけ</a></li>
+    <li><a href="#複数のカラーパレットを使用する">複数のカラーパレットを使用する</a></li>
+  </ul>
 </nav>
   </aside>
 

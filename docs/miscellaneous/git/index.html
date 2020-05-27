@@ -13,10 +13,10 @@
 <link rel="icon" href="/notebook/favicon.png" type="image/x-icon">
 
 
-<link rel="stylesheet" href="/notebook/book.min.1b994bd28c6ce2255f069b6bf6837b4d396307637fc48d61dcb2a6caac26e031.css" integrity="sha256-G5lL0oxs4iVfBptr9oN7TTljB2N/xI1h3LKmyqwm4DE=">
+<link rel="stylesheet" href="/notebook/book.min.07c38dce7b6800da2a75a565d4d975e38f837294e24d00b5aae363037012d64b.css" integrity="sha256-B8ONzntoANoqdaVl1Nl144&#43;DcpTiTQC1quNjA3AS1ks=">
 
 
-<script defer src="/notebook/search.min.65b233c1d8cc9f449621b4e785a42902d15dcf0c5c879d0d4f57f369e2632cc0.js" integrity="sha256-ZbIzwdjMn0SWIbTnhaQpAtFdzwxch50NT1fzaeJjLMA="></script>
+<script defer src="/notebook/search.min.4258be4e8779d488f48eca1fd717805bfa47a62dc65a417d68187ae7be71e2c2.js" integrity="sha256-Qli&#43;Tod51Ij0jsof1xeAW/pHpi3GWkF9aBh6575x4sI="></script>
 
 <!--
 Made with Book Theme
@@ -555,87 +555,46 @@ https://github.com/alex-shpak/hugo-book
 </header>
 
       
-<article class="markdown">
-
-<h1 id="git">Git</h1>
-
+<article class="markdown"><h1 id="git">Git</h1>
 <p><a href="https://qiita.com/konweb/items/621722f67fdd8f86a017">Gitの基本コマンド</a></p>
-
 <p><a href="https://qiita.com/anqooqie/items/110957797b3d5280c44f">.gitignoreの仕様詳解</a></p>
-
-<h1 id="レポジトリを作成する-コピーする">レポジトリを作成する、コピーする</h1>
-
-<h2 id="init-既存のフォルダをレポジトリにする">init : 既存のフォルダをレポジトリにする</h2>
-
+<h1 id="レポジトリを作成するコピーする">レポジトリを作成する、コピーする</h1>
+<h2 id="init--既存のフォルダをレポジトリにする">init : 既存のフォルダをレポジトリにする</h2>
 <p>git init して登録されたフォルダが、大元のレポジトリになる？</p>
-
 <p>他の人は、このレポジトリをクローンすることで、開発に参加できる</p>
-
-<h2 id="clone-既存のレポジトリをコピーする">clone : 既存のレポジトリをコピーする</h2>
-
+<h2 id="clone--既存のレポジトリをコピーする">clone : 既存のレポジトリをコピーする</h2>
 <p>既にあるレポジトリの内容をコピーして、ローカルにレポジトリのクローンを作成する</p>
-
 <p>このクローンに、変更を加えることで、元レポジトリの開発に参加できる</p>
-
 <h1 id="既にあるレポジトリへの操作">既にあるレポジトリへの操作</h1>
-
 <h2 id="add">add</h2>
-
 <p>作成したファイルを git の管理下に追加する（ステージングする）。一度追加したら同じファイルを再度追加する必要はない</p>
-
 <pre><code>git add path_to_file
 git add . # カレント以下の全てのファイル
 git add *.java # 拡張子が .java
-</code></pre>
-
-<h2 id="commit">commit</h2>
-
+</code></pre><h2 id="commit">commit</h2>
 <p>ステージングしたファイルの変更内容を記録する（コミットする）</p>
-
 <pre><code>git commit -m 'コメント'
-</code></pre>
-
-<h2 id="push-リモートレポジトリに反映する">push リモートレポジトリに反映する</h2>
-
+</code></pre><h2 id="push-リモートレポジトリに反映する">push リモートレポジトリに反映する</h2>
 <p>現状のローカルレポジトリの最新 コミット 状態を、リモートレポジトリに反映する（プッシュする）</p>
-
 <pre><code>git push レポジトリ ブランチ
-</code></pre>
-
-<p>例：<code>git origin master</code></p>
-
-<h2 id="ブランチの作成-branch">ブランチの作成 : branch</h2>
-
+</code></pre><p>例：<code>git origin master</code></p>
+<h2 id="ブランチの作成--branch">ブランチの作成 : branch</h2>
 <pre><code>git branch ブランチ名 # ブランチの作成
 git checkout -b ブランチ名 #ブランチの作成とそのブランチへの切り替え
-</code></pre>
-
-<h2 id="ブランチの切り替え-checkout">ブランチの切り替え : checkout</h2>
-
+</code></pre><h2 id="ブランチの切り替え--checkout">ブランチの切り替え : checkout</h2>
 <p>ブランチを切り替えると、フォルダの中身の状態が、その</p>
-
 <pre><code>git checkout ブランチ名
-</code></pre>
-
-<h2 id="ファイル-フォルダを特定のコミットの状態に戻す">ファイル/フォルダを特定のコミットの状態に戻す</h2>
-
+</code></pre><h2 id="ファイルフォルダを特定のコミットの状態に戻す">ファイル/フォルダを特定のコミットの状態に戻す</h2>
 <pre><code>git checkout [コミット番号] [ファイルパス]
-</code></pre>
-
-<h1 id="ローカルで削除したファイル-フォルダを-リモートレポジトリからも削除する">ローカルで削除したファイル・フォルダを、リモートレポジトリからも削除する</h1>
-
+</code></pre><h1 id="ローカルで削除したファイルフォルダをリモートレポジトリからも削除する">ローカルで削除したファイル・フォルダを、リモートレポジトリからも削除する</h1>
 <p>ローカルフォルダには、ファイルやフォルダがあっても、リモートレポジトリにはアップロードされないようにしたい。
 既に、リモートレポジトリにアップロードされてしまったファイル・フォルダを、リモートレポジトリから削除したい</p>
-
 <ul>
 <li>後から、<code>.gitignore</code> に追加削除した場合</li>
 <li><code>.gitignore</code> の内容と関係なく、後から、特定のファイル・フォルダを除外したい場合</li>
 </ul>
-
 <p><code>.gitignore</code> に新たにファイルやフォルダを追加した場合も同じ</p>
-
 <p>あるいは、以前は追跡していたファイル・フォルダの追跡をやめて、リモートレポジトリから削除したい場合</p>
-
 <pre><code># .gitignore に追加した後、あるいは、ファイルやフォルダを削除した後
 
 # キャッシュを削除する
@@ -653,18 +612,11 @@ git commit -m &quot;remove some files&quot;
 
 # リモートに反映
 git push origin master
-</code></pre>
-
-<h1 id="githubへのプルリク">Githubへのプルリク</h1>
-
+</code></pre><h1 id="githubへのプルリク">Githubへのプルリク</h1>
 <p>プルリク（pull request）は git ではなく Github や Gitlab における概念</p>
-
 <p><a href="https://qiita.com/samurairunner/items/7442521bce2d6ac9330b">初心者向けGithubへのPullRequest方法</a></p>
-
 <p>リモートリポジトリをローカルに <code>clone</code> する。</p>
-
 <p>git clone <a href="https://github.com/teuder/test.git">https://github.com/teuder/test.git</a></p>
-
 <p>【cloneされたリモートリポジトリ】 = 【<code>origin</code> リポジトリ】</p>
 </article>
 
@@ -700,25 +652,19 @@ git push origin master
 
   <aside class="book-toc level-3 fixed">
     <nav id="TableOfContents">
-<ul>
-<li><a href="#git">Git</a></li>
-<li><a href="#レポジトリを作成する-コピーする">レポジトリを作成する、コピーする</a>
-<ul>
-<li><a href="#init-既存のフォルダをレポジトリにする">init : 既存のフォルダをレポジトリにする</a></li>
-<li><a href="#clone-既存のレポジトリをコピーする">clone : 既存のレポジトリをコピーする</a></li>
-</ul></li>
-<li><a href="#既にあるレポジトリへの操作">既にあるレポジトリへの操作</a>
-<ul>
-<li><a href="#add">add</a></li>
-<li><a href="#commit">commit</a></li>
-<li><a href="#push-リモートレポジトリに反映する">push リモートレポジトリに反映する</a></li>
-<li><a href="#ブランチの作成-branch">ブランチの作成 : branch</a></li>
-<li><a href="#ブランチの切り替え-checkout">ブランチの切り替え : checkout</a></li>
-<li><a href="#ファイル-フォルダを特定のコミットの状態に戻す">ファイル/フォルダを特定のコミットの状態に戻す</a></li>
-</ul></li>
-<li><a href="#ローカルで削除したファイル-フォルダを-リモートレポジトリからも削除する">ローカルで削除したファイル・フォルダを、リモートレポジトリからも削除する</a></li>
-<li><a href="#githubへのプルリク">Githubへのプルリク</a></li>
-</ul>
+  <ul>
+    <li><a href="#init--既存のフォルダをレポジトリにする">init : 既存のフォルダをレポジトリにする</a></li>
+    <li><a href="#clone--既存のレポジトリをコピーする">clone : 既存のレポジトリをコピーする</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#add">add</a></li>
+    <li><a href="#commit">commit</a></li>
+    <li><a href="#push-リモートレポジトリに反映する">push リモートレポジトリに反映する</a></li>
+    <li><a href="#ブランチの作成--branch">ブランチの作成 : branch</a></li>
+    <li><a href="#ブランチの切り替え--checkout">ブランチの切り替え : checkout</a></li>
+    <li><a href="#ファイルフォルダを特定のコミットの状態に戻す">ファイル/フォルダを特定のコミットの状態に戻す</a></li>
+  </ul>
 </nav>
   </aside>
 
