@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0"><meta property="og:title" content="ggplot2" />
-<meta property="og:description" content="ggplot2 ggplot2: Elegant Graphics for Data Analysis 基本 基本関数 使い方の例 set.seed(7) data_df &lt;- data.frame( x = 1:10, y = rnorm(10), z = rep(LETTERS[1:3], length.out = 10)) ggplot(data = data_df) &#43; geom_point(aes(x, y, color = z)) &#43; geom_line(aes(x, y, color = z)) ggplot() ggplot(data = NULL, mapping = aes(), ...) data : プロットしたいデータを" />
+<meta property="og:description" content="ggplot2 ggplot2: Elegant Graphics for Data Analysis 基本的な使い方 使い方の例 set.seed(7) data_df &lt;- data.frame( var1 = 1:10, var2 = rnorm(10), var3 = rep(LETTERS[1:3], length.out = 10)) ggplot(data = data_df) &#43; geom_point(aes(x = var1, y = var2, color = var3)) &#43; geom_line(aes(x = var1, y = var2, color = var3)) ggplot() 関数で ggplot オブジェクトを" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://teuder.github.io/notebook/r/ggplot2/" />
 <meta property="article:published_time" content="2019-09-03T00:00:00+00:00" />
@@ -16,7 +16,7 @@
 <link rel="stylesheet" href="/notebook/book.min.07c38dce7b6800da2a75a565d4d975e38f837294e24d00b5aae363037012d64b.css" integrity="sha256-B8ONzntoANoqdaVl1Nl144&#43;DcpTiTQC1quNjA3AS1ks=">
 
 
-<script defer src="/notebook/search.min.dedd0873eafba151acde38953c0b40a8c0e2e76344a00bb922262675321e63bc.js" integrity="sha256-3t0Ic&#43;r7oVGs3jiVPAtAqMDi52NEoAu5IiYmdTIeY7w="></script>
+<script defer src="/notebook/search.min.64d6ca77363045d5775d77c32b93064b1fe7b12e048ee048bc2b22166cebf3b2.js" integrity="sha256-ZNbKdzYwRdV3XXfDK5MGSx/nsS4EjuBIvCsiFmzr87I="></script>
 
 <!--
 Made with Book Theme
@@ -245,6 +245,16 @@ https://github.com/alex-shpak/hugo-book
 
   <a href="/notebook/r/reticulate/" >
       reticulate
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/r/rmarkdown/" >
+      Rmarkdown
   </a>
 
 </li>
@@ -557,34 +567,41 @@ https://github.com/alex-shpak/hugo-book
       
 <article class="markdown"><h1 id="ggplot2">ggplot2</h1>
 <p><a href="https://ggplot2-book.org/">ggplot2: Elegant Graphics for Data Analysis</a></p>
-<h1 id="基本">基本</h1>
-<h1 id="基本関数">基本関数</h1>
+<h1 id="基本的な使い方">基本的な使い方</h1>
 <p>使い方の例</p>
 <pre><code>set.seed(7)
 data_df &lt;- 
-  data.frame( x = 1:10,
-              y = rnorm(10),
-              z = rep(LETTERS[1:3], length.out = 10))
+  data.frame( var1 = 1:10,
+              var2 = rnorm(10),
+              var3 = rep(LETTERS[1:3], length.out = 10))
 
 ggplot(data = data_df) +
-  geom_point(aes(x, y, color = z)) +
-  geom_line(aes(x, y, color = z))
-</code></pre><h2 id="ggplot">ggplot()</h2>
+  geom_point(aes(x = var1, y = var2, color = var3)) +
+  geom_line(aes(x = var1, y = var2, color = var3))
+</code></pre><p><code>ggplot()</code> 関数で <code>ggplot</code> オブジェクトを作成し、その <code>ggplot</code> オブジェクトに対して、 <code>+</code> 演算子を使って作図したいグラフの種類（<code>geom_*()</code> 関数）を指定する。 <code>geom_*()</code> 関数の中で <code>aes()</code> 関数を使って作図に使用する変数を指定する。</p>
+<h2 id="ggplot">ggplot()</h2>
 <pre><code>ggplot(data = NULL, mapping = aes(), ...)
 </code></pre><ul>
 <li><code>data</code> : プロットしたいデータを含むデータフレームを渡す。データフレームは tidydata の形式になっていることが想定されている。</li>
 <li><code>mapping</code> : 作図に使用する列名を <code>aes()</code> 関数を介して指定する。 例 : <code>aes(x = longitude, y = latitude, color = height, fill = height)</code></li>
 </ul>
-<h2 id="aes">aes()</h2>
-<p>散布図や折れ線などのグラフの座標（<code>x</code>, <code>y</code>）や線の色（<code>color</code>）、塗りつぶしの色（<code>fill</code>）などに <strong>「使用する列」</strong> を指定する。</p>
-<p><code>ggplot()</code> や <code>geom_*()</code> の <code>mapping</code> 引数に渡す。基本的には 各 <code>geom_*()</code> 関数内で指定するのが明確だと思う</p>
-<pre><code>data(data_df) +
- geom_point(aes()) 
-</code></pre><h2 id="geom_">geom_*()</h2>
+<h2 id="geom_">geom_*()</h2>
 <p>グラフの種類ごとに <code>geom_*()</code> 関数が存在する</p>
+<p>ちなみに <code>geom</code> は <code>geometry</code> （ジオメトリ）の略、グラフの基礎となる構造を指定する</p>
 <pre><code>geom_line()
 geom_point()
-</code></pre><h1 id="グラフの種類">グラフの種類</h1>
+</code></pre><h2 id="aes">aes()</h2>
+<p><code>aes()</code> 関数は、 <code>ggplot()</code> や <code>geom_*()</code> の中で使う。具体的には <code>aes()</code> の出力を  <code>ggplot()</code> や <code>geom_*()</code> の　<code>mapping</code> 引数に渡す。基本的には  <code>geom_*()</code> 関数の中で使うのが一般的。</p>
+<p><code>aes()</code> 関数は、散布図や折れ線などのグラフの座標（<code>x</code>, <code>y</code>）や線の色（<code>color</code>）、塗りつぶしの色（<code>fill</code>）、サイズ (<code>size</code>) などに <strong>「使用する列」</strong> を指定する。</p>
+<p>ちなみに <code>aes</code>　は <code>aesthetic</code>（エステティック） の略、軸や色の指定に使用する変数を指定する</p>
+<pre><code># 都市の位置（ longitude, latitude）に点をプロット
+# 都市名 (city) で色分け
+# 点のサイズは人口 (population) に比例
+
+data(data_df) +
+ geom_point(aes(x = longitude, y = latitude, color = city, size = population)) 
+</code></pre><h1 id="グラフの種類-geom_">グラフの種類: geom_*()</h1>
+<p><code>geom</code> は <code>geometry</code> （ジオメトリ）の略、グラフの基礎となる構造を指定する</p>
 <h2 id="散布図">散布図</h2>
 <h2 id="折れ線">折れ線</h2>
 <h2 id="ヒストグラム">ヒストグラム</h2>
@@ -592,7 +609,52 @@ geom_point()
 <h2 id="箱ひげ図バイオリンプロット">箱ひげ図・バイオリンプロット</h2>
 <h2 id="線分">線分</h2>
 <h2 id="多角形">多角形</h2>
-<h2 id="heading"></h2>
+<h1 id="色の指定">色の指定</h1>
+<p>色分けに使用する変数は <code>aes()</code> の中で <code>aes(color = var1, fill = var2)</code> のように指定する。</p>
+<p><code>color</code> に対しては <code>scale_color_gradient()</code></p>
+<p><code>fill</code> に対しては <code>scale_fill_gradient()</code></p>
+<p>をそれぞれ使用する。</p>
+<h2 id="連続値に対する色つけ--scale__gradient">連続値に対する色つけ : <code>scale_*_gradient</code></h2>
+<p>連続値: <code>integer</code>, <code>numeric</code></p>
+<p><code>integer</code> は <code>factor</code> にしないと離散値とはみなされない</p>
+<pre><code>scale_colour_gradient(..., low = &quot;#132B43&quot;, high = &quot;#56B1F7&quot;,
+  space = &quot;Lab&quot;, na.value = &quot;grey50&quot;, guide = &quot;colourbar&quot;,
+  aesthetics = &quot;colour&quot;)
+
+scale_fill_gradient(..., low = &quot;#132B43&quot;, high = &quot;#56B1F7&quot;,
+  space = &quot;Lab&quot;, na.value = &quot;grey50&quot;, guide = &quot;colourbar&quot;,
+  aesthetics = &quot;fill&quot;)
+
+scale_colour_gradient2(..., low = muted(&quot;red&quot;), mid = &quot;white&quot;,
+  high = muted(&quot;blue&quot;), midpoint = 0, space = &quot;Lab&quot;,
+  na.value = &quot;grey50&quot;, guide = &quot;colourbar&quot;, aesthetics = &quot;colour&quot;)
+
+scale_fill_gradient2(..., low = muted(&quot;red&quot;), mid = &quot;white&quot;,
+  high = muted(&quot;blue&quot;), midpoint = 0, space = &quot;Lab&quot;,
+  na.value = &quot;grey50&quot;, guide = &quot;colourbar&quot;, aesthetics = &quot;fill&quot;)
+
+scale_colour_gradientn(..., colours, values = NULL, space = &quot;Lab&quot;,
+  na.value = &quot;grey50&quot;, guide = &quot;colourbar&quot;, aesthetics = &quot;colour&quot;,
+  colors)
+
+scale_fill_gradientn(..., colours, values = NULL, space = &quot;Lab&quot;,
+  na.value = &quot;grey50&quot;, guide = &quot;colourbar&quot;, aesthetics = &quot;fill&quot;,
+  colors)
+</code></pre><h2 id="離散値に対する色つけ">離散値に対する色つけ</h2>
+<p>離散値: <code>character</code>, <code>factor</code></p>
+<p><code>integer</code> は <code>factor</code> にしないと離散値とはみなされない</p>
+<h2 id="複数のカラーパレットを使用する">複数のカラーパレットを使用する</h2>
+<pre><code>ggnewscale::new_scale()
+</code></pre><h1 id="軸の名前目盛りラベル">軸の名前、目盛り、ラベル</h1>
+<h2 id="軸の名前-xlab--ylab-labs">軸の名前 <code>xlab()</code>,  <code>ylab()</code>, <code>labs()</code></h2>
+<pre><code>p + 
+  xlab(&quot;Age in years&quot;) + ylab(&quot;Height in inches&quot;)
+
+p + 
+  labs(x = &quot;Age in years&quot;, y = &quot;Height in inches&quot;)
+</code></pre><h2 id="scale_x_continuous">scale_x_continuous()</h2>
+<h1 id="軸の変換">軸の変換</h1>
+<p><a href="https://qiita.com/nozma/items/2954b21e7136b3011580">geom_barやgeom_histgramでの軸の変換</a></p>
 <h1 id="画像として保存する--ggsave">画像として保存する : ggsave()</h1>
 <pre><code>gsave(
     filename,
@@ -618,40 +680,6 @@ geom_point()
 <li>dpi : ラスター画像の解像度 dot per inch、文字列でも指定できる &ldquo;retina&rdquo; (320), &ldquo;print&rdquo; (300), or &ldquo;screen&rdquo; (72)</li>
 <li>limitsize : TRUE だと 50x50インチより大きいサイズでプロットしない、エラーを防ぐため</li>
 </ul>
-<h1 id="色の指定">色の指定</h1>
-<p>色分けに使用する変数は <code>aes()</code> の中で <code>aes(color = col1, fill = col2)</code> のように指定する。</p>
-<h2 id="連続値に対する色つけ--scale__gradient">連続値に対する色つけ : <code>scale_*_gradient</code></h2>
-<p><code>color</code> に対しては <code>scale_colour_gradient()</code></p>
-<p><code>fill</code> に対しては <code>scale_fill_gradient()</code></p>
-<pre><code>scale_colour_gradient(..., low = &quot;#132B43&quot;, high = &quot;#56B1F7&quot;,
-  space = &quot;Lab&quot;, na.value = &quot;grey50&quot;, guide = &quot;colourbar&quot;,
-  aesthetics = &quot;colour&quot;)
-
-scale_fill_gradient(..., low = &quot;#132B43&quot;, high = &quot;#56B1F7&quot;,
-  space = &quot;Lab&quot;, na.value = &quot;grey50&quot;, guide = &quot;colourbar&quot;,
-  aesthetics = &quot;fill&quot;)
-
-scale_colour_gradient2(..., low = muted(&quot;red&quot;), mid = &quot;white&quot;,
-  high = muted(&quot;blue&quot;), midpoint = 0, space = &quot;Lab&quot;,
-  na.value = &quot;grey50&quot;, guide = &quot;colourbar&quot;, aesthetics = &quot;colour&quot;)
-
-scale_fill_gradient2(..., low = muted(&quot;red&quot;), mid = &quot;white&quot;,
-  high = muted(&quot;blue&quot;), midpoint = 0, space = &quot;Lab&quot;,
-  na.value = &quot;grey50&quot;, guide = &quot;colourbar&quot;, aesthetics = &quot;fill&quot;)
-
-scale_colour_gradientn(..., colours, values = NULL, space = &quot;Lab&quot;,
-  na.value = &quot;grey50&quot;, guide = &quot;colourbar&quot;, aesthetics = &quot;colour&quot;,
-  colors)
-
-scale_fill_gradientn(..., colours, values = NULL, space = &quot;Lab&quot;,
-  na.value = &quot;grey50&quot;, guide = &quot;colourbar&quot;, aesthetics = &quot;fill&quot;,
-  colors)
-</code></pre><h2 id="離散値に対する色つけ">離散値に対する色つけ</h2>
-<h2 id="複数のカラーパレットを使用する">複数のカラーパレットを使用する</h2>
-<pre><code>ggnewscale::new_scale()
-</code></pre><h1 id="軸の名前メモリラベル">軸の名前、メモリ、ラベル</h1>
-<h1 id="軸の変換">軸の変換</h1>
-<p><a href="https://qiita.com/nozma/items/2954b21e7136b3011580">geom_barやgeom_histgramでの軸の変換</a></p>
 <h1 id="複数の図をまとめる">複数の図をまとめる</h1>
 <p><code>patchwork</code></p>
 </article>
@@ -690,8 +718,8 @@ scale_fill_gradientn(..., colours, values = NULL, space = &quot;Lab&quot;,
     <nav id="TableOfContents">
   <ul>
     <li><a href="#ggplot">ggplot()</a></li>
-    <li><a href="#aes">aes()</a></li>
     <li><a href="#geom_">geom_*()</a></li>
+    <li><a href="#aes">aes()</a></li>
   </ul>
 
   <ul>
@@ -702,13 +730,17 @@ scale_fill_gradientn(..., colours, values = NULL, space = &quot;Lab&quot;,
     <li><a href="#箱ひげ図バイオリンプロット">箱ひげ図・バイオリンプロット</a></li>
     <li><a href="#線分">線分</a></li>
     <li><a href="#多角形">多角形</a></li>
-    <li><a href="#heading"></a></li>
   </ul>
 
   <ul>
     <li><a href="#連続値に対する色つけ--scale__gradient">連続値に対する色つけ : <code>scale_*_gradient</code></a></li>
     <li><a href="#離散値に対する色つけ">離散値に対する色つけ</a></li>
     <li><a href="#複数のカラーパレットを使用する">複数のカラーパレットを使用する</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#軸の名前-xlab--ylab-labs">軸の名前 <code>xlab()</code>,  <code>ylab()</code>, <code>labs()</code></a></li>
+    <li><a href="#scale_x_continuous">scale_x_continuous()</a></li>
   </ul>
 </nav>
   </aside>

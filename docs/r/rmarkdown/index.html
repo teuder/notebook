@@ -3,12 +3,12 @@
 
 <head>
   <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0"><meta property="og:title" content="Python" />
-<meta property="og:description" content="" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://teuder.github.io/notebook/python/" />
-<meta property="og:updated_time" content="2020-05-27T18:54:29+09:00" />
-<title>Python | notebook</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><meta property="og:title" content="Rmarkdown" />
+<meta property="og:description" content="Rmarkdown Rmarkdown (.Rmd) から、html などに出力するパッケージは２つある knitr と rmarkdown、rmarkdown は内部で knitr を使用している。rmarkdown" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://teuder.github.io/notebook/r/rmarkdown/" />
+
+<title>Rmarkdown | notebook</title>
 <link rel="icon" href="/notebook/favicon.png" type="image/x-icon">
 
 
@@ -17,7 +17,6 @@
 
 <script defer src="/notebook/search.min.64d6ca77363045d5775d77c32b93064b1fe7b12e048ee048bc2b22166cebf3b2.js" integrity="sha256-ZNbKdzYwRdV3XXfDK5MGSx/nsS4EjuBIvCsiFmzr87I="></script>
 
-<link rel="alternate" type="application/rss+xml" href="https://teuder.github.io/notebook/python/index.xml" title="notebook" />
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -95,7 +94,7 @@ https://github.com/alex-shpak/hugo-book
     
       
 
-  <a href="/notebook/python/"  class="active">
+  <a href="/notebook/python/" >
       Python
   </a>
 
@@ -253,7 +252,7 @@ https://github.com/alex-shpak/hugo-book
       
         <li>
 
-  <a href="/notebook/r/rmarkdown/" >
+  <a href="/notebook/r/rmarkdown/"  class="active">
       Rmarkdown
   </a>
 
@@ -561,28 +560,69 @@ https://github.com/alex-shpak/hugo-book
   <label for="menu-control">
     <img src="/notebook/svg/menu.svg" alt="Menu" />
   </label>
-  <strong>Python</strong>
+  <strong>Rmarkdown</strong>
 </header>
 
       
-<article class="markdown"><h1 id="python">Python</h1>
-</article>
+<article class="markdown"><h1 id="rmarkdown">Rmarkdown</h1>
+<p>Rmarkdown (<code>.Rmd</code>) から、html などに出力するパッケージは２つある</p>
+<p><code>knitr</code> と <code>rmarkdown</code>、<code>rmarkdown</code> は内部で <code>knitr</code> を使用している。<code>rmarkdown</code> は  <code>knitr</code> の後継となるべく開発されているのかも知れない。</p>
+<h1 id="ドキュメント">ドキュメント</h1>
+<ul>
+<li>公式: <a href="https://bookdown.org/yihui/rmarkdown/">R Markdown: The Definitive Guide</a></li>
+<li><a href="https://kohske.github.io/R/rmarkdown/">rmarkdownパッケージで楽々ドキュメント生成</a></li>
+</ul>
+<h1 id="用語">用語</h1>
+<ul>
+<li>chunk</li>
+<li>YAMLヘッダ</li>
+</ul>
+<h1 id="出力形式の指定">出力形式の指定</h1>
+<p>公式 <a href="https://bookdown.org/yihui/rmarkdown/output-formats.html">2.4 Output formats</a></p>
+<p><code>.Rmd</code> ファイルの先頭の <code>YAML</code> ヘッダの <code>output:</code> セクションに記述する</p>
+<pre><code>---
+title: &quot;Title of this document&quot;
+
+output: rmarkdown::github_document
+---
+</code></pre><p><code>output:</code> で指定できるオプションは以下の通り</p>
+<ul>
+<li>html_document</li>
+<li>github_document</li>
+<li>pdf_document</li>
+<li>word_document</li>
+<li>latex_document</li>
+<li>md_document</li>
+<li>odt_document</li>
+<li>rtf_document</li>
+<li>context_document</li>
+<li>powerpoint_presentation</li>
+<li>beamer_presentation</li>
+<li>ioslides_presentation</li>
+<li>slidy_presentation</li>
+</ul>
+<h1 id="出力先の変更">出力先の変更</h1>
+<p>デフォルトでは <code>.Rmd</code> ファイルと同じフォルダに出力される。</p>
+<p><code>rmarkdown::render()</code> を使って出力する場合には、以下のようにする。</p>
+<pre><code>rmarkdown::render('my.Rmd', output_file = 'folder/my.html')
+</code></pre><p>RStudio の <code>Knit</code> ボタンを押したときの出力先を指定するには <code>.Rmd</code> ファイルの先頭の <code>YAML</code> ヘッダの <code>knit:</code> セクションに以下のように <code>output_dir</code> を指定する。パスの指定は <code>.Rmd</code> ファイルからの相対パス。</p>
+<pre><code>---
+title: &quot;Title of this document&quot;
+
+output: rmarkdown::github_document
+
+knit: (function(inputFile, encoding) {
+  rmarkdown::render(inputFile, encoding = encoding, output_dir = &quot;../share/markdown&quot;) })
+---
+</code></pre></article>
 
       
-<div class="book-footer justify-between">
-  
-  <div>
-    
-    <a class="flex align-center" href="https://github.com/teuder/notebook/commit/1c4b2b5935f1ddbb8f4d25bc2ff54f9630bdc3c3" title='Last modified 2020-05-27 by Masaki Tsuda' target="_blank" rel="noopener">
-      <img src="/notebook/svg/calendar.svg" alt="Changed" />
-      <span>2020-05-27</span>
-    </a>
-  </div>
+<div class="book-footer justify-end">
   
   
   <div>
     
-    <a class="flex align-center" href="https://github.com/teuder/notebook/edit/master/content/Python/_index.md" target="_blank" rel="noopener">
+    <a class="flex align-center" href="https://github.com/teuder/notebook/edit/master/content/R/rmarkdown.md" target="_blank" rel="noopener">
       <img src="/notebook/svg/edit.svg" alt="Edit" />
       <span>Edit this page</span>
     </a>
