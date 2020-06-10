@@ -12,9 +12,9 @@ type: docs
 
 # 定義されたクラス
 
-- sfg：個別の地物オブジェクト
-- sfc：sfgオブジェクトのリスト、リストの各要素が１地物に相当
-- sf：sfcオブジェクトをgeometory列としてもつデータフレーム、１行が１地物、geometory列以外の列は地物がもつ値
+- `sfg` ：個別の地物オブジェクト
+- sfc ：sfgオブジェクトのリスト、リストの各要素が１地物に相当
+- sf ：sfcオブジェクトを geometry列としてもつデータフレーム、１行が１地物、geometory列以外の列は地物がもつ値
 
 
 # 地物（sfgオブジェクト）の型
@@ -29,30 +29,18 @@ type: docs
 
 
 
-# sfgオブジェクトをsfcオブジェクトに変換する
-
-
-
-```
-
-st
-
-```
 
 
 # sf オブジェクトの作成
 
 ## データフレームから作成する : st_as_sf()
 
-１行が１点を表すデータフレーム `df` （緯度 `lat` 経度 `lon`）から `sf` オブジェクトを作成する。`remove = FALSE` は `coords = c("lon", "lat")` で指定した列を削除しないという意味。
-
-その後、`st_set_crs(4326)` で座標参照系を設定している。EPSGコード 4326 は WGS84 を表す。
+１行が１点を表すデータフレーム `df` （緯度 `lat` 経度 `lon`）から `sf` オブジェクトを作成する。`coords = c("lon", "lat")`、はXY座標に相当するカラム名を指定している。`crs = 4326`  で座標参照系を設定している。EPSGコード 4326 は WGS84 を表す。 `remove = FALSE` は `coords = c("lon", "lat")` で指定した列を削除しないという意味。
 
 ```{r}
 # df は 各行が1POINTを表していて、その座標が "lon", "lat" という列名で保持されているデータフレーム
 sf <- df %>% 
-        st_as_sf(coords = c("lon", "lat"), dim = "XY", remove = FALSE) %>%
-        st_set_crs(4326)
+      st_as_sf(coords = c("lon", "lat"), dim = "XY", remove = FALSE, crs = 4326)
 ```
 
 # 処理関数

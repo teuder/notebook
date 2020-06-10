@@ -143,7 +143,7 @@
       <pubDate>Mon, 26 Aug 2019 00:00:00 +0000</pubDate>
       
       <guid>https://teuder.github.io/notebook/r/sf/</guid>
-      <description>sf 定義されたクラス sfg：個別の地物オブジェクト sfc：sfgオブジェクトのリスト、リストの各要素が１地物に相当 sf：sfcオブジェクトをg</description>
+      <description>sf 定義されたクラス sfg ：個別の地物オブジェクト sfc ：sfgオブジェクトのリスト、リストの各要素が１地物に相当 sf ：sfcオブジェクトを geomet</description>
     </item>
     
     <item>
@@ -174,6 +174,15 @@
     </item>
     
     <item>
+      <title>purrr</title>
+      <link>https://teuder.github.io/notebook/r/purrr/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://teuder.github.io/notebook/r/purrr/</guid>
+      <description>purrr ベクトルやリストなどの各要素に対する繰り返し処理 基本関数 map_* map2_* reduce() accumulate その他関数 pmap partial データフレームの各行に対する繰り返し</description>
+    </item>
+    
+    <item>
       <title>reticulate</title>
       <link>https://teuder.github.io/notebook/r/reticulate/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -197,7 +206,7 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://teuder.github.io/notebook/r/rstudio/</guid>
-      <description>RStudio RStudio Server のアップデート RStudio Server のパージョンを新しくする 実行中のRセッションの確認 sudo rstudio-server active-sessions 実行中のRセッションの停止 sudo rstudio-server suspend-all オフラインモードにする sudo rstudio-server offline</description>
+      <description>RStudio インストール WSL の Ubuntu 18.04 にインストール Ubuntuの場合と同じ、事前にRをインストールしておく sudo apt-get install gdebi-core wget https://download2.rstudio.org/server/bionic/amd64/rstudio-server-1.3.959-amd64.deb sudo gdebi rstudio-server-1.3.959-amd64.deb しかし、次のようなエラーが出た</description>
     </item>
     
     <item>

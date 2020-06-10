@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0"><meta property="og:title" content="sf" />
-<meta property="og:description" content="sf 定義されたクラス sfg：個別の地物オブジェクト sfc：sfgオブジェクトのリスト、リストの各要素が１地物に相当 sf：sfcオブジェクトをg" />
+<meta property="og:description" content="sf 定義されたクラス sfg ：個別の地物オブジェクト sfc ：sfgオブジェクトのリスト、リストの各要素が１地物に相当 sf ：sfcオブジェクトを geomet" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://teuder.github.io/notebook/r/sf/" />
 <meta property="article:published_time" content="2019-08-26T00:00:00+00:00" />
@@ -16,7 +16,7 @@
 <link rel="stylesheet" href="/notebook/book.min.07c38dce7b6800da2a75a565d4d975e38f837294e24d00b5aae363037012d64b.css" integrity="sha256-B8ONzntoANoqdaVl1Nl144&#43;DcpTiTQC1quNjA3AS1ks=">
 
 
-<script defer src="/notebook/search.min.64d6ca77363045d5775d77c32b93064b1fe7b12e048ee048bc2b22166cebf3b2.js" integrity="sha256-ZNbKdzYwRdV3XXfDK5MGSx/nsS4EjuBIvCsiFmzr87I="></script>
+<script defer src="/notebook/search.min.772a8582b9cfeaafec5d5d6ca01eda63b67a98858f47e91c9f5969d050ce4271.js" integrity="sha256-dyqFgrnP6q/sXV1soB7aY7Z6mIWPR&#43;kcn1lp0FDOQnE="></script>
 
 <!--
 Made with Book Theme
@@ -243,6 +243,16 @@ https://github.com/alex-shpak/hugo-book
       
         <li>
 
+  <a href="/notebook/r/purrr/" >
+      purrr
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
   <a href="/notebook/r/reticulate/" >
       reticulate
   </a>
@@ -455,6 +465,36 @@ https://github.com/alex-shpak/hugo-book
     
       
 
+  <a href="/notebook/maritime/" >
+      Maritime
+  </a>
+
+
+    
+
+    
+
+
+
+
+  
+  <ul>
+    
+  </ul>
+  
+
+
+
+  </li>
+
+
+  
+    
+
+  <li >
+    
+      
+
   <a href="/notebook/miscellaneous/" >
       miscellaneous
   </a>
@@ -568,9 +608,9 @@ https://github.com/alex-shpak/hugo-book
 <article class="markdown"><h1 id="sf">sf</h1>
 <h1 id="定義されたクラス">定義されたクラス</h1>
 <ul>
-<li>sfg：個別の地物オブジェクト</li>
-<li>sfc：sfgオブジェクトのリスト、リストの各要素が１地物に相当</li>
-<li>sf：sfcオブジェクトをgeometory列としてもつデータフレーム、１行が１地物、geometory列以外の列は地物がもつ値</li>
+<li><code>sfg</code> ：個別の地物オブジェクト</li>
+<li>sfc ：sfgオブジェクトのリスト、リストの各要素が１地物に相当</li>
+<li>sf ：sfcオブジェクトを geometry列としてもつデータフレーム、１行が１地物、geometory列以外の列は地物がもつ値</li>
 </ul>
 <h1 id="地物sfgオブジェクトの型">地物（sfgオブジェクト）の型</h1>
 <ul>
@@ -581,18 +621,12 @@ https://github.com/alex-shpak/hugo-book
 <li>MULTILINESTRING：線分の集合</li>
 <li>GEOMETORYCOLLECTION：様々な型のデータの集合</li>
 </ul>
-<h1 id="sfgオブジェクトをsfcオブジェクトに変換する">sfgオブジェクトをsfcオブジェクトに変換する</h1>
-<pre><code>
-st
-
-</code></pre><h1 id="sf-オブジェクトの作成">sf オブジェクトの作成</h1>
+<h1 id="sf-オブジェクトの作成">sf オブジェクトの作成</h1>
 <h2 id="データフレームから作成する--st_as_sf">データフレームから作成する : st_as_sf()</h2>
-<p>１行が１点を表すデータフレーム <code>df</code> （緯度 <code>lat</code> 経度 <code>lon</code>）から <code>sf</code> オブジェクトを作成する。<code>remove = FALSE</code> は <code>coords = c(&quot;lon&quot;, &quot;lat&quot;)</code> で指定した列を削除しないという意味。</p>
-<p>その後、<code>st_set_crs(4326)</code> で座標参照系を設定している。EPSGコード 4326 は WGS84 を表す。</p>
+<p>１行が１点を表すデータフレーム <code>df</code> （緯度 <code>lat</code> 経度 <code>lon</code>）から <code>sf</code> オブジェクトを作成する。<code>coords = c(&quot;lon&quot;, &quot;lat&quot;)</code>、はXY座標に相当するカラム名を指定している。<code>crs = 4326</code>  で座標参照系を設定している。EPSGコード 4326 は WGS84 を表す。 <code>remove = FALSE</code> は <code>coords = c(&quot;lon&quot;, &quot;lat&quot;)</code> で指定した列を削除しないという意味。</p>
 <pre><code class="language-{r}" data-lang="{r}"># df は 各行が1POINTを表していて、その座標が &quot;lon&quot;, &quot;lat&quot; という列名で保持されているデータフレーム
 sf &lt;- df %&gt;% 
-        st_as_sf(coords = c(&quot;lon&quot;, &quot;lat&quot;), dim = &quot;XY&quot;, remove = FALSE) %&gt;%
-        st_set_crs(4326)
+      st_as_sf(coords = c(&quot;lon&quot;, &quot;lat&quot;), dim = &quot;XY&quot;, remove = FALSE, crs = 4326)
 </code></pre><h1 id="処理関数">処理関数</h1>
 <h3 id="sfオブジェクトの切り抜き">sfオブジェクトの切り抜き</h3>
 <p><code>st_crop() </code></p>
