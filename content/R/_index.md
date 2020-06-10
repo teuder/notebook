@@ -10,12 +10,12 @@ type: docs
 
 # R
 
-# コーディングスタイル
+## コーディングスタイル
 
 [The tidyverse style guide](https://style.tidyverse.org/)
 
 
-# ソースコードを確認
+## ソースコードを確認
 
 lookup パッケージ
 
@@ -24,12 +24,12 @@ devtools::install_github("jimhester/lookup")
 lookup::lookup(dplyr::summarise)
 ```
 
-# バージョン管理
+## バージョン管理
 
 - [RSwitch](https://rud.is/rswitch/) R本体のバージョン管理 https://twitter.com/hrbrmstr
 - renv, packrat : パッケージのバージョン管理
 
-# 並列計算
+## 並列計算
 
 `furrr` : `purrr` と同様の使い方で並列に計算できる
 
@@ -38,9 +38,9 @@ lookup::lookup(dplyr::summarise)
 [Data to Viz](https://www.data-to-viz.com/)
 
 
-# インストール
+## インストール
 
-## Ubuntu
+### Ubuntu
 
 - [UBUNTU PACKAGES FOR R](https://cran.rstudio.com/bin/linux/ubuntu/README.html)
 - [Ubuntuに最新版のRをインストールする](https://qiita.com/JeJeNeNo/items/43fc95c4710c668e86a2)
@@ -48,10 +48,10 @@ lookup::lookup(dplyr::summarise)
 
 
 
-# 環境設定
+## 環境設定
 
 
-## 環境変数
+### 環境変数
 
 ```
 Sys.getenv()
@@ -61,7 +61,7 @@ Sys.setenv("LANGUAGE"="ja_Jp.UTF-8")
 ```
 
 
-## 環境設定ファイル
+### 環境設定ファイル
 
 
 ユーザーごとのRの設定ファイルは（Rが思っている）ユーザーのホームディレクトリ `R_USER` に配置しておくとよい。
@@ -72,7 +72,7 @@ Sys.setenv("LANGUAGE"="ja_Jp.UTF-8")
 ```
 
 
-### .Renviron
+#### .Renviron
 
 環境変数を指定するシェルスクリプト
 
@@ -87,7 +87,7 @@ LANG=C
 LC_CTYPE=en_US.UTF-8
 ```
 
-### .Rprofile
+#### .Rprofile
 
 Rの起動時や終了時に実行したいRのスクリプト
 
@@ -95,7 +95,7 @@ https://cran.r-project.org/doc/manuals/R-intro.html#Customizing-the-environment
 
 
 
-### ~/.R/Makevars
+#### ~/.R/Makevars
 
 https://cran.r-project.org/doc/manuals/r-release/R-exts.html#Using-Makevars
 
@@ -111,9 +111,9 @@ MAKE=make -j4
 ```
 
 
-# ロケール、文字コード
+## ロケール、文字コード
 
-## ロケールを指定する文字列
+### ロケールを指定する文字列
 
 ロケールとは表示する言語・文字コードや数字や時刻の表示形式を変更するための設定のこと
 
@@ -137,7 +137,7 @@ MAKE=make -j4
     - `en_US.UTF-8`
 
 
-## 環境変数
+### 環境変数
 
 メッセージを変えたいだけなら `.Renviron` ファイルの中で `LANGUAGE` 環境変数を設定する
 
@@ -164,15 +164,9 @@ Rでロケールに関連する環境変数
 - `LC_ALL` : これが設定されていると他のロケール設定（`LC_*`）よりも優先して、こちらの設定が使われる
 
 
-
-
-
 ```
-
  Sys.setlocale("LC_MESSAGES", "English")
-
 ```
-
 
 現在のロケールを確認する（windows）
 
@@ -180,11 +174,6 @@ Rでロケールに関連する環境変数
 > Sys.getlocale()
 [1] "LC_COLLATE=Japanese_Japan.932;LC_CTYPE=English_United States.1252;LC_MONETARY=Japanese_Japan.932;LC_NUMERIC=C;LC_TIME=Japanese_Japan.932"
 ```
-
-
-
-
-
 
 
 Ubuntu でロケールを表示してみた。　ロケールに関連する環境変数はもっと多い
@@ -209,33 +198,15 @@ LC_ALL=ja_JP.UTF-8
 ```
 
 
+## きになるパッケージ
 
-
-
-
-
-
-
-
-
-
-
-R での表示言語を変更する
-
-
-```
-setlocale("LC_ALL", "English_United States.932")
-```
-
-# きになるパッケージ
-
-## 可視化
+### 可視化
 
 - gganimate : gifアニメ
 - export : ggplotオブジェクトをパワポに変換する
 - ggridge 複数のヒストグラム比べるやつ
 
-# オブジェクトを調べる
+## オブジェクトを調べる
 
 `class()` `typeof()` `mode()`
 

@@ -7,7 +7,7 @@
 <meta property="og:description" content="" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://teuder.github.io/notebook/r/" />
-<meta property="og:updated_time" content="2020-05-27T18:54:29+09:00" />
+<meta property="og:updated_time" content="2020-06-10T21:44:11+09:00" />
 <title>R | notebook</title>
 <link rel="icon" href="/notebook/favicon.png" type="image/x-icon">
 
@@ -15,7 +15,7 @@
 <link rel="stylesheet" href="/notebook/book.min.07c38dce7b6800da2a75a565d4d975e38f837294e24d00b5aae363037012d64b.css" integrity="sha256-B8ONzntoANoqdaVl1Nl144&#43;DcpTiTQC1quNjA3AS1ks=">
 
 
-<script defer src="/notebook/search.min.772a8582b9cfeaafec5d5d6ca01eda63b67a98858f47e91c9f5969d050ce4271.js" integrity="sha256-dyqFgrnP6q/sXV1soB7aY7Z6mIWPR&#43;kcn1lp0FDOQnE="></script>
+<script defer src="/notebook/search.min.d5349e77e78abd96b6d32ee63a6bccbe037dd7408d9056ead74f605d121dcb87.js" integrity="sha256-1TSed&#43;eKvZa20y7mOmvMvgN910CNkFbq109gXRIdy4c="></script>
 
 <link rel="alternate" type="application/rss+xml" href="https://teuder.github.io/notebook/r/index.xml" title="notebook" />
 <!--
@@ -606,36 +606,36 @@ https://github.com/alex-shpak/hugo-book
 
       
 <article class="markdown"><h1 id="r">R</h1>
-<h1 id="コーディングスタイル">コーディングスタイル</h1>
+<h2 id="コーディングスタイル">コーディングスタイル</h2>
 <p><a href="https://style.tidyverse.org/">The tidyverse style guide</a></p>
-<h1 id="ソースコードを確認">ソースコードを確認</h1>
+<h2 id="ソースコードを確認">ソースコードを確認</h2>
 <p>lookup パッケージ</p>
 <pre><code>devtools::install_github(&quot;jimhester/lookup&quot;)
 lookup::lookup(dplyr::summarise)
-</code></pre><h1 id="バージョン管理">バージョン管理</h1>
+</code></pre><h2 id="バージョン管理">バージョン管理</h2>
 <ul>
 <li><a href="https://rud.is/rswitch/">RSwitch</a> R本体のバージョン管理 <a href="https://twitter.com/hrbrmstr">https://twitter.com/hrbrmstr</a></li>
 <li>renv, packrat : パッケージのバージョン管理</li>
 </ul>
-<h1 id="並列計算">並列計算</h1>
+<h2 id="並列計算">並列計算</h2>
 <p><code>furrr</code> : <code>purrr</code> と同様の使い方で並列に計算できる</p>
 <h1 id="可視化">可視化</h1>
 <p><a href="https://www.data-to-viz.com/">Data to Viz</a></p>
-<h1 id="インストール">インストール</h1>
-<h2 id="ubuntu">Ubuntu</h2>
+<h2 id="インストール">インストール</h2>
+<h3 id="ubuntu">Ubuntu</h3>
 <ul>
 <li><a href="https://cran.rstudio.com/bin/linux/ubuntu/README.html">UBUNTU PACKAGES FOR R</a></li>
 <li><a href="https://qiita.com/JeJeNeNo/items/43fc95c4710c668e86a2">Ubuntuに最新版のRをインストールする</a></li>
 </ul>
-<h1 id="環境設定">環境設定</h1>
-<h2 id="環境変数">環境変数</h2>
+<h2 id="環境設定">環境設定</h2>
+<h3 id="環境変数">環境変数</h3>
 <pre><code>Sys.getenv()
 </code></pre><pre><code>Sys.setenv(&quot;LANGUAGE&quot;=&quot;ja_Jp.UTF-8&quot;)
-</code></pre><h2 id="環境設定ファイル">環境設定ファイル</h2>
+</code></pre><h3 id="環境設定ファイル">環境設定ファイル</h3>
 <p>ユーザーごとのRの設定ファイルは（Rが思っている）ユーザーのホームディレクトリ <code>R_USER</code> に配置しておくとよい。</p>
 <pre><code>&gt; Sys.getenv(&quot;R_USER&quot;)
 [1] &quot;C:/Users/tsuda/Documents&quot;
-</code></pre><h3 id="renviron">.Renviron</h3>
+</code></pre><h4 id="renviron">.Renviron</h4>
 <p>環境変数を指定するシェルスクリプト</p>
 <pre><code>R_USER=${HOME}/.R
 R_LIBS_USER=${R_USER}/library
@@ -645,10 +645,10 @@ R_HISTFILE=${R_USER}/.Rhistory
 R_HISTSIZE=65535
 LANG=C
 LC_CTYPE=en_US.UTF-8
-</code></pre><h3 id="rprofile">.Rprofile</h3>
+</code></pre><h4 id="rprofile">.Rprofile</h4>
 <p>Rの起動時や終了時に実行したいRのスクリプト</p>
 <p><a href="https://cran.r-project.org/doc/manuals/R-intro.html#Customizing-the-environment">https://cran.r-project.org/doc/manuals/R-intro.html#Customizing-the-environment</a></p>
-<h3 id="rmakevars">~/.R/Makevars</h3>
+<h4 id="rmakevars">~/.R/Makevars</h4>
 <p><a href="https://cran.r-project.org/doc/manuals/r-release/R-exts.html#Using-Makevars">https://cran.r-project.org/doc/manuals/r-release/R-exts.html#Using-Makevars</a></p>
 <pre><code>CC=/opt/local/bin/gcc-mp-4.7
 CXX=/opt/local/bin/g++-mp-4.7
@@ -658,8 +658,8 @@ LD_LIBRARY_PATH=/opt/local/lib:$LD_LIBRARY_PATH
 CXXFLAGS= -g0 -O3 -Wall
 
 MAKE=make -j4
-</code></pre><h1 id="ロケール文字コード">ロケール、文字コード</h1>
-<h2 id="ロケールを指定する文字列">ロケールを指定する文字列</h2>
+</code></pre><h2 id="ロケール文字コード">ロケール、文字コード</h2>
+<h3 id="ロケールを指定する文字列">ロケールを指定する文字列</h3>
 <p>ロケールとは表示する言語・文字コードや数字や時刻の表示形式を変更するための設定のこと</p>
 <ul>
 <li><a href="https://cran.r-project.org/doc/manuals/r-patched/R-admin.html#Locales">R manual: Locale</a></li>
@@ -687,7 +687,7 @@ MAKE=make -j4
 </ul>
 </li>
 </ul>
-<h2 id="環境変数-1">環境変数</h2>
+<h3 id="環境変数-1">環境変数</h3>
 <p>メッセージを変えたいだけなら <code>.Renviron</code> ファイルの中で <code>LANGUAGE</code> 環境変数を設定する</p>
 <p>.Renviron</p>
 <pre><code>LANGUAGE=English
@@ -703,9 +703,7 @@ MAKE=make -j4
 <li><code>LC_TIME</code> : 日付と時刻の表示に影響します。</li>
 <li><code>LC_ALL</code> : これが設定されていると他のロケール設定（<code>LC_*</code>）よりも優先して、こちらの設定が使われる</li>
 </ul>
-<pre><code>
- Sys.setlocale(&quot;LC_MESSAGES&quot;, &quot;English&quot;)
-
+<pre><code> Sys.setlocale(&quot;LC_MESSAGES&quot;, &quot;English&quot;)
 </code></pre><p>現在のロケールを確認する（windows）</p>
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#f92672">&gt;</span> <span style="color:#75af00">Sys.getlocale</span><span style="color:#111">()</span>
 <span style="color:#111">[1]</span> <span style="color:#d88200">&#34;LC_COLLATE=Japanese_Japan.932;LC_CTYPE=English_United States.1252;LC_MONETARY=Japanese_Japan.932;LC_NUMERIC=C;LC_TIME=Japanese_Japan.932&#34;</span>
@@ -726,16 +724,14 @@ LC_TELEPHONE=&quot;ja_JP.UTF-8&quot;
 LC_MEASUREMENT=&quot;ja_JP.UTF-8&quot;
 LC_IDENTIFICATION=&quot;ja_JP.UTF-8&quot;
 LC_ALL=ja_JP.UTF-8
-</code></pre><p>R での表示言語を変更する</p>
-<pre><code>setlocale(&quot;LC_ALL&quot;, &quot;English_United States.932&quot;)
-</code></pre><h1 id="きになるパッケージ">きになるパッケージ</h1>
-<h2 id="可視化-1">可視化</h2>
+</code></pre><h2 id="きになるパッケージ">きになるパッケージ</h2>
+<h3 id="可視化-1">可視化</h3>
 <ul>
 <li>gganimate : gifアニメ</li>
 <li>export : ggplotオブジェクトをパワポに変換する</li>
 <li>ggridge 複数のヒストグラム比べるやつ</li>
 </ul>
-<h1 id="オブジェクトを調べる">オブジェクトを調べる</h1>
+<h2 id="オブジェクトを調べる">オブジェクトを調べる</h2>
 <p><code>class()</code> <code>typeof()</code> <code>mode()</code></p>
 <p><code>str()</code> <code>attributes()</code></p>
 </article>
@@ -745,9 +741,9 @@ LC_ALL=ja_JP.UTF-8
   
   <div>
     
-    <a class="flex align-center" href="https://github.com/teuder/notebook/commit/1c4b2b5935f1ddbb8f4d25bc2ff54f9630bdc3c3" title='Last modified 2020-05-27 by Masaki Tsuda' target="_blank" rel="noopener">
+    <a class="flex align-center" href="https://github.com/teuder/notebook/commit/6f85d8e42436bfa3480e3a0b0a54e790cac2b496" title='Last modified 2020-06-10 by Masaki Tsuda' target="_blank" rel="noopener">
       <img src="/notebook/svg/calendar.svg" alt="Changed" />
-      <span>2020-05-27</span>
+      <span>2020-06-10</span>
     </a>
   </div>
   
@@ -773,27 +769,36 @@ LC_ALL=ja_JP.UTF-8
   <aside class="book-toc level-3 fixed">
     <nav id="TableOfContents">
   <ul>
-    <li><a href="#ubuntu">Ubuntu</a></li>
+    <li><a href="#コーディングスタイル">コーディングスタイル</a></li>
+    <li><a href="#ソースコードを確認">ソースコードを確認</a></li>
+    <li><a href="#バージョン管理">バージョン管理</a></li>
+    <li><a href="#並列計算">並列計算</a></li>
   </ul>
 
   <ul>
-    <li><a href="#環境変数">環境変数</a></li>
-    <li><a href="#環境設定ファイル">環境設定ファイル</a>
+    <li><a href="#インストール">インストール</a>
       <ul>
-        <li><a href="#renviron">.Renviron</a></li>
-        <li><a href="#rprofile">.Rprofile</a></li>
-        <li><a href="#rmakevars">~/.R/Makevars</a></li>
+        <li><a href="#ubuntu">Ubuntu</a></li>
       </ul>
     </li>
-  </ul>
-
-  <ul>
-    <li><a href="#ロケールを指定する文字列">ロケールを指定する文字列</a></li>
-    <li><a href="#環境変数-1">環境変数</a></li>
-  </ul>
-
-  <ul>
-    <li><a href="#可視化-1">可視化</a></li>
+    <li><a href="#環境設定">環境設定</a>
+      <ul>
+        <li><a href="#環境変数">環境変数</a></li>
+        <li><a href="#環境設定ファイル">環境設定ファイル</a></li>
+      </ul>
+    </li>
+    <li><a href="#ロケール文字コード">ロケール、文字コード</a>
+      <ul>
+        <li><a href="#ロケールを指定する文字列">ロケールを指定する文字列</a></li>
+        <li><a href="#環境変数-1">環境変数</a></li>
+      </ul>
+    </li>
+    <li><a href="#きになるパッケージ">きになるパッケージ</a>
+      <ul>
+        <li><a href="#可視化-1">可視化</a></li>
+      </ul>
+    </li>
+    <li><a href="#オブジェクトを調べる">オブジェクトを調べる</a></li>
   </ul>
 </nav>
   </aside>

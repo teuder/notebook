@@ -8,10 +8,10 @@ type: docs
 # RStudio
 
 
-# インストール
+## インストール
 
 
-## WSL の Ubuntu 18.04 にインストール
+### WSL の Ubuntu 18.04 にインストール
 
 Ubuntuの場合と同じ、事前にRをインストールしておく
 
@@ -42,7 +42,7 @@ export LC_ALL=en_US.UTF-8
 
 
 
-# RStudio Server の起動
+## RStudio Server の起動
 
 
 ```
@@ -57,7 +57,7 @@ sudo service rstudio-server start
 [WSLにインストールしたRStudio Serverの起動を楽にする](https://qiita.com/t-yui/items/62eeb5ac39f5cd360118)
 
 
-# RStudio Server のアップデート
+## RStudio Server のアップデート
 
 [RStudio Server のパージョンを新しくする](https://support.rstudio.com/hc/en-us/articles/216079967-Upgrading-RStudio-Server)
 
