@@ -17,7 +17,7 @@
       <pubDate>Fri, 17 Jan 2020 00:00:00 +0000</pubDate>
       
       <guid>https://teuder.github.io/notebook/python/environment/</guid>
-      <description>Python 環境設定 Python 本体のインストールとバージョン管理 pyenv python本体のバージョン管理、インストール イントールと設定 brew install pyenv ~/.zshrc などに以下の記述を追加</description>
+      <description>Python 環境設定 https://www.medi-08-data-06.work/entry/python_env Python 本体のインストールとバージョン管理 pyenv python本体のバージョン管理、インストール イントールと設定 brew install pyenv ~/.zshrc などに以下の記述を追</description>
     </item>
     
     <item>

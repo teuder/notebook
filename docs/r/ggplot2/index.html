@@ -16,7 +16,7 @@
 <link rel="stylesheet" href="/notebook/book.min.07c38dce7b6800da2a75a565d4d975e38f837294e24d00b5aae363037012d64b.css" integrity="sha256-B8ONzntoANoqdaVl1Nl144&#43;DcpTiTQC1quNjA3AS1ks=">
 
 
-<script defer src="/notebook/search.min.e6873659882bf528c2ebc081a1f9b322f6651a56328f89fbc4060baabec3b432.js" integrity="sha256-5oc2WYgr9SjC68CBofmzIvZlGlYyj4n7xAYLqr7DtDI="></script>
+<script defer src="/notebook/search.min.601d9f1b9fe8c9795d03d0502bbe269a4e0a4a5e6854bc04e5255f5185920208.js" integrity="sha256-YB2fG5/oyXldA9BQK74mmk4KSl5oVLwE5SVfUYWSAgg="></script>
 
 <!--
 Made with Book Theme
@@ -223,6 +223,26 @@ https://github.com/alex-shpak/hugo-book
       
         <li>
 
+  <a href="/notebook/r/dplyr/" >
+      dplyr
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/r/future/" >
+      future
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
   <a href="/notebook/r/gganimate/" >
       gganimate
   </a>
@@ -265,6 +285,16 @@ https://github.com/alex-shpak/hugo-book
 
   <a href="/notebook/r/rmarkdown/" >
       Rmarkdown
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/r/rpart/" >
+      rpart
   </a>
 
 </li>
@@ -495,8 +525,8 @@ https://github.com/alex-shpak/hugo-book
     
       
 
-  <a href="/notebook/miscellaneous/" >
-      miscellaneous
+  <a href="/notebook/gcp/" >
+      BigQuery
   </a>
 
 
@@ -513,12 +543,52 @@ https://github.com/alex-shpak/hugo-book
       
         <li>
 
-  <a href="/notebook/miscellaneous/bigquery/" >
+  <a href="/notebook/gcp/bigquery/" >
       BigQuery
   </a>
 
 </li>
       
+    
+      
+        <li>
+
+  <a href="/notebook/gcp/bigquery_gis/" >
+      BigQuery
+  </a>
+
+</li>
+      
+    
+  </ul>
+  
+
+
+
+  </li>
+
+
+  
+    
+
+  <li >
+    
+      
+
+  <a href="/notebook/miscellaneous/" >
+      miscellaneous
+  </a>
+
+
+    
+
+    
+
+
+
+
+  
+  <ul>
     
       
         <li>
@@ -643,10 +713,53 @@ data(data_df) +
 </code></pre><h1 id="グラフの種類-geom_">グラフの種類: geom_*()</h1>
 <p><code>geom</code> は <code>geometry</code> （ジオメトリ）の略、グラフの基礎となる構造を指定する</p>
 <h2 id="散布図">散布図</h2>
-<h2 id="折れ線">折れ線</h2>
-<h2 id="ヒストグラム">ヒストグラム</h2>
+<pre><code>geom_point()
+</code></pre><h2 id="折れ線">折れ線</h2>
+<pre><code>geom_line()
+</code></pre><h2 id="経路">経路</h2>
+<pre><code>geom_path()
+</code></pre><h2 id="ヒストグラム">ヒストグラム</h2>
+<p>連続変数 x の値のビンごとの度数、頻度を、棒グラフ、曲線、折線で描画する</p>
+<pre><code>geom_histogram() # 棒グラフ
+geom_density()   # なめらかな曲線
+geom_freqpoly()  # 折線
+</code></pre><p>いずれの <code>geom_*</code> でも、<code>aes()</code> の中で <code>y</code> を指定することで縦軸をカウント <code>..count..</code> 、密度（%） <code>..density..</code> のどちらにも対応できる</p>
+<pre><code>geom_histogram(aes(x, y = ..density..))
+geom_density(  aes(x, y = ..count..  ))
+</code></pre><p>色分けした変数の位置</p>
+<pre><code>position = &quot;identity&quot; # 重ね描き
+position = &quot;stack&quot;    # 積み上げ
+position = &quot;dodge&quot;`   # 隣接
+position = &quot;fill&quot;     # 割合
+</code></pre><p>ビンの切り方: <code>star_bin()</code></p>
+<p>次の２つの書き方は等価らしい</p>
+<pre><code>geom_histgram(aes(x), binwidth = 0.1)
+geom_histgram(aes(x)) + stat_bin(binwidth = 0.1)
+</code></pre><p><code>geom_histogram()</code> <code>geom_density()</code> <code>geom_freqpoly()</code> は <code>stat_bin()</code> の引数をあらかじめ指定した特殊なバージョンらしい</p>
+<p><code>stat_bin()</code> の <code>binwidth</code> から下の引数は <code>geom_*</code> の中で指定できる。</p>
+<pre><code>stat_bin(
+  mapping = NULL,
+  data = NULL,
+  geom = &quot;bar&quot;,
+  position = &quot;stack&quot;,
+  ...,
+  binwidth = NULL,
+  bins = NULL,
+  center = NULL,
+  boundary = NULL,
+  breaks = NULL,
+  closed = c(&quot;right&quot;, &quot;left&quot;),
+  pad = FALSE,
+  na.rm = FALSE,
+  orientation = NA,
+  show.legend = NA,
+  inherit.aes = TRUE
+)
+</code></pre><p><code>x</code> が離散変数なら <code>stat_count()</code> の方がいい</p>
 <h2 id="棒グラフ">棒グラフ</h2>
-<h2 id="箱ひげ図バイオリンプロット">箱ひげ図・バイオリンプロット</h2>
+<pre><code>ggplot(df, aes(x = cell, y = weight, fill = sample))
+g &lt;- g + geom_bar(stat = &quot;identity&quot;)
+</code></pre><h2 id="箱ひげ図バイオリンプロット">箱ひげ図・バイオリンプロット</h2>
 <h2 id="線分">線分</h2>
 <h2 id="多角形">多角形</h2>
 <h1 id="色の指定">色の指定</h1>
@@ -695,7 +808,14 @@ p +
 </code></pre><h2 id="scale_x_continuous">scale_x_continuous()</h2>
 <h1 id="軸の変換">軸の変換</h1>
 <p><a href="https://qiita.com/nozma/items/2954b21e7136b3011580">geom_barやgeom_histgramでの軸の変換</a></p>
-<h1 id="画像として保存する--ggsave">画像として保存する : ggsave()</h1>
+<h1 id="凡例">凡例</h1>
+<p>特定の凡例（colour）を消す１</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#75af00">guides</span><span style="color:#111">(</span><span style="color:#111">colour</span><span style="color:#f92672">=</span><span style="color:#00a8c8">FALSE</span><span style="color:#111">)</span>
+</code></pre></div><p>特定の凡例（colour）を消す２</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#75af00">scale_colour_discrete</span><span style="color:#111">(</span><span style="color:#111">guide</span><span style="color:#f92672">=</span><span style="color:#00a8c8">FALSE</span><span style="color:#111">)</span>
+</code></pre></div><p>全ての凡例を消す</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#75af00">theme</span><span style="color:#111">(</span><span style="color:#111">legend.position</span> <span style="color:#f92672">=</span> <span style="color:#d88200">&#39;none&#39;</span><span style="color:#111">)</span>
+</code></pre></div><h1 id="画像として保存する--ggsave">画像として保存する : ggsave()</h1>
 <pre><code>gsave(
     filename,
     plot = last_plot(),
@@ -721,8 +841,25 @@ p +
 <li>limitsize : TRUE だと 50x50インチより大きいサイズでプロットしない、エラーを防ぐため</li>
 </ul>
 <h1 id="複数の図をまとめる">複数の図をまとめる</h1>
-<p><code>patchwork</code></p>
-</article>
+<p><code>patchwork</code> パッケージを使うのが楽ちん</p>
+<p><a href="https://qiita.com/nozma/items/4512623bea296ccb74ba">https://qiita.com/nozma/items/4512623bea296ccb74ba</a></p>
+<p>基本的には <code>+</code> 演算子で複数の ggplot オブジェクトを1つにまとめる</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#75af00">library</span><span style="color:#111">(</span><span style="color:#111">ggplot2</span><span style="color:#111">)</span>
+<span style="color:#75af00">library</span><span style="color:#111">(</span><span style="color:#111">patchwork</span><span style="color:#111">)</span>
+
+<span style="color:#111">p1</span> <span style="color:#f92672">&lt;-</span> <span style="color:#75af00">ggplot</span><span style="color:#111">(</span><span style="color:#111">mtcars</span><span style="color:#111">)</span> <span style="color:#f92672">+</span> <span style="color:#75af00">geom_point</span><span style="color:#111">(</span><span style="color:#75af00">aes</span><span style="color:#111">(</span><span style="color:#111">mpg</span><span style="color:#111">,</span> <span style="color:#111">disp</span><span style="color:#111">))</span>
+<span style="color:#111">p2</span> <span style="color:#f92672">&lt;-</span> <span style="color:#75af00">ggplot</span><span style="color:#111">(</span><span style="color:#111">mtcars</span><span style="color:#111">)</span> <span style="color:#f92672">+</span> <span style="color:#75af00">geom_boxplot</span><span style="color:#111">(</span><span style="color:#75af00">aes</span><span style="color:#111">(</span><span style="color:#111">gear</span><span style="color:#111">,</span> <span style="color:#111">disp</span><span style="color:#111">,</span> <span style="color:#111">group</span> <span style="color:#f92672">=</span> <span style="color:#111">gear</span><span style="color:#111">))</span>
+<span style="color:#111">p1</span> <span style="color:#f92672">+</span> <span style="color:#111">p2</span>
+</code></pre></div><p>レイアウトの調整は <code>plot_layout()</code> 関数を使う</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#75af00">plot_layout</span><span style="color:#111">(</span><span style="color:#111">ncol</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span><span style="color:#111">,</span> <span style="color:#111">heights</span> <span style="color:#f92672">=</span> <span style="color:#75af00">c</span><span style="color:#111">(</span><span style="color:#ae81ff">3</span><span style="color:#111">,</span> <span style="color:#ae81ff">1</span><span style="color:#111">))</span>
+</code></pre></div><p>間隔を開けたいときは <code>plot_spacer()</code></p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#111">p1</span> <span style="color:#f92672">+</span> <span style="color:#75af00">plot_spacer</span><span style="color:#111">()</span> <span style="color:#f92672">+</span> <span style="color:#111">p2</span>
+</code></pre></div><h2 id="特定の変数の値を使って図を分離する">特定の変数の値を使って図を分離する</h2>
+<p><code>facet_grid()</code> や  <code>facet_wrap()</code> を使う</p>
+<p><code>facet_grid()</code> は図を2次元に配置する</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#111">p</span> <span style="color:#f92672">&lt;-</span> <span style="color:#75af00">ggplot</span><span style="color:#111">(</span><span style="color:#111">diamonds</span><span style="color:#111">,</span> <span style="color:#75af00">aes</span><span style="color:#111">(</span><span style="color:#111">x</span><span style="color:#f92672">=</span><span style="color:#111">carat</span><span style="color:#111">,</span> <span style="color:#111">y</span><span style="color:#f92672">=</span><span style="color:#111">price</span><span style="color:#111">))</span>
+<span style="color:#111">p</span> <span style="color:#f92672">+</span> <span style="color:#75af00">geom_point</span><span style="color:#111">(</span><span style="color:#75af00">aes</span><span style="color:#111">(</span><span style="color:#111">colour</span><span style="color:#f92672">=</span><span style="color:#111">clarity</span><span style="color:#111">))</span> <span style="color:#f92672">+</span> <span style="color:#75af00">facet_grid</span><span style="color:#111">(</span><span style="color:#111">. </span><span style="color:#f92672">~</span> <span style="color:#111">color</span><span style="color:#111">)</span>
+</code></pre></div></article>
 
       
 <div class="book-footer justify-between">
@@ -765,6 +902,7 @@ p +
   <ul>
     <li><a href="#散布図">散布図</a></li>
     <li><a href="#折れ線">折れ線</a></li>
+    <li><a href="#経路">経路</a></li>
     <li><a href="#ヒストグラム">ヒストグラム</a></li>
     <li><a href="#棒グラフ">棒グラフ</a></li>
     <li><a href="#箱ひげ図バイオリンプロット">箱ひげ図・バイオリンプロット</a></li>
@@ -781,6 +919,10 @@ p +
   <ul>
     <li><a href="#軸の名前-xlab--ylab-labs">軸の名前 <code>xlab()</code>,  <code>ylab()</code>, <code>labs()</code></a></li>
     <li><a href="#scale_x_continuous">scale_x_continuous()</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#特定の変数の値を使って図を分離する">特定の変数の値を使って図を分離する</a></li>
   </ul>
 </nav>
   </aside>

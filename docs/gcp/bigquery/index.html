@@ -3,12 +3,13 @@
 
 <head>
   <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0"><meta property="og:title" content="reticulate" />
-<meta property="og:description" content="reticulate R から Python を呼び出すためのパッケージ 使用する Python を指定する .Rprofile で RETICULATE_PYTHON 環境変数に、使用するPythonを指定するのが安全 Sys.setenv(RETICULATE_PYTHON = &#39;/usr/local/bin/python3&#39;)" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><meta property="og:title" content="BigQuery" />
+<meta property="og:description" content="BigQuery WebUI キーボードショートカット Mac の場合は Ctrl の代わりに Cmd にする キー アクション Ctrl Enter 現在のクエリを実行 Tab 現在の単語をオートコンプリート 選択 Tab 選択範囲" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://teuder.github.io/notebook/r/reticulate/" />
-<meta property="article:modified_time" content="2020-05-27T18:54:29+09:00" />
-<title>reticulate | notebook</title>
+<meta property="og:url" content="https://teuder.github.io/notebook/gcp/bigquery/" />
+<meta property="article:published_time" content="2019-09-04T00:00:00+00:00" />
+<meta property="article:modified_time" content="2019-09-04T00:00:00+00:00" />
+<title>BigQuery | notebook</title>
 <link rel="icon" href="/notebook/favicon.png" type="image/x-icon">
 
 
@@ -272,7 +273,7 @@ https://github.com/alex-shpak/hugo-book
       
         <li>
 
-  <a href="/notebook/r/reticulate/"  class="active">
+  <a href="/notebook/r/reticulate/" >
       reticulate
   </a>
 
@@ -542,7 +543,7 @@ https://github.com/alex-shpak/hugo-book
       
         <li>
 
-  <a href="/notebook/gcp/bigquery/" >
+  <a href="/notebook/gcp/bigquery/"  class="active">
       BigQuery
   </a>
 
@@ -670,32 +671,148 @@ https://github.com/alex-shpak/hugo-book
   <label for="menu-control">
     <img src="/notebook/svg/menu.svg" alt="Menu" />
   </label>
-  <strong>reticulate</strong>
+  <strong>BigQuery</strong>
 </header>
 
       
-<article class="markdown"><h1 id="reticulate">reticulate</h1>
-<p>R から Python を呼び出すためのパッケージ</p>
-<h1 id="使用する-python-を指定する">使用する Python を指定する</h1>
-<p><code>.Rprofile</code> で <code>RETICULATE_PYTHON</code> 環境変数に、使用するPythonを指定するのが安全</p>
-<pre><code>Sys.setenv(RETICULATE_PYTHON = '/usr/local/bin/python3')
+<article class="markdown"><h1 id="bigquery">BigQuery</h1>
+<h1 id="webui">WebUI</h1>
+<h2 id="キーボードショートカット">キーボードショートカット</h2>
+<p>Mac の場合は Ctrl の代わりに Cmd にする</p>
+<table>
+<thead>
+<tr>
+<th>キー</th>
+<th>アクション</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ctrl Enter</td>
+<td>現在のクエリを実行</td>
+</tr>
+<tr>
+<td>Tab</td>
+<td>現在の単語をオートコンプリート</td>
+</tr>
+<tr>
+<td>選択 Tab</td>
+<td>選択範囲のインデントを上げる</td>
+</tr>
+<tr>
+<td>選択 Shift Tab</td>
+<td>選択範囲のインデントを下げる</td>
+</tr>
+<tr>
+<td>Ctrl</td>
+<td>テーブル名をハイライト表示</td>
+</tr>
+<tr>
+<td>Ctrl テーブル名をクリック</td>
+<td>テーブル スキーマを開く</td>
+</tr>
+<tr>
+<td>Ctrl E</td>
+<td>選択項目からクエリを実行</td>
+</tr>
+<tr>
+<td>Ctrl /</td>
+<td>選択行をコメントアウト</td>
+</tr>
+<tr>
+<td>Ctrl Shift F</td>
+<td>クエリを書式設定</td>
+</tr>
+</tbody>
+</table>
+<p><a href="https://cloud.google.com/bigquery/docs/bigquery-web-ui#keyboard_shortcuts">Web IU のキーボードショートカット</a></p>
+<h1 id="sql">SQL</h1>
+<h2 id="レギュラーsqlをデフォルトにする">レギュラーSQLをデフォルトにする</h2>
+<p>クエリの前に <code>#standardSQL</code> の記述を追加する。逆にレガシーにしたい場合は <code>#legacySQL</code> を記述する。</p>
+<pre><code class="language-{sql}" data-lang="{sql}">#standardSQL
+SELECT
+  weight_pounds, state, year, gestation_weeks
+FROM
+  `bigquery-public-data.samples.natality`
+ORDER BY weight_pounds DESC
+LIMIT 10;
+</code></pre><p><code>.bigqueryrc</code> に以下を記述</p>
+<pre><code>[query]
+--use_legacy_sql=false
+
+[mk]
+--use_legacy_sql=false
+</code></pre><h2 id="基本文法">基本文法</h2>
+<ul>
+<li><a href="https://cloud.google.com/bigquery/docs/reference/standard-sql/operators?hl=ja">標準SQLの演算子</a></li>
+<li><a href="https://cloud.google.com/bigquery/docs/reference/standard-sql/functions-and-operators?hl=ja">標準SQLの関数と演算子</a></li>
+</ul>
+<h3 id="実数を丸める関数">実数を丸める関数</h3>
+<ul>
+<li><code>ROUND()</code></li>
+<li><code>CEILING()</code></li>
+<li><code>FLOOR()</code></li>
+<li><code>TRUNC()</code></li>
+</ul>
+<p><a href="https://cloud.google.com/bigquery/docs/reference/standard-sql/functions-and-operators?hl=ja#floor">丸め関数の挙動</a></p>
+<p><img src="ceil_floor_trunc_round.jpeg" alt="Pythonの丸め関数の挙動、多分BigQueryと同じ" title="Pythonの丸め関数の挙動"></p>
+<h3 id="行の抽出">行の抽出</h3>
+<h4 id="where-column-in-sub_query-">WHERE column IN( sub_query )</h4>
+<p>列の値が、サブクエリの出力結果と同じ値をもつ行だけを抽出する</p>
+<pre><code>SELECT
+  *
+FROM
+  tableA
+WHERE
+  item IN (
+    SELECT
+      product
+    FROM
+      tableB
+  )
+</code></pre><h4 id="where-exists-sub_query-">WHERE EXISTS( sub_query )</h4>
+<p>サブクエリのなかのwhere句で抽出したいレコードの条件を指定する。</p>
+<pre><code>SELECT
+  *
+FROM
+  tableA
+WHERE
+  EXISTS (
+    SELECT
+      product
+    FROM
+      tableB
+    WHERE
+      tableA.item = tableB.product
+      AND tableA.price = tableB.price
+  )
+</code></pre><h1 id="bq-コマンド">bq コマンド</h1>
+<h2 id="data-set-を作成する">Data set を作成する</h2>
+<pre><code>bq mk \
+--dataset \
+--location=US \
+--default_table_expiration 3600 \
+--default_partition_expiration 3600 \
+--description 'description' \
+project_id:dataset_name
+</code></pre><ul>
+<li><code>location</code> US など</li>
+<li><code>default_table_expiration</code> テーブル自動削除までの秒数を指定する、デフォルトでは 3600 、0に設定すると自動削除しない</li>
+<li><code>default_partition_expiration</code> テーブルに対するパーティションの自動削除までの秒数</li>
+<li><code>description</code> データセットの説明、<code>'</code> か <code>&quot;</code> で括る</li>
+<li><code>project_id:dataset_name</code> プロジェクトIDと、作成するデータセットの名前</li>
+</ul>
+<h2 id="クエリを実行する">クエリを実行する</h2>
+<pre><code> bq query
 </code></pre></article>
 
       
-<div class="book-footer justify-between">
-  
-  <div>
-    
-    <a class="flex align-center" href="https://github.com/teuder/notebook/commit/1c4b2b5935f1ddbb8f4d25bc2ff54f9630bdc3c3" title='Last modified 2020-05-27 by Masaki Tsuda' target="_blank" rel="noopener">
-      <img src="/notebook/svg/calendar.svg" alt="Changed" />
-      <span>2020-05-27</span>
-    </a>
-  </div>
+<div class="book-footer justify-end">
   
   
   <div>
     
-    <a class="flex align-center" href="https://github.com/teuder/notebook/edit/master/content/R/reticulate.md" target="_blank" rel="noopener">
+    <a class="flex align-center" href="https://github.com/teuder/notebook/edit/master/content/gcp/bigquery.md" target="_blank" rel="noopener">
       <img src="/notebook/svg/edit.svg" alt="Edit" />
       <span>Edit this page</span>
     </a>
@@ -712,7 +829,26 @@ https://github.com/alex-shpak/hugo-book
   
 
   <aside class="book-toc level-3 fixed">
-    <nav id="TableOfContents"></nav>
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#キーボードショートカット">キーボードショートカット</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#レギュラーsqlをデフォルトにする">レギュラーSQLをデフォルトにする</a></li>
+    <li><a href="#基本文法">基本文法</a>
+      <ul>
+        <li><a href="#実数を丸める関数">実数を丸める関数</a></li>
+        <li><a href="#行の抽出">行の抽出</a></li>
+      </ul>
+    </li>
+  </ul>
+
+  <ul>
+    <li><a href="#data-set-を作成する">Data set を作成する</a></li>
+    <li><a href="#クエリを実行する">クエリを実行する</a></li>
+  </ul>
+</nav>
   </aside>
 
 

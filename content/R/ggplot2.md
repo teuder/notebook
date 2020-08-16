@@ -83,11 +83,98 @@ data(data_df) +
 
 ## 散布図
 
+```
+geom_point()
+```
+
 ## 折れ線
+
+```
+geom_line()
+```
+
+## 経路
+
+```
+geom_path()
+```
 
 ## ヒストグラム
 
+連続変数 x の値のビンごとの度数、頻度を、棒グラフ、曲線、折線で描画する
+
+```
+geom_histogram() # 棒グラフ
+geom_density()   # なめらかな曲線
+geom_freqpoly()  # 折線
+```
+
+いずれの `geom_*` でも、`aes()` の中で `y` を指定することで縦軸をカウント `..count..` 、密度（%） `..density..` のどちらにも対応できる
+
+```
+geom_histogram(aes(x, y = ..density..))
+geom_density(  aes(x, y = ..count..  ))
+```
+
+色分けした変数の位置
+
+```
+position = "identity" # 重ね描き
+position = "stack"    # 積み上げ
+position = "dodge"`   # 隣接
+position = "fill"     # 割合
+```
+
+ビンの切り方: `star_bin()`
+
+次の２つの書き方は等価らしい
+
+```
+geom_histgram(aes(x), binwidth = 0.1)
+geom_histgram(aes(x)) + stat_bin(binwidth = 0.1)
+```
+
+`geom_histogram()` `geom_density()` `geom_freqpoly()` は `stat_bin()` の引数をあらかじめ指定した特殊なバージョンらしい
+
+`stat_bin()` の `binwidth` から下の引数は `geom_*` の中で指定できる。
+
+```
+stat_bin(
+  mapping = NULL,
+  data = NULL,
+  geom = "bar",
+  position = "stack",
+  ...,
+  binwidth = NULL,
+  bins = NULL,
+  center = NULL,
+  boundary = NULL,
+  breaks = NULL,
+  closed = c("right", "left"),
+  pad = FALSE,
+  na.rm = FALSE,
+  orientation = NA,
+  show.legend = NA,
+  inherit.aes = TRUE
+)
+```
+
+
+ `x` が離散変数なら `stat_count()` の方がいい
+
+
+
+
+
 ## 棒グラフ
+
+
+```
+ggplot(df, aes(x = cell, y = weight, fill = sample))
+g <- g + geom_bar(stat = "identity")
+```
+
+
 
 ## 箱ひげ図・バイオリンプロット
 
@@ -171,6 +258,26 @@ p +
 [geom_barやgeom_histgramでの軸の変換](https://qiita.com/nozma/items/2954b21e7136b3011580)
 
 
+# 凡例
+
+特定の凡例（colour）を消す１
+
+```r
+guides(colour=FALSE)
+```
+特定の凡例（colour）を消す２
+
+```r
+scale_colour_discrete(guide=FALSE)
+```
+
+全ての凡例を消す
+
+```r
+theme(legend.position = 'none')
+```
+
+
 # 画像として保存する : ggsave()
 
 ```
@@ -203,4 +310,42 @@ gsave(
 
 # 複数の図をまとめる
 
-`patchwork`
+`patchwork` パッケージを使うのが楽ちん
+
+
+https://qiita.com/nozma/items/4512623bea296ccb74ba
+
+基本的には `+` 演算子で複数の ggplot オブジェクトを1つにまとめる
+
+
+```r
+library(ggplot2)
+library(patchwork)
+
+p1 <- ggplot(mtcars) + geom_point(aes(mpg, disp))
+p2 <- ggplot(mtcars) + geom_boxplot(aes(gear, disp, group = gear))
+p1 + p2
+```
+
+レイアウトの調整は `plot_layout()` 関数を使う
+
+```r
+plot_layout(ncol = 1, heights = c(3, 1))
+```
+
+間隔を開けたいときは `plot_spacer()`
+
+```r
+p1 + plot_spacer() + p2
+```
+
+## 特定の変数の値を使って図を分離する
+
+`facet_grid()` や  `facet_wrap()` を使う
+
+`facet_grid()` は図を2次元に配置する
+
+```r
+p <- ggplot(diamonds, aes(x=carat, y=price))
+p + geom_point(aes(colour=clarity)) + facet_grid(. ~ color)
+```

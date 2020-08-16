@@ -10,6 +10,9 @@ type: docs
 # Python 環境設定
 
 
+https://www.medi-08-data-06.work/entry/python_env
+
+
 # Python 本体のインストールとバージョン管理
 
 ## pyenv
@@ -336,4 +339,8 @@ import sys
 
 sys.path.append('/usr/local/lib/python3.7/site-packages')
 ```
+
+
+
+
 

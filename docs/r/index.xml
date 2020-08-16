@@ -44,7 +44,7 @@
       <pubDate>Mon, 26 Aug 2019 00:00:00 +0000</pubDate>
       
       <guid>https://teuder.github.io/notebook/r/sf/</guid>
-      <description>sf 定義されたクラス sfg ：個別の地物オブジェクト sfc ：sfgオブジェクトのリスト、リストの各要素が１地物に相当 sf ：sfcオブジェクトを geomet</description>
+      <description>sf 定義されたクラス sfg ：個別の地物オブジェクト sfc ： sfg オブジェクトのリスト、リストの各要素が１地物に相当 sf ： sfc オブジェクトを geometry 列としてもつデータ</description>
     </item>
     
     <item>
@@ -54,6 +54,24 @@
       
       <guid>https://teuder.github.io/notebook/r/bigrquery/</guid>
       <description>bigrquery R から BigQuery を操作するためのパッケージ ds &amp;lt;- DBI::dbConnect( drv = bigrquery::bigquery(), project = &amp;quot;project_name&amp;quot;, dataset = &amp;quot;dataset_name&amp;quot;, use_legacy_sql = FALSE ) ds &amp;lt;- bq_dataset( project = &amp;quot;project_name&amp;quot;, dataset = &amp;quot;dataset_name&amp;quot;,)</description>
+    </item>
+    
+    <item>
+      <title>dplyr</title>
+      <link>https://teuder.github.io/notebook/r/dplyr/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://teuder.github.io/notebook/r/dplyr/</guid>
+      <description>dplyr データフレームに対する操作 列の選択 行の選択 行の並べ替え グループ化 集計 レコード数のカウント 以下の3つは同じ結果を返す df %&amp;gt;% group_by(x) %&amp;gt;% summarize(n = n()) df %&amp;gt;% group_by(x) %&amp;gt;% tally()</description>
+    </item>
+    
+    <item>
+      <title>future</title>
+      <link>https://teuder.github.io/notebook/r/future/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://teuder.github.io/notebook/r/future/</guid>
+      <description>future future パッケージは１つのPC内での並列計算、および、複数PCをまたいだ分散計算を実行するためのパッケージ</description>
     </item>
     
     <item>
@@ -99,6 +117,15 @@
       
       <guid>https://teuder.github.io/notebook/r/rmarkdown/</guid>
       <description>Rmarkdown Rmarkdown (.Rmd) から、html などに出力するパッケージは２つある knitr と rmarkdown、rmarkdown は内部で knitr を使用している。rmarkdown</description>
+    </item>
+    
+    <item>
+      <title>rpart</title>
+      <link>https://teuder.github.io/notebook/r/rpart/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://teuder.github.io/notebook/r/rpart/</guid>
+      <description>rpart 決定木 rpart.object https://rdrr.io/cran/rpart/man/rpart.object.html rpart() による学習結果のオブジェクト rpart.object の要素 frame: データフレーム、tree を表現する var: 分割に使用される変数、&amp;lt;leaf&amp;gt; は末端</description>
     </item>
     
     <item>

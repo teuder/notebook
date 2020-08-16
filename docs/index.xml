@@ -58,11 +58,20 @@
     
     <item>
       <title>BigQuery</title>
-      <link>https://teuder.github.io/notebook/miscellaneous/bigquery/</link>
+      <link>https://teuder.github.io/notebook/gcp/bigquery/</link>
       <pubDate>Wed, 04 Sep 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://teuder.github.io/notebook/miscellaneous/bigquery/</guid>
+      <guid>https://teuder.github.io/notebook/gcp/bigquery/</guid>
       <description>BigQuery WebUI キーボードショートカット Mac の場合は Ctrl の代わりに Cmd にする キー アクション Ctrl Enter 現在のクエリを実行 Tab 現在の単語をオートコンプリート 選択 Tab 選択範囲</description>
+    </item>
+    
+    <item>
+      <title>BigQuery</title>
+      <link>https://teuder.github.io/notebook/gcp/bigquery_gis/</link>
+      <pubDate>Wed, 04 Sep 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://teuder.github.io/notebook/gcp/bigquery_gis/</guid>
+      <description>BigQuery GIS 標準 SQL の地理関数 ST_CONTAINS ST_CONTAINS(geography_1, geography_2) geography_2 は geography_1 の内部にある（外にはみ出していない）なら TRUE ST_WITHIN ST_WITHIN(geography_1, geography_2) geography_1 は geography_2 の内部にある（外にはみ出していない）なら TRUE ST_CONTAINS とは geography_1 と geography_2</description>
     </item>
     
     <item>
@@ -143,7 +152,7 @@
       <pubDate>Mon, 26 Aug 2019 00:00:00 +0000</pubDate>
       
       <guid>https://teuder.github.io/notebook/r/sf/</guid>
-      <description>sf 定義されたクラス sfg ：個別の地物オブジェクト sfc ：sfgオブジェクトのリスト、リストの各要素が１地物に相当 sf ：sfcオブジェクトを geomet</description>
+      <description>sf 定義されたクラス sfg ：個別の地物オブジェクト sfc ： sfg オブジェクトのリスト、リストの各要素が１地物に相当 sf ： sfc オブジェクトを geometry 列としてもつデータ</description>
     </item>
     
     <item>
@@ -153,6 +162,24 @@
       
       <guid>https://teuder.github.io/notebook/r/bigrquery/</guid>
       <description>bigrquery R から BigQuery を操作するためのパッケージ ds &amp;lt;- DBI::dbConnect( drv = bigrquery::bigquery(), project = &amp;quot;project_name&amp;quot;, dataset = &amp;quot;dataset_name&amp;quot;, use_legacy_sql = FALSE ) ds &amp;lt;- bq_dataset( project = &amp;quot;project_name&amp;quot;, dataset = &amp;quot;dataset_name&amp;quot;,)</description>
+    </item>
+    
+    <item>
+      <title>dplyr</title>
+      <link>https://teuder.github.io/notebook/r/dplyr/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://teuder.github.io/notebook/r/dplyr/</guid>
+      <description>dplyr データフレームに対する操作 列の選択 行の選択 行の並べ替え グループ化 集計 レコード数のカウント 以下の3つは同じ結果を返す df %&amp;gt;% group_by(x) %&amp;gt;% summarize(n = n()) df %&amp;gt;% group_by(x) %&amp;gt;% tally()</description>
+    </item>
+    
+    <item>
+      <title>future</title>
+      <link>https://teuder.github.io/notebook/r/future/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://teuder.github.io/notebook/r/future/</guid>
+      <description>future future パッケージは１つのPC内での並列計算、および、複数PCをまたいだ分散計算を実行するためのパッケージ</description>
     </item>
     
     <item>
@@ -201,6 +228,15 @@
     </item>
     
     <item>
+      <title>rpart</title>
+      <link>https://teuder.github.io/notebook/r/rpart/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://teuder.github.io/notebook/r/rpart/</guid>
+      <description>rpart 決定木 rpart.object https://rdrr.io/cran/rpart/man/rpart.object.html rpart() による学習結果のオブジェクト rpart.object の要素 frame: データフレーム、tree を表現する var: 分割に使用される変数、&amp;lt;leaf&amp;gt; は末端</description>
+    </item>
+    
+    <item>
       <title>RStudio</title>
       <link>https://teuder.github.io/notebook/r/rstudio/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -224,7 +260,7 @@
       <pubDate>Fri, 17 Jan 2020 00:00:00 +0000</pubDate>
       
       <guid>https://teuder.github.io/notebook/python/environment/</guid>
-      <description>Python 環境設定 Python 本体のインストールとバージョン管理 pyenv python本体のバージョン管理、インストール イントールと設定 brew install pyenv ~/.zshrc などに以下の記述を追加</description>
+      <description>Python 環境設定 https://www.medi-08-data-06.work/entry/python_env Python 本体のインストールとバージョン管理 pyenv python本体のバージョン管理、インストール イントールと設定 brew install pyenv ~/.zshrc などに以下の記述を追</description>
     </item>
     
     <item>

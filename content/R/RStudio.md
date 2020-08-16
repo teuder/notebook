@@ -13,7 +13,7 @@ type: docs
 
 ### WSL の Ubuntu 18.04 にインストール
 
-Ubuntuの場合と同じ、事前に [Rをインストール](_index.md#インストール)しておく
+Ubuntuの場合と同じ、事前に [Rをインストール](https://teuder.github.io/notebook/r/#ubuntu)しておく
 
 ```
 sudo apt-get install gdebi-core

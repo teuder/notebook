@@ -3,12 +3,13 @@
 
 <head>
   <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0"><meta property="og:title" content="reticulate" />
-<meta property="og:description" content="reticulate R から Python を呼び出すためのパッケージ 使用する Python を指定する .Rprofile で RETICULATE_PYTHON 環境変数に、使用するPythonを指定するのが安全 Sys.setenv(RETICULATE_PYTHON = &#39;/usr/local/bin/python3&#39;)" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><meta property="og:title" content="BigQuery" />
+<meta property="og:description" content="BigQuery GIS 標準 SQL の地理関数 ST_CONTAINS ST_CONTAINS(geography_1, geography_2) geography_2 は geography_1 の内部にある（外にはみ出していない）なら TRUE ST_WITHIN ST_WITHIN(geography_1, geography_2) geography_1 は geography_2 の内部にある（外にはみ出していない）なら TRUE ST_CONTAINS とは geography_1 と geography_2" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://teuder.github.io/notebook/r/reticulate/" />
-<meta property="article:modified_time" content="2020-05-27T18:54:29+09:00" />
-<title>reticulate | notebook</title>
+<meta property="og:url" content="https://teuder.github.io/notebook/gcp/bigquery_gis/" />
+<meta property="article:published_time" content="2019-09-04T00:00:00+00:00" />
+<meta property="article:modified_time" content="2019-09-04T00:00:00+00:00" />
+<title>BigQuery | notebook</title>
 <link rel="icon" href="/notebook/favicon.png" type="image/x-icon">
 
 
@@ -272,7 +273,7 @@ https://github.com/alex-shpak/hugo-book
       
         <li>
 
-  <a href="/notebook/r/reticulate/"  class="active">
+  <a href="/notebook/r/reticulate/" >
       reticulate
   </a>
 
@@ -552,7 +553,7 @@ https://github.com/alex-shpak/hugo-book
       
         <li>
 
-  <a href="/notebook/gcp/bigquery_gis/" >
+  <a href="/notebook/gcp/bigquery_gis/"  class="active">
       BigQuery
   </a>
 
@@ -670,32 +671,28 @@ https://github.com/alex-shpak/hugo-book
   <label for="menu-control">
     <img src="/notebook/svg/menu.svg" alt="Menu" />
   </label>
-  <strong>reticulate</strong>
+  <strong>BigQuery</strong>
 </header>
 
       
-<article class="markdown"><h1 id="reticulate">reticulate</h1>
-<p>R から Python を呼び出すためのパッケージ</p>
-<h1 id="使用する-python-を指定する">使用する Python を指定する</h1>
-<p><code>.Rprofile</code> で <code>RETICULATE_PYTHON</code> 環境変数に、使用するPythonを指定するのが安全</p>
-<pre><code>Sys.setenv(RETICULATE_PYTHON = '/usr/local/bin/python3')
-</code></pre></article>
+<article class="markdown"><h1 id="bigquery-gis">BigQuery GIS</h1>
+<p><a href="https://cloud.google.com/bigquery/docs/reference/standard-sql/geography_functions?hl=ja">標準 SQL の地理関数</a></p>
+<h4 id="st_contains">ST_CONTAINS</h4>
+<pre><code>ST_CONTAINS(geography_1, geography_2)
+</code></pre><p><code>geography_2</code> は <code>geography_1</code> の内部にある（外にはみ出していない）なら <code>TRUE</code></p>
+<h4 id="st_within">ST_WITHIN</h4>
+<pre><code>ST_WITHIN(geography_1, geography_2)
+</code></pre><p><code>geography_1</code> は <code>geography_2</code> の内部にある（外にはみ出していない）なら <code>TRUE</code></p>
+<p><code>ST_CONTAINS</code> とは <code>geography_1</code> と <code>geography_2</code> の順序が逆になっている</p>
+</article>
 
       
-<div class="book-footer justify-between">
-  
-  <div>
-    
-    <a class="flex align-center" href="https://github.com/teuder/notebook/commit/1c4b2b5935f1ddbb8f4d25bc2ff54f9630bdc3c3" title='Last modified 2020-05-27 by Masaki Tsuda' target="_blank" rel="noopener">
-      <img src="/notebook/svg/calendar.svg" alt="Changed" />
-      <span>2020-05-27</span>
-    </a>
-  </div>
+<div class="book-footer justify-end">
   
   
   <div>
     
-    <a class="flex align-center" href="https://github.com/teuder/notebook/edit/master/content/R/reticulate.md" target="_blank" rel="noopener">
+    <a class="flex align-center" href="https://github.com/teuder/notebook/edit/master/content/gcp/bigquery_gis.md" target="_blank" rel="noopener">
       <img src="/notebook/svg/edit.svg" alt="Edit" />
       <span>Edit this page</span>
     </a>
@@ -712,7 +709,15 @@ https://github.com/alex-shpak/hugo-book
   
 
   <aside class="book-toc level-3 fixed">
-    <nav id="TableOfContents"></nav>
+    <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
   </aside>
 
 

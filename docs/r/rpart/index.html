@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><meta property="og:title" content="rpart" />
+<meta property="og:description" content="rpart 決定木 rpart.object https://rdrr.io/cran/rpart/man/rpart.object.html rpart() による学習結果のオブジェクト rpart.object の要素 frame: データフレーム、tree を表現する var: 分割に使用される変数、&lt;leaf&gt; は末端" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://teuder.github.io/notebook/r/rpart/" />
+
+<title>rpart | notebook</title>
+<link rel="icon" href="/notebook/favicon.png" type="image/x-icon">
+
+
+<link rel="stylesheet" href="/notebook/book.min.07c38dce7b6800da2a75a565d4d975e38f837294e24d00b5aae363037012d64b.css" integrity="sha256-B8ONzntoANoqdaVl1Nl144&#43;DcpTiTQC1quNjA3AS1ks=">
+
+
+<script defer src="/notebook/search.min.601d9f1b9fe8c9795d03d0502bbe269a4e0a4a5e6854bc04e5255f5185920208.js" integrity="sha256-YB2fG5/oyXldA9BQK74mmk4KSl5oVLwE5SVfUYWSAgg="></script>
+
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+  
+</head>
+
+<body>
+  <input type="checkbox" class="hidden" id="menu-control" />
+  <main class="flex container">
+
+    <aside class="book-menu fixed">
+      <nav>
+<h2 class="book-brand">
+  <a href="https://teuder.github.io/notebook/"><span>notebook</span>
+  </a>
+</h2>
+
+
+<div class="book-search">
+  <input type="text" placeholder="Search" id="book-search-input" maxlength="64" />
+  <div class="book-search-spinner spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+
+
+
+
+
+    
+
+  
+
+
+
+
+
+
+  <ul>
+  
+    
+
+  <li >
+    
+      
+
+  <a href="/notebook/docs/" >
+      About
+  </a>
+
+
+    
+
+    
+
+
+
+
+  
+  <ul>
+    
+  </ul>
+  
+
+
+
+  </li>
+
+
+  
+    
+
+  <li >
+    
+      
+
+  <a href="/notebook/python/" >
+      Python
+  </a>
+
+
+    
+
+    
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+
+  <a href="/notebook/python/environment/" >
+      environment
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/python/vscode/" >
+      Python in VScode
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/python/anaconda/" >
+      anaconda
+  </a>
+
+</li>
+      
+    
+  </ul>
+  
+
+
+
+  </li>
+
+
+  
+    
+
+  <li >
+    
+      
+
+  <a href="/notebook/r/" >
+      R
+  </a>
+
+
+    
+
+    
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+
+  <a href="/notebook/r/rhdf5/" >
+      rhdf5
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/r/ggplot2/" >
+      ggplot2
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/r/raster/" >
+      raster
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/r/sf/" >
+      sf
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/r/bigrquery/" >
+      bigrquery
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/r/dplyr/" >
+      dplyr
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/r/future/" >
+      future
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/r/gganimate/" >
+      gganimate
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/r/lubridate/" >
+      lubridate
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/r/purrr/" >
+      purrr
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/r/reticulate/" >
+      reticulate
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/r/rmarkdown/" >
+      Rmarkdown
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/r/rpart/"  class="active">
+      rpart
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/r/rstudio/" >
+      RStudio
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/r/stars/" >
+      stars
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/r/dbi/" >
+      DBI
+  </a>
+
+</li>
+      
+    
+  </ul>
+  
+
+
+
+  </li>
+
+
+  
+    
+
+  <li >
+    
+      
+
+  <a href="/notebook/datascience/" >
+      Data Science
+  </a>
+
+
+    
+
+    
+
+
+
+
+  
+  <ul>
+    
+  </ul>
+  
+
+
+
+  </li>
+
+
+  
+    
+
+  <li >
+    
+      
+
+  <a href="/notebook/gis/" >
+      GIS &amp; Remote Sensing
+  </a>
+
+
+    
+
+    
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+
+  <a href="/notebook/gis/bigquerygis/" >
+      BigQuery GIS
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/gis/sar/" >
+      SAR
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/gis/terminology/" >
+      用語
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/gis/viirs/" >
+      VIIRS
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/gis/r_package/" >
+      GIS関連Rパッケージ
+  </a>
+
+</li>
+      
+    
+  </ul>
+  
+
+
+
+  </li>
+
+
+  
+    
+
+  <li >
+    
+      
+
+  <a href="/notebook/mac/" >
+      Mac
+  </a>
+
+
+    
+
+    
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+
+  <a href="/notebook/mac/homebrew/" >
+      homebrew
+  </a>
+
+</li>
+      
+    
+  </ul>
+  
+
+
+
+  </li>
+
+
+  
+    
+
+  <li >
+    
+      
+
+  <a href="/notebook/maritime/" >
+      Maritime
+  </a>
+
+
+    
+
+    
+
+
+
+
+  
+  <ul>
+    
+  </ul>
+  
+
+
+
+  </li>
+
+
+  
+    
+
+  <li >
+    
+      
+
+  <a href="/notebook/gcp/" >
+      BigQuery
+  </a>
+
+
+    
+
+    
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+
+  <a href="/notebook/gcp/bigquery/" >
+      BigQuery
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/gcp/bigquery_gis/" >
+      BigQuery
+  </a>
+
+</li>
+      
+    
+  </ul>
+  
+
+
+
+  </li>
+
+
+  
+    
+
+  <li >
+    
+      
+
+  <a href="/notebook/miscellaneous/" >
+      miscellaneous
+  </a>
+
+
+    
+
+    
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+
+  <a href="/notebook/miscellaneous/jupyter/" >
+      jupyter
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/miscellaneous/vscode/" >
+      vscode
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/miscellaneous/hugo/" >
+      Hugo
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/miscellaneous/git/" >
+      git
+  </a>
+
+</li>
+      
+    
+  </ul>
+  
+
+
+
+  </li>
+
+
+  
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+<script>
+(function() {
+  var menu = document.querySelector("aside.book-menu nav");
+  addEventListener("beforeunload", function(event) {
+    localStorage.setItem("menu.scrollTop", menu.scrollTop);
+  });
+  menu.scrollTop = localStorage.getItem("menu.scrollTop");
+})();
+</script>
+
+    </aside>
+
+    <div class="book-page">
+      <header class="flex align-center justify-between book-header">
+  <label for="menu-control">
+    <img src="/notebook/svg/menu.svg" alt="Menu" />
+  </label>
+  <strong>rpart</strong>
+</header>
+
+      
+<article class="markdown"><h1 id="rpart">rpart</h1>
+<p>決定木</p>
+<p><code>rpart.object</code></p>
+<p><a href="https://rdrr.io/cran/rpart/man/rpart.object.html">https://rdrr.io/cran/rpart/man/rpart.object.html</a></p>
+<p><code>rpart()</code> による学習結果のオブジェクト</p>
+<p>rpart.object の要素</p>
+<ul>
+<li><code>frame</code>: データフレーム、tree を表現する
+<ul>
+<li><code>var</code>: 分割に使用される変数、<code>&lt;leaf&gt;</code> は末端ノード</li>
+<li><code>n</code></li>
+<li><code>wt</code></li>
+<li><code>dev</code></li>
+<li><code>yval</code></li>
+<li><code>complexity</code></li>
+<li><code>ncompete</code></li>
+<li><code>nsurrogate</code></li>
+<li><code>yval2</code></li>
+</ul>
+</li>
+<li><code>where</code>: 整数ベクトル、訓練データのレコード数と同じ長さ。訓練データの各レコードがどのリーフに落ちたかを表す。値は <code>frame</code> の行番号</li>
+<li><code>call</code>: このオブジェクトを作成するときに記述されたRコードのイメージ</li>
+<li><code>terms</code>: <code>terms.object</code> フォーミュラをサマライズしたもの、ユーザーは基本使わない</li>
+<li><code>splits</code>: 分割を記述する matrix。列は、&ldquo;count&rdquo;   &ldquo;ncat&rdquo;    &ldquo;improve&rdquo; &ldquo;index&rdquo;   &ldquo;adj&rdquo;、各行は分割に使われる変数名</li>
+<li><code>csplit</code>: 整数行列、少なくとも１つの分割変数が factor である場合に作成される</li>
+<li><code>method</code>: 文字列、(&ldquo;class&rdquo;, &ldquo;exp&rdquo;, &ldquo;poisson&rdquo;, &ldquo;anova&rdquo; or &ldquo;user&quot;のうちのどれか)、この tree を作成するときに使われた方法</li>
+<li><code>cptable</code>: 数値行列、complexityパラメタに基づいて決定された最適な枝刈りの情報？ 列名 &ldquo;CP&rdquo;        &ldquo;nsplit&rdquo;    &ldquo;rel error&rdquo; &ldquo;xerror&rdquo;    &ldquo;xstd&rdquo;</li>
+<li><code>variable.importance</code>: 名前付きベクトル、変数重要度、</li>
+<li><code>numresp</code>: 整数スカラー、目的変数の値の数、factorのレベルの数</li>
+<li><code>parms</code>: 学習時に与えられたパラメタの値</li>
+<li><code>control</code>: 学習時に与えられたパラメタの値</li>
+<li><code>functions</code>: <code>rpart</code>オブジェクトのMethodとして使われる関数 <code>summary()</code>, <code>print()</code> and <code>text()</code></li>
+<li><code>ordered</code>: 名前付き論理ベクトル、要素名は変数名、値はその変数が順序付きfactorであるかを表す</li>
+<li><code>na.action</code>: <code>stats::model.frame</code> から返される値、<code>NA</code> の取り扱いを決める</li>
+</ul>
+<p>rpart.object の属性 attributes()</p>
+<ul>
+<li><code>xlevels</code>: 説明変数にある factor 型のレベル</li>
+<li><code>ylevels</code>: 目的変数の factor 型のレベル</li>
+</ul>
+<h2 id="rpartpredictrpart">rpart:::predict.rpart()</h2>
+<p><code>rpart.object</code> を使って <code>predict()</code> したときに呼び出されるメソッド</p>
+<p><a href="https://www.rdocumentation.org/packages/rpart/versions/4.1-15/topics/predict.rpart">https://www.rdocumentation.org/packages/rpart/versions/4.1-15/topics/predict.rpart</a></p>
+<pre><code>predict(object, newdata,
+       type = c(&quot;vector&quot;, &quot;prob&quot;, &quot;class&quot;, &quot;matrix&quot;),
+       na.action = na.pass, …)
+</code></pre><p><code>type</code>: 分類ではデフォルトは <code>prob</code> クラス確率, <code>class</code> なら予測された目的変数 (<code>facor</code>) の値、<code>vector</code> なら目的変数 <code>factor</code> の <code>levels</code> 属性の要素番号、回帰の場合は デフォルトは <code>vector</code> で目的変数の値（多分）</p>
+<p><code>typpe=&quot;vector&quot;</code>　の時は、<code>rpart.object$frame$yval</code> の値が返されるらしい（各データが落ちたリーフの <code>yval</code> の値） これを使ってリーフ番号を取得できる</p>
+<h1 id="rpart関係の別のライブラリ">rpart関係の別のライブラリ</h1>
+<ul>
+<li><code>rpart.plot</code></li>
+<li><code>itree</code>: rpartの拡張らしい、rpartの作者もかかわっている</li>
+<li><code>treeClust</code></li>
+</ul>
+<h2 id="rpartplotrpartpredict">rpart.plot::rpart.predict()</h2>
+<p>新しいデータに対して予測する</p>
+<p><code>rpart::predict.rpart()</code> と同じだが、予測値のノード番号とルールを出力できる</p>
+<pre><code>rpart.plot::rpart.predict(object, newdata,
+         type = c(&quot;vector&quot;, &quot;prob&quot;, &quot;class&quot;, &quot;matrix&quot;),
+         na.action = na.pass,
+         nn=FALSE, rules=FALSE, ...)
+</code></pre><ul>
+<li><code>nn</code>: <code>TRUE</code> なら ノード番号の列も返す</li>
+<li><code>rules</code>: <code>TRUE</code> なら、ルールを文字列で記述した列も返す</li>
+<li><code>...</code>: <code>rpart.rules()</code> に渡される引数、例えば <code>clip.facs=TRUE</code></li>
+</ul>
+<h2 id="rpartplotrpartrules">rpart.plot::rpart.rules</h2>
+<p><code>rpart.object</code> から 各リーフに至るルールを表示する</p>
+<pre><code>rpart.rules(x = stop(&quot;no 'x' argument&quot;),
+            style = &quot;wide&quot;, cover = FALSE, nn = FALSE,
+            roundint = TRUE, clip.facs = FALSE,
+            varorder = NULL, ...)
+</code></pre><p>しかし、リーフの最大値は1000に制限されているので、それ以上に複雑なtreeのルールを生成したいときは、パッケージをいじる必要がある</p>
+<p><code>rpart.plot/R/rpart.rules.R</code> の中の <code>maxrules &lt;- 1e3</code> をもっと大きい値に書き換える</p>
+<p>そして、ローカルのソースからインストールする
+<code>install.packages(&quot;./rpart.plot/&quot;, type=&quot;source&quot;, repos = NULL)</code></p>
+<p>style = &ldquo;tall&rdquo;</p>
+<p>出力される値（class <code>c(&quot;rpart.rules&quot;, &quot;data.frame&quot;)</code>）</p>
+<ul>
+<li><code>target</code> : 分類：クラス確率の文字列</li>
+</ul>
+<p>行名: おそらく <code>rpart.object$frame</code> の行名に対応する？</p>
+<h2 id="treeclustrpartpredictleaves">treeClust::rpart.predict.leaves()</h2>
+<pre><code>rpart.predict.leaves(rp, newdata, type = &quot;where&quot;)
+</code></pre><ul>
+<li><code>type</code>
+<ul>
+<li><code>&quot;where&quot;</code> : &ldquo;rpart.object&rdquo; の要素 <code>frame</code> の行番号を返す</li>
+<li><code>&quot;leaf&quot;</code> : 実際のリーフ番号（<code>frame</code> の行名）を返す</li>
+</ul>
+</li>
+</ul>
+</article>
+
+      
+<div class="book-footer justify-end">
+  
+  
+  <div>
+    
+    <a class="flex align-center" href="https://github.com/teuder/notebook/edit/master/content/R/rpart.md" target="_blank" rel="noopener">
+      <img src="/notebook/svg/edit.svg" alt="Edit" />
+      <span>Edit this page</span>
+    </a>
+    
+  </div>
+  
+</div>
+
+
+      
+    </div>
+
+    
+  
+
+  <aside class="book-toc level-3 fixed">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#rpartpredictrpart">rpart:::predict.rpart()</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#rpartplotrpartpredict">rpart.plot::rpart.predict()</a></li>
+    <li><a href="#rpartplotrpartrules">rpart.plot::rpart.rules</a></li>
+    <li><a href="#treeclustrpartpredictleaves">treeClust::rpart.predict.leaves()</a></li>
+  </ul>
+</nav>
+  </aside>
+
+
+
+  </main>
+
+  
+</body>
+
+</html>

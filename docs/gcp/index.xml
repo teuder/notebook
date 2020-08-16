@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>BigQuery on notebook</title>
+    <link>https://teuder.github.io/notebook/gcp/</link>
+    <description>Recent content in BigQuery on notebook</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja-JP</language>
+    <lastBuildDate>Wed, 04 Sep 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://teuder.github.io/notebook/gcp/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>BigQuery</title>
+      <link>https://teuder.github.io/notebook/gcp/bigquery/</link>
+      <pubDate>Wed, 04 Sep 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://teuder.github.io/notebook/gcp/bigquery/</guid>
+      <description>BigQuery WebUI キーボードショートカット Mac の場合は Ctrl の代わりに Cmd にする キー アクション Ctrl Enter 現在のクエリを実行 Tab 現在の単語をオートコンプリート 選択 Tab 選択範囲</description>
+    </item>
+    
+    <item>
+      <title>BigQuery</title>
+      <link>https://teuder.github.io/notebook/gcp/bigquery_gis/</link>
+      <pubDate>Wed, 04 Sep 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://teuder.github.io/notebook/gcp/bigquery_gis/</guid>
+      <description>BigQuery GIS 標準 SQL の地理関数 ST_CONTAINS ST_CONTAINS(geography_1, geography_2) geography_2 は geography_1 の内部にある（外にはみ出していない）なら TRUE ST_WITHIN ST_WITHIN(geography_1, geography_2) geography_1 は geography_2 の内部にある（外にはみ出していない）なら TRUE ST_CONTAINS とは geography_1 と geography_2</description>
+    </item>
+    
+  </channel>
+</rss>

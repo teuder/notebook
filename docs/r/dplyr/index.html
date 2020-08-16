@@ -3,12 +3,12 @@
 
 <head>
   <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0"><meta property="og:title" content="reticulate" />
-<meta property="og:description" content="reticulate R から Python を呼び出すためのパッケージ 使用する Python を指定する .Rprofile で RETICULATE_PYTHON 環境変数に、使用するPythonを指定するのが安全 Sys.setenv(RETICULATE_PYTHON = &#39;/usr/local/bin/python3&#39;)" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><meta property="og:title" content="dplyr" />
+<meta property="og:description" content="dplyr データフレームに対する操作 列の選択 行の選択 行の並べ替え グループ化 集計 レコード数のカウント 以下の3つは同じ結果を返す df %&gt;% group_by(x) %&gt;% summarize(n = n()) df %&gt;% group_by(x) %&gt;% tally()" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://teuder.github.io/notebook/r/reticulate/" />
-<meta property="article:modified_time" content="2020-05-27T18:54:29+09:00" />
-<title>reticulate | notebook</title>
+<meta property="og:url" content="https://teuder.github.io/notebook/r/dplyr/" />
+
+<title>dplyr | notebook</title>
 <link rel="icon" href="/notebook/favicon.png" type="image/x-icon">
 
 
@@ -222,7 +222,7 @@ https://github.com/alex-shpak/hugo-book
       
         <li>
 
-  <a href="/notebook/r/dplyr/" >
+  <a href="/notebook/r/dplyr/"  class="active">
       dplyr
   </a>
 
@@ -272,7 +272,7 @@ https://github.com/alex-shpak/hugo-book
       
         <li>
 
-  <a href="/notebook/r/reticulate/"  class="active">
+  <a href="/notebook/r/reticulate/" >
       reticulate
   </a>
 
@@ -670,32 +670,49 @@ https://github.com/alex-shpak/hugo-book
   <label for="menu-control">
     <img src="/notebook/svg/menu.svg" alt="Menu" />
   </label>
-  <strong>reticulate</strong>
+  <strong>dplyr</strong>
 </header>
 
       
-<article class="markdown"><h1 id="reticulate">reticulate</h1>
-<p>R から Python を呼び出すためのパッケージ</p>
-<h1 id="使用する-python-を指定する">使用する Python を指定する</h1>
-<p><code>.Rprofile</code> で <code>RETICULATE_PYTHON</code> 環境変数に、使用するPythonを指定するのが安全</p>
-<pre><code>Sys.setenv(RETICULATE_PYTHON = '/usr/local/bin/python3')
-</code></pre></article>
+<article class="markdown"><h1 id="dplyr">dplyr</h1>
+<p>データフレームに対する操作</p>
+<h1 id="列の選択">列の選択</h1>
+<h1 id="行の選択">行の選択</h1>
+<h1 id="行の並べ替え">行の並べ替え</h1>
+<h1 id="グループ化">グループ化</h1>
+<h1 id="集計">集計</h1>
+<h2 id="レコード数のカウント">レコード数のカウント</h2>
+<p>以下の3つは同じ結果を返す</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#111">df</span> <span style="color:#f92672">%&gt;%</span>
+  <span style="color:#75af00">group_by</span><span style="color:#111">(</span><span style="color:#111">x</span><span style="color:#111">)</span> <span style="color:#f92672">%&gt;%</span>
+  <span style="color:#75af00">summarize</span><span style="color:#111">(</span><span style="color:#111">n</span> <span style="color:#f92672">=</span> <span style="color:#75af00">n</span><span style="color:#111">())</span>
+
+<span style="color:#111">df</span> <span style="color:#f92672">%&gt;%</span>
+  <span style="color:#75af00">group_by</span><span style="color:#111">(</span><span style="color:#111">x</span><span style="color:#111">)</span> <span style="color:#f92672">%&gt;%</span>
+  <span style="color:#75af00">tally</span><span style="color:#111">()</span>
+
+<span style="color:#111">df</span> <span style="color:#f92672">%&gt;%</span>
+  <span style="color:#75af00">count</span><span style="color:#111">(</span><span style="color:#111">x</span><span style="color:#111">)</span>
+</code></pre></div><p><code>add_count()</code> と <code>add_tally()</code> は、上の例の <code>summarize()</code> を <code>mutate()</code> に変えたもの、元の df の行数は変えずにグループごとのカウント列を追加する</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#111">df</span> <span style="color:#f92672">%&gt;%</span>
+  <span style="color:#75af00">group_by</span><span style="color:#111">(</span><span style="color:#111">x</span><span style="color:#111">)</span> <span style="color:#f92672">%&gt;%</span>
+  <span style="color:#75af00">mutate</span><span style="color:#111">(</span><span style="color:#111">n</span> <span style="color:#f92672">=</span> <span style="color:#75af00">n</span><span style="color:#111">())</span>
+
+<span style="color:#111">df</span> <span style="color:#f92672">%&gt;%</span>
+  <span style="color:#75af00">group_by</span><span style="color:#111">(</span><span style="color:#111">x</span><span style="color:#111">)</span> <span style="color:#f92672">%&gt;%</span>
+  <span style="color:#75af00">add_tally</span><span style="color:#111">()</span>
+
+<span style="color:#111">df</span> <span style="color:#f92672">%&gt;%</span>
+  <span style="color:#75af00">add_count</span><span style="color:#111">(</span><span style="color:#111">x</span><span style="color:#111">)</span>
+</code></pre></div></article>
 
       
-<div class="book-footer justify-between">
-  
-  <div>
-    
-    <a class="flex align-center" href="https://github.com/teuder/notebook/commit/1c4b2b5935f1ddbb8f4d25bc2ff54f9630bdc3c3" title='Last modified 2020-05-27 by Masaki Tsuda' target="_blank" rel="noopener">
-      <img src="/notebook/svg/calendar.svg" alt="Changed" />
-      <span>2020-05-27</span>
-    </a>
-  </div>
+<div class="book-footer justify-end">
   
   
   <div>
     
-    <a class="flex align-center" href="https://github.com/teuder/notebook/edit/master/content/R/reticulate.md" target="_blank" rel="noopener">
+    <a class="flex align-center" href="https://github.com/teuder/notebook/edit/master/content/R/dplyr.md" target="_blank" rel="noopener">
       <img src="/notebook/svg/edit.svg" alt="Edit" />
       <span>Edit this page</span>
     </a>
@@ -712,7 +729,11 @@ https://github.com/alex-shpak/hugo-book
   
 
   <aside class="book-toc level-3 fixed">
-    <nav id="TableOfContents"></nav>
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#レコード数のカウント">レコード数のカウント</a></li>
+  </ul>
+</nav>
   </aside>
 
 

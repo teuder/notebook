@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0"><meta property="og:title" content="sf" />
-<meta property="og:description" content="sf 定義されたクラス sfg ：個別の地物オブジェクト sfc ：sfgオブジェクトのリスト、リストの各要素が１地物に相当 sf ：sfcオブジェクトを geomet" />
+<meta property="og:description" content="sf 定義されたクラス sfg ：個別の地物オブジェクト sfc ： sfg オブジェクトのリスト、リストの各要素が１地物に相当 sf ： sfc オブジェクトを geometry 列としてもつデータ" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://teuder.github.io/notebook/r/sf/" />
 <meta property="article:published_time" content="2019-08-26T00:00:00+00:00" />
@@ -16,7 +16,7 @@
 <link rel="stylesheet" href="/notebook/book.min.07c38dce7b6800da2a75a565d4d975e38f837294e24d00b5aae363037012d64b.css" integrity="sha256-B8ONzntoANoqdaVl1Nl144&#43;DcpTiTQC1quNjA3AS1ks=">
 
 
-<script defer src="/notebook/search.min.e6873659882bf528c2ebc081a1f9b322f6651a56328f89fbc4060baabec3b432.js" integrity="sha256-5oc2WYgr9SjC68CBofmzIvZlGlYyj4n7xAYLqr7DtDI="></script>
+<script defer src="/notebook/search.min.601d9f1b9fe8c9795d03d0502bbe269a4e0a4a5e6854bc04e5255f5185920208.js" integrity="sha256-YB2fG5/oyXldA9BQK74mmk4KSl5oVLwE5SVfUYWSAgg="></script>
 
 <!--
 Made with Book Theme
@@ -223,6 +223,26 @@ https://github.com/alex-shpak/hugo-book
       
         <li>
 
+  <a href="/notebook/r/dplyr/" >
+      dplyr
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/r/future/" >
+      future
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
   <a href="/notebook/r/gganimate/" >
       gganimate
   </a>
@@ -265,6 +285,16 @@ https://github.com/alex-shpak/hugo-book
 
   <a href="/notebook/r/rmarkdown/" >
       Rmarkdown
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/r/rpart/" >
+      rpart
   </a>
 
 </li>
@@ -495,8 +525,8 @@ https://github.com/alex-shpak/hugo-book
     
       
 
-  <a href="/notebook/miscellaneous/" >
-      miscellaneous
+  <a href="/notebook/gcp/" >
+      BigQuery
   </a>
 
 
@@ -513,12 +543,52 @@ https://github.com/alex-shpak/hugo-book
       
         <li>
 
-  <a href="/notebook/miscellaneous/bigquery/" >
+  <a href="/notebook/gcp/bigquery/" >
       BigQuery
   </a>
 
 </li>
       
+    
+      
+        <li>
+
+  <a href="/notebook/gcp/bigquery_gis/" >
+      BigQuery
+  </a>
+
+</li>
+      
+    
+  </ul>
+  
+
+
+
+  </li>
+
+
+  
+    
+
+  <li >
+    
+      
+
+  <a href="/notebook/miscellaneous/" >
+      miscellaneous
+  </a>
+
+
+    
+
+    
+
+
+
+
+  
+  <ul>
     
       
         <li>
@@ -609,8 +679,8 @@ https://github.com/alex-shpak/hugo-book
 <h1 id="定義されたクラス">定義されたクラス</h1>
 <ul>
 <li><code>sfg</code> ：個別の地物オブジェクト</li>
-<li>sfc ：sfgオブジェクトのリスト、リストの各要素が１地物に相当</li>
-<li>sf ：sfcオブジェクトを geometry列としてもつデータフレーム、１行が１地物、geometory列以外の列は地物がもつ値</li>
+<li><code>sfc</code> ： <code>sfg</code> オブジェクトのリスト、リストの各要素が１地物に相当</li>
+<li><code>sf</code> ： <code>sfc</code> オブジェクトを <code>geometry</code> 列としてもつデータフレーム、１行が１地物、 <code>geometory</code> 列以外の列は地物がもつ値</li>
 </ul>
 <h1 id="地物sfgオブジェクトの型">地物（sfgオブジェクト）の型</h1>
 <ul>
@@ -621,25 +691,56 @@ https://github.com/alex-shpak/hugo-book
 <li>MULTILINESTRING：線分の集合</li>
 <li>GEOMETORYCOLLECTION：様々な型のデータの集合</li>
 </ul>
-<h1 id="sf-オブジェクトの作成">sf オブジェクトの作成</h1>
+<h1 id="sfオブジェクトの読み込み書き出し">sfオブジェクトの読み込み・書き出し</h1>
+<p><a href="https://r-spatial.github.io/sf/articles/sf2.html">https://r-spatial.github.io/sf/articles/sf2.html</a></p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#111">pref_simple_sf</span> <span style="color:#f92672">&lt;-</span> <span style="color:#111">sf</span><span style="color:#f92672">::</span><span style="color:#75af00">st_read</span><span style="color:#111">(</span><span style="color:#d88200">&#34;../output/pref_simple.shp&#34;</span><span style="color:#111">)</span>
+<span style="color:#111">sf</span><span style="color:#f92672">::</span><span style="color:#75af00">st_write</span><span style="color:#111">(</span><span style="color:#111">pref_simple_sf</span><span style="color:#111">,</span> <span style="color:#d88200">&#34;../output/pref_simple.shp&#34;</span><span style="color:#111">,</span> <span style="color:#111">layer_options</span> <span style="color:#f92672">=</span> <span style="color:#d88200">&#34;ENCODING=UTF-8&#34;</span><span style="color:#111">)</span>
+</code></pre></div><h1 id="sf-オブジェクトの作成">sf オブジェクトの作成</h1>
 <h2 id="データフレームから作成する--st_as_sf">データフレームから作成する : st_as_sf()</h2>
 <p>１行が１点を表すデータフレーム <code>df</code> （緯度 <code>lat</code> 経度 <code>lon</code>）から <code>sf</code> オブジェクトを作成する。<code>coords = c(&quot;lon&quot;, &quot;lat&quot;)</code>、はXY座標に相当するカラム名を指定している。<code>crs = 4326</code>  で座標参照系を設定している。EPSGコード 4326 は WGS84 を表す。 <code>remove = FALSE</code> は <code>coords = c(&quot;lon&quot;, &quot;lat&quot;)</code> で指定した列を削除しないという意味。</p>
 <pre><code class="language-{r}" data-lang="{r}"># df は 各行が1POINTを表していて、その座標が &quot;lon&quot;, &quot;lat&quot; という列名で保持されているデータフレーム
 sf &lt;- df %&gt;% 
       st_as_sf(coords = c(&quot;lon&quot;, &quot;lat&quot;), dim = &quot;XY&quot;, remove = FALSE, crs = 4326)
-</code></pre><h1 id="処理関数">処理関数</h1>
+</code></pre><h2 id="データフレームから作成する--st_set_geometry">データフレームから作成する : st_set_geometry()</h2>
+<p>すでにある <code>sfc</code> オブジェクトを、データフレームに、<code>geometry</code> 列として追加する。</p>
+<p><code>data_sf &lt;- st_set_geometry(data_df, geom_sfc)</code></p>
+<h2 id="wkt形式のテキストから作成">WKT形式のテキストから作成</h2>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#111">area_wkt</span> <span style="color:#f92672">&lt;-</span> <span style="color:#d88200">&#34;Polygon ((165.06947186552821449 48.95836601433594382, 169.89568502076190271 45.13709077274640435, -149.95899646070347444 44.98161022438796408, -149.95031841566071762 53.86930346517581114, -163.23108263759604597 52.2378116240458894, -168.71541576854343703 50.45207289660321948, 164.95978520290927349 51.55926363240160981, 165.06947186552821449 48.95836601433594382))&#34;</span>
+
+
+<span style="color:#75715e"># SFC の作成</span>
+<span style="color:#111">target_sfc</span> <span style="color:#f92672">&lt;-</span> <span style="color:#111">sf</span><span style="color:#f92672">::</span><span style="color:#75af00">st_as_sfc</span><span style="color:#111">(</span><span style="color:#111">area_wkt</span><span style="color:#111">,</span> <span style="color:#111">crs</span><span style="color:#f92672">=</span><span style="color:#ae81ff">4326</span><span style="color:#111">)</span>
+
+<span style="color:#75715e"># SFC から　SF への変換</span>
+<span style="color:#75715e"># st_set_geometry()を使った方法</span>
+<span style="color:#75715e"># この方法ならsfcの列の名前が x になる</span>
+<span style="color:#111">target_sf</span> <span style="color:#f92672">&lt;-</span> <span style="color:#111">sf</span><span style="color:#f92672">::</span><span style="color:#75af00">st_as_sf</span><span style="color:#111">(</span><span style="color:#111">target_sfc</span><span style="color:#111">)</span>
+
+<span style="color:#75715e"># st_set_geometry()を使った方法</span>
+<span style="color:#75715e"># この方法ならsfcの列の名前が geometry になる</span>
+<span style="color:#111">data_df</span> <span style="color:#f92672">&lt;-</span> <span style="color:#111">tibble</span><span style="color:#f92672">::</span><span style="color:#75af00">tibble</span><span style="color:#111">(</span><span style="color:#111">data</span><span style="color:#f92672">=</span><span style="color:#ae81ff">1</span><span style="color:#111">)</span>
+<span style="color:#111">target_sf</span> <span style="color:#f92672">&lt;-</span> <span style="color:#75af00">st_set_geometry</span><span style="color:#111">(</span><span style="color:#111">data_df</span><span style="color:#111">,</span> <span style="color:#111">target_sfc</span><span style="color:#111">)</span>
+</code></pre></div><h1 id="処理関数">処理関数</h1>
 <h3 id="sfオブジェクトの切り抜き">sfオブジェクトの切り抜き</h3>
 <p><code>st_crop() </code></p>
 <pre><code>land_crop &lt;- st_crop(land, c(xmax=180, xmin=-180, ymin = -80, ymax=80))
-</code></pre><h3 id="地物の型の変換">地物の型の変換</h3>
+</code></pre><h2 id="日付変更線で地物に切れ目を作る">日付変更線で地物に切れ目を作る</h2>
+<p>-180:180 の経度で作成された地物は、日付変更線をまたいでいるときにうまく描画・処理できない。そこで、日付変更線のラインで地物を分断する。</p>
+<pre><code>sf::st_wrap_dateline(options = c(&quot;WRAPDATELINE=YES&quot;, &quot;DATELINEOFFSET=0&quot;), quiet = FALSE)
+</code></pre><h2 id="日付変更線の切れ目をつなぐ">日付変更線の切れ目をつなぐ</h2>
+<p><a href="https://stackoverflow.com/questions/56146735/visual-bug-when-changing-robinson-projections-central-meridian-with-ggplot2/56155662#56155662">https://stackoverflow.com/questions/56146735/visual-bug-when-changing-robinson-projections-central-meridian-with-ggplot2/56155662#56155662</a></p>
+<h1 id="型の変換">型の変換</h1>
+<h2 id="地物の型の変換">地物の型の変換</h2>
 <p><code>st_cast()</code></p>
-<p>sfオブジェクトをデータフレームに変換する（この時、dfにはgeometry列（リスト列=sfcオブジェクト）が残る）</p>
-<p><code>df &lt;- as.data.frame(data_sf)</code></p>
-<h3 id="sf-オブジェクトを-dataframe-に変換する">sf オブジェクトを data.frame に変換する</h3>
-<p>sfオブジェクトからgeometory列を削除すると値（=地物の属性）だけのデータフレームになる</p>
+<h2 id="sf-を-dataframe-に変換する">sf を data.frame に変換する</h2>
+<p>sfオブジェクトをデータフレームに変換する（この時、df には geometry 列（リスト列=sfcオブジェクト）が残る）</p>
+<pre><code>data_df &lt;- as.data.frame(data_sf)
+</code></pre><p><code>sf</code> オブジェクトから <code>geometory</code> 列を削除すると、ただのデータフレームになる。そのために、<code>st_set_geometry()</code> はデータフレームにgeometry列をくっつける関数だけど、NULLを渡すとsfオブジェクトからgeomeotry列を削除できる。</p>
 <p><code>df &lt;- st_set_geometry(data_sf, NULL)</code></p>
-<p><code>st_set_geometry()</code> はデータフレームにgeometry列をくっつける関数だけど、NULLを渡すとsfオブジェクトからgeomeotry列を削除できる。</p>
-<h1 id="地物同士の位置関係の判定">地物同士の位置関係の判定</h1>
+<h2 id="wkt形式に変換する">WKT形式に変換する</h2>
+<pre><code>lwgeom::st_astext(x, digits = options(&quot;digits&quot;), ..., EWKT = FALSE)
+lwgeom::st_asewkt(x, digits = options(&quot;digits&quot;))
+</code></pre><h1 id="地物同士の位置関係の判定">地物同士の位置関係の判定</h1>
 <p>predicate whether <code>x</code> touches/contains/within/ <code>y</code></p>
 <p><code>sparse=FALSE</code> にすると論理値ベクトルを返す。</p>
 <p><code>st_intersects(x, y, sparse = TRUE, ...)</code></p>
@@ -655,11 +756,8 @@ sf &lt;- df %&gt;%
 <p><code>st_covered_by(x, y, sparse = TRUE, prepared = TRUE)</code></p>
 <p><code>st_equals_exact(x, y, par, sparse = TRUE, prepared = FALSE)</code></p>
 <p><code>st_is_within_distance(x, y, dist, sparse = TRUE)</code></p>
-<h1 id="sfオブジェクトの書き出し">sfオブジェクトの書き出し</h1>
-<p><a href="https://r-spatial.github.io/sf/articles/sf2.html">https://r-spatial.github.io/sf/articles/sf2.html</a></p>
-<h2 id="shapefile">shapefile</h2>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#111">sf</span><span style="color:#f92672">::</span><span style="color:#75af00">st_write</span><span style="color:#111">(</span><span style="color:#111">pref_simple_sf</span><span style="color:#111">,</span> <span style="color:#d88200">&#34;../output/pref_simple.shp&#34;</span><span style="color:#111">,</span> <span style="color:#111">layer_options</span> <span style="color:#f92672">=</span> <span style="color:#d88200">&#34;ENCODING=UTF-8&#34;</span><span style="color:#111">)</span>
-</code></pre></div><h1 id="ggplot2">ggplot2</h1>
+<p>sf::st_wrap_dateline(options = c(&ldquo;WRAPDATELINE=YES&rdquo;, &ldquo;DATELINEOFFSET=180&rdquo;), quiet = FALSE)</p>
+<h1 id="ggplot2">ggplot2</h1>
 <p>プロット時に投影図法を指定する</p>
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#75af00">library</span><span style="color:#111">(</span><span style="color:#111">sf</span><span style="color:#111">)</span>
 <span style="color:#75af00">library</span><span style="color:#111">(</span><span style="color:#111">ggplot2</span><span style="color:#111">)</span>
@@ -671,7 +769,12 @@ sf &lt;- df %&gt;%
   <span style="color:#75af00">geom_sf</span><span style="color:#111">()</span><span style="color:#f92672">+</span>
   <span style="color:#75715e">#coord_sf(crs = sf::st_crs(&#39;+proj=moll&#39;)) # モルワイデ図法</span>
   <span style="color:#75af00">coord_sf</span><span style="color:#111">(</span><span style="color:#111">crs</span> <span style="color:#f92672">=</span> <span style="color:#111">sf</span><span style="color:#f92672">::</span><span style="color:#75af00">st_crs</span><span style="color:#111">(</span><span style="color:#d88200">&#39;+proj=wag6&#39;</span><span style="color:#111">))</span> <span style="color:#75715e"># Wagner VI projection</span>
-</code></pre></div><h1 id="データベースへの読み書き">データベースへの読み書き</h1>
+</code></pre></div><h2 id="30-day-map-challenge">30 day map challenge</h2>
+<p>Twitter の #30DayMapChallenge で地理情報可視化の例がたくさんある</p>
+<p>R の sf &amp; ggplot メインで挑戦した人がBookdownでまとめてくれている</p>
+<p><a href="https://twitter.com/tjukanov/status/1187713840550744066">https://twitter.com/tjukanov/status/1187713840550744066</a></p>
+<p><a href="https://rud.is/books/30-day-map-challenge/">https://rud.is/books/30-day-map-challenge/</a></p>
+<h1 id="データベースへの読み書き">データベースへの読み書き</h1>
 <p><a href="https://r-spatial.github.io/sf/articles/sf2.html">https://r-spatial.github.io/sf/articles/sf2.html</a></p>
 </article>
 
@@ -709,20 +812,28 @@ sf &lt;- df %&gt;%
     <nav id="TableOfContents">
   <ul>
     <li><a href="#データフレームから作成する--st_as_sf">データフレームから作成する : st_as_sf()</a></li>
+    <li><a href="#データフレームから作成する--st_set_geometry">データフレームから作成する : st_set_geometry()</a></li>
+    <li><a href="#wkt形式のテキストから作成">WKT形式のテキストから作成</a></li>
   </ul>
 
   <ul>
     <li>
       <ul>
         <li><a href="#sfオブジェクトの切り抜き">sfオブジェクトの切り抜き</a></li>
-        <li><a href="#地物の型の変換">地物の型の変換</a></li>
-        <li><a href="#sf-オブジェクトを-dataframe-に変換する">sf オブジェクトを data.frame に変換する</a></li>
       </ul>
     </li>
+    <li><a href="#日付変更線で地物に切れ目を作る">日付変更線で地物に切れ目を作る</a></li>
+    <li><a href="#日付変更線の切れ目をつなぐ">日付変更線の切れ目をつなぐ</a></li>
   </ul>
 
   <ul>
-    <li><a href="#shapefile">shapefile</a></li>
+    <li><a href="#地物の型の変換">地物の型の変換</a></li>
+    <li><a href="#sf-を-dataframe-に変換する">sf を data.frame に変換する</a></li>
+    <li><a href="#wkt形式に変換する">WKT形式に変換する</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#30-day-map-challenge">30 day map challenge</a></li>
   </ul>
 </nav>
   </aside>
