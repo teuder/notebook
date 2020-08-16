@@ -11,4 +11,4 @@ type: docs
 # Google Cloud Platform
 
 
-- [BigQuery](bigquery.html)
+- [BigQuery](bigquery)
