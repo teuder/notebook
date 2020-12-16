@@ -13,17 +13,14 @@ type: docs
 https://www.medi-08-data-06.work/entry/python_env
 
 
-# Python 本体のインストールとバージョン管理
 
-## pyenv
+
+# pyenv
 
 python本体のバージョン管理、インストール
 
-## イントールと設定
 
-```
-brew install pyenv
-```
+## イントールと設定
 
 `~/.zshrc` などに以下の記述を追加
 
@@ -31,6 +28,29 @@ brew install pyenv
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
+```
+
+### Mac 
+
+```
+brew install pyenv
+```
+
+### Ubuntu 18.04
+
+```
+sudo apt update && sudo apt install -y --no-install-recommends \
+        build-essential \
+        libffi-dev \
+        libssl-dev \
+        zlib1g-dev \
+        libbz2-dev \
+        libreadline-dev \
+        libsqlite3-dev \
+        git
+
+# Download pyenv
+git clone https://github.com/pyenv/pyenv.git ~/.pyenv   
 ```
 
 ## pyenv を使ったPython本体のインストール
@@ -51,6 +71,7 @@ python38=$(pyenv install -l | grep -v '[a-zA-Z]' | grep -e '\s3\.8?*' | tail -1)
 pyenv install $python2
 pyenv install $python36
 pyenv install $python37
+pyenv install $python38
 
 # python2 python3 のデフォルトのバージョンに指定
 # ログアウトしても引き継がれる
@@ -60,16 +81,41 @@ pyenv rehash
 ```
 
 
-
 # pipenv
 
-Python パッケージのパッケージのインストール、バージョンの切替を行う。
+プロジェクトで使用する Python とそのパッケージのインストールと管理を行う。
 
-使いたい Python インタープリタのバージョンは指定することができる、
+基本的には１つのフォルダを１つのプロジェクトとして、そのフォルダの中で使いたい python 環境（pythonインタープリタのバージョン、パッケージのバージョン）を pipenv を使って構築すると、構築された Python のバージョン、パッケージのバージョンの情報が `Pipfile` と `Pipfile.lock` ファイルに記録される。
 
-`pipenv` から python インタープリタのインストール・アンインストール、バージョンの切替を行うために、`pipenv` は `pyenv` を利用する。
+`Pipfile` と `Pipfile.lock` ファイルはプロジェクトのトップレベルに生成される。後で他の人が `Pipfile` や `Pipfile.lock` を使って、同じPython環境を再構築できる。
 
-参考リンク：[pyenv、pyenv-virtualenv、venv、Anaconda、Pipenv。私はPipenvを使う。](https://qiita.com/KRiver1/items/c1788e616b77a9bad4dd)
+- `Pipfile` ユーザーが自分で編集することもできる。
+- `Pipfile.lock` こちらは Pipenv により生成されるのでユーザーは自分で編集しない。`pipenv lock` で生成する。
+
+`Pipfile.lock` には実際にインストールされた全ての依存パッケージとバージョンが記録される。なので完全に同じ環境が再現できる。
+
+`pipenv` は、プロジェクトで使う Python インタープリタのインストール・アンインストール、バージョンの切替を行うために、`pyenv` に依存している。`pipenv` では最初にプロジェクトで使う Python インタープリタを指定するが、 `pipenv` は `pyenv` を使って指定されたPython インタープリタをインストールする。
+
+- [github](https://github.com/pypa/pipenv)
+- [Pipenv: 人間のためのPython開発ワークフロー](https://pipenv-ja.readthedocs.io/ja/translate-ja/index.html)
+- [Pipenvの進んだ使い方](https://pipenv-ja.readthedocs.io/ja/translate-ja/advanced.html)
+
+
+
+### 環境とは
+
+環境とは、特定のPython インタープリタとそのパッケージのバージョンが有効になった状態。
+
+`pipenv` では、1プロジェクト、1フォルダ、1環境になっていると想定する。
+
+まずはプロジェクトフォルダを作成し、そのフォルダの中に移動する、そしてそのフォルダ内で環境を作成し、その環境に入る、そして環境内で様々なパッケージをインストールし、実際の開発を行う。
+
+しかし、ある環境に入った時、この環境はこのプロジェクトフォルダの中でだけ有効になるわけではない。一度環境に入ればそのターミナルで作業している限り、プロジェクトフォルダの外でもその環境は有効になっている。なぜなら「環境に入る」と書いたが、正確には `pipenv` は `pipenv shell` でそのPython環境が有効になった新たな `shell` を起動する。つまり、実行中のそのターミナルがその環境に乗っ取られるということ。この環境は、別のターミナルウィンドウで開いた `shell` には影響しない、あくまでその環境に入ったターミナルの中でだけ有効になる。ただし、プロジェクトフォルダの外で `pipenv` コマンドを使ってしまうと、そのフォルダに新たな環境を作成してしまうらしい。
+
+とりあえず、OSにインストールされているPythonとは別に、独立した特定のPythonバージョンを使った開発環境を作成したいということであれば、ダミーのフォルダを作成して、そこをプロジェクトフォルダとして好きなPython環境を構築し、毎回シェルにログインするときに自動的にそのプロジェクト環境が有効になるように `.zshrc` などにコマンドを記述しておけばよいだろう。
+
+
+
 
 ## インストール
 
@@ -77,15 +123,23 @@ Python パッケージのパッケージのインストール、バージョン�
 brew install pipenv
 ```
 
-## pipenv 使い方
+ubuntu
 
-基本的には１つのプロジェクトを１つのフォルダとして、そのフォルダの中で python環境（pythonインタープリタのバージョン、パッケージのバージョン）をインストールし、使用されている Python のバージョン、パッケージのバージョンを記録するファイル `Pipfile` を生成する。`Pipfile.lock` にはパッケージの依存関係を記録している。
+ubuntu では pip を使って pipeenv をインストールする。
 
-プロジェクトフォルダの中に `Pipfile` `Pipfile.lock` があれば、そのファイルをもとに `pipenv install` で、他の人がそのプロジェクトに必要なバージョンの Python とパッケージを再現することができる。
+```
+sudo apt install python3-pip
+```
+
+~/.local/bin に pip3 がインストールされる
 
 
+```
+pip3 install pipenv
+```
 
-### プロジェクトと環境の作成
+
+## 環境の作成
 
 プロジェクト用のフォルダを作成し、移動する
 
@@ -94,7 +148,10 @@ mkdir myproject
 cd myproject
 ```
 
-python のバージョンを指定して、このプロジェクトのための使用するPythonバージョンをを宣言する。この時 `pyenv` がインストール＆設定されていれば自動でインストールされる。
+- このプロジェクトで使用する Python バージョンを指定する。
+- 同時にこのプロジェクト用の仮想環境が作成される
+- この時 `pyenv` がインストール＆設定されていれば自動でインストールされる。
+- これにより `Pipfile` が作成される
 
 ```
 pipenv --python 3.7.6
@@ -105,25 +162,89 @@ pipenv --python 3.7.6
 # Python 2を使う場合
 # pipenv --two  
 ```
-これにより `Pipfile` が作成される
 
-既存の `Pipfile` `Pipfile.lock` を参照して、Pythonとパッケージをインストールする
+
+既存の `Pipfile` `Pipfile.lock` を参照して、Pythonとパッケージをインストールすることもできる。
+
+```
+# Pipfile.lock を参照してパッケージをインストールする
+pipenv install
+```
+
+Pipenv では、開発者が `Pipfile` にインストールしたいバージョンの希望を書き、`Pipfile.lock` に実際にインストールしたバージョンが記録される（らしい）。
+
+- `Pipfile` ユーザーが自分で編集することもできる。
+- `Pipfile.lock` こちらは Pipenv により生成されるのでユーザーは自分で編集しない。このファイルには実際にインストールされた全ての依存パッケージとバージョンが記録されている。なので完全に同じ環境が再現できる。
+
+### Pipfile，Pipfile.lockから環境の再現
+
+プロジェクトフォルダを作成し、その中に、既存の Pipfile を配置する。そして次のコマンドを実行すると Pipfile に記述された環境が構築される。
+
+```
+pipenv install
+pipenv install --dev    # 通常のパッケージの他に開発用パッケージもインストールしたい場合
+```
+
+同様に、`Pipfile.lock` が手元にある場合は、以下のコマンド
+
+```
+pipenv sync
+pipenv sync --dev    # 開発用パッケージもインストールする場合
+
+```
+
+
+
+
+## 仮想環境の確認
+
+```
+# 現在のプロジェクトのために作成された仮想環境のパスを表示する
+pipenv --venv
+```
+
+## 仮想環境の削除
+
+```
+# 現在のプロジェクトの仮想環境を削除
+pipenv --rm
+```
+
+
+
+
+
+## 既存の環境に対する操作
 
 
 ### 環境の中に入る
 
- 環境が作成されたプロジェクトフォルダに移動して、環境の中に入る
+ 環境が作成されたプロジェクトフォルダに移動して環境の中に入る。正確にはPython環境が有用になったシェルを起動している。実行中のターミナルのpython環境が、ここで入った環境に乗っ取られる。
 
 ```
 pipenv shell
 ```
 
+この環境はこのプロジェクトフォルダの外に出ても有効ではある。
 
-開発向けに何かインストールする
+ ただし、プロジェクトフォルダの外で pipenv コマンドを使うとそのフォルダに新しい環境が作成されてしまうので注意する。
+
+### ライブラリをインストールする
+
+`pipenv` ではライブラリをインストールするときに通常のライブラリと開発用のライブラリを分けることができる。開発用パッケージとは、プログラムの開発の時には必要だが、そのプログラムを実際に動かす運用の時には不要になるライブラリのこと。
+
+例えば、`autopep8` はコードを成形するためのライブラリなので、プログラムの動作そのものには必要ない。
 
 ```
+# 通常のライブラリのインストール
+pipenv install numpy
+
+# 開発向けライブラリのインストール
 pipenv install --dev autopep8
 ```
+
+
+
 
 インストール済パッケージを列挙
 
@@ -144,57 +265,7 @@ pipenv update
 ```
 
 
-### jupyter のインストール
 
-プロジェクトフォルダに移動して
-
-```
-pipenv install jupyter jupytext
-```
-
-`jupytext` は `jupyter` をもっと便利にするツールらしい
-
-
-#### jupytext を使用可能にする
-
-jupyter の設定ファイル（`~/.jupyter/jupyter_notebook_config.py`）を生成
-
-```
-pipenv run jupyter notebook --generate-config
-```
-
-`~/.jupyter/jupyter_notebook_config.py` に以下の記述を追加
-
-```
-# jupytext を使用可能にする設定
-c.NotebookApp.contents_manager_class = "jupytext.TextFileContentsManager"
-# jupytext で python コードと jupyter が連動するようにする設定
-c.ContentsManager.default_jupytext_formats = "ipynb,py"
-```
-
-#### 既存のnotebookを編集する場合
-
-jupyter の `Edit > Edit Notebook Metadata` から、以下の記述を先頭に追加する。
-
-```
-"jupytext": {"formats": "ipynb,py"},
-```
-
-`.py, .ipynb` 以外にも、`md, Rmd, jl, R` などのフォーマットが使えるらしい
-
-既存の notebook のメタデータを上記のように編集し、上書き保存すると `.ipynb` に対応する `.py` が生成されている。
-
-`.ipynb` を編集すると `.py` に変更が反映され、`.py` を編集すると `.ipynb` に変更が反映されるらしい。
-
-
-
-
-
-### jupyter を起動する
-
-```
-pipenv run jupyter notebook
-```
 
 
 
@@ -223,7 +294,7 @@ Requires: pyparsing, cycler, python-dateutil, kiwisolver, numpy
 Required-by: 
 ```
 
-## Pythonパッケージの検索先
+# Pythonパッケージの検索先
 
 ### パッケージの検索先の確認法
 

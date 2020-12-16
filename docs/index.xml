@@ -44,7 +44,7 @@
       <pubDate>Sat, 14 Sep 2019 00:00:00 +0000</pubDate>
       
       <guid>https://teuder.github.io/notebook/gis/viirs/</guid>
-      <description>VIIRS Visible Infrared Imaging Radiometer Suite 赤外線〜可視光を含む波長の光を受信する22個のセンサーからなる装置。様々な波長で観測することにより地表や海洋の色や夜間の光を観測</description>
+      <description>VIIRS Visible Infrared Imaging Radiometer Suite 赤外線〜可視光を含む波長の光を受信する22個のセンサーからなる「装置の名称」。様々な波長で観測することにより地表や海洋の色や夜間</description>
     </item>
     
     <item>
@@ -57,7 +57,25 @@
     </item>
     
     <item>
-      <title>BigQuery</title>
+      <title>BigQuery GIS</title>
+      <link>https://teuder.github.io/notebook/gcp/bigquery_gis/</link>
+      <pubDate>Wed, 04 Sep 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://teuder.github.io/notebook/gcp/bigquery_gis/</guid>
+      <description>BigQuery GIS 標準 SQL の地理関数 地理オブジェクト作成 ST_GEOGPOINT(longitude, latitude) ST_CONTAINS ST_CONTAINS(geography_1, geography_2) geography_2 は geography_1 の内部にある（外にはみ出していない）なら TRUE ST_WITHIN ST_WITHIN(geography_1, geography_2) geography_1 は geography_2 の内部にある（外にはみ出してい</description>
+    </item>
+    
+    <item>
+      <title>BigQuery: bqコマンド</title>
+      <link>https://teuder.github.io/notebook/gcp/bigquery_bq/</link>
+      <pubDate>Wed, 04 Sep 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://teuder.github.io/notebook/gcp/bigquery_bq/</guid>
+      <description>BigQuery：bqコマンド Data set を作成する bq mk \ --dataset \ --location=US \ --default_table_expiration 3600 \ --default_partition_expiration 3600 \ --description &#39;description&#39; \ project_id:dataset_name location US など default_table_expiration テーブル自動削除までの秒数を指定する、デフォルトでは</description>
+    </item>
+    
+    <item>
+      <title>BigQuery: general</title>
       <link>https://teuder.github.io/notebook/gcp/bigquery/</link>
       <pubDate>Wed, 04 Sep 2019 00:00:00 +0000</pubDate>
       
@@ -66,12 +84,30 @@
     </item>
     
     <item>
-      <title>BigQuery</title>
-      <link>https://teuder.github.io/notebook/gcp/bigquery_gis/</link>
+      <title>BigQuery: SQL</title>
+      <link>https://teuder.github.io/notebook/gcp/bigquery_sql/</link>
       <pubDate>Wed, 04 Sep 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://teuder.github.io/notebook/gcp/bigquery_gis/</guid>
-      <description>BigQuery GIS 標準 SQL の地理関数 ST_CONTAINS ST_CONTAINS(geography_1, geography_2) geography_2 は geography_1 の内部にある（外にはみ出していない）なら TRUE ST_WITHIN ST_WITHIN(geography_1, geography_2) geography_1 は geography_2 の内部にある（外にはみ出していない）なら TRUE ST_CONTAINS とは geography_1 と geography_2</description>
+      <guid>https://teuder.github.io/notebook/gcp/bigquery_sql/</guid>
+      <description>BigQuery: SQL SQL レギュラーSQLをデフォルトにする クエリの前に #standardSQL の記述を追加する。逆にレガシーにしたい場合は #legacySQL を記述する。 #standardSQL SELECT weight_pounds, state, year, gestation_weeks FROM `bigquery-public-data.samples.natality` ORDER BY weight_pounds DESC LIMIT 10;</description>
+    </item>
+    
+    <item>
+      <title>english</title>
+      <link>https://teuder.github.io/notebook/miscellaneous/english/</link>
+      <pubDate>Tue, 03 Sep 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://teuder.github.io/notebook/miscellaneous/english/</guid>
+      <description>English 数学 数学用語 英語 一覧 Exponents(指数)の英語表現</description>
+    </item>
+    
+    <item>
+      <title>jinja</title>
+      <link>https://teuder.github.io/notebook/miscellaneous/jinjia2/</link>
+      <pubDate>Tue, 03 Sep 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://teuder.github.io/notebook/miscellaneous/jinjia2/</guid>
+      <description>jinja2 jinja2 はテンプレートエンジン テンプレートエンジンとは、要するに、テンプレートの一部を、別の変数の値で置き換えて、新しいドキュメント（htmlと</description>
     </item>
     
     <item>
@@ -84,12 +120,30 @@
     </item>
     
     <item>
+      <title>PC</title>
+      <link>https://teuder.github.io/notebook/miscellaneous/pc/</link>
+      <pubDate>Tue, 03 Sep 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://teuder.github.io/notebook/miscellaneous/pc/</guid>
+      <description>PC CPU 4Gamer: Zen 3アーキテクチャ採用の新世代CPUはゲームにおける性能が大きく向上した: Ryzen 9 5900X, Ryzen 7 5800X メモリ規格 見れば全部わかるDDR4メモリ完全ガイ</description>
+    </item>
+    
+    <item>
       <title>vscode</title>
       <link>https://teuder.github.io/notebook/miscellaneous/vscode/</link>
       <pubDate>Tue, 03 Sep 2019 00:00:00 +0000</pubDate>
       
       <guid>https://teuder.github.io/notebook/miscellaneous/vscode/</guid>
       <description>Visual Studio Code ショートカット ショートカットエディタ Preferences &amp;gt;&amp;gt; Keyboard Shortcuts 【Mac版】 VSCode キーボードショートカット コマンドパレット shift cmd P タブの移動 opt cmd → 単語単位でカー</description>
+    </item>
+    
+    <item>
+      <title>Windows</title>
+      <link>https://teuder.github.io/notebook/miscellaneous/windows/</link>
+      <pubDate>Tue, 03 Sep 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://teuder.github.io/notebook/miscellaneous/windows/</guid>
+      <description>Windows ディスクのマウント/アンマウント コマンドプロンプトを管理者権限で起動し、以下のコマンド # マウント mountvol D:\ \\?\Volume{b57198fe-cc68-4509-b771-f81d0fdae196}\ # アンマウント（Dドライブをアンマウ</description>
     </item>
     
     <item>
@@ -125,7 +179,7 @@
       <pubDate>Tue, 03 Sep 2019 00:00:00 +0000</pubDate>
       
       <guid>https://teuder.github.io/notebook/r/ggplot2/</guid>
-      <description>ggplot2 ggplot2: Elegant Graphics for Data Analysis 基本的な使い方 使い方の例 set.seed(7) data_df &amp;lt;- data.frame( var1 = 1:10, var2 = rnorm(10), var3 = rep(LETTERS[1:3], length.out = 10)) ggplot(data = data_df) + geom_point(aes(x = var1, y = var2, color = var3)) + geom_line(aes(x = var1, y = var2, color = var3)) ggplot() 関数で ggplot オブジェクトを</description>
+      <description>ggplot2 ggplot2: Elegant Graphics for Data Analysis その他、Rでの作図一般 The R graph gallery 基本的な使い方 使い方の例 set.seed(7) data_df &amp;lt;- data.frame( var1 = 1:10, var2 = rnorm(10), var3 = rep(LETTERS[1:3], length.out = 10)) ggplot(data = data_df) + geom_point(aes(x = var1, y = var2, color = var3)) + geom_line(aes(x = var1, y = var2,</description>
     </item>
     
     <item>
@@ -134,7 +188,7 @@
       <pubDate>Mon, 26 Aug 2019 00:00:00 +0000</pubDate>
       
       <guid>https://teuder.github.io/notebook/miscellaneous/git/</guid>
-      <description>Git Gitの基本コマンド .gitignoreの仕様詳解 レポジトリを作成する、コピーする init : 既存のフォルダをレポジトリにする git init して登録されたフ</description>
+      <description>Git Gitの基本コマンド .gitignoreの仕様詳解 Happy Git and GitHub for the useR レポジトリを作成する、コピーする init : 既存のフォルダをレポジトリにする git init し</description>
     </item>
     
     <item>
@@ -161,7 +215,7 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://teuder.github.io/notebook/r/bigrquery/</guid>
-      <description>bigrquery R から BigQuery を操作するためのパッケージ ds &amp;lt;- DBI::dbConnect( drv = bigrquery::bigquery(), project = &amp;quot;project_name&amp;quot;, dataset = &amp;quot;dataset_name&amp;quot;, use_legacy_sql = FALSE ) ds &amp;lt;- bq_dataset( project = &amp;quot;project_name&amp;quot;, dataset = &amp;quot;dataset_name&amp;quot;,)</description>
+      <description>bigrquery R から BigQuery を操作するためのパッケージ コネクションの作成 ds &amp;lt;- DBI::dbConnect( drv = bigrquery::bigquery(), project = &amp;quot;project_name&amp;quot;, dataset = &amp;quot;dataset_name&amp;quot;, use_legacy_sql = FALSE ) ds &amp;lt;- bq_dataset( project = &amp;quot;project_name&amp;quot;, dataset = &amp;quot;dataset_name&amp;quot;,) 大きなデータをダウンロードしようとす</description>
     </item>
     
     <item>
@@ -255,12 +309,30 @@
     </item>
     
     <item>
+      <title>wk</title>
+      <link>https://teuder.github.io/notebook/r/wk/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://teuder.github.io/notebook/r/wk/</guid>
+      <description>wk 地理データで登場する Well Known Text (WKT) や Well Known Binary (WKB) 形式のデータを扱うためのパッケージ https://cran.r-project.org/package=wk https://paleolimbot.github.io/wk/ このパッケージをインストールすると bigrquery パッケージで BigQuery から GEOGRAPHY 型のカ</description>
+    </item>
+    
+    <item>
       <title>environment</title>
       <link>https://teuder.github.io/notebook/python/environment/</link>
       <pubDate>Fri, 17 Jan 2020 00:00:00 +0000</pubDate>
       
       <guid>https://teuder.github.io/notebook/python/environment/</guid>
-      <description>Python 環境設定 https://www.medi-08-data-06.work/entry/python_env Python 本体のインストールとバージョン管理 pyenv python本体のバージョン管理、インストール イントールと設定 brew install pyenv ~/.zshrc などに以下の記述を追</description>
+      <description>Python 環境設定 https://www.medi-08-data-06.work/entry/python_env pyenv python本体のバージョン管理、インストール イントールと設定 ~/.zshrc などに以下の記述を追加 export PYENV_ROOT=&amp;quot;$HOME/.pyenv&amp;quot; export PATH=&amp;quot;$PYENV_ROOT/bin:$PATH&amp;quot; eval &amp;quot;$(pyenv init -)&amp;quot; Mac brew install pyenv Ubuntu 18.04 sudo apt update &amp;amp;&amp;amp; sudo apt</description>
+    </item>
+    
+    <item>
+      <title>jupyter</title>
+      <link>https://teuder.github.io/notebook/python/jupyter/</link>
+      <pubDate>Fri, 17 Jan 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://teuder.github.io/notebook/python/jupyter/</guid>
+      <description>jypyter インストール Jupyter インストール プロジェクトフォルダに移動して、仮想環境に入ってから cd Project pipenv shell pipenv install jupyter jupyter を起動する jupyter notebook pipenv の仮想環境の中の jupyter を起動する</description>
     </item>
     
     <item>
@@ -269,7 +341,7 @@
       <pubDate>Fri, 17 Jan 2020 00:00:00 +0000</pubDate>
       
       <guid>https://teuder.github.io/notebook/python/vscode/</guid>
-      <description>Python in VScode VScode で Python を使う時の Tips 参考：VS Code でPython，Jupyter を動かす 拡張機能 Python 必須 はじめに コマンドパレットで select interpreter と入力 VScodeと一</description>
+      <description>Python in VScode VScode で Python を使う時の Tips 参考：[VS Code でPython，Jupyter を動かす](https://qii ta.com/surei/items/9f25d7efa7c67d55d98f) 拡張機能 Python 必須 はじめに コマンドパレッ</description>
     </item>
     
     <item>

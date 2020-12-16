@@ -1,4 +1,4 @@
----
+        ---
 title: "VIIRS"
 draft: false
 date : 2019-09-14
@@ -12,9 +12,9 @@ type: docs
 
 Visible Infrared Imaging Radiometer Suite
 
-赤外線〜可視光を含む波長の光を受信する22個のセンサーからなる装置。様々な波長で観測することにより地表や海洋の色や夜間の光を観測する。雲、エアロゾル、氷、海の色、植生、夜間光などの分析に利用できる。
+赤外線〜可視光を含む波長の光を受信する22個のセンサーからなる「装置の名称」。様々な波長で観測することにより地表や海洋の色や夜間の光を観測する。雲、エアロゾル、氷、海の色、植生、夜間光などの分析に利用できる。
 
-Suomi-NPP（SNPP）, NOAA-20(JPSS-1)の２つの衛星に搭載されている。どちらの衛星もNASAとNOAAの共同プロジェクト Joint Polar Satellite System (JPSS) により打ち上げられ運用されている。（NOAA-20 と JPSS-1は同じ衛星、JPSS-1 から NOAA-20 に名前が変わった。SNPP は JPSS-1のための実験衛星という位置付けらしい。）
+Suomi-NPP（SNPP）, NOAA-20 (旧称 JPSS-1) の２つの衛星に搭載されている。どちらの衛星もNASAとNOAAの共同プロジェクト Joint Polar Satellite System (JPSS) により打ち上げられ運用されている。（NOAA-20 と JPSS-1は同じ衛星、JPSS-1 から NOAA-20 に名前が変わった。SNPP は JPSS-1のための実験衛星という位置付けらしいが、現在も運用中。）
 
 SNPPのデータは2012年から利用可能で、VIIRSを搭載した衛星は今後しばらく（2030以降まで）は運用を続けられる予定。
 
@@ -23,8 +23,8 @@ SNPPのデータは2012年から利用可能で、VIIRSを搭載した衛星は�
 
 ## Suomi-NPP
 
-https://www.restec.or.jp/satellite/suomi-npp
-https://directory.eoportal.org/web/eoportal/satellite-missions/s/suomi-npp
+- https://www.restec.or.jp/satellite/suomi-npp
+- https://directory.eoportal.org/web/eoportal/satellite-missions/s/suomi-npp
 
 回帰日数（repeat cycle）は 16 日と書いてあるけど、CLASSのデータの範囲を見ると、2017-06-01 と 2017-06-12 はほぼ同じ地点を通過するので、周期は11日ではないのか？？
 
@@ -141,6 +141,29 @@ SVM01, SVM02, SVM03, SVM04, SVM05, SVM06, SVM07, SVM08, SVM09, SVM10, SVM11, SVM
 
 [EDR User Guide](http://rammb.cira.colostate.edu/projects/npp/VIIRS_Imagery_EDR_Users_Guide.pdf)
 
+
+`2020-06-24` にこれまで作成されていた多くのEDRが作成されなくなり、あたらしい形式のものが提供されるようになった。
+
+以前のEDRプロダクトと新しいプロダクトの対応表は[こちら](https://www.bou.class.noaa.gov/notification/news.htm#2020_1)。
+
+これら新しい VIIRS の EDR は [JPSS_RR product](https://www.ospo.noaa.gov/Products/Suites/count_JPSRR.html) と呼ばれている？？
+
+
+現在、多くの EDR は CLASS の [JPSS_GRAN](https://www.avl.class.noaa.gov/saa/products/search?sub_id=0&datatype_family=JPSS_GRAN&submit.x=34&submit.y=0) から取得できる。
+
+ドキュメント
+https://www.nodc.noaa.gov/archivesearch/rest/find/document?searchText=%22gov.noaa.class:JPSS_GRAN%22&max=30&f=searchpage
+
+
+
+
+
+
+
+
+
+
+
 #### I-band EDR
 
 I-band のSDR (SVI01, SVI02, SVI03, SVI04, SVI05) はそれぞれ対応するEDR (VI1BO, VI2BO, VI3BO, VI4BO, VI5BO) がある
@@ -183,23 +206,299 @@ DNB の EDRは、SDRの輝度を反射率に変換して、ground-track Mercator
 – GMGTO: M-band EDR geolocation
 – GNCCO: Day/Night Band EDR (NCC) geolocation
 
+The cloud mask is 1km resolution and contains probability of cloud for each pixel (I used discretized cloud mack, though.)
+I wish I had VIIRS data in relational database. To be honest, I'm tired of dealing with the raw data.
+
+#### Cloud Mask 
 
 
-#### Cloud Mask (VICMO)
+- `JRR-CloudMask`
+  - アルゴリズム改良版: Enterprize Cloud Mask, ECM
+  - 期間 (xxxx-xx-xx ~ 現在)
+  - 取得 https://www.avl.class.noaa.gov/saa/products/search?sub_id=0&datatype_family=JPSS_GRAN&submit.x=34&submit.y=0
+  - データ形式: NetCDF (Version: 4)
+  - リンク
+    - [NOAA JPSS の CLOUD チーム（アルゴリズムの開発元）](https://www.star.nesdis.noaa.gov/jpss/clouds.php) 
+    - [VIIRS EDRについてのポータル](https://data.nodc.noaa.gov/cgi-bin/iso?id=gov.noaa.ncdc:C01434)
+    - [CLOUD MASKの可視化](https://www.ospo.noaa.gov/data/jpss-rr/snpp/htm/count_JRR_cloud_descending.html)
 
-なぜか Cloud Mask EDR のデータ形式のドキュメントは、`474-00001` の中にない！
 
-[JPSS Algorithm Specification, Volume II: Data Dictionary for the Cloud Mask](https://www.jpss.noaa.gov/sciencedocuments/sciencedocs/2016-12/474-00448-02-11_JPSS-DD-Vol-II-Part-11_0200E.pdf)
 
-`474-00448-02-11_JPSS-DD-Vol-II-Part-11_0200E.pdf`
+  - ドキュメント
+    - External User Manual (EUM): NetCDFファイル内部に格納されているデータについて記載
+      - https://www.star.nesdis.noaa.gov/jpss/documents/UserGuides/JPSS_RR_EUM.pdf
+      - https://www.ospo.noaa.gov/Products/Suites/files/JPSS_RR_EUM_June2016.pdf
 
-ファイル名は 
+    - Algorithm Theoretical Basis Document (ATBT) データの意味についてはこちら
+      - [すべてのVIIRS EDRのATBTへのリンク](https://www.ospo.noaa.gov/Products/Suites/atbds.html)
+      - [Enterprize Cloud Mask の ATBT](https://www.star.nesdis.noaa.gov/jpss/documents/ATBD/ATBD_EPS_Cloud_Mask_v1.2.pdf)
 
-Cloud Mask が EDR になったのは 2017 年から、それ以前は Cloud Mask Intermediate Product と呼ばれていた（ファイル名は IICMO）。基本的な内容は同じらしい
+    - プレゼン資料
+      - [How to Use the NOAA Enterprise Cloud Mask (ECM)]https://www.star.nesdis.noaa.gov/jpss/documents/meetings/2015/SJASTM/Session7e-Clouds+Aerosol.pdf) 
+      - [Enterprise Cloud Mask (ECM): Data format basics](https://www.star.nesdis.noaa.gov/star/documents/meetings/2016JPSSAnnual/S8/S8_12_Clouds_ECM_KOPP_v2.pdf)
+  -　メモ
+    - 雲マスクのアルゴリズムは ECM (Enterprize Cloud Mask) と呼ばれている。VIIRSの他のセンサーに対しても適用できるように作られている（VIIRS, MODIS, AVHRR, GOES, ABI, SEVIRI, AHI, COMS, など）。使用するバンドはセンサーにより異なる。
+  - 参考リンク
+    - [ABI CLOUD MASK (ACM)、ECMとは異なるクラウドマスク（ECMのもとになっている？？）] (https://www.star.nesdis.noaa.gov/goesr/docs/ATBD/Cloud_Mask.pdf) こちらには CloudMaskQualFlag の説明が載っているが、ECMと同じなのかは不明
+- `VICMO`
+  - EDRに格上げされた。VIIRS CLOUD MASK (VCM)
+  - (2017-03-08 ~ 2020-06-24)
+  - https://www.bou.class.noaa.gov/saa/products/search?sub_id=0&datatype_family=VIIRS_EDR&submit.x=24&submit.y=3
+  - データ形式: HDF5
+  - [JPSS Algorithm Specification, Volume II: Data Dictionary for the Cloud Mask `474-00448-02-11_JPSS-DD-Vol-II-Part-11_0200E`](https://www.jpss.noaa.gov/sciencedocuments/sciencedocs/2016-12/474-00448-02-11_JPSS-DD-Vol-II-Part-11_0200E.pdf)
+- `IICMO`
+  - 中間プロダクト Cloud Mask Intermediate Product 
+  - (2012-05-02 ~ 2017-03-08)
+  - https://www.bou.class.noaa.gov/saa/products/search?sub_id=0&datatype_family=VIIRS_IPNG&submit.x=29&submit.y=8
+  - データ形式: HDF5
+  - [IICMOのドキュメント](https://www.jpss.noaa.gov/sciencedocuments/sciencedocs/2017-06/474-00062_OAD-VIIRS-Cloud-Mask-EDR_J.pdf)
 
-[IICMOのドキュメント](https://www.jpss.noaa.gov/sciencedocuments/sciencedocs/2017-06/474-00062_OAD-VIIRS-Cloud-Mask-EDR_J.pdf)
 
-は `474-00062_OAD-VIIRS-Cloud-Mask-IP_G.pdf`
+NetCDF4ファイルをRで読み込んでメタデータを表示する
+
+```r
+path_ncdf <- "JRR-CloudMask_v1r1_npp_s201804161754397_e201804161756039_c201804162011060.nc"
+nc <- ncdf4::nc_open(path_ncdf)
+print(nc)
+```
+
+NetCDF4ファイルに格納された値の取得方法
+
+```r
+# 変数の値を取得
+CloudMask <- ncdf4::ncvar_get(nc, "CloudMask")
+
+# グローバル属性の取得
+start_orbit_number <- ncdf4::ncatt_get(nc, 0, attname = "start_orbit_number")$value
+```
+
+メタデータの表示例
+
+主要な変数
+
+- Latitude 緯度
+- Longitude 経度
+- CloudMask クラウドマスクの値 0,1,2,3, _FillValue: -128
+- CloudMaskPacked ビットごとにATBTの
+
+chunkingは各要素のデータサイズ？単位はbite?
+
+```
+File JRR-CloudMask_v1r1_npp_s201804161754397_e201804161756039_c201804162011060.nc (NC_FORMAT_NETCDF4):
+
+     30 variables (excluding dimension variables):
+        float Latitude[Columns,Rows]   (Chunking: [200,256])  (Compression: shuffle,level 2)
+            long_name: Latitude
+            units: degrees_north
+            comments: Pixel latitude in field Latitude (degree)
+            _FillValue: -999
+            valid_range: -90
+             valid_range: 90
+        float Longitude[Columns,Rows]   (Chunking: [200,256])  (Compression: shuffle,level 2)
+            long_name: Longitude
+            units: degrees_east
+            comments: Pixel longitude in field Longitude (degree)
+            _FillValue: -999
+            valid_range: -180
+             valid_range: 180
+        int StartRow[]   (Contiguous storage)  
+            long_name: Start row index
+        int StartColumn[]   (Contiguous storage)  
+            long_name: Start column index
+        byte CloudMask[Columns,Rows]   (Chunking: [200,256])  (Compression: shuffle,level 2)
+            long_name: Cloud Mask
+            coordinates: Longitude Latitude
+            units: 1
+            _FillValue: -128
+            valid_range: 0
+             valid_range: 3
+        byte CloudMaskBinary[Columns,Rows]   (Chunking: [200,256])  (Compression: shuffle,level 2)
+            long_name: Cloud Mask Binary
+            coordinates: Longitude Latitude
+            units: 1
+            _FillValue: -128
+            valid_range: 0
+             valid_range: 1
+        byte CloudMaskPacked[CldMaskPkedCnst,Columns,Rows]   (Chunking: [7,200,256])  (Compression: shuffle,level 2)
+            long_name: Diagnostic Cloud Mask
+            coordinates: Longitude Latitude
+            units: 1
+            _FillValue: -128
+            valid_range: -128
+             valid_range: 127
+        byte CloudMaskFlag[FlagConst,Columns,Rows]   (Chunking: [33,200,256])  (Compression: shuffle,level 2)
+            long_name: Cloud Mask Test
+            coordinates: Longitude Latitude
+            units: 1
+            _FillValue: -128
+            valid_range: -128
+             valid_range: 127
+        byte Smoke_Mask[Columns,Rows]   (Chunking: [200,256])  (Compression: shuffle,level 2)
+            long_name: Smoke Mask
+            coordinates: Longitude Latitude
+            units: 1
+            _FillValue: -128
+            valid_range: 0
+             valid_range: 3
+        byte Fire_Mask[Columns,Rows]   (Chunking: [200,256])  (Compression: shuffle,level 2)
+            long_name: Fire Mask
+            coordinates: Longitude Latitude
+            units: 1
+            _FillValue: -128
+            valid_range: 0
+             valid_range: 3
+        byte Dust_Mask[Columns,Rows]   (Chunking: [200,256])  (Compression: shuffle,level 2)
+            long_name: Dust Mask
+            coordinates: Longitude Latitude
+            units: 1
+            _FillValue: -128
+            valid_range: 0
+             valid_range: 3
+        byte CloudMaskQualFlag[Columns,Rows]   (Chunking: [200,256])  (Compression: shuffle,level 2)
+            long_name: Cloud Mask Quality Flag
+            coordinates: Longitude Latitude
+            units: 1
+            _FillValue: -128
+            valid_range: 0
+             valid_range: 6
+        float CloudProbability[Columns,Rows]   (Chunking: [200,256])  (Compression: shuffle,level 2)
+            long_name: Cloud Probability
+            coordinates: Longitude Latitude
+            units: 1
+            _FillValue: -999
+            valid_range: 0
+             valid_range: 1
+        float ClearProbClear[]   (Contiguous storage)  
+            long_name: Percent of Clear and Probably Clear
+            units: %
+            valid_range: 0
+             valid_range: 100
+        int NumOfQualityFlag[]   (Contiguous storage)  
+            long_name: Number of quality flag
+            units: 1
+        float Cloudy[]   (Contiguous storage)  
+            long_name: Percent of Pixels that passed a test for cloud and failed a test for cloud edge
+            units: %
+            valid_range: 0
+             valid_range: 100
+        float ProbCloudy[]   (Contiguous storage)  
+            long_name: Percent of Pixels that passed a test for cloud and passed a test for cloud edge
+            units: %
+            valid_range: 0
+             valid_range: 100
+        float ProbClear[]   (Contiguous storage)  
+            long_name: Percent of Pixels that passed no test for cloud but passed tests for spatial heterogenity
+            units: %
+            valid_range: 0
+             valid_range: 100
+        float Clear[]   (Contiguous storage)  
+            long_name: Percent of Pixels that passed no test for cloud and failed a test for spatial heterogenity
+            units: %
+            valid_range: 0
+             valid_range: 100
+        int TotalPixel[]   (Contiguous storage)  
+            long_name:  Total Number of  pixels
+            units: 1
+        float TerminatorPixPercent[]   (Contiguous storage)  
+            long_name: Percent of terminator pixels
+            units: %
+            valid_range: 0
+             valid_range: 100
+        int TotalCloudMaskPixel[]   (Contiguous storage)  
+            long_name:  Total Number of  cloud Mask pixels
+            units: 1
+        float MinClrSkyOBS_RTM[Meta10]   (Contiguous storage)  
+            long_name: Minimum observation - RTM for Clear Sky IR Channel 07 to 16
+            coordinates: 
+            units: Kelvin
+            _FillValue: 0
+        float MaxClrSkyOBS_RTM[Meta10]   (Contiguous storage)  
+            long_name: Maximum observation - RTM for Clear Sky IR Channel 07 to 16
+            coordinates: 
+            units: Kelvin
+            _FillValue: 0
+        float MeanClrSkyOBS_RTM[Meta10]   (Contiguous storage)  
+            long_name: Mean observation - RTM for Clear Sky IR Channel 07 to 16
+            coordinates: 
+            units: Kelvin
+            _FillValue: 0
+        float StdDevClrSkyOBS_RTM[Meta10]   (Contiguous storage)  
+            long_name: Std Dev observation - RTM for Clear Sky IR Channel 07 to 16
+            coordinates: 
+            units: Kelvin
+            _FillValue: 0
+        float MinAllSkyOBS_RTM[Meta10]   (Contiguous storage)  
+            long_name: Minimum observation - RTM for All Sky IR Channel 07 to 16
+            coordinates: 
+            units: Kelvin
+            _FillValue: 0
+        float MaxAllSkyOBS_RTM[Meta10]   (Contiguous storage)  
+            long_name: Maximum observation - RTM for All Sky IR Channel 07 to 16
+            coordinates: 
+            units: Kelvin
+            _FillValue: 0
+        float MeanAllSkyOBS_RTM[Meta10]   (Contiguous storage)  
+            long_name: Mean observation RTM for All Sky IR Channel 07 to 16
+            coordinates: 
+            units: Kelvin
+            _FillValue: 0
+        float StdDevAllSkyOBS_RTM[Meta10]   (Contiguous storage)  
+            long_name: Std Dev observation - RTM for All Sky IR Channel 07 to 16
+            coordinates: 
+            units: Kelvin
+            _FillValue: 0
+
+     5 dimensions:
+        Columns  Size:3200
+[1] "vobjtovarid4: **** WARNING **** I was asked to get a varid for dimension named Columns BUT this dimension HAS NO DIMVAR! Code will probably fail at this point"
+        Rows  Size:768
+[1] "vobjtovarid4: **** WARNING **** I was asked to get a varid for dimension named Rows BUT this dimension HAS NO DIMVAR! Code will probably fail at this point"
+        CldMaskPkedCnst  Size:7
+[1] "vobjtovarid4: **** WARNING **** I was asked to get a varid for dimension named CldMaskPkedCnst BUT this dimension HAS NO DIMVAR! Code will probably fail at this point"
+        FlagConst  Size:33
+[1] "vobjtovarid4: **** WARNING **** I was asked to get a varid for dimension named FlagConst BUT this dimension HAS NO DIMVAR! Code will probably fail at this point"
+        Meta10  Size:10
+[1] "vobjtovarid4: **** WARNING **** I was asked to get a varid for dimension named Meta10 BUT this dimension HAS NO DIMVAR! Code will probably fail at this point"
+
+    34 global attributes:
+        Conventions: CF-1.5
+        Metadata_Conventions: CF-1.5, Unidata Dataset Discovery v1.0
+        standard_name_vocabulary: CF Standard Name Table (version 17, 24 March 2011)
+        project: S-NPP Data Exploitation
+        institution: DOC/NOAA/NESDIS/NDE->S-NPP Data Exploitation, NESDIS, NOAA, U.S. Department of Commerce
+        naming_authority: gov.noaa.nesdis.nde
+        satellite_name: NPP
+        instrument_name: VIIRS
+        title: JPSS Risk Reduction Unique Cloud Mask
+        summary: Cloud Mask
+        history: VIIRS Cloud Mask Version 1.0
+        processing_level: NOAA Level 2
+        references: 
+        id: c1b243ad-cae9-46a1-a416-f972c10ea5e2
+        Metadata_Link: JRR-CloudMask_v1r1_npp_s201804161754397_e201804161756039_c201804162011060.nc
+        start_orbit_number: 33516
+        end_orbit_number: 33516
+        day_night_data_flag: night
+        ascend_descend_data_flag: 1
+        time_coverage_start: 2018-04-16T17:54:39Z
+        time_coverage_end: 2018-04-16T17:56:03Z
+        date_created: 2018-04-16T20:11:06Z
+        cdm_data_type: swath
+        geospatial_first_scanline_first_fov_lat: 50.7433967590332
+        geospatial_first_scanline_last_fov_lat: 44.5372085571289
+        geospatial_last_scanline_first_fov_lat: 45.7234344482422
+        geospatial_last_scanline_last_fov_lat: 40.0141525268555
+        geospatial_first_scanline_first_fov_lon: 101.341705322266
+        geospatial_first_scanline_last_fov_lon: 141.848983764648
+        geospatial_last_scanline_first_fov_lon: 101.343467712402
+        geospatial_last_scanline_last_fov_lon: 138.53092956543
+        geospatial_lat_units: degrees_north
+        geospatial_lon_units: degrees_east
+        geospatial_bounds: POLYGON((101.342 50.7434,141.849 44.5372,138.531 40.0142,101.343 45.7234,101.342 50.7434))
+```
+
+
+
 
 
 
@@ -217,10 +516,15 @@ ftp://ftp.ssec.wisc.edu/pub/eosdb/npp/viirs/
 
 ## NOAA CLASS
 
-SDR, EDRの生データを取得できるが、APIで自動取得することができない...
-
+ウェブサイトからSDR, EDRの生データを取得できるが、APIで自動取得することができない...
+- 直近90日分のデータは　[NOAAのFTPサイトから入手できる](ftp://ftp-npp.bou.class.noaa.gov/)
 - [VIIRS SDR](https://www.bou.class.noaa.gov/saa/products/search?sub_id=0&datatype_family=VIIRS_SDR&submit.x=25&submit.y=3)
-- [VIIRS EDS](https://www.bou.class.noaa.gov/saa/products/search?sub_id=0&datatype_family=VIIRS_EDR&submit.x=24&submit.y=11)
+- [VIIRS EDR 古いバージョン](https://www.bou.class.noaa.gov/saa/products/search?sub_id=0&datatype_family=VIIRS_EDR&submit.x=24&submit.y=11)
+- [VIIRS EDR 新しいバージョン](https://www.avl.class.noaa.gov/saa/products/search?sub_id=0&datatype_family=JPSS_GRAN&submit.x=21&submit.y=8)
+
+
+
+
 
 ## NASA LAADS
 
@@ -228,6 +532,9 @@ NOAA CLASS 同様のSDR/EDRが入手できるが、どうも何らかの処理�
 
 - [NASA LAADS VIIRS](https://ladsweb.modaps.eosdis.nasa.gov/missions-and-measurements/viirs/)
   - [VIIRS:Suomi-NPP](https://ladsweb.modaps.eosdis.nasa.gov/search/order/1/VIIRS:Suomi-NPP)
+  - [VIIRS CLOUD MASK](https://ladsweb.modaps.eosdis.nasa.gov/missions-and-measurements/products/CLDMSK_L2_VIIRS_SNPP/)
+
+
 
 # データプロダクト・サービス
 

@@ -9,6 +9,8 @@ type: docs
 
 R から BigQuery を操作するためのパッケージ
 
+# コネクションの作成
+
 ```
 ds <- DBI::dbConnect(
   drv = bigrquery::bigquery(),
@@ -22,3 +24,17 @@ ds <- bq_dataset(
   dataset = "dataset_name",)
 ```
 
+大きなデータをダウンロードしようとするとエラーが起きる。以下を設定すると回避できる。最新版では修正されているかもしれない
+
+```
+options(scipen = 20)
+```
+
+
+# 自動で認証するためのアクセストークン
+
+https://gargle.r-lib.org/articles/non-interactive-auth.html 
+
+```
+bigrquery::bq_auth(path = "access_token.json")
+```

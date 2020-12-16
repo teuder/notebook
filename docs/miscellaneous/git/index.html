@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0"><meta property="og:title" content="git" />
-<meta property="og:description" content="Git Gitの基本コマンド .gitignoreの仕様詳解 レポジトリを作成する、コピーする init : 既存のフォルダをレポジトリにする git init して登録されたフ" />
+<meta property="og:description" content="Git Gitの基本コマンド .gitignoreの仕様詳解 Happy Git and GitHub for the useR レポジトリを作成する、コピーする init : 既存のフォルダをレポジトリにする git init し" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://teuder.github.io/notebook/miscellaneous/git/" />
 <meta property="article:published_time" content="2019-08-26T00:00:00+00:00" />
@@ -16,7 +16,7 @@
 <link rel="stylesheet" href="/notebook/book.min.07c38dce7b6800da2a75a565d4d975e38f837294e24d00b5aae363037012d64b.css" integrity="sha256-B8ONzntoANoqdaVl1Nl144&#43;DcpTiTQC1quNjA3AS1ks=">
 
 
-<script defer src="/notebook/search.min.ade5c46a6de536ba987464578228b0cc3a1d5d36128e44bb5134f9ff07f94185.js" integrity="sha256-reXEam3lNrqYdGRXgiiwzDodXTYSjkS7UTT5/wf5QYU="></script>
+<script defer src="/notebook/search.min.25f2a65153401c2781ad1ddb81ebe53998a4af98b020a8187a0d5a865a8f2659.js" integrity="sha256-JfKmUVNAHCeBrR3bgevlOZikr5iwIKgYeg1ahlqPJlk="></script>
 
 <!--
 Made with Book Theme
@@ -115,6 +115,16 @@ https://github.com/alex-shpak/hugo-book
 
   <a href="/notebook/python/environment/" >
       environment
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/python/jupyter/" >
+      jupyter
   </a>
 
 </li>
@@ -315,6 +325,16 @@ https://github.com/alex-shpak/hugo-book
 
   <a href="/notebook/r/stars/" >
       stars
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/r/wk/" >
+      wk
   </a>
 
 </li>
@@ -526,7 +546,7 @@ https://github.com/alex-shpak/hugo-book
       
 
   <a href="/notebook/gcp/" >
-      BigQuery
+      Google Cloud Platform
   </a>
 
 
@@ -543,8 +563,8 @@ https://github.com/alex-shpak/hugo-book
       
         <li>
 
-  <a href="/notebook/gcp/bigquery/" >
-      BigQuery
+  <a href="/notebook/gcp/bigquery_gis/" >
+      BigQuery GIS
   </a>
 
 </li>
@@ -553,8 +573,28 @@ https://github.com/alex-shpak/hugo-book
       
         <li>
 
-  <a href="/notebook/gcp/bigquery_gis/" >
-      BigQuery
+  <a href="/notebook/gcp/bigquery_bq/" >
+      BigQuery: bqコマンド
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/gcp/bigquery/" >
+      BigQuery: general
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/gcp/bigquery_sql/" >
+      BigQuery: SQL
   </a>
 
 </li>
@@ -593,6 +633,26 @@ https://github.com/alex-shpak/hugo-book
       
         <li>
 
+  <a href="/notebook/miscellaneous/english/" >
+      english
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/miscellaneous/jinjia2/" >
+      jinja
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
   <a href="/notebook/miscellaneous/jupyter/" >
       jupyter
   </a>
@@ -603,8 +663,28 @@ https://github.com/alex-shpak/hugo-book
       
         <li>
 
+  <a href="/notebook/miscellaneous/pc/" >
+      PC
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
   <a href="/notebook/miscellaneous/vscode/" >
       vscode
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/miscellaneous/windows/" >
+      Windows
   </a>
 
 </li>
@@ -678,6 +758,7 @@ https://github.com/alex-shpak/hugo-book
 <article class="markdown"><h1 id="git">Git</h1>
 <p><a href="https://qiita.com/konweb/items/621722f67fdd8f86a017">Gitの基本コマンド</a></p>
 <p><a href="https://qiita.com/anqooqie/items/110957797b3d5280c44f">.gitignoreの仕様詳解</a></p>
+<p><a href="https://happygitwithr.com/">Happy Git and GitHub for the useR</a></p>
 <h1 id="レポジトリを作成するコピーする">レポジトリを作成する、コピーする</h1>
 <h2 id="init--既存のフォルダをレポジトリにする">init : 既存のフォルダをレポジトリにする</h2>
 <p>git init して登録されたフォルダが、大元のレポジトリになる？</p>
@@ -687,7 +768,8 @@ https://github.com/alex-shpak/hugo-book
 <p>このクローンに、変更を加えることで、元レポジトリの開発に参加できる</p>
 <h1 id="既にあるレポジトリへの操作">既にあるレポジトリへの操作</h1>
 <h2 id="add">add</h2>
-<p>作成したファイルを git の管理下に追加する（ステージングする）。一度追加したら同じファイルを再度追加する必要はない</p>
+<p>作成したファイルを git の管理下に追加する（ステージングする）。一度追加したら同じファイルを再度追加する必要はない。</p>
+<p>git は add されたファイルの変更を検出し、</p>
 <pre><code>git add path_to_file
 git add . # カレント以下の全てのファイル
 git add *.java # 拡張子が .java
@@ -697,14 +779,74 @@ git add *.java # 拡張子が .java
 </code></pre><h2 id="push-リモートレポジトリに反映する">push リモートレポジトリに反映する</h2>
 <p>現状のローカルレポジトリの最新 コミット 状態を、リモートレポジトリに反映する（プッシュする）</p>
 <pre><code>git push レポジトリ ブランチ
-</code></pre><p>例：<code>git origin master</code></p>
-<h2 id="ブランチの作成--branch">ブランチの作成 : branch</h2>
+</code></pre><p>例：<code>git push origin master</code></p>
+<p>ここで <code>origin</code> レポジトリは、このレポジトリの大本である、リモートにあるレポジトリを意味する（<code>clone</code> するもとになったやつ）</p>
+<h1 id="ファイルの削除名前変更など">ファイルの削除・名前変更など</h1>
+<p>基本的に、名前の変更や削除など、ファイル・ディレクトリに対する操作は全て git を通して行う。そうしないと git がそれらの変更をトラッキングできない。</p>
+<p>ファイル名を変えて内容を変更するとき、git を使わないでファイル名を変更すると、元のファイルとは別のファイルとして扱われるので、どこを変更したのかわからなくなる。</p>
+<pre><code>git rm
+git mv
+</code></pre><h1 id="ブランチ">ブランチ</h1>
+<p>ブランチとは１つのレポジトリで複数の状態（例えば正式版、開発版）などを保持しておく仕組み。ブランチを切り替えるとフォルダの中身も変化する。開発版のブランチに切り替えてファイルを編集すると正式版を壊すことなく、開発版を変更して、開発版が完成したら、それを正式版のブランチにマージするといったことができる。</p>
+<p>レポジトリを作成したときにできる最初のブランチが <code>master</code></p>
+<p>ローカルレポジトリとリモートレポジトリの</p>
+<h2 id="既存のブランチを確認する">既存のブランチを確認する</h2>
+<pre><code>git branch
+</code></pre><h2 id="ブランチの作成--branch">ブランチの作成 : branch</h2>
 <pre><code>git branch ブランチ名 # ブランチの作成
 git checkout -b ブランチ名 #ブランチの作成とそのブランチへの切り替え
-</code></pre><h2 id="ブランチの切り替え--checkout">ブランチの切り替え : checkout</h2>
-<p>ブランチを切り替えると、フォルダの中身の状態が、その</p>
+</code></pre><p><code>git branch ブランチ名</code> だとブランチを作成するだけだが、<code>git checkout -b ブランチ名</code> にするとブランチを作成して、そのブランチに切り替える（<code>git branch ブランチ名; git checkout ブランチ名;</code> と同じ）</p>
+<h2 id="ブランチの切り替え--checkout">ブランチの切り替え : checkout</h2>
+<p>ブランチを切り替えると、フォルダの中身の状態が、そのブランチの最新の状態になる</p>
 <pre><code>git checkout ブランチ名
-</code></pre><h2 id="ファイルフォルダを特定のコミットの状態に戻す">ファイル/フォルダを特定のコミットの状態に戻す</h2>
+</code></pre><h2 id="カレントブランチの確認">カレントブランチの確認</h2>
+<p>カレントブランチには <code>*</code> が付く</p>
+<pre><code>$ git branch --contains
+* develop
+  master
+</code></pre><h2 id="ブランチの削除">ブランチの削除</h2>
+<p>ローカルにあるブランチを削除する</p>
+<p>git branch &ndash;delete [ブランチ名]
+git branch -d [ブランチ名]
+git branch -D [ブランチ名]</p>
+<h2 id="リモートにあるブランチをローカルに持ってくる">リモートにあるブランチをローカルに持ってくる</h2>
+<pre><code># 最初にリモートブランチにチェックアウトして
+git checkout origin/[ブランチ名]
+
+# 次にしそれをローカルブランチとしてコピーする
+git checkout -b [ブランチ名]
+</code></pre><p>最初のコマンドを打った後に次のようなメッセージが出る。
+最初のコマンドを売った状態だと、リモートレポジトリの内容を見て、試しに変更したりできるけど、変更を commit してもリモートにもローカルにも反映されないらしい。変更をローカルレポジトリとしてコピーするために2番目のコマンドを使う。その後は、commit した変更を保存することができる。</p>
+<pre><code>Note: checking out 'origin/[ブランチ名]'.
+
+You are in 'detached HEAD' state. You can look around, make experimental
+changes and commit them, and you can discard any commits you make in this
+state without impacting any branches by performing another checkout.
+
+If you want to create a new branch to retain commits you create, you may
+do so (now or later) by using -b with the checkout command again. Example:
+
+  git checkout -b &lt;new-branch-name&gt;
+
+HEAD is now at a3fe87c updated where the tables are saved, and fixed source and source_ssvid fields. Also made small edit to extract_top_match.sql.j2
+</code></pre><h2 id="ローカルブランチをコピーして別のローカルブランチを作る">ローカルブランチをコピーして別のローカルブランチを作る</h2>
+<pre><code># コピーしたいローカルブランチ(hoge)にチェックアウトする
+git checkout hoge
+
+# そこで新しいレポジトリ(hoge_copied)を作る
+git checkout -b hoge_copied
+
+</code></pre><h1 id="ブランチ同士をマージする">ブランチ同士をマージする</h1>
+<p>branchA に branchB の内容を統合する</p>
+<pre><code># まずは branchA にチェックアウトして
+git checkout branchA
+
+# そこに branchB をマージする
+git merge branchB
+</code></pre><h1 id="レポジトリの状態を表示する--status">レポジトリの状態を表示する : status</h1>
+<pre><code>git status
+</code></pre><p>新たに作成されたけど <code>add</code> されていないファイルや、編集されたけど <code>commit</code> されていないファイルなどを表示する。</p>
+<h1 id="ファイルフォルダを特定のコミットの状態に戻す">ファイル/フォルダを特定のコミットの状態に戻す</h1>
 <pre><code>git checkout [コミット番号] [ファイルパス]
 </code></pre><h1 id="ローカルで削除したファイルフォルダをリモートレポジトリからも削除する">ローカルで削除したファイル・フォルダを、リモートレポジトリからも削除する</h1>
 <p>ローカルフォルダには、ファイルやフォルダがあっても、リモートレポジトリにはアップロードされないようにしたい。
@@ -733,9 +875,39 @@ git commit -m &quot;remove some files&quot;
 # リモートに反映
 git push origin master
 </code></pre><h1 id="githubへのプルリク">Githubへのプルリク</h1>
-<p>プルリク（pull request）は git ではなく Github や Gitlab における概念</p>
+<p>プルリク（pull request）は git ではなく Github や Gitlab の機能</p>
+<p>ブランチをマージする前にチェックして、Github 上でマージできる</p>
 <p><a href="https://qiita.com/samurairunner/items/7442521bce2d6ac9330b">初心者向けGithubへのPullRequest方法</a></p>
+<ol>
+<li>
 <p>リモートリポジトリをローカルに <code>clone</code> する。</p>
+<ul>
+<li><code>git clone https://github.com/hoge/hoge.git</code></li>
+</ul>
+</li>
+<li>
+<p>ローカルで、編集用に新しいブランチ <code>new_branch</code> を作成し、そこに切り替える</p>
+<ul>
+<li><code>cd hoge</code></li>
+<li><code>git branch new_branch</code></li>
+<li><code>git checkout new_branch</code></li>
+</ul>
+</li>
+<li>
+<p>編集し、add commit する</p>
+<ul>
+<li>ファイルを編集する</li>
+<li><code>git add 変更したファイル</code></li>
+<li><code>git commit -m 'コメント'</code></li>
+</ul>
+</li>
+<li>
+<p>リモートの push する</p>
+</li>
+<li>
+<p>pull requestする</p>
+</li>
+</ol>
 <p>git clone <a href="https://github.com/teuder/test.git">https://github.com/teuder/test.git</a></p>
 <p>【cloneされたリモートリポジトリ】 = 【<code>origin</code> リポジトリ】</p>
 </article>
@@ -781,9 +953,16 @@ git push origin master
     <li><a href="#add">add</a></li>
     <li><a href="#commit">commit</a></li>
     <li><a href="#push-リモートレポジトリに反映する">push リモートレポジトリに反映する</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#既存のブランチを確認する">既存のブランチを確認する</a></li>
     <li><a href="#ブランチの作成--branch">ブランチの作成 : branch</a></li>
     <li><a href="#ブランチの切り替え--checkout">ブランチの切り替え : checkout</a></li>
-    <li><a href="#ファイルフォルダを特定のコミットの状態に戻す">ファイル/フォルダを特定のコミットの状態に戻す</a></li>
+    <li><a href="#カレントブランチの確認">カレントブランチの確認</a></li>
+    <li><a href="#ブランチの削除">ブランチの削除</a></li>
+    <li><a href="#リモートにあるブランチをローカルに持ってくる">リモートにあるブランチをローカルに持ってくる</a></li>
+    <li><a href="#ローカルブランチをコピーして別のローカルブランチを作る">ローカルブランチをコピーして別のローカルブランチを作る</a></li>
   </ul>
 </nav>
   </aside>

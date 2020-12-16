@@ -1,5 +1,5 @@
 ---
-title : "BigQuery"
+title : "BigQuery GIS"
 date : 2019-09-04
 publishdate : 2019-09-04
 type: docs
@@ -12,6 +12,11 @@ weight: 10
 
 
 
+## 地理オブジェクト作成
+
+```
+ST_GEOGPOINT(longitude, latitude)
+```
 
 
 

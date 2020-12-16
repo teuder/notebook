@@ -197,6 +197,43 @@ LC_IDENTIFICATION="ja_JP.UTF-8"
 LC_ALL=ja_JP.UTF-8
 ```
 
+# フォント
+
+Windows 環境でフォントを使うときの注意は [extrafontパッケージのREADME](https://cran.r-project.org/web/packages/extrafont/README.html) に詳しく書いてある。
+
+こちらも悪くない [【ggplot2】 好きなフォントを適用できるようにする](https://qiita.com/zakkiiii/items/9bbfdaf46a097677205d)
+
+Windowsでフォントをインストールする
+
+その後、Rからアクセスできる場所にフォントをインポートする。これはフォントをインストールしたときに1度だけ行う。
+
+`extrafont::font_import()`
+
+R起動するたびに次のコードを実行してRにフォントをロードする
+
+```
+extrafont::loadfonts("win", quiet = TRUE)
+extrafont::loadfonts("pdf", quiet = TRUE)
+extrafont::loadfonts("postscript", quiet = TRUE)
+```
+
+しかし、ここまでやっても 'Roboto Bold' などは、windowsの pdf では使えないようだ。
+→ [showtext パッケージ](https://cran.rstudio.com/web/packages/showtext/vignettes/introduction.html) を使えば利用可能になるのだろうか？
+
+
+
+pdfデバイスで使えるフォントの一覧
+
+```
+names(pdfFonts())
+
+# Vector of font family names
+fonts()
+
+# Show entire table
+fonttable()
+```
+
 
 ## きになるパッケージ
 

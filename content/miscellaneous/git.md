@@ -15,6 +15,9 @@ type: docs
 
 [.gitignoreの仕様詳解](https://qiita.com/anqooqie/items/110957797b3d5280c44f)
 
+[Happy Git and GitHub for the useR](https://happygitwithr.com/)
+
+
 # レポジトリを作成する、コピーする
 
 ## init : 既存のフォルダをレポジトリにする
@@ -34,7 +37,9 @@ git init して登録されたフォルダが、大元のレポジトリにな�
 
 ## add
 
-作成したファイルを git の管理下に追加する（ステージングする）。一度追加したら同じファイルを再度追加する必要はない
+作成したファイルを git の管理下に追加する（ステージングする）。一度追加したら同じファイルを再度追加する必要はない。
+
+git は add されたファイルの変更を検出し、
 
 ```
 git add path_to_file
@@ -58,10 +63,44 @@ git commit -m 'コメント'
 git push レポジトリ ブランチ
 ```
 
-例：`git origin master`
+例：`git push origin master`
+
+ここで `origin` レポジトリは、このレポジトリの大本である、リモートにあるレポジトリを意味する（`clone` するもとになったやつ）
+
+
+# ファイルの削除・名前変更など
+
+基本的に、名前の変更や削除など、ファイル・ディレクトリに対する操作は全て git を通して行う。そうしないと git がそれらの変更をトラッキングできない。
+
+ファイル名を変えて内容を変更するとき、git を使わないでファイル名を変更すると、元のファイルとは別のファイルとして扱われるので、どこを変更したのかわからなくなる。
+
+```
+git rm
+git mv
+```
 
 
 
+
+
+
+
+
+# ブランチ
+
+ブランチとは１つのレポジトリで複数の状態（例えば正式版、開発版）などを保持しておく仕組み。ブランチを切り替えるとフォルダの中身も変化する。開発版のブランチに切り替えてファイルを編集すると正式版を壊すことなく、開発版を変更して、開発版が完成したら、それを正式版のブランチにマージするといったことができる。
+
+レポジトリを作成したときにできる最初のブランチが `master`
+
+ローカルレポジトリとリモートレポジトリの
+
+
+
+## 既存のブランチを確認する
+
+```
+git branch
+```
 
 ## ブランチの作成 : branch
 
@@ -70,16 +109,108 @@ git branch ブランチ名 # ブランチの作成
 git checkout -b ブランチ名 #ブランチの作成とそのブランチへの切り替え
 ```
 
+`git branch ブランチ名` だとブランチを作成するだけだが、`git checkout -b ブランチ名` にするとブランチを作成して、そのブランチに切り替える（`git branch ブランチ名; git checkout ブランチ名;` と同じ）
+
 
 ## ブランチの切り替え : checkout
 
-ブランチを切り替えると、フォルダの中身の状態が、その
+ブランチを切り替えると、フォルダの中身の状態が、そのブランチの最新の状態になる
 
 ```
 git checkout ブランチ名
 ```
 
-## ファイル/フォルダを特定のコミットの状態に戻す
+## カレントブランチの確認
+
+カレントブランチには `*` が付く
+
+```
+$ git branch --contains
+* develop
+  master
+```
+
+
+## ブランチの削除
+
+ローカルにあるブランチを削除する
+
+git branch --delete [ブランチ名]
+git branch -d [ブランチ名]
+git branch -D [ブランチ名]
+
+## リモートにあるブランチをローカルに持ってくる
+
+
+```
+# 最初にリモートブランチにチェックアウトして
+git checkout origin/[ブランチ名]
+
+# 次にしそれをローカルブランチとしてコピーする
+git checkout -b [ブランチ名]
+```
+
+最初のコマンドを打った後に次のようなメッセージが出る。
+最初のコマンドを売った状態だと、リモートレポジトリの内容を見て、試しに変更したりできるけど、変更を commit してもリモートにもローカルにも反映されないらしい。変更をローカルレポジトリとしてコピーするために2番目のコマンドを使う。その後は、commit した変更を保存することができる。 
+
+```
+Note: checking out 'origin/[ブランチ名]'.
+
+You are in 'detached HEAD' state. You can look around, make experimental
+changes and commit them, and you can discard any commits you make in this
+state without impacting any branches by performing another checkout.
+
+If you want to create a new branch to retain commits you create, you may
+do so (now or later) by using -b with the checkout command again. Example:
+
+  git checkout -b <new-branch-name>
+
+HEAD is now at a3fe87c updated where the tables are saved, and fixed source and source_ssvid fields. Also made small edit to extract_top_match.sql.j2
+```
+
+## ローカルブランチをコピーして別のローカルブランチを作る
+
+```
+# コピーしたいローカルブランチ(hoge)にチェックアウトする
+git checkout hoge
+
+# そこで新しいレポジトリ(hoge_copied)を作る
+git checkout -b hoge_copied
+
+```
+
+
+# ブランチ同士をマージする
+
+branchA に branchB の内容を統合する
+
+```
+# まずは branchA にチェックアウトして
+git checkout branchA
+
+# そこに branchB をマージする
+git merge branchB
+```
+
+
+
+
+
+
+
+
+# レポジトリの状態を表示する : status
+
+```
+git status
+```
+
+新たに作成されたけど `add` されていないファイルや、編集されたけど `commit` されていないファイルなどを表示する。
+
+
+
+
+# ファイル/フォルダを特定のコミットの状態に戻す
 
 ```
 git checkout [コミット番号] [ファイルパス]
@@ -127,11 +258,29 @@ git push origin master
 
 # Githubへのプルリク
 
-プルリク（pull request）は git ではなく Github や Gitlab における概念
+プルリク（pull request）は git ではなく Github や Gitlab の機能
+
+ブランチをマージする前にチェックして、Github 上でマージできる
 
 [初心者向けGithubへのPullRequest方法](https://qiita.com/samurairunner/items/7442521bce2d6ac9330b)
 
-リモートリポジトリをローカルに `clone` する。
+
+1. リモートリポジトリをローカルに `clone` する。
+    - `git clone https://github.com/hoge/hoge.git`
+2. ローカルで、編集用に新しいブランチ `new_branch` を作成し、そこに切り替える
+    - `cd hoge`
+    - `git branch new_branch`
+    - `git checkout new_branch`
+3. 編集し、add commit する
+    - ファイルを編集する
+    - `git add 変更したファイル`
+    - `git commit -m 'コメント'`
+4. リモートの push する
+
+5. pull requestする
+
+
+
 
 git clone https://github.com/teuder/test.git
 

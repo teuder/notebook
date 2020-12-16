@@ -11,7 +11,7 @@ type: docs
 
 VScode で Python を使う時の Tips
 
-参考：[VS Code でPython，Jupyter を動かす](https://qiita.com/surei/items/9f25d7efa7c67d55d98f)
+参考：[VS Code でPython，Jupyter を動かす](https://qii  ta.com/surei/items/9f25d7efa7c67d55d98f)
 
 ## 拡張機能
 

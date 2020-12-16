@@ -3,20 +3,20 @@
 
 <head>
   <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0"><meta property="og:title" content="BigQuery" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><meta property="og:title" content="BigQuery: general" />
 <meta property="og:description" content="BigQuery WebUI キーボードショートカット Mac の場合は Ctrl の代わりに Cmd にする キー アクション Ctrl Enter 現在のクエリを実行 Tab 現在の単語をオートコンプリート 選択 Tab 選択範囲" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://teuder.github.io/notebook/gcp/bigquery/" />
 <meta property="article:published_time" content="2019-09-04T00:00:00+00:00" />
 <meta property="article:modified_time" content="2020-08-17T01:50:58+09:00" />
-<title>BigQuery | notebook</title>
+<title>BigQuery: general | notebook</title>
 <link rel="icon" href="/notebook/favicon.png" type="image/x-icon">
 
 
 <link rel="stylesheet" href="/notebook/book.min.07c38dce7b6800da2a75a565d4d975e38f837294e24d00b5aae363037012d64b.css" integrity="sha256-B8ONzntoANoqdaVl1Nl144&#43;DcpTiTQC1quNjA3AS1ks=">
 
 
-<script defer src="/notebook/search.min.ade5c46a6de536ba987464578228b0cc3a1d5d36128e44bb5134f9ff07f94185.js" integrity="sha256-reXEam3lNrqYdGRXgiiwzDodXTYSjkS7UTT5/wf5QYU="></script>
+<script defer src="/notebook/search.min.25f2a65153401c2781ad1ddb81ebe53998a4af98b020a8187a0d5a865a8f2659.js" integrity="sha256-JfKmUVNAHCeBrR3bgevlOZikr5iwIKgYeg1ahlqPJlk="></script>
 
 <!--
 Made with Book Theme
@@ -115,6 +115,16 @@ https://github.com/alex-shpak/hugo-book
 
   <a href="/notebook/python/environment/" >
       environment
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/python/jupyter/" >
+      jupyter
   </a>
 
 </li>
@@ -315,6 +325,16 @@ https://github.com/alex-shpak/hugo-book
 
   <a href="/notebook/r/stars/" >
       stars
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/r/wk/" >
+      wk
   </a>
 
 </li>
@@ -526,7 +546,7 @@ https://github.com/alex-shpak/hugo-book
       
 
   <a href="/notebook/gcp/" >
-      BigQuery
+      Google Cloud Platform
   </a>
 
 
@@ -543,8 +563,8 @@ https://github.com/alex-shpak/hugo-book
       
         <li>
 
-  <a href="/notebook/gcp/bigquery/"  class="active">
-      BigQuery
+  <a href="/notebook/gcp/bigquery_gis/" >
+      BigQuery GIS
   </a>
 
 </li>
@@ -553,8 +573,28 @@ https://github.com/alex-shpak/hugo-book
       
         <li>
 
-  <a href="/notebook/gcp/bigquery_gis/" >
-      BigQuery
+  <a href="/notebook/gcp/bigquery_bq/" >
+      BigQuery: bqコマンド
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/gcp/bigquery/"  class="active">
+      BigQuery: general
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/gcp/bigquery_sql/" >
+      BigQuery: SQL
   </a>
 
 </li>
@@ -593,6 +633,26 @@ https://github.com/alex-shpak/hugo-book
       
         <li>
 
+  <a href="/notebook/miscellaneous/english/" >
+      english
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/miscellaneous/jinjia2/" >
+      jinja
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
   <a href="/notebook/miscellaneous/jupyter/" >
       jupyter
   </a>
@@ -603,8 +663,28 @@ https://github.com/alex-shpak/hugo-book
       
         <li>
 
+  <a href="/notebook/miscellaneous/pc/" >
+      PC
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
   <a href="/notebook/miscellaneous/vscode/" >
       vscode
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/miscellaneous/windows/" >
+      Windows
   </a>
 
 </li>
@@ -671,7 +751,7 @@ https://github.com/alex-shpak/hugo-book
   <label for="menu-control">
     <img src="/notebook/svg/menu.svg" alt="Menu" />
   </label>
-  <strong>BigQuery</strong>
+  <strong>BigQuery: general</strong>
 </header>
 
       
@@ -726,85 +806,7 @@ https://github.com/alex-shpak/hugo-book
 </tbody>
 </table>
 <p><a href="https://cloud.google.com/bigquery/docs/bigquery-web-ui#keyboard_shortcuts">Web IU のキーボードショートカット</a></p>
-<h1 id="sql">SQL</h1>
-<h2 id="レギュラーsqlをデフォルトにする">レギュラーSQLをデフォルトにする</h2>
-<p>クエリの前に <code>#standardSQL</code> の記述を追加する。逆にレガシーにしたい場合は <code>#legacySQL</code> を記述する。</p>
-<pre><code class="language-{sql}" data-lang="{sql}">#standardSQL
-SELECT
-  weight_pounds, state, year, gestation_weeks
-FROM
-  `bigquery-public-data.samples.natality`
-ORDER BY weight_pounds DESC
-LIMIT 10;
-</code></pre><p><code>.bigqueryrc</code> に以下を記述</p>
-<pre><code>[query]
---use_legacy_sql=false
-
-[mk]
---use_legacy_sql=false
-</code></pre><h2 id="基本文法">基本文法</h2>
-<ul>
-<li><a href="https://cloud.google.com/bigquery/docs/reference/standard-sql/operators?hl=ja">標準SQLの演算子</a></li>
-<li><a href="https://cloud.google.com/bigquery/docs/reference/standard-sql/functions-and-operators?hl=ja">標準SQLの関数と演算子</a></li>
-</ul>
-<h3 id="実数を丸める関数">実数を丸める関数</h3>
-<ul>
-<li><code>ROUND()</code></li>
-<li><code>CEILING()</code></li>
-<li><code>FLOOR()</code></li>
-<li><code>TRUNC()</code></li>
-</ul>
-<p><a href="https://cloud.google.com/bigquery/docs/reference/standard-sql/functions-and-operators?hl=ja#floor">丸め関数の挙動</a></p>
-<p><img src="ceil_floor_trunc_round.jpeg" alt="Pythonの丸め関数の挙動、多分BigQueryと同じ" title="Pythonの丸め関数の挙動"></p>
-<h3 id="行の抽出">行の抽出</h3>
-<h4 id="where-column-in-sub_query-">WHERE column IN( sub_query )</h4>
-<p>列の値が、サブクエリの出力結果と同じ値をもつ行だけを抽出する</p>
-<pre><code>SELECT
-  *
-FROM
-  tableA
-WHERE
-  item IN (
-    SELECT
-      product
-    FROM
-      tableB
-  )
-</code></pre><h4 id="where-exists-sub_query-">WHERE EXISTS( sub_query )</h4>
-<p>サブクエリのなかのwhere句で抽出したいレコードの条件を指定する。</p>
-<pre><code>SELECT
-  *
-FROM
-  tableA
-WHERE
-  EXISTS (
-    SELECT
-      product
-    FROM
-      tableB
-    WHERE
-      tableA.item = tableB.product
-      AND tableA.price = tableB.price
-  )
-</code></pre><h1 id="bq-コマンド">bq コマンド</h1>
-<h2 id="data-set-を作成する">Data set を作成する</h2>
-<pre><code>bq mk \
---dataset \
---location=US \
---default_table_expiration 3600 \
---default_partition_expiration 3600 \
---description 'description' \
-project_id:dataset_name
-</code></pre><ul>
-<li><code>location</code> US など</li>
-<li><code>default_table_expiration</code> テーブル自動削除までの秒数を指定する、デフォルトでは 3600 、0に設定すると自動削除しない</li>
-<li><code>default_partition_expiration</code> テーブルに対するパーティションの自動削除までの秒数</li>
-<li><code>description</code> データセットの説明、<code>'</code> か <code>&quot;</code> で括る</li>
-<li><code>project_id:dataset_name</code> プロジェクトIDと、作成するデータセットの名前</li>
-</ul>
-<h2 id="クエリを実行する">クエリを実行する</h2>
-<pre><code> bq query
-</code></pre></article>
+</article>
 
       
 <div class="book-footer justify-between">
@@ -840,21 +842,6 @@ project_id:dataset_name
     <nav id="TableOfContents">
   <ul>
     <li><a href="#キーボードショートカット">キーボードショートカット</a></li>
-  </ul>
-
-  <ul>
-    <li><a href="#レギュラーsqlをデフォルトにする">レギュラーSQLをデフォルトにする</a></li>
-    <li><a href="#基本文法">基本文法</a>
-      <ul>
-        <li><a href="#実数を丸める関数">実数を丸める関数</a></li>
-        <li><a href="#行の抽出">行の抽出</a></li>
-      </ul>
-    </li>
-  </ul>
-
-  <ul>
-    <li><a href="#data-set-を作成する">Data set を作成する</a></li>
-    <li><a href="#クエリを実行する">クエリを実行する</a></li>
   </ul>
 </nav>
   </aside>
