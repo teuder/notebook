@@ -14,7 +14,7 @@
   
   <url>
     <loc>https://teuder.github.io/notebook/r/</loc>
-    <lastmod>2020-06-10T21:50:05+09:00</lastmod>
+    <lastmod>2020-12-16T18:46:41+09:00</lastmod>
   </url>
   
   <url>
@@ -34,7 +34,7 @@
   
   <url>
     <loc>https://teuder.github.io/notebook/gis/viirs/</loc>
-    <lastmod>2020-05-27T18:54:29+09:00</lastmod>
+    <lastmod>2020-12-16T18:46:41+09:00</lastmod>
   </url>
   
   <url>
@@ -64,32 +64,32 @@
   
   <url>
     <loc>https://teuder.github.io/notebook/gcp/bigquery_gis/</loc>
-    <lastmod>2020-08-17T01:50:58+09:00</lastmod>
+    <lastmod>2020-12-16T18:46:41+09:00</lastmod>
   </url>
   
   <url>
     <loc>https://teuder.github.io/notebook/gcp/bigquery_bq/</loc>
-    <lastmod>2019-09-04T00:00:00+00:00</lastmod>
+    <lastmod>2020-12-16T18:46:41+09:00</lastmod>
   </url>
   
   <url>
     <loc>https://teuder.github.io/notebook/gcp/bigquery/</loc>
-    <lastmod>2020-08-17T01:50:58+09:00</lastmod>
+    <lastmod>2020-12-16T18:46:41+09:00</lastmod>
   </url>
   
   <url>
     <loc>https://teuder.github.io/notebook/gcp/bigquery_sql/</loc>
-    <lastmod>2019-09-04T00:00:00+00:00</lastmod>
+    <lastmod>2020-12-16T18:46:41+09:00</lastmod>
   </url>
   
   <url>
     <loc>https://teuder.github.io/notebook/miscellaneous/english/</loc>
-    <lastmod>2019-09-03T00:00:00+00:00</lastmod>
+    <lastmod>2020-12-16T18:46:41+09:00</lastmod>
   </url>
   
   <url>
     <loc>https://teuder.github.io/notebook/miscellaneous/jinjia2/</loc>
-    <lastmod>2019-09-03T00:00:00+00:00</lastmod>
+    <lastmod>2020-12-16T18:46:41+09:00</lastmod>
   </url>
   
   <url>
@@ -99,7 +99,7 @@
   
   <url>
     <loc>https://teuder.github.io/notebook/miscellaneous/pc/</loc>
-    <lastmod>2019-09-03T00:00:00+00:00</lastmod>
+    <lastmod>2020-12-16T18:46:41+09:00</lastmod>
   </url>
   
   <url>
@@ -109,7 +109,7 @@
   
   <url>
     <loc>https://teuder.github.io/notebook/miscellaneous/windows/</loc>
-    <lastmod>2019-09-03T00:00:00+00:00</lastmod>
+    <lastmod>2020-12-16T18:46:41+09:00</lastmod>
   </url>
   
   <url>
@@ -123,8 +123,17 @@
   </url>
   
   <url>
+    <loc>https://teuder.github.io/notebook/maritime/glossary/</loc>
+  </url>
+  
+  <url>
     <loc>https://teuder.github.io/notebook/gcp/</loc>
-    <lastmod>2020-08-17T01:52:29+09:00</lastmod>
+    <lastmod>2020-12-16T18:46:41+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://teuder.github.io/notebook/r/leaflet/</loc>
+    <lastmod>2019-09-17T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -134,12 +143,12 @@
   
   <url>
     <loc>https://teuder.github.io/notebook/r/ggplot2/</loc>
-    <lastmod>2020-08-17T01:50:58+09:00</lastmod>
+    <lastmod>2020-12-16T18:46:41+09:00</lastmod>
   </url>
   
   <url>
     <loc>https://teuder.github.io/notebook/miscellaneous/git/</loc>
-    <lastmod>2020-05-27T18:54:29+09:00</lastmod>
+    <lastmod>2020-12-16T18:46:41+09:00</lastmod>
   </url>
   
   <url>
@@ -154,7 +163,7 @@
   
   <url>
     <loc>https://teuder.github.io/notebook/r/bigrquery/</loc>
-    <lastmod>2020-05-27T18:54:29+09:00</lastmod>
+    <lastmod>2020-12-16T18:46:41+09:00</lastmod>
   </url>
   
   <url>
@@ -183,6 +192,10 @@
   </url>
   
   <url>
+    <loc>https://teuder.github.io/notebook/r/package_development/</loc>
+  </url>
+  
+  <url>
     <loc>https://teuder.github.io/notebook/r/reticulate/</loc>
     <lastmod>2020-05-27T18:54:29+09:00</lastmod>
   </url>
@@ -208,7 +221,12 @@
   </url>
   
   <url>
+    <loc>https://teuder.github.io/notebook/r/tidymodels/</loc>
+  </url>
+  
+  <url>
     <loc>https://teuder.github.io/notebook/r/wk/</loc>
+    <lastmod>2020-12-16T18:46:41+09:00</lastmod>
   </url>
   
   <url>
@@ -218,17 +236,17 @@
   
   <url>
     <loc>https://teuder.github.io/notebook/python/environment/</loc>
-    <lastmod>2020-08-17T01:50:58+09:00</lastmod>
+    <lastmod>2020-12-16T18:46:41+09:00</lastmod>
   </url>
   
   <url>
     <loc>https://teuder.github.io/notebook/python/jupyter/</loc>
-    <lastmod>2020-01-17T00:00:00+00:00</lastmod>
+    <lastmod>2020-12-16T18:46:41+09:00</lastmod>
   </url>
   
   <url>
     <loc>https://teuder.github.io/notebook/python/vscode/</loc>
-    <lastmod>2020-05-27T18:54:29+09:00</lastmod>
+    <lastmod>2020-12-16T18:46:41+09:00</lastmod>
   </url>
   
   <url>

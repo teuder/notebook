@@ -80,7 +80,7 @@
       <pubDate>Mon, 26 Aug 2019 00:00:00 +0000</pubDate>
       
       <guid>https://teuder.github.io/notebook/miscellaneous/git/</guid>
-      <description>Git Gitの基本コマンド .gitignoreの仕様詳解 Happy Git and GitHub for the useR レポジトリを作成する、コピーする init : 既存のフォルダをレポジトリにする git init し</description>
+      <description>Git Gitの基本コマンド .gitignoreの仕様詳解 Happy Git and GitHub for the useR サブコマンド サブコマンド 実行内容 clone リポジトリのクローンを作成する init リポジト</description>
     </item>
     
   </channel>

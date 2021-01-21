@@ -77,6 +77,15 @@ data(data_df) +
  geom_point(aes(x = longitude, y = latitude, color = city, size = population)) 
 ```
 
+### データのグループ分け
+
+例えば、 `geom_path()` などでグループごとに別々の線を書きたい場合などに使う
+
+
+``` r
+aes(x = X, y = Y, group = A)  # 変数Aの値を使ってグループ分け
+aes(x = X, y = Y, group = interaction(A , B)) # 複数変数を使う場合
+```
 
 
 # グラフの種類: geom_*()

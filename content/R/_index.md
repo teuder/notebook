@@ -63,12 +63,19 @@ Sys.setenv("LANGUAGE"="ja_Jp.UTF-8")
 
 ### 環境設定ファイル
 
+Rの設定ファイルには以下がある。
 
-ユーザーごとのRの設定ファイルは（Rが思っている）ユーザーのホームディレクトリ `R_USER` に配置しておくとよい。
+- `.Renviron`
+- `.Rprofile`
+- `.R/Makevars`
+
+
+ユーザーごとのこれらの設定ファイルは、ユーザーのRホームディレクトリ `R_USER` に配置しておくとよい。
 
 ```
+# ユーザーのRホームディレクトリの確認方法
 > Sys.getenv("R_USER")
-[1] "C:/Users/tsuda/Documents"
+[1] "C:/Users/hoge/Documents"
 ```
 
 
@@ -135,6 +142,7 @@ MAKE=make -j4
 - Mac, Linux
     - `ja_JP.UTF-8`
     - `en_US.UTF-8`
+
 
 
 ### 環境変数

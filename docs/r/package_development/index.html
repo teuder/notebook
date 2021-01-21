@@ -3,12 +3,12 @@
 
 <head>
   <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0"><meta property="og:title" content="Mac" />
-<meta property="og:description" content="" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://teuder.github.io/notebook/mac/" />
-<meta property="og:updated_time" content="2020-05-27T18:54:29+09:00" />
-<title>Mac | notebook</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><meta property="og:title" content="R Package Development" />
+<meta property="og:description" content="Rパッケージ開発 パッケージにデータを含める data/ ユーザーもアクセスできる。例データなど R/sysdata.rda に含める ユーザーはアクセスできない。関数内で使用するデー" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://teuder.github.io/notebook/r/package_development/" />
+
+<title>R Package Development | notebook</title>
 <link rel="icon" href="/notebook/favicon.png" type="image/x-icon">
 
 
@@ -17,7 +17,6 @@
 
 <script defer src="/notebook/search.min.7b981e934dac4a66555d947655caed34144a61c211523d55903f78ca9630f2f1.js" integrity="sha256-e5gek02sSmZVXZR2VcrtNBRKYcIRUj1VkD94ypYw8vE="></script>
 
-<link rel="alternate" type="application/rss+xml" href="https://teuder.github.io/notebook/mac/index.xml" title="notebook" />
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -293,7 +292,7 @@ https://github.com/alex-shpak/hugo-book
       
         <li>
 
-  <a href="/notebook/r/package_development/" >
+  <a href="/notebook/r/package_development/"  class="active">
       R Package Development
   </a>
 
@@ -505,7 +504,7 @@ https://github.com/alex-shpak/hugo-book
     
       
 
-  <a href="/notebook/mac/"  class="active">
+  <a href="/notebook/mac/" >
       Mac
   </a>
 
@@ -791,32 +790,50 @@ https://github.com/alex-shpak/hugo-book
   <label for="menu-control">
     <img src="/notebook/svg/menu.svg" alt="Menu" />
   </label>
-  <strong>Mac</strong>
+  <strong>R Package Development</strong>
 </header>
 
       
-<article class="markdown"><h1 id="mac">Mac</h1>
-<h1 id="便利なツール">便利なツール</h1>
-<h2 id="quicklookプラグイン">QuickLookプラグイン</h2>
-<p>以下のGithubレポジトリに開発者にとって便利な様々なQuickLookプラグインが紹介されている。どれも homebrew でインストールできるので簡単</p>
-<p><a href="https://github.com/sindresorhus/quick-look-plugins">sindresorhus/quick-look-plugins</a></p>
+<article class="markdown"><h1 id="rパッケージ開発">Rパッケージ開発</h1>
+<h1 id="パッケージにデータを含める">パッケージにデータを含める</h1>
+<ul>
+<li>data/
+<ul>
+<li>ユーザーもアクセスできる。例データなど</li>
+</ul>
+</li>
+<li>R/sysdata.rda に含める
+<ul>
+<li>ユーザーはアクセスできない。関数内で使用するデータなど</li>
+</ul>
+</li>
+<li>生データを保存したい場合？
+<ul>
+<li>inst/extdata におく</li>
+</ul>
+</li>
+</ul>
+<h2 id="data">data/</h2>
+<ul>
+<li>データは <code>.RData</code> ファイルとして保存する。 <code>save()</code> を使う。</li>
+<li>ファイルには１つのオブジェクトだけを含める。</li>
+<li>ファイル名は保存されたオブジェクト名と一致する必要がある。</li>
+</ul>
+<p><code>devtools::use_data()</code> を使うと上のルールに従ったデータを簡単に作成できる。</p>
+<p>他のデータ形式でもいいらしい</p>
+<p><code>DESCRIPTION</code> ファイルに　<code>LazyData: true</code> の記述があるとデータは、実際に使用される時までRにロードされることはない。</p>
+<h2 id="rsysdatarda">R/sysdata.rda</h2>
+<p><code>sysdata.rda</code> に保存されたオブジェクトはユーザーからは見えない。</p>
+<p><code>devtools::use_data(internal = TRUE)</code> を使う。</p>
 </article>
 
       
-<div class="book-footer justify-between">
-  
-  <div>
-    
-    <a class="flex align-center" href="https://github.com/teuder/notebook/commit/1c4b2b5935f1ddbb8f4d25bc2ff54f9630bdc3c3" title='Last modified 2020-05-27 by Masaki Tsuda' target="_blank" rel="noopener">
-      <img src="/notebook/svg/calendar.svg" alt="Changed" />
-      <span>2020-05-27</span>
-    </a>
-  </div>
+<div class="book-footer justify-end">
   
   
   <div>
     
-    <a class="flex align-center" href="https://github.com/teuder/notebook/edit/master/content/Mac/_index.md" target="_blank" rel="noopener">
+    <a class="flex align-center" href="https://github.com/teuder/notebook/edit/master/content/R/package_development.md" target="_blank" rel="noopener">
       <img src="/notebook/svg/edit.svg" alt="Edit" />
       <span>Edit this page</span>
     </a>
@@ -835,7 +852,8 @@ https://github.com/alex-shpak/hugo-book
   <aside class="book-toc level-3 fixed">
     <nav id="TableOfContents">
   <ul>
-    <li><a href="#quicklookプラグイン">QuickLookプラグイン</a></li>
+    <li><a href="#data">data/</a></li>
+    <li><a href="#rsysdatarda">R/sysdata.rda</a></li>
   </ul>
 </nav>
   </aside>

@@ -19,3 +19,18 @@ type: docs
 
 手でグラフをお絵描きして対応するデータをダウンロードできる
 
+
+
+
+# 精度指標
+
+## 分類モデル
+
+混合行列
+
+https://en.wikipedia.org/wiki/Confusion_matrix
+
+ページの右に色々カテゴリ変数のための精度指標のリストがある
+
+
+https://en.wikipedia.org/wiki/Receiver_operating_characteristic
