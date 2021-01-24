@@ -18,9 +18,195 @@ type: docs
 
 
 
-# データ加工
+# 前処理 : recipes パッケージ
 
-## Train/Test 分割
+
+前処理
+
+
+
+## レシピオブジェクトの作成 : recipe()
+
+最初に、変数加工のためのパラメタ（標準化のための平均と分散など）を決めるために使う訓練データ（一般には訓練データ）
+
+そのデータに含まれる目的変数と説明変数をフォーミュラとして与える。
+
+モデル式（目的変数と説明変数）を指定
+
+```r
+recipes::recipe(x, formula = NULL, ..., vars = NULL, roles = NULL)
+```
+
+- `x`, `data` : 変数加工のためのパラメタ（標準化のための平均と分散など）を決めるために使う訓練データ
+- `formula` : モデル式、目的変数と説明変数の指定。`log(x)` とか `x:y` などの関数を含めてはいけない。マイナス符号をつけるのもダメ。
+- `vars` : 変数名を格納した文字列ベクトル
+- `roles` : `vars` と同じ長さの文字列ベクトル。各変数の役割を指定する。`"outcome", "predictor", "case_weight", or "ID"` 他の値でもいい
+
+	
+
+
+```
+mod_rec <- 
+  df_rental %>% 
+  recipes::recipe(formula = Y ~ Area)
+```
+
+
+
+
+## step_*()
+
+データに対する加工は `step_*()` 関数を使う
+
+
+### `skip=TRUE` について
+
+`skip=TRUE` が指定されたステップは、 `recipes::prep()` を実行したときには適用されるが、`recipes::bake()` を実行したときには適用されない。
+
+次のように考えてもよいかもしれない
+
+- `recipes::prep()` は訓練データ作成用にレシピを実行する。
+- `recipes::bake()` は新データ・テストデータ・検証データ作成用にレシピを実行する
+
+
+`skip = TRUE` を指定された処理は訓練データを作成するときには使用されるが、新データやテストデータや検証データに対しては使用されない。一般的にはモデリングのために目的変数を使ったサンプリングを実施するステップに対しては `skip = TRUE` を指定する。
+
+
+
+#### 変数変換 step
+
+
+ 
+
+
+####  対数変換 : step_log()
+
+
+  step_log(Y, Area)
+
+
+#### 交互作用変数の追加 : step_interact()
+
+step_interact(terms = ~ Solar.R:Wind)
+
+ようやく tidymodels のお気持ちがわかってきた気がする
+
+### サンプリングステップ
+
+
+```r
+# サンプリングを含むレシピを作成 (prep()しない)
+sampling_recipe <-
+  recipes::recipe(Y ~ ., data = train_df) %>% 
+  # 目的変数 Y の値に基づいてサンプリングする
+  # 訓練データに対してはサンプリングするが
+  # テストデータや新規データに対してはサンプリングしない場合は skip = TRUE を指定する。
+  # この時点でサンプリングのための乱数 seed は固定される
+  themis::step_downsample(Y, under_ratio = 0.5, skip = TRUE) %>%
+  # prep() を実行すると skip = TRUE を指定したステップも実行される
+  # retain = TRUE で、最初に渡した train_df にレシピが適用されたデータを
+  # レシピオブジェクトの中に保持する
+  recipes::prep(retain = TRUE)
+
+
+
+# サンプリングが適用されたデータの作成方法
+
+# 1. レシピオブジェクトの中に存在する
+#    レシピ適用済みデータを取り出す
+sampled_train_df <-
+  sampling_recipe$template
+
+# 1. レシピオブジェクトの中に存在する
+#    レシピ適用済みデータを bake(newdata=NULL) で取り出す
+sampled_train_df <-
+  sampling_recipe %>%
+  bake(newdata=NULL)
+
+
+
+```
+
+
+
+
+#### サンプリングを含んだクロスバリデーション
+
+```r
+# サンプリングを含むレシピを作成 (prep()しない)
+sampling_recipe <-
+  recipes::recipe(Y ~ ., data = train_df) %>% 
+  # 目的変数 Y の値に基づいてサンプリングする
+  # 訓練データに対してはサンプリングするが
+  # テストデータや新規データに対してはサンプリングしない場合は skip = TRUE を指定する。
+  # この時点でサンプリングのための乱数 seed は固定される
+  themis::step_downsample(Y, under_ratio = 0.5, skip = TRUE) 
+  # このレシピを使ってクロスバリデーションをする場合には、ここでは prep() しない
+  # おそらく rsample::vfold_cv() の中で prep() される
+
+# CVのために訓練データを分割する
+df_cv <-
+  rsample::vfold_cv(train_df, v = 5, repeats = 1)
+
+# CV を実行する
+cv_result_df <-
+  tune::tune_grid(
+    object = rnd_forest_model, # parsnip で作成したモデルオブジェクト
+    preprocessor = sampling_recipe,
+    resamples = df_cv,
+    grid = params_grid_df, # 探索したいパラメータの値が格納されたデータフレーム
+    metrics = yardstick::metric_set(yardstick::pr_auc, yardstick::roc_auc),
+    control = tune::control_grid(verbose = TRUE)
+  )
+
+
+```
+
+```
+# Partitioning data for CV
+# Deference between V1 and V2 is V2 uses train_df without down-sampling.
+
+```
+
+  recipes::recipe(Y ~ ., data = train_df) %>% 
+  themis::step_downsample(under_ratio = 0.5, skip = TRUE) %>% 
+  recipes::prep(retain = TRUE) %>% 
+  recipes::bake(new_data = NULL)
+
+
+
+### step_*() の中での変数の指定の仕方
+
+  step_log(all_predictors(), all_outcomes())
+
+  dplyrの　starts_with() contains() 等も使える
+
+
+
+ ## prep() パラメータを持つステップの訓練・更新
+
+
+```
+rec_trained <- 
+  prep(mod_rec, retain = TRUE, verbose = TRUE)
+```
+
+- `retain` : 処理済みの訓練データをオブジェクト内に保持する (`template` スロット)。後からステップを追加したいが、既存のステップの再トレーニングを避けたい場合に良いアイデア。`skip = FALSE` オプションを使用しているステップがある場合は、`retain = TRUE` を使用することをお勧めします。
+- `training` : データ処理のパラメタ（標準化のための平均と分散とか）の訓練のために使うデータフレームを別に指定する場合
+- `fresh` : `TRUE` なら、新たに訓練データを与えてパラメータを更新する。同時に、`training` に新たな訓練データを与えること。`fresh=TRUE` は前に `prep()` した `step_*()` の方も更新する。`fresh=FALSE` なら まだ `prep()` されていない `step_*()` を更新する。 
+
+
+## レシピを新しいデータに適用する bake()
+
+以前は `bake()` は新データにレシピを適用する。 `juice()` はレシピ内に保持されたデータに対してレシピを適用するという意味だったが。今は `juice()` の代わりに `bake(newdata=NULL)` を使うことが推奨されている。 
+
+
+
+# データの分割 : rsample パッケージ
+
+
+
+## Train/Test 分割 : initial_split()
 
 ```r
 set.seed(10)
@@ -29,6 +215,35 @@ dm_split = rsample::initial_split(processed_dm_df,  p = 0.8)
 train_df = rsample::training(dm_split)
 test_df  = rsample::testing(dm_split)
 ```
+
+## 交差検証　Train/Validation 分割 : vfold_cv()
+
+```r
+rsample::vfold_cv(data, v = 10, repeats = 1, strata = NULL, breaks = 4, ...)
+```
+
+
+- `data` : データフレーム
+- `v` : CVの分割数 (fold数)
+- `repeats` : CVの分割を何回繰り返すか。総計算回数は `v*repeats` になる。
+- `strata` : 層別サンプリング。CV分割の時に、fold間で割合を一緒にしたい変数を指定する（例えば目的変数がカテゴリ変数の時に指定する）
+- `breaks` : 整数スカラー。層別サンプリングしたい変数が連続変数の時に、連続地をいくつのビンに分けるか指定する。
+
+
+
+### Foldのデータを参照する
+
+- `analysis()` : 訓練データを参照する
+- `assessment()` : 検証データを参照する
+
+
+```r
+df_cv <- rsample::vfold_cv(data, v = 10, repeats = 1)
+
+train <- rsample::analysis(df_cv$splits[[1]])
+validation <- rsample::assessment(df_cv$splits[[1]])
+```
+
 
 
 
@@ -150,23 +365,9 @@ mean_pred <-
 
 
 
-## 交差検証
+# ハイパーパラメータ・チューニング
 
-### データの分割
-
-```r
-vfold_cv(data, v = 10, repeats = 1, strata = NULL, breaks = 4, ...)
-```
-
-
-- `data` : データフレーム
-- `v` : CVの分割数 (fold数)
-- `repeats` : CVの分割を何回繰り返すか。総計算回数は `v*repeats` になる。
-- `strata` : 層別サンプリング。CV分割の時に、fold間で割合を一緒にしたい変数を指定する（例えば目的変数がカテゴリ変数の時に指定する）
-- `breaks` : 整数スカラー。層別サンプリングしたい変数が連続変数の時に、連続地をいくつのビンに分けるか指定する。
-
-
-courgetee
+## クロスバリデーションのデータの分割
 
 ```r
 # Partitioning data for CV
@@ -262,6 +463,12 @@ tune_grid(
 )
 ```
 
+#### `tune::tune_bayes()`
+
+
+
+
+
 
 
 #### `tune::fit_resamples()`
@@ -340,100 +547,6 @@ fitted_model <- fit(model_best,
 - `yardstick::roc_curve()`
 
 
-# 前処理 : recipes パッケージ
 
 
 
-
-
-
-## レシピオブジェクトの作成 : recipe()
-
-最初に、変数加工のためのパラメタ（標準化のための平均と分散など）を決めるために使う訓練データ（一般には訓練データ）
-
-そのデータに含まれる目的変数と説明変数をフォーミュラとして与える。
-
-モデル式（目的変数と説明変数）を指定
-
-```r
-recipes::recipe(x, formula = NULL, ..., vars = NULL, roles = NULL)
-```
-
-- `x`, `data` : 変数加工のためのパラメタ（標準化のための平均と分散など）を決めるために使う訓練データ
-- `formula` : モデル式、目的変数と説明変数の指定。`log(x)` とか `x:y` などの関数を含めてはいけない。マイナス符号をつけるのもダメ。
-- `vars` : 変数名を格納した文字列ベクトル
-- `roles` : `vars` と同じ長さの文字列ベクトル。各変数の役割を指定する。`"outcome", "predictor", "case_weight", or "ID"` 他の値でもいい
-
-	
-
-
-```
-mod_rec <- 
-  df_rental %>% 
-  recipe(formula = Y ~ Area)
-```
-
-
-
-
-## step_*()
-
-データに対する加工は `step_*()` 関数を使う
-
-### `skip=TRUE` について
-
-`skip=TRUE` が指定されたステップは、 `prep()` を実行したときには適用されるが、`bake()` を実行したときには適用されない。
-
-次のように考えてもよいかもしれない
-
-- `prep()` は訓練データ作成用にレシピを実行する。
-- `bake()` は新データ・テストデータ・検証データ作成用にレシピを実行する
-
-
-`skip = TRUE` を指定された処理は訓練データを作成するときには使用されるが、新データやテストデータや検証データに対しては使用されない。一般的にはモデリングのために目的変数を使ったサンプリングを実施するステップに対しては `skip = TRUE` を指定する。
-
-
-
-
-
-
-### 対数変換 : step_log()
-
-
-  step_log(Y, Area)
-
-
-### 交互作用変数の追加 : step_interact()
-
-step_interact(terms = ~ Solar.R:Wind)
-
-
-
-
-
-
-
-### step_*() の中での変数の指定の仕方
-
-  step_log(all_predictors(), all_outcomes())
-
-  dplyrの　starts_with() contains() 等も使える
-
-
-
- ## prep() パラメータを持つステップの訓練・更新
-
-
-```
-rec_trained <- 
-  prep(mod_rec, retain = TRUE, verbose = TRUE)
-```
-
-- `retain` : 処理済みの訓練データをオブジェクト内に保持する (`template` スロット)。後からステップを追加したいが、既存のステップの再トレーニングを避けたい場合に良いアイデア。`skip = FALSE` オプションを使用しているステップがある場合は、`retain = TRUE` を使用することをお勧めします。
-- `training` : データ処理のパラメタ（標準化のための平均と分散とか）の訓練のために使うデータフレームを別に指定する場合
-- `fresh` : `TRUE` なら、新たに訓練データを与えてパラメータを更新する。同時に、`training` に新たな訓練データを与えること。`fresh=TRUE` は前に `prep()` した `step_*()` の方も更新する。`fresh=FALSE` なら まだ `prep()` されていない `step_*()` を更新する。 
-
-
-## レシピを新しいデータに適用する bake()
-
-以前は `bake()` は新データにレシピを適用する。 `juice()` はレシピ内に保持されたデータに対してレシピを適用するという意味だったが。今は `juice()` の代わりに `bake(newdata=NULL)` を使うことが推奨されている。 

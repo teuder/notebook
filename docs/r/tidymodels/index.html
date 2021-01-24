@@ -7,7 +7,7 @@
 <meta property="og:description" content="tidymodels tidymodels は統一的なインターフェースでモデリングを行うための、いくつかのパッケージをまとめたもの。 rsample ：訓練データ/テストデータの分割 recipe ：特徴量エン" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://teuder.github.io/notebook/r/tidymodels/" />
-
+<meta property="article:modified_time" content="2021-01-21T20:01:52+09:00" />
 <title>tidymodels | notebook</title>
 <link rel="icon" href="/notebook/favicon.png" type="image/x-icon">
 
@@ -15,7 +15,7 @@
 <link rel="stylesheet" href="/notebook/book.min.07c38dce7b6800da2a75a565d4d975e38f837294e24d00b5aae363037012d64b.css" integrity="sha256-B8ONzntoANoqdaVl1Nl144&#43;DcpTiTQC1quNjA3AS1ks=">
 
 
-<script defer src="/notebook/search.min.7b981e934dac4a66555d947655caed34144a61c211523d55903f78ca9630f2f1.js" integrity="sha256-e5gek02sSmZVXZR2VcrtNBRKYcIRUj1VkD94ypYw8vE="></script>
+<script defer src="/notebook/search.min.6eaabad291b092c212e04815947e6b33179f160a3562bb0d5190f4b4015ee3bd.js" integrity="sha256-bqq60pGwksIS4EgVlH5rMxefFgo1YrsNUZD0tAFe470="></script>
 
 <!--
 Made with Book Theme
@@ -802,13 +802,142 @@ https://github.com/alex-shpak/hugo-book
 <li><code>parsnip</code> ：モデリング</li>
 <li><code>yardstic</code> ：モデルの精度評価</li>
 </ul>
-<h1 id="データ加工">データ加工</h1>
-<h2 id="traintest-分割">Train/Test 分割</h2>
+<h1 id="前処理--recipes-パッケージ">前処理 : recipes パッケージ</h1>
+<p>前処理</p>
+<h2 id="レシピオブジェクトの作成--recipe">レシピオブジェクトの作成 : recipe()</h2>
+<p>最初に、変数加工のためのパラメタ（標準化のための平均と分散など）を決めるために使う訓練データ（一般には訓練データ）</p>
+<p>そのデータに含まれる目的変数と説明変数をフォーミュラとして与える。</p>
+<p>モデル式（目的変数と説明変数）を指定</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#111">recipes</span><span style="color:#f92672">::</span><span style="color:#75af00">recipe</span><span style="color:#111">(</span><span style="color:#111">x</span><span style="color:#111">,</span> <span style="color:#111">formula</span> <span style="color:#f92672">=</span> <span style="color:#00a8c8">NULL</span><span style="color:#111">,</span> <span style="color:#00a8c8">...</span><span style="color:#111">,</span> <span style="color:#111">vars</span> <span style="color:#f92672">=</span> <span style="color:#00a8c8">NULL</span><span style="color:#111">,</span> <span style="color:#111">roles</span> <span style="color:#f92672">=</span> <span style="color:#00a8c8">NULL</span><span style="color:#111">)</span>
+</code></pre></div><ul>
+<li><code>x</code>, <code>data</code> : 変数加工のためのパラメタ（標準化のための平均と分散など）を決めるために使う訓練データ</li>
+<li><code>formula</code> : モデル式、目的変数と説明変数の指定。<code>log(x)</code> とか <code>x:y</code> などの関数を含めてはいけない。マイナス符号をつけるのもダメ。</li>
+<li><code>vars</code> : 変数名を格納した文字列ベクトル</li>
+<li><code>roles</code> : <code>vars</code> と同じ長さの文字列ベクトル。各変数の役割を指定する。<code>&quot;outcome&quot;, &quot;predictor&quot;, &quot;case_weight&quot;, or &quot;ID&quot;</code> 他の値でもいい</li>
+</ul>
+<pre><code>mod_rec &lt;- 
+  df_rental %&gt;% 
+  recipes::recipe(formula = Y ~ Area)
+</code></pre><h2 id="step_">step_*()</h2>
+<p>データに対する加工は <code>step_*()</code> 関数を使う</p>
+<h3 id="skiptrue-について"><code>skip=TRUE</code> について</h3>
+<p><code>skip=TRUE</code> が指定されたステップは、 <code>recipes::prep()</code> を実行したときには適用されるが、<code>recipes::bake()</code> を実行したときには適用されない。</p>
+<p>次のように考えてもよいかもしれない</p>
+<ul>
+<li><code>recipes::prep()</code> は訓練データ作成用にレシピを実行する。</li>
+<li><code>recipes::bake()</code> は新データ・テストデータ・検証データ作成用にレシピを実行する</li>
+</ul>
+<p><code>skip = TRUE</code> を指定された処理は訓練データを作成するときには使用されるが、新データやテストデータや検証データに対しては使用されない。一般的にはモデリングのために目的変数を使ったサンプリングを実施するステップに対しては <code>skip = TRUE</code> を指定する。</p>
+<h4 id="変数変換-step">変数変換 step</h4>
+<h4 id="対数変換--step_log">対数変換 : step_log()</h4>
+<p>step_log(Y, Area)</p>
+<h4 id="交互作用変数の追加--step_interact">交互作用変数の追加 : step_interact()</h4>
+<p>step_interact(terms = ~ Solar.R:Wind)</p>
+<p>ようやく tidymodels のお気持ちがわかってきた気がする</p>
+<h3 id="サンプリングステップ">サンプリングステップ</h3>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#75715e"># サンプリングを含むレシピを作成 (prep()しない)</span>
+<span style="color:#111">sampling_recipe</span> <span style="color:#f92672">&lt;-</span>
+  <span style="color:#111">recipes</span><span style="color:#f92672">::</span><span style="color:#75af00">recipe</span><span style="color:#111">(</span><span style="color:#111">Y</span> <span style="color:#f92672">~</span> <span style="color:#111">.,</span> <span style="color:#111">data</span> <span style="color:#f92672">=</span> <span style="color:#111">train_df</span><span style="color:#111">)</span> <span style="color:#f92672">%&gt;%</span> 
+  <span style="color:#75715e"># 目的変数 Y の値に基づいてサンプリングする</span>
+  <span style="color:#75715e"># 訓練データに対してはサンプリングするが</span>
+  <span style="color:#75715e"># テストデータや新規データに対してはサンプリングしない場合は skip = TRUE を指定する。</span>
+  <span style="color:#75715e"># この時点でサンプリングのための乱数 seed は固定される</span>
+  <span style="color:#111">themis</span><span style="color:#f92672">::</span><span style="color:#75af00">step_downsample</span><span style="color:#111">(</span><span style="color:#111">Y</span><span style="color:#111">,</span> <span style="color:#111">under_ratio</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.5</span><span style="color:#111">,</span> <span style="color:#111">skip</span> <span style="color:#f92672">=</span> <span style="color:#00a8c8">TRUE</span><span style="color:#111">)</span> <span style="color:#f92672">%&gt;%</span>
+  <span style="color:#75715e"># prep() を実行すると skip = TRUE を指定したステップも実行される</span>
+  <span style="color:#75715e"># retain = TRUE で、最初に渡した train_df にレシピが適用されたデータを</span>
+  <span style="color:#75715e"># レシピオブジェクトの中に保持する</span>
+  <span style="color:#111">recipes</span><span style="color:#f92672">::</span><span style="color:#75af00">prep</span><span style="color:#111">(</span><span style="color:#111">retain</span> <span style="color:#f92672">=</span> <span style="color:#00a8c8">TRUE</span><span style="color:#111">)</span>
+
+
+
+<span style="color:#75715e"># サンプリングが適用されたデータの作成方法</span>
+
+<span style="color:#75715e"># 1. レシピオブジェクトの中に存在する</span>
+<span style="color:#75715e">#    レシピ適用済みデータを取り出す</span>
+<span style="color:#111">sampled_train_df</span> <span style="color:#f92672">&lt;-</span>
+  <span style="color:#111">sampling_recipe</span><span style="color:#f92672">$</span><span style="color:#111">template</span>
+
+<span style="color:#75715e"># 1. レシピオブジェクトの中に存在する</span>
+<span style="color:#75715e">#    レシピ適用済みデータを bake(newdata=NULL) で取り出す</span>
+<span style="color:#111">sampled_train_df</span> <span style="color:#f92672">&lt;-</span>
+  <span style="color:#111">sampling_recipe</span> <span style="color:#f92672">%&gt;%</span>
+  <span style="color:#75af00">bake</span><span style="color:#111">(</span><span style="color:#111">newdata</span><span style="color:#f92672">=</span><span style="color:#00a8c8">NULL</span><span style="color:#111">)</span>
+
+
+
+</code></pre></div><h4 id="サンプリングを含んだクロスバリデーション">サンプリングを含んだクロスバリデーション</h4>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#75715e"># サンプリングを含むレシピを作成 (prep()しない)</span>
+<span style="color:#111">sampling_recipe</span> <span style="color:#f92672">&lt;-</span>
+  <span style="color:#111">recipes</span><span style="color:#f92672">::</span><span style="color:#75af00">recipe</span><span style="color:#111">(</span><span style="color:#111">Y</span> <span style="color:#f92672">~</span> <span style="color:#111">.,</span> <span style="color:#111">data</span> <span style="color:#f92672">=</span> <span style="color:#111">train_df</span><span style="color:#111">)</span> <span style="color:#f92672">%&gt;%</span> 
+  <span style="color:#75715e"># 目的変数 Y の値に基づいてサンプリングする</span>
+  <span style="color:#75715e"># 訓練データに対してはサンプリングするが</span>
+  <span style="color:#75715e"># テストデータや新規データに対してはサンプリングしない場合は skip = TRUE を指定する。</span>
+  <span style="color:#75715e"># この時点でサンプリングのための乱数 seed は固定される</span>
+  <span style="color:#111">themis</span><span style="color:#f92672">::</span><span style="color:#75af00">step_downsample</span><span style="color:#111">(</span><span style="color:#111">Y</span><span style="color:#111">,</span> <span style="color:#111">under_ratio</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.5</span><span style="color:#111">,</span> <span style="color:#111">skip</span> <span style="color:#f92672">=</span> <span style="color:#00a8c8">TRUE</span><span style="color:#111">)</span> 
+  <span style="color:#75715e"># このレシピを使ってクロスバリデーションをする場合には、ここでは prep() しない</span>
+  <span style="color:#75715e"># おそらく rsample::vfold_cv() の中で prep() される</span>
+
+<span style="color:#75715e"># CVのために訓練データを分割する</span>
+<span style="color:#111">df_cv</span> <span style="color:#f92672">&lt;-</span>
+  <span style="color:#111">rsample</span><span style="color:#f92672">::</span><span style="color:#75af00">vfold_cv</span><span style="color:#111">(</span><span style="color:#111">train_df</span><span style="color:#111">,</span> <span style="color:#111">v</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">5</span><span style="color:#111">,</span> <span style="color:#111">repeats</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span><span style="color:#111">)</span>
+
+<span style="color:#75715e"># CV を実行する</span>
+<span style="color:#111">cv_result_df</span> <span style="color:#f92672">&lt;-</span>
+  <span style="color:#111">tune</span><span style="color:#f92672">::</span><span style="color:#75af00">tune_grid</span><span style="color:#111">(</span>
+    <span style="color:#111">object</span> <span style="color:#f92672">=</span> <span style="color:#111">rnd_forest_model</span><span style="color:#111">,</span> <span style="color:#75715e"># parsnip で作成したモデルオブジェクト</span>
+    <span style="color:#111">preprocessor</span> <span style="color:#f92672">=</span> <span style="color:#111">sampling_recipe</span><span style="color:#111">,</span>
+    <span style="color:#111">resamples</span> <span style="color:#f92672">=</span> <span style="color:#111">df_cv</span><span style="color:#111">,</span>
+    <span style="color:#111">grid</span> <span style="color:#f92672">=</span> <span style="color:#111">params_grid_df</span><span style="color:#111">,</span> <span style="color:#75715e"># 探索したいパラメータの値が格納されたデータフレーム</span>
+    <span style="color:#111">metrics</span> <span style="color:#f92672">=</span> <span style="color:#111">yardstick</span><span style="color:#f92672">::</span><span style="color:#75af00">metric_set</span><span style="color:#111">(</span><span style="color:#111">yardstick</span><span style="color:#f92672">::</span><span style="color:#111">pr_auc</span><span style="color:#111">,</span> <span style="color:#111">yardstick</span><span style="color:#f92672">::</span><span style="color:#111">roc_auc</span><span style="color:#111">),</span>
+    <span style="color:#111">control</span> <span style="color:#f92672">=</span> <span style="color:#111">tune</span><span style="color:#f92672">::</span><span style="color:#75af00">control_grid</span><span style="color:#111">(</span><span style="color:#111">verbose</span> <span style="color:#f92672">=</span> <span style="color:#00a8c8">TRUE</span><span style="color:#111">)</span>
+  <span style="color:#111">)</span>
+
+
+</code></pre></div><pre><code># Partitioning data for CV
+# Deference between V1 and V2 is V2 uses train_df without down-sampling.
+
+</code></pre><p>recipes::recipe(Y ~ ., data = train_df) %&gt;%
+themis::step_downsample(under_ratio = 0.5, skip = TRUE) %&gt;%
+recipes::prep(retain = TRUE) %&gt;%
+recipes::bake(new_data = NULL)</p>
+<h3 id="step_-の中での変数の指定の仕方">step_*() の中での変数の指定の仕方</h3>
+<p>step_log(all_predictors(), all_outcomes())</p>
+<p>dplyrの　starts_with() contains() 等も使える</p>
+<h2 id="prep-パラメータを持つステップの訓練更新">prep() パラメータを持つステップの訓練・更新</h2>
+<pre><code>rec_trained &lt;- 
+  prep(mod_rec, retain = TRUE, verbose = TRUE)
+</code></pre><ul>
+<li><code>retain</code> : 処理済みの訓練データをオブジェクト内に保持する (<code>template</code> スロット)。後からステップを追加したいが、既存のステップの再トレーニングを避けたい場合に良いアイデア。<code>skip = FALSE</code> オプションを使用しているステップがある場合は、<code>retain = TRUE</code> を使用することをお勧めします。</li>
+<li><code>training</code> : データ処理のパラメタ（標準化のための平均と分散とか）の訓練のために使うデータフレームを別に指定する場合</li>
+<li><code>fresh</code> : <code>TRUE</code> なら、新たに訓練データを与えてパラメータを更新する。同時に、<code>training</code> に新たな訓練データを与えること。<code>fresh=TRUE</code> は前に <code>prep()</code> した <code>step_*()</code> の方も更新する。<code>fresh=FALSE</code> なら まだ <code>prep()</code> されていない <code>step_*()</code> を更新する。</li>
+</ul>
+<h2 id="レシピを新しいデータに適用する-bake">レシピを新しいデータに適用する bake()</h2>
+<p>以前は <code>bake()</code> は新データにレシピを適用する。 <code>juice()</code> はレシピ内に保持されたデータに対してレシピを適用するという意味だったが。今は <code>juice()</code> の代わりに <code>bake(newdata=NULL)</code> を使うことが推奨されている。</p>
+<h1 id="データの分割--rsample-パッケージ">データの分割 : rsample パッケージ</h1>
+<h2 id="traintest-分割--initial_split">Train/Test 分割 : initial_split()</h2>
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#75af00">set.seed</span><span style="color:#111">(</span><span style="color:#ae81ff">10</span><span style="color:#111">)</span>
 <span style="color:#111">dm_split</span> <span style="color:#f92672">=</span> <span style="color:#111">rsample</span><span style="color:#f92672">::</span><span style="color:#75af00">initial_split</span><span style="color:#111">(</span><span style="color:#111">processed_dm_df</span><span style="color:#111">,</span>  <span style="color:#111">p</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.8</span><span style="color:#111">)</span>
 
 <span style="color:#111">train_df</span> <span style="color:#f92672">=</span> <span style="color:#111">rsample</span><span style="color:#f92672">::</span><span style="color:#75af00">training</span><span style="color:#111">(</span><span style="color:#111">dm_split</span><span style="color:#111">)</span>
 <span style="color:#111">test_df</span>  <span style="color:#f92672">=</span> <span style="color:#111">rsample</span><span style="color:#f92672">::</span><span style="color:#75af00">testing</span><span style="color:#111">(</span><span style="color:#111">dm_split</span><span style="color:#111">)</span>
+</code></pre></div><h2 id="交差検証trainvalidation-分割--vfold_cv">交差検証　Train/Validation 分割 : vfold_cv()</h2>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#111">rsample</span><span style="color:#f92672">::</span><span style="color:#75af00">vfold_cv</span><span style="color:#111">(</span><span style="color:#111">data</span><span style="color:#111">,</span> <span style="color:#111">v</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">10</span><span style="color:#111">,</span> <span style="color:#111">repeats</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span><span style="color:#111">,</span> <span style="color:#111">strata</span> <span style="color:#f92672">=</span> <span style="color:#00a8c8">NULL</span><span style="color:#111">,</span> <span style="color:#111">breaks</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">4</span><span style="color:#111">,</span> <span style="color:#00a8c8">...</span><span style="color:#111">)</span>
+</code></pre></div><ul>
+<li><code>data</code> : データフレーム</li>
+<li><code>v</code> : CVの分割数 (fold数)</li>
+<li><code>repeats</code> : CVの分割を何回繰り返すか。総計算回数は <code>v*repeats</code> になる。</li>
+<li><code>strata</code> : 層別サンプリング。CV分割の時に、fold間で割合を一緒にしたい変数を指定する（例えば目的変数がカテゴリ変数の時に指定する）</li>
+<li><code>breaks</code> : 整数スカラー。層別サンプリングしたい変数が連続変数の時に、連続地をいくつのビンに分けるか指定する。</li>
+</ul>
+<h3 id="foldのデータを参照する">Foldのデータを参照する</h3>
+<ul>
+<li><code>analysis()</code> : 訓練データを参照する</li>
+<li><code>assessment()</code> : 検証データを参照する</li>
+</ul>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#111">df_cv</span> <span style="color:#f92672">&lt;-</span> <span style="color:#111">rsample</span><span style="color:#f92672">::</span><span style="color:#75af00">vfold_cv</span><span style="color:#111">(</span><span style="color:#111">data</span><span style="color:#111">,</span> <span style="color:#111">v</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">10</span><span style="color:#111">,</span> <span style="color:#111">repeats</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span><span style="color:#111">)</span>
+
+<span style="color:#111">train</span> <span style="color:#f92672">&lt;-</span> <span style="color:#111">rsample</span><span style="color:#f92672">::</span><span style="color:#75af00">analysis</span><span style="color:#111">(</span><span style="color:#111">df_cv</span><span style="color:#f92672">$</span><span style="color:#111">splits[[1]]</span><span style="color:#111">)</span>
+<span style="color:#111">validation</span> <span style="color:#f92672">&lt;-</span> <span style="color:#111">rsample</span><span style="color:#f92672">::</span><span style="color:#75af00">assessment</span><span style="color:#111">(</span><span style="color:#111">df_cv</span><span style="color:#f92672">$</span><span style="color:#111">splits[[1]]</span><span style="color:#111">)</span>
 </code></pre></div><h1 id="モデリング--parsnip-パッケージ">モデリング : parsnip パッケージ</h1>
 <p>まずは目的に合わせてアルゴリズムを指定して、モデルオブジェクトを作成する。</p>
 <p><code>parsnip</code> は異なるパッケージのアルゴリズムを同じインターフェースで扱えるようにする。</p>
@@ -899,17 +1028,8 @@ https://github.com/alex-shpak/hugo-book
 </ul>
 </li>
 </ul>
-<h2 id="交差検証">交差検証</h2>
-<h3 id="データの分割">データの分割</h3>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#75af00">vfold_cv</span><span style="color:#111">(</span><span style="color:#111">data</span><span style="color:#111">,</span> <span style="color:#111">v</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">10</span><span style="color:#111">,</span> <span style="color:#111">repeats</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span><span style="color:#111">,</span> <span style="color:#111">strata</span> <span style="color:#f92672">=</span> <span style="color:#00a8c8">NULL</span><span style="color:#111">,</span> <span style="color:#111">breaks</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">4</span><span style="color:#111">,</span> <span style="color:#00a8c8">...</span><span style="color:#111">)</span>
-</code></pre></div><ul>
-<li><code>data</code> : データフレーム</li>
-<li><code>v</code> : CVの分割数 (fold数)</li>
-<li><code>repeats</code> : CVの分割を何回繰り返すか。総計算回数は <code>v*repeats</code> になる。</li>
-<li><code>strata</code> : 層別サンプリング。CV分割の時に、fold間で割合を一緒にしたい変数を指定する（例えば目的変数がカテゴリ変数の時に指定する）</li>
-<li><code>breaks</code> : 整数スカラー。層別サンプリングしたい変数が連続変数の時に、連続地をいくつのビンに分けるか指定する。</li>
-</ul>
-<p>courgetee</p>
+<h1 id="ハイパーパラメータチューニング">ハイパーパラメータ・チューニング</h1>
+<h2 id="クロスバリデーションのデータの分割">クロスバリデーションのデータの分割</h2>
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#75715e"># Partitioning data for CV</span>
 <span style="color:#111">df_cv</span> <span style="color:#f92672">&lt;-</span> <span style="color:#111">rsample</span><span style="color:#f92672">::</span><span style="color:#75af00">vfold_cv</span><span style="color:#111">(</span><span style="color:#111">sampled_train_df</span><span style="color:#111">,</span> <span style="color:#111">v</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">5</span><span style="color:#111">)</span>
 </code></pre></div><h3 id="チューニングしたいハイパーパラメータを指定する">チューニングしたいハイパーパラメータを指定する</h3>
@@ -978,7 +1098,8 @@ https://github.com/alex-shpak/hugo-book
   <span style="color:#111">metrics</span> <span style="color:#f92672">=</span> <span style="color:#00a8c8">NULL</span><span style="color:#111">,</span>
   <span style="color:#111">control</span> <span style="color:#f92672">=</span> <span style="color:#75af00">control_grid</span><span style="color:#111">()</span>
 <span style="color:#111">)</span>
-</code></pre></div><h4 id="tunefit_resamples"><code>tune::fit_resamples()</code></h4>
+</code></pre></div><h4 id="tunetune_bayes"><code>tune::tune_bayes()</code></h4>
+<h4 id="tunefit_resamples"><code>tune::fit_resamples()</code></h4>
 <p>CVのなかの1つの計算は <code>tune::fit_resamples()</code> が使われている？？</p>
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#75715e">## S3 method for class &#39;model_spec&#39;</span>
 <span style="color:#75af00">fit_resamples</span><span style="color:#111">(</span>
@@ -1025,52 +1146,18 @@ https://github.com/alex-shpak/hugo-book
 <li><code>yardstick::lift_curve()</code></li>
 <li><code>yardstick::roc_curve()</code></li>
 </ul>
-<h1 id="前処理--recipes-パッケージ">前処理 : recipes パッケージ</h1>
-<h2 id="レシピオブジェクトの作成--recipe">レシピオブジェクトの作成 : recipe()</h2>
-<p>最初に、変数加工のためのパラメタ（標準化のための平均と分散など）を決めるために使う訓練データ（一般には訓練データ）</p>
-<p>そのデータに含まれる目的変数と説明変数をフォーミュラとして与える。</p>
-<p>モデル式（目的変数と説明変数）を指定</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#111">recipes</span><span style="color:#f92672">::</span><span style="color:#75af00">recipe</span><span style="color:#111">(</span><span style="color:#111">x</span><span style="color:#111">,</span> <span style="color:#111">formula</span> <span style="color:#f92672">=</span> <span style="color:#00a8c8">NULL</span><span style="color:#111">,</span> <span style="color:#00a8c8">...</span><span style="color:#111">,</span> <span style="color:#111">vars</span> <span style="color:#f92672">=</span> <span style="color:#00a8c8">NULL</span><span style="color:#111">,</span> <span style="color:#111">roles</span> <span style="color:#f92672">=</span> <span style="color:#00a8c8">NULL</span><span style="color:#111">)</span>
-</code></pre></div><ul>
-<li><code>x</code>, <code>data</code> : 変数加工のためのパラメタ（標準化のための平均と分散など）を決めるために使う訓練データ</li>
-<li><code>formula</code> : モデル式、目的変数と説明変数の指定。<code>log(x)</code> とか <code>x:y</code> などの関数を含めてはいけない。マイナス符号をつけるのもダメ。</li>
-<li><code>vars</code> : 変数名を格納した文字列ベクトル</li>
-<li><code>roles</code> : <code>vars</code> と同じ長さの文字列ベクトル。各変数の役割を指定する。<code>&quot;outcome&quot;, &quot;predictor&quot;, &quot;case_weight&quot;, or &quot;ID&quot;</code> 他の値でもいい</li>
-</ul>
-<pre><code>mod_rec &lt;- 
-  df_rental %&gt;% 
-  recipe(formula = Y ~ Area)
-</code></pre><h2 id="step_">step_*()</h2>
-<p>データに対する加工は <code>step_*()</code> 関数を使う</p>
-<h3 id="skiptrue-について"><code>skip=TRUE</code> について</h3>
-<p><code>skip=TRUE</code> が指定されたステップは、 <code>prep()</code> を実行したときには適用されるが、<code>bake()</code> を実行したときには適用されない。</p>
-<p>次のように考えてもよいかもしれない</p>
-<ul>
-<li><code>prep()</code> は訓練データ作成用にレシピを実行する。</li>
-<li><code>bake()</code> は新データ・テストデータ・検証データ作成用にレシピを実行する</li>
-</ul>
-<p><code>skip = TRUE</code> を指定された処理は訓練データを作成するときには使用されるが、新データやテストデータや検証データに対しては使用されない。一般的にはモデリングのために目的変数を使ったサンプリングを実施するステップに対しては <code>skip = TRUE</code> を指定する。</p>
-<h3 id="対数変換--step_log">対数変換 : step_log()</h3>
-<p>step_log(Y, Area)</p>
-<h3 id="交互作用変数の追加--step_interact">交互作用変数の追加 : step_interact()</h3>
-<p>step_interact(terms = ~ Solar.R:Wind)</p>
-<h3 id="step_-の中での変数の指定の仕方">step_*() の中での変数の指定の仕方</h3>
-<p>step_log(all_predictors(), all_outcomes())</p>
-<p>dplyrの　starts_with() contains() 等も使える</p>
-<h2 id="prep-パラメータを持つステップの訓練更新">prep() パラメータを持つステップの訓練・更新</h2>
-<pre><code>rec_trained &lt;- 
-  prep(mod_rec, retain = TRUE, verbose = TRUE)
-</code></pre><ul>
-<li><code>retain</code> : 処理済みの訓練データをオブジェクト内に保持する (<code>template</code> スロット)。後からステップを追加したいが、既存のステップの再トレーニングを避けたい場合に良いアイデア。<code>skip = FALSE</code> オプションを使用しているステップがある場合は、<code>retain = TRUE</code> を使用することをお勧めします。</li>
-<li><code>training</code> : データ処理のパラメタ（標準化のための平均と分散とか）の訓練のために使うデータフレームを別に指定する場合</li>
-<li><code>fresh</code> : <code>TRUE</code> なら、新たに訓練データを与えてパラメータを更新する。同時に、<code>training</code> に新たな訓練データを与えること。<code>fresh=TRUE</code> は前に <code>prep()</code> した <code>step_*()</code> の方も更新する。<code>fresh=FALSE</code> なら まだ <code>prep()</code> されていない <code>step_*()</code> を更新する。</li>
-</ul>
-<h2 id="レシピを新しいデータに適用する-bake">レシピを新しいデータに適用する bake()</h2>
-<p>以前は <code>bake()</code> は新データにレシピを適用する。 <code>juice()</code> はレシピ内に保持されたデータに対してレシピを適用するという意味だったが。今は <code>juice()</code> の代わりに <code>bake(newdata=NULL)</code> を使うことが推奨されている。</p>
 </article>
 
       
-<div class="book-footer justify-end">
+<div class="book-footer justify-between">
+  
+  <div>
+    
+    <a class="flex align-center" href="https://github.com/teuder/notebook/commit/25a1530214867873b4872c7ec8cb6d8607b076cc" title='Last modified 2021-01-21 by Masaki Tsuda' target="_blank" rel="noopener">
+      <img src="/notebook/svg/calendar.svg" alt="Changed" />
+      <span>2021-01-21</span>
+    </a>
+  </div>
   
   
   <div>
@@ -1094,7 +1181,25 @@ https://github.com/alex-shpak/hugo-book
   <aside class="book-toc level-3 fixed">
     <nav id="TableOfContents">
   <ul>
-    <li><a href="#traintest-分割">Train/Test 分割</a></li>
+    <li><a href="#レシピオブジェクトの作成--recipe">レシピオブジェクトの作成 : recipe()</a></li>
+    <li><a href="#step_">step_*()</a>
+      <ul>
+        <li><a href="#skiptrue-について"><code>skip=TRUE</code> について</a></li>
+        <li><a href="#サンプリングステップ">サンプリングステップ</a></li>
+        <li><a href="#step_-の中での変数の指定の仕方">step_*() の中での変数の指定の仕方</a></li>
+      </ul>
+    </li>
+    <li><a href="#prep-パラメータを持つステップの訓練更新">prep() パラメータを持つステップの訓練・更新</a></li>
+    <li><a href="#レシピを新しいデータに適用する-bake">レシピを新しいデータに適用する bake()</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#traintest-分割--initial_split">Train/Test 分割 : initial_split()</a></li>
+    <li><a href="#交差検証trainvalidation-分割--vfold_cv">交差検証　Train/Validation 分割 : vfold_cv()</a>
+      <ul>
+        <li><a href="#foldのデータを参照する">Foldのデータを参照する</a></li>
+      </ul>
+    </li>
   </ul>
 
   <ul>
@@ -1111,29 +1216,17 @@ https://github.com/alex-shpak/hugo-book
       </ul>
     </li>
     <li><a href="#予測--predict">予測 : predict</a></li>
-    <li><a href="#交差検証">交差検証</a>
+  </ul>
+
+  <ul>
+    <li><a href="#クロスバリデーションのデータの分割">クロスバリデーションのデータの分割</a>
       <ul>
-        <li><a href="#データの分割">データの分割</a></li>
         <li><a href="#チューニングしたいハイパーパラメータを指定する">チューニングしたいハイパーパラメータを指定する</a></li>
         <li><a href="#cv計算の実行">CV計算の実行</a></li>
         <li><a href="#cv結果の確認">CV結果の確認</a></li>
         <li><a href="#モデルオブジェクトの作成と探索するハイパラの指定">モデルオブジェクトの作成と探索するハイパラの指定</a></li>
       </ul>
     </li>
-  </ul>
-
-  <ul>
-    <li><a href="#レシピオブジェクトの作成--recipe">レシピオブジェクトの作成 : recipe()</a></li>
-    <li><a href="#step_">step_*()</a>
-      <ul>
-        <li><a href="#skiptrue-について"><code>skip=TRUE</code> について</a></li>
-        <li><a href="#対数変換--step_log">対数変換 : step_log()</a></li>
-        <li><a href="#交互作用変数の追加--step_interact">交互作用変数の追加 : step_interact()</a></li>
-        <li><a href="#step_-の中での変数の指定の仕方">step_*() の中での変数の指定の仕方</a></li>
-      </ul>
-    </li>
-    <li><a href="#prep-パラメータを持つステップの訓練更新">prep() パラメータを持つステップの訓練・更新</a></li>
-    <li><a href="#レシピを新しいデータに適用する-bake">レシピを新しいデータに適用する bake()</a></li>
   </ul>
 </nav>
   </aside>
