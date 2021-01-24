@@ -11,21 +11,23 @@ type: docs
 
 
 - `rsample` ：訓練データ/テストデータの分割
-- `recipe` ：特徴量エンジニアリング
+- `recipe` ：データの前処理（変数変換、サンプリングなど）
 - `parsnip` ：モデリング
 - `yardstic` ：モデルの精度評価
 
 
 
 
-# 前処理 : recipes パッケージ
+## 前処理 : recipes パッケージ
 
 
-前処理
+訓練や新規データへのモデルの適用の前に実施する変数変換やデータサンプリングの手順をレシピオブジェクトとして定義する。
 
+`recipes` パッケージで実施する前処理とは、特徴量作成というよりも、対数変換や標準化などデータの本質的な意味は変えないが、アルゴリズムの学習を適切に行えるようにするための処理のことを指す。
 
+そのため、この前処理は特徴量作成の後モデリングの直前に実施する。
 
-## レシピオブジェクトの作成 : recipe()
+### レシピオブジェクトの作成 : recipe()
 
 最初に、変数加工のためのパラメタ（標準化のための平均と分散など）を決めるために使う訓練データ（一般には訓練データ）
 
@@ -54,23 +56,9 @@ mod_rec <-
 
 
 
-## step_*()
+### 各前処理ステップの定義 : step_*()
 
 データに対する加工は `step_*()` 関数を使う
-
-
-### `skip=TRUE` について
-
-`skip=TRUE` が指定されたステップは、 `recipes::prep()` を実行したときには適用されるが、`recipes::bake()` を実行したときには適用されない。
-
-次のように考えてもよいかもしれない
-
-- `recipes::prep()` は訓練データ作成用にレシピを実行する。
-- `recipes::bake()` は新データ・テストデータ・検証データ作成用にレシピを実行する
-
-
-`skip = TRUE` を指定された処理は訓練データを作成するときには使用されるが、新データやテストデータや検証データに対しては使用されない。一般的にはモデリングのために目的変数を使ったサンプリングを実施するステップに対しては `skip = TRUE` を指定する。
-
 
 
 #### 変数変換 step
@@ -91,7 +79,20 @@ step_interact(terms = ~ Solar.R:Wind)
 
 ようやく tidymodels のお気持ちがわかってきた気がする
 
-### サンプリングステップ
+#### `skip=TRUE` について
+
+`skip=TRUE` が指定されたステップは、 `recipes::prep()` を実行したときには適用されるが、`recipes::bake()` を実行したときには適用されない。
+
+次のように考えてもよいかもしれない
+
+- `recipes::prep()` は訓練データ作成用にレシピを実行する。
+- `recipes::bake()` は新データ・テストデータ・検証データ作成用にレシピを実行する
+
+
+`skip = TRUE` を指定された処理は訓練データを作成するときには使用されるが、新データやテストデータや検証データに対しては使用されない。一般的にはモデリングのために目的変数を使ったサンプリングを実施するステップに対しては `skip = TRUE` を指定する。
+
+
+#### サンプリング
 
 
 ```r
@@ -175,7 +176,7 @@ cv_result_df <-
 
 
 
-### step_*() の中での変数の指定の仕方
+#### step_*() の中での変数の指定の仕方
 
   step_log(all_predictors(), all_outcomes())
 
@@ -183,7 +184,7 @@ cv_result_df <-
 
 
 
- ## prep() パラメータを持つステップの訓練・更新
+ ### prep() パラメータを持つステップの訓練・更新
 
 
 ```
@@ -196,17 +197,17 @@ rec_trained <-
 - `fresh` : `TRUE` なら、新たに訓練データを与えてパラメータを更新する。同時に、`training` に新たな訓練データを与えること。`fresh=TRUE` は前に `prep()` した `step_*()` の方も更新する。`fresh=FALSE` なら まだ `prep()` されていない `step_*()` を更新する。 
 
 
-## レシピを新しいデータに適用する bake()
+### レシピを新しいデータに適用する bake()
 
 以前は `bake()` は新データにレシピを適用する。 `juice()` はレシピ内に保持されたデータに対してレシピを適用するという意味だったが。今は `juice()` の代わりに `bake(newdata=NULL)` を使うことが推奨されている。 
 
 
 
-# データの分割 : rsample パッケージ
+## データの分割 : rsample パッケージ
 
 
 
-## Train/Test 分割 : initial_split()
+### Train/Test 分割 : initial_split()
 
 ```r
 set.seed(10)
@@ -216,7 +217,7 @@ train_df = rsample::training(dm_split)
 test_df  = rsample::testing(dm_split)
 ```
 
-## 交差検証　Train/Validation 分割 : vfold_cv()
+### 交差検証　Train/Validation 分割 : vfold_cv()
 
 ```r
 rsample::vfold_cv(data, v = 10, repeats = 1, strata = NULL, breaks = 4, ...)
@@ -231,7 +232,7 @@ rsample::vfold_cv(data, v = 10, repeats = 1, strata = NULL, breaks = 4, ...)
 
 
 
-### Foldのデータを参照する
+#### Foldのデータを参照する
 
 - `analysis()` : 訓練データを参照する
 - `assessment()` : 検証データを参照する
@@ -248,15 +249,15 @@ validation <- rsample::assessment(df_cv$splits[[1]])
 
 
 
-# モデリング : parsnip パッケージ
+## モデリング : parsnip パッケージ
 
 まずは目的に合わせてアルゴリズムを指定して、モデルオブジェクトを作成する。
 
 `parsnip` は異なるパッケージのアルゴリズムを同じインターフェースで扱えるようにする。
 
-## モデルオブジェクトの作成
+### モデルオブジェクトの作成
 
-### 線形回帰
+#### 線形回帰
 
 ```r
 linear_regression_model <-
@@ -264,7 +265,7 @@ linear_regression_model <-
     parsnip::set_engine("lm")
 ```
 
-### 決定木
+#### 決定木
 
 ```r
 # 分類木
@@ -278,7 +279,7 @@ decision_tree_model <-
 ```
 
 
-## ランダムフォレスト
+#### ランダムフォレスト
 
 
 ```r
@@ -310,7 +311,9 @@ update(
 - Spark: "spark"
 
 
-## 学習
+### モデル学習
+
+#### モデル学習の実行 : fit()
 
 ```r
 lm_fit <- # 学習済みモデルオブジェクト
@@ -320,7 +323,7 @@ lm_fit <- # 学習済みモデルオブジェクト
   )
 ```
 
-### 学習済みモデルオブジェクトの内容を確認する
+#### 学習済みモデルオブジェクトの内容を確認する
 
 ```r
 tidy(lm_fit)
@@ -339,7 +342,7 @@ tidy(lm_fit) %>%
 
 
 
-## 予測 : predict
+### 予測 : predict
 
 ```r
 mean_pred <- 
@@ -365,16 +368,16 @@ mean_pred <-
 
 
 
-# ハイパーパラメータ・チューニング
+## ハイパーパラメータ・チューニング : tune()
 
-## クロスバリデーションのデータの分割
+### クロスバリデーションのデータの分割
 
 ```r
 # Partitioning data for CV
 df_cv <- rsample::vfold_cv(sampled_train_df, v = 5)
 ```
 
-### チューニングしたいハイパーパラメータを指定する
+### チューニングしたいモデルとハイパーパラメータを指定する
 
 
 `parsnip` パッケージでモデルオブジェクトを作成する際に、交差検証で探索したいハイパーパラメータを選ぶ。そのために、探索したいパラメータの値として `tune::tune()` を指定する。
@@ -409,7 +412,7 @@ params_grid_df <-
 
 
 
-### CV計算の実行
+### クロスバリデーションの実行
 
 
 #### `tune::tune_grid()`
@@ -502,7 +505,7 @@ fit_resamples(
 
 
 
-### CV結果の確認
+### クロスバリデーションの結果の確認
 
 ```r
 tune::collect_metrics(cv_result_df) %>% 
@@ -528,7 +531,6 @@ fitted_model <- fit(model_best,
 
 ```
 
-### モデルオブジェクトの作成と探索するハイパラの指定
 
 
 
@@ -538,7 +540,8 @@ fitted_model <- fit(model_best,
 
 
 
-# 精度検証
+
+## 精度検証 : yardstick
 
 - `yardstick::roc_auc()`
 - `yardstick::pr_auc()`
