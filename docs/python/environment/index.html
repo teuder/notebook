@@ -4,11 +4,11 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0"><meta property="og:title" content="environment" />
-<meta property="og:description" content="Python 環境設定 https://www.medi-08-data-06.work/entry/python_env python と pip の関係 おそらく Python 実行ファイルには常に対になるpipがある。Pythonをインストールするとpipも一緒にインストールされる" />
+<meta property="og:description" content="Python 環境設定 色々な環境構築の方法があるが、ここでは pyenv と pipenv を使った方法を採用する。 pyenv python本体のバージョン管理、インストール イントールと設" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://teuder.github.io/notebook/python/environment/" />
 <meta property="article:published_time" content="2020-01-17T00:00:00+00:00" />
-<meta property="article:modified_time" content="2020-12-16T18:46:41+09:00" />
+<meta property="article:modified_time" content="2021-01-27T01:47:29+09:00" />
 <title>environment | notebook</title>
 <link rel="icon" href="/notebook/favicon.png" type="image/x-icon">
 
@@ -16,7 +16,7 @@
 <link rel="stylesheet" href="/notebook/book.min.07c38dce7b6800da2a75a565d4d975e38f837294e24d00b5aae363037012d64b.css" integrity="sha256-B8ONzntoANoqdaVl1Nl144&#43;DcpTiTQC1quNjA3AS1ks=">
 
 
-<script defer src="/notebook/search.min.e4ffe7e5e5578d7bb111c56e9decc841a8ad4502ba30aa361fe18a2e28f28a7f.js" integrity="sha256-5P/n5eVXjXuxEcVunezIQaitRQK6MKo2H&#43;GKLijyin8="></script>
+<script defer src="/notebook/search.min.0580a7c3f806b29d59ea90c6545634b95bcb26c793a998c68b64997807865d2d.js" integrity="sha256-BYCnw/gGsp1Z6pDGVFY0uVvLJseTqZjGi2SZeAeGXS0="></script>
 
 <!--
 Made with Book Theme
@@ -796,19 +796,17 @@ https://github.com/alex-shpak/hugo-book
 
       
 <article class="markdown"><h1 id="python-環境設定">Python 環境設定</h1>
-<p><a href="https://www.medi-08-data-06.work/entry/python_env">https://www.medi-08-data-06.work/entry/python_env</a></p>
-<p>python と pip の関係</p>
-<p>おそらく Python 実行ファイルには常に対になるpipがある。Pythonをインストールするとpipも一緒にインストールされる。</p>
-<h1 id="pyenv">pyenv</h1>
+<p>色々な環境構築の方法があるが、ここでは <code>pyenv</code> と <code>pipenv</code> を使った方法を採用する。</p>
+<h2 id="pyenv">pyenv</h2>
 <p>python本体のバージョン管理、インストール</p>
-<h2 id="イントールと設定">イントールと設定</h2>
+<h3 id="イントールと設定">イントールと設定</h3>
 <p><code>~/.zshrc</code> などに以下の記述を追加</p>
 <pre><code>export PYENV_ROOT=&quot;$HOME/.pyenv&quot;
 export PATH=&quot;$PYENV_ROOT/bin:$PATH&quot;
 eval &quot;$(pyenv init -)&quot;
-</code></pre><h3 id="mac">Mac</h3>
+</code></pre><h4 id="mac">Mac</h4>
 <pre><code>brew install pyenv
-</code></pre><h3 id="ubuntu-1804">Ubuntu 18.04</h3>
+</code></pre><h4 id="ubuntu-1804">Ubuntu 18.04</h4>
 <pre><code>sudo apt update &amp;&amp; sudo apt install -y --no-install-recommends \
         build-essential \
         libffi-dev \
@@ -821,11 +819,12 @@ eval &quot;$(pyenv init -)&quot;
 
 # Download pyenv
 git clone https://github.com/pyenv/pyenv.git ~/.pyenv   
-</code></pre><h3 id="windows">Windows</h3>
+</code></pre><h4 id="windows">Windows</h4>
 <p><code>pyenv-win</code> をインストールする。</p>
 <p>コマンドプロンプトで以下のコマンドを実行する</p>
 <p>以下の場所に <code>pyenv</code> がインストールされる</p>
 <p><code>C:\Users\USERNAME\.pyenv\pyenv-win\bin</code></p>
+<p>（ここでは pip を使ってしまっているので、すでに Python がインストールされている前提になってしまっている。Python がインストールされていることを前提としない方法を探した方が良いかもしれない）</p>
 <pre><code>pip install pyenv-win --target %USERPROFILE%/.pyenv
 </code></pre><p>新しい環境変数 :</p>
 <p>pipenv に pyenv を認識させるため</p>
@@ -1048,9 +1047,9 @@ sys.path.append('/usr/local/lib/python3.7/site-packages')
   
   <div>
     
-    <a class="flex align-center" href="https://github.com/teuder/notebook/commit/c290b72c6014b3b4cbee96fe83197e118e19b15d" title='Last modified 2020-12-16 by Masaki Tsuda' target="_blank" rel="noopener">
+    <a class="flex align-center" href="https://github.com/teuder/notebook/commit/389a4a1c465cba5fabb46d78559ac9f2a81686b0" title='Last modified 2021-01-27 by Masaki Tsuda' target="_blank" rel="noopener">
       <img src="/notebook/svg/calendar.svg" alt="Changed" />
-      <span>2020-12-16</span>
+      <span>2021-01-27</span>
     </a>
   </div>
   
@@ -1076,11 +1075,9 @@ sys.path.append('/usr/local/lib/python3.7/site-packages')
   <aside class="book-toc level-3 fixed">
     <nav id="TableOfContents">
   <ul>
-    <li><a href="#イントールと設定">イントールと設定</a>
+    <li><a href="#pyenv">pyenv</a>
       <ul>
-        <li><a href="#mac">Mac</a></li>
-        <li><a href="#ubuntu-1804">Ubuntu 18.04</a></li>
-        <li><a href="#windows">Windows</a></li>
+        <li><a href="#イントールと設定">イントールと設定</a></li>
       </ul>
     </li>
     <li><a href="#pyenv-を使ったpython本体のインストール">pyenv を使ったPython本体のインストール</a></li>

@@ -10,22 +10,15 @@ type: docs
 # Python 環境設定
 
 
-https://www.medi-08-data-06.work/entry/python_env
+色々な環境構築の方法があるが、ここでは `pyenv` と `pipenv` を使った方法を採用する。
 
 
-python と pip の関係
-
-おそらく Python 実行ファイルには常に対になるpipがある。Pythonをインストールするとpipも一緒にインストールされる。
-
-
-
-
-# pyenv
+## pyenv
 
 python本体のバージョン管理、インストール
 
 
-## イントールと設定
+### イントールと設定
 
 `~/.zshrc` などに以下の記述を追加
 
@@ -35,13 +28,13 @@ export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
 ```
 
-### Mac 
+#### Mac 
 
 ```
 brew install pyenv
 ```
 
-### Ubuntu 18.04
+#### Ubuntu 18.04
 
 ```
 sudo apt update && sudo apt install -y --no-install-recommends \
@@ -58,7 +51,7 @@ sudo apt update && sudo apt install -y --no-install-recommends \
 git clone https://github.com/pyenv/pyenv.git ~/.pyenv   
 ```
 
-### Windows
+#### Windows
 
 `pyenv-win` をインストールする。
 
@@ -67,6 +60,10 @@ git clone https://github.com/pyenv/pyenv.git ~/.pyenv
 以下の場所に `pyenv` がインストールされる
 
 `C:\Users\USERNAME\.pyenv\pyenv-win\bin`
+
+（ここでは pip を使ってしまっているので、すでに Python がインストールされている前提になってしまっている。Python がインストールされていることを前提としない方法を探した方が良いかもしれない）
+
+
 
 ```
 pip install pyenv-win --target %USERPROFILE%/.pyenv

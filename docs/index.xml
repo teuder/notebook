@@ -359,7 +359,7 @@
       <pubDate>Fri, 17 Jan 2020 00:00:00 +0000</pubDate>
       
       <guid>https://teuder.github.io/notebook/python/environment/</guid>
-      <description>Python 環境設定 https://www.medi-08-data-06.work/entry/python_env python と pip の関係 おそらく Python 実行ファイルには常に対になるpipがある。Pythonをインストールするとpipも一緒にインストールされる</description>
+      <description>Python 環境設定 色々な環境構築の方法があるが、ここでは pyenv と pipenv を使った方法を採用する。 pyenv python本体のバージョン管理、インストール イントールと設</description>
     </item>
     
     <item>
