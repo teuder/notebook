@@ -296,7 +296,7 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://teuder.github.io/notebook/r/reticulate/</guid>
-      <description>reticulate R から Python を呼び出すためのパッケージ 使用する Python を指定する .Rprofile で RETICULATE_PYTHON 環境変数に、使用するPythonを指定するのが安全 Sys.setenv(RETICULATE_PYTHON = &#39;/usr/local/bin/python3&#39;)</description>
+      <description>reticulate R から Python を呼び出すためのパッケージ 使用する Python を指定する .Rprofile で RETICULATE_PYTHON 環境変数に、使用するPythonを指定するのが安全 Sys.setenv(RETICULATE_PYTHON = &#39;/usr/local/bin/python3&#39;) pipenv で Python 環境を管理してい</description>
     </item>
     
     <item>
@@ -359,7 +359,7 @@
       <pubDate>Fri, 17 Jan 2020 00:00:00 +0000</pubDate>
       
       <guid>https://teuder.github.io/notebook/python/environment/</guid>
-      <description>Python 環境設定 https://www.medi-08-data-06.work/entry/python_env pyenv python本体のバージョン管理、インストール イントールと設定 ~/.zshrc などに以下の記述を追加 export PYENV_ROOT=&amp;quot;$HOME/.pyenv&amp;quot; export PATH=&amp;quot;$PYENV_ROOT/bin:$PATH&amp;quot; eval &amp;quot;$(pyenv init -)&amp;quot; Mac brew install pyenv Ubuntu 18.04 sudo apt update &amp;amp;&amp;amp; sudo apt</description>
+      <description>Python 環境設定 https://www.medi-08-data-06.work/entry/python_env python と pip の関係 おそらく Python 実行ファイルには常に対になるpipがある。Pythonをインストールするとpipも一緒にインストールされる</description>
     </item>
     
     <item>

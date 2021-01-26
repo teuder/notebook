@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0"><meta property="og:title" content="reticulate" />
-<meta property="og:description" content="reticulate R から Python を呼び出すためのパッケージ 使用する Python を指定する .Rprofile で RETICULATE_PYTHON 環境変数に、使用するPythonを指定するのが安全 Sys.setenv(RETICULATE_PYTHON = &#39;/usr/local/bin/python3&#39;)" />
+<meta property="og:description" content="reticulate R から Python を呼び出すためのパッケージ 使用する Python を指定する .Rprofile で RETICULATE_PYTHON 環境変数に、使用するPythonを指定するのが安全 Sys.setenv(RETICULATE_PYTHON = &#39;/usr/local/bin/python3&#39;) pipenv で Python 環境を管理してい" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://teuder.github.io/notebook/r/reticulate/" />
 <meta property="article:modified_time" content="2020-05-27T18:54:29+09:00" />
@@ -15,7 +15,7 @@
 <link rel="stylesheet" href="/notebook/book.min.07c38dce7b6800da2a75a565d4d975e38f837294e24d00b5aae363037012d64b.css" integrity="sha256-B8ONzntoANoqdaVl1Nl144&#43;DcpTiTQC1quNjA3AS1ks=">
 
 
-<script defer src="/notebook/search.min.d51b0131b02222b532ed57791613480a93dd7360a178dbe16e5d4b0bda0024a4.js" integrity="sha256-1RsBMbAiIrUy7Vd5FhNICpPdc2CheNvhbl1LC9oAJKQ="></script>
+<script defer src="/notebook/search.min.e4ffe7e5e5578d7bb111c56e9decc841a8ad4502ba30aa361fe18a2e28f28a7f.js" integrity="sha256-5P/n5eVXjXuxEcVunezIQaitRQK6MKo2H&#43;GKLijyin8="></script>
 
 <!--
 Made with Book Theme
@@ -799,6 +799,21 @@ https://github.com/alex-shpak/hugo-book
 <h1 id="使用する-python-を指定する">使用する Python を指定する</h1>
 <p><code>.Rprofile</code> で <code>RETICULATE_PYTHON</code> 環境変数に、使用するPythonを指定するのが安全</p>
 <pre><code>Sys.setenv(RETICULATE_PYTHON = '/usr/local/bin/python3')
+</code></pre><p>pipenv で Python 環境を管理している場合</p>
+<h2 id="pipenv-で作成した環境を利用する">Pipenv で作成した環境を利用する</h2>
+<p>R のプロジェクトフォルダに pipenv の環境が作成されている前提</p>
+<p>カレントフォルダはR のプロジェクトフォルダにいる前提</p>
+<p>Pipenv で作成した環境を <code>reticulate</code> で利用する。</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#111">venv</span> <span style="color:#f92672">&lt;-</span> <span style="color:#75af00">system</span><span style="color:#111">(</span><span style="color:#d88200">&#34;pipenv --venv&#34;</span><span style="color:#111">,</span> <span style="color:#111">inter</span> <span style="color:#f92672">=</span> <span style="color:#00a8c8">TRUE</span><span style="color:#111">)</span>
+<span style="color:#111">reticulate</span><span style="color:#f92672">::</span><span style="color:#75af00">use_virtualenv</span><span style="color:#111">(</span><span style="color:#111">venv</span><span style="color:#111">,</span> <span style="color:#111">required</span> <span style="color:#f92672">=</span> <span style="color:#00a8c8">TRUE</span><span style="color:#111">)</span>
+<span style="color:#111">reticulate</span><span style="color:#f92672">::</span><span style="color:#75af00">py_config</span><span style="color:#111">()</span>
+</code></pre></div><p>Windows の場合は <code>venv</code> のパスの文字列をRの書式に合わせるために変換をかませる</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#111">venv</span> <span style="color:#f92672">&lt;-</span> <span style="color:#75af00">system</span><span style="color:#111">(</span><span style="color:#d88200">&#34;pipenv --venv&#34;</span><span style="color:#111">,</span> <span style="color:#111">inter</span> <span style="color:#f92672">=</span> <span style="color:#00a8c8">TRUE</span><span style="color:#111">)</span>
+<span style="color:#111">venv</span> <span style="color:#f92672">&lt;-</span> <span style="color:#111">stringr</span><span style="color:#f92672">::</span><span style="color:#75af00">str_replace_all</span><span style="color:#111">(</span><span style="color:#111">stringr</span><span style="color:#f92672">::</span><span style="color:#75af00">str_sub</span><span style="color:#111">(</span><span style="color:#111">venv</span><span style="color:#111">,</span> <span style="color:#ae81ff">1</span><span style="color:#111">,</span> <span style="color:#ae81ff">-2</span><span style="color:#111">),</span> <span style="color:#d88200">&#34;\\\\&#34;</span><span style="color:#111">,</span> <span style="color:#d88200">&#34;/&#34;</span><span style="color:#111">)</span>
+<span style="color:#111">reticulate</span><span style="color:#f92672">::</span><span style="color:#75af00">use_virtualenv</span><span style="color:#111">(</span><span style="color:#111">venv</span><span style="color:#111">,</span> <span style="color:#111">required</span> <span style="color:#f92672">=</span> <span style="color:#00a8c8">TRUE</span><span style="color:#111">)</span>
+<span style="color:#111">reticulate</span><span style="color:#f92672">::</span><span style="color:#75af00">py_config</span><span style="color:#111">()</span>
+</code></pre></div><h1 id="reticulate-で使用されているpython環境を確認する">reticulate で使用されているPython環境を確認する</h1>
+<pre><code>reticulate::py_config()
 </code></pre></article>
 
       
@@ -832,7 +847,11 @@ https://github.com/alex-shpak/hugo-book
   
 
   <aside class="book-toc level-3 fixed">
-    <nav id="TableOfContents"></nav>
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#pipenv-で作成した環境を利用する">Pipenv で作成した環境を利用する</a></li>
+  </ul>
+</nav>
   </aside>
 
 

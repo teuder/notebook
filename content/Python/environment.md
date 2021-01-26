@@ -13,6 +13,11 @@ type: docs
 https://www.medi-08-data-06.work/entry/python_env
 
 
+python と pip の関係
+
+おそらく Python 実行ファイルには常に対になるpipがある。Pythonをインストールするとpipも一緒にインストールされる。
+
+
 
 
 # pyenv
@@ -53,9 +58,64 @@ sudo apt update && sudo apt install -y --no-install-recommends \
 git clone https://github.com/pyenv/pyenv.git ~/.pyenv   
 ```
 
+### Windows
+
+`pyenv-win` をインストールする。
+
+コマンドプロンプトで以下のコマンドを実行する
+
+以下の場所に `pyenv` がインストールされる
+
+`C:\Users\USERNAME\.pyenv\pyenv-win\bin`
+
+```
+pip install pyenv-win --target %USERPROFILE%/.pyenv
+```
+
+新しい環境変数 : 
+
+pipenv に pyenv を認識させるため
+
+PYENV_ROOT : %USERPROFILE%\.pyenv
+PYENV : %USERPROFILE%\.pyenv\pyenv-win
+
+環境変数PATHの先頭に追加
+%PYENV%\bin
+%PYENV%\shims
+
+環境変数 `PYENV_ROOT` に `%USERPROFILE%\.pyenv\pyenv-win` をセットすると、`pipenv` が `pyenv` を認識するようになるが、`pipenv install` などを実行するとエラーになる。そのため結局使えない。
+
+なので `pipenv` から `pyenv` を使って自動でPythonをインストールするのはあきらめる。pipenv の環境で使われる Python は pyenv を直接使って別途インストールする。
+
+
+
+
 ## pyenv を使ったPython本体のインストール
 
 `pyenv` を使ったPython本体のインストール方法
+
+インストールできるPythonの一覧
+
+```
+pyenv install -l
+```
+
+バージョンを指定してインストール
+
+```
+pyenv install 3.8.2
+```
+
+デフォルトで使う Python バージョンを指定する
+
+```
+pyenv local 3.8.2
+pyenv rehash
+```
+
+
+
+
 
 ```
 # 2系の最新版のバージョン番号を取得
@@ -79,6 +139,7 @@ pyenv global $python2 $python37
 pyenv global $python36
 pyenv rehash
 ```
+
 
 
 # pipenv
@@ -123,7 +184,7 @@ pyenv rehash
 brew install pipenv
 ```
 
-ubuntu
+*ubuntu* 
 
 ubuntu では pip を使って pipeenv をインストールする。
 
@@ -137,6 +198,18 @@ sudo apt install python3-pip
 ```
 pip3 install pipenv
 ```
+
+Windows
+
+Windows では pip を使って pipeenv をインストールする。
+
+コマンドプロンプト
+
+```
+pip install pipenv
+```
+
+
 
 
 ## 環境の作成

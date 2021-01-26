@@ -80,7 +80,7 @@ c.ContentsManager.default_jupytext_formats = "ipynb,py,Rmd"
 jupyter の `Edit > Edit Notebook Metadata` から、以下の記述を先頭に追加する。
 
 ```
-"jupytext": {"formats": "ipynb,py"},
+"jupytext": {"formats": "ipynb,py,Rmd"},
 ```
 
 ここで `.py, .ipynb` 以外にも、`md, Rmd, jl, R` などのフォーマットが使える。

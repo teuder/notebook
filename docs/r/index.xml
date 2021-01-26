@@ -125,7 +125,7 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://teuder.github.io/notebook/r/reticulate/</guid>
-      <description>reticulate R から Python を呼び出すためのパッケージ 使用する Python を指定する .Rprofile で RETICULATE_PYTHON 環境変数に、使用するPythonを指定するのが安全 Sys.setenv(RETICULATE_PYTHON = &#39;/usr/local/bin/python3&#39;)</description>
+      <description>reticulate R から Python を呼び出すためのパッケージ 使用する Python を指定する .Rprofile で RETICULATE_PYTHON 環境変数に、使用するPythonを指定するのが安全 Sys.setenv(RETICULATE_PYTHON = &#39;/usr/local/bin/python3&#39;) pipenv で Python 環境を管理してい</description>
     </item>
     
     <item>

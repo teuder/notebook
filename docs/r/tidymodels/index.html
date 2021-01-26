@@ -7,7 +7,7 @@
 <meta property="og:description" content="tidymodels tidymodels は統一的なインターフェースでモデリングを行うための、いくつかのパッケージをまとめたもの。 rsample ：訓練データ/テストデータの分割 recipe ：データの前" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://teuder.github.io/notebook/r/tidymodels/" />
-<meta property="article:modified_time" content="2021-01-24T17:25:07+09:00" />
+<meta property="article:modified_time" content="2021-01-24T17:42:47+09:00" />
 <title>tidymodels | notebook</title>
 <link rel="icon" href="/notebook/favicon.png" type="image/x-icon">
 
@@ -15,7 +15,7 @@
 <link rel="stylesheet" href="/notebook/book.min.07c38dce7b6800da2a75a565d4d975e38f837294e24d00b5aae363037012d64b.css" integrity="sha256-B8ONzntoANoqdaVl1Nl144&#43;DcpTiTQC1quNjA3AS1ks=">
 
 
-<script defer src="/notebook/search.min.d51b0131b02222b532ed57791613480a93dd7360a178dbe16e5d4b0bda0024a4.js" integrity="sha256-1RsBMbAiIrUy7Vd5FhNICpPdc2CheNvhbl1LC9oAJKQ="></script>
+<script defer src="/notebook/search.min.e4ffe7e5e5578d7bb111c56e9decc841a8ad4502ba30aa361fe18a2e28f28a7f.js" integrity="sha256-5P/n5eVXjXuxEcVunezIQaitRQK6MKo2H&#43;GKLijyin8="></script>
 
 <!--
 Made with Book Theme
@@ -822,21 +822,157 @@ https://github.com/alex-shpak/hugo-book
   recipes::recipe(formula = Y ~ Area)
 </code></pre><h3 id="各前処理ステップの定義--step_">各前処理ステップの定義 : step_*()</h3>
 <p>データに対する加工は <code>step_*()</code> 関数を使う</p>
+<p>dplyr</p>
+<ul>
+<li><code>step_filter</code>	Filter rows using dplyr</li>
+<li><code>step_arrange</code>	Sort rows using dplyr</li>
+<li><code>step_mutate</code>	Add new variables using &lsquo;mutate&rsquo;</li>
+<li><code>step_mutate_at</code>	Mutate multiple columns</li>
+<li><code>step_rename</code>	Rename variables by name</li>
+<li><code>step_rename_at</code>	Rename multiple columns</li>
+<li><code>step_slice</code>	Filter rows by position using dplyr</li>
+</ul>
+<p>数値データ変換</p>
+<ul>
+<li><code>step_center</code>	Centering numeric data</li>
+<li><code>step_cut</code>	Cut a numeric variable into a factor</li>
+<li><code>step_discretize</code>	Discretize Numeric Variables</li>
+<li><code>step_normalize</code>	Center and scale numeric data</li>
+<li><code>step_log</code>	Logarithmic Transformation</li>
+<li><code>step_logit</code>	Logit Transformation</li>
+<li><code>step_BoxCox</code>	Box-Cox Transformation for Non-Negative Data</li>
+<li><code>step_hyperbolic</code>	Hyperbolic Transformations</li>
+<li><code>step_inverse</code>	Inverse Transformation</li>
+<li><code>step_invlogit</code>	Inverse Logit Transformation</li>
+<li><code>step_range</code>	Scaling Numeric Data to a Specific Range</li>
+<li><code>step_relu</code>	Apply (Smoothed) Rectified Linear Transformation</li>
+<li><code>step_scale</code>	Scaling Numeric Data</li>
+<li><code>step_sqrt</code>	Square Root Transformation</li>
+<li><code>step_YeoJohnson</code>	Yeo-Johnson Transformation</li>
+</ul>
+<p>カテゴリ変数 factor</p>
+<ul>
+<li><code>step_factor2string</code>	Convert Factors to Strings</li>
+<li><code>step_integer</code>	Convert values to predefined integers</li>
+<li><code>step_bin2factor</code>	Create a Factors from A Dummy Variable</li>
+<li><code>step_novel</code>	Simple Value Assignments for Novel Factor Levels</li>
+<li><code>step_num2factor</code>	Convert Numbers to Factors</li>
+<li><code>step_other</code>	Collapse Some Categorical Levels</li>
+<li><code>step_ordinalscore</code>	Convert Ordinal Factors to Numeric Scores</li>
+<li><code>step_relevel</code>	Relevel factors to a desired level</li>
+<li><code>step_string2factor</code>	Convert Strings to Factors</li>
+<li><code>step_unknown</code>	Assign missing categories to &ldquo;unknown&rdquo;</li>
+<li><code>step_unorder</code>	Convert Ordered Factors to Unordered Factors</li>
+</ul>
+<p>変数取捨選択</p>
+<ul>
+<li>
+<p><code>step_shuffle</code>	Shuffle Variables</p>
+</li>
+<li>
+<p><code>step_rm</code>	General Variable Filter</p>
+</li>
+<li>
+<p><code>step_zv</code>	Zero Variance Filter</p>
+</li>
+<li>
+<p><code>step_nzv</code>	Near-Zero Variance Filter</p>
+</li>
+<li>
+<p><code>step_corr</code>	High Correlation Filter</p>
+</li>
+<li>
+<p><code>step_lincomb</code>	Linear Combination Filter</p>
+</li>
+</ul>
+<p>#変数追加</p>
+<ul>
+<li><code>step_count</code>	Create Counts of Patterns using Regular Expressions</li>
+<li><code>step_ratio</code>	Ratio Variable Creation</li>
+</ul>
+<p>時系列</p>
+<ul>
+<li><code>step_date</code>	Date Feature Generator</li>
+<li><code>step_holiday</code>	Holiday Feature Generator</li>
+<li><code>step_lag</code>	Create a lagged predictor</li>
+</ul>
+<p>サンプリング</p>
+<ul>
+<li><code>step_downsample</code>	Down-Sample a Data Set Based on a Factor Variable</li>
+<li><code>step_sample</code>	Sample rows using dplyr</li>
+<li><code>step_upsample</code>	Up-Sample a Data Set Based on a Factor Variable</li>
+</ul>
+<p>統計モデリング</p>
+<ul>
+<li><code>step_dummy</code>	Dummy Variables Creation</li>
+<li><code>step_interact</code>	Create Interaction Variables</li>
+<li><code>step_intercept</code>	Add intercept (or constant) column</li>
+<li><code>step_regex</code>	Create Dummy Variables using Regular Expressions</li>
+</ul>
+<p>地理情報</p>
+<ul>
+<li><code>step_geodist</code>	Distance between two locations</li>
+<li><code>step_spatialsign</code>	Spatial Sign Preprocessing</li>
+</ul>
+<p>欠損値</p>
+<ul>
+<li><code>step_naomit</code>	Remove observations with missing values</li>
+</ul>
+<p>補完 : imputation</p>
+<ul>
+<li><code>step_knnimpute</code>	Imputation via K-Nearest Neighbors</li>
+<li><code>step_lowerimpute</code>	Impute Numeric Data Below the Threshold of Measurement</li>
+<li><code>step_meanimpute</code>	Impute Numeric Data Using the Mean</li>
+<li><code>step_medianimpute</code>	Impute Numeric Data Using the Median</li>
+<li><code>step_modeimpute</code>	Impute Nominal Data Using the Most Common Value</li>
+<li><code>step_impute_linear</code>	Imputation of numeric variables via a linear model.</li>
+<li><code>step_bagimpute</code>	Imputation via Bagged Trees</li>
+<li><code>step_rollimpute</code>	Impute Numeric Data Using a Rolling Window Statistic</li>
+</ul>
+<p>抽出？ : Extraction</p>
+<ul>
+<li><code>step_ica</code>	ICA Signal Extraction</li>
+<li><code>step_kpca</code>	Kernel PCA Signal Extraction</li>
+<li><code>step_kpca_poly</code>	Polynomial Kernel PCA Signal Extraction</li>
+<li><code>step_kpca_rbf</code>	Radial Basis Function Kernel PCA Signal Extraction</li>
+<li><code>step_nnmf</code>	NNMF Signal Extraction</li>
+<li><code>step_pca</code>	PCA Signal Extraction</li>
+<li><code>step_pls</code>	Partial Least Squares Feature Extraction</li>
+</ul>
+<p>その他</p>
+<ul>
+<li>
+<p><code>step_bs</code>	B-Spline Basis Functions</p>
+</li>
+<li>
+<p><code>step_ns</code>	Natural Spline Basis Functions</p>
+</li>
+<li>
+<p><code>step_poly</code>	Orthogonal Polynomial Basis Functions</p>
+</li>
+<li>
+<p><code>step_window</code>	Moving Window Functions</p>
+</li>
+<li>
+<p><code>step_classdist</code>	Distances to Class Centroids</p>
+</li>
+<li>
+<p><code>step_depth</code>	Data Depths</p>
+</li>
+<li>
+<p><code>step_isomap</code>	Isomap Embedding</p>
+</li>
+<li>
+<p><code>step_profile</code>	Create a Profiling Version of a Data Set</p>
+</li>
+</ul>
 <h4 id="変数変換-step">変数変換 step</h4>
 <h4 id="対数変換--step_log">対数変換 : step_log()</h4>
 <p>step_log(Y, Area)</p>
 <h4 id="交互作用変数の追加--step_interact">交互作用変数の追加 : step_interact()</h4>
 <p>step_interact(terms = ~ Solar.R:Wind)</p>
 <p>ようやく tidymodels のお気持ちがわかってきた気がする</p>
-<h4 id="skiptrue-について"><code>skip=TRUE</code> について</h4>
-<p><code>skip=TRUE</code> が指定されたステップは、 <code>recipes::prep()</code> を実行したときには適用されるが、<code>recipes::bake()</code> を実行したときには適用されない。</p>
-<p>次のように考えてもよいかもしれない</p>
-<ul>
-<li><code>recipes::prep()</code> は訓練データ作成用にレシピを実行する。</li>
-<li><code>recipes::bake()</code> は新データ・テストデータ・検証データ作成用にレシピを実行する</li>
-</ul>
-<p><code>skip = TRUE</code> を指定された処理は訓練データを作成するときには使用されるが、新データやテストデータや検証データに対しては使用されない。一般的にはモデリングのために目的変数を使ったサンプリングを実施するステップに対しては <code>skip = TRUE</code> を指定する。</p>
-<h4 id="サンプリング">サンプリング</h4>
+<h4 id="サンプリングステップ">サンプリング・ステップ</h4>
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#75715e"># サンプリングを含むレシピを作成 (prep()しない)</span>
 <span style="color:#111">sampling_recipe</span> <span style="color:#f92672">&lt;-</span>
   <span style="color:#111">recipes</span><span style="color:#f92672">::</span><span style="color:#75af00">recipe</span><span style="color:#111">(</span><span style="color:#111">Y</span> <span style="color:#f92672">~</span> <span style="color:#111">.,</span> <span style="color:#111">data</span> <span style="color:#f92672">=</span> <span style="color:#111">train_df</span><span style="color:#111">)</span> <span style="color:#f92672">%&gt;%</span> 
@@ -859,29 +995,30 @@ https://github.com/alex-shpak/hugo-book
 <span style="color:#111">sampled_train_df</span> <span style="color:#f92672">&lt;-</span>
   <span style="color:#111">sampling_recipe</span><span style="color:#f92672">$</span><span style="color:#111">template</span>
 
-<span style="color:#75715e"># 1. レシピオブジェクトの中に存在する</span>
+<span style="color:#75715e"># 2. レシピオブジェクトの中に存在する</span>
 <span style="color:#75715e">#    レシピ適用済みデータを bake(newdata=NULL) で取り出す</span>
 <span style="color:#111">sampled_train_df</span> <span style="color:#f92672">&lt;-</span>
   <span style="color:#111">sampling_recipe</span> <span style="color:#f92672">%&gt;%</span>
   <span style="color:#75af00">bake</span><span style="color:#111">(</span><span style="color:#111">newdata</span><span style="color:#f92672">=</span><span style="color:#00a8c8">NULL</span><span style="color:#111">)</span>
 
-
-
+<span style="color:#75715e"># 注意：bake() に新データを渡して新データにレシピを適用したときには、サンプリングステップ は実行されない。(正確は `skip = TRUE` が指定されたステップは実行されない) </span>
+<span style="color:#111">NOT_sampled_test_df</span> <span style="color:#f92672">&lt;-</span>
+  <span style="color:#111">sampling_recipe</span> <span style="color:#f92672">%&gt;%</span>
+  <span style="color:#75af00">bake</span><span style="color:#111">(</span><span style="color:#111">newdata</span><span style="color:#f92672">=</span><span style="color:#111">test_df</span><span style="color:#111">)</span> <span style="color:#75715e"># newdata で渡したデータにはサンプリングは適用されない</span>
 </code></pre></div><h4 id="サンプリングを含んだクロスバリデーション">サンプリングを含んだクロスバリデーション</h4>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#75715e"># サンプリングを含むレシピを作成 (prep()しない)</span>
+<p>クロスバリデーションをするときには、Validation データにはサンプリングを実施しないが、学習データに対してはサンプリングを実施したい。</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#75715e"># CVのために（サンプリングをされていない）訓練データを分割する</span>
+<span style="color:#111">df_cv</span> <span style="color:#f92672">&lt;-</span>
+  <span style="color:#111">rsample</span><span style="color:#f92672">::</span><span style="color:#75af00">vfold_cv</span><span style="color:#111">(</span><span style="color:#111">train_df</span><span style="color:#111">,</span> <span style="color:#111">v</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">5</span><span style="color:#111">,</span> <span style="color:#111">repeats</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span><span style="color:#111">)</span>
+
+<span style="color:#75715e"># サンプリングを含むレシピを作成 ()</span>
+<span style="color:#75715e"># 注意するのはここでは prep() しないということ</span>
 <span style="color:#111">sampling_recipe</span> <span style="color:#f92672">&lt;-</span>
   <span style="color:#111">recipes</span><span style="color:#f92672">::</span><span style="color:#75af00">recipe</span><span style="color:#111">(</span><span style="color:#111">Y</span> <span style="color:#f92672">~</span> <span style="color:#111">.,</span> <span style="color:#111">data</span> <span style="color:#f92672">=</span> <span style="color:#111">train_df</span><span style="color:#111">)</span> <span style="color:#f92672">%&gt;%</span> 
-  <span style="color:#75715e"># 目的変数 Y の値に基づいてサンプリングする</span>
-  <span style="color:#75715e"># 訓練データに対してはサンプリングするが</span>
   <span style="color:#75715e"># テストデータや新規データに対してはサンプリングしない場合は skip = TRUE を指定する。</span>
-  <span style="color:#75715e"># この時点でサンプリングのための乱数 seed は固定される</span>
   <span style="color:#111">themis</span><span style="color:#f92672">::</span><span style="color:#75af00">step_downsample</span><span style="color:#111">(</span><span style="color:#111">Y</span><span style="color:#111">,</span> <span style="color:#111">under_ratio</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.5</span><span style="color:#111">,</span> <span style="color:#111">skip</span> <span style="color:#f92672">=</span> <span style="color:#00a8c8">TRUE</span><span style="color:#111">)</span> 
   <span style="color:#75715e"># このレシピを使ってクロスバリデーションをする場合には、ここでは prep() しない</span>
   <span style="color:#75715e"># おそらく rsample::vfold_cv() の中で prep() される</span>
-
-<span style="color:#75715e"># CVのために訓練データを分割する</span>
-<span style="color:#111">df_cv</span> <span style="color:#f92672">&lt;-</span>
-  <span style="color:#111">rsample</span><span style="color:#f92672">::</span><span style="color:#75af00">vfold_cv</span><span style="color:#111">(</span><span style="color:#111">train_df</span><span style="color:#111">,</span> <span style="color:#111">v</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">5</span><span style="color:#111">,</span> <span style="color:#111">repeats</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span><span style="color:#111">)</span>
 
 <span style="color:#75715e"># CV を実行する</span>
 <span style="color:#111">cv_result_df</span> <span style="color:#f92672">&lt;-</span>
@@ -893,15 +1030,14 @@ https://github.com/alex-shpak/hugo-book
     <span style="color:#111">metrics</span> <span style="color:#f92672">=</span> <span style="color:#111">yardstick</span><span style="color:#f92672">::</span><span style="color:#75af00">metric_set</span><span style="color:#111">(</span><span style="color:#111">yardstick</span><span style="color:#f92672">::</span><span style="color:#111">pr_auc</span><span style="color:#111">,</span> <span style="color:#111">yardstick</span><span style="color:#f92672">::</span><span style="color:#111">roc_auc</span><span style="color:#111">),</span>
     <span style="color:#111">control</span> <span style="color:#f92672">=</span> <span style="color:#111">tune</span><span style="color:#f92672">::</span><span style="color:#75af00">control_grid</span><span style="color:#111">(</span><span style="color:#111">verbose</span> <span style="color:#f92672">=</span> <span style="color:#00a8c8">TRUE</span><span style="color:#111">)</span>
   <span style="color:#111">)</span>
-
-
-</code></pre></div><pre><code># Partitioning data for CV
-# Deference between V1 and V2 is V2 uses train_df without down-sampling.
-
-</code></pre><p>recipes::recipe(Y ~ ., data = train_df) %&gt;%
-themis::step_downsample(under_ratio = 0.5, skip = TRUE) %&gt;%
-recipes::prep(retain = TRUE) %&gt;%
-recipes::bake(new_data = NULL)</p>
+</code></pre></div><h4 id="skiptrue-について"><code>skip=TRUE</code> について</h4>
+<p><code>skip=TRUE</code> が指定されたステップは、 <code>recipes::prep(retain = TRUE)</code> を実行したときには適用されるが、<code>recipes::bake(newdata = new_df)</code> を実行したときには適用されない。</p>
+<p>次のように考えてもよいかもしれない</p>
+<ul>
+<li><code>recipes::prep()</code> は訓練データ作成用にレシピを実行する。</li>
+<li><code>recipes::bake()</code> は新データ・テストデータ・検証データ作成用にレシピを実行する</li>
+</ul>
+<p><code>skip = TRUE</code> を指定された処理は訓練データを作成するときには使用されるが、新データやテストデータや検証データに対しては使用されない。不均衡データ対策のためなど、目的変数を使ったサンプリングを実施するステップに対しては <code>skip = TRUE</code> を指定する。</p>
 <h4 id="step_-の中での変数の指定の仕方">step_*() の中での変数の指定の仕方</h4>
 <p>step_log(all_predictors(), all_outcomes())</p>
 <p>dplyrの　starts_with() contains() 等も使える</p>
@@ -1155,7 +1291,7 @@ recipes::bake(new_data = NULL)</p>
   
   <div>
     
-    <a class="flex align-center" href="https://github.com/teuder/notebook/commit/775e3435f6fc52a2aea567ca68ff5c80b47cc37e" title='Last modified 2021-01-24 by Masaki Tsuda' target="_blank" rel="noopener">
+    <a class="flex align-center" href="https://github.com/teuder/notebook/commit/e54d5bc7ebb16c959ccc7b290ff2277fd0fd0a1f" title='Last modified 2021-01-24 by Masaki Tsuda' target="_blank" rel="noopener">
       <img src="/notebook/svg/calendar.svg" alt="Changed" />
       <span>2021-01-24</span>
     </a>

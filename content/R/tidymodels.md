@@ -61,6 +61,138 @@ mod_rec <-
 データに対する加工は `step_*()` 関数を使う
 
 
+dplyr
+
+- `step_filter`	Filter rows using dplyr
+- `step_arrange`	Sort rows using dplyr
+- `step_mutate`	Add new variables using 'mutate'
+- `step_mutate_at`	Mutate multiple columns
+- `step_rename`	Rename variables by name
+- `step_rename_at`	Rename multiple columns
+- `step_slice`	Filter rows by position using dplyr
+
+
+
+
+数値データ変換
+
+- `step_center`	Centering numeric data
+- `step_cut`	Cut a numeric variable into a factor
+- `step_discretize`	Discretize Numeric Variables
+- `step_normalize`	Center and scale numeric data
+- `step_log`	Logarithmic Transformation
+- `step_logit`	Logit Transformation
+- `step_BoxCox`	Box-Cox Transformation for Non-Negative Data
+- `step_hyperbolic`	Hyperbolic Transformations
+- `step_inverse`	Inverse Transformation
+- `step_invlogit`	Inverse Logit Transformation
+- `step_range`	Scaling Numeric Data to a Specific Range
+- `step_relu`	Apply (Smoothed) Rectified Linear Transformation
+- `step_scale`	Scaling Numeric Data
+- `step_sqrt`	Square Root Transformation
+- `step_YeoJohnson`	Yeo-Johnson Transformation
+
+
+カテゴリ変数 factor
+
+- `step_factor2string`	Convert Factors to Strings
+- `step_integer`	Convert values to predefined integers
+- `step_bin2factor`	Create a Factors from A Dummy Variable
+- `step_novel`	Simple Value Assignments for Novel Factor Levels
+- `step_num2factor`	Convert Numbers to Factors
+- `step_other`	Collapse Some Categorical Levels
+- `step_ordinalscore`	Convert Ordinal Factors to Numeric Scores
+- `step_relevel`	Relevel factors to a desired level
+- `step_string2factor`	Convert Strings to Factors
+- `step_unknown`	Assign missing categories to "unknown"
+- `step_unorder`	Convert Ordered Factors to Unordered Factors
+
+変数取捨選択
+
+- `step_shuffle`	Shuffle Variables
+
+- `step_rm`	General Variable Filter
+- `step_zv`	Zero Variance Filter
+- `step_nzv`	Near-Zero Variance Filter
+- `step_corr`	High Correlation Filter
+- `step_lincomb`	Linear Combination Filter
+
+#変数追加
+
+- `step_count`	Create Counts of Patterns using Regular Expressions
+- `step_ratio`	Ratio Variable Creation
+
+時系列
+
+- `step_date`	Date Feature Generator
+- `step_holiday`	Holiday Feature Generator
+- `step_lag`	Create a lagged predictor
+
+サンプリング
+
+- `step_downsample`	Down-Sample a Data Set Based on a Factor Variable
+- `step_sample`	Sample rows using dplyr
+- `step_upsample`	Up-Sample a Data Set Based on a Factor Variable
+
+統計モデリング
+
+- `step_dummy`	Dummy Variables Creation
+- `step_interact`	Create Interaction Variables
+- `step_intercept`	Add intercept (or constant) column
+- `step_regex`	Create Dummy Variables using Regular Expressions
+
+地理情報
+
+- `step_geodist`	Distance between two locations
+- `step_spatialsign`	Spatial Sign Preprocessing
+
+欠損値
+
+- `step_naomit`	Remove observations with missing values
+
+補完 : imputation
+
+- `step_knnimpute`	Imputation via K-Nearest Neighbors
+- `step_lowerimpute`	Impute Numeric Data Below the Threshold of Measurement
+- `step_meanimpute`	Impute Numeric Data Using the Mean
+- `step_medianimpute`	Impute Numeric Data Using the Median
+- `step_modeimpute`	Impute Nominal Data Using the Most Common Value
+- `step_impute_linear`	Imputation of numeric variables via a linear model.
+- `step_bagimpute`	Imputation via Bagged Trees
+- `step_rollimpute`	Impute Numeric Data Using a Rolling Window Statistic
+
+抽出？ : Extraction
+
+- `step_ica`	ICA Signal Extraction
+- `step_kpca`	Kernel PCA Signal Extraction
+- `step_kpca_poly`	Polynomial Kernel PCA Signal Extraction
+- `step_kpca_rbf`	Radial Basis Function Kernel PCA Signal Extraction
+- `step_nnmf`	NNMF Signal Extraction
+- `step_pca`	PCA Signal Extraction
+- `step_pls`	Partial Least Squares Feature Extraction
+
+その他
+
+- `step_bs`	B-Spline Basis Functions
+- `step_ns`	Natural Spline Basis Functions
+- `step_poly`	Orthogonal Polynomial Basis Functions
+- `step_window`	Moving Window Functions
+
+- `step_classdist`	Distances to Class Centroids
+
+- `step_depth`	Data Depths
+- `step_isomap`	Isomap Embedding
+
+- `step_profile`	Create a Profiling Version of a Data Set
+
+
+
+
+
+
+
+
+
 #### 変数変換 step
 
 
@@ -79,20 +211,8 @@ step_interact(terms = ~ Solar.R:Wind)
 
 ようやく tidymodels のお気持ちがわかってきた気がする
 
-#### `skip=TRUE` について
 
-`skip=TRUE` が指定されたステップは、 `recipes::prep()` を実行したときには適用されるが、`recipes::bake()` を実行したときには適用されない。
-
-次のように考えてもよいかもしれない
-
-- `recipes::prep()` は訓練データ作成用にレシピを実行する。
-- `recipes::bake()` は新データ・テストデータ・検証データ作成用にレシピを実行する
-
-
-`skip = TRUE` を指定された処理は訓練データを作成するときには使用されるが、新データやテストデータや検証データに対しては使用されない。一般的にはモデリングのために目的変数を使ったサンプリングを実施するステップに対しては `skip = TRUE` を指定する。
-
-
-#### サンプリング
+#### サンプリング・ステップ
 
 
 ```r
@@ -118,36 +238,38 @@ sampling_recipe <-
 sampled_train_df <-
   sampling_recipe$template
 
-# 1. レシピオブジェクトの中に存在する
+# 2. レシピオブジェクトの中に存在する
 #    レシピ適用済みデータを bake(newdata=NULL) で取り出す
 sampled_train_df <-
   sampling_recipe %>%
   bake(newdata=NULL)
 
-
-
+# 注意：bake() に新データを渡して新データにレシピを適用したときには、サンプリングステップ は実行されない。(正確は `skip = TRUE` が指定されたステップは実行されない) 
+NOT_sampled_test_df <-
+  sampling_recipe %>%
+  bake(newdata=test_df) # newdata で渡したデータにはサンプリングは適用されない
 ```
-
 
 
 
 #### サンプリングを含んだクロスバリデーション
 
+クロスバリデーションをするときには、Validation データにはサンプリングを実施しないが、学習データに対してはサンプリングを実施したい。
+
+
 ```r
-# サンプリングを含むレシピを作成 (prep()しない)
+# CVのために（サンプリングをされていない）訓練データを分割する
+df_cv <-
+  rsample::vfold_cv(train_df, v = 5, repeats = 1)
+
+# サンプリングを含むレシピを作成 ()
+# 注意するのはここでは prep() しないということ
 sampling_recipe <-
   recipes::recipe(Y ~ ., data = train_df) %>% 
-  # 目的変数 Y の値に基づいてサンプリングする
-  # 訓練データに対してはサンプリングするが
   # テストデータや新規データに対してはサンプリングしない場合は skip = TRUE を指定する。
-  # この時点でサンプリングのための乱数 seed は固定される
   themis::step_downsample(Y, under_ratio = 0.5, skip = TRUE) 
   # このレシピを使ってクロスバリデーションをする場合には、ここでは prep() しない
   # おそらく rsample::vfold_cv() の中で prep() される
-
-# CVのために訓練データを分割する
-df_cv <-
-  rsample::vfold_cv(train_df, v = 5, repeats = 1)
 
 # CV を実行する
 cv_result_df <-
@@ -159,20 +281,25 @@ cv_result_df <-
     metrics = yardstick::metric_set(yardstick::pr_auc, yardstick::roc_auc),
     control = tune::control_grid(verbose = TRUE)
   )
-
-
 ```
 
-```
-# Partitioning data for CV
-# Deference between V1 and V2 is V2 uses train_df without down-sampling.
 
-```
 
-  recipes::recipe(Y ~ ., data = train_df) %>% 
-  themis::step_downsample(under_ratio = 0.5, skip = TRUE) %>% 
-  recipes::prep(retain = TRUE) %>% 
-  recipes::bake(new_data = NULL)
+
+
+
+#### `skip=TRUE` について
+
+`skip=TRUE` が指定されたステップは、 `recipes::prep(retain = TRUE)` を実行したときには適用されるが、`recipes::bake(newdata = new_df)` を実行したときには適用されない。
+
+次のように考えてもよいかもしれない
+
+- `recipes::prep()` は訓練データ作成用にレシピを実行する。
+- `recipes::bake()` は新データ・テストデータ・検証データ作成用にレシピを実行する
+
+
+`skip = TRUE` を指定された処理は訓練データを作成するときには使用されるが、新データやテストデータや検証データに対しては使用されない。不均衡データ対策のためなど、目的変数を使ったサンプリングを実施するステップに対しては `skip = TRUE` を指定する。
+
 
 
 
