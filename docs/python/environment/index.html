@@ -8,7 +8,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://teuder.github.io/notebook/python/environment/" />
 <meta property="article:published_time" content="2020-01-17T00:00:00+00:00" />
-<meta property="article:modified_time" content="2021-01-27T01:47:29+09:00" />
+<meta property="article:modified_time" content="2021-01-27T01:56:24+09:00" />
 <title>environment | notebook</title>
 <link rel="icon" href="/notebook/favicon.png" type="image/x-icon">
 
@@ -16,7 +16,7 @@
 <link rel="stylesheet" href="/notebook/book.min.07c38dce7b6800da2a75a565d4d975e38f837294e24d00b5aae363037012d64b.css" integrity="sha256-B8ONzntoANoqdaVl1Nl144&#43;DcpTiTQC1quNjA3AS1ks=">
 
 
-<script defer src="/notebook/search.min.0580a7c3f806b29d59ea90c6545634b95bcb26c793a998c68b64997807865d2d.js" integrity="sha256-BYCnw/gGsp1Z6pDGVFY0uVvLJseTqZjGi2SZeAeGXS0="></script>
+<script defer src="/notebook/search.min.e547fbe953df7a62113ba0e33ac360bdff1df0fc244988d06c9036af67f8d86b.js" integrity="sha256-5Uf76VPfemIRO6DjOsNgvf8d8PwkSYjQbJA2r2f42Gs="></script>
 
 <!--
 Made with Book Theme
@@ -113,6 +113,16 @@ https://github.com/alex-shpak/hugo-book
       
         <li>
 
+  <a href="/notebook/python/bigquery/" >
+      BigQuery
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
   <a href="/notebook/python/environment/"  class="active">
       environment
   </a>
@@ -125,6 +135,16 @@ https://github.com/alex-shpak/hugo-book
 
   <a href="/notebook/python/jupyter/" >
       jupyter
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/python/pandas/" >
+      Pandas
   </a>
 
 </li>
@@ -821,10 +841,8 @@ eval &quot;$(pyenv init -)&quot;
 git clone https://github.com/pyenv/pyenv.git ~/.pyenv   
 </code></pre><h4 id="windows">Windows</h4>
 <p><code>pyenv-win</code> をインストールする。</p>
-<p>コマンドプロンプトで以下のコマンドを実行する</p>
-<p>以下の場所に <code>pyenv</code> がインストールされる</p>
-<p><code>C:\Users\USERNAME\.pyenv\pyenv-win\bin</code></p>
-<p>（ここでは pip を使ってしまっているので、すでに Python がインストールされている前提になってしまっている。Python がインストールされていることを前提としない方法を探した方が良いかもしれない）</p>
+<p>コマンドプロンプトで以下のコマンドを実行すると、<code>C:\Users\USERNAME\.pyenv\pyenv-win\bin</code> に <code>pyenv</code> がインストールされる</p>
+<p>（この方法では pip を使ってしまっているので、すでに Python がインストールされている前提になってしまっている。git のレポジトリからpyenv-winを zipでダウンロードして展開する方が良いかも。）</p>
 <pre><code>pip install pyenv-win --target %USERPROFILE%/.pyenv
 </code></pre><p>新しい環境変数 :</p>
 <p>pipenv に pyenv を認識させるため</p>
@@ -1047,7 +1065,7 @@ sys.path.append('/usr/local/lib/python3.7/site-packages')
   
   <div>
     
-    <a class="flex align-center" href="https://github.com/teuder/notebook/commit/389a4a1c465cba5fabb46d78559ac9f2a81686b0" title='Last modified 2021-01-27 by Masaki Tsuda' target="_blank" rel="noopener">
+    <a class="flex align-center" href="https://github.com/teuder/notebook/commit/2229c99fe2e840c74a77798dbb2a709a728a8bda" title='Last modified 2021-01-27 by Masaki Tsuda' target="_blank" rel="noopener">
       <img src="/notebook/svg/calendar.svg" alt="Changed" />
       <span>2021-01-27</span>
     </a>

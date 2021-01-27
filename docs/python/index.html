@@ -15,7 +15,7 @@
 <link rel="stylesheet" href="/notebook/book.min.07c38dce7b6800da2a75a565d4d975e38f837294e24d00b5aae363037012d64b.css" integrity="sha256-B8ONzntoANoqdaVl1Nl144&#43;DcpTiTQC1quNjA3AS1ks=">
 
 
-<script defer src="/notebook/search.min.0580a7c3f806b29d59ea90c6545634b95bcb26c793a998c68b64997807865d2d.js" integrity="sha256-BYCnw/gGsp1Z6pDGVFY0uVvLJseTqZjGi2SZeAeGXS0="></script>
+<script defer src="/notebook/search.min.e547fbe953df7a62113ba0e33ac360bdff1df0fc244988d06c9036af67f8d86b.js" integrity="sha256-5Uf76VPfemIRO6DjOsNgvf8d8PwkSYjQbJA2r2f42Gs="></script>
 
 <link rel="alternate" type="application/rss+xml" href="https://teuder.github.io/notebook/python/index.xml" title="notebook" />
 <!--
@@ -113,6 +113,16 @@ https://github.com/alex-shpak/hugo-book
       
         <li>
 
+  <a href="/notebook/python/bigquery/" >
+      BigQuery
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
   <a href="/notebook/python/environment/" >
       environment
   </a>
@@ -125,6 +135,16 @@ https://github.com/alex-shpak/hugo-book
 
   <a href="/notebook/python/jupyter/" >
       jupyter
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/python/pandas/" >
+      Pandas
   </a>
 
 </li>
@@ -796,7 +816,33 @@ https://github.com/alex-shpak/hugo-book
 
       
 <article class="markdown"><h1 id="python">Python</h1>
-</article>
+<h2 id="文字列">文字列</h2>
+<h3 id="ファイルを文字列として読み込む">ファイルを文字列として読み込む</h3>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#111">f</span> <span style="color:#f92672">=</span> <span style="color:#111">open</span><span style="color:#111">(</span><span style="color:#d88200">&#39;path_to_file&#39;</span><span style="color:#111">,</span> <span style="color:#d88200">&#39;r&#39;</span><span style="color:#111">)</span>
+<span style="color:#111">data</span> <span style="color:#f92672">=</span> <span style="color:#111">f</span><span style="color:#f92672">.</span><span style="color:#111">read</span><span style="color:#111">()</span>
+<span style="color:#111">f</span><span style="color:#f92672">.</span><span style="color:#111">close</span><span style="color:#111">()</span>
+</code></pre></div><h3 id="テンプレート文字列の置換">テンプレート文字列の置換</h3>
+<p>オブジェクトの値を用いてテンプレート文字列の中身を置換する</p>
+<h4 id="format-メソッド">format メソッド</h4>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#111">project</span> <span style="color:#f92672">=</span> <span style="color:#d88200">&#39;my_project&#39;</span>
+<span style="color:#111">dataset</span> <span style="color:#f92672">=</span> <span style="color:#d88200">&#39;my_dataset&#39;</span>
+<span style="color:#111">table</span> <span style="color:#f92672">=</span> <span style="color:#d88200">&#39;my_table&#39;</span>
+
+<span style="color:#75715e"># format メソッドを使った方法 1 </span>
+<span style="color:#111">template</span> <span style="color:#f92672">=</span> <span style="color:#d88200">&#39;SELECT size_bytes FROM `{project}.{dataset}.{table}`&#39;</span>
+<span style="color:#00a8c8">print</span><span style="color:#111">(</span><span style="color:#111">template</span><span style="color:#f92672">.</span><span style="color:#111">format</span><span style="color:#111">(</span><span style="color:#111">project</span><span style="color:#f92672">=</span><span style="color:#111">project</span><span style="color:#111">,</span> <span style="color:#111">dataset</span><span style="color:#f92672">=</span><span style="color:#111">dataset</span><span style="color:#111">,</span> <span style="color:#111">table</span><span style="color:#f92672">=</span><span style="color:#111">table</span><span style="color:#111">))</span>
+<span style="color:#75715e"># SELECT size_bytes FROM `my_project.my_dataset.my_table`</span>
+
+<span style="color:#75715e"># format メソッドを使った方法 2</span>
+<span style="color:#75715e"># テンプレートに置換する名前を指定しない場合は、与えたオブジェクトが順に適用される</span>
+<span style="color:#111">template</span> <span style="color:#f92672">=</span> <span style="color:#d88200">&#39;SELECT size_bytes FROM `{}.{}.{}`&#39;</span>
+<span style="color:#00a8c8">print</span><span style="color:#111">(</span><span style="color:#111">template</span><span style="color:#f92672">.</span><span style="color:#111">format</span><span style="color:#111">(</span><span style="color:#111">project</span><span style="color:#111">,</span> <span style="color:#111">dataset</span><span style="color:#111">,</span> <span style="color:#111">table</span><span style="color:#111">))</span>
+<span style="color:#75715e"># SELECT size_bytes FROM `my_project.my_dataset.my_table`</span>
+</code></pre></div><h4 id="f文字列を使った方法">f文字列を使った方法</h4>
+<p>こちらの方が format メソッドより簡単だが、テンプレート文字列をオブジェクトして保存した場合には使えない</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># f文字列を使った方法</span>
+<span style="color:#00a8c8">print</span><span style="color:#111">(</span><span style="color:#111">f</span><span style="color:#d88200">&#39;SELECT size_bytes FROM `{project}.{dataset}.{table}`&#39;</span><span style="color:#111">)</span>
+</code></pre></div></article>
 
       
 <div class="book-footer justify-between">
@@ -829,7 +875,16 @@ https://github.com/alex-shpak/hugo-book
   
 
   <aside class="book-toc level-3 fixed">
-    <nav id="TableOfContents"></nav>
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#文字列">文字列</a>
+      <ul>
+        <li><a href="#ファイルを文字列として読み込む">ファイルを文字列として読み込む</a></li>
+        <li><a href="#テンプレート文字列の置換">テンプレート文字列の置換</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
   </aside>
 
 

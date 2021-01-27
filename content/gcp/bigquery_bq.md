@@ -27,16 +27,22 @@ project_id:dataset_name
 - `description` データセットの説明、`'` か `"` で括る
 - `project_id:dataset_name` プロジェクトIDと、作成するデータセットの名前
 
-## クエリを実行する
+## クエリを実行する : bq query
 
 ```
  bq query 'select * from hoge'
 ```
 
-- `-n 0` : クエリの実行結果がひょゆ準出力されるのを抑制する
+- `-n 0` : クエリの実行結果が標準されるのを抑制する
+- `--destination_table=project:dataset.table` : クエリの出力をテーブルに書き込む
+- `--replace` : 出力先のテーブルを置き換える
+- `--allow_large_results`
+- `--use_legacy_sql=false`
 
 
-## データをアップロードする
+
+
+## データをアップロードする : bq load
 
 ローカルファイル（.parquet）から
 
@@ -58,7 +64,7 @@ PROJECT:DATASET.TABLE \
 "gs://mybucket/00/*.parquet","gs://mybucket/01/*.parquet"
 ```
 
-## テーブルを削除する
+## テーブルを削除する : bq rm
 
 ```
 bq rm --table project_id:dataset.table
@@ -76,14 +82,23 @@ bq rm --table project_id:dataset.table
 bq ls -a project_id:dataset_id | grep pattern | xargs -n 1 bq rm -t -f --project_id project_id --dataset_id dataset_id
 ```
 
-# パーティションドテーブルを作成する
+## テーブルの一覧 : bq ls
 
 ```
-bq mk --time_partitioning_type=DAY
+bq ls -a project_id:dataset_id
 ```
 
 
-# パーティションドテーブルのパーティションを指定してクエリ結果を書き込む
+
+## パーティションドテーブル
+
+パーティションドテーブルの作成
+
+```
+bq mk --time_partitioning_type=DAY myproject:mydataset.mytable
+```
+
+パーティションを指定してクエリ結果を書き込む
 
 ```
 # 日付でパーティションされたテーブルの2020-01-01のパーティションを置き換える `--replace`

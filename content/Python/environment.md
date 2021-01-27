@@ -55,15 +55,9 @@ git clone https://github.com/pyenv/pyenv.git ~/.pyenv
 
 `pyenv-win` をインストールする。
 
-コマンドプロンプトで以下のコマンドを実行する
+コマンドプロンプトで以下のコマンドを実行すると、`C:\Users\USERNAME\.pyenv\pyenv-win\bin` に `pyenv` がインストールされる
 
-以下の場所に `pyenv` がインストールされる
-
-`C:\Users\USERNAME\.pyenv\pyenv-win\bin`
-
-（ここでは pip を使ってしまっているので、すでに Python がインストールされている前提になってしまっている。Python がインストールされていることを前提としない方法を探した方が良いかもしれない）
-
-
+（この方法では pip を使ってしまっているので、すでに Python がインストールされている前提になってしまっている。git のレポジトリからpyenv-winを zipでダウンロードして展開する方が良いかも。）
 
 ```
 pip install pyenv-win --target %USERPROFILE%/.pyenv

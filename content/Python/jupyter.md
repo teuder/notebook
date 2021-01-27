@@ -46,11 +46,11 @@ pipenv run jupyter notebook
 
 
 
-#  jupytext 
+##  jupytext 
 
 `jupytext` は `jupyter` 経由で `.ipynb` と `.py` `.Rmd` などを同期するツール
 
-インストール
+### インストール
 
 ```
 cd Project
@@ -58,7 +58,9 @@ pipenv shell
 pipenv install jupytext
 ```
 
-設定
+### 設定
+
+#### jupyter の設定
 
 jupyter の設定ファイル（`~/.jupyter/jupyter_notebook_config.py`）を生成する。
 
@@ -89,3 +91,26 @@ jupyter の `Edit > Edit Notebook Metadata` から、以下の記述を先頭に
 
 `.ipynb` を編集すると `.py` に変更が反映され、`.py` を編集すると `.ipynb` に変更が反映されるらしい。
 
+### コマンドライン
+
+`jupytext` はコマンドラインツールとしても使うことができる
+
+```
+jupytext --to Rmd notebool.ipynb
+```
+
+```
+jupytext --to py notebook.ipynb                 # convert notebook.ipynb to a .py file
+jupytext --to py:percent notebook.ipynb         # convert notebook.ipynb to a .py file in the double percent format
+jupytext --to py:percent --opt comment_magics=false notebook.ipynb   # same as above + do not comment magic commands
+jupytext --to markdown notebook.ipynb           # convert notebook.ipynb to a .md file
+jupytext --output script.py notebook.ipynb      # convert notebook.ipynb to a script.py file
+
+jupytext --to notebook notebook.py              # convert notebook.py to an .ipynb file with no outputs
+jupytext --update --to notebook notebook.py     # update the input cells in the .ipynb file and preserve outputs and metadata
+
+jupytext --to md --test notebook.ipynb          # Test round trip conversion
+
+jupytext --to md --output - notebook.ipynb      # display the markdown version on screen
+jupytext --from ipynb --to py:percent           # read ipynb from stdin and write double percent script on stdout
+```

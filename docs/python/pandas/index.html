@@ -3,12 +3,13 @@
 
 <head>
   <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0"><meta property="og:title" content="gganimate" />
-<meta property="og:description" content="gganimate transition_manual() コマ撮りアニメのように、１枚１枚のコマが切り替わるようなアニメーション transition_manual(frames, ..., cumulative = FALSE) frames でコマ分けに使いたいカラムを指定する。 cumulative = TRUE なら前のコ" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><meta property="og:title" content="Pandas" />
+<meta property="og:description" content="Pandas DataFrame 提供するライブラリ BigQuery との連携 import pandas_gbq df = pandas_gbq.read_gbq(&#34;SELECT my_col FROM `my_project.my_dataset.my_table`&#34;) 初回に実行した時にブラウザが開いてアクセスコードの入力が求められる ユーザーごとのアクセス情報" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://teuder.github.io/notebook/r/gganimate/" />
-<meta property="article:modified_time" content="2020-05-27T18:54:29+09:00" />
-<title>gganimate | notebook</title>
+<meta property="og:url" content="https://teuder.github.io/notebook/python/pandas/" />
+<meta property="article:published_time" content="2020-01-17T00:00:00+00:00" />
+<meta property="article:modified_time" content="2020-01-17T00:00:00+00:00" />
+<title>Pandas | notebook</title>
 <link rel="icon" href="/notebook/favicon.png" type="image/x-icon">
 
 
@@ -142,7 +143,7 @@ https://github.com/alex-shpak/hugo-book
       
         <li>
 
-  <a href="/notebook/python/pandas/" >
+  <a href="/notebook/python/pandas/"  class="active">
       Pandas
   </a>
 
@@ -282,7 +283,7 @@ https://github.com/alex-shpak/hugo-book
       
         <li>
 
-  <a href="/notebook/r/gganimate/"  class="active">
+  <a href="/notebook/r/gganimate/" >
       gganimate
   </a>
 
@@ -810,56 +811,42 @@ https://github.com/alex-shpak/hugo-book
   <label for="menu-control">
     <img src="/notebook/svg/menu.svg" alt="Menu" />
   </label>
-  <strong>gganimate</strong>
+  <strong>Pandas</strong>
 </header>
 
       
-<article class="markdown"><h1 id="gganimate">gganimate</h1>
-<h2 id="transition_manual">transition_manual()</h2>
-<p>コマ撮りアニメのように、１枚１枚のコマが切り替わるようなアニメーション</p>
-<pre><code>transition_manual(frames, ..., cumulative = FALSE)
-</code></pre><ul>
-<li><code>frames</code> でコマ分けに使いたいカラムを指定する。</li>
-<li><code>cumulative = TRUE</code> なら前のコマに重ねて次のコマを描画する</li>
-</ul>
-<p>また、次の変数が定義される</p>
+<article class="markdown"><h1 id="pandas">Pandas</h1>
+<p>DataFrame 提供するライブラリ</p>
+<h2 id="bigquery-との連携">BigQuery との連携</h2>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> <span style="color:#111">pandas_gbq</span>
+
+<span style="color:#111">df</span> <span style="color:#f92672">=</span> <span style="color:#111">pandas_gbq</span><span style="color:#f92672">.</span><span style="color:#111">read_gbq</span><span style="color:#111">(</span><span style="color:#d88200">&#34;SELECT my_col FROM `my_project.my_dataset.my_table`&#34;</span><span style="color:#111">)</span>
+
+</code></pre></div><p>初回に実行した時にブラウザが開いてアクセスコードの入力が求められる</p>
+<p>ユーザーごとのアクセス情報は以下に保存される。</p>
 <ul>
-<li><code>previous_frame</code> 前のフレームの値</li>
-<li><code>current_frame</code> 現在のフレームの値</li>
-<li><code>next_frame</code> 次のフレームの値</li>
+<li>Windows
+<ul>
+<li><code>%APPDATA%\pandas_gbq\bigquery_credentials.dat</code></li>
 </ul>
-<p>使用例</p>
-<pre><code>anim &lt;-
-  ggplot(mtcars, aes(factor(gear), mpg)) +
-  geom_boxplot() +
-  transition_manual(gear) +
-  ggtitle('Now showing {current_frame}')
-</code></pre><h2 id="transition_states">transition_states()</h2>
-<p>コマとコマの間を補完する画像（データ）を生成する</p>
-<pre><code>transition_states(states, transition_length = 1, state_length = 1, wrap = TRUE)
-</code></pre><ul>
-<li><code>states</code> ベースとなるコマ分けに使用するカラム</li>
-<li><code>transition_length</code> ベースとなるコマとコマの間で、補完されるコマを表示する相対的な長さ</li>
-<li><code>state_length</code> ベースとなるコマを表示する相対的な長さ</li>
-<li><code>wrap</code> アニメーションを循環させるか、<code>TRUE</code> なら最後のコマは最初のコマに遷移する</li>
+</li>
+<li>Linux/Mac/Unix
+<ul>
+<li><code>~/.config/pandas_gbq/bigquery_credentials.dat</code></li>
 </ul>
+</li>
+</ul>
+<p>これらのパスをLinux/Mac/Windowsの環境変数として保存しておく
+<code>GOOGLE_APPLICATION_CREDENTIALS</code></p>
 </article>
 
       
-<div class="book-footer justify-between">
-  
-  <div>
-    
-    <a class="flex align-center" href="https://github.com/teuder/notebook/commit/1c4b2b5935f1ddbb8f4d25bc2ff54f9630bdc3c3" title='Last modified 2020-05-27 by Masaki Tsuda' target="_blank" rel="noopener">
-      <img src="/notebook/svg/calendar.svg" alt="Changed" />
-      <span>2020-05-27</span>
-    </a>
-  </div>
+<div class="book-footer justify-end">
   
   
   <div>
     
-    <a class="flex align-center" href="https://github.com/teuder/notebook/edit/master/content/R/gganimate.md" target="_blank" rel="noopener">
+    <a class="flex align-center" href="https://github.com/teuder/notebook/edit/master/content/Python/pandas.md" target="_blank" rel="noopener">
       <img src="/notebook/svg/edit.svg" alt="Edit" />
       <span>Edit this page</span>
     </a>
@@ -878,8 +865,7 @@ https://github.com/alex-shpak/hugo-book
   <aside class="book-toc level-3 fixed">
     <nav id="TableOfContents">
   <ul>
-    <li><a href="#transition_manual">transition_manual()</a></li>
-    <li><a href="#transition_states">transition_states()</a></li>
+    <li><a href="#bigquery-との連携">BigQuery との連携</a></li>
   </ul>
 </nav>
   </aside>

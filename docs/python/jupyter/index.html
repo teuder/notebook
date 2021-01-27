@@ -16,7 +16,7 @@
 <link rel="stylesheet" href="/notebook/book.min.07c38dce7b6800da2a75a565d4d975e38f837294e24d00b5aae363037012d64b.css" integrity="sha256-B8ONzntoANoqdaVl1Nl144&#43;DcpTiTQC1quNjA3AS1ks=">
 
 
-<script defer src="/notebook/search.min.0580a7c3f806b29d59ea90c6545634b95bcb26c793a998c68b64997807865d2d.js" integrity="sha256-BYCnw/gGsp1Z6pDGVFY0uVvLJseTqZjGi2SZeAeGXS0="></script>
+<script defer src="/notebook/search.min.e547fbe953df7a62113ba0e33ac360bdff1df0fc244988d06c9036af67f8d86b.js" integrity="sha256-5Uf76VPfemIRO6DjOsNgvf8d8PwkSYjQbJA2r2f42Gs="></script>
 
 <!--
 Made with Book Theme
@@ -113,6 +113,16 @@ https://github.com/alex-shpak/hugo-book
       
         <li>
 
+  <a href="/notebook/python/bigquery/" >
+      BigQuery
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
   <a href="/notebook/python/environment/" >
       environment
   </a>
@@ -125,6 +135,16 @@ https://github.com/alex-shpak/hugo-book
 
   <a href="/notebook/python/jupyter/"  class="active">
       jupyter
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/python/pandas/" >
+      Pandas
   </a>
 
 </li>
@@ -808,13 +828,14 @@ pipenv install jupyter
 </code></pre><p><code>pipenv</code> の仮想環境の中の jupyter を起動する場合。</p>
 <p><code>pipenv</code> プロジェクトフォルダの「外」でこのコマンドを打つと、新しい <code>pipenv</code> 環境が作成されてしまう</p>
 <pre><code>pipenv run jupyter notebook
-</code></pre><h1 id="jupytext">jupytext</h1>
+</code></pre><h2 id="jupytext">jupytext</h2>
 <p><code>jupytext</code> は <code>jupyter</code> 経由で <code>.ipynb</code> と <code>.py</code> <code>.Rmd</code> などを同期するツール</p>
-<p>インストール</p>
+<h3 id="インストール-2">インストール</h3>
 <pre><code>cd Project
 pipenv shell
 pipenv install jupytext
-</code></pre><p>設定</p>
+</code></pre><h3 id="設定">設定</h3>
+<h4 id="jupyter-の設定">jupyter の設定</h4>
 <p>jupyter の設定ファイル（<code>~/.jupyter/jupyter_notebook_config.py</code>）を生成する。</p>
 <pre><code>pipenv run jupyter notebook --generate-config
 </code></pre><p>以下の記述を追加</p>
@@ -828,7 +849,23 @@ c.ContentsManager.default_jupytext_formats = &quot;ipynb,py,Rmd&quot;
 </code></pre><p>ここで <code>.py, .ipynb</code> 以外にも、<code>md, Rmd, jl, R</code> などのフォーマットが使える。</p>
 <p>既存の notebook のメタデータを上記のように編集し、上書き保存すると <code>.ipynb</code> に対応する <code>.py</code> が生成されている。</p>
 <p><code>.ipynb</code> を編集すると <code>.py</code> に変更が反映され、<code>.py</code> を編集すると <code>.ipynb</code> に変更が反映されるらしい。</p>
-</article>
+<h3 id="コマンドライン">コマンドライン</h3>
+<p><code>jupytext</code> はコマンドラインツールとしても使うことができる</p>
+<pre><code>jupytext --to Rmd notebool.ipynb
+</code></pre><pre><code>jupytext --to py notebook.ipynb                 # convert notebook.ipynb to a .py file
+jupytext --to py:percent notebook.ipynb         # convert notebook.ipynb to a .py file in the double percent format
+jupytext --to py:percent --opt comment_magics=false notebook.ipynb   # same as above + do not comment magic commands
+jupytext --to markdown notebook.ipynb           # convert notebook.ipynb to a .md file
+jupytext --output script.py notebook.ipynb      # convert notebook.ipynb to a script.py file
+
+jupytext --to notebook notebook.py              # convert notebook.py to an .ipynb file with no outputs
+jupytext --update --to notebook notebook.py     # update the input cells in the .ipynb file and preserve outputs and metadata
+
+jupytext --to md --test notebook.ipynb          # Test round trip conversion
+
+jupytext --to md --output - notebook.ipynb      # display the markdown version on screen
+jupytext --from ipynb --to py:percent           # read ipynb from stdin and write double percent script on stdout
+</code></pre></article>
 
       
 <div class="book-footer justify-between">
@@ -869,12 +906,11 @@ c.ContentsManager.default_jupytext_formats = &quot;ipynb,py,Rmd&quot;
   <ul>
     <li><a href="#インストール-1">インストール</a></li>
     <li><a href="#jupyter-を起動する">jupyter を起動する</a></li>
-  </ul>
-
-  <ul>
-    <li>
+    <li><a href="#jupytext">jupytext</a>
       <ul>
-        <li></li>
+        <li><a href="#インストール-2">インストール</a></li>
+        <li><a href="#設定">設定</a></li>
+        <li><a href="#コマンドライン">コマンドライン</a></li>
       </ul>
     </li>
   </ul>

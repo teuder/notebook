@@ -29,3 +29,5 @@ Mac の場合は Ctrl の代わりに Cmd にする
 [Web IU のキーボードショートカット](https://cloud.google.com/bigquery/docs/bigquery-web-ui#keyboard_shortcuts)
 
 
+# PythonやRからBigQueryにクエリを投げる
+

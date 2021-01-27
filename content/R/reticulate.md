@@ -51,4 +51,26 @@ reticulate::py_config()
 reticulate::py_config()
 ```
 
+## Python コンソールを確認する
 
+```r
+reticulate::repl_python()
+```
+
+
+
+## R から Python のオブジェクトにアクセスする
+
+`reticulate::py` を通して Python のオブジェクトにアクセスできる。
+
+```python
+
+x = "hoge"
+
+```
+
+
+```r
+# R
+reticulate::py$x
+```
