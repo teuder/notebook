@@ -15,7 +15,7 @@
 <link rel="stylesheet" href="/notebook/book.min.07c38dce7b6800da2a75a565d4d975e38f837294e24d00b5aae363037012d64b.css" integrity="sha256-B8ONzntoANoqdaVl1Nl144&#43;DcpTiTQC1quNjA3AS1ks=">
 
 
-<script defer src="/notebook/search.min.e547fbe953df7a62113ba0e33ac360bdff1df0fc244988d06c9036af67f8d86b.js" integrity="sha256-5Uf76VPfemIRO6DjOsNgvf8d8PwkSYjQbJA2r2f42Gs="></script>
+<script defer src="/notebook/search.min.f5af7f8b69ec1a3505b19956922073c7c7e9ca38b69c2371b05255dbd24fec5e.js" integrity="sha256-9a9/i2nsGjUFsZlWkiBzx8fpyji2nCNxsFJV29JP7F4="></script>
 
 <link rel="alternate" type="application/rss+xml" href="https://teuder.github.io/notebook/r/index.xml" title="notebook" />
 <!--
@@ -315,6 +315,16 @@ https://github.com/alex-shpak/hugo-book
 
   <a href="/notebook/r/package_development/" >
       R Package Development
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/r/r_python/" >
+      R_Python
   </a>
 
 </li>
@@ -733,6 +743,16 @@ https://github.com/alex-shpak/hugo-book
       
         <li>
 
+  <a href="/notebook/miscellaneous/tmux/" >
+      tmux
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
   <a href="/notebook/miscellaneous/vscode/" >
       vscode
   </a>
@@ -854,6 +874,7 @@ lookup::lookup(dplyr::summarise)
 [1] &quot;C:/Users/hoge/Documents&quot;
 </code></pre><h4 id="renviron">.Renviron</h4>
 <p>環境変数を指定するシェルスクリプト</p>
+<p><code>usethis::edit_r_environ()</code> からアクセスできる。</p>
 <pre><code>R_USER=${HOME}/.R
 R_LIBS_USER=${R_USER}/library
 R_ENVIRON_USER=${R_USER}/.Renviron
@@ -920,7 +941,8 @@ MAKE=make -j4
 <li><code>LC_TIME</code> : 日付と時刻の表示に影響します。</li>
 <li><code>LC_ALL</code> : これが設定されていると他のロケール設定（<code>LC_*</code>）よりも優先して、こちらの設定が使われる</li>
 </ul>
-<pre><code> Sys.setlocale(&quot;LC_MESSAGES&quot;, &quot;English&quot;)
+<pre><code>Sys.setlocale(&quot;LC_ALL&quot;, &quot;C&quot;)
+ Sys.setlocale(&quot;LC_MESSAGES&quot;, &quot;English&quot;)
 </code></pre><p>現在のロケールを確認する（windows）</p>
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#f92672">&gt;</span> <span style="color:#75af00">Sys.getlocale</span><span style="color:#111">()</span>
 <span style="color:#111">[1]</span> <span style="color:#d88200">&#34;LC_COLLATE=Japanese_Japan.932;LC_CTYPE=English_United States.1252;LC_MONETARY=Japanese_Japan.932;LC_NUMERIC=C;LC_TIME=Japanese_Japan.932&#34;</span>
@@ -961,7 +983,23 @@ fonts()
 
 # Show entire table
 fonttable()
-</code></pre><h2 id="きになるパッケージ">きになるパッケージ</h2>
+</code></pre><h2 id="パッケージのインストール">パッケージのインストール</h2>
+<h3 id="rstudio-package-manager">RStudio Package Manager</h3>
+<p><a href="https://packagemanager.rstudio.com/client/">https://packagemanager.rstudio.com/client/</a></p>
+<p>Get Started</p>
+<p>右上、<code>CLIENT OS</code> を選択</p>
+<p>Setup</p>
+<p><code>Latest</code>　あるいは <code>Freeze</code> で日付を選ぶ</p>
+<p><code>Binary</code></p>
+<p><a href="https://packagemanager.rstudio.com/all/__linux__/focal/latest">https://packagemanager.rstudio.com/all/__linux__/focal/latest</a></p>
+<p>Install System Prerequisites for the Repo’s Packages のコードを実行</p>
+<p><code>.Rprofile</code> に以下を記述</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#75715e"># ここは OS により変わる</span>
+<span style="color:#75af00">options</span><span style="color:#111">(</span><span style="color:#111">repos</span> <span style="color:#f92672">=</span> <span style="color:#75af00">c</span><span style="color:#111">(</span><span style="color:#111">REPO_NAME</span> <span style="color:#f92672">=</span> <span style="color:#d88200">&#34;https://packagemanager.rstudio.com/all/__linux__/focal/latest&#34;</span><span style="color:#111">))</span>
+
+<span style="color:#75715e"># Set the default HTTP user agent</span>
+<span style="color:#75af00">options</span><span style="color:#111">(</span><span style="color:#111">HTTPUserAgent</span> <span style="color:#f92672">=</span> <span style="color:#75af00">sprintf</span><span style="color:#111">(</span><span style="color:#d88200">&#34;R/%s R (%s)&#34;</span><span style="color:#111">,</span> <span style="color:#75af00">getRversion</span><span style="color:#111">(),</span> <span style="color:#75af00">paste</span><span style="color:#111">(</span><span style="color:#75af00">getRversion</span><span style="color:#111">(),</span> <span style="color:#111">R.version</span><span style="color:#f92672">$</span><span style="color:#111">platform</span><span style="color:#111">,</span> <span style="color:#111">R.version</span><span style="color:#f92672">$</span><span style="color:#111">arch</span><span style="color:#111">,</span> <span style="color:#111">R.version</span><span style="color:#f92672">$</span><span style="color:#111">os</span><span style="color:#111">)))</span>
+</code></pre></div><h2 id="きになるパッケージ">きになるパッケージ</h2>
 <h3 id="可視化-1">可視化</h3>
 <ul>
 <li>gganimate : gifアニメ</li>
@@ -1033,6 +1071,11 @@ fonttable()
   </ul>
 
   <ul>
+    <li><a href="#パッケージのインストール">パッケージのインストール</a>
+      <ul>
+        <li><a href="#rstudio-package-manager">RStudio Package Manager</a></li>
+      </ul>
+    </li>
     <li><a href="#きになるパッケージ">きになるパッケージ</a>
       <ul>
         <li><a href="#可視化-1">可視化</a></li>

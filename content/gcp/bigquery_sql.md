@@ -145,3 +145,38 @@ from
 `world-fishing-827.gfw_research.vi_ssvid_v20200801`
 LEFT JOIN UNNEST(ais_identity.n_imo ) as n_imo
 ```
+
+
+
+## 文字列
+
+### 部分文字列: SUBSTR
+
+```sql
+SUBSTR(カラム, 開始位置 [,長さ])
+```
+
+
+## 日付
+
+### 日付要素を取り出す
+
+```
+EXTRACT(要素 FROM DATEカラム)
+```
+
+要素としては以下を指定できる
+
+- `DAY`
+- `MONTH`
+- `QUARTER`: 範囲 [1,4] 内の値
+- `YEAR`
+- `DAYOFWEEK` 日曜が1, 土曜が7
+- `DAYOFYEAR`
+- `WEEK`: 範囲 [0, 53] 内の日付の週番号を返します。週は日曜日から始まり、年の最初の日曜日より前の日付は 0 週目です
+- `WEEK(<WEEKDAY>)`: 範囲 [0, 53] 内の日付の週番号を返します。週は WEEKDAY から始まります。最初の WEEKDAY より前の日付は、第 0 週になります。 `WEEKDAY` の有効な値は、SUNDAY、MONDAY、TUESDAY、WEDNESDAY、THURSDAY、FRIDAY、SATURDAY です。
+- `ISOYEAR`
+- `ISOWEEK`
+
+
+

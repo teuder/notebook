@@ -11,7 +11,7 @@ type: docs
 
 
 
-# 文字列から　Date, POSIXct オブジェクトの生成
+## 文字列から　Date, POSIXct オブジェクトの生成
 
 ```
 ymd(..., quiet = FALSE, tz = NULL, locale = Sys.getlocale("LC_TIME"), truncated = 0)
@@ -19,9 +19,9 @@ ymd_hms(..., quiet = FALSE, tz = "UTC", locale = Sys.getlocale("LC_TIME"), trunc
 ymd_hm(..., quiet = FALSE, tz = "UTC", locale = Sys.getlocale("LC_TIME"), truncated = 0)
 ymd_h(..., quiet = FALSE, tz = "UTC", locale = Sys.getlocale("LC_TIME"), truncated = 0)
 ```
-他にも 
 
-# タイムゾーン
+
+## タイムゾーン
 
 ## tz()
 
@@ -65,3 +65,10 @@ with_tz(x, tz = "Japan")
 # [1] "2016-04-20 01:49:00 JST"
 ```
 
+## 年間通算日 : day of the year
+
+date を年間通算日　(day of the year)（1年のうち何番目の日であるか） に変換する。
+
+```r
+lubridate::yday()
+```

@@ -90,10 +90,16 @@ type: docs
 
 # 衛星
 
-- [衛星総覧](https://www.restec.or.jp/satellite)
-- 気象変動観測衛星しきさい
-- Suomi-NPP
-- JPSS1(NOAA20)
+[衛星総覧](https://www.restec.or.jp/satellite)
+
+
+
+- [気象変動観測衛星しきさい:GCOM-C](https://www.restec.or.jp/satellite/gcom-c.html)
+- Suomi-NPP : VIIRS
+- JPSS1(NOAA20) : VIIRS
+- Sentinel-1 SAR
+- Sentinel 2 光学
+- ALOS-2 だいち2 : PALSAR-2 (Phased Array L-band Synthetic Aperture Radar-2) / Lバンド合成開口レーダ
 
 # センサー
 

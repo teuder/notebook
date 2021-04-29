@@ -83,6 +83,9 @@ Rの設定ファイルには以下がある。
 
 環境変数を指定するシェルスクリプト
 
+
+`usethis::edit_r_environ()` からアクセスできる。
+
 ```
 R_USER=${HOME}/.R
 R_LIBS_USER=${R_USER}/library
@@ -173,6 +176,7 @@ Rでロケールに関連する環境変数
 
 
 ```
+Sys.setlocale("LC_ALL", "C")
  Sys.setlocale("LC_MESSAGES", "English")
 ```
 
@@ -241,6 +245,43 @@ fonts()
 # Show entire table
 fonttable()
 ```
+
+
+## パッケージのインストール
+
+
+### RStudio Package Manager
+
+https://packagemanager.rstudio.com/client/
+
+Get Started
+
+右上、`CLIENT OS` を選択
+
+Setup
+
+`Latest`　あるいは `Freeze` で日付を選ぶ
+
+`Binary`
+
+https://packagemanager.rstudio.com/all/__linux__/focal/latest
+
+
+Install System Prerequisites for the Repo’s Packages のコードを実行
+
+
+`.Rprofile` に以下を記述
+
+```r
+# ここは OS により変わる
+options(repos = c(REPO_NAME = "https://packagemanager.rstudio.com/all/__linux__/focal/latest"))
+
+# Set the default HTTP user agent
+options(HTTPUserAgent = sprintf("R/%s R (%s)", getRversion(), paste(getRversion(), R.version$platform, R.version$arch, R.version$os)))
+```
+
+
+
 
 
 ## きになるパッケージ

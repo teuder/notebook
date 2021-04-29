@@ -3,13 +3,12 @@
 
 <head>
   <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0"><meta property="og:title" content="BigQuery: bqコマンド" />
-<meta property="og:description" content="BigQuery：bqコマンド Data set を作成する bq mk \ --dataset \ --location=US \ --default_table_expiration 3600 \ --default_partition_expiration 3600 \ --description &#39;description&#39; \ project_id:dataset_name location US など default_table_expiration テーブル自動削除までの秒数を指定する、デフォルトでは" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><meta property="og:title" content="R_Python" />
+<meta property="og:description" content="RとPython Rとnumpy dplyr と Pandas" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://teuder.github.io/notebook/gcp/bigquery_bq/" />
-<meta property="article:published_time" content="2019-09-04T00:00:00+00:00" />
-<meta property="article:modified_time" content="2021-01-27T23:49:29+09:00" />
-<title>BigQuery: bqコマンド | notebook</title>
+<meta property="og:url" content="https://teuder.github.io/notebook/r/r_python/" />
+
+<title>R_Python | notebook</title>
 <link rel="icon" href="/notebook/favicon.png" type="image/x-icon">
 
 
@@ -323,7 +322,7 @@ https://github.com/alex-shpak/hugo-book
       
         <li>
 
-  <a href="/notebook/r/r_python/" >
+  <a href="/notebook/r/r_python/"  class="active">
       R_Python
   </a>
 
@@ -643,7 +642,7 @@ https://github.com/alex-shpak/hugo-book
       
         <li>
 
-  <a href="/notebook/gcp/bigquery_bq/"  class="active">
+  <a href="/notebook/gcp/bigquery_bq/" >
       BigQuery: bqコマンド
   </a>
 
@@ -831,82 +830,24 @@ https://github.com/alex-shpak/hugo-book
   <label for="menu-control">
     <img src="/notebook/svg/menu.svg" alt="Menu" />
   </label>
-  <strong>BigQuery: bqコマンド</strong>
+  <strong>R_Python</strong>
 </header>
 
       
-<article class="markdown"><h1 id="bigquerybqコマンド">BigQuery：bqコマンド</h1>
-<h2 id="data-set-を作成する">Data set を作成する</h2>
-<pre><code>bq mk \
---dataset \
---location=US \
---default_table_expiration 3600 \
---default_partition_expiration 3600 \
---description 'description' \
-project_id:dataset_name
-</code></pre><ul>
-<li><code>location</code> US など</li>
-<li><code>default_table_expiration</code> テーブル自動削除までの秒数を指定する、デフォルトでは 3600 、0に設定すると自動削除しない</li>
-<li><code>default_partition_expiration</code> テーブルに対するパーティションの自動削除までの秒数</li>
-<li><code>description</code> データセットの説明、<code>'</code> か <code>&quot;</code> で括る</li>
-<li><code>project_id:dataset_name</code> プロジェクトIDと、作成するデータセットの名前</li>
+<article class="markdown"><h1 id="rとpython">RとPython</h1>
+<ul>
+<li><a href="http://mathesaurus.sourceforge.net/r-numpy.html">Rとnumpy</a></li>
+<li><a href="https://pandas.pydata.org/pandas-docs/stable/getting_started/comparison/comparison_with_r.html">dplyr と Pandas</a></li>
 </ul>
-<h2 id="クエリを実行する--bq-query">クエリを実行する : bq query</h2>
-<pre><code> bq query 'select * from hoge'
-</code></pre><ul>
-<li><code>-n 0</code> : クエリの実行結果が標準されるのを抑制する</li>
-<li><code>--destination_table=project:dataset.table</code> : クエリの出力をテーブルに書き込む</li>
-<li><code>--replace</code> : 出力先のテーブルを置き換える</li>
-<li><code>--allow_large_results</code></li>
-<li><code>--use_legacy_sql=false</code></li>
-</ul>
-<h2 id="データをアップロードする--bq-load">データをアップロードする : bq load</h2>
-<p>ローカルファイル（.parquet）から</p>
-<pre><code>bq load \
---source_format=PARQUET \
---autodetect \
---replace=TRUE\
-PROJECT:DATASET.TABLE \
-LOCAL_FILE.parquet
-</code></pre><p>GCSから取り込み</p>
-<pre><code>bq load \
---source_format=PARQUET \
-PROJECT:DATASET.TABLE \
-&quot;gs://mybucket/00/*.parquet&quot;,&quot;gs://mybucket/01/*.parquet&quot;
-</code></pre><h2 id="テーブルを削除する--bq-rm">テーブルを削除する : bq rm</h2>
-<pre><code>bq rm --table project_id:dataset.table
-</code></pre><ul>
-<li><code>--table</code> または <code>-t</code> でテーブルを削除</li>
-<li><code>--force</code> または <code>-f</code> は確認を省略する</li>
-</ul>
-<h3 id="複数のテーブルをまとめて削除する">複数のテーブルをまとめて削除する</h3>
-<p>特定のデータセット内の、名前が特定のパターン <code>pattern</code> に合致するテーブルを一括で削除する</p>
-<pre><code>bq ls -a project_id:dataset_id | grep pattern | xargs -n 1 bq rm -t -f --project_id project_id --dataset_id dataset_id
-</code></pre><h2 id="テーブルの一覧--bq-ls">テーブルの一覧 : bq ls</h2>
-<pre><code>bq ls -a project_id:dataset_id
-</code></pre><h2 id="パーティションドテーブル">パーティションドテーブル</h2>
-<p>パーティションドテーブルの作成</p>
-<pre><code>bq mk --time_partitioning_type=DAY myproject:mydataset.mytable
-</code></pre><p>パーティションを指定してクエリ結果を書き込む</p>
-<pre><code># 日付でパーティションされたテーブルの2020-01-01のパーティションを置き換える `--replace`
-bq query --replace  --destination_table=dataset.table$20200101 'SELECT  * FROM hoge'
-</code></pre></article>
+</article>
 
       
-<div class="book-footer justify-between">
-  
-  <div>
-    
-    <a class="flex align-center" href="https://github.com/teuder/notebook/commit/096c4754bfcca7ad60a40bb25e7a5594bac16386" title='Last modified 2021-01-27 by Masaki Tsuda' target="_blank" rel="noopener">
-      <img src="/notebook/svg/calendar.svg" alt="Changed" />
-      <span>2021-01-27</span>
-    </a>
-  </div>
+<div class="book-footer justify-end">
   
   
   <div>
     
-    <a class="flex align-center" href="https://github.com/teuder/notebook/edit/master/content/gcp/bigquery_bq.md" target="_blank" rel="noopener">
+    <a class="flex align-center" href="https://github.com/teuder/notebook/edit/master/content/R/R_Python.md" target="_blank" rel="noopener">
       <img src="/notebook/svg/edit.svg" alt="Edit" />
       <span>Edit this page</span>
     </a>
@@ -923,20 +864,7 @@ bq query --replace  --destination_table=dataset.table$20200101 'SELECT  * FROM h
   
 
   <aside class="book-toc level-3 fixed">
-    <nav id="TableOfContents">
-  <ul>
-    <li><a href="#data-set-を作成する">Data set を作成する</a></li>
-    <li><a href="#クエリを実行する--bq-query">クエリを実行する : bq query</a></li>
-    <li><a href="#データをアップロードする--bq-load">データをアップロードする : bq load</a></li>
-    <li><a href="#テーブルを削除する--bq-rm">テーブルを削除する : bq rm</a>
-      <ul>
-        <li><a href="#複数のテーブルをまとめて削除する">複数のテーブルをまとめて削除する</a></li>
-      </ul>
-    </li>
-    <li><a href="#テーブルの一覧--bq-ls">テーブルの一覧 : bq ls</a></li>
-    <li><a href="#パーティションドテーブル">パーティションドテーブル</a></li>
-  </ul>
-</nav>
+    <nav id="TableOfContents"></nav>
   </aside>
 
 

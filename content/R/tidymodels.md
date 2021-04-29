@@ -150,7 +150,7 @@ dplyr
 
 - `step_naomit`	Remove observations with missing values
 
-補完 : imputation
+欠損値補完 : imputation
 
 - `step_knnimpute`	Imputation via K-Nearest Neighbors
 - `step_lowerimpute`	Impute Numeric Data Below the Threshold of Measurement
@@ -185,31 +185,6 @@ dplyr
 
 - `step_profile`	Create a Profiling Version of a Data Set
 
-
-
-
-
-
-
-
-
-#### 変数変換 step
-
-
- 
-
-
-####  対数変換 : step_log()
-
-
-  step_log(Y, Area)
-
-
-#### 交互作用変数の追加 : step_interact()
-
-step_interact(terms = ~ Solar.R:Wind)
-
-ようやく tidymodels のお気持ちがわかってきた気がする
 
 
 #### サンプリング・ステップ
@@ -360,6 +335,8 @@ rsample::vfold_cv(data, v = 10, repeats = 1, strata = NULL, breaks = 4, ...)
 
 
 #### Foldのデータを参照する
+
+
 
 - `analysis()` : 訓練データを参照する
 - `assessment()` : 検証データを参照する

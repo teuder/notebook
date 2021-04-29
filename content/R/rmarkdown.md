@@ -19,6 +19,7 @@ Rmarkdown (`.Rmd`) から、html などに出力するパッケージは２つ�
 - [rmarkdownパッケージで楽々ドキュメント生成](https://kohske.github.io/R/rmarkdown/)
 
 
+
 # 用語
 
 - chunk

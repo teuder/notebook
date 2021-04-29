@@ -17,6 +17,7 @@ type: docs
 
 [Happy Git and GitHub for the useR](https://happygitwithr.com/)
 
+[サル先生のGit入門](https://backlog.com/ja/git-tutorial/intro/01/)
 
 
 ## サブコマンド
@@ -79,6 +80,14 @@ git add path_to_file
 git add . # カレント以下の全てのファイル
 git add *.java # 拡張子が .java
 ```
+
+
+### add の取り消し
+
+```
+git reset HEAD [ファイル名/ファイルパス]
+```
+
 
 ## commit
 
@@ -172,6 +181,22 @@ git branch --delete [ブランチ名]
 git branch -d [ブランチ名]
 git branch -D [ブランチ名]
 
+
+
+## ブランチをマージする
+
+branchA に branchB の内容を統合する
+
+```
+# まずは branchA にチェックアウトして
+git checkout branchA
+
+# そこに branchB をマージする
+git merge branchB
+```
+
+
+
 ## リモートにあるブランチをローカルに持ってくる
 
 
@@ -213,19 +238,21 @@ git checkout -b hoge_copied
 ```
 
 
-# ブランチ同士をマージする
 
-branchA に branchB の内容を統合する
+
+
+## ローカルとリモートのブランチ名を変更する
+
+ブランチ名を hoge から foo に変更する例
 
 ```
-# まずは branchA にチェックアウトして
-git checkout branchA
-
-# そこに branchB をマージする
-git merge branchB
+# ローカルのブランチ名変更
+git branch -m hoge foo
+# リモートのブランチを消す
+git push origin :hoge
+# 変更済みローカルブランチをプッシュ
+git push origin foo
 ```
-
-
 
 
 

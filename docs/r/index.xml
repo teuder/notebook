@@ -17,7 +17,7 @@
       <pubDate>Tue, 17 Sep 2019 00:00:00 +0000</pubDate>
       
       <guid>https://teuder.github.io/notebook/r/leaflet/</guid>
-      <description>leaflet leaflet はインタラクティブな地図の可視化をするためのパッケージ https://rstudio.github.io/leaflet/ leaflet::leaflet() %&amp;gt;% leaflet::addTiles() %&amp;gt;% leaflet::setView(lng=-100,lat=-2,zoom=5) df &amp;lt;- data.frame( lon = rnorm(10, 140, 1), lat = rnorm(10, 35.7, 1), val1 = LETTERS[1:10], val2 = runif(10, 1, 100) ) df %&amp;gt;% mutate(caption = paste(&amp;#34;lon=&amp;#34;, lon, &amp;#34;&amp;lt;br&amp;gt; lat = &amp;#34;, lat)) %&amp;gt;% leaflet::leaflet()</description>
+      <description>leaflet leaflet はインタラクティブな地図の可視化をするためのパッケージ https://rstudio.github.io/leaflet/ 例 df &amp;lt;- data.frame( lon = rnorm(10, 140, 1), lat = rnorm(10, 35.7, 1), val1 = LETTERS[1:10], val2 = runif(10, 1, 100) ) df %&amp;gt;% mutate(caption = paste(&amp;#34;lon=&amp;#34;, lon, &amp;#34;&amp;lt;br&amp;gt; lat = &amp;#34;, lat)) %&amp;gt;% leaflet::leaflet() %&amp;gt;% leaflet::addTiles() %&amp;gt;% leaflet::setView(lng</description>
     </item>
     
     <item>
@@ -35,7 +35,7 @@
       <pubDate>Tue, 03 Sep 2019 00:00:00 +0000</pubDate>
       
       <guid>https://teuder.github.io/notebook/r/ggplot2/</guid>
-      <description>ggplot2 ggplot2: Elegant Graphics for Data Analysis その他、Rでの作図一般 The R graph gallery 基本的な使い方 使い方の例 set.seed(7) data_df &amp;lt;- data.frame( var1 = 1:10, var2 = rnorm(10), var3 = rep(LETTERS[1:3], length.out = 10)) ggplot(data = data_df) + geom_point(aes(x = var1, y = var2, color = var3)) + geom_line(aes(x = var1, y = var2,</description>
+      <description>ggplot2 ggplot2: Elegant Graphics for Data Analysis The R Graph Gallery 色々なグラフの例とコード 基本的な使い方 使い方の例 set.seed(7) data_df &amp;lt;- data.frame( var1 = 1:10, var2 = rnorm(10), var3 = rep(LETTERS[1:3], length.out = 10)) ggplot(data = data_df) + geom_point(aes(x = var1, y = var2, color = var3)) + geom_line(aes(x = var1, y =</description>
     </item>
     
     <item>
@@ -117,6 +117,15 @@
       
       <guid>https://teuder.github.io/notebook/r/package_development/</guid>
       <description>Rパッケージ開発 パッケージにデータを含める data/ ユーザーもアクセスできる。例データなど R/sysdata.rda に含める ユーザーはアクセスできない。関数内で使用するデー</description>
+    </item>
+    
+    <item>
+      <title>R_Python</title>
+      <link>https://teuder.github.io/notebook/r/r_python/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://teuder.github.io/notebook/r/r_python/</guid>
+      <description>RとPython Rとnumpy dplyr と Pandas</description>
     </item>
     
     <item>

@@ -82,7 +82,7 @@ c.ContentsManager.default_jupytext_formats = "ipynb,py,Rmd"
 jupyter の `Edit > Edit Notebook Metadata` から、以下の記述を先頭に追加する。
 
 ```
-"jupytext": {"formats": "ipynb,py,Rmd"},
+"jupytext": {"formats": "ipynb,py,Rmd,R"},
 ```
 
 ここで `.py, .ipynb` 以外にも、`md, Rmd, jl, R` などのフォーマットが使える。
@@ -95,13 +95,24 @@ jupyter の `Edit > Edit Notebook Metadata` から、以下の記述を先頭に
 
 `jupytext` はコマンドラインツールとしても使うことができる
 
-```
-jupytext --to Rmd notebool.ipynb
-```
+
 
 ```
-jupytext --to py notebook.ipynb                 # convert notebook.ipynb to a .py file
-jupytext --to py:percent notebook.ipynb         # convert notebook.ipynb to a .py file in the double percent format
+# ipynb を Rmd に変換
+jupytext --to Rmd notebook.ipynb
+
+# Rmd を ipynb に変換
+jupytext --to ipynb notebook.Rmd
+```
+
+
+
+
+```
+# convert notebook.ipynb to a .py file in the double percent format
+jupytext --to py:percent notebook.ipynb
+
+
 jupytext --to py:percent --opt comment_magics=false notebook.ipynb   # same as above + do not comment magic commands
 jupytext --to markdown notebook.ipynb           # convert notebook.ipynb to a .md file
 jupytext --output script.py notebook.ipynb      # convert notebook.ipynb to a script.py file
@@ -114,3 +125,7 @@ jupytext --to md --test notebook.ipynb          # Test round trip conversion
 jupytext --to md --output - notebook.ipynb      # display the markdown version on screen
 jupytext --from ipynb --to py:percent           # read ipynb from stdin and write double percent script on stdout
 ```
+
+
+
+jupytext --to py notebool.ipynb

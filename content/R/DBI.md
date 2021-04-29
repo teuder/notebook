@@ -116,20 +116,14 @@ dbDisconnect(con)   ## Closes the connection
 ## データフレームの内容からテーブルを作成する：dbWriteTable
 
 ```
-dbWriteTable(con, "iris", iris, row.names=FALSE)
-dbWriteTable(conn, name, value, ...)
-```
-
-- overwrite=TRUE : テーブルを上書きする
-- append=TRUE    : 新しい行を追加する
-
-```
-dbWriteTable(con,
-    name = "sillytable", #テーブル名
-    value = data.frame( #値
-        time=seq(Sys.time(), by="1 day", length=10),
-        value=rnorm(10)),
-    row.names=FALSE)
+dbWriteTable(
+    con,
+    name = "table_name", #テーブル名
+    value = df,          # データフレーム
+    overwrite=TRUE,      # テーブルを上書きする
+    append=FALSE,        # 行を追加する
+    row.names=FALSE      # 行番号
+    )
 ```
 
 ## テーブルのリスト：dbListTables
@@ -148,7 +142,7 @@ dbListFields(con, "iris")
 
 ## DBのデータを取得する
 
-### テーブルを指定して読み込む：dbReadTable
+### テーブルを指定して読み込む : dbReadTable
 
 ```
 iris1 <- dbReadTable(con, "iris")

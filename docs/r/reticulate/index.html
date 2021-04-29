@@ -7,7 +7,7 @@
 <meta property="og:description" content="reticulate R から Python を呼び出すためのパッケージ 使用する Python を指定する .Rprofile で RETICULATE_PYTHON 環境変数に、使用するPythonを指定するのが安全 Sys.setenv(RETICULATE_PYTHON = &#39;/usr/local/bin/python3&#39;) pipenv で Python 環境を管理してい" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://teuder.github.io/notebook/r/reticulate/" />
-<meta property="article:modified_time" content="2021-01-27T01:47:29+09:00" />
+<meta property="article:modified_time" content="2021-01-27T23:49:29+09:00" />
 <title>reticulate | notebook</title>
 <link rel="icon" href="/notebook/favicon.png" type="image/x-icon">
 
@@ -15,7 +15,7 @@
 <link rel="stylesheet" href="/notebook/book.min.07c38dce7b6800da2a75a565d4d975e38f837294e24d00b5aae363037012d64b.css" integrity="sha256-B8ONzntoANoqdaVl1Nl144&#43;DcpTiTQC1quNjA3AS1ks=">
 
 
-<script defer src="/notebook/search.min.e547fbe953df7a62113ba0e33ac360bdff1df0fc244988d06c9036af67f8d86b.js" integrity="sha256-5Uf76VPfemIRO6DjOsNgvf8d8PwkSYjQbJA2r2f42Gs="></script>
+<script defer src="/notebook/search.min.f5af7f8b69ec1a3505b19956922073c7c7e9ca38b69c2371b05255dbd24fec5e.js" integrity="sha256-9a9/i2nsGjUFsZlWkiBzx8fpyji2nCNxsFJV29JP7F4="></script>
 
 <!--
 Made with Book Theme
@@ -314,6 +314,16 @@ https://github.com/alex-shpak/hugo-book
 
   <a href="/notebook/r/package_development/" >
       R Package Development
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/r/r_python/" >
+      R_Python
   </a>
 
 </li>
@@ -732,6 +742,16 @@ https://github.com/alex-shpak/hugo-book
       
         <li>
 
+  <a href="/notebook/miscellaneous/tmux/" >
+      tmux
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
   <a href="/notebook/miscellaneous/vscode/" >
       vscode
   </a>
@@ -836,7 +856,8 @@ https://github.com/alex-shpak/hugo-book
 <pre><code>reticulate::py_config()
 </code></pre><h2 id="python-コンソールを確認する">Python コンソールを確認する</h2>
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#111">reticulate</span><span style="color:#f92672">::</span><span style="color:#75af00">repl_python</span><span style="color:#111">()</span>
-</code></pre></div><h2 id="r-から-python-のオブジェクトにアクセスする">R から Python のオブジェクトにアクセスする</h2>
+</code></pre></div><p>Pythonコンソールから出たいときは <code>exit</code> を入力する。</p>
+<h2 id="r-から-python-のオブジェクトにアクセスする">R から Python のオブジェクトにアクセスする</h2>
 <p><code>reticulate::py</code> を通して Python のオブジェクトにアクセスできる。</p>
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">
 <span style="color:#111">x</span> <span style="color:#f92672">=</span> <span style="color:#d88200">&#34;hoge&#34;</span>
@@ -850,7 +871,7 @@ https://github.com/alex-shpak/hugo-book
   
   <div>
     
-    <a class="flex align-center" href="https://github.com/teuder/notebook/commit/389a4a1c465cba5fabb46d78559ac9f2a81686b0" title='Last modified 2021-01-27 by Masaki Tsuda' target="_blank" rel="noopener">
+    <a class="flex align-center" href="https://github.com/teuder/notebook/commit/096c4754bfcca7ad60a40bb25e7a5594bac16386" title='Last modified 2021-01-27 by Masaki Tsuda' target="_blank" rel="noopener">
       <img src="/notebook/svg/calendar.svg" alt="Changed" />
       <span>2021-01-27</span>
     </a>

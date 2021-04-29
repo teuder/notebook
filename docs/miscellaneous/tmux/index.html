@@ -3,13 +3,13 @@
 
 <head>
   <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0"><meta property="og:title" content="BigQuery: bqコマンド" />
-<meta property="og:description" content="BigQuery：bqコマンド Data set を作成する bq mk \ --dataset \ --location=US \ --default_table_expiration 3600 \ --default_partition_expiration 3600 \ --description &#39;description&#39; \ project_id:dataset_name location US など default_table_expiration テーブル自動削除までの秒数を指定する、デフォルトでは" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><meta property="og:title" content="tmux" />
+<meta property="og:description" content="tmux インストール sudo apt-get install tmux https://qiita.com/shin-ch13/items/9d207a70ccc8467f7bab 使い方 初めて tmux を実行する tmux 現在のシェルのバックグラウンドで tmux セッションが開始され、セッション管理下の shell が起動する。 tmux" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://teuder.github.io/notebook/gcp/bigquery_bq/" />
-<meta property="article:published_time" content="2019-09-04T00:00:00+00:00" />
-<meta property="article:modified_time" content="2021-01-27T23:49:29+09:00" />
-<title>BigQuery: bqコマンド | notebook</title>
+<meta property="og:url" content="https://teuder.github.io/notebook/miscellaneous/tmux/" />
+<meta property="article:published_time" content="2019-09-03T00:00:00+00:00" />
+<meta property="article:modified_time" content="2019-09-03T00:00:00+00:00" />
+<title>tmux | notebook</title>
 <link rel="icon" href="/notebook/favicon.png" type="image/x-icon">
 
 
@@ -643,7 +643,7 @@ https://github.com/alex-shpak/hugo-book
       
         <li>
 
-  <a href="/notebook/gcp/bigquery_bq/"  class="active">
+  <a href="/notebook/gcp/bigquery_bq/" >
       BigQuery: bqコマンド
   </a>
 
@@ -743,7 +743,7 @@ https://github.com/alex-shpak/hugo-book
       
         <li>
 
-  <a href="/notebook/miscellaneous/tmux/" >
+  <a href="/notebook/miscellaneous/tmux/"  class="active">
       tmux
   </a>
 
@@ -831,82 +831,180 @@ https://github.com/alex-shpak/hugo-book
   <label for="menu-control">
     <img src="/notebook/svg/menu.svg" alt="Menu" />
   </label>
-  <strong>BigQuery: bqコマンド</strong>
+  <strong>tmux</strong>
 </header>
 
       
-<article class="markdown"><h1 id="bigquerybqコマンド">BigQuery：bqコマンド</h1>
-<h2 id="data-set-を作成する">Data set を作成する</h2>
-<pre><code>bq mk \
---dataset \
---location=US \
---default_table_expiration 3600 \
---default_partition_expiration 3600 \
---description 'description' \
-project_id:dataset_name
-</code></pre><ul>
-<li><code>location</code> US など</li>
-<li><code>default_table_expiration</code> テーブル自動削除までの秒数を指定する、デフォルトでは 3600 、0に設定すると自動削除しない</li>
-<li><code>default_partition_expiration</code> テーブルに対するパーティションの自動削除までの秒数</li>
-<li><code>description</code> データセットの説明、<code>'</code> か <code>&quot;</code> で括る</li>
-<li><code>project_id:dataset_name</code> プロジェクトIDと、作成するデータセットの名前</li>
-</ul>
-<h2 id="クエリを実行する--bq-query">クエリを実行する : bq query</h2>
-<pre><code> bq query 'select * from hoge'
-</code></pre><ul>
-<li><code>-n 0</code> : クエリの実行結果が標準されるのを抑制する</li>
-<li><code>--destination_table=project:dataset.table</code> : クエリの出力をテーブルに書き込む</li>
-<li><code>--replace</code> : 出力先のテーブルを置き換える</li>
-<li><code>--allow_large_results</code></li>
-<li><code>--use_legacy_sql=false</code></li>
-</ul>
-<h2 id="データをアップロードする--bq-load">データをアップロードする : bq load</h2>
-<p>ローカルファイル（.parquet）から</p>
-<pre><code>bq load \
---source_format=PARQUET \
---autodetect \
---replace=TRUE\
-PROJECT:DATASET.TABLE \
-LOCAL_FILE.parquet
-</code></pre><p>GCSから取り込み</p>
-<pre><code>bq load \
---source_format=PARQUET \
-PROJECT:DATASET.TABLE \
-&quot;gs://mybucket/00/*.parquet&quot;,&quot;gs://mybucket/01/*.parquet&quot;
-</code></pre><h2 id="テーブルを削除する--bq-rm">テーブルを削除する : bq rm</h2>
-<pre><code>bq rm --table project_id:dataset.table
-</code></pre><ul>
-<li><code>--table</code> または <code>-t</code> でテーブルを削除</li>
-<li><code>--force</code> または <code>-f</code> は確認を省略する</li>
-</ul>
-<h3 id="複数のテーブルをまとめて削除する">複数のテーブルをまとめて削除する</h3>
-<p>特定のデータセット内の、名前が特定のパターン <code>pattern</code> に合致するテーブルを一括で削除する</p>
-<pre><code>bq ls -a project_id:dataset_id | grep pattern | xargs -n 1 bq rm -t -f --project_id project_id --dataset_id dataset_id
-</code></pre><h2 id="テーブルの一覧--bq-ls">テーブルの一覧 : bq ls</h2>
-<pre><code>bq ls -a project_id:dataset_id
-</code></pre><h2 id="パーティションドテーブル">パーティションドテーブル</h2>
-<p>パーティションドテーブルの作成</p>
-<pre><code>bq mk --time_partitioning_type=DAY myproject:mydataset.mytable
-</code></pre><p>パーティションを指定してクエリ結果を書き込む</p>
-<pre><code># 日付でパーティションされたテーブルの2020-01-01のパーティションを置き換える `--replace`
-bq query --replace  --destination_table=dataset.table$20200101 'SELECT  * FROM hoge'
-</code></pre></article>
+<article class="markdown"><h1 id="tmux">tmux</h1>
+<h2 id="インストール">インストール</h2>
+<p>sudo apt-get install tmux</p>
+<p><a href="https://qiita.com/shin-ch13/items/9d207a70ccc8467f7bab">https://qiita.com/shin-ch13/items/9d207a70ccc8467f7bab</a></p>
+<h2 id="使い方">使い方</h2>
+<p>初めて tmux を実行する</p>
+<pre><code>tmux 
+
+</code></pre><p>現在のシェルのバックグラウンドで tmux セッションが開始され、セッション管理下の shell が起動する。</p>
+<p>tmux はキーボードのみで操作する。</p>
+<p>デフォルトでは <code>Ctrl</code> と <code>b</code> を一度同時押ししてから、別のキーを押すことで tmux を操作する。</p>
+<p><code>Ctrl b</code> ではないキーの組み合わせに変更することもできる (<code>~/.tmux.conf</code> で設定する)。</p>
+<p>ここでは <code>Ctrl b</code> の代わりに <code>prefix</code> と表記する。</p>
+<h3 id="セッション作成">セッション作成</h3>
+<pre><code>tmux new -s 名前
+```
+### セッションから離れる(detach)
+
+元のターミナルのシェルに戻る。tmux のセッションはバックグラウンドで動き続ける。
+
+`prefix d`
+
+### セッションの一覧
+
+セッションの外にいるとき
+
+```
+tmux list-sessions
+```
+
+セッションの中にいるとき
+
+```
+Ctrl-b s
+```
+セッション一覧を表示させた後で、↑↓キーでセッションを選んでリターンで選択できる。
+
+
+
+### 既存のセッションに再接続
+
+```
+tmux a -t セッション名
+```
+
+
+### 既存のセッションを消去
+
+```
+tmux kill-session -t 名前
+```
+
+
+
+
+## .tmux.conf
+
+実行中の tmux サーバーに設定を再読み込みさせる
+
+```
+tmux source-file ~/.tmux.conf
+```
+
+セッションの中にいるときにも設定を入力できる。
+
+`prefix` を押してから続けて以下を入力すると、マウスでスクロールすることができるようになる
+
+```
+:set -g mouse on
+```
+
+
+### .tmux.conf 例
+
+```
+# tmux起動時のシェルをzshにする
+set-option -g default-shell /bin/zsh
+
+# tmuxを256色表示できるようにする
+set-option -g default-terminal screen-256color
+set -g terminal-overrides 'xterm:colors=256'
+
+# prefixキーをC-qに変更
+# set -g prefix C-q
+
+# C-bのキーバインドを解除
+# unbind C-b
+
+# ステータスバーをトップに配置する
+set-option -g status-position top
+
+# 左右のステータスバーの長さを決定する 
+set-option -g status-left-length 90
+set-option -g status-right-length 90
+
+# #P =&gt; ペイン番号
+# 最左に表示
+set-option -g status-left '#H:[#P]'
+
+# Wi-Fi、バッテリー残量、現在時刻
+# 最右に表示
+set-option -g status-right '#(wifi) #(battery --tmux) [%Y-%m-%d(%a) %H:%M]'
+
+# ステータスバーを1秒毎に描画し直す
+set-option -g status-interval 1
+
+# センタライズ（主にウィンドウ番号など）
+set-option -g status-justify centre
+
+# ステータスバーの色を設定する
+set-option -g status-bg &quot;colour238&quot;
+
+# status line の文字色を指定する。
+set-option -g status-fg &quot;colour255&quot;
+
+# vimのキーバインドでペインを移動する
+bind h select-pane -L
+bind j select-pane -D
+bind k select-pane -U
+bind l select-pane -R
+
+# vimのキーバインドでペインをリサイズする
+bind -r H resize-pane -L 5
+bind -r J resize-pane -D 5
+bind -r K resize-pane -U 5
+bind -r L resize-pane -R 5
+
+# | でペインを縦分割する
+bind | split-window -h
+
+# - でペインを縦分割する
+bind - split-window -v
+
+# 番号基準値を変更
+set-option -g base-index 1
+
+# マウス操作を有効にする
+set-option -g mouse on
+bind -n WheelUpPane if-shell -F -t = &quot;#{mouse_any_flag}&quot; &quot;send-keys -M&quot; &quot;if -Ft= '#{pane_in_mode}' 'send-keys -M' 'copy-mode -e'&quot;
+
+# コピーモードを設定する
+# コピーモードでvimキーバインドを使う
+setw -g mode-keys vi
+
+# 'v' で選択を始める
+bind -T copy-mode-vi v send -X begin-selection
+
+# 'V' で行選択
+bind -T copy-mode-vi V send -X select-line
+
+# 'C-v' で矩形選択
+bind -T copy-mode-vi C-v send -X rectangle-toggle
+
+# 'y' でヤンク
+bind -T copy-mode-vi y send -X copy-selection
+
+# 'Y' で行ヤンク
+bind -T copy-mode-vi Y send -X copy-line
+
+# 'C-p'でペースト
+bind-key C-p paste-buffer
+```</code></pre></article>
 
       
-<div class="book-footer justify-between">
-  
-  <div>
-    
-    <a class="flex align-center" href="https://github.com/teuder/notebook/commit/096c4754bfcca7ad60a40bb25e7a5594bac16386" title='Last modified 2021-01-27 by Masaki Tsuda' target="_blank" rel="noopener">
-      <img src="/notebook/svg/calendar.svg" alt="Changed" />
-      <span>2021-01-27</span>
-    </a>
-  </div>
+<div class="book-footer justify-end">
   
   
   <div>
     
-    <a class="flex align-center" href="https://github.com/teuder/notebook/edit/master/content/gcp/bigquery_bq.md" target="_blank" rel="noopener">
+    <a class="flex align-center" href="https://github.com/teuder/notebook/edit/master/content/miscellaneous/tmux.md" target="_blank" rel="noopener">
       <img src="/notebook/svg/edit.svg" alt="Edit" />
       <span>Edit this page</span>
     </a>
@@ -925,16 +1023,12 @@ bq query --replace  --destination_table=dataset.table$20200101 'SELECT  * FROM h
   <aside class="book-toc level-3 fixed">
     <nav id="TableOfContents">
   <ul>
-    <li><a href="#data-set-を作成する">Data set を作成する</a></li>
-    <li><a href="#クエリを実行する--bq-query">クエリを実行する : bq query</a></li>
-    <li><a href="#データをアップロードする--bq-load">データをアップロードする : bq load</a></li>
-    <li><a href="#テーブルを削除する--bq-rm">テーブルを削除する : bq rm</a>
+    <li><a href="#インストール">インストール</a></li>
+    <li><a href="#使い方">使い方</a>
       <ul>
-        <li><a href="#複数のテーブルをまとめて削除する">複数のテーブルをまとめて削除する</a></li>
+        <li><a href="#セッション作成">セッション作成</a></li>
       </ul>
     </li>
-    <li><a href="#テーブルの一覧--bq-ls">テーブルの一覧 : bq ls</a></li>
-    <li><a href="#パーティションドテーブル">パーティションドテーブル</a></li>
   </ul>
 </nav>
   </aside>

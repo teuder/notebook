@@ -48,6 +48,15 @@
     </item>
     
     <item>
+      <title>tmux</title>
+      <link>https://teuder.github.io/notebook/miscellaneous/tmux/</link>
+      <pubDate>Tue, 03 Sep 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://teuder.github.io/notebook/miscellaneous/tmux/</guid>
+      <description>tmux インストール sudo apt-get install tmux https://qiita.com/shin-ch13/items/9d207a70ccc8467f7bab 使い方 初めて tmux を実行する tmux 現在のシェルのバックグラウンドで tmux セッションが開始され、セッション管理下の shell が起動する。 tmux</description>
+    </item>
+    
+    <item>
       <title>vscode</title>
       <link>https://teuder.github.io/notebook/miscellaneous/vscode/</link>
       <pubDate>Tue, 03 Sep 2019 00:00:00 +0000</pubDate>
@@ -80,7 +89,7 @@
       <pubDate>Mon, 26 Aug 2019 00:00:00 +0000</pubDate>
       
       <guid>https://teuder.github.io/notebook/miscellaneous/git/</guid>
-      <description>Git Gitの基本コマンド .gitignoreの仕様詳解 Happy Git and GitHub for the useR サブコマンド サブコマンド 実行内容 clone リポジトリのクローンを作成する init リポジト</description>
+      <description>Git Gitの基本コマンド .gitignoreの仕様詳解 Happy Git and GitHub for the useR サル先生のGit入門 サブコマンド サブコマンド 実行内容 clone リポジトリのクローン</description>
     </item>
     
   </channel>

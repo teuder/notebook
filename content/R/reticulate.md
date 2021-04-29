@@ -53,11 +53,12 @@ reticulate::py_config()
 
 ## Python コンソールを確認する
 
+
 ```r
 reticulate::repl_python()
 ```
 
-
+Pythonコンソールから出たいときは `exit` を入力する。
 
 ## R から Python のオブジェクトにアクセスする
 

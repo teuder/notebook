@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0"><meta property="og:title" content="ggplot2" />
-<meta property="og:description" content="ggplot2 ggplot2: Elegant Graphics for Data Analysis その他、Rでの作図一般 The R graph gallery 基本的な使い方 使い方の例 set.seed(7) data_df &lt;- data.frame( var1 = 1:10, var2 = rnorm(10), var3 = rep(LETTERS[1:3], length.out = 10)) ggplot(data = data_df) &#43; geom_point(aes(x = var1, y = var2, color = var3)) &#43; geom_line(aes(x = var1, y = var2," />
+<meta property="og:description" content="ggplot2 ggplot2: Elegant Graphics for Data Analysis The R Graph Gallery 色々なグラフの例とコード 基本的な使い方 使い方の例 set.seed(7) data_df &lt;- data.frame( var1 = 1:10, var2 = rnorm(10), var3 = rep(LETTERS[1:3], length.out = 10)) ggplot(data = data_df) &#43; geom_point(aes(x = var1, y = var2, color = var3)) &#43; geom_line(aes(x = var1, y =" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://teuder.github.io/notebook/r/ggplot2/" />
 <meta property="article:published_time" content="2019-09-03T00:00:00+00:00" />
@@ -16,7 +16,7 @@
 <link rel="stylesheet" href="/notebook/book.min.07c38dce7b6800da2a75a565d4d975e38f837294e24d00b5aae363037012d64b.css" integrity="sha256-B8ONzntoANoqdaVl1Nl144&#43;DcpTiTQC1quNjA3AS1ks=">
 
 
-<script defer src="/notebook/search.min.e547fbe953df7a62113ba0e33ac360bdff1df0fc244988d06c9036af67f8d86b.js" integrity="sha256-5Uf76VPfemIRO6DjOsNgvf8d8PwkSYjQbJA2r2f42Gs="></script>
+<script defer src="/notebook/search.min.f5af7f8b69ec1a3505b19956922073c7c7e9ca38b69c2371b05255dbd24fec5e.js" integrity="sha256-9a9/i2nsGjUFsZlWkiBzx8fpyji2nCNxsFJV29JP7F4="></script>
 
 <!--
 Made with Book Theme
@@ -315,6 +315,16 @@ https://github.com/alex-shpak/hugo-book
 
   <a href="/notebook/r/package_development/" >
       R Package Development
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/r/r_python/" >
+      R_Python
   </a>
 
 </li>
@@ -733,6 +743,16 @@ https://github.com/alex-shpak/hugo-book
       
         <li>
 
+  <a href="/notebook/miscellaneous/tmux/" >
+      tmux
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
   <a href="/notebook/miscellaneous/vscode/" >
       vscode
   </a>
@@ -816,8 +836,14 @@ https://github.com/alex-shpak/hugo-book
 
       
 <article class="markdown"><h1 id="ggplot2">ggplot2</h1>
-<p><a href="https://ggplot2-book.org/">ggplot2: Elegant Graphics for Data Analysis</a></p>
-<p>その他、Rでの作図一般 <a href="https://www.r-graph-gallery.com/index.html">The R graph gallery</a></p>
+<ul>
+<li><a href="https://ggplot2-book.org/">ggplot2: Elegant Graphics for Data Analysis</a></li>
+<li><a href="https://www.r-graph-gallery.com/index.html">The R Graph Gallery</a>
+<ul>
+<li>色々なグラフの例とコード</li>
+</ul>
+</li>
+</ul>
 <h1 id="基本的な使い方">基本的な使い方</h1>
 <p>使い方の例</p>
 <pre><code>set.seed(7)
@@ -858,41 +884,40 @@ data(data_df) +
 </code></pre></div><h1 id="グラフの種類-geom_">グラフの種類: geom_*()</h1>
 <p><code>geom</code> は <code>geometry</code> （ジオメトリ）の略、グラフの基礎となる構造を指定する</p>
 <h2 id="散布図">散布図</h2>
-<pre><code>geom_point()
-</code></pre><h2 id="折れ線">折れ線</h2>
-<pre><code>geom_line()
-</code></pre><h2 id="経路">経路</h2>
-<pre><code>geom_path()
-</code></pre><h2 id="ヒストグラム">ヒストグラム</h2>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#75af00">geom_point</span><span style="color:#111">(</span><span style="color:#75af00">aes</span><span style="color:#111">(</span><span style="color:#111">x</span><span style="color:#111">,</span> <span style="color:#111">y</span><span style="color:#111">))</span>
+</code></pre></div><h2 id="折れ線経路">折れ線・経路</h2>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#75af00">geom_line</span><span style="color:#111">(</span><span style="color:#75af00">aes</span><span style="color:#111">(</span><span style="color:#111">x</span><span style="color:#111">,</span> <span style="color:#111">y</span><span style="color:#111">))</span>
+<span style="color:#75af00">geom_path</span><span style="color:#111">(</span><span style="color:#75af00">aes</span><span style="color:#111">(</span><span style="color:#111">x</span><span style="color:#111">,</span> <span style="color:#111">y</span><span style="color:#111">))</span>
+</code></pre></div><h2 id="ヒストグラム密度分布">ヒストグラム・密度分布</h2>
 <p>連続変数 x の値のビンごとの度数、頻度を、棒グラフ、曲線、折線で描画する</p>
-<pre><code>geom_histogram() # 棒グラフ
-geom_density()   # なめらかな曲線
-geom_freqpoly()  # 折線
-</code></pre><p>いずれの <code>geom_*</code> でも、<code>aes()</code> の中で <code>y</code> を指定することで縦軸をカウント <code>..count..</code> 、密度（%） <code>..density..</code> のどちらにも対応できる</p>
+<pre><code>geom_histogram() # 棒グラフ（デフォルトは頻度分布）
+geom_density()   # なめらかな曲線（デフォルトは密度文王）
+geom_freqpoly()  # 折線（デフォルトは頻度）
+</code></pre><h3 id="頻度分布と密度分布の切り替え">頻度分布と密度分布の切り替え</h3>
+<p>いずれの <code>geom_*</code> でも、<code>aes()</code> の中で <code>y</code> を指定することで縦軸をカウント <code>..count..</code> 、密度（%） <code>..density..</code> のどちらにも対応できる</p>
 <pre><code>geom_histogram(aes(x, y = ..density..))
 geom_density(  aes(x, y = ..count..  ))
-</code></pre><p>色分けした変数の位置</p>
+</code></pre><h3 id="色分けした変数の位置">色分けした変数の位置</h3>
 <pre><code>position = &quot;identity&quot; # 重ね描き
 position = &quot;stack&quot;    # 積み上げ
 position = &quot;dodge&quot;`   # 隣接
 position = &quot;fill&quot;     # 割合
-</code></pre><p>ビンの切り方: <code>star_bin()</code></p>
-<p>次の２つの書き方は等価らしい</p>
-<pre><code>geom_histgram(aes(x),       )
+</code></pre><h3 id="ビンの切り方-stat_bin">ビンの切り方: <code>stat_bin()</code></h3>
+<p><code>stat_bin()</code> の <code>binwidth</code> から下の引数は <code>geom_*()</code> の中でも指定できる。</p>
+<p>つまり、次の２つの書き方は等価</p>
+<pre><code>geom_histgram(aes(x), binwidth = 0.1)
 geom_histgram(aes(x)) + stat_bin(binwidth = 0.1)
-</code></pre><p><code>geom_histogram()</code> <code>geom_density()</code> <code>geom_freqpoly()</code> は <code>stat_bin()</code> の引数をあらかじめ指定した特殊なバージョンらしい</p>
-<p><code>stat_bin()</code> の <code>binwidth</code> から下の引数は <code>geom_*</code> の中で指定できる。</p>
-<pre><code>stat_bin(
+</code></pre><pre><code>stat_bin(
   mapping = NULL,
   data = NULL,
   geom = &quot;bar&quot;,
   position = &quot;stack&quot;,
   ...,
-  binwidth = NULL,
-  bins = NULL,
+  binwidth = NULL, # ビン幅
+  bins = NULL,     # ビン数
   center = NULL,
   boundary = NULL,
-  breaks = NULL,
+  breaks = NULL,   # ビンの切れ目
   closed = c(&quot;right&quot;, &quot;left&quot;),
   pad = FALSE,
   na.rm = FALSE,
@@ -950,6 +975,13 @@ ggplot(df, aes(x=reorder(x, desc(y)), y=y), stat = &quot;identity&quot;)
 )
 
 </code></pre><h2 id="線分">線分</h2>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#75715e"># 垂直線</span>
+<span style="color:#75af00">geom_vline</span><span style="color:#111">(</span><span style="color:#111">xintercept</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">10</span><span style="color:#111">)</span>
+<span style="color:#75715e"># 水平線</span>
+<span style="color:#75af00">geom_hline</span><span style="color:#111">(</span><span style="color:#111">yintercept</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">110</span><span style="color:#111">)</span>
+<span style="color:#75715e"># 傾いた線</span>
+<span style="color:#75af00">geom_abline</span><span style="color:#111">(</span><span style="color:#111">intercept</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">37</span><span style="color:#111">,</span> <span style="color:#111">slope</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">-5</span><span style="color:#111">)</span><span style="color:#f92672">+</span>
+</code></pre></div><p>linetype=&quot;dashed&rdquo;</p>
 <h2 id="多角形">多角形</h2>
 <h1 id="色の指定">色の指定</h1>
 <p>色分けに使用する変数は <code>aes()</code> の中で <code>aes(color = var1, fill = var2)</code> のように指定する。</p>
@@ -1059,10 +1091,14 @@ ggplot(df, aes(x=reorder(x, desc(y)), y=y), stat = &quot;identity&quot;)
 <span style="color:#111">p1</span> <span style="color:#f92672">&lt;-</span> <span style="color:#75af00">ggplot</span><span style="color:#111">(</span><span style="color:#111">mtcars</span><span style="color:#111">)</span> <span style="color:#f92672">+</span> <span style="color:#75af00">geom_point</span><span style="color:#111">(</span><span style="color:#75af00">aes</span><span style="color:#111">(</span><span style="color:#111">mpg</span><span style="color:#111">,</span> <span style="color:#111">disp</span><span style="color:#111">))</span>
 <span style="color:#111">p2</span> <span style="color:#f92672">&lt;-</span> <span style="color:#75af00">ggplot</span><span style="color:#111">(</span><span style="color:#111">mtcars</span><span style="color:#111">)</span> <span style="color:#f92672">+</span> <span style="color:#75af00">geom_boxplot</span><span style="color:#111">(</span><span style="color:#75af00">aes</span><span style="color:#111">(</span><span style="color:#111">gear</span><span style="color:#111">,</span> <span style="color:#111">disp</span><span style="color:#111">,</span> <span style="color:#111">group</span> <span style="color:#f92672">=</span> <span style="color:#111">gear</span><span style="color:#111">))</span>
 <span style="color:#111">p1</span> <span style="color:#f92672">+</span> <span style="color:#111">p2</span>
-</code></pre></div><p>レイアウトの調整は <code>plot_layout()</code> 関数を使う</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#75af00">plot_layout</span><span style="color:#111">(</span><span style="color:#111">ncol</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span><span style="color:#111">,</span> <span style="color:#111">heights</span> <span style="color:#f92672">=</span> <span style="color:#75af00">c</span><span style="color:#111">(</span><span style="color:#ae81ff">3</span><span style="color:#111">,</span> <span style="color:#ae81ff">1</span><span style="color:#111">))</span>
+</code></pre></div><p><code>p1 + p2</code> は <code>p1</code> と <code>p2</code> を左右に並べる</p>
+<p><code>p1</code> と <code>p2</code>  を縦方向に並べるときは <code>plot_layout(ncol = 1)</code> を加える</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#111">p1</span> <span style="color:#f92672">+</span> <span style="color:#111">p2</span> <span style="color:#f92672">+</span> <span style="color:#75af00">plot_layout</span><span style="color:#111">(</span><span style="color:#111">ncol</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span><span style="color:#111">,</span> <span style="color:#111">heights</span> <span style="color:#f92672">=</span> <span style="color:#75af00">c</span><span style="color:#111">(</span><span style="color:#ae81ff">3</span><span style="color:#111">,</span> <span style="color:#ae81ff">1</span><span style="color:#111">))</span>
 </code></pre></div><p>間隔を開けたいときは <code>plot_spacer()</code></p>
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#111">p1</span> <span style="color:#f92672">+</span> <span style="color:#75af00">plot_spacer</span><span style="color:#111">()</span> <span style="color:#f92672">+</span> <span style="color:#111">p2</span>
+</code></pre></div><p>複雑な構造を指定するときは <code>{}</code> を使用する</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#75715e"># p1 は左、p2は右上、p3は右下</span>
+<span style="color:#111">p1</span> <span style="color:#f92672">+</span> <span style="color:#111">{</span><span style="color:#111">p2</span> <span style="color:#f92672">+</span> <span style="color:#111">p3</span> <span style="color:#f92672">+</span> <span style="color:#75af00">plot_layout</span><span style="color:#111">(</span><span style="color:#111">ncol</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span><span style="color:#111">)}</span>
 </code></pre></div><h2 id="特定の変数の値を使って図を分離する">特定の変数の値を使って図を分離する</h2>
 <p><code>facet_grid()</code> や  <code>facet_wrap()</code> を使う</p>
 <p><code>facet_grid()</code> は図を2次元に配置する</p>
@@ -1116,9 +1152,14 @@ ggplot(df, aes(x=reorder(x, desc(y)), y=y), stat = &quot;identity&quot;)
 
   <ul>
     <li><a href="#散布図">散布図</a></li>
-    <li><a href="#折れ線">折れ線</a></li>
-    <li><a href="#経路">経路</a></li>
-    <li><a href="#ヒストグラム">ヒストグラム</a></li>
+    <li><a href="#折れ線経路">折れ線・経路</a></li>
+    <li><a href="#ヒストグラム密度分布">ヒストグラム・密度分布</a>
+      <ul>
+        <li><a href="#頻度分布と密度分布の切り替え">頻度分布と密度分布の切り替え</a></li>
+        <li><a href="#色分けした変数の位置">色分けした変数の位置</a></li>
+        <li><a href="#ビンの切り方-stat_bin">ビンの切り方: <code>stat_bin()</code></a></li>
+      </ul>
+    </li>
     <li><a href="#棒グラフ">棒グラフ</a>
       <ul>
         <li><a href="#積み上げ棒グラフ">積み上げ棒グラフ</a></li>

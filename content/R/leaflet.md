@@ -14,12 +14,8 @@ type: docs
 
 https://rstudio.github.io/leaflet/
 
-```r
-leaflet::leaflet() %>% 
-    leaflet::addTiles() %>% 
-    leaflet::setView(lng=-100,lat=-2,zoom=5)
-```
 
+# 例
 
 ```r
 df <-
@@ -29,10 +25,8 @@ df <-
     val1 = LETTERS[1:10],
     val2 = runif(10, 1, 100)
   )
-```
 
 
-```r
 df %>%
   mutate(caption = paste("lon=", lon, "<br> lat = ", lat)) %>%
   leaflet::leaflet() %>%
@@ -45,8 +39,37 @@ df %>%
     popup = ~ caption
     radius = 10,
     weight = 2,
-
   )
+```
+
+
+
+
+
+
+
+
+# leaflet::leaflet()
+
+`ggplot()` と同様に、データを最初に `leaflet()` に渡して描画オブジェクトを作成し、それにレイヤーを `%>%` で追加してゆく。
+
+```
+leaflet::leaflet() %>% 
+    leaflet::addTiles() %>% # 背景とする地図レイヤー
+    leaflet::setView(lng=-100,lat=-2,zoom=5) # 初期位置とズームレベル
+```
+
+
+```
+leaflet(
+  data = NULL,
+  width = NULL,
+  height = NULL,
+  padding = 0,
+  options = leafletOptions(),
+  elementId = NULL,
+  sizingPolicy = leafletSizingPolicy(padding = padding)
+)
 ```
 
 # マーカーを表示する

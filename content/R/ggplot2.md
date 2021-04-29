@@ -9,10 +9,9 @@ type: docs
 
 # ggplot2
 
-[ggplot2: Elegant Graphics for Data Analysis](https://ggplot2-book.org/)
-
-その他、Rでの作図一般 [The R graph gallery](https://www.r-graph-gallery.com/index.html)
-
+- [ggplot2: Elegant Graphics for Data Analysis](https://ggplot2-book.org/)
+- [The R Graph Gallery](https://www.r-graph-gallery.com/index.html)
+  - 色々なグラフの例とコード
 
 # 基本的な使い方
 
@@ -94,31 +93,33 @@ aes(x = X, y = Y, group = interaction(A , B)) # 複数変数を使う場合
 
 ## 散布図
 
-```
-geom_point()
-```
-
-## 折れ線
-
-```
-geom_line()
+```r
+geom_point(aes(x, y))
 ```
 
-## 経路
+## 折れ線・経路
 
-```
-geom_path()
+
+```r
+geom_line(aes(x, y))
+geom_path(aes(x, y))
 ```
 
-## ヒストグラム
+
+
+
+
+## ヒストグラム・密度分布
 
 連続変数 x の値のビンごとの度数、頻度を、棒グラフ、曲線、折線で描画する
 
 ```
-geom_histogram() # 棒グラフ
-geom_density()   # なめらかな曲線
-geom_freqpoly()  # 折線
+geom_histogram() # 棒グラフ（デフォルトは頻度分布）
+geom_density()   # なめらかな曲線（デフォルトは密度文王）
+geom_freqpoly()  # 折線（デフォルトは頻度）
 ```
+
+### 頻度分布と密度分布の切り替え
 
 いずれの `geom_*` でも、`aes()` の中で `y` を指定することで縦軸をカウント `..count..` 、密度（%） `..density..` のどちらにも対応できる
 
@@ -127,7 +128,7 @@ geom_histogram(aes(x, y = ..density..))
 geom_density(  aes(x, y = ..count..  ))
 ```
 
-色分けした変数の位置
+### 色分けした変数の位置
 
 ```
 position = "identity" # 重ね描き
@@ -136,18 +137,18 @@ position = "dodge"`   # 隣接
 position = "fill"     # 割合
 ```
 
-ビンの切り方: `star_bin()`
+### ビンの切り方: `stat_bin()`
 
-次の２つの書き方は等価らしい
+`stat_bin()` の `binwidth` から下の引数は `geom_*()` の中でも指定できる。
+
+つまり、次の２つの書き方は等価
 
 ```
-geom_histgram(aes(x),       )
+geom_histgram(aes(x), binwidth = 0.1)
 geom_histgram(aes(x)) + stat_bin(binwidth = 0.1)
 ```
 
-`geom_histogram()` `geom_density()` `geom_freqpoly()` は `stat_bin()` の引数をあらかじめ指定した特殊なバージョンらしい
 
-`stat_bin()` の `binwidth` から下の引数は `geom_*` の中で指定できる。
 
 ```
 stat_bin(
@@ -156,11 +157,11 @@ stat_bin(
   geom = "bar",
   position = "stack",
   ...,
-  binwidth = NULL,
-  bins = NULL,
+  binwidth = NULL, # ビン幅
+  bins = NULL,     # ビン数
   center = NULL,
   boundary = NULL,
-  breaks = NULL,
+  breaks = NULL,   # ビンの切れ目
   closed = c("right", "left"),
   pad = FALSE,
   na.rm = FALSE,
@@ -172,6 +173,11 @@ stat_bin(
 
 
  `x` が離散変数なら `stat_count()` の方がいい
+
+
+
+
+
 
 
 
@@ -273,6 +279,17 @@ geom_violin(
 
 
 ## 線分
+
+```r
+# 垂直線
+geom_vline(xintercept = 10)
+# 水平線
+geom_hline(yintercept = 110)
+# 傾いた線
+geom_abline(intercept = 37, slope = -5)+
+```
+linetype="dashed"
+
 
 ## 多角形
 
@@ -465,10 +482,12 @@ p2 <- ggplot(mtcars) + geom_boxplot(aes(gear, disp, group = gear))
 p1 + p2
 ```
 
-レイアウトの調整は `plot_layout()` 関数を使う
+`p1 + p2` は `p1` と `p2` を左右に並べる
+
+`p1` と `p2`  を縦方向に並べるときは `plot_layout(ncol = 1)` を加える
 
 ```r
-plot_layout(ncol = 1, heights = c(3, 1))
+p1 + p2 + plot_layout(ncol = 1, heights = c(3, 1))
 ```
 
 間隔を開けたいときは `plot_spacer()`
@@ -476,6 +495,16 @@ plot_layout(ncol = 1, heights = c(3, 1))
 ```r
 p1 + plot_spacer() + p2
 ```
+
+複雑な構造を指定するときは `{}` を使用する
+
+```r
+# p1 は左、p2は右上、p3は右下
+p1 + {p2 + p3 + plot_layout(ncol = 1)}
+```
+
+
+
 
 
 ## 特定の変数の値を使って図を分離する

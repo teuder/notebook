@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0"><meta property="og:title" content="leaflet" />
-<meta property="og:description" content="leaflet leaflet はインタラクティブな地図の可視化をするためのパッケージ https://rstudio.github.io/leaflet/ leaflet::leaflet() %&gt;% leaflet::addTiles() %&gt;% leaflet::setView(lng=-100,lat=-2,zoom=5) df &lt;- data.frame( lon = rnorm(10, 140, 1), lat = rnorm(10, 35.7, 1), val1 = LETTERS[1:10], val2 = runif(10, 1, 100) ) df %&gt;% mutate(caption = paste(&#34;lon=&#34;, lon, &#34;&lt;br&gt; lat = &#34;, lat)) %&gt;% leaflet::leaflet()" />
+<meta property="og:description" content="leaflet leaflet はインタラクティブな地図の可視化をするためのパッケージ https://rstudio.github.io/leaflet/ 例 df &lt;- data.frame( lon = rnorm(10, 140, 1), lat = rnorm(10, 35.7, 1), val1 = LETTERS[1:10], val2 = runif(10, 1, 100) ) df %&gt;% mutate(caption = paste(&#34;lon=&#34;, lon, &#34;&lt;br&gt; lat = &#34;, lat)) %&gt;% leaflet::leaflet() %&gt;% leaflet::addTiles() %&gt;% leaflet::setView(lng" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://teuder.github.io/notebook/r/leaflet/" />
 <meta property="article:published_time" content="2019-09-17T00:00:00+00:00" />
@@ -16,7 +16,7 @@
 <link rel="stylesheet" href="/notebook/book.min.07c38dce7b6800da2a75a565d4d975e38f837294e24d00b5aae363037012d64b.css" integrity="sha256-B8ONzntoANoqdaVl1Nl144&#43;DcpTiTQC1quNjA3AS1ks=">
 
 
-<script defer src="/notebook/search.min.e547fbe953df7a62113ba0e33ac360bdff1df0fc244988d06c9036af67f8d86b.js" integrity="sha256-5Uf76VPfemIRO6DjOsNgvf8d8PwkSYjQbJA2r2f42Gs="></script>
+<script defer src="/notebook/search.min.f5af7f8b69ec1a3505b19956922073c7c7e9ca38b69c2371b05255dbd24fec5e.js" integrity="sha256-9a9/i2nsGjUFsZlWkiBzx8fpyji2nCNxsFJV29JP7F4="></script>
 
 <!--
 Made with Book Theme
@@ -315,6 +315,16 @@ https://github.com/alex-shpak/hugo-book
 
   <a href="/notebook/r/package_development/" >
       R Package Development
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/r/r_python/" >
+      R_Python
   </a>
 
 </li>
@@ -733,6 +743,16 @@ https://github.com/alex-shpak/hugo-book
       
         <li>
 
+  <a href="/notebook/miscellaneous/tmux/" >
+      tmux
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
   <a href="/notebook/miscellaneous/vscode/" >
       vscode
   </a>
@@ -818,17 +838,17 @@ https://github.com/alex-shpak/hugo-book
 <article class="markdown"><h1 id="leaflet">leaflet</h1>
 <p><code>leaflet</code> はインタラクティブな地図の可視化をするためのパッケージ</p>
 <p><a href="https://rstudio.github.io/leaflet/">https://rstudio.github.io/leaflet/</a></p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#111">leaflet</span><span style="color:#f92672">::</span><span style="color:#75af00">leaflet</span><span style="color:#111">()</span> <span style="color:#f92672">%&gt;%</span> 
-    <span style="color:#111">leaflet</span><span style="color:#f92672">::</span><span style="color:#75af00">addTiles</span><span style="color:#111">()</span> <span style="color:#f92672">%&gt;%</span> 
-    <span style="color:#111">leaflet</span><span style="color:#f92672">::</span><span style="color:#75af00">setView</span><span style="color:#111">(</span><span style="color:#111">lng</span><span style="color:#f92672">=</span><span style="color:#ae81ff">-100</span><span style="color:#111">,</span><span style="color:#111">lat</span><span style="color:#f92672">=</span><span style="color:#ae81ff">-2</span><span style="color:#111">,</span><span style="color:#111">zoom</span><span style="color:#f92672">=</span><span style="color:#ae81ff">5</span><span style="color:#111">)</span>
-</code></pre></div><div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#111">df</span> <span style="color:#f92672">&lt;-</span>
+<h1 id="例">例</h1>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#111">df</span> <span style="color:#f92672">&lt;-</span>
   <span style="color:#75af00">data.frame</span><span style="color:#111">(</span>
     <span style="color:#111">lon</span> <span style="color:#f92672">=</span> <span style="color:#75af00">rnorm</span><span style="color:#111">(</span><span style="color:#ae81ff">10</span><span style="color:#111">,</span> <span style="color:#ae81ff">140</span><span style="color:#111">,</span> <span style="color:#ae81ff">1</span><span style="color:#111">),</span>
     <span style="color:#111">lat</span> <span style="color:#f92672">=</span> <span style="color:#75af00">rnorm</span><span style="color:#111">(</span><span style="color:#ae81ff">10</span><span style="color:#111">,</span> <span style="color:#ae81ff">35.7</span><span style="color:#111">,</span> <span style="color:#ae81ff">1</span><span style="color:#111">),</span>
     <span style="color:#111">val1</span> <span style="color:#f92672">=</span> <span style="color:#00a8c8">LETTERS</span><span style="color:#111">[1</span><span style="color:#f92672">:</span><span style="color:#ae81ff">10</span><span style="color:#111">]</span><span style="color:#111">,</span>
     <span style="color:#111">val2</span> <span style="color:#f92672">=</span> <span style="color:#75af00">runif</span><span style="color:#111">(</span><span style="color:#ae81ff">10</span><span style="color:#111">,</span> <span style="color:#ae81ff">1</span><span style="color:#111">,</span> <span style="color:#ae81ff">100</span><span style="color:#111">)</span>
   <span style="color:#111">)</span>
-</code></pre></div><div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#111">df</span> <span style="color:#f92672">%&gt;%</span>
+
+
+<span style="color:#111">df</span> <span style="color:#f92672">%&gt;%</span>
   <span style="color:#75af00">mutate</span><span style="color:#111">(</span><span style="color:#111">caption</span> <span style="color:#f92672">=</span> <span style="color:#75af00">paste</span><span style="color:#111">(</span><span style="color:#d88200">&#34;lon=&#34;</span><span style="color:#111">,</span> <span style="color:#111">lon</span><span style="color:#111">,</span> <span style="color:#d88200">&#34;&lt;br&gt; lat = &#34;</span><span style="color:#111">,</span> <span style="color:#111">lat</span><span style="color:#111">))</span> <span style="color:#f92672">%&gt;%</span>
   <span style="color:#111">leaflet</span><span style="color:#f92672">::</span><span style="color:#75af00">leaflet</span><span style="color:#111">()</span> <span style="color:#f92672">%&gt;%</span>
   <span style="color:#111">leaflet</span><span style="color:#f92672">::</span><span style="color:#75af00">addTiles</span><span style="color:#111">()</span> <span style="color:#f92672">%&gt;%</span>
@@ -840,9 +860,22 @@ https://github.com/alex-shpak/hugo-book
     <span style="color:#111">popup</span> <span style="color:#f92672">=</span> <span style="color:#f92672">~</span> <span style="color:#111">caption</span>
     <span style="color:#111">radius</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">10</span><span style="color:#111">,</span>
     <span style="color:#111">weight</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span><span style="color:#111">,</span>
-
   <span style="color:#111">)</span>
-</code></pre></div><h1 id="マーカーを表示する">マーカーを表示する</h1>
+</code></pre></div><h1 id="leafletleaflet">leaflet::leaflet()</h1>
+<p><code>ggplot()</code> と同様に、データを最初に <code>leaflet()</code> に渡して描画オブジェクトを作成し、それにレイヤーを <code>%&gt;%</code> で追加してゆく。</p>
+<pre><code>leaflet::leaflet() %&gt;% 
+    leaflet::addTiles() %&gt;% # 背景とする地図レイヤー
+    leaflet::setView(lng=-100,lat=-2,zoom=5) # 初期位置とズームレベル
+</code></pre><pre><code>leaflet(
+  data = NULL,
+  width = NULL,
+  height = NULL,
+  padding = 0,
+  options = leafletOptions(),
+  elementId = NULL,
+  sizingPolicy = leafletSizingPolicy(padding = padding)
+)
+</code></pre><h1 id="マーカーを表示する">マーカーを表示する</h1>
 <p>マーカーとは地図上の点に対して「アイコン」または「円」を表示する。マーカーをマウスでクリックすると情報が表示される。</p>
 <p>点の位置情報として使えるのは緯度経度の2次元</p>
 <ul>
