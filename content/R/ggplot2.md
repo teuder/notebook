@@ -17,7 +17,7 @@ type: docs
 
 使い方の例
 
-```
+```r
 set.seed(7)
 data_df <- 
   data.frame( var1 = 1:10,

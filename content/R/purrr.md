@@ -28,3 +28,12 @@ pmap
 partial
 
 # データフレームの各行に対する繰り返し
+
+
+# furrr
+
+```
+future::plan(future::multiprocess(), workers = 10L)
+result <-furrr::future_map()
+```
+

@@ -9,8 +9,14 @@ weight: 10
 # BigQuery: SQL
 
 
+## 基本文法
 
-# SQL
+
+- [標準 SQL のクエリ構文](https://cloud.google.com/bigquery/docs/reference/standard-sql/query-syntax)
+- [標準SQLの演算子](https://cloud.google.com/bigquery/docs/reference/standard-sql/operators?hl=ja)
+- [標準SQLの関数と演算子](https://cloud.google.com/bigquery/docs/reference/standard-sql/functions-and-operators?hl=ja)
+
+
 
 ## レギュラーSQLをデフォルトにする
 
@@ -37,10 +43,7 @@ LIMIT 10;
 --use_legacy_sql=false
 ```
 
-## 基本文法
 
-- [標準SQLの演算子](https://cloud.google.com/bigquery/docs/reference/standard-sql/operators?hl=ja)
-- [標準SQLの関数と演算子](https://cloud.google.com/bigquery/docs/reference/standard-sql/functions-and-operators?hl=ja)
 
 
 ### 実数を丸める関数

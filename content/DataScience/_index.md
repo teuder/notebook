@@ -24,7 +24,13 @@ type: docs
 
 # 精度指標
 
+
+
+
+
 ## 分類モデル
+
+
 
 混合行列
 
@@ -34,3 +40,7 @@ https://en.wikipedia.org/wiki/Confusion_matrix
 
 
 https://en.wikipedia.org/wiki/Receiver_operating_characteristic
+
+
+- https://qiita.com/K5K/items/5da52e99861483cae876
+- https://qiita.com/FukuharaYohei/items/be89a99c53586fa4e2e4

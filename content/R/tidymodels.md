@@ -17,6 +17,118 @@ type: docs
 
 
 
+## データの分割 : rsample パッケージ
+
+
+
+### Train/Test 分割 : initial_split()
+
+```r
+set.seed(10)
+dm_split <- rsample::initial_split(data, prop = 3/4, strata = NULL, breaks = 4, ...)
+
+
+# 時系列データの分割の場合
+# dm_split <- initial_time_split(data, prop = 3/4, lag = 0, ...)
+
+# 訓練データとテストデータのと取り出し
+train_df <- rsample::training(dm_split)
+test_df  <- rsample::testing(dm_split)
+```
+
+- `prop` : 訓練データの割合
+- `strata` : 層化サンプリングに使用する変数を指定する。（ここで指定した変数の値の頻度分布は、訓練データとテストデータで同じになる）
+- `breaks` : 整数スカラー。層化サンプリングしたい変数が連続変数の時に、連続地をいくつのビンに分けるか指定する。
+- `lag` : テストと訓練の間にラグを含めるための値。これはラグのある予測変数が使用される場合に便利です。
+
+
+
+
+### 交差検証のための分割 : vfold_cv()
+
+**K交差検証**
+
+```r
+rsample::vfold_cv(data, v = 10, repeats = 1, strata = NULL, breaks = 4, ...)
+```
+
+
+- `data` : データフレーム
+- `v` : CVの分割数 (fold数)
+- `repeats` : CVの分割を何回繰り返すか。総計算回数は `v*repeats` になる。
+- `strata` : 層化サンプリング。CV分割の時に、fold間で割合を維持したい変数を指定する（例えば目的変数がカテゴリ変数の時に指定する）
+- `breaks` : 整数スカラー。層化サンプリングしたい変数が連続変数の時に、連続地をいくつのビンに分けるか指定する。
+
+
+**グループK交差検証**
+
+```
+rsample::group_vfold_cv(data, group = NULL, v = NULL, ...)
+```
+
+- `data` : データフレーム
+- `group` : グルーピングに使いたい変数名１つ
+- `v` : データを分割したい数、 `NULL` の場合はグルーピング変数のユニークな値の数になる
+	
+
+
+
+#### Foldのデータを参照する
+
+各Foldのデータを取り出すには以下の関数を使用する
+
+- `analysis()` : 訓練データを参照する
+- `assessment()` : 検証データを参照する
+
+`vfold_cv()` 関数の出力値は `vfold_cv` オブジェクト、これは実際にはネストされたデータフレームである。
+
+```r
+df_cv <- rsample::vfold_cv(data, v = 10, repeats = 1)
+> class(df_cv)
+[1] "vfold_cv"   "rset"       "tbl_df"     "tbl"        "data.frame"
+```
+
+ある１つの訓練・検証データのペアを取り出す
+
+```r
+train <- rsample::analysis(df_cv$splits[[1]])
+validation <- rsample::assessment(df_cv$splits[[1]])
+```
+
+リピートなしの分割
+
+```
+> df_cv <- rsample::vfold_cv(dm_info_train_df, strata = "month", v = 2, repeats = 1)
+> df_cv
+#  2-fold cross-validation using stratification 
+# A tibble: 2 x 2
+  splits             id   
+  <list>             <chr>
+1 <rsplit [363/364]> Fold1
+2 <rsplit [364/363]> Fold2
+```
+
+
+リピートありの分割
+
+```
+> df_cv <- rsample::vfold_cv(dm_info_train_df, strata = "month", v = 2, repeats = 2)
+> df_cv 
+#  2-fold cross-validation repeated 2 times using stratification 
+# A tibble: 4 x 3
+  splits             id      id2  
+  <list>             <chr>   <chr>
+1 <rsplit [363/364]> Repeat1 Fold1
+2 <rsplit [364/363]> Repeat1 Fold2
+3 <rsplit [363/364]> Repeat2 Fold1
+4 <rsplit [364/363]> Repeat2 Fold2
+```
+
+
+
+
+
+
 
 ## 前処理 : recipes パッケージ
 
@@ -305,50 +417,6 @@ rec_trained <-
 
 
 
-## データの分割 : rsample パッケージ
-
-
-
-### Train/Test 分割 : initial_split()
-
-```r
-set.seed(10)
-dm_split = rsample::initial_split(processed_dm_df,  p = 0.8)
-
-train_df = rsample::training(dm_split)
-test_df  = rsample::testing(dm_split)
-```
-
-### 交差検証　Train/Validation 分割 : vfold_cv()
-
-```r
-rsample::vfold_cv(data, v = 10, repeats = 1, strata = NULL, breaks = 4, ...)
-```
-
-
-- `data` : データフレーム
-- `v` : CVの分割数 (fold数)
-- `repeats` : CVの分割を何回繰り返すか。総計算回数は `v*repeats` になる。
-- `strata` : 層別サンプリング。CV分割の時に、fold間で割合を一緒にしたい変数を指定する（例えば目的変数がカテゴリ変数の時に指定する）
-- `breaks` : 整数スカラー。層別サンプリングしたい変数が連続変数の時に、連続地をいくつのビンに分けるか指定する。
-
-
-
-#### Foldのデータを参照する
-
-
-
-- `analysis()` : 訓練データを参照する
-- `assessment()` : 検証データを参照する
-
-
-```r
-df_cv <- rsample::vfold_cv(data, v = 10, repeats = 1)
-
-train <- rsample::analysis(df_cv$splits[[1]])
-validation <- rsample::assessment(df_cv$splits[[1]])
-```
-
 
 
 
@@ -359,7 +427,11 @@ validation <- rsample::assessment(df_cv$splits[[1]])
 
 `parsnip` は異なるパッケージのアルゴリズムを同じインターフェースで扱えるようにする。
 
+
+
+
 ### モデルオブジェクトの作成
+
 
 #### 線形回帰
 
@@ -381,6 +453,12 @@ decision_tree_model <-
         min_n = min_n)
 
 ```
+
+決定木とランダムフォレストの実行の仕方 (`rpart`, `ranger`) は以下のサイトが参考になる
+
+https://www.marketechlabo.com/r-decision-tree/
+
+
 
 
 #### ランダムフォレスト
@@ -413,6 +491,12 @@ update(
 
  - R: "ranger" (the default) or "randomForest"
 - Spark: "spark"
+
+
+#### 
+
+
+
 
 
 ### モデル学習
@@ -474,6 +558,13 @@ mean_pred <-
 
 ## ハイパーパラメータ・チューニング : tune()
 
+https://note.com/tqwst408/n/n2483a75d82a0
+
+
+
+
+
+
 ### クロスバリデーションのデータの分割
 
 ```r
@@ -481,7 +572,7 @@ mean_pred <-
 df_cv <- rsample::vfold_cv(sampled_train_df, v = 5)
 ```
 
-### チューニングしたいモデルとハイパーパラメータを指定する
+### 機械学習アルゴリズムとチューニングしたいハイパーパラメータを指定する
 
 
 `parsnip` パッケージでモデルオブジェクトを作成する際に、交差検証で探索したいハイパーパラメータを選ぶ。そのために、探索したいパラメータの値として `tune::tune()` を指定する。
@@ -497,8 +588,48 @@ rnd_forest_model <-
     mtry = tune::tune()
   ) %>%
   parsnip::set_engine("ranger", num.threads = 10, seed = 42)
+```
 
 
+
+### CVの並列化
+
+あるパラメタ値について、CVの各Foldの計算を並列化するために `foreach` パッケージを使用している。そのためには `foreach` のバックエンドの設定をする必要がある。
+
+```r
+# コア数を調べる
+n.cores <- parallel::detectCores() 
+
+
+# クラスタを作成
+my.cluster <- parallel::makeCluster(
+  n.cores, # 並列数は基本的にFold数と同じにする。Fold数よりも多くても意味がない。
+  type = "PSOCK" # Mac/Linux の場合は "FORK" にするそちらのほうが効率が良い
+  )
+
+# 作成したクラスタを確認
+print(my.cluster)
+
+# 作成したクラスタを foreach に登録する
+doParallel::registerDoParallel(cl = my.cluster)
+
+# 登録されたか確認する
+foreach::getDoParRegistered()
+
+# クラスタを停止するとき
+parallel::stopCluster(my.cluster)
+```
+
+
+
+
+
+
+### グリッドサーチ: `tune::tune_grid()`
+
+探索したいパラメータの範囲を指定した後で、その範囲の中からランダム・規則的に100個の点を抽出する。
+
+```r
 # 探索するパラメータの範囲を指定した後で、
 # その範囲の中からランダムに100個の点を抽出する
 params_grid_df <-
@@ -508,29 +639,23 @@ params_grid_df <-
     trees = dials::trees(range = c(100, 1000))
   ) %>%
   tune::parameters() %>% 
+  # ランダムグリッドの場合
   dials::grid_random(size = 100) 
-```
+  # レギュラーグリッドの場合
+  #dials::grid_regular(size = 100) 
 
 
-
-
-
-
-### クロスバリデーションの実行
-
-
-#### `tune::tune_grid()`
-
-```r
+# クロスバリデーションの実行
 cv_result_df <-
   tune::tune_grid(
     object = rnd_forest_model,
-    preprocessor = flag_detected_by_viirs ~ .,
+    preprocessor = y ~ .,
     resamples = df_cv,
     grid = params_grid_df,
     metrics = yardstick::metric_set(yardstick::pr_auc, yardstick::roc_auc),
     control = tune::control_grid(verbose = TRUE)
   )
+
 ```
 
 - `object` : `parsnip` パッケージで作成したモデルオブジェクト、あるいは 内部でモデルを保持した `workflows::workflow()` で作成したワークフローオブジェクト
@@ -539,38 +664,77 @@ cv_result_df <-
 - `param_info` : 探索したいハイパーパラメータの値の範囲、`dials::parameters()` オブジェクト、あるいは `NULL`
 - `grid` : 1. `param_info=NULL`の時、探索したい具体的なパラメータの値が記録されたデータフレーム（カラム名はハイパーパラメータ名と一致する）、 2. 正の整数値、 `param_info` に値が渡されたとき （`param_info` の範囲から `grid` で指定された数のハイパーパラメータ点が探索される）
 - `metrics` : 計算したい精度指標を  `yardstick::metric_set()` を使って指定する。 `NULL` なら自動で選ばれる
-- `control` : チューニングをいじるために使われるオブジェクト。`control = tune::control_grid(verbose = TRUE)` でCVの経過を出力する
+- `control` : チューニングをいじるために使われるオブジェクト。`control = tune::control_grid(verbose = TRUE)` でCVの経過を出力する（`Sys.setlocale(locale="English")` をセットしないと一部文字化けする）。
 
+
+
+
+
+
+
+
+
+
+#### ベイジアン最適化 : `tune::tune_bayes()`
+
+
+```r
+# 探索するパラメータの範囲を指定する
+# その範囲の中からランダムに100個の点する
+params_grid_df <-
+  list(
+    min_n = dials::min_n(range = c(100, 1000)),
+    mtry  = dials::mtry(range = c(3, 5)),
+    trees = dials::trees(range = c(100, 1000))
+  ) %>%
+  tune::parameters() 
+
+
+# クロスバリデーションの実行
+cv_result_df <-
+  tune::tune_grid(
+    object = rnd_forest_model,
+    preprocessor = y ~ .,
+    resamples = df_cv,
+    grid = params_grid_df,
+    metrics = yardstick::metric_set(yardstick::pr_auc, yardstick::roc_auc),
+    control = tune::control_grid(verbose = TRUE)
+  )
+
+```
 
 
 
 
 ```r
-## S3 method for class 'model_spec'
-tune_grid(
+tune_bayes(
   object,
+  ...,
   preprocessor,
   resamples,
-  ...,
-  param_info = NULL,
-  grid = 10,
-  metrics = NULL,
-  control = control_grid()
-)
 
-## S3 method for class 'workflow'
-tune_grid(
-  object,
-  resamples,
-  ...,
+  iter = 10,
   param_info = NULL,
-  grid = 10,
   metrics = NULL,
-  control = control_grid()
+  objective = exp_improve(),
+  initial = 5,
+  control = control_bayes()
 )
 ```
 
-#### `tune::tune_bayes()`
+
+- `object` : `parsnip` で作成したモデルオブジェクトか workflows::workflow().
+- `...` : オプション、内部で使われる `GPfit::GP_fit()` に渡される引数 (主には `corr` 引数)
+- `preprocessor` : モデルフォーミュラか `recipes::recipe()` で作成したレシピ
+- `resamples`	: `rset()` オブジェクト `rsample::vfold_cv()` の返値とか
+- `iter` : 探索の繰り返しの最大回数
+- `param_info` : 探索したいパラメタの範囲を指定する `dials::parameters()` オブジェクト。 `NULL` の場合は他の引数に基づいてパラメターセットが生成される。
+- `metrics` : 精度評価指標 `yardstick::metric_set()` オブジェクト。複数の指標を与えた場合には最初の指標が最適化される。
+- `objective`	: どのメトリックを最適化すべきかを示す文字列、または 獲得関数(`acquisition function`)オブジェクト（これなら複数の精度指標を組み合わせた最適化ができる？？）。
+- `initial` : 初期値（`tune_grid()`の結果と同様の形式、というかユーザーが事前計算した`tune_grid()`の結果を `tune_bayes()` に渡す）。あるいは正の整数（この場合は内部で自動で`tune_grid()`をしてから計算する）。最初に渡す結果の数はパラメタの数よりも多いほうが良い。
+- `control` : `control_bayes()` で作成した control オブジェクト
+
+
 
 
 
@@ -647,13 +811,13 @@ fitted_model <- fit(model_best,
 
 ## 精度検証 : yardstick
 
+
 - `yardstick::roc_auc()`
 - `yardstick::pr_auc()`
+- `yardstick::roc_curve()`
+- `yardstick::pr_curve()`
 - `yardstick::gain_curve()`
 - `yardstick::lift_curve()`
-- `yardstick::roc_curve()`
-
-
 
 
 

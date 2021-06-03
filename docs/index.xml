@@ -89,7 +89,7 @@
       <pubDate>Wed, 04 Sep 2019 00:00:00 +0000</pubDate>
       
       <guid>https://teuder.github.io/notebook/gcp/bigquery_sql/</guid>
-      <description>BigQuery: SQL SQL レギュラーSQLをデフォルトにする クエリの前に #standardSQL の記述を追加する。逆にレガシーにしたい場合は #legacySQL を記述する。 #standardSQL SELECT weight_pounds, state, year, gestation_weeks FROM `bigquery-public-data.samples.natality` ORDER BY weight_pounds DESC LIMIT 10;</description>
+      <description>BigQuery: SQL 基本文法 標準 SQL のクエリ構文 標準SQLの演算子 標準SQLの関数と演算子 レギュラーSQLをデフォルトにする クエリの前に #standardSQL の記述を追加する。逆</description>
     </item>
     
     <item>
@@ -287,7 +287,7 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://teuder.github.io/notebook/r/purrr/</guid>
-      <description>purrr ベクトルやリストなどの各要素に対する繰り返し処理 基本関数 map_* map2_* reduce() accumulate その他関数 pmap partial データフレームの各行に対する繰り返し</description>
+      <description>purrr ベクトルやリストなどの各要素に対する繰り返し処理 基本関数 map_* map2_* reduce() accumulate その他関数 pmap partial データフレームの各行に対する繰り返し furrr future::plan(future::multiprocess(), workers = 10L) result &amp;lt;-furrr::future_map()</description>
     </item>
     
     <item>
