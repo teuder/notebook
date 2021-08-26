@@ -16,7 +16,7 @@
 <link rel="stylesheet" href="/notebook/book.min.07c38dce7b6800da2a75a565d4d975e38f837294e24d00b5aae363037012d64b.css" integrity="sha256-B8ONzntoANoqdaVl1Nl144&#43;DcpTiTQC1quNjA3AS1ks=">
 
 
-<script defer src="/notebook/search.min.af184f0ec188df238730f438d03505b5403c528e5abb542f6e63eb91207970cc.js" integrity="sha256-rxhPDsGI3yOHMPQ40DUFtUA8Uo5au1QvbmPrkSB5cMw="></script>
+<script defer src="/notebook/search.min.aaa3cb4a5f636c6f3ed955ac69fa2ecaa24271d32a5626226cfa79555b74c47b.js" integrity="sha256-qqPLSl9jbG8&#43;2VWsafouyqJCcdMqViYibPp5VVt0xHs="></script>
 
 <!--
 Made with Book Theme
@@ -889,6 +889,11 @@ sf &lt;- df %&gt;%
 <pre><code>sf::st_wrap_dateline(options = c(&quot;WRAPDATELINE=YES&quot;, &quot;DATELINEOFFSET=0&quot;), quiet = FALSE)
 </code></pre><h2 id="日付変更線の切れ目をつなぐ">日付変更線の切れ目をつなぐ</h2>
 <p><a href="https://stackoverflow.com/questions/56146735/visual-bug-when-changing-robinson-projections-central-meridian-with-ggplot2/56155662#56155662">https://stackoverflow.com/questions/56146735/visual-bug-when-changing-robinson-projections-central-meridian-with-ggplot2/56155662#56155662</a></p>
+<p>Hi Hoki.
+I&rsquo;m sorry but I&rsquo;ll miss our call today.
+There is nothing special to report.
+I&rsquo;ll have meeting with FRA-GFW-ANCORS next week.
+So I&rsquo;ll report about that next time.</p>
 <h1 id="型の変換">型の変換</h1>
 <h2 id="地物の型の変換">地物の型の変換</h2>
 <p><code>st_cast()</code></p>
@@ -901,7 +906,10 @@ sf &lt;- df %&gt;%
 <pre><code>lwgeom::st_astext(x, digits = options(&quot;digits&quot;), ..., EWKT = FALSE)
 lwgeom::st_asewkt(x, digits = options(&quot;digits&quot;))
 </code></pre><h1 id="地物同士の位置関係の判定">地物同士の位置関係の判定</h1>
-<p>predicate whether <code>x</code> touches/contains/within/ <code>y</code></p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#75715e"># sf 1.0 以降 s2 パッケージを使うようになった</span>
+<span style="color:#75715e"># s2を使わない以前の計算方法にしたいときは以下を実行する</span>
+<span style="color:#111">sf</span><span style="color:#f92672">::</span><span style="color:#75af00">sf_use_s2</span><span style="color:#111">(</span><span style="color:#00a8c8">FALSE</span><span style="color:#111">)</span>
+</code></pre></div><p>predicate whether <code>x</code> touches/contains/within/ <code>y</code></p>
 <p><code>sparse=FALSE</code> にすると論理値ベクトルを返す。</p>
 <p><code>st_intersects(x, y, sparse = TRUE, ...)</code></p>
 <p><code>st_disjoint(x, y = x, sparse = TRUE, prepared = TRUE)</code></p>
@@ -936,6 +944,8 @@ lwgeom::st_asewkt(x, digits = options(&quot;digits&quot;))
 <p><a href="https://rud.is/books/30-day-map-challenge/">https://rud.is/books/30-day-map-challenge/</a></p>
 <h1 id="データベースへの読み書き">データベースへの読み書き</h1>
 <p><a href="https://r-spatial.github.io/sf/articles/sf2.html">https://r-spatial.github.io/sf/articles/sf2.html</a></p>
+<h1 id="nate-の中心合わせ">Nate の中心合わせ</h1>
+<p><a href="https://github.com/natemiller/mapping">https://github.com/natemiller/mapping</a></p>
 </article>
 
       

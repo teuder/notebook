@@ -7,7 +7,7 @@
 <meta property="og:description" content="tidymodels tidymodels は統一的なインターフェースでモデリングを行うための、いくつかのパッケージをまとめたもの。 rsample ：訓練データ/テストデータの分割 recipe ：データの前" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://teuder.github.io/notebook/r/tidymodels/" />
-<meta property="article:modified_time" content="2021-04-29T14:16:38+09:00" />
+<meta property="article:modified_time" content="2021-06-04T00:32:58+09:00" />
 <title>tidymodels | notebook</title>
 <link rel="icon" href="/notebook/favicon.png" type="image/x-icon">
 
@@ -15,7 +15,7 @@
 <link rel="stylesheet" href="/notebook/book.min.07c38dce7b6800da2a75a565d4d975e38f837294e24d00b5aae363037012d64b.css" integrity="sha256-B8ONzntoANoqdaVl1Nl144&#43;DcpTiTQC1quNjA3AS1ks=">
 
 
-<script defer src="/notebook/search.min.af184f0ec188df238730f438d03505b5403c528e5abb542f6e63eb91207970cc.js" integrity="sha256-rxhPDsGI3yOHMPQ40DUFtUA8Uo5au1QvbmPrkSB5cMw="></script>
+<script defer src="/notebook/search.min.aaa3cb4a5f636c6f3ed955ac69fa2ecaa24271d32a5626226cfa79555b74c47b.js" integrity="sha256-qqPLSl9jbG8&#43;2VWsafouyqJCcdMqViYibPp5VVt0xHs="></script>
 
 <!--
 Made with Book Theme
@@ -1157,11 +1157,24 @@ https://github.com/alex-shpak/hugo-book
 <p>まずは目的に合わせてアルゴリズムを指定して、モデルオブジェクトを作成する。</p>
 <p><code>parsnip</code> は異なるパッケージのアルゴリズムを同じインターフェースで扱えるようにする。</p>
 <h3 id="モデルオブジェクトの作成">モデルオブジェクトの作成</h3>
-<h4 id="線形回帰">線形回帰</h4>
+<p>以下のアルゴリズムが使用できる</p>
+<ul>
+<li><code>parsnip::linear_reg()</code></li>
+<li><code>parsnip::decision_tree()</code></li>
+<li><code>parsnip::rand_forest()</code></li>
+</ul>
+<p>それぞれのアルゴリズムで具体的にどのパッケージを使うかは <code>parsnip::set_engine()</code> で指定する。この関数はさらに使用するパッケージの機械学習モデルに追加で渡す引数を指定することもできる。</p>
+<pre><code>rf_model &lt;-
+    parsnip::linear_reg() %&gt;% 
+    parsnip::set_engine(&quot;ranger&quot;, , num.threads = 10, seed = 42, importance = &quot;permutation)
+
+</code></pre><p>Thanks @ailich. Yea, that may be a confusion point. I would condider to add the explanation on the Chapter on the LogicalVector.</p>
+<p>I really appreciate this kinds of advice to make the book sensible for person who are not familiar to C++.</p>
+<h4 id="線形回帰--parsniplinear_reg">線形回帰 : parsnip::linear_reg()</h4>
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#111">linear_regression_model</span> <span style="color:#f92672">&lt;-</span>
     <span style="color:#111">parsnip</span><span style="color:#f92672">::</span><span style="color:#75af00">linear_reg</span><span style="color:#111">()</span> <span style="color:#f92672">%&gt;%</span> 
     <span style="color:#111">parsnip</span><span style="color:#f92672">::</span><span style="color:#75af00">set_engine</span><span style="color:#111">(</span><span style="color:#d88200">&#34;lm&#34;</span><span style="color:#111">)</span>
-</code></pre></div><h4 id="決定木">決定木</h4>
+</code></pre></div><h4 id="決定木--parsnipdecision_tree">決定木 : parsnip::decision_tree()</h4>
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#75715e"># 分類木</span>
 <span style="color:#111">decision_tree_model</span> <span style="color:#f92672">&lt;-</span>
     <span style="color:#111">parsnip</span><span style="color:#f92672">::</span><span style="color:#75af00">decision_tree</span><span style="color:#111">(</span>
@@ -1172,7 +1185,7 @@ https://github.com/alex-shpak/hugo-book
 
 </code></pre></div><p>決定木とランダムフォレストの実行の仕方 (<code>rpart</code>, <code>ranger</code>) は以下のサイトが参考になる</p>
 <p><a href="https://www.marketechlabo.com/r-decision-tree/">https://www.marketechlabo.com/r-decision-tree/</a></p>
-<h4 id="ランダムフォレスト">ランダムフォレスト</h4>
+<h4 id="ランダムフォレスト--parsniprand_forest">ランダムフォレスト : parsnip::rand_forest()</h4>
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#111">parsnip</span><span style="color:#f92672">::</span><span style="color:#75af00">rand_forest</span><span style="color:#111">(</span><span style="color:#111">mode</span> <span style="color:#f92672">=</span> <span style="color:#d88200">&#34;unknown&#34;</span><span style="color:#111">,</span> <span style="color:#111">mtry</span> <span style="color:#f92672">=</span> <span style="color:#00a8c8">NULL</span><span style="color:#111">,</span> <span style="color:#111">trees</span> <span style="color:#f92672">=</span> <span style="color:#00a8c8">NULL</span><span style="color:#111">,</span> <span style="color:#111">min_n</span> <span style="color:#f92672">=</span> <span style="color:#00a8c8">NULL</span><span style="color:#111">)</span>
 
 <span style="color:#75715e">## S3 method for class &#39;rand_forest&#39;</span>
@@ -1192,12 +1205,18 @@ https://github.com/alex-shpak/hugo-book
 <li>min_n: The minimum number of data points in a node that are required for the node to be split further.</li>
 </ul>
 <p>エンジン</p>
-<p>set_engine()</p>
+<pre><code>parsnip::set_engine(&quot;ranger&quot;, num.threads = 10, seed = 42, importance = &quot;permutation&quot;)
+</code></pre><p>set_engine()</p>
 <ul>
 <li>R: &ldquo;ranger&rdquo; (the default) or &ldquo;randomForest&rdquo;</li>
 <li>Spark: &ldquo;spark&rdquo;</li>
 </ul>
-<h4 id="heading"></h4>
+<p>変数重要度</p>
+<p><code>ranger</code> で変数重要度を計算させる場合は <code>parsnip::set_engine()</code> に以下のいずれかを指定する</p>
+<ul>
+<li><code>importance = 'impurity'</code></li>
+<li><code>importance = 'permutation'</code></li>
+</ul>
 <h3 id="モデル学習">モデル学習</h3>
 <h4 id="モデル学習の実行--fit">モデル学習の実行 : fit()</h4>
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#111">lm_fit</span> <span style="color:#f92672">&lt;-</span> <span style="color:#75715e"># 学習済みモデルオブジェクト</span>
@@ -1249,6 +1268,7 @@ https://github.com/alex-shpak/hugo-book
 </ul>
 <h2 id="ハイパーパラメータチューニング--tune">ハイパーパラメータ・チューニング : tune()</h2>
 <p><a href="https://note.com/tqwst408/n/n2483a75d82a0">https://note.com/tqwst408/n/n2483a75d82a0</a></p>
+<p><a href="https://www.tidyverse.org/blog/2020/12/finetune-0-0-1/">finetune パッケージ</a>を使うと精度が低いと考えられるハイパラの値については繰り返しを削減して計算効率を上げることができる。</p>
 <h3 id="クロスバリデーションのデータの分割">クロスバリデーションのデータの分割</h3>
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#75715e"># Partitioning data for CV</span>
 <span style="color:#111">df_cv</span> <span style="color:#f92672">&lt;-</span> <span style="color:#111">rsample</span><span style="color:#f92672">::</span><span style="color:#75af00">vfold_cv</span><span style="color:#111">(</span><span style="color:#111">sampled_train_df</span><span style="color:#111">,</span> <span style="color:#111">v</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">5</span><span style="color:#111">)</span>
@@ -1426,9 +1446,9 @@ https://github.com/alex-shpak/hugo-book
   
   <div>
     
-    <a class="flex align-center" href="https://github.com/teuder/notebook/commit/d38670e104d7702938d13bfbcfbc8186cd2f5154" title='Last modified 2021-04-29 by Masaki Tsuda' target="_blank" rel="noopener">
+    <a class="flex align-center" href="https://github.com/teuder/notebook/commit/b491b8d890f89f8a4ed47ee45d76d0b450a81577" title='Last modified 2021-06-04 by Masaki Tsuda' target="_blank" rel="noopener">
       <img src="/notebook/svg/calendar.svg" alt="Changed" />
-      <span>2021-04-29</span>
+      <span>2021-06-04</span>
     </a>
   </div>
   

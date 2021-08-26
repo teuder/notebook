@@ -433,7 +433,35 @@ rec_trained <-
 ### モデルオブジェクトの作成
 
 
-#### 線形回帰
+以下のアルゴリズムが使用できる
+
+- `parsnip::linear_reg()`
+- `parsnip::decision_tree()`
+- `parsnip::rand_forest()`
+
+
+それぞれのアルゴリズムで具体的にどのパッケージを使うかは `parsnip::set_engine()` で指定する。この関数はさらに使用するパッケージの機械学習モデルに追加で渡す引数を指定することもできる。
+
+```
+rf_model <-
+    parsnip::linear_reg() %>% 
+    parsnip::set_engine("ranger", , num.threads = 10, seed = 42, importance = "permutation)
+
+```
+
+
+
+
+
+
+
+
+Thanks @ailich. Yea, that may be a confusion point. I would condider to add the explanation on the Chapter on the LogicalVector.
+
+I really appreciate this kinds of advice to make the book sensible for person who are not familiar to C++.
+
+
+#### 線形回帰 : parsnip::linear_reg()
 
 ```r
 linear_regression_model <-
@@ -441,7 +469,7 @@ linear_regression_model <-
     parsnip::set_engine("lm")
 ```
 
-#### 決定木
+#### 決定木 : parsnip::decision_tree()
 
 ```r
 # 分類木
@@ -461,7 +489,7 @@ https://www.marketechlabo.com/r-decision-tree/
 
 
 
-#### ランダムフォレスト
+#### ランダムフォレスト : parsnip::rand_forest()
 
 
 ```r
@@ -487,13 +515,20 @@ update(
 
 エンジン
 
+```
+parsnip::set_engine("ranger", num.threads = 10, seed = 42, importance = "permutation")
+```
  set_engine()
 
  - R: "ranger" (the default) or "randomForest"
 - Spark: "spark"
 
+変数重要度
 
-#### 
+`ranger` で変数重要度を計算させる場合は `parsnip::set_engine()` に以下のいずれかを指定する
+
+- `importance = 'impurity'`
+- `importance = 'permutation'`
 
 
 
@@ -560,9 +595,7 @@ mean_pred <-
 
 https://note.com/tqwst408/n/n2483a75d82a0
 
-
-
-
+[finetune パッケージ](https://www.tidyverse.org/blog/2020/12/finetune-0-0-1/)を使うと精度が低いと考えられるハイパラの値については繰り返しを削減して計算効率を上げることができる。
 
 
 ### クロスバリデーションのデータの分割

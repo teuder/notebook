@@ -161,7 +161,7 @@
       <pubDate>Mon, 02 Sep 2019 00:00:00 +0000</pubDate>
       
       <guid>https://teuder.github.io/notebook/mac/homebrew/</guid>
-      <description>homebrew 基本コマンド brew search [TEXT|/REGEX/] brew info [FORMULA...] brew install FORMULA brew update brew upgrade [FORMULA...] brew uninstall FORMULA... brew list [FORMULA...] インストール先： /usr/local/Cellar もう少し詳細には： /usr/local/Cellar/パッケージ名/</description>
+      <description>homebrew 基本コマンド brew search [TEXT|/REGEX/] brew info [FORMULA...] brew install FORMULA brew update brew upgrade [FORMULA...] brew uninstall FORMULA... brew list [FORMULA...] brew doctor : 診断 インストール先： /usr/local/Cellar もう少し詳細には： /usr/local/Cellar/パッ</description>
     </item>
     
     <item>
@@ -287,7 +287,7 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://teuder.github.io/notebook/r/purrr/</guid>
-      <description>purrr ベクトルやリストなどの各要素に対する繰り返し処理 基本関数 map_* map2_* reduce() accumulate その他関数 pmap partial データフレームの各行に対する繰り返し furrr future::plan(future::multiprocess(), workers = 10L) result &amp;lt;-furrr::future_map()</description>
+      <description>purrr ベクトルやリストなどの各要素に対する繰り返し処理 基本関数 map_* map2_* reduce() accumulate pmap purrr::pmap(.l, .f, &amp;hellip;) 3つ以上の引数を受け取る関数を適用する 渡すリスト（データフレームで</description>
     </item>
     
     <item>

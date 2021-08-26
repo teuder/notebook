@@ -40,6 +40,12 @@ project_id:dataset_name
 - `--use_legacy_sql=false`
 
 
+### クエリの一部を bq のパラメタとして与える
+
+```
+bq query --use_legacy_sql=false --parameter=percent:INT64:29 \
+    'SELECT * FROM `dataset.my_table` TABLESAMPLE SYSTEM (@percent PERCENT)`
+```
 
 
 ## データをアップロードする : bq load

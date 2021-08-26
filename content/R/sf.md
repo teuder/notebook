@@ -107,7 +107,11 @@ https://stackoverflow.com/questions/56146735/visual-bug-when-changing-robinson-p
 
 
 
-
+Hi Hoki.
+I'm sorry but I'll miss our call today.
+There is nothing special to report.
+I'll have meeting with FRA-GFW-ANCORS next week.
+So I'll report about that next time.
 
 # 型の変換
 
@@ -139,6 +143,12 @@ lwgeom::st_asewkt(x, digits = options("digits"))
 
 
 # 地物同士の位置関係の判定
+
+```r
+# sf 1.0 以降 s2 パッケージを使うようになった
+# s2を使わない以前の計算方法にしたいときは以下を実行する
+sf::sf_use_s2(FALSE)
+```
 
 predicate whether `x` touches/contains/within/ `y` 
 
@@ -219,3 +229,9 @@ https://rud.is/books/30-day-map-challenge/
 # データベースへの読み書き
 
 https://r-spatial.github.io/sf/articles/sf2.html
+
+
+
+# Nate の中心合わせ
+
+https://github.com/natemiller/mapping

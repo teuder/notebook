@@ -97,6 +97,23 @@ aes(x = X, y = Y, group = interaction(A , B)) # 複数変数を使う場合
 geom_point(aes(x, y))
 ```
 
+### 点の種類
+
+shape
+
+- color = 内部色　フチなし
+
+- 1 丸, color 色指定 内部が塗りつぶされる
+
+- color = 縁の色 縁あり
+
+ - 19
+
+
+
+
+geom_point(aes(fill=id, size=id), colour="black", shape=21, stroke = 2)
+
 ## 折れ線・経路
 
 
@@ -105,6 +122,7 @@ geom_line(aes(x, y))
 geom_path(aes(x, y))
 ```
 
+`geom_line()` や `geom_path()` で `x` 軸に指定した変数が `factor` の場合は `aes(group=1)` を指定する。
 
 
 
