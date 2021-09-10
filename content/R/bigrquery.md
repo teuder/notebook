@@ -38,3 +38,26 @@ https://gargle.r-lib.org/articles/non-interactive-auth.html
 ```
 bigrquery::bq_auth(path = "access_token.json")
 ```
+
+
+
+# データのダウンロード
+
+
+
+# データのアップロード
+
+```r
+bq_tbl <- bigrquery::bq_table("project", "dataset", "table_name")
+job <- bigrquery::bq_table_upload(bq_tbl, values = data_df, quiet = FALSE)
+```
+
+
+# テーブルの作成・削除
+
+```r
+bq_tbl <- bigrquery::bq_table("project", "dataset", "table_name")
+job <- bigrquery::bq_table_upload(bq_tbl, values = data_df, quiet = FALSE)
+bigrquery::bq_table_create(bq_tbl)
+bigrquery::bq_table_delete(bq_tbl)
+```

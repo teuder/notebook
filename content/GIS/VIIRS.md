@@ -99,8 +99,14 @@ Joint Polar Satellite System (JPSS) Algorithm Specification Volume II: Data Dict
 
 HDF5ファイルに格納されているデータの定義については以下のドキュメントに概要がある
 
-- [VIIRS SDR Data format](https://ncc.nesdis.noaa.gov/documents/documentation/viirs-sdr-dataformat.pdf)
 - [Joint Polar Satellite System (JPSS) Algorithm Specification Volume II: Data Dictionary for VIIRS RDR/SDR.](https://www.jpss.noaa.gov/sciencedocuments/sciencedocs/2016-12/474-00448-02-06_JPSS-DD-Vol-II-Part-6_0200F.pdf)
+- [VIIRS SDR Data format](https://ncc.nesdis.noaa.gov/documents/documentation/viirs-sdr-dataformat.pdf)
+
+
+GeoTIFF への変換スクリプト
+
+https://git.earthdata.nasa.gov/projects/LPDUR/repos/nasa-viirs/browse/scripts/VIIRS_HDF5toGeoTIFF.R
+
 
 
 ### SDR

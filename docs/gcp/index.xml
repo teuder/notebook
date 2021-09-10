@@ -16,7 +16,7 @@
       <pubDate>Wed, 04 Sep 2019 00:00:00 +0000</pubDate>
       
       <guid>https://teuder.github.io/notebook/gcp/bigquery_gis/</guid>
-      <description>BigQuery GIS 標準 SQL の地理関数 地理オブジェクト作成 ST_GEOGPOINT(longitude, latitude) 判定関数 ST_CONTAINS ST_CONTAINS(geography_1, geography_2) geography_2 は geography_1 の内部にある（外にはみ出していない）なら TRUE ST_WITHIN ST_WITHIN(geography_1, geography_2) geography_1 は geography_2 の内部にある（外にはみ</description>
+      <description>BigQuery GIS 標準 SQL の地理関数 地理オブジェクト作成 ST_GEOGPOINT(longitude, latitude) ST_GEOGFROMTEXT(wkt_string) 判定関数 ST_CONTAINS ST_CONTAINS(geography_1, geography_2) geography_2 は geography_1 の内部にある（外にはみ出していない）なら TRUE ST_WITHIN ST_WITHIN(geography_1, geography_2) geography_1 は geography_2 の内部にある（外には</description>
     </item>
     
     <item>

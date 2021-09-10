@@ -448,8 +448,27 @@ theme(legend.position = 'none')
 デフォルトでは `geom_*()` で指定したサイズで凡例の点も表示されるが、点が小さい時には困る。凡例だけで大きいサイズでプロットしたい場合。
 
 ```r
-guides(color = guide_legend(override.aes = list(size = 5)))+
+
+ggplot()+
+
+  # guides() 関数の中で指定する場合
+  guides()(color = guide_legend(override.aes = list(size = 5)))+
+
+  # scale_*() 関数の中で指定する場合
+  scale_fill_manual(
+    values = c(
+      "A" = "blue",
+      "B" = "cyan",
+      "C" = "yellow"
+    ),
+    guide = guide_legend(override.aes = list(size = 5))
+  ) 
 ```
+
+
+
+
+
 
 # 画像として保存する : ggsave()
 

@@ -174,6 +174,15 @@
     </item>
     
     <item>
+      <title>stringr</title>
+      <link>https://teuder.github.io/notebook/r/stringr/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://teuder.github.io/notebook/r/stringr/</guid>
+      <description>stringr 文字列を操作するパッケージ 正規表現 パターンを含む要素の抽出 str_detect(string, pattern, negate = FALSE) 文字列ベクトル string を渡して、 pattern と一致する文字列に対して TRUE を返す。nega</description>
+    </item>
+    
+    <item>
       <title>tidymodels</title>
       <link>https://teuder.github.io/notebook/r/tidymodels/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>

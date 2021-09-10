@@ -211,3 +211,17 @@ SELECT * FROM dataset.my_table WHERE rand() < 0.1
 ```
 
 ただし、 `WHERE rand()` を使用するとテーブル全体をスキャンするのでコストが大きくなることに注意する。`TABLESAMPLE` を使うとテーブル全体をスキャンしないのでクエリのコストは小さくなる。
+
+
+# Sharded Table
+
+```sql
+SELECT ssvid
+FROM
+
+`world-fishing-827.pipe_production_v20201001.messages_scored_*`
+
+WHERE 
+_TABLE_SUFFIX
+BETWEEN '20200101' AND '20201231'
+```

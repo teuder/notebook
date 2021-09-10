@@ -16,7 +16,9 @@ weight: 10
 
 ```
 ST_GEOGPOINT(longitude, latitude)
+ST_GEOGFROMTEXT(wkt_string)
 ```
+
 
 
 

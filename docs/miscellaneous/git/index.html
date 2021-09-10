@@ -16,7 +16,7 @@
 <link rel="stylesheet" href="/notebook/book.min.07c38dce7b6800da2a75a565d4d975e38f837294e24d00b5aae363037012d64b.css" integrity="sha256-B8ONzntoANoqdaVl1Nl144&#43;DcpTiTQC1quNjA3AS1ks=">
 
 
-<script defer src="/notebook/search.min.aaa3cb4a5f636c6f3ed955ac69fa2ecaa24271d32a5626226cfa79555b74c47b.js" integrity="sha256-qqPLSl9jbG8&#43;2VWsafouyqJCcdMqViYibPp5VVt0xHs="></script>
+<script defer src="/notebook/search.min.29bf3eb7dec9dca83e013f58b97d7a1e9f2d4f84187b689830ff8c10a418aac4.js" integrity="sha256-Kb8&#43;t97J3Kg&#43;AT9YuX16Hp8tT4QYe2iYMP&#43;MEKQYqsQ="></script>
 
 <!--
 Made with Book Theme
@@ -375,6 +375,16 @@ https://github.com/alex-shpak/hugo-book
 
   <a href="/notebook/r/stars/" >
       stars
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/r/stringr/" >
+      stringr
   </a>
 
 </li>
@@ -941,11 +951,14 @@ https://github.com/alex-shpak/hugo-book
 </table>
 <h1 id="レポジトリを作成するコピーする">レポジトリを作成する、コピーする</h1>
 <h2 id="init--既存のフォルダをレポジトリにする">init : 既存のフォルダをレポジトリにする</h2>
-<p>git init して登録されたフォルダが、大元のレポジトリになる？</p>
-<p>他の人は、このレポジトリをクローンすることで、開発に参加できる</p>
+<p>git init して登録されたフォルダがレポジトリとなる。他の人は、このレポジトリを <code>clone</code> することで、開発に参加できる。</p>
+<p>この <code>git init</code> して作成されたオリジナルのレポジトリは <code>origin</code> と呼ばれる。</p>
 <h2 id="clone--既存のレポジトリをコピーする">clone : 既存のレポジトリをコピーする</h2>
-<p>既にあるレポジトリの内容をコピーして、ローカルにレポジトリのクローンを作成する</p>
-<p>このクローンに、変更を加えることで、元レポジトリの開発に参加できる</p>
+<p>既にあるレポジトリの内容を複製して、ローカルにレポジトリのクローンを作成する</p>
+<p>このクローンに、変更を加えることで、元レポジトリの開発に参加できる。</p>
+<p><code>git clone オリジン・レポジトリのURL.git</code></p>
+<p>クローンしたレポジトリのオリジナルのレポジトリの確認方法</p>
+<p><code>git remote -v</code></p>
 <h1 id="既にあるレポジトリへの操作">既にあるレポジトリへの操作</h1>
 <h2 id="add">add</h2>
 <p>作成したファイルを git の管理下に追加する（ステージングする）。一度追加したら同じファイルを再度追加する必要はない。</p>
@@ -963,12 +976,7 @@ git add *.java # 拡張子が .java
 <pre><code>git push レポジトリ ブランチ
 </code></pre><p>例：<code>git push origin master</code></p>
 <p>ここで <code>origin</code> レポジトリは、このレポジトリの大本である、リモートにあるレポジトリを意味する（<code>clone</code> するもとになったやつ）</p>
-<h1 id="ファイルの削除名前変更など">ファイルの削除・名前変更など</h1>
-<p>基本的に、名前の変更や削除など、ファイル・ディレクトリに対する操作は全て git を通して行う。そうしないと git がそれらの変更をトラッキングできない。</p>
-<p>ファイル名を変えて内容を変更するとき、git を使わないでファイル名を変更すると、元のファイルとは別のファイルとして扱われるので、どこを変更したのかわからなくなる。</p>
-<pre><code>git rm
-git mv
-</code></pre><h1 id="ブランチ">ブランチ</h1>
+<h1 id="ブランチ">ブランチ</h1>
 <p>ブランチとは１つのレポジトリで複数の状態（例えば正式版、開発版）などを保持しておく仕組み。ブランチを切り替えるとフォルダの中身も変化する。開発版のブランチに切り替えてファイルを編集すると正式版を壊すことなく、開発版を変更して、開発版が完成したら、それを正式版のブランチにマージするといったことができる。</p>
 <p>レポジトリを作成したときにできる最初のブランチが <code>master</code></p>
 <p>ローカルレポジトリとリモートレポジトリの</p>
@@ -1040,12 +1048,29 @@ git push origin foo
 <p>以前にコミットした状態に復元する</p>
 <pre><code>git checkout [コミット番号] [ファイルパス]
 </code></pre><h1 id="ファイルへの操作">ファイルへの操作</h1>
-<h2 id="ファイル名を変更する移動する--git-mv">ファイル名を変更する・移動する : git mv</h2>
+<p>基本的に、名前の変更や削除など、ファイル・ディレクトリに対する操作は全て git を通して行う。そうしないと git がそれらの変更をトラッキングできない。</p>
+<p>ファイル名を変えて内容を変更するとき、git を使わないでファイル名を変更すると、元のファイルとは別のファイルとして扱われるので、どこを変更したのかわからなくなる。</p>
+<pre><code># ファイルの削除
+git rm
+# ファイルの移動・名前変更
+git mv
+</code></pre><h2 id="ファイル名を変更する移動する--git-mv">ファイル名を変更する・移動する : git mv</h2>
 <pre><code>git mv 
 
-</code></pre><h2 id="ファイルを削除する">ファイルを削除する</h2>
-<h2 id="ローカルで削除したファイルフォルダをリモートレポジトリからも削除する">ローカルで削除したファイル・フォルダを、リモートレポジトリからも削除する</h2>
-<p>ローカルフォルダには、ファイルやフォルダがあっても、リモートレポジトリにはアップロードされないようにしたい。
+</code></pre><h2 id="ローカルで削除したファイルフォルダをリモートレポジトリからも削除する">ローカルで削除したファイル・フォルダを、リモートレポジトリからも削除する</h2>
+<p><code>git rm</code> を使ってファイルを削除した場合には、その変更を commit &amp; push すればリモートレポジトリからもファイルは削除される。
+しかし、それ以外の方法でファイルを削除して　commit &amp; push　してもリモートレポジトリにはファイルが残ってしまう。</p>
+<p>リモートレポジトリにあるファイルを削除するには以下のようにする。</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#75715e"># キャッシュを削除する</span>
+git rm --cached    /path/to/消したいファイル.txt
+git rm --cached -r /path/to/消したいフォルダ
+
+<span style="color:#75715e"># コミット</span>
+git commit -m <span style="color:#d88200">&#34;remove some files&#34;</span>
+
+<span style="color:#75715e"># リモートに反映</span>
+git push
+</code></pre></div><p>ローカルフォルダには、ファイルやフォルダがあっても、リモートレポジトリにはアップロードされないようにしたい。
 既に、リモートレポジトリにアップロードされてしまったファイル・フォルダを、リモートレポジトリから削除したい</p>
 <ul>
 <li>後から、<code>.gitignore</code> に追加削除した場合</li>
@@ -1173,7 +1198,6 @@ git push origin master
 
   <ul>
     <li><a href="#ファイル名を変更する移動する--git-mv">ファイル名を変更する・移動する : git mv</a></li>
-    <li><a href="#ファイルを削除する">ファイルを削除する</a></li>
     <li><a href="#ローカルで削除したファイルフォルダをリモートレポジトリからも削除する">ローカルで削除したファイル・フォルダを、リモートレポジトリからも削除する</a></li>
   </ul>
 </nav>

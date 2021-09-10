@@ -106,13 +106,6 @@ https://stackoverflow.com/questions/56146735/visual-bug-when-changing-robinson-p
 
 
 
-
-Hi Hoki.
-I'm sorry but I'll miss our call today.
-There is nothing special to report.
-I'll have meeting with FRA-GFW-ANCORS next week.
-So I'll report about that next time.
-
 # 型の変換
 
 ## 地物の型の変換
