@@ -57,6 +57,15 @@
     </item>
     
     <item>
+      <title>Bayesian Staistics</title>
+      <link>https://teuder.github.io/notebook/datascience/bayesian_statistics/</link>
+      <pubDate>Mon, 26 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://teuder.github.io/notebook/datascience/bayesian_statistics/</guid>
+      <description>Bayesian Statistics Cmdstanr入門とreduce_sum()解説 rstan はもう更新されていないみたいなので、今後は Cmdstan のラッパーである Cmdstanr を使った方がよさそう Bayesian</description>
+    </item>
+    
+    <item>
       <title>BigQuery GIS</title>
       <link>https://teuder.github.io/notebook/gcp/bigquery_gis/</link>
       <pubDate>Wed, 04 Sep 2019 00:00:00 +0000</pubDate>
@@ -80,7 +89,7 @@
       <pubDate>Wed, 04 Sep 2019 00:00:00 +0000</pubDate>
       
       <guid>https://teuder.github.io/notebook/gcp/bigquery/</guid>
-      <description>BigQuery WebUI キーボードショートカット Mac の場合は Ctrl の代わりに Cmd にする キー アクション Ctrl Enter 現在のクエリを実行 Tab 現在の単語をオートコンプリート 選択 Tab 選択範囲</description>
+      <description>BigQuery BigQuery Advent カレンダー WebUI キーボードショートカット Mac の場合は Ctrl の代わりに Cmd にする キー アクション Ctrl Enter 現在のクエリを実行 Tab 現在の単語をオートコンプリート</description>
     </item>
     
     <item>

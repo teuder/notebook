@@ -8,6 +8,10 @@ weight: 10
 
 # BigQuery
 
+[BigQuery Advent カレンダー](https://dev.classmethod.jp/referencecat/classmethod-bigquery-advent-calendar-2020/)
+
+
+
 # WebUI
 
 ## キーボードショートカット

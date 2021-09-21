@@ -32,7 +32,9 @@ geometry_sfc <- sf::st_as_sfc(geometry_df$geometry_wkt, crs=4326)
 data_df <- geometry_df %>% select(-geometry_wkt)
 
 # データフレームと `sfc` オブジェクトを合体して `sf` オブジェクトを作成する
-geometry_sf <- sf::st_set_geometry(data_df, geometry_sfc)
+geometry_sf <- 
+    sf::st_set_geometry(data_df, geometry_sfc)%>% 
+    sf::st_crs(crs=4326)
 ```
 
 

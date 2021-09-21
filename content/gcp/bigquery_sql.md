@@ -125,29 +125,7 @@ SELECT CONCAT(
 ```
 
 
-# arrayを展開する
 
-`LEFT JOIN UNNEST` を使用する
-
-下の例では `ais_identity.n_imo` が `array`
-
-これをすると、 `ais_identity.n_imo is null` の行は除外される
-
-```
-select
-  ssvid,
-  best.best_flag,
-  ais_identity.flag_mmsi,
-  best.best_vessel_class,
-  ais_identity.n_shipname,
-  ais_identity.n_callsign,
-  n_imo.value as n_imo_value,
-  n_imo.count as n_imo_count,
-  n_imo.type as n_imo_type
-from
-`world-fishing-827.gfw_research.vi_ssvid_v20200801`
-LEFT JOIN UNNEST(ais_identity.n_imo ) as n_imo
-```
 
 
 
@@ -213,6 +191,8 @@ SELECT * FROM dataset.my_table WHERE rand() < 0.1
 ただし、 `WHERE rand()` を使用するとテーブル全体をスキャンするのでコストが大きくなることに注意する。`TABLESAMPLE` を使うとテーブル全体をスキャンしないのでクエリのコストは小さくなる。
 
 
+
+
 # Sharded Table
 
 ```sql
@@ -224,4 +204,237 @@ FROM
 WHERE 
 _TABLE_SUFFIX
 BETWEEN '20200101' AND '20201231'
+```
+
+
+
+
+
+
+# ARRAY
+
+## ARRAYの型
+
+```sql
+
+SELECT
+  ARRAY<INT64>[1,2,3],
+  ARRAY<STRUCT<INT64, INT64>>,
+  # ARRAY<ARRAY<INT64>>[[1,2],[3,4,],[5,6]], # ARRAYを要素に持つARRAYは作成できない
+  ARRAY<STRUCT<ARRAY<INT64>>>,　             # その代わりに ARRAYをSTRUCTで包めばそれを、ARRAYとして格納できる
+
+```
+
+
+https://cloud.google.com/bigquery/docs/reference/standard-sql/arrays
+
+
+```sql
+WITH
+ownner_pet AS (
+SELECT 'tony' as owner, ['dog', 'cat'] as pet UNION ALL
+SELECT 'tim' as owner, ['cat', 'bird'] as pet UNION ALL
+SELECT 'nancy' as owner, ['dog', 'fish', 'lizard'] as pet UNION ALL
+)
+
+```
+
+pet は arrayとする。
+
+`ownner_pet` table
+
+|  owner  |  pet  |
+| ---- | ---- |
+|  tony  |  dog  |
+|        |  cat  |
+|  tim   |  cat  |
+|        |  bird  |
+|  nancy  |  dog  |
+|         |  fish  |
+|         |  lizard  |
+
+
+
+## ARRAY を展開する LEFT JOIN UNNEST (array)
+
+`LEFT JOIN UNNEST (array)` を使用する
+
+下の例では `ais_identity.n_imo` が `array`
+
+これをすると、 `ais_identity.n_imo is null` の行は除外される
+
+```sql
+select
+  ssvid,
+  best.best_flag,
+  ais_identity.flag_mmsi,
+  best.best_vessel_class,
+  ais_identity.n_shipname,
+  ais_identity.n_callsign,
+  n_imo.value as n_imo_value,
+  n_imo.count as n_imo_count,
+  n_imo.type as n_imo_type
+from
+`world-fishing-827.gfw_research.vi_ssvid_v20200801`
+LEFT JOIN UNNEST(ais_identity.n_imo ) as n_imo
+```
+
+
+
+
+
+## WHERE IN UNNEST (array)
+
+Array の要素として特定の値が含まれるレコードを抽出する
+
+```sql
+SELECT
+  *
+FROM
+  ownner_pet
+WHERE IN UNNEST (pet)
+```
+
+## WHERE EXISTS ( SELECT * FROM UNNEST (array) as A WHERE A = 'X')
+
+Array が特定の条件を満たすレコードを抽出する `IN UNNEST` でよりも複雑な条件を指定することができる。
+
+この例は　`IN UNNEST`　と同じ結果を返すけど、ARRAYの要素が STRUCT 等の場合や、もっと複雑な条件を指定したい場合は `WHERE EXIST` を使う
+
+```sql
+SELECT
+  *
+FROM
+  ownner_pet
+WHERE EXISTS (
+  SELECT *
+  FROM UNNEST (pat) AS p
+  WHERE p = 'bear'
+)
+```
+
+
+## ARRAY から一部の要素を取り出す
+
+結果は元のテーブルの形式を保持したまま、一部の ARRAY 要素を取り出す
+
+```
+WITH
+ownner_pet AS (
+SELECT 'tony' as owner, ['dog', 'cat'] as pet UNION ALL
+SELECT 'tim' as owner, ['cat', 'bird'] as pet UNION ALL
+SELECT 'nancy' as owner, ['dog', 'fish', 'lizard'] as pet 
+)
+
+SELECT
+  owner,
+  ARRAY (SELECT p FROM UNNEST (pet) as p WHERE p LIKE 'c%' ) as pet
+FROM
+  ownner_pet
+
+```
+
+
+
+## UDF を使った ARRAY 処理
+
+```sql
+CREATE FUNCTION SORT_ARRAY(arr ANY TYPE, ascending BOOL) AS (
+IF (ascending,
+    ARRAY (SELECT * FROM UNNEST (arr) a ORDER BY a),
+    ARRAY (SELECT * FROM UNNEST (arr) a ORDER BY a DESC) )
+);
+
+
+WITH
+ownner_pet AS (
+SELECT 'tony' as owner, ['dog', 'cat'] as pet UNION ALL
+SELECT 'tim' as owner, ['cat', 'bird'] as pet UNION ALL
+SELECT 'nancy' as owner, ['dog', 'fish', 'lizard'] as pet 
+)
+
+SELECT
+  owner,
+  SORT_ARRAY(pet, TRUE) as pet
+FROM
+  ownner_pet
+
+```
+
+
+
+
+
+　
+
+## 番号を使った ARRAY 要素へのアクセス
+
+```
+WITH sequences AS
+  (SELECT [0, 1, 1, 2, 3, 5] AS some_numbers
+   UNION ALL SELECT [2, 4, 8, 16, 32] AS some_numbers
+   UNION ALL SELECT [5, 10] AS some_numbers)
+SELECT some_numbers,
+       some_numbers[OFFSET(1)] AS offset_1,
+       some_numbers[ORDINAL(1)] AS ordinal_1
+FROM sequences;
+```
+
+## ARRAYの要素の結合
+
+ARRAY_CONCAT() のような関数を使用して複数の配列を結合し、ARRAY_TO_STRING() を使用して配列を文字列に変換できます。
+
+
+
+# User Defined Functions
+
+```
+# 定数をUDFとして保存する
+CREATE TEMP FUNCTION START_DATE() AS (TIMESTAMP('2012-04-01'));
+
+# 使い捨て関数
+CREATE TEMP FUNCTION SORT_ARRAY(arr ANY TYPE, ascending BOOL) AS (
+IF (ascending,
+    ARRAY (SELECT * FROM UNNEST (arr) a ORDER BY a),
+    ARRAY (SELECT * FROM UNNEST (arr) a ORDER BY a DESC) )
+);
+
+
+# テーブルを作成するときと同じようにUDFを保存することもできる
+CREATE OR REPLACE FUNCTION `your_project.your_dataset.SORT_ARRAY`(arr ANY TYPE, ascending BOOL) AS (
+IF (ascending,
+    ARRAY (SELECT * FROM UNNEST (arr) a ORDER BY a),
+    ARRAY (SELECT * FROM UNNEST (arr) a ORDER BY a DESC) )
+);
+```
+
+
+
+# STRUCT
+
+
+```sql
+# STRUCT を要素に持つカラム
+# これだとstructとしてまとめる意義があまりないかも
+WITH
+ownner_pet AS (
+SELECT 'tony' as owner, STRUCT('dog' as species, 2 as count) as pet UNION ALL
+SELECT 'tim' as owner, ('cat', 3)  UNION ALL
+SELECT 'nancy' as owner, ('fish', 10) 
+)
+select * from ownner_pet
+```
+
+STRUCT は ARRAY の要素にするのがメインの使い方？？
+
+
+```sql
+# STRUCT を要素に持つ ARRAY カラム
+WITH
+ownner_pet AS (
+SELECT 'tony' as owner, [STRUCT('dog' as species, 2 as count), ('cat', 1)] as pet UNION ALL
+SELECT 'tim' as owner, [('cat', 3), ('cow', 1), ('horse',3)]  UNION ALL
+SELECT 'nancy' as owner,  [('fish', 10), ('bird', 3), ('horse',3)]
+)
+select * from ownner_pet
 ```

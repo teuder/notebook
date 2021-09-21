@@ -28,6 +28,10 @@ type: docs
 
 
 
+- [情報量 divergence](https://qiita.com/kilometer/items/5be635edefeadaca9281)
+
+
+
 ## 分類モデル
 
 

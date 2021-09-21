@@ -34,7 +34,7 @@
   
   <url>
     <loc>https://teuder.github.io/notebook/gis/viirs/</loc>
-    <lastmod>2020-12-16T18:46:41+09:00</lastmod>
+    <lastmod>2021-09-10T20:10:59+09:00</lastmod>
   </url>
   
   <url>
@@ -63,8 +63,13 @@
   </url>
   
   <url>
+    <loc>https://teuder.github.io/notebook/datascience/bayesian_statistics/</loc>
+    <lastmod>2019-08-26T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://teuder.github.io/notebook/gcp/bigquery_gis/</loc>
-    <lastmod>2021-04-29T14:16:38+09:00</lastmod>
+    <lastmod>2021-09-10T20:10:59+09:00</lastmod>
   </url>
   
   <url>
@@ -79,7 +84,7 @@
   
   <url>
     <loc>https://teuder.github.io/notebook/gcp/bigquery_sql/</loc>
-    <lastmod>2021-08-26T17:35:35+09:00</lastmod>
+    <lastmod>2021-09-10T20:10:59+09:00</lastmod>
   </url>
   
   <url>
@@ -109,7 +114,7 @@
   
   <url>
     <loc>https://teuder.github.io/notebook/miscellaneous/vscode/</loc>
-    <lastmod>2019-09-24T17:50:14-07:00</lastmod>
+    <lastmod>2021-09-10T20:10:59+09:00</lastmod>
   </url>
   
   <url>
@@ -149,12 +154,12 @@
   
   <url>
     <loc>https://teuder.github.io/notebook/r/ggplot2/</loc>
-    <lastmod>2021-08-26T17:35:35+09:00</lastmod>
+    <lastmod>2021-09-10T20:10:59+09:00</lastmod>
   </url>
   
   <url>
     <loc>https://teuder.github.io/notebook/miscellaneous/git/</loc>
-    <lastmod>2021-04-29T14:16:38+09:00</lastmod>
+    <lastmod>2021-09-10T20:10:59+09:00</lastmod>
   </url>
   
   <url>
@@ -164,12 +169,12 @@
   
   <url>
     <loc>https://teuder.github.io/notebook/r/sf/</loc>
-    <lastmod>2021-08-26T17:35:35+09:00</lastmod>
+    <lastmod>2021-09-10T20:10:59+09:00</lastmod>
   </url>
   
   <url>
     <loc>https://teuder.github.io/notebook/r/bigrquery/</loc>
-    <lastmod>2020-12-16T18:46:41+09:00</lastmod>
+    <lastmod>2021-09-10T20:10:59+09:00</lastmod>
   </url>
   
   <url>
@@ -234,6 +239,7 @@
   
   <url>
     <loc>https://teuder.github.io/notebook/r/stringr/</loc>
+    <lastmod>2021-09-10T20:10:59+09:00</lastmod>
   </url>
   
   <url>

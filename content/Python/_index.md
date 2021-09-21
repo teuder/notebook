@@ -11,7 +11,7 @@ type: docs
 # Python
 
 
-
+- [Pythonプログラミング入門 #utpython](https://sites.google.com/view/ut-python/resource/%E6%95%99%E6%9D%90%E8%AC%9B%E7%BE%A9%E5%8B%95%E7%94%BB)
 
 
 ## 文字列

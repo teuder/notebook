@@ -8,7 +8,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://teuder.github.io/notebook/gcp/bigquery_sql/" />
 <meta property="article:published_time" content="2019-09-04T00:00:00+00:00" />
-<meta property="article:modified_time" content="2021-08-26T17:35:35+09:00" />
+<meta property="article:modified_time" content="2021-09-10T20:10:59+09:00" />
 <title>BigQuery: SQL | notebook</title>
 <link rel="icon" href="/notebook/favicon.png" type="image/x-icon">
 
@@ -16,7 +16,7 @@
 <link rel="stylesheet" href="/notebook/book.min.07c38dce7b6800da2a75a565d4d975e38f837294e24d00b5aae363037012d64b.css" integrity="sha256-B8ONzntoANoqdaVl1Nl144&#43;DcpTiTQC1quNjA3AS1ks=">
 
 
-<script defer src="/notebook/search.min.29bf3eb7dec9dca83e013f58b97d7a1e9f2d4f84187b689830ff8c10a418aac4.js" integrity="sha256-Kb8&#43;t97J3Kg&#43;AT9YuX16Hp8tT4QYe2iYMP&#43;MEKQYqsQ="></script>
+<script defer src="/notebook/search.min.c6e9900d419b30096c6716696c3dd2b45e229bd951b9f7d34ceaeb8cc36e233f.js" integrity="sha256-xumQDUGbMAlsZxZpbD3StF4im9lRuffTTOrrjMNuIz8="></script>
 
 <!--
 Made with Book Theme
@@ -449,6 +449,16 @@ https://github.com/alex-shpak/hugo-book
 
   
   <ul>
+    
+      
+        <li>
+
+  <a href="/notebook/datascience/bayesian_statistics/" >
+      Bayesian Staistics
+  </a>
+
+</li>
+      
     
   </ul>
   
@@ -922,23 +932,6 @@ SELECT CONCAT(
   'INSERT dataset.tablename (',
   ARRAY_TO_STRING(ARRAY(SELECT column_name FROM ColumnNames), ', '),    
   ')');
-</code></pre><h1 id="arrayを展開する">arrayを展開する</h1>
-<p><code>LEFT JOIN UNNEST</code> を使用する</p>
-<p>下の例では <code>ais_identity.n_imo</code> が <code>array</code></p>
-<p>これをすると、 <code>ais_identity.n_imo is null</code> の行は除外される</p>
-<pre><code>select
-  ssvid,
-  best.best_flag,
-  ais_identity.flag_mmsi,
-  best.best_vessel_class,
-  ais_identity.n_shipname,
-  ais_identity.n_callsign,
-  n_imo.value as n_imo_value,
-  n_imo.count as n_imo_count,
-  n_imo.type as n_imo_type
-from
-`world-fishing-827.gfw_research.vi_ssvid_v20200801`
-LEFT JOIN UNNEST(ais_identity.n_imo ) as n_imo
 </code></pre><h2 id="文字列">文字列</h2>
 <h3 id="部分文字列-substr">部分文字列: SUBSTR</h3>
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#111">SUBSTR</span><span style="color:#111">(</span><span style="color:#960050;background-color:#1e0010">カラム</span><span style="color:#111">,</span> <span style="color:#960050;background-color:#1e0010">開始位置</span> <span style="color:#111">[,</span><span style="color:#960050;background-color:#1e0010">長さ</span><span style="color:#111">])</span>
@@ -978,6 +971,184 @@ LEFT JOIN UNNEST(ais_identity.n_imo ) as n_imo
 <span style="color:#00a8c8">WHERE</span> 
 <span style="color:#111">_TABLE_SUFFIX</span>
 <span style="color:#00a8c8">BETWEEN</span> <span style="color:#d88200">&#39;20200101&#39;</span> <span style="color:#00a8c8">AND</span> <span style="color:#d88200">&#39;20201231&#39;</span>
+</code></pre></div><h1 id="array">ARRAY</h1>
+<h2 id="arrayの型">ARRAYの型</h2>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql">
+<span style="color:#00a8c8">SELECT</span>
+  <span style="color:#111">ARRAY</span><span style="color:#f92672">&lt;</span><span style="color:#111">INT64</span><span style="color:#f92672">&gt;</span><span style="color:#111">[</span><span style="color:#ae81ff">1</span><span style="color:#111">,</span><span style="color:#ae81ff">2</span><span style="color:#111">,</span><span style="color:#ae81ff">3</span><span style="color:#111">],</span>
+  <span style="color:#111">ARRAY</span><span style="color:#f92672">&lt;</span><span style="color:#111">STRUCT</span><span style="color:#f92672">&lt;</span><span style="color:#111">INT64</span><span style="color:#111">,</span> <span style="color:#111">INT64</span><span style="color:#f92672">&gt;&gt;</span><span style="color:#111">,</span>
+  <span style="color:#f92672">#</span> <span style="color:#111">ARRAY</span><span style="color:#f92672">&lt;</span><span style="color:#111">ARRAY</span><span style="color:#f92672">&lt;</span><span style="color:#111">INT64</span><span style="color:#f92672">&gt;&gt;</span><span style="color:#111">[[</span><span style="color:#ae81ff">1</span><span style="color:#111">,</span><span style="color:#ae81ff">2</span><span style="color:#111">],[</span><span style="color:#ae81ff">3</span><span style="color:#111">,</span><span style="color:#ae81ff">4</span><span style="color:#111">,],[</span><span style="color:#ae81ff">5</span><span style="color:#111">,</span><span style="color:#ae81ff">6</span><span style="color:#111">]],</span> <span style="color:#f92672">#</span> <span style="color:#111">ARRAYを要素に持つARRAYは作成できない</span>
+  <span style="color:#111">ARRAY</span><span style="color:#f92672">&lt;</span><span style="color:#111">STRUCT</span><span style="color:#f92672">&lt;</span><span style="color:#111">ARRAY</span><span style="color:#f92672">&lt;</span><span style="color:#111">INT64</span><span style="color:#f92672">&gt;&gt;&gt;</span><span style="color:#111">,</span>　             <span style="color:#f92672">#</span> <span style="color:#960050;background-color:#1e0010">その代わりに</span> <span style="color:#111">ARRAYをSTRUCTで包めばそれを</span><span style="color:#960050;background-color:#1e0010">、</span><span style="color:#111">ARRAYとして格納できる</span>
+
+</code></pre></div><p><a href="https://cloud.google.com/bigquery/docs/reference/standard-sql/arrays">https://cloud.google.com/bigquery/docs/reference/standard-sql/arrays</a></p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#00a8c8">WITH</span>
+<span style="color:#111">ownner_pet</span> <span style="color:#00a8c8">AS</span> <span style="color:#111">(</span>
+<span style="color:#00a8c8">SELECT</span> <span style="color:#d88200">&#39;tony&#39;</span> <span style="color:#00a8c8">as</span> <span style="color:#00a8c8">owner</span><span style="color:#111">,</span> <span style="color:#111">[</span><span style="color:#d88200">&#39;dog&#39;</span><span style="color:#111">,</span> <span style="color:#d88200">&#39;cat&#39;</span><span style="color:#111">]</span> <span style="color:#00a8c8">as</span> <span style="color:#111">pet</span> <span style="color:#00a8c8">UNION</span> <span style="color:#00a8c8">ALL</span>
+<span style="color:#00a8c8">SELECT</span> <span style="color:#d88200">&#39;tim&#39;</span> <span style="color:#00a8c8">as</span> <span style="color:#00a8c8">owner</span><span style="color:#111">,</span> <span style="color:#111">[</span><span style="color:#d88200">&#39;cat&#39;</span><span style="color:#111">,</span> <span style="color:#d88200">&#39;bird&#39;</span><span style="color:#111">]</span> <span style="color:#00a8c8">as</span> <span style="color:#111">pet</span> <span style="color:#00a8c8">UNION</span> <span style="color:#00a8c8">ALL</span>
+<span style="color:#00a8c8">SELECT</span> <span style="color:#d88200">&#39;nancy&#39;</span> <span style="color:#00a8c8">as</span> <span style="color:#00a8c8">owner</span><span style="color:#111">,</span> <span style="color:#111">[</span><span style="color:#d88200">&#39;dog&#39;</span><span style="color:#111">,</span> <span style="color:#d88200">&#39;fish&#39;</span><span style="color:#111">,</span> <span style="color:#d88200">&#39;lizard&#39;</span><span style="color:#111">]</span> <span style="color:#00a8c8">as</span> <span style="color:#111">pet</span> <span style="color:#00a8c8">UNION</span> <span style="color:#00a8c8">ALL</span>
+<span style="color:#111">)</span>
+
+</code></pre></div><p>pet は arrayとする。</p>
+<p><code>ownner_pet</code> table</p>
+<table>
+<thead>
+<tr>
+<th>owner</th>
+<th>pet</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>tony</td>
+<td>dog</td>
+</tr>
+<tr>
+<td></td>
+<td>cat</td>
+</tr>
+<tr>
+<td>tim</td>
+<td>cat</td>
+</tr>
+<tr>
+<td></td>
+<td>bird</td>
+</tr>
+<tr>
+<td>nancy</td>
+<td>dog</td>
+</tr>
+<tr>
+<td></td>
+<td>fish</td>
+</tr>
+<tr>
+<td></td>
+<td>lizard</td>
+</tr>
+</tbody>
+</table>
+<h2 id="array-を展開する-left-join-unnest-array">ARRAY を展開する LEFT JOIN UNNEST (array)</h2>
+<p><code>LEFT JOIN UNNEST (array)</code> を使用する</p>
+<p>下の例では <code>ais_identity.n_imo</code> が <code>array</code></p>
+<p>これをすると、 <code>ais_identity.n_imo is null</code> の行は除外される</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#00a8c8">select</span>
+  <span style="color:#111">ssvid</span><span style="color:#111">,</span>
+  <span style="color:#111">best</span><span style="color:#111">.</span><span style="color:#111">best_flag</span><span style="color:#111">,</span>
+  <span style="color:#111">ais_identity</span><span style="color:#111">.</span><span style="color:#111">flag_mmsi</span><span style="color:#111">,</span>
+  <span style="color:#111">best</span><span style="color:#111">.</span><span style="color:#111">best_vessel_class</span><span style="color:#111">,</span>
+  <span style="color:#111">ais_identity</span><span style="color:#111">.</span><span style="color:#111">n_shipname</span><span style="color:#111">,</span>
+  <span style="color:#111">ais_identity</span><span style="color:#111">.</span><span style="color:#111">n_callsign</span><span style="color:#111">,</span>
+  <span style="color:#111">n_imo</span><span style="color:#111">.</span><span style="color:#111">value</span> <span style="color:#00a8c8">as</span> <span style="color:#111">n_imo_value</span><span style="color:#111">,</span>
+  <span style="color:#111">n_imo</span><span style="color:#111">.</span><span style="color:#00a8c8">count</span> <span style="color:#00a8c8">as</span> <span style="color:#111">n_imo_count</span><span style="color:#111">,</span>
+  <span style="color:#111">n_imo</span><span style="color:#111">.</span><span style="color:#00a8c8">type</span> <span style="color:#00a8c8">as</span> <span style="color:#111">n_imo_type</span>
+<span style="color:#00a8c8">from</span>
+<span style="color:#f92672">`</span><span style="color:#111">world</span><span style="color:#f92672">-</span><span style="color:#111">fishing</span><span style="color:#f92672">-</span><span style="color:#ae81ff">827</span><span style="color:#111">.</span><span style="color:#111">gfw_research</span><span style="color:#111">.</span><span style="color:#111">vi_ssvid_v20200801</span><span style="color:#f92672">`</span>
+<span style="color:#00a8c8">LEFT</span> <span style="color:#00a8c8">JOIN</span> <span style="color:#00a8c8">UNNEST</span><span style="color:#111">(</span><span style="color:#111">ais_identity</span><span style="color:#111">.</span><span style="color:#111">n_imo</span> <span style="color:#111">)</span> <span style="color:#00a8c8">as</span> <span style="color:#111">n_imo</span>
+</code></pre></div><h2 id="where-in-unnest-array">WHERE IN UNNEST (array)</h2>
+<p>Array の要素として特定の値が含まれるレコードを抽出する</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#00a8c8">SELECT</span>
+  <span style="color:#f92672">*</span>
+<span style="color:#00a8c8">FROM</span>
+  <span style="color:#111">ownner_pet</span>
+<span style="color:#00a8c8">WHERE</span> <span style="color:#00a8c8">IN</span> <span style="color:#00a8c8">UNNEST</span> <span style="color:#111">(</span><span style="color:#111">pet</span><span style="color:#111">)</span>
+</code></pre></div><h2 id="where-exists--select--from-unnest-array-as-a-where-a--x">WHERE EXISTS ( SELECT * FROM UNNEST (array) as A WHERE A = &lsquo;X&rsquo;)</h2>
+<p>Array が特定の条件を満たすレコードを抽出する <code>IN UNNEST</code> でよりも複雑な条件を指定することができる。</p>
+<p>この例は　<code>IN UNNEST</code>　と同じ結果を返すけど、ARRAYの要素が STRUCT 等の場合や、もっと複雑な条件を指定したい場合は <code>WHERE EXIST</code> を使う</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#00a8c8">SELECT</span>
+  <span style="color:#f92672">*</span>
+<span style="color:#00a8c8">FROM</span>
+  <span style="color:#111">ownner_pet</span>
+<span style="color:#00a8c8">WHERE</span> <span style="color:#00a8c8">EXISTS</span> <span style="color:#111">(</span>
+  <span style="color:#00a8c8">SELECT</span> <span style="color:#f92672">*</span>
+  <span style="color:#00a8c8">FROM</span> <span style="color:#00a8c8">UNNEST</span> <span style="color:#111">(</span><span style="color:#111">pat</span><span style="color:#111">)</span> <span style="color:#00a8c8">AS</span> <span style="color:#111">p</span>
+  <span style="color:#00a8c8">WHERE</span> <span style="color:#111">p</span> <span style="color:#f92672">=</span> <span style="color:#d88200">&#39;bear&#39;</span>
+<span style="color:#111">)</span>
+</code></pre></div><h2 id="array-から一部の要素を取り出す">ARRAY から一部の要素を取り出す</h2>
+<p>結果は元のテーブルの形式を保持したまま、一部の ARRAY 要素を取り出す</p>
+<pre><code>WITH
+ownner_pet AS (
+SELECT 'tony' as owner, ['dog', 'cat'] as pet UNION ALL
+SELECT 'tim' as owner, ['cat', 'bird'] as pet UNION ALL
+SELECT 'nancy' as owner, ['dog', 'fish', 'lizard'] as pet 
+)
+
+SELECT
+  owner,
+  ARRAY (SELECT p FROM UNNEST (pet) as p WHERE p LIKE 'c%' ) as pet
+FROM
+  ownner_pet
+
+</code></pre><h2 id="udf-を使った-array-処理">UDF を使った ARRAY 処理</h2>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#00a8c8">CREATE</span> <span style="color:#00a8c8">FUNCTION</span> <span style="color:#111">SORT_ARRAY</span><span style="color:#111">(</span><span style="color:#111">arr</span> <span style="color:#00a8c8">ANY</span> <span style="color:#00a8c8">TYPE</span><span style="color:#111">,</span> <span style="color:#111">ascending</span> <span style="color:#111">BOOL</span><span style="color:#111">)</span> <span style="color:#00a8c8">AS</span> <span style="color:#111">(</span>
+<span style="color:#00a8c8">IF</span> <span style="color:#111">(</span><span style="color:#111">ascending</span><span style="color:#111">,</span>
+    <span style="color:#111">ARRAY</span> <span style="color:#111">(</span><span style="color:#00a8c8">SELECT</span> <span style="color:#f92672">*</span> <span style="color:#00a8c8">FROM</span> <span style="color:#00a8c8">UNNEST</span> <span style="color:#111">(</span><span style="color:#111">arr</span><span style="color:#111">)</span> <span style="color:#111">a</span> <span style="color:#00a8c8">ORDER</span> <span style="color:#00a8c8">BY</span> <span style="color:#111">a</span><span style="color:#111">),</span>
+    <span style="color:#111">ARRAY</span> <span style="color:#111">(</span><span style="color:#00a8c8">SELECT</span> <span style="color:#f92672">*</span> <span style="color:#00a8c8">FROM</span> <span style="color:#00a8c8">UNNEST</span> <span style="color:#111">(</span><span style="color:#111">arr</span><span style="color:#111">)</span> <span style="color:#111">a</span> <span style="color:#00a8c8">ORDER</span> <span style="color:#00a8c8">BY</span> <span style="color:#111">a</span> <span style="color:#00a8c8">DESC</span><span style="color:#111">)</span> <span style="color:#111">)</span>
+<span style="color:#111">);</span>
+
+
+<span style="color:#00a8c8">WITH</span>
+<span style="color:#111">ownner_pet</span> <span style="color:#00a8c8">AS</span> <span style="color:#111">(</span>
+<span style="color:#00a8c8">SELECT</span> <span style="color:#d88200">&#39;tony&#39;</span> <span style="color:#00a8c8">as</span> <span style="color:#00a8c8">owner</span><span style="color:#111">,</span> <span style="color:#111">[</span><span style="color:#d88200">&#39;dog&#39;</span><span style="color:#111">,</span> <span style="color:#d88200">&#39;cat&#39;</span><span style="color:#111">]</span> <span style="color:#00a8c8">as</span> <span style="color:#111">pet</span> <span style="color:#00a8c8">UNION</span> <span style="color:#00a8c8">ALL</span>
+<span style="color:#00a8c8">SELECT</span> <span style="color:#d88200">&#39;tim&#39;</span> <span style="color:#00a8c8">as</span> <span style="color:#00a8c8">owner</span><span style="color:#111">,</span> <span style="color:#111">[</span><span style="color:#d88200">&#39;cat&#39;</span><span style="color:#111">,</span> <span style="color:#d88200">&#39;bird&#39;</span><span style="color:#111">]</span> <span style="color:#00a8c8">as</span> <span style="color:#111">pet</span> <span style="color:#00a8c8">UNION</span> <span style="color:#00a8c8">ALL</span>
+<span style="color:#00a8c8">SELECT</span> <span style="color:#d88200">&#39;nancy&#39;</span> <span style="color:#00a8c8">as</span> <span style="color:#00a8c8">owner</span><span style="color:#111">,</span> <span style="color:#111">[</span><span style="color:#d88200">&#39;dog&#39;</span><span style="color:#111">,</span> <span style="color:#d88200">&#39;fish&#39;</span><span style="color:#111">,</span> <span style="color:#d88200">&#39;lizard&#39;</span><span style="color:#111">]</span> <span style="color:#00a8c8">as</span> <span style="color:#111">pet</span> 
+<span style="color:#111">)</span>
+
+<span style="color:#00a8c8">SELECT</span>
+  <span style="color:#00a8c8">owner</span><span style="color:#111">,</span>
+  <span style="color:#111">SORT_ARRAY</span><span style="color:#111">(</span><span style="color:#111">pet</span><span style="color:#111">,</span> <span style="color:#00a8c8">TRUE</span><span style="color:#111">)</span> <span style="color:#00a8c8">as</span> <span style="color:#111">pet</span>
+<span style="color:#00a8c8">FROM</span>
+  <span style="color:#111">ownner_pet</span>
+
+</code></pre></div><p>　</p>
+<h2 id="番号を使った-array-要素へのアクセス">番号を使った ARRAY 要素へのアクセス</h2>
+<pre><code>WITH sequences AS
+  (SELECT [0, 1, 1, 2, 3, 5] AS some_numbers
+   UNION ALL SELECT [2, 4, 8, 16, 32] AS some_numbers
+   UNION ALL SELECT [5, 10] AS some_numbers)
+SELECT some_numbers,
+       some_numbers[OFFSET(1)] AS offset_1,
+       some_numbers[ORDINAL(1)] AS ordinal_1
+FROM sequences;
+</code></pre><h2 id="arrayの要素の結合">ARRAYの要素の結合</h2>
+<p>ARRAY_CONCAT() のような関数を使用して複数の配列を結合し、ARRAY_TO_STRING() を使用して配列を文字列に変換できます。</p>
+<h1 id="user-defined-functions">User Defined Functions</h1>
+<pre><code># 定数をUDFとして保存する
+CREATE TEMP FUNCTION START_DATE() AS (TIMESTAMP('2012-04-01'));
+
+# 使い捨て関数
+CREATE TEMP FUNCTION SORT_ARRAY(arr ANY TYPE, ascending BOOL) AS (
+IF (ascending,
+    ARRAY (SELECT * FROM UNNEST (arr) a ORDER BY a),
+    ARRAY (SELECT * FROM UNNEST (arr) a ORDER BY a DESC) )
+);
+
+
+# テーブルを作成するときと同じようにUDFを保存することもできる
+CREATE OR REPLACE FUNCTION `your_project.your_dataset.SORT_ARRAY`(arr ANY TYPE, ascending BOOL) AS (
+IF (ascending,
+    ARRAY (SELECT * FROM UNNEST (arr) a ORDER BY a),
+    ARRAY (SELECT * FROM UNNEST (arr) a ORDER BY a DESC) )
+);
+</code></pre><h1 id="struct">STRUCT</h1>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#f92672">#</span> <span style="color:#111">STRUCT</span> <span style="color:#960050;background-color:#1e0010">を要素に持つカラム</span>
+<span style="color:#f92672">#</span> <span style="color:#960050;background-color:#1e0010">これだと</span><span style="color:#111">structとしてまとめる意義があまりないかも</span>
+<span style="color:#00a8c8">WITH</span>
+<span style="color:#111">ownner_pet</span> <span style="color:#00a8c8">AS</span> <span style="color:#111">(</span>
+<span style="color:#00a8c8">SELECT</span> <span style="color:#d88200">&#39;tony&#39;</span> <span style="color:#00a8c8">as</span> <span style="color:#00a8c8">owner</span><span style="color:#111">,</span> <span style="color:#111">STRUCT</span><span style="color:#111">(</span><span style="color:#d88200">&#39;dog&#39;</span> <span style="color:#00a8c8">as</span> <span style="color:#111">species</span><span style="color:#111">,</span> <span style="color:#ae81ff">2</span> <span style="color:#00a8c8">as</span> <span style="color:#00a8c8">count</span><span style="color:#111">)</span> <span style="color:#00a8c8">as</span> <span style="color:#111">pet</span> <span style="color:#00a8c8">UNION</span> <span style="color:#00a8c8">ALL</span>
+<span style="color:#00a8c8">SELECT</span> <span style="color:#d88200">&#39;tim&#39;</span> <span style="color:#00a8c8">as</span> <span style="color:#00a8c8">owner</span><span style="color:#111">,</span> <span style="color:#111">(</span><span style="color:#d88200">&#39;cat&#39;</span><span style="color:#111">,</span> <span style="color:#ae81ff">3</span><span style="color:#111">)</span>  <span style="color:#00a8c8">UNION</span> <span style="color:#00a8c8">ALL</span>
+<span style="color:#00a8c8">SELECT</span> <span style="color:#d88200">&#39;nancy&#39;</span> <span style="color:#00a8c8">as</span> <span style="color:#00a8c8">owner</span><span style="color:#111">,</span> <span style="color:#111">(</span><span style="color:#d88200">&#39;fish&#39;</span><span style="color:#111">,</span> <span style="color:#ae81ff">10</span><span style="color:#111">)</span> 
+<span style="color:#111">)</span>
+<span style="color:#00a8c8">select</span> <span style="color:#f92672">*</span> <span style="color:#00a8c8">from</span> <span style="color:#111">ownner_pet</span>
+</code></pre></div><p>STRUCT は ARRAY の要素にするのがメインの使い方？？</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#f92672">#</span> <span style="color:#111">STRUCT</span> <span style="color:#960050;background-color:#1e0010">を要素に持つ</span> <span style="color:#111">ARRAY</span> <span style="color:#960050;background-color:#1e0010">カラム</span>
+<span style="color:#00a8c8">WITH</span>
+<span style="color:#111">ownner_pet</span> <span style="color:#00a8c8">AS</span> <span style="color:#111">(</span>
+<span style="color:#00a8c8">SELECT</span> <span style="color:#d88200">&#39;tony&#39;</span> <span style="color:#00a8c8">as</span> <span style="color:#00a8c8">owner</span><span style="color:#111">,</span> <span style="color:#111">[</span><span style="color:#111">STRUCT</span><span style="color:#111">(</span><span style="color:#d88200">&#39;dog&#39;</span> <span style="color:#00a8c8">as</span> <span style="color:#111">species</span><span style="color:#111">,</span> <span style="color:#ae81ff">2</span> <span style="color:#00a8c8">as</span> <span style="color:#00a8c8">count</span><span style="color:#111">),</span> <span style="color:#111">(</span><span style="color:#d88200">&#39;cat&#39;</span><span style="color:#111">,</span> <span style="color:#ae81ff">1</span><span style="color:#111">)]</span> <span style="color:#00a8c8">as</span> <span style="color:#111">pet</span> <span style="color:#00a8c8">UNION</span> <span style="color:#00a8c8">ALL</span>
+<span style="color:#00a8c8">SELECT</span> <span style="color:#d88200">&#39;tim&#39;</span> <span style="color:#00a8c8">as</span> <span style="color:#00a8c8">owner</span><span style="color:#111">,</span> <span style="color:#111">[(</span><span style="color:#d88200">&#39;cat&#39;</span><span style="color:#111">,</span> <span style="color:#ae81ff">3</span><span style="color:#111">),</span> <span style="color:#111">(</span><span style="color:#d88200">&#39;cow&#39;</span><span style="color:#111">,</span> <span style="color:#ae81ff">1</span><span style="color:#111">),</span> <span style="color:#111">(</span><span style="color:#d88200">&#39;horse&#39;</span><span style="color:#111">,</span><span style="color:#ae81ff">3</span><span style="color:#111">)]</span>  <span style="color:#00a8c8">UNION</span> <span style="color:#00a8c8">ALL</span>
+<span style="color:#00a8c8">SELECT</span> <span style="color:#d88200">&#39;nancy&#39;</span> <span style="color:#00a8c8">as</span> <span style="color:#00a8c8">owner</span><span style="color:#111">,</span>  <span style="color:#111">[(</span><span style="color:#d88200">&#39;fish&#39;</span><span style="color:#111">,</span> <span style="color:#ae81ff">10</span><span style="color:#111">),</span> <span style="color:#111">(</span><span style="color:#d88200">&#39;bird&#39;</span><span style="color:#111">,</span> <span style="color:#ae81ff">3</span><span style="color:#111">),</span> <span style="color:#111">(</span><span style="color:#d88200">&#39;horse&#39;</span><span style="color:#111">,</span><span style="color:#ae81ff">3</span><span style="color:#111">)]</span>
+<span style="color:#111">)</span>
+<span style="color:#00a8c8">select</span> <span style="color:#f92672">*</span> <span style="color:#00a8c8">from</span> <span style="color:#111">ownner_pet</span>
 </code></pre></div></article>
 
       
@@ -985,9 +1156,9 @@ LEFT JOIN UNNEST(ais_identity.n_imo ) as n_imo
   
   <div>
     
-    <a class="flex align-center" href="https://github.com/teuder/notebook/commit/5b1ab7acd37e5d4e91045103498fb0aeb6cfda0c" title='Last modified 2021-08-26 by Masaki Tsuda' target="_blank" rel="noopener">
+    <a class="flex align-center" href="https://github.com/teuder/notebook/commit/143e23f205f622d0de375a6908b9b245abd51749" title='Last modified 2021-09-10 by Masaki Tsuda' target="_blank" rel="noopener">
       <img src="/notebook/svg/calendar.svg" alt="Changed" />
-      <span>2021-08-26</span>
+      <span>2021-09-10</span>
     </a>
   </div>
   
@@ -1021,9 +1192,6 @@ LEFT JOIN UNNEST(ais_identity.n_imo ) as n_imo
         <li><a href="#カラム名を取得する">カラム名を取得する</a></li>
       </ul>
     </li>
-  </ul>
-
-  <ul>
     <li><a href="#文字列">文字列</a>
       <ul>
         <li><a href="#部分文字列-substr">部分文字列: SUBSTR</a></li>
@@ -1039,6 +1207,17 @@ LEFT JOIN UNNEST(ais_identity.n_imo ) as n_imo
   <ul>
     <li><a href="#tablesample-句">TABLESAMPLE 句</a></li>
     <li><a href="#where-rand">WHERE rand()</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#arrayの型">ARRAYの型</a></li>
+    <li><a href="#array-を展開する-left-join-unnest-array">ARRAY を展開する LEFT JOIN UNNEST (array)</a></li>
+    <li><a href="#where-in-unnest-array">WHERE IN UNNEST (array)</a></li>
+    <li><a href="#where-exists--select--from-unnest-array-as-a-where-a--x">WHERE EXISTS ( SELECT * FROM UNNEST (array) as A WHERE A = &lsquo;X&rsquo;)</a></li>
+    <li><a href="#array-から一部の要素を取り出す">ARRAY から一部の要素を取り出す</a></li>
+    <li><a href="#udf-を使った-array-処理">UDF を使った ARRAY 処理</a></li>
+    <li><a href="#番号を使った-array-要素へのアクセス">番号を使った ARRAY 要素へのアクセス</a></li>
+    <li><a href="#arrayの要素の結合">ARRAYの要素の結合</a></li>
   </ul>
 </nav>
   </aside>
