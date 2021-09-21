@@ -8,7 +8,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://teuder.github.io/notebook/gcp/bigquery_sql/" />
 <meta property="article:published_time" content="2019-09-04T00:00:00+00:00" />
-<meta property="article:modified_time" content="2021-09-10T20:10:59+09:00" />
+<meta property="article:modified_time" content="2021-09-21T20:07:15+09:00" />
 <title>BigQuery: SQL | notebook</title>
 <link rel="icon" href="/notebook/favicon.png" type="image/x-icon">
 
@@ -16,7 +16,7 @@
 <link rel="stylesheet" href="/notebook/book.min.07c38dce7b6800da2a75a565d4d975e38f837294e24d00b5aae363037012d64b.css" integrity="sha256-B8ONzntoANoqdaVl1Nl144&#43;DcpTiTQC1quNjA3AS1ks=">
 
 
-<script defer src="/notebook/search.min.c6e9900d419b30096c6716696c3dd2b45e229bd951b9f7d34ceaeb8cc36e233f.js" integrity="sha256-xumQDUGbMAlsZxZpbD3StF4im9lRuffTTOrrjMNuIz8="></script>
+<script defer src="/notebook/search.min.7e058c7da2665ad0b13d1c3ef2fff959815355798e871a2400628f8a964166ba.js" integrity="sha256-fgWMfaJmWtCxPRw&#43;8v/5WYFTVXmOhxokAGKPipZBZro="></script>
 
 <!--
 Made with Book Theme
@@ -877,7 +877,7 @@ LIMIT 10;
 
 [mk]
 --use_legacy_sql=false
-</code></pre><h3 id="実数を丸める関数">実数を丸める関数</h3>
+</code></pre><h2 id="実数を丸める関数">実数を丸める関数</h2>
 <ul>
 <li><code>ROUND()</code></li>
 <li><code>CEILING()</code></li>
@@ -886,8 +886,8 @@ LIMIT 10;
 </ul>
 <p><a href="https://cloud.google.com/bigquery/docs/reference/standard-sql/functions-and-operators?hl=ja#floor">丸め関数の挙動</a></p>
 <p><img src="ceil_floor_trunc_round.jpeg" alt="Pythonの丸め関数の挙動、多分BigQueryと同じ" title="Pythonの丸め関数の挙動"></p>
-<h3 id="行の抽出">行の抽出</h3>
-<h4 id="where-column-in-sub_query-">WHERE column IN( sub_query )</h4>
+<h2 id="行の抽出">行の抽出</h2>
+<h3 id="where-column-in-sub_query-">WHERE column IN( sub_query )</h3>
 <p>列の値が、サブクエリの出力結果と同じ値をもつ行だけを抽出する</p>
 <pre><code>SELECT
   *
@@ -900,7 +900,7 @@ WHERE
     FROM
       tableB
   )
-</code></pre><h4 id="where-exists-sub_query-">WHERE EXISTS( sub_query )</h4>
+</code></pre><h3 id="where-exists-sub_query-">WHERE EXISTS( sub_query )</h3>
 <p>サブクエリのなかのwhere句で抽出したいレコードの条件を指定する。</p>
 <pre><code>SELECT
   *
@@ -916,7 +916,7 @@ WHERE
       tableA.item = tableB.product
       AND tableA.price = tableB.price
   )
-</code></pre><h3 id="カラム名を取得する">カラム名を取得する</h3>
+</code></pre><h2 id="カラム名を取得する">カラム名を取得する</h2>
 <pre><code>SELECT
   column_name
 FROM
@@ -951,18 +951,19 @@ SELECT CONCAT(
 <li><code>ISOYEAR</code></li>
 <li><code>ISOWEEK</code></li>
 </ul>
-<h1 id="ランダムサンプル">ランダムサンプル</h1>
-<h2 id="tablesample-句">TABLESAMPLE 句</h2>
+<h2 id="ランダムサンプル">ランダムサンプル</h2>
+<h3 id="tablesample-句">TABLESAMPLE 句</h3>
 <p>10%のレコードを抽出する。</p>
 <pre><code>SELECT * FROM dataset.my_table TABLESAMPLE SYSTEM (10 PERCENT)
 </code></pre><p>注意：ただし、<code>TABLESAMPLE</code> を使った場合は、データの抽出は行ごとに行われるのではない。</p>
 <p>大きいテーブルは「データブロック」と呼ばれる単位に分割されてで保存されているのだが、例えば、 <code>TABLESAMPLE SYSTEM (20 PERCENT)</code> とすると全体の 20% のデータブロックがランダムに抽出される。小さいテーブル（1GB未満）では１つのデータブロックに全てのデータが格納されるため、 <code>TABLESAMPLE</code> を使うと全てのデータが抽出される。</p>
 <p>そこで、行ごとに厳密にランダムに抽出したいときは、次の　<code>WHERE rand()</code> を使用する。ただし、<code>WHERE rand()</code> を使用するとテーブル全体をスキャンするのでコストが大きくなることに注意する。<code>TABLESAMPLE</code> を使うとテーブル全体をスキャンしないのでクエリのコストは小さくなる。</p>
-<h2 id="where-rand">WHERE rand()</h2>
+<h3 id="where-rand">WHERE rand()</h3>
 <p>10%のレコードを抽出する。</p>
 <pre><code>SELECT * FROM dataset.my_table WHERE rand() &lt; 0.1
 </code></pre><p>ただし、 <code>WHERE rand()</code> を使用するとテーブル全体をスキャンするのでコストが大きくなることに注意する。<code>TABLESAMPLE</code> を使うとテーブル全体をスキャンしないのでクエリのコストは小さくなる。</p>
-<h1 id="sharded-table">Sharded Table</h1>
+<h2 id="sharded-table">Sharded Table</h2>
+<p>Sharded Table へのアクセス</p>
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#00a8c8">SELECT</span> <span style="color:#111">ssvid</span>
 <span style="color:#00a8c8">FROM</span>
 
@@ -971,8 +972,8 @@ SELECT CONCAT(
 <span style="color:#00a8c8">WHERE</span> 
 <span style="color:#111">_TABLE_SUFFIX</span>
 <span style="color:#00a8c8">BETWEEN</span> <span style="color:#d88200">&#39;20200101&#39;</span> <span style="color:#00a8c8">AND</span> <span style="color:#d88200">&#39;20201231&#39;</span>
-</code></pre></div><h1 id="array">ARRAY</h1>
-<h2 id="arrayの型">ARRAYの型</h2>
+</code></pre></div><h2 id="array">ARRAY</h2>
+<h3 id="arrayの型">ARRAYの型</h3>
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql">
 <span style="color:#00a8c8">SELECT</span>
   <span style="color:#111">ARRAY</span><span style="color:#f92672">&lt;</span><span style="color:#111">INT64</span><span style="color:#f92672">&gt;</span><span style="color:#111">[</span><span style="color:#ae81ff">1</span><span style="color:#111">,</span><span style="color:#ae81ff">2</span><span style="color:#111">,</span><span style="color:#ae81ff">3</span><span style="color:#111">],</span>
@@ -981,6 +982,7 @@ SELECT CONCAT(
   <span style="color:#111">ARRAY</span><span style="color:#f92672">&lt;</span><span style="color:#111">STRUCT</span><span style="color:#f92672">&lt;</span><span style="color:#111">ARRAY</span><span style="color:#f92672">&lt;</span><span style="color:#111">INT64</span><span style="color:#f92672">&gt;&gt;&gt;</span><span style="color:#111">,</span>　             <span style="color:#f92672">#</span> <span style="color:#960050;background-color:#1e0010">その代わりに</span> <span style="color:#111">ARRAYをSTRUCTで包めばそれを</span><span style="color:#960050;background-color:#1e0010">、</span><span style="color:#111">ARRAYとして格納できる</span>
 
 </code></pre></div><p><a href="https://cloud.google.com/bigquery/docs/reference/standard-sql/arrays">https://cloud.google.com/bigquery/docs/reference/standard-sql/arrays</a></p>
+<h3 id="array-の作成">ARRAY の作成</h3>
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#00a8c8">WITH</span>
 <span style="color:#111">ownner_pet</span> <span style="color:#00a8c8">AS</span> <span style="color:#111">(</span>
 <span style="color:#00a8c8">SELECT</span> <span style="color:#d88200">&#39;tony&#39;</span> <span style="color:#00a8c8">as</span> <span style="color:#00a8c8">owner</span><span style="color:#111">,</span> <span style="color:#111">[</span><span style="color:#d88200">&#39;dog&#39;</span><span style="color:#111">,</span> <span style="color:#d88200">&#39;cat&#39;</span><span style="color:#111">]</span> <span style="color:#00a8c8">as</span> <span style="color:#111">pet</span> <span style="color:#00a8c8">UNION</span> <span style="color:#00a8c8">ALL</span>
@@ -1028,7 +1030,7 @@ SELECT CONCAT(
 </tr>
 </tbody>
 </table>
-<h2 id="array-を展開する-left-join-unnest-array">ARRAY を展開する LEFT JOIN UNNEST (array)</h2>
+<h3 id="array-を展開する-left-join-unnest-array">ARRAY を展開する LEFT JOIN UNNEST (array)</h3>
 <p><code>LEFT JOIN UNNEST (array)</code> を使用する</p>
 <p>下の例では <code>ais_identity.n_imo</code> が <code>array</code></p>
 <p>これをすると、 <code>ais_identity.n_imo is null</code> の行は除外される</p>
@@ -1045,14 +1047,14 @@ SELECT CONCAT(
 <span style="color:#00a8c8">from</span>
 <span style="color:#f92672">`</span><span style="color:#111">world</span><span style="color:#f92672">-</span><span style="color:#111">fishing</span><span style="color:#f92672">-</span><span style="color:#ae81ff">827</span><span style="color:#111">.</span><span style="color:#111">gfw_research</span><span style="color:#111">.</span><span style="color:#111">vi_ssvid_v20200801</span><span style="color:#f92672">`</span>
 <span style="color:#00a8c8">LEFT</span> <span style="color:#00a8c8">JOIN</span> <span style="color:#00a8c8">UNNEST</span><span style="color:#111">(</span><span style="color:#111">ais_identity</span><span style="color:#111">.</span><span style="color:#111">n_imo</span> <span style="color:#111">)</span> <span style="color:#00a8c8">as</span> <span style="color:#111">n_imo</span>
-</code></pre></div><h2 id="where-in-unnest-array">WHERE IN UNNEST (array)</h2>
+</code></pre></div><h3 id="where-in-unnest-array">WHERE IN UNNEST (array)</h3>
 <p>Array の要素として特定の値が含まれるレコードを抽出する</p>
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#00a8c8">SELECT</span>
   <span style="color:#f92672">*</span>
 <span style="color:#00a8c8">FROM</span>
   <span style="color:#111">ownner_pet</span>
 <span style="color:#00a8c8">WHERE</span> <span style="color:#00a8c8">IN</span> <span style="color:#00a8c8">UNNEST</span> <span style="color:#111">(</span><span style="color:#111">pet</span><span style="color:#111">)</span>
-</code></pre></div><h2 id="where-exists--select--from-unnest-array-as-a-where-a--x">WHERE EXISTS ( SELECT * FROM UNNEST (array) as A WHERE A = &lsquo;X&rsquo;)</h2>
+</code></pre></div><h3 id="where-exists--select--from-unnest-array-as-a-where-a--x">WHERE EXISTS ( SELECT * FROM UNNEST (array) as A WHERE A = &lsquo;X&rsquo;)</h3>
 <p>Array が特定の条件を満たすレコードを抽出する <code>IN UNNEST</code> でよりも複雑な条件を指定することができる。</p>
 <p>この例は　<code>IN UNNEST</code>　と同じ結果を返すけど、ARRAYの要素が STRUCT 等の場合や、もっと複雑な条件を指定したい場合は <code>WHERE EXIST</code> を使う</p>
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#00a8c8">SELECT</span>
@@ -1064,7 +1066,7 @@ SELECT CONCAT(
   <span style="color:#00a8c8">FROM</span> <span style="color:#00a8c8">UNNEST</span> <span style="color:#111">(</span><span style="color:#111">pat</span><span style="color:#111">)</span> <span style="color:#00a8c8">AS</span> <span style="color:#111">p</span>
   <span style="color:#00a8c8">WHERE</span> <span style="color:#111">p</span> <span style="color:#f92672">=</span> <span style="color:#d88200">&#39;bear&#39;</span>
 <span style="color:#111">)</span>
-</code></pre></div><h2 id="array-から一部の要素を取り出す">ARRAY から一部の要素を取り出す</h2>
+</code></pre></div><h3 id="array-から一部の要素を取り出す">ARRAY から一部の要素を取り出す</h3>
 <p>結果は元のテーブルの形式を保持したまま、一部の ARRAY 要素を取り出す</p>
 <pre><code>WITH
 ownner_pet AS (
@@ -1079,7 +1081,7 @@ SELECT
 FROM
   ownner_pet
 
-</code></pre><h2 id="udf-を使った-array-処理">UDF を使った ARRAY 処理</h2>
+</code></pre><h3 id="udf-を使った-array-処理">UDF を使った ARRAY 処理</h3>
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#00a8c8">CREATE</span> <span style="color:#00a8c8">FUNCTION</span> <span style="color:#111">SORT_ARRAY</span><span style="color:#111">(</span><span style="color:#111">arr</span> <span style="color:#00a8c8">ANY</span> <span style="color:#00a8c8">TYPE</span><span style="color:#111">,</span> <span style="color:#111">ascending</span> <span style="color:#111">BOOL</span><span style="color:#111">)</span> <span style="color:#00a8c8">AS</span> <span style="color:#111">(</span>
 <span style="color:#00a8c8">IF</span> <span style="color:#111">(</span><span style="color:#111">ascending</span><span style="color:#111">,</span>
     <span style="color:#111">ARRAY</span> <span style="color:#111">(</span><span style="color:#00a8c8">SELECT</span> <span style="color:#f92672">*</span> <span style="color:#00a8c8">FROM</span> <span style="color:#00a8c8">UNNEST</span> <span style="color:#111">(</span><span style="color:#111">arr</span><span style="color:#111">)</span> <span style="color:#111">a</span> <span style="color:#00a8c8">ORDER</span> <span style="color:#00a8c8">BY</span> <span style="color:#111">a</span><span style="color:#111">),</span>
@@ -1100,19 +1102,18 @@ FROM
 <span style="color:#00a8c8">FROM</span>
   <span style="color:#111">ownner_pet</span>
 
-</code></pre></div><p>　</p>
-<h2 id="番号を使った-array-要素へのアクセス">番号を使った ARRAY 要素へのアクセス</h2>
-<pre><code>WITH sequences AS
-  (SELECT [0, 1, 1, 2, 3, 5] AS some_numbers
-   UNION ALL SELECT [2, 4, 8, 16, 32] AS some_numbers
-   UNION ALL SELECT [5, 10] AS some_numbers)
-SELECT some_numbers,
-       some_numbers[OFFSET(1)] AS offset_1,
-       some_numbers[ORDINAL(1)] AS ordinal_1
-FROM sequences;
-</code></pre><h2 id="arrayの要素の結合">ARRAYの要素の結合</h2>
+</code></pre></div><h3 id="番号を使った-array-要素へのアクセス">番号を使った ARRAY 要素へのアクセス</h3>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#00a8c8">WITH</span> <span style="color:#111">sequences</span> <span style="color:#00a8c8">AS</span>
+  <span style="color:#111">(</span><span style="color:#00a8c8">SELECT</span> <span style="color:#111">[</span><span style="color:#ae81ff">0</span><span style="color:#111">,</span> <span style="color:#ae81ff">1</span><span style="color:#111">,</span> <span style="color:#ae81ff">1</span><span style="color:#111">,</span> <span style="color:#ae81ff">2</span><span style="color:#111">,</span> <span style="color:#ae81ff">3</span><span style="color:#111">,</span> <span style="color:#ae81ff">5</span><span style="color:#111">]</span> <span style="color:#00a8c8">AS</span> <span style="color:#111">some_numbers</span>
+   <span style="color:#00a8c8">UNION</span> <span style="color:#00a8c8">ALL</span> <span style="color:#00a8c8">SELECT</span> <span style="color:#111">[</span><span style="color:#ae81ff">2</span><span style="color:#111">,</span> <span style="color:#ae81ff">4</span><span style="color:#111">,</span> <span style="color:#ae81ff">8</span><span style="color:#111">,</span> <span style="color:#ae81ff">16</span><span style="color:#111">,</span> <span style="color:#ae81ff">32</span><span style="color:#111">]</span> <span style="color:#00a8c8">AS</span> <span style="color:#111">some_numbers</span>
+   <span style="color:#00a8c8">UNION</span> <span style="color:#00a8c8">ALL</span> <span style="color:#00a8c8">SELECT</span> <span style="color:#111">[</span><span style="color:#ae81ff">5</span><span style="color:#111">,</span> <span style="color:#ae81ff">10</span><span style="color:#111">]</span> <span style="color:#00a8c8">AS</span> <span style="color:#111">some_numbers</span><span style="color:#111">)</span>
+<span style="color:#00a8c8">SELECT</span> <span style="color:#111">some_numbers</span><span style="color:#111">,</span>
+       <span style="color:#111">some_numbers</span><span style="color:#111">[</span><span style="color:#00a8c8">OFFSET</span><span style="color:#111">(</span><span style="color:#ae81ff">1</span><span style="color:#111">)]</span> <span style="color:#00a8c8">AS</span> <span style="color:#111">offset_1</span><span style="color:#111">,</span>
+       <span style="color:#111">some_numbers</span><span style="color:#111">[</span><span style="color:#111">ORDINAL</span><span style="color:#111">(</span><span style="color:#ae81ff">1</span><span style="color:#111">)]</span> <span style="color:#00a8c8">AS</span> <span style="color:#111">ordinal_1</span>
+<span style="color:#00a8c8">FROM</span> <span style="color:#111">sequences</span><span style="color:#111">;</span>
+</code></pre></div><h2 id="arrayの要素の結合">ARRAYの要素の結合</h2>
 <p>ARRAY_CONCAT() のような関数を使用して複数の配列を結合し、ARRAY_TO_STRING() を使用して配列を文字列に変換できます。</p>
-<h1 id="user-defined-functions">User Defined Functions</h1>
+<h2 id="user-defined-functions">User Defined Functions</h2>
 <pre><code># 定数をUDFとして保存する
 CREATE TEMP FUNCTION START_DATE() AS (TIMESTAMP('2012-04-01'));
 
@@ -1130,7 +1131,7 @@ IF (ascending,
     ARRAY (SELECT * FROM UNNEST (arr) a ORDER BY a),
     ARRAY (SELECT * FROM UNNEST (arr) a ORDER BY a DESC) )
 );
-</code></pre><h1 id="struct">STRUCT</h1>
+</code></pre><h2 id="struct">STRUCT</h2>
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#f92672">#</span> <span style="color:#111">STRUCT</span> <span style="color:#960050;background-color:#1e0010">を要素に持つカラム</span>
 <span style="color:#f92672">#</span> <span style="color:#960050;background-color:#1e0010">これだと</span><span style="color:#111">structとしてまとめる意義があまりないかも</span>
 <span style="color:#00a8c8">WITH</span>
@@ -1156,9 +1157,9 @@ IF (ascending,
   
   <div>
     
-    <a class="flex align-center" href="https://github.com/teuder/notebook/commit/143e23f205f622d0de375a6908b9b245abd51749" title='Last modified 2021-09-10 by Masaki Tsuda' target="_blank" rel="noopener">
+    <a class="flex align-center" href="https://github.com/teuder/notebook/commit/f0a94a3e9c0493b5b86cdad88d0f178d4d637dd6" title='Last modified 2021-09-21 by Masaki Tsuda' target="_blank" rel="noopener">
       <img src="/notebook/svg/calendar.svg" alt="Changed" />
-      <span>2021-09-10</span>
+      <span>2021-09-21</span>
     </a>
   </div>
   
@@ -1185,13 +1186,15 @@ IF (ascending,
     <nav id="TableOfContents">
   <ul>
     <li><a href="#基本文法">基本文法</a></li>
-    <li><a href="#レギュラーsqlをデフォルトにする">レギュラーSQLをデフォルトにする</a>
+    <li><a href="#レギュラーsqlをデフォルトにする">レギュラーSQLをデフォルトにする</a></li>
+    <li><a href="#実数を丸める関数">実数を丸める関数</a></li>
+    <li><a href="#行の抽出">行の抽出</a>
       <ul>
-        <li><a href="#実数を丸める関数">実数を丸める関数</a></li>
-        <li><a href="#行の抽出">行の抽出</a></li>
-        <li><a href="#カラム名を取得する">カラム名を取得する</a></li>
+        <li><a href="#where-column-in-sub_query-">WHERE column IN( sub_query )</a></li>
+        <li><a href="#where-exists-sub_query-">WHERE EXISTS( sub_query )</a></li>
       </ul>
     </li>
+    <li><a href="#カラム名を取得する">カラム名を取得する</a></li>
     <li><a href="#文字列">文字列</a>
       <ul>
         <li><a href="#部分文字列-substr">部分文字列: SUBSTR</a></li>
@@ -1202,22 +1205,28 @@ IF (ascending,
         <li><a href="#日付要素を取り出す">日付要素を取り出す</a></li>
       </ul>
     </li>
-  </ul>
-
-  <ul>
-    <li><a href="#tablesample-句">TABLESAMPLE 句</a></li>
-    <li><a href="#where-rand">WHERE rand()</a></li>
-  </ul>
-
-  <ul>
-    <li><a href="#arrayの型">ARRAYの型</a></li>
-    <li><a href="#array-を展開する-left-join-unnest-array">ARRAY を展開する LEFT JOIN UNNEST (array)</a></li>
-    <li><a href="#where-in-unnest-array">WHERE IN UNNEST (array)</a></li>
-    <li><a href="#where-exists--select--from-unnest-array-as-a-where-a--x">WHERE EXISTS ( SELECT * FROM UNNEST (array) as A WHERE A = &lsquo;X&rsquo;)</a></li>
-    <li><a href="#array-から一部の要素を取り出す">ARRAY から一部の要素を取り出す</a></li>
-    <li><a href="#udf-を使った-array-処理">UDF を使った ARRAY 処理</a></li>
-    <li><a href="#番号を使った-array-要素へのアクセス">番号を使った ARRAY 要素へのアクセス</a></li>
+    <li><a href="#ランダムサンプル">ランダムサンプル</a>
+      <ul>
+        <li><a href="#tablesample-句">TABLESAMPLE 句</a></li>
+        <li><a href="#where-rand">WHERE rand()</a></li>
+      </ul>
+    </li>
+    <li><a href="#sharded-table">Sharded Table</a></li>
+    <li><a href="#array">ARRAY</a>
+      <ul>
+        <li><a href="#arrayの型">ARRAYの型</a></li>
+        <li><a href="#array-の作成">ARRAY の作成</a></li>
+        <li><a href="#array-を展開する-left-join-unnest-array">ARRAY を展開する LEFT JOIN UNNEST (array)</a></li>
+        <li><a href="#where-in-unnest-array">WHERE IN UNNEST (array)</a></li>
+        <li><a href="#where-exists--select--from-unnest-array-as-a-where-a--x">WHERE EXISTS ( SELECT * FROM UNNEST (array) as A WHERE A = &lsquo;X&rsquo;)</a></li>
+        <li><a href="#array-から一部の要素を取り出す">ARRAY から一部の要素を取り出す</a></li>
+        <li><a href="#udf-を使った-array-処理">UDF を使った ARRAY 処理</a></li>
+        <li><a href="#番号を使った-array-要素へのアクセス">番号を使った ARRAY 要素へのアクセス</a></li>
+      </ul>
+    </li>
     <li><a href="#arrayの要素の結合">ARRAYの要素の結合</a></li>
+    <li><a href="#user-defined-functions">User Defined Functions</a></li>
+    <li><a href="#struct">STRUCT</a></li>
   </ul>
 </nav>
   </aside>

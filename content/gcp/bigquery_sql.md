@@ -46,7 +46,7 @@ LIMIT 10;
 
 
 
-### 実数を丸める関数
+## 実数を丸める関数
 
 - `ROUND()`
 - `CEILING()`
@@ -58,9 +58,9 @@ LIMIT 10;
 ![Pythonの丸め関数の挙動、多分BigQueryと同じ](ceil_floor_trunc_round.jpeg "Pythonの丸め関数の挙動")
 
 
-### 行の抽出
+## 行の抽出
 
-#### WHERE column IN( sub_query )
+### WHERE column IN( sub_query )
 
 列の値が、サブクエリの出力結果と同じ値をもつ行だけを抽出する
 
@@ -78,7 +78,7 @@ WHERE
   )
 ```
 
-#### WHERE EXISTS( sub_query )
+### WHERE EXISTS( sub_query )
 
 サブクエリのなかのwhere句で抽出したいレコードの条件を指定する。
 
@@ -100,7 +100,7 @@ WHERE
 ```
 
 
-### カラム名を取得する
+## カラム名を取得する
 
 ```
 SELECT
@@ -162,9 +162,9 @@ EXTRACT(要素 FROM DATEカラム)
 
 
 
-# ランダムサンプル
+## ランダムサンプル
 
-## TABLESAMPLE 句
+### TABLESAMPLE 句
 
 10%のレコードを抽出する。
 
@@ -180,7 +180,7 @@ SELECT * FROM dataset.my_table TABLESAMPLE SYSTEM (10 PERCENT)
 そこで、行ごとに厳密にランダムに抽出したいときは、次の　`WHERE rand()` を使用する。ただし、`WHERE rand()` を使用するとテーブル全体をスキャンするのでコストが大きくなることに注意する。`TABLESAMPLE` を使うとテーブル全体をスキャンしないのでクエリのコストは小さくなる。
 
 
-## WHERE rand()
+### WHERE rand()
 
 10%のレコードを抽出する。
 
@@ -193,7 +193,9 @@ SELECT * FROM dataset.my_table WHERE rand() < 0.1
 
 
 
-# Sharded Table
+## Sharded Table
+
+Sharded Table へのアクセス
 
 ```sql
 SELECT ssvid
@@ -211,9 +213,9 @@ BETWEEN '20200101' AND '20201231'
 
 
 
-# ARRAY
+## ARRAY
 
-## ARRAYの型
+### ARRAYの型
 
 ```sql
 
@@ -228,6 +230,7 @@ SELECT
 
 https://cloud.google.com/bigquery/docs/reference/standard-sql/arrays
 
+### ARRAY の作成
 
 ```sql
 WITH
@@ -255,7 +258,7 @@ pet は arrayとする。
 
 
 
-## ARRAY を展開する LEFT JOIN UNNEST (array)
+### ARRAY を展開する LEFT JOIN UNNEST (array)
 
 `LEFT JOIN UNNEST (array)` を使用する
 
@@ -283,7 +286,7 @@ LEFT JOIN UNNEST(ais_identity.n_imo ) as n_imo
 
 
 
-## WHERE IN UNNEST (array)
+### WHERE IN UNNEST (array)
 
 Array の要素として特定の値が含まれるレコードを抽出する
 
@@ -295,7 +298,7 @@ FROM
 WHERE IN UNNEST (pet)
 ```
 
-## WHERE EXISTS ( SELECT * FROM UNNEST (array) as A WHERE A = 'X')
+### WHERE EXISTS ( SELECT * FROM UNNEST (array) as A WHERE A = 'X')
 
 Array が特定の条件を満たすレコードを抽出する `IN UNNEST` でよりも複雑な条件を指定することができる。
 
@@ -314,7 +317,7 @@ WHERE EXISTS (
 ```
 
 
-## ARRAY から一部の要素を取り出す
+### ARRAY から一部の要素を取り出す
 
 結果は元のテーブルの形式を保持したまま、一部の ARRAY 要素を取り出す
 
@@ -336,7 +339,7 @@ FROM
 
 
 
-## UDF を使った ARRAY 処理
+### UDF を使った ARRAY 処理
 
 ```sql
 CREATE FUNCTION SORT_ARRAY(arr ANY TYPE, ascending BOOL) AS (
@@ -362,14 +365,9 @@ FROM
 ```
 
 
+### 番号を使った ARRAY 要素へのアクセス
 
-
-
-　
-
-## 番号を使った ARRAY 要素へのアクセス
-
-```
+```sql
 WITH sequences AS
   (SELECT [0, 1, 1, 2, 3, 5] AS some_numbers
    UNION ALL SELECT [2, 4, 8, 16, 32] AS some_numbers
@@ -386,7 +384,7 @@ ARRAY_CONCAT() のような関数を使用して複数の配列を結合し、AR
 
 
 
-# User Defined Functions
+## User Defined Functions
 
 ```
 # 定数をUDFとして保存する
@@ -410,7 +408,7 @@ IF (ascending,
 
 
 
-# STRUCT
+## STRUCT
 
 
 ```sql
