@@ -8,7 +8,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://teuder.github.io/notebook/gcp/bigquery_sql/" />
 <meta property="article:published_time" content="2019-09-04T00:00:00+00:00" />
-<meta property="article:modified_time" content="2021-09-21T20:07:15+09:00" />
+<meta property="article:modified_time" content="2021-09-21T20:11:13+09:00" />
 <title>BigQuery: SQL | notebook</title>
 <link rel="icon" href="/notebook/favicon.png" type="image/x-icon">
 
@@ -16,7 +16,7 @@
 <link rel="stylesheet" href="/notebook/book.min.07c38dce7b6800da2a75a565d4d975e38f837294e24d00b5aae363037012d64b.css" integrity="sha256-B8ONzntoANoqdaVl1Nl144&#43;DcpTiTQC1quNjA3AS1ks=">
 
 
-<script defer src="/notebook/search.min.7e058c7da2665ad0b13d1c3ef2fff959815355798e871a2400628f8a964166ba.js" integrity="sha256-fgWMfaJmWtCxPRw&#43;8v/5WYFTVXmOhxokAGKPipZBZro="></script>
+<script defer src="/notebook/search.min.eb0c5db60077a54080892eac1b948242bbc4a8469801a1858d65e43d165f5f90.js" integrity="sha256-6wxdtgB3pUCAiS6sG5SCQrvEqEaYAaGFjWXkPRZfX5A="></script>
 
 <!--
 Made with Book Theme
@@ -1081,7 +1081,36 @@ SELECT
 FROM
   ownner_pet
 
-</code></pre><h3 id="udf-を使った-array-処理">UDF を使った ARRAY 処理</h3>
+</code></pre><h3 id="array-の要素のソート">ARRAY の要素のソート</h3>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#f92672">#</span> <span style="color:#111">STRING</span> <span style="color:#960050;background-color:#1e0010">を要素に持つ</span> <span style="color:#111">ARRAY</span> <span style="color:#960050;background-color:#1e0010">カラム</span>
+<span style="color:#00a8c8">WITH</span>
+<span style="color:#111">ownner_pet</span> <span style="color:#00a8c8">AS</span> <span style="color:#111">(</span>
+<span style="color:#00a8c8">SELECT</span> <span style="color:#d88200">&#39;tony&#39;</span> <span style="color:#00a8c8">as</span> <span style="color:#00a8c8">owner</span><span style="color:#111">,</span> <span style="color:#111">[</span><span style="color:#d88200">&#39;dog&#39;</span><span style="color:#111">,</span> <span style="color:#d88200">&#39;cat&#39;</span><span style="color:#111">]</span> <span style="color:#00a8c8">as</span> <span style="color:#111">pet</span> <span style="color:#00a8c8">UNION</span> <span style="color:#00a8c8">ALL</span>
+<span style="color:#00a8c8">SELECT</span> <span style="color:#d88200">&#39;tim&#39;</span> <span style="color:#00a8c8">as</span> <span style="color:#00a8c8">owner</span><span style="color:#111">,</span> <span style="color:#111">[</span><span style="color:#d88200">&#39;cat&#39;</span><span style="color:#111">,</span> <span style="color:#d88200">&#39;bird&#39;</span><span style="color:#111">]</span> <span style="color:#00a8c8">as</span> <span style="color:#111">pet</span> <span style="color:#00a8c8">UNION</span> <span style="color:#00a8c8">ALL</span>
+<span style="color:#00a8c8">SELECT</span> <span style="color:#d88200">&#39;nancy&#39;</span> <span style="color:#00a8c8">as</span> <span style="color:#00a8c8">owner</span><span style="color:#111">,</span> <span style="color:#111">[</span><span style="color:#d88200">&#39;dog&#39;</span><span style="color:#111">,</span> <span style="color:#d88200">&#39;fish&#39;</span><span style="color:#111">,</span> <span style="color:#d88200">&#39;lizard&#39;</span><span style="color:#111">]</span> <span style="color:#00a8c8">as</span> <span style="color:#111">pet</span> 
+<span style="color:#111">)</span>
+
+<span style="color:#00a8c8">SELECT</span>
+  <span style="color:#00a8c8">owner</span><span style="color:#111">,</span>
+  <span style="color:#111">ARRAY</span> <span style="color:#111">(</span><span style="color:#00a8c8">SELECT</span> <span style="color:#f92672">*</span> <span style="color:#00a8c8">FROM</span> <span style="color:#00a8c8">UNNEST</span> <span style="color:#111">(</span><span style="color:#111">pet</span><span style="color:#111">)</span> <span style="color:#00a8c8">as</span> <span style="color:#111">p</span> <span style="color:#00a8c8">ORDER</span> <span style="color:#00a8c8">BY</span> <span style="color:#111">p</span> <span style="color:#111">)</span> <span style="color:#00a8c8">as</span> <span style="color:#111">pet</span>
+<span style="color:#00a8c8">FROM</span>
+  <span style="color:#111">ownner_pet</span>
+</code></pre></div><div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#f92672">#</span> <span style="color:#111">STRUCT</span> <span style="color:#960050;background-color:#1e0010">を要素に持つ</span> <span style="color:#111">ARRAY</span> <span style="color:#960050;background-color:#1e0010">カラム</span>
+<span style="color:#00a8c8">WITH</span>
+<span style="color:#111">ownner_pet</span> <span style="color:#00a8c8">AS</span> <span style="color:#111">(</span>
+<span style="color:#00a8c8">SELECT</span> <span style="color:#d88200">&#39;tony&#39;</span> <span style="color:#00a8c8">as</span> <span style="color:#00a8c8">owner</span><span style="color:#111">,</span> <span style="color:#111">[</span><span style="color:#111">STRUCT</span><span style="color:#111">(</span><span style="color:#d88200">&#39;dog&#39;</span> <span style="color:#00a8c8">as</span> <span style="color:#111">species</span><span style="color:#111">,</span> <span style="color:#ae81ff">2</span> <span style="color:#00a8c8">as</span> <span style="color:#00a8c8">count</span><span style="color:#111">),</span> <span style="color:#111">(</span><span style="color:#d88200">&#39;cat&#39;</span><span style="color:#111">,</span> <span style="color:#ae81ff">1</span><span style="color:#111">)]</span> <span style="color:#00a8c8">as</span> <span style="color:#111">pet</span> <span style="color:#00a8c8">UNION</span> <span style="color:#00a8c8">ALL</span>
+<span style="color:#00a8c8">SELECT</span> <span style="color:#d88200">&#39;tim&#39;</span> <span style="color:#00a8c8">as</span> <span style="color:#00a8c8">owner</span><span style="color:#111">,</span> <span style="color:#111">[(</span><span style="color:#d88200">&#39;cat&#39;</span><span style="color:#111">,</span> <span style="color:#ae81ff">3</span><span style="color:#111">),</span> <span style="color:#111">(</span><span style="color:#d88200">&#39;cow&#39;</span><span style="color:#111">,</span> <span style="color:#ae81ff">1</span><span style="color:#111">),</span> <span style="color:#111">(</span><span style="color:#d88200">&#39;horse&#39;</span><span style="color:#111">,</span><span style="color:#ae81ff">3</span><span style="color:#111">)]</span>  <span style="color:#00a8c8">UNION</span> <span style="color:#00a8c8">ALL</span>
+<span style="color:#00a8c8">SELECT</span> <span style="color:#d88200">&#39;nancy&#39;</span> <span style="color:#00a8c8">as</span> <span style="color:#00a8c8">owner</span><span style="color:#111">,</span>  <span style="color:#111">[(</span><span style="color:#d88200">&#39;fish&#39;</span><span style="color:#111">,</span> <span style="color:#ae81ff">10</span><span style="color:#111">),</span> <span style="color:#111">(</span><span style="color:#d88200">&#39;bird&#39;</span><span style="color:#111">,</span> <span style="color:#ae81ff">3</span><span style="color:#111">),</span> <span style="color:#111">(</span><span style="color:#d88200">&#39;horse&#39;</span><span style="color:#111">,</span><span style="color:#ae81ff">3</span><span style="color:#111">)]</span>
+<span style="color:#111">)</span>
+
+
+<span style="color:#00a8c8">SELECT</span>
+  <span style="color:#00a8c8">owner</span><span style="color:#111">,</span>
+  <span style="color:#111">ARRAY</span> <span style="color:#111">(</span><span style="color:#00a8c8">SELECT</span> <span style="color:#00a8c8">AS</span> <span style="color:#111">STRUCT</span> <span style="color:#f92672">*</span> <span style="color:#00a8c8">FROM</span> <span style="color:#00a8c8">UNNEST</span> <span style="color:#111">(</span><span style="color:#111">pet</span><span style="color:#111">)</span> <span style="color:#00a8c8">as</span> <span style="color:#111">p</span> <span style="color:#00a8c8">ORDER</span> <span style="color:#00a8c8">BY</span> <span style="color:#111">p</span><span style="color:#111">.</span><span style="color:#00a8c8">count</span><span style="color:#111">,</span> <span style="color:#111">p</span><span style="color:#111">.</span><span style="color:#111">species</span><span style="color:#111">)</span> <span style="color:#00a8c8">as</span> <span style="color:#111">pet</span>
+<span style="color:#00a8c8">FROM</span>
+  <span style="color:#111">ownner_pet</span>
+
+</code></pre></div><h3 id="udf-を使った-array-処理">UDF を使った ARRAY 処理</h3>
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#00a8c8">CREATE</span> <span style="color:#00a8c8">FUNCTION</span> <span style="color:#111">SORT_ARRAY</span><span style="color:#111">(</span><span style="color:#111">arr</span> <span style="color:#00a8c8">ANY</span> <span style="color:#00a8c8">TYPE</span><span style="color:#111">,</span> <span style="color:#111">ascending</span> <span style="color:#111">BOOL</span><span style="color:#111">)</span> <span style="color:#00a8c8">AS</span> <span style="color:#111">(</span>
 <span style="color:#00a8c8">IF</span> <span style="color:#111">(</span><span style="color:#111">ascending</span><span style="color:#111">,</span>
     <span style="color:#111">ARRAY</span> <span style="color:#111">(</span><span style="color:#00a8c8">SELECT</span> <span style="color:#f92672">*</span> <span style="color:#00a8c8">FROM</span> <span style="color:#00a8c8">UNNEST</span> <span style="color:#111">(</span><span style="color:#111">arr</span><span style="color:#111">)</span> <span style="color:#111">a</span> <span style="color:#00a8c8">ORDER</span> <span style="color:#00a8c8">BY</span> <span style="color:#111">a</span><span style="color:#111">),</span>
@@ -1157,7 +1186,7 @@ IF (ascending,
   
   <div>
     
-    <a class="flex align-center" href="https://github.com/teuder/notebook/commit/f0a94a3e9c0493b5b86cdad88d0f178d4d637dd6" title='Last modified 2021-09-21 by Masaki Tsuda' target="_blank" rel="noopener">
+    <a class="flex align-center" href="https://github.com/teuder/notebook/commit/7c2c29cd60a54ca508b45c765c42da7013eac2e0" title='Last modified 2021-09-21 by Masaki Tsuda' target="_blank" rel="noopener">
       <img src="/notebook/svg/calendar.svg" alt="Changed" />
       <span>2021-09-21</span>
     </a>
@@ -1220,6 +1249,7 @@ IF (ascending,
         <li><a href="#where-in-unnest-array">WHERE IN UNNEST (array)</a></li>
         <li><a href="#where-exists--select--from-unnest-array-as-a-where-a--x">WHERE EXISTS ( SELECT * FROM UNNEST (array) as A WHERE A = &lsquo;X&rsquo;)</a></li>
         <li><a href="#array-から一部の要素を取り出す">ARRAY から一部の要素を取り出す</a></li>
+        <li><a href="#array-の要素のソート">ARRAY の要素のソート</a></li>
         <li><a href="#udf-を使った-array-処理">UDF を使った ARRAY 処理</a></li>
         <li><a href="#番号を使った-array-要素へのアクセス">番号を使った ARRAY 要素へのアクセス</a></li>
       </ul>

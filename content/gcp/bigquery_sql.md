@@ -337,6 +337,43 @@ FROM
 
 ```
 
+### ARRAY の要素のソート
+
+```sql
+# STRING を要素に持つ ARRAY カラム
+WITH
+ownner_pet AS (
+SELECT 'tony' as owner, ['dog', 'cat'] as pet UNION ALL
+SELECT 'tim' as owner, ['cat', 'bird'] as pet UNION ALL
+SELECT 'nancy' as owner, ['dog', 'fish', 'lizard'] as pet 
+)
+
+SELECT
+  owner,
+  ARRAY (SELECT * FROM UNNEST (pet) as p ORDER BY p ) as pet
+FROM
+  ownner_pet
+```
+
+
+```sql
+# STRUCT を要素に持つ ARRAY カラム
+WITH
+ownner_pet AS (
+SELECT 'tony' as owner, [STRUCT('dog' as species, 2 as count), ('cat', 1)] as pet UNION ALL
+SELECT 'tim' as owner, [('cat', 3), ('cow', 1), ('horse',3)]  UNION ALL
+SELECT 'nancy' as owner,  [('fish', 10), ('bird', 3), ('horse',3)]
+)
+
+
+SELECT
+  owner,
+  ARRAY (SELECT AS STRUCT * FROM UNNEST (pet) as p ORDER BY p.count, p.species) as pet
+FROM
+  ownner_pet
+
+```
+
 
 
 ### UDF を使った ARRAY 処理
