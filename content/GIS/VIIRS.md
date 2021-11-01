@@ -69,6 +69,23 @@ JPSSのサイトに、利用できるデータプロダクトの一覧がある
 https://www.star.nesdis.noaa.gov/jpss/JPSS_products.php
 
 
+NASAはNOAAとは独立に異なる処理をされたVIIRSのデータプロダクトを提供しているみたい
+
+- [VNP46A2](https://ladsweb.modaps.eosdis.nasa.gov/missions-and-measurements/products/VNP46A2/)
+  - 雲や月光の影響を補正した夜間光プロダクト？？
+  - [NASA VIIRS データのトレーニングコース](https://appliedsciences.nasa.gov/join-mission/training/english/introduction-nasas-black-marble-night-lights-data)
+
+
+
+\
+
+
+
+
+
+
+
+
 ## データのドキュメント
 
 [JPSSの公式サイトにあるSNPPのドキュメント集](https://www.jpss.noaa.gov/sciencedocs.html)

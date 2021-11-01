@@ -16,7 +16,7 @@
 <link rel="stylesheet" href="/notebook/book.min.07c38dce7b6800da2a75a565d4d975e38f837294e24d00b5aae363037012d64b.css" integrity="sha256-B8ONzntoANoqdaVl1Nl144&#43;DcpTiTQC1quNjA3AS1ks=">
 
 
-<script defer src="/notebook/search.min.eb0c5db60077a54080892eac1b948242bbc4a8469801a1858d65e43d165f5f90.js" integrity="sha256-6wxdtgB3pUCAiS6sG5SCQrvEqEaYAaGFjWXkPRZfX5A="></script>
+<script defer src="/notebook/search.min.f0e55caa5e674751b94cfcb2fadf1d9575e63528b4edaacf4c4c857f6b247e2c.js" integrity="sha256-8OVcql5nR1G5TPyy&#43;t8dlXXmNSi07arPTEyFf2skfiw="></script>
 
 <!--
 Made with Book Theme
@@ -365,6 +365,16 @@ https://github.com/alex-shpak/hugo-book
 
   <a href="/notebook/r/rstudio/" >
       RStudio
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/r/rvest/" >
+      rvest
   </a>
 
 </li>
@@ -723,6 +733,16 @@ https://github.com/alex-shpak/hugo-book
       
         <li>
 
+  <a href="/notebook/miscellaneous/c_plus_plus/" >
+      C&#43;&#43;
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
   <a href="/notebook/miscellaneous/english/" >
       english
   </a>
@@ -964,17 +984,23 @@ geom_histgram(aes(x)) + stat_bin(binwidth = 0.1)
   inherit.aes = TRUE
 )
 </code></pre><p><code>x</code> が離散変数なら <code>stat_count()</code> の方がいい</p>
-<h2 id="棒グラフ">棒グラフ</h2>
+<h3 id="連続変数の離散化">連続変数の離散化</h3>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#75715e"># 変数 x を10個の等間隔のbinに切る</span>
+<span style="color:#75af00">cut_interval</span><span style="color:#111">(</span><span style="color:#111">x</span><span style="color:#111">,</span> <span style="color:#ae81ff">10</span><span style="color:#111">)</span>
+</code></pre></div><h2 id="棒グラフ">棒グラフ</h2>
 <p>1変数（カテゴリ変数）だけ指定すると、指定されたカテゴリ変数の値の数をそれぞれカウントした値が Y 軸になる。<code>stat = &quot;count&quot;</code> がデフォルトなので、暗黙に <code>stat_count()</code> が使用される。</p>
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#75af00">ggplot</span><span style="color:#111">(</span><span style="color:#111">df</span><span style="color:#111">)</span> <span style="color:#f92672">+</span> 
-<span style="color:#75af00">geom_bar</span><span style="color:#111">(</span><span style="color:#75af00">aes</span><span style="color:#111">(</span><span style="color:#111">x</span> <span style="color:#f92672">=</span> <span style="color:#111">category</span><span style="color:#111">))</span>
+<span style="color:#75af00">geom_bar</span><span style="color:#111">(</span><span style="color:#75af00">aes</span><span style="color:#111">(</span><span style="color:#111">x</span> <span style="color:#f92672">=</span> <span style="color:#111">category</span><span style="color:#111">))</span> 
 <span style="color:#75715e"># 以下は上と同義</span>
 <span style="color:#75715e">#geom_bar(aes(x = category), stat = &#34;count&#34;)</span>
 </code></pre></div><p>X 軸（カテゴリ変数）と Y 軸（量的変数）の値を別々に指定する場合 <code>stat = &quot;identity&quot;</code></p>
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#75af00">ggplot</span><span style="color:#111">(</span><span style="color:#111">df</span><span style="color:#111">)</span> <span style="color:#f92672">+</span> 
 <span style="color:#75af00">geom_bar</span><span style="color:#111">(</span><span style="color:#75af00">aes</span><span style="color:#111">(</span><span style="color:#111">x</span> <span style="color:#f92672">=</span> <span style="color:#111">category</span><span style="color:#111">,</span> <span style="color:#111">y</span> <span style="color:#f92672">=</span> <span style="color:#111">value</span><span style="color:#111">),</span> <span style="color:#111">stat</span> <span style="color:#f92672">=</span> <span style="color:#d88200">&#34;identity&#34;</span><span style="color:#111">)</span>
 </code></pre></div><p><code>stat = &quot;identity&quot;</code> は <code>geom_bar(aes(x = category, y = value)) + stat_identity()</code> と同じ意味になる？</p>
-<h3 id="積み上げ棒グラフ">積み上げ棒グラフ</h3>
+<p>棒の間に隙間を開けない時は <code>width = 1</code></p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#75af00">geom_bar</span><span style="color:#111">(</span><span style="color:#75af00">aes</span><span style="color:#111">(</span><span style="color:#111">x</span> <span style="color:#f92672">=</span> <span style="color:#111">category</span><span style="color:#111">),</span> <span style="color:#111">width</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span><span style="color:#111">)</span> 
+
+</code></pre></div><h3 id="積み上げ棒グラフ">積み上げ棒グラフ</h3>
 <p>X 軸（カテゴリ変数）と Y 軸（量的変数）のほかに、変数Z（カテゴリ変数）で色分けした積み上げ棒グラフ <code>aes(fill = z)</code></p>
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#75af00">ggplot</span><span style="color:#111">(</span><span style="color:#111">df</span><span style="color:#111">)</span> <span style="color:#f92672">+</span> 
 <span style="color:#75af00">geom_bar</span><span style="color:#111">(</span><span style="color:#75af00">aes</span><span style="color:#111">(</span><span style="color:#111">x</span> <span style="color:#f92672">=</span> <span style="color:#111">category</span><span style="color:#111">,</span> <span style="color:#111">y</span> <span style="color:#f92672">=</span> <span style="color:#111">value</span><span style="color:#111">,</span> <span style="color:#111">fill</span> <span style="color:#f92672">=</span> <span style="color:#111">category2</span><span style="color:#111">),</span> <span style="color:#111">stat</span> <span style="color:#f92672">=</span> <span style="color:#d88200">&#34;identity&#34;</span><span style="color:#111">)</span>
@@ -1021,7 +1047,32 @@ ggplot(df, aes(x=reorder(x, desc(y)), y=y), stat = &quot;identity&quot;)
 <span style="color:#75af00">geom_abline</span><span style="color:#111">(</span><span style="color:#111">intercept</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">37</span><span style="color:#111">,</span> <span style="color:#111">slope</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">-5</span><span style="color:#111">)</span><span style="color:#f92672">+</span>
 </code></pre></div><p>linetype=&quot;dashed&rdquo;</p>
 <h2 id="多角形">多角形</h2>
-<h1 id="色の指定">色の指定</h1>
+<h2 id="テキストラベル">テキストラベル</h2>
+<pre><code># 文字列
+geom_text()
+# Boxで囲まれた文字列
+geom_label()
+
+# 同じ
+annotate(&quot;text&quot;, x = bbox[&quot;xmin&quot;], y = bbox[&quot;ymax&quot;], label = &quot;hoge&quot;, vjust=1, hjust=1) 
+annotate(&quot;label&quot;, x = bbox[&quot;xmin&quot;], y = bbox[&quot;ymax&quot;], label = &quot;hoge, vjust=1, hjust=1)
+</code></pre><div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#111">p</span> <span style="color:#f92672">&lt;-</span> <span style="color:#75af00">ggplot</span><span style="color:#111">(</span><span style="color:#111">mtcars</span><span style="color:#111">,</span> <span style="color:#75af00">aes</span><span style="color:#111">(</span><span style="color:#111">x</span> <span style="color:#f92672">=</span> <span style="color:#111">wt</span><span style="color:#111">,</span> <span style="color:#111">y</span> <span style="color:#f92672">=</span> <span style="color:#111">mpg</span><span style="color:#111">))</span> <span style="color:#f92672">+</span> <span style="color:#75af00">geom_point</span><span style="color:#111">()</span>
+<span style="color:#111">p</span> <span style="color:#f92672">+</span> <span style="color:#75af00">annotate</span><span style="color:#111">(</span><span style="color:#d88200">&#34;text&#34;</span><span style="color:#111">,</span> <span style="color:#111">x</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">4</span><span style="color:#111">,</span> <span style="color:#111">y</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">25</span><span style="color:#111">,</span> <span style="color:#111">label</span> <span style="color:#f92672">=</span> <span style="color:#d88200">&#34;Some text&#34;</span><span style="color:#111">)</span>
+<span style="color:#111">p</span> <span style="color:#f92672">+</span> <span style="color:#75af00">annotate</span><span style="color:#111">(</span><span style="color:#d88200">&#34;text&#34;</span><span style="color:#111">,</span> <span style="color:#111">x</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span><span style="color:#f92672">:</span><span style="color:#ae81ff">5</span><span style="color:#111">,</span> <span style="color:#111">y</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">25</span><span style="color:#111">,</span> <span style="color:#111">label</span> <span style="color:#f92672">=</span> <span style="color:#d88200">&#34;Some text&#34;</span><span style="color:#111">)</span>
+<span style="color:#111">p</span> <span style="color:#f92672">+</span> <span style="color:#75af00">annotate</span><span style="color:#111">(</span><span style="color:#d88200">&#34;rect&#34;</span><span style="color:#111">,</span> <span style="color:#111">xmin</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span><span style="color:#111">,</span> <span style="color:#111">xmax</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">4.2</span><span style="color:#111">,</span> <span style="color:#111">ymin</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">12</span><span style="color:#111">,</span> <span style="color:#111">ymax</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">21</span><span style="color:#111">,</span>
+  <span style="color:#111">alpha</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">.2</span><span style="color:#111">)</span>
+<span style="color:#111">p</span> <span style="color:#f92672">+</span> <span style="color:#75af00">annotate</span><span style="color:#111">(</span><span style="color:#d88200">&#34;segment&#34;</span><span style="color:#111">,</span> <span style="color:#111">x</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">2.5</span><span style="color:#111">,</span> <span style="color:#111">xend</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">4</span><span style="color:#111">,</span> <span style="color:#111">y</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">15</span><span style="color:#111">,</span> <span style="color:#111">yend</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">25</span><span style="color:#111">,</span>
+  <span style="color:#111">colour</span> <span style="color:#f92672">=</span> <span style="color:#d88200">&#34;blue&#34;</span><span style="color:#111">)</span>
+<span style="color:#111">p</span> <span style="color:#f92672">+</span> <span style="color:#75af00">annotate</span><span style="color:#111">(</span><span style="color:#d88200">&#34;pointrange&#34;</span><span style="color:#111">,</span> <span style="color:#111">x</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">3.5</span><span style="color:#111">,</span> <span style="color:#111">y</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">20</span><span style="color:#111">,</span> <span style="color:#111">ymin</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">12</span><span style="color:#111">,</span> <span style="color:#111">ymax</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">28</span><span style="color:#111">,</span>
+  <span style="color:#111">colour</span> <span style="color:#f92672">=</span> <span style="color:#d88200">&#34;red&#34;</span><span style="color:#111">,</span> <span style="color:#111">size</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">1.5</span><span style="color:#111">)</span>
+
+<span style="color:#111">p</span> <span style="color:#f92672">+</span> <span style="color:#75af00">annotate</span><span style="color:#111">(</span><span style="color:#d88200">&#34;text&#34;</span><span style="color:#111">,</span> <span style="color:#111">x</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span><span style="color:#f92672">:</span><span style="color:#ae81ff">3</span><span style="color:#111">,</span> <span style="color:#111">y</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">20</span><span style="color:#f92672">:</span><span style="color:#ae81ff">21</span><span style="color:#111">,</span> <span style="color:#111">label</span> <span style="color:#f92672">=</span> <span style="color:#75af00">c</span><span style="color:#111">(</span><span style="color:#d88200">&#34;my label&#34;</span><span style="color:#111">,</span> <span style="color:#d88200">&#34;label 2&#34;</span><span style="color:#111">))</span>
+
+<span style="color:#111">p</span> <span style="color:#f92672">+</span> <span style="color:#75af00">annotate</span><span style="color:#111">(</span><span style="color:#d88200">&#34;text&#34;</span><span style="color:#111">,</span> <span style="color:#111">x</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">4</span><span style="color:#111">,</span> <span style="color:#111">y</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">25</span><span style="color:#111">,</span> <span style="color:#111">label</span> <span style="color:#f92672">=</span> <span style="color:#d88200">&#34;italic(R) ^ 2 == 0.75&#34;</span><span style="color:#111">,</span>
+  <span style="color:#111">parse</span> <span style="color:#f92672">=</span> <span style="color:#00a8c8">TRUE</span><span style="color:#111">)</span>
+<span style="color:#111">p</span> <span style="color:#f92672">+</span> <span style="color:#75af00">annotate</span><span style="color:#111">(</span><span style="color:#d88200">&#34;text&#34;</span><span style="color:#111">,</span> <span style="color:#111">x</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">4</span><span style="color:#111">,</span> <span style="color:#111">y</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">25</span><span style="color:#111">,</span>
+  <span style="color:#111">label</span> <span style="color:#f92672">=</span> <span style="color:#d88200">&#34;paste(italic(R) ^ 2, \&#34; = .75\&#34;)&#34;</span><span style="color:#111">,</span> <span style="color:#111">parse</span> <span style="color:#f92672">=</span> <span style="color:#00a8c8">TRUE</span><span style="color:#111">)</span>
+</code></pre></div><h1 id="色の指定">色の指定</h1>
 <p>色分けに使用する変数は <code>aes()</code> の中で <code>aes(color = var1, fill = var2)</code> のように指定する。</p>
 <p><code>color</code> に対しては <code>scale_color_gradient()</code></p>
 <p><code>fill</code> に対しては <code>scale_fill_gradient()</code></p>
@@ -1071,13 +1122,14 @@ ggplot(df, aes(x=reorder(x, desc(y)), y=y), stat = &quot;identity&quot;)
 <span style="color:#111">)</span>
 </code></pre></div><h2 id="タイトルとサブタイトル">タイトルとサブタイトル</h2>
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#75af00">ggtitle</span><span style="color:#111">(</span><span style="color:#111">label</span><span style="color:#111">,</span> <span style="color:#111">subtitle</span> <span style="color:#f92672">=</span> <span style="color:#75af00">waiver</span><span style="color:#111">())</span>
-</code></pre></div><h1 id="軸のスケールや目盛">軸のスケールや目盛</h1>
+</code></pre></div><h1 id="軸のスケールや目盛の設定">軸のスケールや目盛の設定</h1>
 <p><code>x</code>軸、<code>y</code>軸、<code>color</code>軸、<code>fill</code>軸などそれぞれの軸 (<code>AXIS</code>) とそのデータ型 (<code>DATATYPE</code>) に対応した関数 (<code>scale_AXIS_DATATYPE</code>) が用意されている。</p>
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#111">scale_[x</span><span style="color:#111">,</span><span style="color:#111">y</span><span style="color:#111">,</span><span style="color:#111">color</span><span style="color:#111">,</span><span style="color:#111">fill]_[condinuous</span><span style="color:#111">,</span><span style="color:#111">descrete</span><span style="color:#111">,</span><span style="color:#111">date</span><span style="color:#75af00">]</span><span style="color:#111">(</span>
   <span style="color:#111">breaks</span><span style="color:#f92672">=</span><span style="color:#75af00">c</span><span style="color:#111">(</span><span style="color:#ae81ff">1</span><span style="color:#111">,</span><span style="color:#ae81ff">2</span><span style="color:#111">,</span><span style="color:#ae81ff">3</span><span style="color:#111">,</span><span style="color:#ae81ff">4</span><span style="color:#111">),</span> <span style="color:#75715e"># 目盛位置</span>
   <span style="color:#111">labels</span> <span style="color:#f92672">=</span> <span style="color:#75af00">c</span><span style="color:#111">(</span><span style="color:#d88200">&#34;01&#34;</span><span style="color:#111">,</span><span style="color:#d88200">&#34;02&#34;</span><span style="color:#111">,</span> <span style="color:#d88200">&#34;03&#34;</span><span style="color:#111">,</span><span style="color:#d88200">&#34;04&#34;</span><span style="color:#111">),</span> <span style="color:#75715e"># 目盛に表示する値のラベル</span>
-  <span style="color:#111">limits</span><span style="color:#f92672">=</span><span style="color:#75af00">c</span><span style="color:#111">(</span><span style="color:#ae81ff">0</span><span style="color:#111">,</span><span style="color:#ae81ff">120</span><span style="color:#111">),</span>   <span style="color:#75715e"># 値の範囲</span>
+  <span style="color:#111">limits</span><span style="color:#f92672">=</span><span style="color:#75af00">c</span><span style="color:#111">(</span><span style="color:#ae81ff">0</span><span style="color:#111">,</span><span style="color:#ae81ff">120</span><span style="color:#111">),</span>   <span style="color:#75715e"># 表示する値の範囲</span>
   <span style="color:#111">trans</span> <span style="color:#f92672">=</span> <span style="color:#d88200">&#34;log10&#34;</span><span style="color:#111">,</span>   <span style="color:#75715e"># 軸のスケールを変換する関数 </span>
+  <span style="color:#111">guide</span> <span style="color:#f92672">=</span> <span style="color:#75af00">guide_axis</span><span style="color:#111">(</span><span style="color:#111">n.dodge</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span><span style="color:#111">),</span> <span style="color:#75715e"># 目盛のラベルが重なっているときに位置をずらす</span>
 <span style="color:#111">)</span>
 </code></pre></div><p><a href="https://qiita.com/nozma/items/2954b21e7136b3011580">geom_barやgeom_histgramでの軸の変換</a></p>
 <h2 id="軸の名前">軸の名前</h2>
@@ -1214,6 +1266,7 @@ ggplot(df, aes(x=reorder(x, desc(y)), y=y), stat = &quot;identity&quot;)
         <li><a href="#頻度分布と密度分布の切り替え">頻度分布と密度分布の切り替え</a></li>
         <li><a href="#色分けした変数の位置">色分けした変数の位置</a></li>
         <li><a href="#ビンの切り方-stat_bin">ビンの切り方: <code>stat_bin()</code></a></li>
+        <li><a href="#連続変数の離散化">連続変数の離散化</a></li>
       </ul>
     </li>
     <li><a href="#棒グラフ">棒グラフ</a>
@@ -1226,6 +1279,7 @@ ggplot(df, aes(x=reorder(x, desc(y)), y=y), stat = &quot;identity&quot;)
     <li><a href="#箱ひげ図バイオリンプロット">箱ひげ図・バイオリンプロット</a></li>
     <li><a href="#線分">線分</a></li>
     <li><a href="#多角形">多角形</a></li>
+    <li><a href="#テキストラベル">テキストラベル</a></li>
   </ul>
 
   <ul>

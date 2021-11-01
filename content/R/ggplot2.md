@@ -193,8 +193,13 @@ stat_bin(
  `x` が離散変数なら `stat_count()` の方がいい
 
 
+### 連続変数の離散化
 
 
+```r
+# 変数 x を10個の等間隔のbinに切る
+cut_interval(x, 10)
+```
 
 
 
@@ -207,7 +212,7 @@ stat_bin(
 
 ```r
 ggplot(df) + 
-geom_bar(aes(x = category))
+geom_bar(aes(x = category)) 
 # 以下は上と同義
 #geom_bar(aes(x = category), stat = "count")
 ```
@@ -220,6 +225,15 @@ geom_bar(aes(x = category, y = value), stat = "identity")
 ```
 
 `stat = "identity"` は `geom_bar(aes(x = category, y = value)) + stat_identity()` と同じ意味になる？
+
+棒の間に隙間を開けない時は `width = 1`
+
+```r
+geom_bar(aes(x = category), width = 1) 
+
+```
+
+
 
 
 ### 積み上げ棒グラフ
@@ -312,6 +326,39 @@ linetype="dashed"
 ## 多角形
 
 
+## テキストラベル
+
+```
+# 文字列
+geom_text()
+# Boxで囲まれた文字列
+geom_label()
+
+# 同じ
+annotate("text", x = bbox["xmin"], y = bbox["ymax"], label = "hoge", vjust=1, hjust=1) 
+annotate("label", x = bbox["xmin"], y = bbox["ymax"], label = "hoge, vjust=1, hjust=1)
+```
+
+
+```r
+p <- ggplot(mtcars, aes(x = wt, y = mpg)) + geom_point()
+p + annotate("text", x = 4, y = 25, label = "Some text")
+p + annotate("text", x = 2:5, y = 25, label = "Some text")
+p + annotate("rect", xmin = 3, xmax = 4.2, ymin = 12, ymax = 21,
+  alpha = .2)
+p + annotate("segment", x = 2.5, xend = 4, y = 15, yend = 25,
+  colour = "blue")
+p + annotate("pointrange", x = 3.5, y = 20, ymin = 12, ymax = 28,
+  colour = "red", size = 1.5)
+
+p + annotate("text", x = 2:3, y = 20:21, label = c("my label", "label 2"))
+
+p + annotate("text", x = 4, y = 25, label = "italic(R) ^ 2 == 0.75",
+  parse = TRUE)
+p + annotate("text", x = 4, y = 25,
+  label = "paste(italic(R) ^ 2, \" = .75\")", parse = TRUE)
+```
+
 
 # 色の指定
 
@@ -372,11 +419,9 @@ ggnewscale::new_scale_fill()
 
 new_scale(new_aes)
 
-
-
-
-
 new_scale_colour()
+
+
 # タイトル
 
 ```r
@@ -397,7 +442,7 @@ ggtitle(label, subtitle = waiver())
 
 
 
-# 軸のスケールや目盛
+# 軸のスケールや目盛の設定
 
 
 `x`軸、`y`軸、`color`軸、`fill`軸などそれぞれの軸 (`AXIS`) とそのデータ型 (`DATATYPE`) に対応した関数 (`scale_AXIS_DATATYPE`) が用意されている。
@@ -407,10 +452,14 @@ ggtitle(label, subtitle = waiver())
 scale_[x,y,color,fill]_[condinuous,descrete,date](
   breaks=c(1,2,3,4), # 目盛位置
   labels = c("01","02", "03","04"), # 目盛に表示する値のラベル
-  limits=c(0,120),   # 値の範囲
+  limits=c(0,120),   # 表示する値の範囲
   trans = "log10",   # 軸のスケールを変換する関数 
+  guide = guide_axis(n.dodge = 2), # 目盛のラベルが重なっているときに位置をずらす
 )
 ```
+
+
+
 
 [geom_barやgeom_histgramでの軸の変換](https://qiita.com/nozma/items/2954b21e7136b3011580)
 

@@ -165,6 +165,15 @@
     </item>
     
     <item>
+      <title>rvest</title>
+      <link>https://teuder.github.io/notebook/r/rvest/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://teuder.github.io/notebook/r/rvest/</guid>
+      <description>rvest スクレイピングするためのパッケージ 取り出したい要素の確認 スクレイピングしたいウェブページをブラウザ（Chrome）で開く → F12 を押すと、デベ</description>
+    </item>
+    
+    <item>
       <title>stars</title>
       <link>https://teuder.github.io/notebook/r/stars/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>

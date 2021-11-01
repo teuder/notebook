@@ -3,12 +3,12 @@
 
 <head>
   <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0"><meta property="og:title" content="R_Python" />
-<meta property="og:description" content="RとPython Rとnumpy dplyr と Pandas" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><meta property="og:title" content="rvest" />
+<meta property="og:description" content="rvest スクレイピングするためのパッケージ 取り出したい要素の確認 スクレイピングしたいウェブページをブラウザ（Chrome）で開く → F12 を押すと、デベ" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://teuder.github.io/notebook/r/r_python/" />
-<meta property="article:modified_time" content="2021-04-29T14:16:38+09:00" />
-<title>R_Python | notebook</title>
+<meta property="og:url" content="https://teuder.github.io/notebook/r/rvest/" />
+
+<title>rvest | notebook</title>
 <link rel="icon" href="/notebook/favicon.png" type="image/x-icon">
 
 
@@ -322,7 +322,7 @@ https://github.com/alex-shpak/hugo-book
       
         <li>
 
-  <a href="/notebook/r/r_python/"  class="active">
+  <a href="/notebook/r/r_python/" >
       R_Python
   </a>
 
@@ -372,7 +372,7 @@ https://github.com/alex-shpak/hugo-book
       
         <li>
 
-  <a href="/notebook/r/rvest/" >
+  <a href="/notebook/r/rvest/"  class="active">
       rvest
   </a>
 
@@ -870,32 +870,44 @@ https://github.com/alex-shpak/hugo-book
   <label for="menu-control">
     <img src="/notebook/svg/menu.svg" alt="Menu" />
   </label>
-  <strong>R_Python</strong>
+  <strong>rvest</strong>
 </header>
 
       
-<article class="markdown"><h1 id="rとpython">RとPython</h1>
-<ul>
-<li><a href="http://mathesaurus.sourceforge.net/r-numpy.html">Rとnumpy</a></li>
-<li><a href="https://pandas.pydata.org/pandas-docs/stable/getting_started/comparison/comparison_with_r.html">dplyr と Pandas</a></li>
-</ul>
+<article class="markdown"><h1 id="rvest">rvest</h1>
+<p>スクレイピングするためのパッケージ</p>
+<h2 id="取り出したい要素の確認">取り出したい要素の確認</h2>
+<p>スクレイピングしたいウェブページをブラウザ（Chrome）で開く
+→ F12 を押すと、デベロッパーツールが開く
+→ Elements タブの中でソースコードの一部をマウスでポイントするとウェブページの対応する部分の色が変わる
+→ 取り出したい要素のソースの場所がわかったら、右クリック
+→ Copy &gt; Copy to XPath</p>
+<p>でその要素へのXPathが取得できる</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#75715e"># ウェブページのソースを取得</span>
+<span style="color:#111">html</span> <span style="color:#f92672">&lt;-</span> <span style="color:#111">rvest</span><span style="color:#f92672">::</span><span style="color:#75af00">read_html</span><span style="color:#111">(</span><span style="color:#d88200">&#34;https://www.npfc.int/vessels/1536&#34;</span><span style="color:#111">)</span>
+
+<span style="color:#75715e"># xpath を使って特定の要素をテキストとして取り出す</span>
+<span style="color:#75af00">html_node</span><span style="color:#111">(</span><span style="color:#111">html</span><span style="color:#111">,</span> <span style="color:#111">xpath</span> <span style="color:#f92672">=</span> <span style="color:#d88200">&#34;/html/body/div/div/div/div/div/div/div/section/div/div[3]/div/div[2]&#34;</span> <span style="color:#111">)</span> <span style="color:#f92672">%&gt;%</span>
+<span style="color:#75af00">html_text2</span><span style="color:#111">()</span>
+
+
+<span style="color:#75715e"># その要素がテーブルである場合にデータフレームとして取り出す</span>
+<span style="color:#75af00">html_node</span><span style="color:#111">(</span><span style="color:#111">html</span><span style="color:#111">,</span> <span style="color:#111">xpath</span> <span style="color:#f92672">=</span> <span style="color:#d88200">&#34;/html/body/div/div/div/div/div/div/div/section/div/div[3]/div/div[4]/div[1]&#34;</span> <span style="color:#111">)</span> <span style="color:#f92672">%&gt;%</span>
+<span style="color:#75af00">html_table</span><span style="color:#111">()</span>
+</code></pre></div><p>#page &gt; div &gt; div &gt; div &gt; div &gt; section &gt; div &gt; div.region.region-content &gt; div &gt; div.col-sm-6.bs-region.bs-region&ndash;top-left &gt; div.field.field&ndash;name-vty-id.field&ndash;type-entity-reference.field&ndash;label-above &gt; div.field__items
+document.querySelector(&quot;#page &gt; div &gt; div &gt; div &gt; div &gt; section &gt; div &gt; div.region.region-content &gt; div &gt; div.col-sm-6.bs-region.bs-region&ndash;top-left &gt; div.field.field&ndash;name-vty-id.field&ndash;type-entity-reference.field&ndash;label-above &gt; div.field__items&rdquo;)</p>
+<p>/html/body/div[2]/div[1]/div/div/div/div/div/div/section/div/div[3]/div/div[2]/div[6]/div[2]</p>
+<p>/html/body/div[2]/div[1]/div/div/div/div/div/div/section/div/div[3]/div/div[2]/div[6]/div[1]</p>
+<p>/html/body/div[2]/div[1]/div/div/div/div/div/div/section/div/div[3]/div/div[2]/div[6]/div[2]</p>
 </article>
 
       
-<div class="book-footer justify-between">
-  
-  <div>
-    
-    <a class="flex align-center" href="https://github.com/teuder/notebook/commit/d38670e104d7702938d13bfbcfbc8186cd2f5154" title='Last modified 2021-04-29 by Masaki Tsuda' target="_blank" rel="noopener">
-      <img src="/notebook/svg/calendar.svg" alt="Changed" />
-      <span>2021-04-29</span>
-    </a>
-  </div>
+<div class="book-footer justify-end">
   
   
   <div>
     
-    <a class="flex align-center" href="https://github.com/teuder/notebook/edit/master/content/R/R_Python.md" target="_blank" rel="noopener">
+    <a class="flex align-center" href="https://github.com/teuder/notebook/edit/master/content/R/rvest.md" target="_blank" rel="noopener">
       <img src="/notebook/svg/edit.svg" alt="Edit" />
       <span>Edit this page</span>
     </a>
@@ -912,7 +924,11 @@ https://github.com/alex-shpak/hugo-book
   
 
   <aside class="book-toc level-3 fixed">
-    <nav id="TableOfContents"></nav>
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#取り出したい要素の確認">取り出したい要素の確認</a></li>
+  </ul>
+</nav>
   </aside>
 
 

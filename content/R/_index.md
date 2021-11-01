@@ -215,26 +215,68 @@ Windows 環境でフォントを使うときの注意は [extrafontパッケー�
 
 こちらも悪くない [【ggplot2】 好きなフォントを適用できるようにする](https://qiita.com/zakkiiii/items/9bbfdaf46a097677205d)
 
-Windowsでフォントをインストールする
 
-その後、Rからアクセスできる場所にフォントをインポートする。これはフォントをインストールしたときに1度だけ行う。
+### フォントのインストール
 
-`extrafont::font_import()`
+フォントをインストールすると以下の場所にインストールされる多分。
 
-R起動するたびに次のコードを実行してRにフォントをロードする
+Windows OS が認識するのフォントの場所
 
-```
-extrafont::loadfonts("win", quiet = TRUE)
-extrafont::loadfonts("pdf", quiet = TRUE)
-extrafont::loadfonts("postscript", quiet = TRUE)
+```r
+sysfonts::font_paths()
 ```
 
-しかし、ここまでやっても 'Roboto Bold' などは、windowsの pdf では使えないようだ。
-→ [showtext パッケージ](https://cran.rstudio.com/web/packages/showtext/vignettes/introduction.html) を使えば利用可能になるのだろうか？
+WIndowsにインストールされたフォントファイルの一覧をデータフレームで返す
+
+```r
+sysfonts::font_files()  
+```
+
+次のセクションでRにフォントをインポートするのに成功したら、この一覧にある `family` と `face` が R から利用できるようになるはず。
 
 
+### Rへのフォントのインポート (Windows)
 
-pdfデバイスで使えるフォントの一覧
+参考　http://www.zg.em-net.ne.jp/~mlab/_src/sc271/82p8ac28bab82c683t83h839383g.pdf
+
+新しいフォントをインストールした時、*R をメジャーアップデートした時、Rにフォントをインポートする必要がある。
+（フォントをOSにインストールするだけではなく、インストールしたフォントをRから利用可能にする必要がある）
+
+
+`extrafont::font_import()` がエラーでフォントのインポートができない。`Rttf2pt1`  パッケージをダウングレートするとインポートできるようになる。
+
+```r
+remotes::install_version("Rttf2pt1", version = "1.3.8")
+extrafont::font_import()
+```
+
+```r
+extrafont::font_import()
+```
+
+その後、以下を実行すると R で指定可能なフォント family の一覧が出力される。（ここの出力に表示されないフォントは利用できない。）
+
+```r
+grDevices::windowsFont()
+```
+
+Windowsの場合、さらに毎回Rを起動したときに以下を実行する。
+
+```r
+extrafont::loadfonts(device = "win")
+# pdf や postscript で出力する場合は以下も必要らしい
+#extrafont::loadfonts("pdf", quiet = TRUE)
+#extrafont::loadfonts("postscript", quiet = TRUE)
+```
+
+利用可能なフォントの一覧の表示？
+これらのフォント名は family で指定できる？
+
+```r
+extrafont::fonts()
+```
+
+pdf デバイスで使えるフォントの一覧
 
 ```
 names(pdfFonts())
@@ -247,10 +289,71 @@ fonttable()
 ```
 
 
+
+
+### フォントの指定
+
+
+#### Font family とは
+
+まずはフォント family と face を理解する。
+
+```
+family = "Roboto"
+face = "bold" # bold, italic
+```
+
+フォントにはいわゆる "ＭＳ ゴシック" や "Roboto" など字体の違いのほかに、同じ字体の中で普通（Regular）や太字 (Bold) や斜体 (Italic) などがある。
+
+フォントの実体はフォントファイルに記録されているが、実は普通・太字・斜体も別のフォントファイルに保存されている。なので厳密には異なるフォントと言うこともできる。
+
+そこで同じ字体を持つフォントをフォント `family` と呼ぶ、その中に普通・太字・斜体のことを `face` と呼ぶ。 
+
+
+
+### sysfonts パッケージを使った方法
+
+- sysfonts
+- [showtext パッケージ](https://cran.rstudio.com/web/packages/showtext/vignettes/introduction.html) 
+
+
+```r
+# https://fonts.google.com/featured/Superfamilies
+
+# Google から name で指定したフォントをインストールして、
+# それを R から family で指定した名前で利用可能にする
+sysfonts::font_add_google( name = "Roboto", family = "Roboto")
+#sysfonts::font_add_google("Montserrat", "Montserrat")
+```
+
+フォントの保存場所の確認＆追加
+
+```r
+sysfonts::font_paths() # システムフォントの場所の確認
+sysfonts::font_paths('path') # ユーザーのフォントの保存場所を追加する
+```
+```r
+# ローカルにあるフォントをRから利用可能なように登録する
+# フォントは上で指定したフォルダから探されるみたい
+sysfonts::font_add(family = "Roboto", regular = "/path/to/font/file")
+# sysfonts::font_add('noto', 'NotoSansCJKjp-Regular.otf') # Noto
+# sysfonts::font_add('hana', 'HanaMinA.ttf')              # 花園明朝
+# sysfonts::font_add('spop', 'HGRPP1.ttc')                # 創英角ポップ
+```
+
+```r
+# sysfonts でRにロードしたフォント family 名を確認する
+sysfonts::font_families()
+```
+
+
 ## パッケージのインストール
 
 
 ### RStudio Package Manager
+
+これを使うと Linux でもコンパイル済みパッケージをインストールできる。
+また、特定の日付のCRANの状態を指定してインストールすることができる。
 
 https://packagemanager.rstudio.com/client/
 
@@ -280,8 +383,27 @@ options(repos = c(REPO_NAME = "https://packagemanager.rstudio.com/all/__linux__/
 options(HTTPUserAgent = sprintf("R/%s R (%s)", getRversion(), paste(getRversion(), R.version$platform, R.version$arch, R.version$os)))
 ```
 
+## OS の区別
 
+R が実行されているOSを区別する方法
 
+```r
+if(Sys.info()['sysname']  == "Windows"){
+  # Windows
+} else if (Sys.info()['sysname']  == "Darwin") {
+  # MacOS
+} else {
+  # Other
+}
+```
+
+## パッケージをアンロードする方法
+
+一度 `library()` してしまったパッケージをはずす
+
+```r
+detach("package:fishwatchr", unload=TRUE)
+```
 
 
 ## きになるパッケージ
