@@ -473,6 +473,32 @@ ylab(label)
 ```
 
 
+## 2軸グラフ
+
+
+```r
+# Value used to transform the data
+coeff <- 30
+
+ggplot(count_df, aes(x=date)) +
+  
+  geom_line( aes(y=n_vessel), color = "red") + 
+  geom_line( aes(y=n_data / coeff), color="blue") + # Divide by 10 to get the same range than the temperature
+  
+  scale_y_continuous(
+
+    # Features of the first axis
+    name = "First Axis",
+
+    # Add a second axis and specify its features
+    sec.axis = sec_axis(~.*coeff, name="Second Axis")
+  )
+```
+
+
+
+
+
 # 凡例
 
 特定の凡例（colour）を消す１

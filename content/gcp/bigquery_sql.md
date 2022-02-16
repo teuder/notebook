@@ -473,3 +473,97 @@ SELECT 'nancy' as owner,  [('fish', 10), ('bird', 3), ('horse',3)]
 )
 select * from ownner_pet
 ```
+
+
+
+# WINDOW関数の結果でフィルター QUALIFY
+
+
+```
+
+SELECT
+    date,
+    lat_bin,
+    lon_bin,
+    OrbitNumber,
+    AVG(SATZ_GDNBO) as angle,
+    # WINDOW FUNCITON
+    RANK() OVER (PARTITION BY date, lat_bin, lon_bin ORDER BY AVG(SATZ_GDNBO)) AS rank
+FROM 
+    viirs
+GROUP BY 
+    date, lat_bin, lon_bin, OrbitNumber
+QUALIFY
+    # Extract records having minimum AVG(SATZ_GDNBO)
+    rank = 1
+)
+```
+
+
+
+# RECORD型
+
+構造体のように複数の型の値を１つにまとめる。
+
+Type: RECORD型
+Mode: NULLABLE
+
+モードが `NULLABLE` なら1行につき1行の値しか持たない、この場合は identity.ssvid という列があるだけと思って問題ない
+
+identity	RECORD	NULLABLE	
+  ssvid	STRING	NULLABLE	
+  MMSI (Maritime Mobile Service Identity) as source specific vessel ID (SSVID)	
+  n_shipname	STRING	NULLABLE	
+  Ship name recorded in AIS messages (normalized)	
+  n_callsign	STRING	NULLABLE	
+  International Radio Call Sign recorded in AIS (normalized)	
+  imo	STRING	NULLABLE	
+  Identity number given by the International Maritime Organization	
+  flag
+
+モードが `REPEATED` なら、1行につき複数行を持つ、展開するには `LEFT JOIN UNNEST` を使う。結果的に行数は増える。
+
+```sql
+SELECT 
+  matched,
+  # identity は NULLABLE なので . を使ってアクセスできる。
+  # 行数も増えない
+  identity.ssvid,
+  identity.n_shipname,
+  # activity の要素へのアクセス
+  a.first_timestamp
+FROM
+  `world-fishing-827.vessel_database.all_vessels_v20211001`
+  # activity は REPEATED なので LEFT JOIN UNNEST で展開する
+  # 行数が増える
+  # これは自分に自分を LEFT JOIN しているのでテーブル名が省略される
+   LEFT JOIN UNNEST(activity) a
+WHERE
+  identity.ssvid = '353154000'
+```
+
+
+# 行の抽出
+
+WHERE
+EXIST
+HAVING
+QUALIFY
+
+array (selsct distinct as struct from unnest(registry) where list_uvi like "iccat") as registry
+
+from all_vessels
+
+
+where array_length(registory) >0
+
+
+
+# JSON
+
+```
+# 値を文字列として抽出
+JSON_EXTRACT(列, "$.要素名")
+# 値を整数として抽
+JSON_EXTRACT_SCALAR(列, "$.要素名")
+```

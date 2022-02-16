@@ -16,7 +16,7 @@
 <link rel="stylesheet" href="/notebook/book.min.07c38dce7b6800da2a75a565d4d975e38f837294e24d00b5aae363037012d64b.css" integrity="sha256-B8ONzntoANoqdaVl1Nl144&#43;DcpTiTQC1quNjA3AS1ks=">
 
 
-<script defer src="/notebook/search.min.f0e55caa5e674751b94cfcb2fadf1d9575e63528b4edaacf4c4c857f6b247e2c.js" integrity="sha256-8OVcql5nR1G5TPyy&#43;t8dlXXmNSi07arPTEyFf2skfiw="></script>
+<script defer src="/notebook/search.min.48704e2f04963f968d4a8395f2940ef2928efe800ae0e5d776e7ea165bc21463.js" integrity="sha256-SHBOLwSWP5aNSoOV8pQO8pKO/oAK4OXXdufqFlvCFGM="></script>
 
 <!--
 Made with Book Theme
@@ -405,6 +405,16 @@ https://github.com/alex-shpak/hugo-book
 
   <a href="/notebook/r/tidymodels/" >
       tidymodels
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/r/tidyr/" >
+      tidyr
   </a>
 
 </li>
@@ -1199,7 +1209,70 @@ IF (ascending,
 <span style="color:#00a8c8">SELECT</span> <span style="color:#d88200">&#39;nancy&#39;</span> <span style="color:#00a8c8">as</span> <span style="color:#00a8c8">owner</span><span style="color:#111">,</span>  <span style="color:#111">[(</span><span style="color:#d88200">&#39;fish&#39;</span><span style="color:#111">,</span> <span style="color:#ae81ff">10</span><span style="color:#111">),</span> <span style="color:#111">(</span><span style="color:#d88200">&#39;bird&#39;</span><span style="color:#111">,</span> <span style="color:#ae81ff">3</span><span style="color:#111">),</span> <span style="color:#111">(</span><span style="color:#d88200">&#39;horse&#39;</span><span style="color:#111">,</span><span style="color:#ae81ff">3</span><span style="color:#111">)]</span>
 <span style="color:#111">)</span>
 <span style="color:#00a8c8">select</span> <span style="color:#f92672">*</span> <span style="color:#00a8c8">from</span> <span style="color:#111">ownner_pet</span>
-</code></pre></div></article>
+</code></pre></div><h1 id="window関数の結果でフィルター-qualify">WINDOW関数の結果でフィルター QUALIFY</h1>
+<pre><code>
+SELECT
+    date,
+    lat_bin,
+    lon_bin,
+    OrbitNumber,
+    AVG(SATZ_GDNBO) as angle,
+    # WINDOW FUNCITON
+    RANK() OVER (PARTITION BY date, lat_bin, lon_bin ORDER BY AVG(SATZ_GDNBO)) AS rank
+FROM 
+    viirs
+GROUP BY 
+    date, lat_bin, lon_bin, OrbitNumber
+QUALIFY
+    # Extract records having minimum AVG(SATZ_GDNBO)
+    rank = 1
+)
+</code></pre><h1 id="record型">RECORD型</h1>
+<p>構造体のように複数の型の値を１つにまとめる。</p>
+<p>Type: RECORD型
+Mode: NULLABLE</p>
+<p>モードが <code>NULLABLE</code> なら1行につき1行の値しか持たない、この場合は identity.ssvid という列があるだけと思って問題ない</p>
+<p>identity	RECORD	NULLABLE
+ssvid	STRING	NULLABLE
+MMSI (Maritime Mobile Service Identity) as source specific vessel ID (SSVID)
+n_shipname	STRING	NULLABLE
+Ship name recorded in AIS messages (normalized)
+n_callsign	STRING	NULLABLE
+International Radio Call Sign recorded in AIS (normalized)
+imo	STRING	NULLABLE
+Identity number given by the International Maritime Organization
+flag</p>
+<p>モードが <code>REPEATED</code> なら、1行につき複数行を持つ、展開するには <code>LEFT JOIN UNNEST</code> を使う。結果的に行数は増える。</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#00a8c8">SELECT</span> 
+  <span style="color:#111">matched</span><span style="color:#111">,</span>
+  <span style="color:#f92672">#</span> <span style="color:#00a8c8">identity</span> <span style="color:#960050;background-color:#1e0010">は</span> <span style="color:#00a8c8">NULLABLE</span> <span style="color:#960050;background-color:#1e0010">なので</span> <span style="color:#111">.</span> <span style="color:#960050;background-color:#1e0010">を使ってアクセスできる。</span>
+  <span style="color:#f92672">#</span> <span style="color:#960050;background-color:#1e0010">行数も増えない</span>
+  <span style="color:#00a8c8">identity</span><span style="color:#111">.</span><span style="color:#111">ssvid</span><span style="color:#111">,</span>
+  <span style="color:#00a8c8">identity</span><span style="color:#111">.</span><span style="color:#111">n_shipname</span><span style="color:#111">,</span>
+  <span style="color:#f92672">#</span> <span style="color:#111">activity</span> <span style="color:#960050;background-color:#1e0010">の要素へのアクセス</span>
+  <span style="color:#111">a</span><span style="color:#111">.</span><span style="color:#111">first_timestamp</span>
+<span style="color:#00a8c8">FROM</span>
+  <span style="color:#f92672">`</span><span style="color:#111">world</span><span style="color:#f92672">-</span><span style="color:#111">fishing</span><span style="color:#f92672">-</span><span style="color:#ae81ff">827</span><span style="color:#111">.</span><span style="color:#111">vessel_database</span><span style="color:#111">.</span><span style="color:#111">all_vessels_v20211001</span><span style="color:#f92672">`</span>
+  <span style="color:#f92672">#</span> <span style="color:#111">activity</span> <span style="color:#960050;background-color:#1e0010">は</span> <span style="color:#111">REPEATED</span> <span style="color:#960050;background-color:#1e0010">なので</span> <span style="color:#00a8c8">LEFT</span> <span style="color:#00a8c8">JOIN</span> <span style="color:#00a8c8">UNNEST</span> <span style="color:#960050;background-color:#1e0010">で展開する</span>
+  <span style="color:#f92672">#</span> <span style="color:#960050;background-color:#1e0010">行数が増える</span>
+  <span style="color:#f92672">#</span> <span style="color:#960050;background-color:#1e0010">これは自分に自分を</span> <span style="color:#00a8c8">LEFT</span> <span style="color:#00a8c8">JOIN</span> <span style="color:#960050;background-color:#1e0010">しているのでテーブル名が省略される</span>
+   <span style="color:#00a8c8">LEFT</span> <span style="color:#00a8c8">JOIN</span> <span style="color:#00a8c8">UNNEST</span><span style="color:#111">(</span><span style="color:#111">activity</span><span style="color:#111">)</span> <span style="color:#111">a</span>
+<span style="color:#00a8c8">WHERE</span>
+  <span style="color:#00a8c8">identity</span><span style="color:#111">.</span><span style="color:#111">ssvid</span> <span style="color:#f92672">=</span> <span style="color:#d88200">&#39;353154000&#39;</span>
+</code></pre></div><h1 id="行の抽出-1">行の抽出</h1>
+<p>WHERE
+EXIST
+HAVING
+QUALIFY</p>
+<p>array (selsct distinct as struct from unnest(registry) where list_uvi like &ldquo;iccat&rdquo;) as registry</p>
+<p>from all_vessels</p>
+<p>where array_length(registory) &gt;0</p>
+<h1 id="json">JSON</h1>
+<pre><code># 値を文字列として抽出
+JSON_EXTRACT(列, &quot;$.要素名&quot;)
+# 値を整数として抽
+JSON_EXTRACT_SCALAR(列, &quot;$.要素名&quot;)
+</code></pre></article>
 
       
 <div class="book-footer justify-between">

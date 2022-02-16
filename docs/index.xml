@@ -399,6 +399,15 @@
     </item>
     
     <item>
+      <title>tidyr</title>
+      <link>https://teuder.github.io/notebook/r/tidyr/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://teuder.github.io/notebook/r/tidyr/</guid>
+      <description>tidyr データフレーム内の情報を変化させずに、セルの並びを改変する pivot_longer( data, cols, names_to = &amp;#34;name&amp;#34;, names_prefix = NULL, names_sep = NULL, names_pattern = NULL, names_ptypes = list(), names_transform = list(), names_repair = &amp;#34;check_unique&amp;#34;, values_to = &amp;#34;value&amp;#34;, values_drop_na = FALSE, values_ptypes = list(), values_transform = list(), ... ) cols: １</description>
+    </item>
+    
+    <item>
       <title>wk</title>
       <link>https://teuder.github.io/notebook/r/wk/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>

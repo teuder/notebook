@@ -58,6 +58,7 @@ Japan Fisheries Information Service Center 日本漁業情報サービスセン�
 
 CPC ICCATに加盟している国、または、協力的加盟国、地域、組織、 Contracting Parties and Cooperating non-Contracting Parties, Entities or Fishing Entities (CPCs)
 CCM WCPFCに加盟している国、または、協力的加盟国、地域、組織
+CMM Conservation and Management Measure, NPFC で採択された規制
 TCC Technical and Compliance Committee WCPFCなどの中にある委員会の一つ
 MCS tool Monitoring, Control and Surveilance 漁船の動きを監視するツール AIS VMS http://www.fao.org/3/V4250E/V4250E03.htm
 CDS Catch Documentation Schemes 漁獲された時点から、流通の間、水産品を追跡するシステム http://www.fao.org/in-action/globefish/fishery-information/resource-detail/en/c/426994/

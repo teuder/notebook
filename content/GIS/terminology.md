@@ -16,6 +16,9 @@ type: docs
 - 近赤外線 Near InfraRed NIR
 - 可視光と近赤外線をまとめて VNIR
 - バンド センサーが感受する電磁波の波長帯域、バンドによって見えるものが違う
+- 極軌道において、北から南への方向を Descending 、南から北への方向を ascending という。北から南に赤道を通過する点を Descending node 、南から北に赤道を通過する点を Descending node という
+- 
+
 
 
 

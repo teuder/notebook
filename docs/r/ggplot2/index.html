@@ -8,7 +8,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://teuder.github.io/notebook/r/ggplot2/" />
 <meta property="article:published_time" content="2019-09-03T00:00:00+00:00" />
-<meta property="article:modified_time" content="2021-09-10T20:10:59+09:00" />
+<meta property="article:modified_time" content="2021-11-01T17:33:00+09:00" />
 <title>ggplot2 | notebook</title>
 <link rel="icon" href="/notebook/favicon.png" type="image/x-icon">
 
@@ -16,7 +16,7 @@
 <link rel="stylesheet" href="/notebook/book.min.07c38dce7b6800da2a75a565d4d975e38f837294e24d00b5aae363037012d64b.css" integrity="sha256-B8ONzntoANoqdaVl1Nl144&#43;DcpTiTQC1quNjA3AS1ks=">
 
 
-<script defer src="/notebook/search.min.f0e55caa5e674751b94cfcb2fadf1d9575e63528b4edaacf4c4c857f6b247e2c.js" integrity="sha256-8OVcql5nR1G5TPyy&#43;t8dlXXmNSi07arPTEyFf2skfiw="></script>
+<script defer src="/notebook/search.min.48704e2f04963f968d4a8395f2940ef2928efe800ae0e5d776e7ea165bc21463.js" integrity="sha256-SHBOLwSWP5aNSoOV8pQO8pKO/oAK4OXXdufqFlvCFGM="></script>
 
 <!--
 Made with Book Theme
@@ -405,6 +405,16 @@ https://github.com/alex-shpak/hugo-book
 
   <a href="/notebook/r/tidymodels/" >
       tidymodels
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/r/tidyr/" >
+      tidyr
   </a>
 
 </li>
@@ -1136,6 +1146,23 @@ annotate(&quot;label&quot;, x = bbox[&quot;xmin&quot;], y = bbox[&quot;ymax&quot
 <p>X軸ラベル、Y軸ラベル</p>
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#75af00">xlab</span><span style="color:#111">(</span><span style="color:#111">label</span><span style="color:#111">)</span>
 <span style="color:#75af00">ylab</span><span style="color:#111">(</span><span style="color:#111">label</span><span style="color:#111">)</span>
+</code></pre></div><h2 id="2軸グラフ">2軸グラフ</h2>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#75715e"># Value used to transform the data</span>
+<span style="color:#111">coeff</span> <span style="color:#f92672">&lt;-</span> <span style="color:#ae81ff">30</span>
+
+<span style="color:#75af00">ggplot</span><span style="color:#111">(</span><span style="color:#111">count_df</span><span style="color:#111">,</span> <span style="color:#75af00">aes</span><span style="color:#111">(</span><span style="color:#111">x</span><span style="color:#f92672">=</span><span style="color:#111">date</span><span style="color:#111">))</span> <span style="color:#f92672">+</span>
+  
+  <span style="color:#75af00">geom_line</span><span style="color:#111">(</span> <span style="color:#75af00">aes</span><span style="color:#111">(</span><span style="color:#111">y</span><span style="color:#f92672">=</span><span style="color:#111">n_vessel</span><span style="color:#111">),</span> <span style="color:#111">color</span> <span style="color:#f92672">=</span> <span style="color:#d88200">&#34;red&#34;</span><span style="color:#111">)</span> <span style="color:#f92672">+</span> 
+  <span style="color:#75af00">geom_line</span><span style="color:#111">(</span> <span style="color:#75af00">aes</span><span style="color:#111">(</span><span style="color:#111">y</span><span style="color:#f92672">=</span><span style="color:#111">n_data</span> <span style="color:#f92672">/</span> <span style="color:#111">coeff</span><span style="color:#111">),</span> <span style="color:#111">color</span><span style="color:#f92672">=</span><span style="color:#d88200">&#34;blue&#34;</span><span style="color:#111">)</span> <span style="color:#f92672">+</span> <span style="color:#75715e"># Divide by 10 to get the same range than the temperature</span>
+  
+  <span style="color:#75af00">scale_y_continuous</span><span style="color:#111">(</span>
+
+    <span style="color:#75715e"># Features of the first axis</span>
+    <span style="color:#111">name</span> <span style="color:#f92672">=</span> <span style="color:#d88200">&#34;First Axis&#34;</span><span style="color:#111">,</span>
+
+    <span style="color:#75715e"># Add a second axis and specify its features</span>
+    <span style="color:#111">sec.axis</span> <span style="color:#f92672">=</span> <span style="color:#75af00">sec_axis</span><span style="color:#111">(</span><span style="color:#f92672">~</span><span style="color:#111">.*coeff</span><span style="color:#111">,</span> <span style="color:#111">name</span><span style="color:#f92672">=</span><span style="color:#d88200">&#34;Second Axis&#34;</span><span style="color:#111">)</span>
+  <span style="color:#111">)</span>
 </code></pre></div><h1 id="凡例">凡例</h1>
 <p>特定の凡例（colour）を消す１</p>
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#75af00">guides</span><span style="color:#111">(</span><span style="color:#111">colour</span><span style="color:#f92672">=</span><span style="color:#00a8c8">FALSE</span><span style="color:#111">)</span>
@@ -1217,9 +1244,9 @@ annotate(&quot;label&quot;, x = bbox[&quot;xmin&quot;], y = bbox[&quot;ymax&quot
   
   <div>
     
-    <a class="flex align-center" href="https://github.com/teuder/notebook/commit/143e23f205f622d0de375a6908b9b245abd51749" title='Last modified 2021-09-10 by Masaki Tsuda' target="_blank" rel="noopener">
+    <a class="flex align-center" href="https://github.com/teuder/notebook/commit/1b8cc7dfad3b9dbfa3655f67d59cc060c71bc1c0" title='Last modified 2021-11-01 by Masaki Tsuda' target="_blank" rel="noopener">
       <img src="/notebook/svg/calendar.svg" alt="Changed" />
-      <span>2021-09-10</span>
+      <span>2021-11-01</span>
     </a>
   </div>
   
@@ -1294,6 +1321,7 @@ annotate(&quot;label&quot;, x = bbox[&quot;xmin&quot;], y = bbox[&quot;ymax&quot
 
   <ul>
     <li><a href="#軸の名前">軸の名前</a></li>
+    <li><a href="#2軸グラフ">2軸グラフ</a></li>
   </ul>
 
   <ul>
