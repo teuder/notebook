@@ -16,7 +16,7 @@
 <link rel="stylesheet" href="/notebook/book.min.07c38dce7b6800da2a75a565d4d975e38f837294e24d00b5aae363037012d64b.css" integrity="sha256-B8ONzntoANoqdaVl1Nl144&#43;DcpTiTQC1quNjA3AS1ks=">
 
 
-<script defer src="/notebook/search.min.48704e2f04963f968d4a8395f2940ef2928efe800ae0e5d776e7ea165bc21463.js" integrity="sha256-SHBOLwSWP5aNSoOV8pQO8pKO/oAK4OXXdufqFlvCFGM="></script>
+<script defer src="/notebook/search.min.0ac992423379040a4b9004126ecba04c754f171f89790dfa197ba6472a497aa9.js" integrity="sha256-CsmSQjN5BApLkAQSbsugTHVPFx&#43;JeQ36GXumRypJeqk="></script>
 
 <!--
 Made with Book Theme
@@ -906,30 +906,29 @@ https://github.com/alex-shpak/hugo-book
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#111">pref_simple_sf</span> <span style="color:#f92672">&lt;-</span> <span style="color:#111">sf</span><span style="color:#f92672">::</span><span style="color:#75af00">st_read</span><span style="color:#111">(</span><span style="color:#d88200">&#34;../output/pref_simple.shp&#34;</span><span style="color:#111">)</span>
 <span style="color:#111">sf</span><span style="color:#f92672">::</span><span style="color:#75af00">st_write</span><span style="color:#111">(</span><span style="color:#111">pref_simple_sf</span><span style="color:#111">,</span> <span style="color:#d88200">&#34;../output/pref_simple.shp&#34;</span><span style="color:#111">,</span> <span style="color:#111">layer_options</span> <span style="color:#f92672">=</span> <span style="color:#d88200">&#34;ENCODING=UTF-8&#34;</span><span style="color:#111">)</span>
 </code></pre></div><h1 id="sf-オブジェクトの作成">sf オブジェクトの作成</h1>
-<h2 id="データフレームから作成する--st_as_sf">データフレームから作成する : st_as_sf()</h2>
+<h2 id="緯度経度列を持つデータフレームから作成する--st_as_sf">緯度経度列を持つデータフレームから作成する : st_as_sf()</h2>
 <p>１行が１点を表すデータフレーム <code>df</code> （緯度 <code>lat</code> 経度 <code>lon</code>）から <code>sf</code> オブジェクトを作成する。<code>coords = c(&quot;lon&quot;, &quot;lat&quot;)</code>、はXY座標に相当するカラム名を指定している。<code>crs = 4326</code>  で座標参照系を設定している。EPSGコード 4326 は WGS84 を表す。 <code>remove = FALSE</code> は <code>coords = c(&quot;lon&quot;, &quot;lat&quot;)</code> で指定した列を削除しないという意味。</p>
-<pre><code class="language-{r}" data-lang="{r}"># df は 各行が1POINTを表していて、その座標が &quot;lon&quot;, &quot;lat&quot; という列名で保持されているデータフレーム
-sf &lt;- df %&gt;% 
-      st_as_sf(coords = c(&quot;lon&quot;, &quot;lat&quot;), dim = &quot;XY&quot;, remove = FALSE, crs = 4326)
-</code></pre><h2 id="データフレームから作成する--st_set_geometry">データフレームから作成する : st_set_geometry()</h2>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#75715e"># df は 各行が1POINTを表していて、その座標が &#34;lon&#34;, &#34;lat&#34; という列名で保持されているデータフレーム</span>
+<span style="color:#111">sf</span> <span style="color:#f92672">&lt;-</span> <span style="color:#111">df</span> <span style="color:#f92672">%&gt;%</span> 
+      <span style="color:#75af00">st_as_sf</span><span style="color:#111">(</span><span style="color:#111">coords</span> <span style="color:#f92672">=</span> <span style="color:#75af00">c</span><span style="color:#111">(</span><span style="color:#d88200">&#34;lon&#34;</span><span style="color:#111">,</span> <span style="color:#d88200">&#34;lat&#34;</span><span style="color:#111">),</span> <span style="color:#111">dim</span> <span style="color:#f92672">=</span> <span style="color:#d88200">&#34;XY&#34;</span><span style="color:#111">,</span> <span style="color:#111">remove</span> <span style="color:#f92672">=</span> <span style="color:#00a8c8">FALSE</span><span style="color:#111">,</span> <span style="color:#111">crs</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">4326</span><span style="color:#111">)</span>
+</code></pre></div><h2 id="wkt列を持つデータフレームから作成する">WKT列を持つデータフレームから作成する</h2>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#75715e"># squid_area_df の geometry には WKT文字列が格納されている</span>
+<span style="color:#111">squid_area_sf</span> <span style="color:#f92672">&lt;-</span> 
+  <span style="color:#111">sf</span><span style="color:#f92672">::</span><span style="color:#75af00">st_as_sf</span><span style="color:#111">(</span><span style="color:#111">squid_area_df</span><span style="color:#111">,</span> <span style="color:#111">wkt</span> <span style="color:#f92672">=</span> <span style="color:#d88200">&#34;geometry&#34;</span><span style="color:#111">,</span> <span style="color:#111">crs</span><span style="color:#f92672">=</span><span style="color:#ae81ff">4326</span><span style="color:#111">)</span>
+</code></pre></div><h2 id="データフレームから作成する--st_set_geometry">データフレームから作成する : st_set_geometry()</h2>
 <p>すでにある <code>sfc</code> オブジェクトを、データフレームに、<code>geometry</code> 列として追加する。</p>
 <p><code>data_sf &lt;- st_set_geometry(data_df, geom_sfc)</code></p>
-<h2 id="wkt形式のテキストから作成">WKT形式のテキストから作成</h2>
+<h2 id="wkt形式の文字列ベクトルから作成">WKT形式の文字列ベクトルから作成</h2>
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#111">area_wkt</span> <span style="color:#f92672">&lt;-</span> <span style="color:#d88200">&#34;Polygon ((165.06947186552821449 48.95836601433594382, 169.89568502076190271 45.13709077274640435, -149.95899646070347444 44.98161022438796408, -149.95031841566071762 53.86930346517581114, -163.23108263759604597 52.2378116240458894, -168.71541576854343703 50.45207289660321948, 164.95978520290927349 51.55926363240160981, 165.06947186552821449 48.95836601433594382))&#34;</span>
 
 
 <span style="color:#75715e"># SFC の作成</span>
-<span style="color:#111">target_sfc</span> <span style="color:#f92672">&lt;-</span> <span style="color:#111">sf</span><span style="color:#f92672">::</span><span style="color:#75af00">st_as_sfc</span><span style="color:#111">(</span><span style="color:#111">area_wkt</span><span style="color:#111">,</span> <span style="color:#111">crs</span><span style="color:#f92672">=</span><span style="color:#ae81ff">4326</span><span style="color:#111">)</span>
+<span style="color:#111">target_sfc</span> <span style="color:#f92672">&lt;-</span> <span style="color:#111">sf</span><span style="color:#f92672">::</span><span style="color:#75af00">st_as_sfc</span><span style="color:#111">(</span><span style="color:#111">area_wkt</span><span style="color:#111">)</span>
+<span style="color:#111">sf</span><span style="color:#f92672">::</span><span style="color:#75af00">st_crs</span><span style="color:#111">(</span><span style="color:#111">target_sfc</span><span style="color:#111">)</span> <span style="color:#f92672">&lt;-</span> <span style="color:#ae81ff">4326</span>
 
-<span style="color:#75715e"># SFC から　SF への変換</span>
-<span style="color:#75715e"># st_set_geometry()を使った方法</span>
-<span style="color:#75715e"># この方法ならsfcの列の名前が x になる</span>
-<span style="color:#111">target_sf</span> <span style="color:#f92672">&lt;-</span> <span style="color:#111">sf</span><span style="color:#f92672">::</span><span style="color:#75af00">st_as_sf</span><span style="color:#111">(</span><span style="color:#111">target_sfc</span><span style="color:#111">)</span>
-
-<span style="color:#75715e"># st_set_geometry()を使った方法</span>
-<span style="color:#75715e"># この方法ならsfcの列の名前が geometry になる</span>
+<span style="color:#75715e"># SFCからSFの作成</span>
 <span style="color:#111">data_df</span> <span style="color:#f92672">&lt;-</span> <span style="color:#111">tibble</span><span style="color:#f92672">::</span><span style="color:#75af00">tibble</span><span style="color:#111">(</span><span style="color:#111">data</span><span style="color:#f92672">=</span><span style="color:#ae81ff">1</span><span style="color:#111">)</span>
-<span style="color:#111">target_sf</span> <span style="color:#f92672">&lt;-</span> <span style="color:#75af00">st_set_geometry</span><span style="color:#111">(</span><span style="color:#111">data_df</span><span style="color:#111">,</span> <span style="color:#111">target_sfc</span><span style="color:#111">)</span>
+<span style="color:#111">target_sf</span> <span style="color:#f92672">&lt;-</span> <span style="color:#111">sf</span><span style="color:#f92672">::</span><span style="color:#75af00">st_set_geometry</span><span style="color:#111">(</span><span style="color:#111">data_df</span><span style="color:#111">,</span> <span style="color:#111">target_sfc</span><span style="color:#111">)</span>
 </code></pre></div><h1 id="処理関数">処理関数</h1>
 <h3 id="sfオブジェクトの切り抜き">sfオブジェクトの切り抜き</h3>
 <p><code>st_crop() </code></p>
@@ -1026,9 +1025,10 @@ lwgeom::st_asewkt(x, digits = options(&quot;digits&quot;))
   <aside class="book-toc level-3 fixed">
     <nav id="TableOfContents">
   <ul>
-    <li><a href="#データフレームから作成する--st_as_sf">データフレームから作成する : st_as_sf()</a></li>
+    <li><a href="#緯度経度列を持つデータフレームから作成する--st_as_sf">緯度経度列を持つデータフレームから作成する : st_as_sf()</a></li>
+    <li><a href="#wkt列を持つデータフレームから作成する">WKT列を持つデータフレームから作成する</a></li>
     <li><a href="#データフレームから作成する--st_set_geometry">データフレームから作成する : st_set_geometry()</a></li>
-    <li><a href="#wkt形式のテキストから作成">WKT形式のテキストから作成</a></li>
+    <li><a href="#wkt形式の文字列ベクトルから作成">WKT形式の文字列ベクトルから作成</a></li>
   </ul>
 
   <ul>

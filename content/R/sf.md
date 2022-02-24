@@ -41,15 +41,26 @@ sf::st_write(pref_simple_sf, "../output/pref_simple.shp", layer_options = "ENCOD
 
 # sf オブジェクトの作成
 
-## データフレームから作成する : st_as_sf()
+
+## 緯度経度列を持つデータフレームから作成する : st_as_sf()
 
 １行が１点を表すデータフレーム `df` （緯度 `lat` 経度 `lon`）から `sf` オブジェクトを作成する。`coords = c("lon", "lat")`、はXY座標に相当するカラム名を指定している。`crs = 4326`  で座標参照系を設定している。EPSGコード 4326 は WGS84 を表す。 `remove = FALSE` は `coords = c("lon", "lat")` で指定した列を削除しないという意味。
 
-```{r}
+```r
 # df は 各行が1POINTを表していて、その座標が "lon", "lat" という列名で保持されているデータフレーム
 sf <- df %>% 
       st_as_sf(coords = c("lon", "lat"), dim = "XY", remove = FALSE, crs = 4326)
 ```
+
+## WKT列を持つデータフレームから作成する
+
+
+```r
+# squid_area_df の geometry には WKT文字列が格納されている
+squid_area_sf <- 
+  sf::st_as_sf(squid_area_df, wkt = "geometry", crs=4326)
+```
+
 
 ## データフレームから作成する : st_set_geometry()
 
@@ -59,24 +70,19 @@ sf <- df %>%
 
 
 
-## WKT形式のテキストから作成
+## WKT形式の文字列ベクトルから作成
 
 ```r
 area_wkt <- "Polygon ((165.06947186552821449 48.95836601433594382, 169.89568502076190271 45.13709077274640435, -149.95899646070347444 44.98161022438796408, -149.95031841566071762 53.86930346517581114, -163.23108263759604597 52.2378116240458894, -168.71541576854343703 50.45207289660321948, 164.95978520290927349 51.55926363240160981, 165.06947186552821449 48.95836601433594382))"
 
 
 # SFC の作成
-target_sfc <- sf::st_as_sfc(area_wkt, crs=4326)
+target_sfc <- sf::st_as_sfc(area_wkt)
+sf::st_crs(target_sfc) <- 4326
 
-# SFC から　SF への変換
-# st_set_geometry()を使った方法
-# この方法ならsfcの列の名前が x になる
-target_sf <- sf::st_as_sf(target_sfc)
-
-# st_set_geometry()を使った方法
-# この方法ならsfcの列の名前が geometry になる
+# SFCからSFの作成
 data_df <- tibble::tibble(data=1)
-target_sf <- st_set_geometry(data_df, target_sfc)
+target_sf <- sf::st_set_geometry(data_df, target_sfc)
 ```
 
 

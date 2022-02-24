@@ -408,7 +408,10 @@ scale_fill_gradientn(..., colours, values = NULL, space = "Lab",
 
 `integer` は `factor` にしないと離散値とはみなされない
 
-## 複数のカラーパレットを使用する
+
+
+
+## レイヤーごとに異なる色を指定する
 
 ```r
 ggnewscale::new_scale("color")
@@ -501,11 +504,14 @@ ggplot(count_df, aes(x=date)) +
 
 # 凡例
 
+## 凡例を消す
+
 特定の凡例（colour）を消す１
 
 ```r
 guides(colour=FALSE)
 ```
+
 特定の凡例（colour）を消す２
 
 ```r
@@ -516,6 +522,19 @@ scale_colour_discrete(guide=FALSE)
 
 ```r
 theme(legend.position = 'none')
+```
+
+## 凡例の位置
+
+```r
+# テキストで位置を指定
+# "none"、"left"、"right"、"bottom"、"top"
+theme(legend.position="right") # 右
+
+# 数値ベクトルc(x,y)で位置を指定
+theme(legend.position=c(0,0)) # 左下
+theme(legend.position=c(1,1)) # 右上
+theme(legend.position=c(0.5,0.5)) # 中央
 ```
 
 ## 凡例の点のサイズ変更
@@ -540,8 +559,11 @@ ggplot()+
   ) 
 ```
 
+## 凡例の名前（変数名）を変更する
 
-
+```r
+labs(shape="Male/Female", colour="Male/Female")
+```
 
 
 
