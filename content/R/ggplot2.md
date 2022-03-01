@@ -566,7 +566,6 @@ labs(shape="Male/Female", colour="Male/Female")
 ```
 
 
-
 # 画像として保存する : ggsave()
 
 ```r
@@ -593,6 +592,37 @@ gsave(
 - `units` : 幅と高さの単位 ("in", "cm", "mm")
 - `dpi` : ラスター画像の解像度 dot per inch、文字列でも指定できる "retina" (320), "print" (300), or "screen" (72)
 - `limitsize` : TRUE だと 50x50インチより大きいサイズでプロットしない、エラーを防ぐため
+
+
+# テーマ
+
+テーマの要素の色を変える
+
+詳しくはこちら
+
+https://www.rdocumentation.org/packages/ggplot2/versions/3.3.2/topics/theme
+
+```r
+
+color <- "black"
+
+  theme(#rect = element_rect(colour = color, fill = color),
+        #text = element_text(color = "white"),
+
+        # プロット領域の背景
+        plot.background = element_rect(colour = color, fill = color),
+
+        # パネル全体の背景
+        panel.background = element_rect(colour = color, fill = color),
+
+        #legend.key = element_rect(colour = color, fill = color),
+        #panel.border = element_rect(fill = NA, colour = "white", size = 1),
+        #panel.grid.major = element_line(colour = "grey60"),
+        #panel.grid.minor = element_line(colour = "grey30"),
+        
+        #axis.text = element_text(colour = "white"),
+  )+
+```
 
 
 
@@ -635,6 +665,21 @@ p1 + plot_spacer() + p2
 ```r
 # p1 は左、p2は右上、p3は右下
 p1 + {p2 + p3 + plot_layout(ncol = 1)}
+```
+
+図全体のタイトルや、サブ図ごとの図表番号などの指定
+
+```r
+p1 + p2 +
+
+plot_annotation(
+    title = "Title",
+    subtitle = "Subtitle",
+    caption = "Caption",
+    tag_levels = "A",
+    tag_prefix = "fig ",
+    tag_suffix = ":"
+  )
 ```
 
 

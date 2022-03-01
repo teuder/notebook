@@ -8,7 +8,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://teuder.github.io/notebook/r/ggplot2/" />
 <meta property="article:published_time" content="2019-09-03T00:00:00+00:00" />
-<meta property="article:modified_time" content="2022-02-16T19:06:32+09:00" />
+<meta property="article:modified_time" content="2022-02-24T18:41:38+09:00" />
 <title>ggplot2 | notebook</title>
 <link rel="icon" href="/notebook/favicon.png" type="image/x-icon">
 
@@ -16,7 +16,7 @@
 <link rel="stylesheet" href="/notebook/book.min.07c38dce7b6800da2a75a565d4d975e38f837294e24d00b5aae363037012d64b.css" integrity="sha256-B8ONzntoANoqdaVl1Nl144&#43;DcpTiTQC1quNjA3AS1ks=">
 
 
-<script defer src="/notebook/search.min.0ac992423379040a4b9004126ecba04c754f171f89790dfa197ba6472a497aa9.js" integrity="sha256-CsmSQjN5BApLkAQSbsugTHVPFx&#43;JeQ36GXumRypJeqk="></script>
+<script defer src="/notebook/search.min.6c5aac80ffb69feadc69f9d3b9c3118ce2b49549f71d8fec6944c058579f66b7.js" integrity="sha256-bFqsgP&#43;2n&#43;rcafnTucMRjOK0lUn3HY/saUTAWFefZrc="></script>
 
 <!--
 Made with Book Theme
@@ -1224,7 +1224,30 @@ annotate(&quot;label&quot;, x = bbox[&quot;xmin&quot;], y = bbox[&quot;ymax&quot
 <li><code>dpi</code> : ラスター画像の解像度 dot per inch、文字列でも指定できる &ldquo;retina&rdquo; (320), &ldquo;print&rdquo; (300), or &ldquo;screen&rdquo; (72)</li>
 <li><code>limitsize</code> : TRUE だと 50x50インチより大きいサイズでプロットしない、エラーを防ぐため</li>
 </ul>
-<h1 id="複数のプロットを１つをまとめる">複数のプロットを１つをまとめる</h1>
+<h1 id="テーマ">テーマ</h1>
+<p>テーマの要素の色を変える</p>
+<p>詳しくはこちら</p>
+<p><a href="https://www.rdocumentation.org/packages/ggplot2/versions/3.3.2/topics/theme">https://www.rdocumentation.org/packages/ggplot2/versions/3.3.2/topics/theme</a></p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">
+<span style="color:#111">color</span> <span style="color:#f92672">&lt;-</span> <span style="color:#d88200">&#34;black&#34;</span>
+
+  <span style="color:#75af00">theme</span><span style="color:#111">(</span><span style="color:#75715e">#rect = element_rect(colour = color, fill = color),</span>
+        <span style="color:#75715e">#text = element_text(color = &#34;white&#34;),</span>
+
+        <span style="color:#75715e"># プロット領域の背景</span>
+        <span style="color:#111">plot.background</span> <span style="color:#f92672">=</span> <span style="color:#75af00">element_rect</span><span style="color:#111">(</span><span style="color:#111">colour</span> <span style="color:#f92672">=</span> <span style="color:#111">color</span><span style="color:#111">,</span> <span style="color:#111">fill</span> <span style="color:#f92672">=</span> <span style="color:#111">color</span><span style="color:#111">),</span>
+
+        <span style="color:#75715e"># パネル全体の背景</span>
+        <span style="color:#111">panel.background</span> <span style="color:#f92672">=</span> <span style="color:#75af00">element_rect</span><span style="color:#111">(</span><span style="color:#111">colour</span> <span style="color:#f92672">=</span> <span style="color:#111">color</span><span style="color:#111">,</span> <span style="color:#111">fill</span> <span style="color:#f92672">=</span> <span style="color:#111">color</span><span style="color:#111">),</span>
+
+        <span style="color:#75715e">#legend.key = element_rect(colour = color, fill = color),</span>
+        <span style="color:#75715e">#panel.border = element_rect(fill = NA, colour = &#34;white&#34;, size = 1),</span>
+        <span style="color:#75715e">#panel.grid.major = element_line(colour = &#34;grey60&#34;),</span>
+        <span style="color:#75715e">#panel.grid.minor = element_line(colour = &#34;grey30&#34;),</span>
+        
+        <span style="color:#75715e">#axis.text = element_text(colour = &#34;white&#34;),</span>
+  <span style="color:#111">)</span><span style="color:#f92672">+</span>
+</code></pre></div><h1 id="複数のプロットを１つをまとめる">複数のプロットを１つをまとめる</h1>
 <p><code>patchwork</code> パッケージを使うのが楽ちん</p>
 <p><a href="https://qiita.com/nozma/items/4512623bea296ccb74ba">https://qiita.com/nozma/items/4512623bea296ccb74ba</a></p>
 <p>基本的には <code>+</code> 演算子で複数の ggplot オブジェクトを1つにまとめる</p>
@@ -1242,6 +1265,17 @@ annotate(&quot;label&quot;, x = bbox[&quot;xmin&quot;], y = bbox[&quot;ymax&quot
 </code></pre></div><p>複雑な構造を指定するときは <code>{}</code> を使用する</p>
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#75715e"># p1 は左、p2は右上、p3は右下</span>
 <span style="color:#111">p1</span> <span style="color:#f92672">+</span> <span style="color:#111">{</span><span style="color:#111">p2</span> <span style="color:#f92672">+</span> <span style="color:#111">p3</span> <span style="color:#f92672">+</span> <span style="color:#75af00">plot_layout</span><span style="color:#111">(</span><span style="color:#111">ncol</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span><span style="color:#111">)}</span>
+</code></pre></div><p>図全体のタイトルや、サブ図ごとの図表番号などの指定</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#111">p1</span> <span style="color:#f92672">+</span> <span style="color:#111">p2</span> <span style="color:#f92672">+</span>
+
+<span style="color:#75af00">plot_annotation</span><span style="color:#111">(</span>
+    <span style="color:#111">title</span> <span style="color:#f92672">=</span> <span style="color:#d88200">&#34;Title&#34;</span><span style="color:#111">,</span>
+    <span style="color:#111">subtitle</span> <span style="color:#f92672">=</span> <span style="color:#d88200">&#34;Subtitle&#34;</span><span style="color:#111">,</span>
+    <span style="color:#111">caption</span> <span style="color:#f92672">=</span> <span style="color:#d88200">&#34;Caption&#34;</span><span style="color:#111">,</span>
+    <span style="color:#111">tag_levels</span> <span style="color:#f92672">=</span> <span style="color:#d88200">&#34;A&#34;</span><span style="color:#111">,</span>
+    <span style="color:#111">tag_prefix</span> <span style="color:#f92672">=</span> <span style="color:#d88200">&#34;fig &#34;</span><span style="color:#111">,</span>
+    <span style="color:#111">tag_suffix</span> <span style="color:#f92672">=</span> <span style="color:#d88200">&#34;:&#34;</span>
+  <span style="color:#111">)</span>
 </code></pre></div><h2 id="特定の変数の値を使って図を分離する">特定の変数の値を使って図を分離する</h2>
 <p><code>facet_grid()</code> や  <code>facet_wrap()</code> を使う</p>
 <p><code>facet_grid()</code> は図を2次元に配置する</p>
@@ -1256,9 +1290,9 @@ annotate(&quot;label&quot;, x = bbox[&quot;xmin&quot;], y = bbox[&quot;ymax&quot
   
   <div>
     
-    <a class="flex align-center" href="https://github.com/teuder/notebook/commit/166df44b38019783d66eba83ceba41fa63d852cd" title='Last modified 2022-02-16 by Masaki Tsuda' target="_blank" rel="noopener">
+    <a class="flex align-center" href="https://github.com/teuder/notebook/commit/5e9c25b3c09ba08a36686583394ba79ebfa2468b" title='Last modified 2022-02-24 by Masaki Tsuda' target="_blank" rel="noopener">
       <img src="/notebook/svg/calendar.svg" alt="Changed" />
-      <span>2022-02-16</span>
+      <span>2022-02-24</span>
     </a>
   </div>
   
