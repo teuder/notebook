@@ -16,7 +16,7 @@
 <link rel="stylesheet" href="/notebook/book.min.07c38dce7b6800da2a75a565d4d975e38f837294e24d00b5aae363037012d64b.css" integrity="sha256-B8ONzntoANoqdaVl1Nl144&#43;DcpTiTQC1quNjA3AS1ks=">
 
 
-<script defer src="/notebook/search.min.6c5aac80ffb69feadc69f9d3b9c3118ce2b49549f71d8fec6944c058579f66b7.js" integrity="sha256-bFqsgP&#43;2n&#43;rcafnTucMRjOK0lUn3HY/saUTAWFefZrc="></script>
+<script defer src="/notebook/search.min.eac83d4048160a9429dc6e8f341d43e94ed7f87d162e5165aa108037cfb5bacd.js" integrity="sha256-6sg9QEgWCpQp3G6PNB1D6U7X&#43;H0WLlFlqhCAN8&#43;1us0="></script>
 
 <!--
 Made with Book Theme
@@ -823,6 +823,16 @@ https://github.com/alex-shpak/hugo-book
       
         <li>
 
+  <a href="/notebook/miscellaneous/wls/" >
+      Windows
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
   <a href="/notebook/miscellaneous/hugo/" >
       Hugo
   </a>
@@ -1001,47 +1011,53 @@ cd myproject
 # pipenv --three  
 # Python 2を使う場合
 # pipenv --two  
-</code></pre><p>既存の <code>Pipfile</code> <code>Pipfile.lock</code> を参照して、Pythonとパッケージをインストールすることもできる。</p>
-<pre><code># Pipfile.lock を参照してパッケージをインストールする
+</code></pre><h3 id="pipfilepipfilelockから環境を再現する">Pipfile，Pipfile.lockから環境を再現する</h3>
+<p>既存の <code>Pipfile</code> <code>Pipfile.lock</code> を参照して、Pythonとパッケージをインストールすることもできる。</p>
+<p>プロジェクトフォルダを作成し、その中に、既存の Pipfile を配置する。そして次のコマンドを実行すると Pipfile に記述された環境が構築される。</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#75715e"># Pipfile.lock を参照してパッケージをインストールする</span>
 pipenv install
-</code></pre><p>Pipenv では、開発者が <code>Pipfile</code> にインストールしたいバージョンの希望を書き、<code>Pipfile.lock</code> に実際にインストールしたバージョンが記録される（らしい）。</p>
+<span style="color:#75715e"># 通常のパッケージの他に開発用パッケージもインストールしたい場合</span>
+pipenv install --dev    
+</code></pre></div><p>同様に、<code>Pipfile.lock</code> が手元にある場合は、以下のコマンドを用いる</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">pipenv sync
+pipenv sync --dev    <span style="color:#75715e"># 開発用パッケージもインストールする場合</span>
+
+</code></pre></div><p>Pipenv では、開発者が <code>Pipfile</code> にインストールしたいバージョンの希望を書き、<code>Pipfile.lock</code> に実際にインストールしたバージョンが記録される（らしい）。</p>
 <ul>
 <li><code>Pipfile</code> ユーザーが自分で編集することもできる。</li>
 <li><code>Pipfile.lock</code> こちらは Pipenv により生成されるのでユーザーは自分で編集しない。このファイルには実際にインストールされた全ての依存パッケージとバージョンが記録されている。なので完全に同じ環境が再現できる。</li>
 </ul>
-<h3 id="pipfilepipfilelockから環境の再現">Pipfile，Pipfile.lockから環境の再現</h3>
-<p>プロジェクトフォルダを作成し、その中に、既存の Pipfile を配置する。そして次のコマンドを実行すると Pipfile に記述された環境が構築される。</p>
-<pre><code>pipenv install
-pipenv install --dev    # 通常のパッケージの他に開発用パッケージもインストールしたい場合
-</code></pre><p>同様に、<code>Pipfile.lock</code> が手元にある場合は、以下のコマンド</p>
-<pre><code>pipenv sync
-pipenv sync --dev    # 開発用パッケージもインストールする場合
-
-</code></pre><h2 id="仮想環境の確認">仮想環境の確認</h2>
+<h2 id="仮想環境の確認">仮想環境の確認</h2>
 <pre><code># 現在のプロジェクトのために作成された仮想環境のパスを表示する
 pipenv --venv
-</code></pre><h2 id="仮想環境の削除">仮想環境の削除</h2>
+</code></pre><p>デフォルトでは  <code>~/.local/share/virtualenvs</code> 以下に各プロジェクトの環境が保存される</p>
+<h2 id="仮想環境の削除">仮想環境の削除</h2>
 <pre><code># 現在のプロジェクトの仮想環境を削除
 pipenv --rm
-</code></pre><h2 id="既存の環境に対する操作">既存の環境に対する操作</h2>
-<h3 id="環境の中に入る">環境の中に入る</h3>
+</code></pre><h2 id="仮想環境をプロジェクトフォルダ内に保存する">仮想環境をプロジェクトフォルダ内に保存する</h2>
+<p>デフォルトでは  <code>~/.local/share/virtualenvs</code> 以下に各プロジェクトの環境が保存されるが、これをプロジェクトフォルダ内に保存させるための設定。<code>.bashrc</code> などに以下の記述を追加する。</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#111">export</span> <span style="color:#111">PIPENV_VENV_IN_PROJECT</span><span style="color:#f92672">=</span><span style="color:#111">true</span>
+</code></pre></div><h2 id="既存の仮想環境にに対する操作">既存の仮想環境にに対する操作</h2>
+<h3 id="仮想環境にの中に入る">仮想環境にの中に入る</h3>
 <p>環境が作成されたプロジェクトフォルダに移動して環境の中に入る。正確にはPython環境が有用になったシェルを起動している。実行中のターミナルのpython環境が、ここで入った環境に乗っ取られる。</p>
 <pre><code>pipenv shell
-</code></pre><p>この環境はこのプロジェクトフォルダの外に出ても有効ではある。</p>
-<p>ただし、プロジェクトフォルダの外で pipenv コマンドを使うとそのフォルダに新しい環境が作成されてしまうので注意する。</p>
-<h3 id="ライブラリをインストールする">ライブラリをインストールする</h3>
-<p><code>pipenv</code> ではライブラリをインストールするときに通常のライブラリと開発用のライブラリを分けることができる。開発用パッケージとは、プログラムの開発の時には必要だが、そのプログラムを実際に動かす運用の時には不要になるライブラリのこと。</p>
-<p>例えば、<code>autopep8</code> はコードを成形するためのライブラリなので、プログラムの動作そのものには必要ない。</p>
-<pre><code># 通常のライブラリのインストール
+</code></pre><p>この環境はこのプロジェクトフォルダの外に出ても有効ではある。ただし、プロジェクトフォルダの外で pipenv コマンドを使うとそのフォルダに新しい環境が作成されてしまうので注意する。</p>
+<h3 id="仮想環境にライブラリをインストールする">仮想環境にライブラリをインストールする</h3>
+<p><code>pipenv</code> ではライブラリをインストールするときに通常のライブラリと開発用のライブラリを分けることができる。いくつかのライブラリは、プログラムの開発をするときには使用するが、完成したプログラムを実行するときには必要ない場合があるので、開発の時だけ使用するライブラリは開発用ライブラリとしてインストールするようにする。</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#75715e"># 通常のライブラリのインストール</span>
 pipenv install numpy
 
-# 開発向けライブラリのインストール
+<span style="color:#75715e"># 開発用ライブラリのインストール</span>
 pipenv install --dev autopep8
-</code></pre><p>インストール済パッケージを列挙</p>
+</code></pre></div><p>仮想環境にライブラリをインストールすると、その情報が <code>Pipfile</code> と <code>Pipfile.lock</code> に記録される。</p>
+<p>例えば、<code>autopep8</code> はコードを成形するためのライブラリなので、プログラムの動作そのものには必要ない。</p>
+<h3 id="ライブラリのバージョンを指定してインストールする">ライブラリのバージョンを指定してインストールする</h3>
+<pre><code>pipenv install 'requests&gt;=3.7.2' geos
+</code></pre><h3 id="インストール済パッケージを列挙">インストール済パッケージを列挙</h3>
 <pre><code>pipenv graph
-</code></pre><p>古いパッケージを探す</p>
+</code></pre><h3 id="古いパッケージを探す">古いパッケージを探す</h3>
 <pre><code>pipenv update --outdated
-</code></pre><p>古いパッケージを更新</p>
+</code></pre><h3 id="古いパッケージを更新">古いパッケージを更新</h3>
 <pre><code>pipenv update
 </code></pre><h1 id="pip">pip</h1>
 <h2 id="パッケージのインストール先">パッケージのインストール先</h2>
@@ -1180,15 +1196,20 @@ sys.path.append('/usr/local/lib/python3.7/site-packages')
     <li><a href="#インストール">インストール</a></li>
     <li><a href="#環境の作成">環境の作成</a>
       <ul>
-        <li><a href="#pipfilepipfilelockから環境の再現">Pipfile，Pipfile.lockから環境の再現</a></li>
+        <li><a href="#pipfilepipfilelockから環境を再現する">Pipfile，Pipfile.lockから環境を再現する</a></li>
       </ul>
     </li>
     <li><a href="#仮想環境の確認">仮想環境の確認</a></li>
     <li><a href="#仮想環境の削除">仮想環境の削除</a></li>
-    <li><a href="#既存の環境に対する操作">既存の環境に対する操作</a>
+    <li><a href="#仮想環境をプロジェクトフォルダ内に保存する">仮想環境をプロジェクトフォルダ内に保存する</a></li>
+    <li><a href="#既存の仮想環境にに対する操作">既存の仮想環境にに対する操作</a>
       <ul>
-        <li><a href="#環境の中に入る">環境の中に入る</a></li>
-        <li><a href="#ライブラリをインストールする">ライブラリをインストールする</a></li>
+        <li><a href="#仮想環境にの中に入る">仮想環境にの中に入る</a></li>
+        <li><a href="#仮想環境にライブラリをインストールする">仮想環境にライブラリをインストールする</a></li>
+        <li><a href="#ライブラリのバージョンを指定してインストールする">ライブラリのバージョンを指定してインストールする</a></li>
+        <li><a href="#インストール済パッケージを列挙">インストール済パッケージを列挙</a></li>
+        <li><a href="#古いパッケージを探す">古いパッケージを探す</a></li>
+        <li><a href="#古いパッケージを更新">古いパッケージを更新</a></li>
       </ul>
     </li>
   </ul>
