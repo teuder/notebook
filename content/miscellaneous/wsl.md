@@ -1,5 +1,5 @@
 ---
-title : "Windows"
+title : "WSL"
 date : 2019-09-03
 publishdate : 2019-09-03
 weight : 10
