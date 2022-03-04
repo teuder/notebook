@@ -3,13 +3,13 @@
 
 <head>
   <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0"><meta property="og:title" content="BigQuery GIS" />
-<meta property="og:description" content="BigQuery GIS 標準 SQL の地理関数 地理オブジェクト作成 ST_GEOGPOINT(longitude, latitude) ST_GEOGFROMTEXT(wkt_string) 判定関数 ST_CONTAINS ST_CONTAINS(geography_1, geography_2) geography_2 は geography_1 の内部にある（外にはみ出していない）なら TRUE ST_WITHIN ST_WITHIN(geography_1, geography_2) geography_1 は geography_2 の内部にある（外には" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><meta property="og:title" content="Windows" />
+<meta property="og:description" content="WSL Windows Subsystem for Linux の Tips https://xn--xdocs-c53drk.microsoft.com/ja-jp/windows/wsl/install インストールしているLinux仮想マシンと、そのWSLバージョンの確認 wsl -l -v PS C:\Users\XXX&gt; wsl -l -v NAME STATE VERSION * Ubuntu-18.04 Running 1 Ubuntu-20.04 Running 1 WSL2を有効化す" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://teuder.github.io/notebook/gcp/bigquery_gis/" />
-<meta property="article:published_time" content="2019-09-04T00:00:00+00:00" />
-<meta property="article:modified_time" content="2021-09-10T20:10:59+09:00" />
-<title>BigQuery GIS | notebook</title>
+<meta property="og:url" content="https://teuder.github.io/notebook/miscellaneous/wsl/" />
+<meta property="article:published_time" content="2019-09-03T00:00:00+00:00" />
+<meta property="article:modified_time" content="2019-09-03T00:00:00+00:00" />
+<title>Windows | notebook</title>
 <link rel="icon" href="/notebook/favicon.png" type="image/x-icon">
 
 
@@ -673,7 +673,7 @@ https://github.com/alex-shpak/hugo-book
       
         <li>
 
-  <a href="/notebook/gcp/bigquery_gis/"  class="active">
+  <a href="/notebook/gcp/bigquery_gis/" >
       BigQuery GIS
   </a>
 
@@ -823,7 +823,7 @@ https://github.com/alex-shpak/hugo-book
       
         <li>
 
-  <a href="/notebook/miscellaneous/wsl/" >
+  <a href="/notebook/miscellaneous/wsl/"  class="active">
       Windows
   </a>
 
@@ -891,53 +891,54 @@ https://github.com/alex-shpak/hugo-book
   <label for="menu-control">
     <img src="/notebook/svg/menu.svg" alt="Menu" />
   </label>
-  <strong>BigQuery GIS</strong>
+  <strong>Windows</strong>
 </header>
 
       
-<article class="markdown"><h1 id="bigquery-gis">BigQuery GIS</h1>
-<p><a href="https://cloud.google.com/bigquery/docs/reference/standard-sql/geography_functions?hl=ja">標準 SQL の地理関数</a></p>
-<h2 id="地理オブジェクト作成">地理オブジェクト作成</h2>
-<pre><code>ST_GEOGPOINT(longitude, latitude)
-ST_GEOGFROMTEXT(wkt_string)
-</code></pre><h2 id="判定関数">判定関数</h2>
-<h4 id="st_contains">ST_CONTAINS</h4>
-<pre><code>ST_CONTAINS(geography_1, geography_2)
-</code></pre><p><code>geography_2</code> は <code>geography_1</code> の内部にある（外にはみ出していない）なら <code>TRUE</code></p>
-<h4 id="st_within">ST_WITHIN</h4>
-<pre><code>ST_WITHIN(geography_1, geography_2)
-</code></pre><p><code>geography_1</code> は <code>geography_2</code> の内部にある（外にはみ出していない）なら <code>TRUE</code></p>
-<p><code>ST_CONTAINS</code> とは <code>geography_1</code> と <code>geography_2</code> の順序が逆になっている</p>
-<h2 id="最近傍">最近傍</h2>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#00a8c8">SELECT</span> 
-  <span style="color:#111">a</span><span style="color:#111">.</span><span style="color:#111">house_id</span><span style="color:#111">,</span> 
-  <span style="color:#f92672">#</span> <span style="color:#00a8c8">Order</span> <span style="color:#111">the</span> <span style="color:#111">neighboring</span> <span style="color:#111">restaurants</span> <span style="color:#111">accoring</span> <span style="color:#00a8c8">to</span> <span style="color:#111">distance</span> <span style="color:#00a8c8">and</span> <span style="color:#00a8c8">extract</span> <span style="color:#111">a</span> <span style="color:#111">restaurant</span> <span style="color:#00a8c8">having</span> <span style="color:#111">shortest</span> <span style="color:#111">distance</span> 
-  <span style="color:#111">ARRAY_AGG</span><span style="color:#111">(</span><span style="color:#111">b</span><span style="color:#111">.</span><span style="color:#111">restaurant_id</span> <span style="color:#00a8c8">ORDER</span> <span style="color:#00a8c8">BY</span> <span style="color:#111">ST_Distance</span><span style="color:#111">(</span><span style="color:#111">a</span><span style="color:#111">.</span><span style="color:#111">point</span><span style="color:#111">,</span> <span style="color:#111">b</span><span style="color:#111">.</span><span style="color:#111">point</span><span style="color:#111">)</span> <span style="color:#00a8c8">LIMIT</span> <span style="color:#ae81ff">1</span><span style="color:#111">)[</span><span style="color:#111">ORDINAL</span><span style="color:#111">(</span><span style="color:#ae81ff">1</span><span style="color:#111">)]</span> <span style="color:#00a8c8">as</span> <span style="color:#111">neighbor_restaurant_id_id</span>
-<span style="color:#00a8c8">FROM</span>
-  <span style="color:#111">houses</span> <span style="color:#111">a</span>
-  <span style="color:#00a8c8">JOIN</span>
-  <span style="color:#111">restaurants</span> <span style="color:#111">b</span>
-  <span style="color:#00a8c8">ON</span> 
-    <span style="color:#f92672">#</span> <span style="color:#00a8c8">Extract</span> <span style="color:#00a8c8">only</span> <span style="color:#111">restaurant</span> <span style="color:#111">around</span> <span style="color:#00a8c8">each</span> <span style="color:#111">house</span>
-    <span style="color:#111">ST_DWithin</span><span style="color:#111">(</span><span style="color:#111">a</span><span style="color:#111">.</span><span style="color:#111">point</span><span style="color:#111">,</span> <span style="color:#111">b</span><span style="color:#111">.</span><span style="color:#111">point</span><span style="color:#111">,</span> <span style="color:#ae81ff">10000</span><span style="color:#111">)</span> <span style="color:#75715e">-- search radius in meter
-</span><span style="color:#75715e"></span><span style="color:#00a8c8">GROUP</span> <span style="color:#00a8c8">BY</span> <span style="color:#111">a</span><span style="color:#111">.</span><span style="color:#111">house_id</span>
-</code></pre></div></article>
+<article class="markdown"><h1 id="wsl">WSL</h1>
+<p>Windows Subsystem for Linux の Tips</p>
+<h1 id="heading"></h1>
+<p><a href="https://xn--xdocs-c53drk.microsoft.com/ja-jp/windows/wsl/install">https://xn--xdocs-c53drk.microsoft.com/ja-jp/windows/wsl/install</a></p>
+<h1 id="インストールしているlinux仮想マシンとそのwslバージョンの確認">インストールしているLinux仮想マシンと、そのWSLバージョンの確認</h1>
+<pre><code>wsl -l -v
+</code></pre><pre><code>PS C:\Users\XXX&gt; wsl -l -v
+  NAME            STATE           VERSION
+* Ubuntu-18.04    Running         1
+  Ubuntu-20.04    Running         1
+</code></pre><h1 id="wsl2を有効化する">WSL2を有効化する</h1>
+<p>powershellを管理者権限で開いて、
+以下のコマンドを実行</p>
+<pre><code>dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart
+</code></pre><p>更にBIOSからCPUの仮想化を有効にする必要がある。（PCのメーカーにより名称が異なる）
+だいたいCPUのAdvanced Settingのところにあるぽい。</p>
+<pre><code>Intel Virtualization Technology,
+AMD-V,
+Hyper-V
+VT-X
+Vanderpool
+SVM
+</code></pre><h1 id="linux-をインストールするときのデフォルトのwslバージョンを指定する">Linux をインストールするときのデフォルトのWSLバージョンを指定する</h1>
+<pre><code>wsl --set-default-version 2
+</code></pre><h1 id="既にインストールした-linux-仮想マシンのwslバージョンを変更する">既にインストールした Linux 仮想マシンのWSLバージョンを変更する</h1>
+<p>WSL1 から WSL2に変更</p>
+<pre><code>wsl --set-version &lt;distro name&gt; 2
+</code></pre><h1 id="wsl2-でonedrive-内のファイルのパーミッション変更を許可するための設定">WSL2 でOnedrive 内のファイルのパーミッション変更を許可するための設定</h1>
+<p><code>/etc/wsl.conf</code> をエディタで開き</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">sudo nano /etc/wsl.conf
+</code></pre></div><p>以下の記述を追加して</p>
+<pre><code>[automount]
+options = &quot;metadata&quot;
+</code></pre><p>wslを再起動する。PowerShellで 以下のコマンドを入力する。</p>
+<pre><code>wsl --shutdown
+</code></pre></article>
 
       
-<div class="book-footer justify-between">
-  
-  <div>
-    
-    <a class="flex align-center" href="https://github.com/teuder/notebook/commit/143e23f205f622d0de375a6908b9b245abd51749" title='Last modified 2021-09-10 by Masaki Tsuda' target="_blank" rel="noopener">
-      <img src="/notebook/svg/calendar.svg" alt="Changed" />
-      <span>2021-09-10</span>
-    </a>
-  </div>
+<div class="book-footer justify-end">
   
   
   <div>
     
-    <a class="flex align-center" href="https://github.com/teuder/notebook/edit/master/content/gcp/bigquery_gis.md" target="_blank" rel="noopener">
+    <a class="flex align-center" href="https://github.com/teuder/notebook/edit/master/content/miscellaneous/wsl.md" target="_blank" rel="noopener">
       <img src="/notebook/svg/edit.svg" alt="Edit" />
       <span>Edit this page</span>
     </a>
@@ -954,17 +955,7 @@ ST_GEOGFROMTEXT(wkt_string)
   
 
   <aside class="book-toc level-3 fixed">
-    <nav id="TableOfContents">
-  <ul>
-    <li><a href="#地理オブジェクト作成">地理オブジェクト作成</a></li>
-    <li><a href="#判定関数">判定関数</a>
-      <ul>
-        <li></li>
-      </ul>
-    </li>
-    <li><a href="#最近傍">最近傍</a></li>
-  </ul>
-</nav>
+    <nav id="TableOfContents"></nav>
   </aside>
 
 
