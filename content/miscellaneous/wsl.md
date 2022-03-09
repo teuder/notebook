@@ -10,9 +10,6 @@ type: docs
 
 Windows Subsystem for Linux の Tips
 
-
-
-
 # 
 
 
