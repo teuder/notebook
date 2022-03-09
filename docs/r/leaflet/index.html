@@ -1,0 +1,1085 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><meta property="og:title" content="leaflet" />
+<meta property="og:description" content="leaflet leaflet はインタラクティブな地図の可視化をするためのパッケージ https://rstudio.github.io/leaflet/ 例 df &lt;- data.frame( lon = rnorm(10, 140, 1), lat = rnorm(10, 35.7, 1), val1 = LETTERS[1:10], val2 = runif(10, 1, 100) ) df %&gt;% mutate(caption = paste(&#34;lon=&#34;, lon, &#34;&lt;br&gt; lat = &#34;, lat)) %&gt;% leaflet::leaflet() %&gt;% leaflet::addTiles() %&gt;% leaflet::setView(lng" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://teuder.github.io/notebook/r/leaflet/" />
+<meta property="article:published_time" content="2019-09-17T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-04-29T14:16:38+09:00" />
+<title>leaflet | notebook</title>
+<link rel="icon" href="/notebook/favicon.png" type="image/x-icon">
+
+
+<link rel="stylesheet" href="/notebook/book.min.07c38dce7b6800da2a75a565d4d975e38f837294e24d00b5aae363037012d64b.css" integrity="sha256-B8ONzntoANoqdaVl1Nl144&#43;DcpTiTQC1quNjA3AS1ks=">
+
+
+<script defer src="/notebook/search.min.37c587beba6756b323933c1092f9245a4f0b72260ab84f8e522d4194cf9f0a90.js" integrity="sha256-N8WHvrpnVrMjkzwQkvkkWk8LciYKuE&#43;OUi1BlM&#43;fCpA="></script>
+
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+  
+</head>
+
+<body>
+  <input type="checkbox" class="hidden" id="menu-control" />
+  <main class="flex container">
+
+    <aside class="book-menu fixed">
+      <nav>
+<h2 class="book-brand">
+  <a href="https://teuder.github.io/notebook/"><span>notebook</span>
+  </a>
+</h2>
+
+
+<div class="book-search">
+  <input type="text" placeholder="Search" id="book-search-input" maxlength="64" />
+  <div class="book-search-spinner spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+
+
+
+
+
+    
+
+  
+
+
+
+
+
+
+  <ul>
+  
+    
+
+  <li >
+    
+      
+
+  <a href="/notebook/docs/" >
+      About
+  </a>
+
+
+    
+
+    
+
+
+
+
+  
+  <ul>
+    
+  </ul>
+  
+
+
+
+  </li>
+
+
+  
+    
+
+  <li >
+    
+      
+
+  <a href="/notebook/python/" >
+      Python
+  </a>
+
+
+    
+
+    
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+
+  <a href="/notebook/python/bigquery/" >
+      BigQuery
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/python/environment/" >
+      environment
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/python/jupyter/" >
+      jupyter
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/python/pandas/" >
+      Pandas
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/python/vscode/" >
+      Python in VScode
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/python/anaconda/" >
+      anaconda
+  </a>
+
+</li>
+      
+    
+  </ul>
+  
+
+
+
+  </li>
+
+
+  
+    
+
+  <li >
+    
+      
+
+  <a href="/notebook/r/" >
+      R
+  </a>
+
+
+    
+
+    
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+
+  <a href="/notebook/r/leaflet/"  class="active">
+      leaflet
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/r/rhdf5/" >
+      rhdf5
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/r/ggplot2/" >
+      ggplot2
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/r/raster/" >
+      raster
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/r/sf/" >
+      sf
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/r/bigrquery/" >
+      bigrquery
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/r/dplyr/" >
+      dplyr
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/r/future/" >
+      future
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/r/gganimate/" >
+      gganimate
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/r/lubridate/" >
+      lubridate
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/r/purrr/" >
+      purrr
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/r/package_development/" >
+      R Package Development
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/r/r_python/" >
+      R_Python
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/r/reticulate/" >
+      reticulate
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/r/rmarkdown/" >
+      Rmarkdown
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/r/rpart/" >
+      rpart
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/r/rstudio/" >
+      RStudio
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/r/rvest/" >
+      rvest
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/r/stars/" >
+      stars
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/r/stringr/" >
+      stringr
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/r/tidymodels/" >
+      tidymodels
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/r/tidyr/" >
+      tidyr
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/r/wk/" >
+      wk
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/r/dbi/" >
+      DBI
+  </a>
+
+</li>
+      
+    
+  </ul>
+  
+
+
+
+  </li>
+
+
+  
+    
+
+  <li >
+    
+      
+
+  <a href="/notebook/datascience/" >
+      Data Science
+  </a>
+
+
+    
+
+    
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+
+  <a href="/notebook/datascience/bayesian_statistics/" >
+      Bayesian Staistics
+  </a>
+
+</li>
+      
+    
+  </ul>
+  
+
+
+
+  </li>
+
+
+  
+    
+
+  <li >
+    
+      
+
+  <a href="/notebook/gis/" >
+      GIS &amp; Remote Sensing
+  </a>
+
+
+    
+
+    
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+
+  <a href="/notebook/gis/bigquerygis/" >
+      BigQuery GIS
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/gis/sar/" >
+      SAR
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/gis/terminology/" >
+      用語
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/gis/viirs/" >
+      VIIRS
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/gis/r_package/" >
+      GIS関連Rパッケージ
+  </a>
+
+</li>
+      
+    
+  </ul>
+  
+
+
+
+  </li>
+
+
+  
+    
+
+  <li >
+    
+      
+
+  <a href="/notebook/mac/" >
+      Mac
+  </a>
+
+
+    
+
+    
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+
+  <a href="/notebook/mac/homebrew/" >
+      homebrew
+  </a>
+
+</li>
+      
+    
+  </ul>
+  
+
+
+
+  </li>
+
+
+  
+    
+
+  <li >
+    
+      
+
+  <a href="/notebook/maritime/" >
+      Maritime
+  </a>
+
+
+    
+
+    
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+
+  <a href="/notebook/maritime/glossary/" >
+      glossary
+  </a>
+
+</li>
+      
+    
+  </ul>
+  
+
+
+
+  </li>
+
+
+  
+    
+
+  <li >
+    
+      
+
+  <a href="/notebook/gcp/" >
+      Google Cloud Platform
+  </a>
+
+
+    
+
+    
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+
+  <a href="/notebook/gcp/bigquery_gis/" >
+      BigQuery GIS
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/gcp/bigquery_bq/" >
+      BigQuery: bqコマンド
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/gcp/bigquery/" >
+      BigQuery: general
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/gcp/bigquery_sql/" >
+      BigQuery: SQL
+  </a>
+
+</li>
+      
+    
+  </ul>
+  
+
+
+
+  </li>
+
+
+  
+    
+
+  <li >
+    
+      
+
+  <a href="/notebook/miscellaneous/" >
+      miscellaneous
+  </a>
+
+
+    
+
+    
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+
+  <a href="/notebook/miscellaneous/c_plus_plus/" >
+      C&#43;&#43;
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/miscellaneous/english/" >
+      english
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/miscellaneous/jinjia2/" >
+      jinja
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/miscellaneous/jupyter/" >
+      jupyter
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/miscellaneous/pc/" >
+      PC
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/miscellaneous/tmux/" >
+      tmux
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/miscellaneous/vscode/" >
+      vscode
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/miscellaneous/windows/" >
+      Windows
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/miscellaneous/wsl/" >
+      wsl
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/miscellaneous/hugo/" >
+      Hugo
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/miscellaneous/git/" >
+      git
+  </a>
+
+</li>
+      
+    
+  </ul>
+  
+
+
+
+  </li>
+
+
+  
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+<script>
+(function() {
+  var menu = document.querySelector("aside.book-menu nav");
+  addEventListener("beforeunload", function(event) {
+    localStorage.setItem("menu.scrollTop", menu.scrollTop);
+  });
+  menu.scrollTop = localStorage.getItem("menu.scrollTop");
+})();
+</script>
+
+    </aside>
+
+    <div class="book-page">
+      <header class="flex align-center justify-between book-header">
+  <label for="menu-control">
+    <img src="/notebook/svg/menu.svg" alt="Menu" />
+  </label>
+  <strong>leaflet</strong>
+</header>
+
+      
+<article class="markdown"><h1 id="leaflet">leaflet</h1>
+<p><code>leaflet</code> はインタラクティブな地図の可視化をするためのパッケージ</p>
+<p><a href="https://rstudio.github.io/leaflet/">https://rstudio.github.io/leaflet/</a></p>
+<h1 id="例">例</h1>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#111">df</span> <span style="color:#f92672">&lt;-</span>
+  <span style="color:#75af00">data.frame</span><span style="color:#111">(</span>
+    <span style="color:#111">lon</span> <span style="color:#f92672">=</span> <span style="color:#75af00">rnorm</span><span style="color:#111">(</span><span style="color:#ae81ff">10</span><span style="color:#111">,</span> <span style="color:#ae81ff">140</span><span style="color:#111">,</span> <span style="color:#ae81ff">1</span><span style="color:#111">),</span>
+    <span style="color:#111">lat</span> <span style="color:#f92672">=</span> <span style="color:#75af00">rnorm</span><span style="color:#111">(</span><span style="color:#ae81ff">10</span><span style="color:#111">,</span> <span style="color:#ae81ff">35.7</span><span style="color:#111">,</span> <span style="color:#ae81ff">1</span><span style="color:#111">),</span>
+    <span style="color:#111">val1</span> <span style="color:#f92672">=</span> <span style="color:#00a8c8">LETTERS</span><span style="color:#111">[1</span><span style="color:#f92672">:</span><span style="color:#ae81ff">10</span><span style="color:#111">]</span><span style="color:#111">,</span>
+    <span style="color:#111">val2</span> <span style="color:#f92672">=</span> <span style="color:#75af00">runif</span><span style="color:#111">(</span><span style="color:#ae81ff">10</span><span style="color:#111">,</span> <span style="color:#ae81ff">1</span><span style="color:#111">,</span> <span style="color:#ae81ff">100</span><span style="color:#111">)</span>
+  <span style="color:#111">)</span>
+
+
+<span style="color:#111">df</span> <span style="color:#f92672">%&gt;%</span>
+  <span style="color:#75af00">mutate</span><span style="color:#111">(</span><span style="color:#111">caption</span> <span style="color:#f92672">=</span> <span style="color:#75af00">paste</span><span style="color:#111">(</span><span style="color:#d88200">&#34;lon=&#34;</span><span style="color:#111">,</span> <span style="color:#111">lon</span><span style="color:#111">,</span> <span style="color:#d88200">&#34;&lt;br&gt; lat = &#34;</span><span style="color:#111">,</span> <span style="color:#111">lat</span><span style="color:#111">))</span> <span style="color:#f92672">%&gt;%</span>
+  <span style="color:#111">leaflet</span><span style="color:#f92672">::</span><span style="color:#75af00">leaflet</span><span style="color:#111">()</span> <span style="color:#f92672">%&gt;%</span>
+  <span style="color:#111">leaflet</span><span style="color:#f92672">::</span><span style="color:#75af00">addTiles</span><span style="color:#111">()</span> <span style="color:#f92672">%&gt;%</span>
+  <span style="color:#111">leaflet</span><span style="color:#f92672">::</span><span style="color:#75af00">setView</span><span style="color:#111">(</span><span style="color:#111">lng</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">140</span><span style="color:#111">,</span> <span style="color:#111">lat</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">35.7</span><span style="color:#111">,</span> <span style="color:#111">zoom</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">7</span><span style="color:#111">)</span> <span style="color:#f92672">%&gt;%</span>
+  <span style="color:#111">leaflet</span><span style="color:#f92672">::</span><span style="color:#75af00">addCircleMarkers</span><span style="color:#111">(</span>
+    <span style="color:#111">lng</span> <span style="color:#f92672">=</span>  <span style="color:#f92672">~</span> <span style="color:#111">lon</span><span style="color:#111">,</span>
+    <span style="color:#111">lat</span> <span style="color:#f92672">=</span>  <span style="color:#f92672">~</span> <span style="color:#111">lat</span><span style="color:#111">,</span>
+    <span style="color:#111">color</span> <span style="color:#f92672">=</span> <span style="color:#75af00">rainbow</span><span style="color:#111">(</span><span style="color:#ae81ff">10</span><span style="color:#111">),</span>
+    <span style="color:#111">popup</span> <span style="color:#f92672">=</span> <span style="color:#f92672">~</span> <span style="color:#111">caption</span>
+    <span style="color:#111">radius</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">10</span><span style="color:#111">,</span>
+    <span style="color:#111">weight</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span><span style="color:#111">,</span>
+  <span style="color:#111">)</span>
+</code></pre></div><h1 id="leafletleaflet">leaflet::leaflet()</h1>
+<p><code>ggplot()</code> と同様に、データを最初に <code>leaflet()</code> に渡して描画オブジェクトを作成し、それにレイヤーを <code>%&gt;%</code> で追加してゆく。</p>
+<pre><code>leaflet::leaflet() %&gt;% 
+    leaflet::addTiles() %&gt;% # 背景とする地図レイヤー
+    leaflet::setView(lng=-100,lat=-2,zoom=5) # 初期位置とズームレベル
+</code></pre><pre><code>leaflet(
+  data = NULL,
+  width = NULL,
+  height = NULL,
+  padding = 0,
+  options = leafletOptions(),
+  elementId = NULL,
+  sizingPolicy = leafletSizingPolicy(padding = padding)
+)
+</code></pre><h1 id="マーカーを表示する">マーカーを表示する</h1>
+<p>マーカーとは地図上の点に対して「アイコン」または「円」を表示する。マーカーをマウスでクリックすると情報が表示される。</p>
+<p>点の位置情報として使えるのは緯度経度の2次元</p>
+<ul>
+<li><code>sp</code> パッケージの <code>SpatialPoints</code> か <code>SpatialPointsDataFrame</code></li>
+<li><code>sf</code> パッケージの <code>POINT</code>, <code>sfc_POINT</code> （<code>MULTIPOINT</code> はサポートされていない）</li>
+<li>緯度・経度をカラムとして持つデータフレーム (カラム名が <code>lat</code>/<code>latitude</code> and <code>lon</code>/<code>lng</code>/<code>long</code>/<code>longitude</code> の場合は自動で見つかる)</li>
+<li>緯度経度を格納したベクター</li>
+</ul>
+<h2 id="addmarkers">addMarkers()</h2>
+<pre><code>addMarkers(map, lng = NULL, lat = NULL, layerId = NULL,
+  group = NULL, icon = NULL, popup = NULL, popupOptions = NULL,
+  label = NULL, labelOptions = NULL, options = markerOptions(),
+  clusterOptions = NULL, clusterId = NULL, data = getMapData(map))
+</code></pre><h2 id="addcirclemarkers">addCircleMarkers()</h2>
+<pre><code>addCircleMarkers(map, lng = NULL, lat = NULL, radius = 10,
+  layerId = NULL, group = NULL, stroke = TRUE, color = &quot;#03F&quot;,
+  weight = 5, opacity = 0.5, fill = TRUE, fillColor = color,
+  fillOpacity = 0.2, dashArray = NULL, popup = NULL,
+  popupOptions = NULL, label = NULL, labelOptions = NULL,
+  options = pathOptions(), clusterOptions = NULL, clusterId = NULL,
+  data = getMapData(map))
+</code></pre><h2 id="addlabelonlymarkers">addLabelOnlyMarkers</h2>
+<pre><code>addLabelOnlyMarkers(map, lng = NULL, lat = NULL, layerId = NULL,
+  group = NULL, icon = NULL, label = NULL, labelOptions = NULL,
+  options = markerOptions(), clusterOptions = NULL, clusterId = NULL,
+  data = getMapData(map))
+</code></pre><h1 id="その他関数">その他関数</h1>
+<pre><code>addControl(map, html, position = c(&quot;topleft&quot;, &quot;topright&quot;, &quot;bottomleft&quot;,
+  &quot;bottomright&quot;), layerId = NULL, className = &quot;info legend&quot;,
+  data = getMapData(map))
+
+addTiles(map,
+  urlTemplate = &quot;//{s}.tile.openstreetmap.org/{z}/{x}/{y}.png&quot;,
+  attribution = NULL, layerId = NULL, group = NULL,
+  options = tileOptions(), data = getMapData(map))
+
+addWMSTiles(map, baseUrl, layerId = NULL, group = NULL,
+  options = WMSTileOptions(), attribution = NULL, layers = &quot;&quot;,
+  data = getMapData(map))
+
+addPopups(map, lng = NULL, lat = NULL, popup, layerId = NULL,
+  group = NULL, options = popupOptions(), data = getMapData(map))
+
+
+
+
+
+
+
+highlightOptions(stroke = NULL, color = NULL, weight = NULL,
+  opacity = NULL, fill = NULL, fillColor = NULL,
+  fillOpacity = NULL, dashArray = NULL, bringToFront = NULL,
+  sendToBack = NULL)
+
+addCircles(map, lng = NULL, lat = NULL, radius = 10,
+  layerId = NULL, group = NULL, stroke = TRUE, color = &quot;#03F&quot;,
+  weight = 5, opacity = 0.5, fill = TRUE, fillColor = color,
+  fillOpacity = 0.2, dashArray = NULL, popup = NULL,
+  popupOptions = NULL, label = NULL, labelOptions = NULL,
+  options = pathOptions(), highlightOptions = NULL,
+  data = getMapData(map))
+
+addPolylines(map, lng = NULL, lat = NULL, layerId = NULL,
+  group = NULL, stroke = TRUE, color = &quot;#03F&quot;, weight = 5,
+  opacity = 0.5, fill = FALSE, fillColor = color,
+  fillOpacity = 0.2, dashArray = NULL, smoothFactor = 1,
+  noClip = FALSE, popup = NULL, popupOptions = NULL, label = NULL,
+  labelOptions = NULL, options = pathOptions(),
+  highlightOptions = NULL, data = getMapData(map))
+
+addRectangles(map, lng1, lat1, lng2, lat2, layerId = NULL,
+  group = NULL, stroke = TRUE, color = &quot;#03F&quot;, weight = 5,
+  opacity = 0.5, fill = TRUE, fillColor = color, fillOpacity = 0.2,
+  dashArray = NULL, smoothFactor = 1, noClip = FALSE, popup = NULL,
+  popupOptions = NULL, label = NULL, labelOptions = NULL,
+  options = pathOptions(), highlightOptions = NULL,
+  data = getMapData(map))
+
+addPolygons(map, lng = NULL, lat = NULL, layerId = NULL,
+  group = NULL, stroke = TRUE, color = &quot;#03F&quot;, weight = 5,
+  opacity = 0.5, fill = TRUE, fillColor = color, fillOpacity = 0.2,
+  dashArray = NULL, smoothFactor = 1, noClip = FALSE, popup = NULL,
+  popupOptions = NULL, label = NULL, labelOptions = NULL,
+  options = pathOptions(), highlightOptions = NULL,
+  data = getMapData(map))
+
+addGeoJSON(map, geojson, layerId = NULL, group = NULL, stroke = TRUE,
+  color = &quot;#03F&quot;, weight = 5, opacity = 0.5, fill = TRUE,
+  fillColor = color, fillOpacity = 0.2, dashArray = NULL,
+  smoothFactor = 1, noClip = FALSE, options = pathOptions(),
+  data = getMapData(map))
+
+addTopoJSON(map, topojson, layerId = NULL, group = NULL,
+  stroke = TRUE, color = &quot;#03F&quot;, weight = 5, opacity = 0.5,
+  fill = TRUE, fillColor = color, fillOpacity = 0.2,
+  dashArray = NULL, smoothFactor = 1, noClip = FALSE,
+  options = pathOptions())
+</code></pre></article>
+
+      
+<div class="book-footer justify-between">
+  
+  <div>
+    
+    <a class="flex align-center" href="https://github.com/teuder/notebook/commit/d38670e104d7702938d13bfbcfbc8186cd2f5154" title='Last modified 2021-04-29 by Masaki Tsuda' target="_blank" rel="noopener">
+      <img src="/notebook/svg/calendar.svg" alt="Changed" />
+      <span>2021-04-29</span>
+    </a>
+  </div>
+  
+  
+  <div>
+    
+    <a class="flex align-center" href="https://github.com/teuder/notebook/edit/master/content/R/leaflet.md" target="_blank" rel="noopener">
+      <img src="/notebook/svg/edit.svg" alt="Edit" />
+      <span>Edit this page</span>
+    </a>
+    
+  </div>
+  
+</div>
+
+
+      
+    </div>
+
+    
+  
+
+  <aside class="book-toc level-3 fixed">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#addmarkers">addMarkers()</a></li>
+    <li><a href="#addcirclemarkers">addCircleMarkers()</a></li>
+    <li><a href="#addlabelonlymarkers">addLabelOnlyMarkers</a></li>
+  </ul>
+</nav>
+  </aside>
+
+
+
+  </main>
+
+  
+</body>
+
+</html>

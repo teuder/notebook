@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Google Cloud Platform on notebook</title>
+    <link>https://teuder.github.io/notebook/gcp/</link>
+    <description>Recent content in Google Cloud Platform on notebook</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja-JP</language>
+    
+	<atom:link href="https://teuder.github.io/notebook/gcp/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>BigQuery GIS</title>
+      <link>https://teuder.github.io/notebook/gcp/bigquery_gis/</link>
+      <pubDate>Wed, 04 Sep 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://teuder.github.io/notebook/gcp/bigquery_gis/</guid>
+      <description>BigQuery GIS 標準 SQL の地理関数 地理オブジェクト作成 ST_GEOGPOINT(longitude, latitude) ST_GEOGFROMTEXT(wkt_string) 判定関数 ST_CONTAINS ST_CONTAINS(geography_1, geography_2) geography_2 は geography_1 の内部にある（外にはみ出していない）なら TRUE ST_WITHIN ST_WITHIN(geography_1, geography_2) geography_1 は geography_2 の内部にある（外には</description>
+    </item>
+    
+    <item>
+      <title>BigQuery: bqコマンド</title>
+      <link>https://teuder.github.io/notebook/gcp/bigquery_bq/</link>
+      <pubDate>Wed, 04 Sep 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://teuder.github.io/notebook/gcp/bigquery_bq/</guid>
+      <description>BigQuery：bqコマンド Data set を作成する bq mk \ --dataset \ --location=US \ --default_table_expiration 3600 \ --default_partition_expiration 3600 \ --description &#39;description&#39; \ project_id:dataset_name location US など default_table_expiration テーブル自動削除までの秒数を指定する、デフォルトでは</description>
+    </item>
+    
+    <item>
+      <title>BigQuery: general</title>
+      <link>https://teuder.github.io/notebook/gcp/bigquery/</link>
+      <pubDate>Wed, 04 Sep 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://teuder.github.io/notebook/gcp/bigquery/</guid>
+      <description>BigQuery BigQuery Advent カレンダー WebUI キーボードショートカット Mac の場合は Ctrl の代わりに Cmd にする キー アクション Ctrl Enter 現在のクエリを実行 Tab 現在の単語をオートコンプリート</description>
+    </item>
+    
+    <item>
+      <title>BigQuery: SQL</title>
+      <link>https://teuder.github.io/notebook/gcp/bigquery_sql/</link>
+      <pubDate>Wed, 04 Sep 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://teuder.github.io/notebook/gcp/bigquery_sql/</guid>
+      <description>BigQuery: SQL 基本文法 標準 SQL のクエリ構文 標準SQLの演算子 標準SQLの関数と演算子 レギュラーSQLをデフォルトにする クエリの前に #standardSQL の記述を追加する。逆</description>
+    </item>
+    
+  </channel>
+</rss>

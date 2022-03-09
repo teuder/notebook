@@ -1,0 +1,1072 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><meta property="og:title" content="GIS関連Rパッケージ" />
+<meta property="og:description" content="GIS関係のRパッケージの一覧 https://cran.r-project.org/web/views/Spatial.html https://cran.r-project.org/web/views/SpatioTemporal.html https://www.r-spatial.org/ 一般 sp：地理空間のクラスやメソッドを提供している sf : OGC Simple Featuresという標準に従って開発されてい" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://teuder.github.io/notebook/gis/r_package/" />
+<meta property="article:published_time" content="2019-08-26T00:00:00+00:00" />
+<meta property="article:modified_time" content="2020-05-27T18:54:29+09:00" />
+<title>GIS関連Rパッケージ | notebook</title>
+<link rel="icon" href="/notebook/favicon.png" type="image/x-icon">
+
+
+<link rel="stylesheet" href="/notebook/book.min.07c38dce7b6800da2a75a565d4d975e38f837294e24d00b5aae363037012d64b.css" integrity="sha256-B8ONzntoANoqdaVl1Nl144&#43;DcpTiTQC1quNjA3AS1ks=">
+
+
+<script defer src="/notebook/search.min.37c587beba6756b323933c1092f9245a4f0b72260ab84f8e522d4194cf9f0a90.js" integrity="sha256-N8WHvrpnVrMjkzwQkvkkWk8LciYKuE&#43;OUi1BlM&#43;fCpA="></script>
+
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+  
+</head>
+
+<body>
+  <input type="checkbox" class="hidden" id="menu-control" />
+  <main class="flex container">
+
+    <aside class="book-menu fixed">
+      <nav>
+<h2 class="book-brand">
+  <a href="https://teuder.github.io/notebook/"><span>notebook</span>
+  </a>
+</h2>
+
+
+<div class="book-search">
+  <input type="text" placeholder="Search" id="book-search-input" maxlength="64" />
+  <div class="book-search-spinner spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+
+
+
+
+
+    
+
+  
+
+
+
+
+
+
+  <ul>
+  
+    
+
+  <li >
+    
+      
+
+  <a href="/notebook/docs/" >
+      About
+  </a>
+
+
+    
+
+    
+
+
+
+
+  
+  <ul>
+    
+  </ul>
+  
+
+
+
+  </li>
+
+
+  
+    
+
+  <li >
+    
+      
+
+  <a href="/notebook/python/" >
+      Python
+  </a>
+
+
+    
+
+    
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+
+  <a href="/notebook/python/bigquery/" >
+      BigQuery
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/python/environment/" >
+      environment
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/python/jupyter/" >
+      jupyter
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/python/pandas/" >
+      Pandas
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/python/vscode/" >
+      Python in VScode
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/python/anaconda/" >
+      anaconda
+  </a>
+
+</li>
+      
+    
+  </ul>
+  
+
+
+
+  </li>
+
+
+  
+    
+
+  <li >
+    
+      
+
+  <a href="/notebook/r/" >
+      R
+  </a>
+
+
+    
+
+    
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+
+  <a href="/notebook/r/leaflet/" >
+      leaflet
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/r/rhdf5/" >
+      rhdf5
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/r/ggplot2/" >
+      ggplot2
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/r/raster/" >
+      raster
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/r/sf/" >
+      sf
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/r/bigrquery/" >
+      bigrquery
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/r/dplyr/" >
+      dplyr
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/r/future/" >
+      future
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/r/gganimate/" >
+      gganimate
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/r/lubridate/" >
+      lubridate
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/r/purrr/" >
+      purrr
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/r/package_development/" >
+      R Package Development
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/r/r_python/" >
+      R_Python
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/r/reticulate/" >
+      reticulate
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/r/rmarkdown/" >
+      Rmarkdown
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/r/rpart/" >
+      rpart
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/r/rstudio/" >
+      RStudio
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/r/rvest/" >
+      rvest
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/r/stars/" >
+      stars
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/r/stringr/" >
+      stringr
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/r/tidymodels/" >
+      tidymodels
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/r/tidyr/" >
+      tidyr
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/r/wk/" >
+      wk
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/r/dbi/" >
+      DBI
+  </a>
+
+</li>
+      
+    
+  </ul>
+  
+
+
+
+  </li>
+
+
+  
+    
+
+  <li >
+    
+      
+
+  <a href="/notebook/datascience/" >
+      Data Science
+  </a>
+
+
+    
+
+    
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+
+  <a href="/notebook/datascience/bayesian_statistics/" >
+      Bayesian Staistics
+  </a>
+
+</li>
+      
+    
+  </ul>
+  
+
+
+
+  </li>
+
+
+  
+    
+
+  <li >
+    
+      
+
+  <a href="/notebook/gis/" >
+      GIS &amp; Remote Sensing
+  </a>
+
+
+    
+
+    
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+
+  <a href="/notebook/gis/bigquerygis/" >
+      BigQuery GIS
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/gis/sar/" >
+      SAR
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/gis/terminology/" >
+      用語
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/gis/viirs/" >
+      VIIRS
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/gis/r_package/"  class="active">
+      GIS関連Rパッケージ
+  </a>
+
+</li>
+      
+    
+  </ul>
+  
+
+
+
+  </li>
+
+
+  
+    
+
+  <li >
+    
+      
+
+  <a href="/notebook/mac/" >
+      Mac
+  </a>
+
+
+    
+
+    
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+
+  <a href="/notebook/mac/homebrew/" >
+      homebrew
+  </a>
+
+</li>
+      
+    
+  </ul>
+  
+
+
+
+  </li>
+
+
+  
+    
+
+  <li >
+    
+      
+
+  <a href="/notebook/maritime/" >
+      Maritime
+  </a>
+
+
+    
+
+    
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+
+  <a href="/notebook/maritime/glossary/" >
+      glossary
+  </a>
+
+</li>
+      
+    
+  </ul>
+  
+
+
+
+  </li>
+
+
+  
+    
+
+  <li >
+    
+      
+
+  <a href="/notebook/gcp/" >
+      Google Cloud Platform
+  </a>
+
+
+    
+
+    
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+
+  <a href="/notebook/gcp/bigquery_gis/" >
+      BigQuery GIS
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/gcp/bigquery_bq/" >
+      BigQuery: bqコマンド
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/gcp/bigquery/" >
+      BigQuery: general
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/gcp/bigquery_sql/" >
+      BigQuery: SQL
+  </a>
+
+</li>
+      
+    
+  </ul>
+  
+
+
+
+  </li>
+
+
+  
+    
+
+  <li >
+    
+      
+
+  <a href="/notebook/miscellaneous/" >
+      miscellaneous
+  </a>
+
+
+    
+
+    
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+
+  <a href="/notebook/miscellaneous/c_plus_plus/" >
+      C&#43;&#43;
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/miscellaneous/english/" >
+      english
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/miscellaneous/jinjia2/" >
+      jinja
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/miscellaneous/jupyter/" >
+      jupyter
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/miscellaneous/pc/" >
+      PC
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/miscellaneous/tmux/" >
+      tmux
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/miscellaneous/vscode/" >
+      vscode
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/miscellaneous/windows/" >
+      Windows
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/miscellaneous/wsl/" >
+      wsl
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/miscellaneous/hugo/" >
+      Hugo
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/miscellaneous/git/" >
+      git
+  </a>
+
+</li>
+      
+    
+  </ul>
+  
+
+
+
+  </li>
+
+
+  
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+<script>
+(function() {
+  var menu = document.querySelector("aside.book-menu nav");
+  addEventListener("beforeunload", function(event) {
+    localStorage.setItem("menu.scrollTop", menu.scrollTop);
+  });
+  menu.scrollTop = localStorage.getItem("menu.scrollTop");
+})();
+</script>
+
+    </aside>
+
+    <div class="book-page">
+      <header class="flex align-center justify-between book-header">
+  <label for="menu-control">
+    <img src="/notebook/svg/menu.svg" alt="Menu" />
+  </label>
+  <strong>GIS関連Rパッケージ</strong>
+</header>
+
+      
+<article class="markdown"><h1 id="gis関係のrパッケージの一覧">GIS関係のRパッケージの一覧</h1>
+<ul>
+<li><a href="https://cran.r-project.org/web/views/Spatial.html">https://cran.r-project.org/web/views/Spatial.html</a></li>
+<li><a href="https://cran.r-project.org/web/views/SpatioTemporal.html">https://cran.r-project.org/web/views/SpatioTemporal.html</a></li>
+<li><a href="https://www.r-spatial.org/">https://www.r-spatial.org/</a></li>
+</ul>
+<h2 id="一般">一般</h2>
+<ul>
+<li>
+<p>sp：地理空間のクラスやメソッドを提供している</p>
+</li>
+<li>
+<p>sf : OGC Simple Featuresという標準に従って開発されている。<a href="https://r-spatial.github.io/sf/index.html">sfパッケージの公式サイト</a>、OGCが定義するファイル形式の読み書き（WKT, WKB）</p>
+</li>
+<li>
+<p>starts : 多次元arrayで時空間データを表現</p>
+</li>
+<li>
+<p>raster : ラスターデータの可視化と分析</p>
+</li>
+<li>
+<p>spatial.tools : rasterを拡張して並列計算など</p>
+</li>
+<li>
+<p>rgdal : GDALライブラリがサポートするラスターデータ, OGRライブラリがサポートするベクターデータへのバインディング、GeoJSON や Shapefile の読み書き、 PROJ.4がサポートする投影法</p>
+</li>
+<li>
+<p>rgeos : Geometry Engine - Open Source (&lsquo;GEOS&rsquo;)ライブラリへのバインディング</p>
+</li>
+<li>
+<p>GISTools : 空間データをマッピングしたり加工したり</p>
+</li>
+<li>
+<p>metR : 気象関係のデータの扱いを容易にするパッケージらしい</p>
+</li>
+</ul>
+<h2 id="データの読み書き">データの読み書き</h2>
+<ul>
+<li>maps : mapdata, mapproj パッケージと共に地理空間データベースを提供</li>
+<li>maptools : ESRI ArcGIS/ArcView shapefiles の読み書きなど、地理情報オブジェクトの扱い、GSHHGの海岸線データベースへのアクセス？？</li>
+<li>shapefiles : ESRI ArcGIS/ArcView shapefiles の読み書き</li>
+<li>rpostgis : PostGISが有効化されたPostgreSQLへのコネクション</li>
+<li>rgrass7 : GRASS v7 とのコネクション</li>
+<li>RQGIS : RからQGISの機能を利用する</li>
+</ul>
+<h2 id="データの取得">データの取得</h2>
+<ul>
+<li>geosapi : GeoServerのAPIからデータを取得する？</li>
+<li>geonapi : GeoNetworkのAPIからデータを取得する？</li>
+<li>rgbif : Global Biodiversity Information Facility (GBIF) にあるデータへのアクセス</li>
+<li>rnaturalearth : よく使う地図データをRからすぐにアクセスできるようにする sp, sf オブジェクトで提供</li>
+</ul>
+<h2 id="計算">計算</h2>
+<ul>
+<li>lwgeom : PostGISで使われている liblwgeom へのバインディング</li>
+<li>gdalUtils : GDAL Utilityへのラッパー？</li>
+<li>gdistance : grid間の距離やルートを計算する？</li>
+<li>geosphere : 距離、面積、角度などの計算？</li>
+<li>cshapes : 距離行列の計算</li>
+<li>spsurvey : 地理的調査のためのサンプリング手法など？</li>
+<li>trip : 動物のトラッキングデータ分析</li>
+<li>magclass : 時空間解析</li>
+<li>taRifx : ユーティリティ関数</li>
+<li>geoaxe : オブジェクトを小さく分割する</li>
+<li>lawn : Turfjs ブラウザの地理空間解析ライブラリのクライアント</li>
+<li>rcosmo : 球体に対する計算を提供</li>
+<li>areal : Areal Weighted Interpolation の実装</li>
+</ul>
+<h2 id="データのエラー調査">データのエラー調査</h2>
+<ul>
+<li>landsat : 衛星画像の補正？</li>
+<li>cleangeo : 空間オブジェクトのエラーの調査？</li>
+</ul>
+<h2 id="カラーパレット">カラーパレット</h2>
+<ul>
+<li>RColorBrewer : Mapでいい感じのカラーパレットを提供</li>
+<li>viridis : 視覚障害者にも優しいカラーパレットを提供</li>
+<li>classInt : １次元の変数の値を階級に分けるのに使う？？</li>
+</ul>
+<h2 id="可視化">可視化</h2>
+<ul>
+<li>ggspatial : ggplot2で可視化する時の便利ツール</li>
+<li>rasterVis : rasterの可視化</li>
+<li>quickmapr : sp, sfオブジェクトをとりあえず可視化できる</li>
+<li>cartography : いろんな地図作成？</li>
+<li>mapmisc : 軽量な地図作成？</li>
+</ul>
+<h2 id="可視化ウェブ">可視化ウェブ</h2>
+<ul>
+<li>mapView, leaflet, leafletR インタラクティブな地図の可視化</li>
+<li>RgoogleMaps : Googleマップに問い合わせしたり、Googleマップの画像を背景にしたプロットを描く</li>
+<li>plotGoogleMaps : Googleマップに描画する</li>
+<li>plotKML : オブジェクトをKMLで書き出してGoogle Earthで読み込めるようにする？？</li>
+<li>ggmap : Google MapやOpen Street Map に描画する？</li>
+<li>mapedit : Shinyでleafletで書いた地図を編集できるようにする？？</li>
+</ul>
+<h2 id="cartograms-地図を変形させる可視化">Cartograms 地図を変形させる可視化？</h2>
+<p>cartogram : 面積を風船のように伸び縮みさせる</p>
+<h2 id="point-pattern-analysis">Point Pattern Analysis</h2>
+<ul>
+<li>spatial, spatstat</li>
+<li>spatgraphs : 点のパターンのグラフ解析</li>
+</ul>
+<h2 id="空間統計">空間統計</h2>
+<ul>
+<li>gstat, geoR, geoRglm : 統計量、統計モデル？</li>
+<li>vardiag : Variogram を書く</li>
+</ul>
+<h2 id="disease-mapping-and-areal-data-analysis">Disease mapping and areal data analysis</h2>
+<p><a href="https://cran.r-project.org/web/views/Spatial.html">https://cran.r-project.org/web/views/Spatial.html</a></p>
+<h2 id="spatial-regression">Spatial regression</h2>
+<p><a href="https://cran.r-project.org/web/views/Spatial.html">https://cran.r-project.org/web/views/Spatial.html</a></p>
+<h2 id="ecological-analysis">Ecological analysis</h2>
+<p><a href="https://cran.r-project.org/web/views/Spatial.html">https://cran.r-project.org/web/views/Spatial.html</a></p>
+</article>
+
+      
+<div class="book-footer justify-between">
+  
+  <div>
+    
+    <a class="flex align-center" href="https://github.com/teuder/notebook/commit/1c4b2b5935f1ddbb8f4d25bc2ff54f9630bdc3c3" title='Last modified 2020-05-27 by Masaki Tsuda' target="_blank" rel="noopener">
+      <img src="/notebook/svg/calendar.svg" alt="Changed" />
+      <span>2020-05-27</span>
+    </a>
+  </div>
+  
+  
+  <div>
+    
+    <a class="flex align-center" href="https://github.com/teuder/notebook/edit/master/content/GIS/R_package.md" target="_blank" rel="noopener">
+      <img src="/notebook/svg/edit.svg" alt="Edit" />
+      <span>Edit this page</span>
+    </a>
+    
+  </div>
+  
+</div>
+
+
+      
+    </div>
+
+    
+  
+
+  <aside class="book-toc level-3 fixed">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#一般">一般</a></li>
+    <li><a href="#データの読み書き">データの読み書き</a></li>
+    <li><a href="#データの取得">データの取得</a></li>
+    <li><a href="#計算">計算</a></li>
+    <li><a href="#データのエラー調査">データのエラー調査</a></li>
+    <li><a href="#カラーパレット">カラーパレット</a></li>
+    <li><a href="#可視化">可視化</a></li>
+    <li><a href="#可視化ウェブ">可視化ウェブ</a></li>
+    <li><a href="#cartograms-地図を変形させる可視化">Cartograms 地図を変形させる可視化？</a></li>
+    <li><a href="#point-pattern-analysis">Point Pattern Analysis</a></li>
+    <li><a href="#空間統計">空間統計</a></li>
+    <li><a href="#disease-mapping-and-areal-data-analysis">Disease mapping and areal data analysis</a></li>
+    <li><a href="#spatial-regression">Spatial regression</a></li>
+    <li><a href="#ecological-analysis">Ecological analysis</a></li>
+  </ul>
+</nav>
+  </aside>
+
+
+
+  </main>
+
+  
+</body>
+
+</html>
