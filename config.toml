@@ -1,6 +1,8 @@
 baseURL = 'https://teuder.github.io/notebook/'
 title = 'notebook'
-theme = 'book'
+#theme = 'book'
+theme = 'hugo-book'
+
 
 # for github pages
 publishDir = "test" 
