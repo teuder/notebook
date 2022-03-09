@@ -1,0 +1,1165 @@
+<!DOCTYPE html>
+<html lang="ja-JP" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="rpart 決定木 rpart.object https://rdrr.io/cran/rpart/man/rpart.object.html rpart() による学習結果のオブジェクト rpart.object の要素 frame: データフレーム、tree を表現する var: 分割に使用される変数、&lt;leaf&gt; は末端">
+<meta name="theme-color" content="#FFFFFF">
+<meta name="color-scheme" content="light dark"><meta property="og:title" content="rpart" />
+<meta property="og:description" content="rpart 決定木 rpart.object https://rdrr.io/cran/rpart/man/rpart.object.html rpart() による学習結果のオブジェクト rpart.object の要素 frame: データフレーム、tree を表現する var: 分割に使用される変数、&lt;leaf&gt; は末端" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://teuder.github.io/notebook/r/rpart/" />
+<meta property="article:modified_time" content="2020-08-17T01:50:58+09:00" />
+<title>rpart | notebook</title>
+<link rel="manifest" href="/notebook/manifest.json">
+<link rel="icon" href="/notebook/favicon.png" type="image/x-icon">
+<link rel="stylesheet" href="/notebook/book.min.da110f27d6a4d632dc8e162876b7216c5c1f82164fbdac7ff33021633767f034.css" integrity="sha256-2hEPJ9ak1jLcjhYodrchbFwfghZPvax/8zAhYzdn8DQ=" crossorigin="anonymous">
+  <script defer src="/notebook/flexsearch.min.js"></script>
+  <script defer src="/notebook/ja.search.min.a18513a271acced0d30f7431a9aaa27cc899947bc066ce44615e70bbd28aef7f.js" integrity="sha256-oYUTonGsztDTD3QxqaqifMiZlHvAZs5EYV5wu9KK738=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/notebook/"><span>notebook</span>
+  </a>
+</h2>
+
+
+<div class="book-search">
+  <input type="text" id="book-search-input" placeholder="検索" aria-label="検索" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/docs/" class="">About</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/python/" class="">Python</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/python/bigquery/" class="">BigQuery</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/python/environment/" class="">environment</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/python/jupyter/" class="">jupyter</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/python/pandas/" class="">Pandas</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/python/vscode/" class="">Python in VScode</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/python/anaconda/" class="">anaconda</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/r/" class="">R</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/r/leaflet/" class="">leaflet</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/r/rhdf5/" class="">rhdf5</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/r/ggplot2/" class="">ggplot2</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/r/raster/" class="">raster</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/r/sf/" class="">sf</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/r/bigrquery/" class="">bigrquery</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/r/dplyr/" class="">dplyr</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/r/future/" class="">future</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/r/gganimate/" class="">gganimate</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/r/lubridate/" class="">lubridate</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/r/purrr/" class="">purrr</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/r/package_development/" class="">R Package Development</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/r/r_python/" class="">R_Python</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/r/reticulate/" class="">reticulate</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/r/rmarkdown/" class="">Rmarkdown</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/r/rpart/" class=" active">rpart</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/r/rstudio/" class="">RStudio</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/r/rvest/" class="">rvest</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/r/stars/" class="">stars</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/r/stringr/" class="">stringr</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/r/tidymodels/" class="">tidymodels</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/r/tidyr/" class="">tidyr</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/r/wk/" class="">wk</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/r/dbi/" class="">DBI</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/datascience/" class="">Data Science</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/datascience/bayesian_statistics/" class="">Bayesian Staistics</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/gis/" class="">GIS &amp; Remote Sensing</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/gis/bigquerygis/" class="">BigQuery GIS</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/gis/sar/" class="">SAR</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/gis/terminology/" class="">用語</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/gis/viirs/" class="">VIIRS</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/gis/r_package/" class="">GIS関連Rパッケージ</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/mac/" class="">Mac</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/mac/homebrew/" class="">homebrew</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/maritime/" class="">Maritime</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/maritime/glossary/" class="">glossary</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/gcp/" class="">Google Cloud Platform</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/gcp/bigquery_gis/" class="">BigQuery GIS</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/gcp/bigquery_bq/" class="">BigQuery: bqコマンド</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/gcp/bigquery/" class="">BigQuery: general</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/gcp/bigquery_sql/" class="">BigQuery: SQL</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/miscellaneous/" class="">miscellaneous</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/miscellaneous/c_plus_plus/" class="">C&#43;&#43;</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/miscellaneous/english/" class="">english</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/miscellaneous/jinjia2/" class="">jinja</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/miscellaneous/jupyter/" class="">jupyter</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/miscellaneous/pc/" class="">PC</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/miscellaneous/tmux/" class="">tmux</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/miscellaneous/vscode/" class="">vscode</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/miscellaneous/windows/" class="">Windows</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/miscellaneous/wsl/" class="">wsl</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/miscellaneous/hugo/" class="">Hugo</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/miscellaneous/git/" class="">git</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var menu=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(event){localStorage.setItem("menu.scrollTop",menu.scrollTop);});menu.scrollTop=localStorage.getItem("menu.scrollTop");})();</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/notebook/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>rpart</strong>
+
+  <label for="toc-control">
+    
+    <img src="/notebook/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#rpartpredictrpart">rpart:::predict.rpart()</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#rpartplotrpartpredict">rpart.plot::rpart.predict()</a></li>
+    <li><a href="#rpartplotrpartrules">rpart.plot::rpart.rules</a></li>
+    <li><a href="#treeclustrpartpredictleaves">treeClust::rpart.predict.leaves()</a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown"><h1 id="rpart">rpart</h1>
+<p>決定木</p>
+<p><code>rpart.object</code></p>
+<p><a href="https://rdrr.io/cran/rpart/man/rpart.object.html">https://rdrr.io/cran/rpart/man/rpart.object.html</a></p>
+<p><code>rpart()</code> による学習結果のオブジェクト</p>
+<p>rpart.object の要素</p>
+<ul>
+<li><code>frame</code>: データフレーム、tree を表現する
+<ul>
+<li><code>var</code>: 分割に使用される変数、<code>&lt;leaf&gt;</code> は末端ノード</li>
+<li><code>n</code></li>
+<li><code>wt</code></li>
+<li><code>dev</code></li>
+<li><code>yval</code></li>
+<li><code>complexity</code></li>
+<li><code>ncompete</code></li>
+<li><code>nsurrogate</code></li>
+<li><code>yval2</code></li>
+</ul>
+</li>
+<li><code>where</code>: 整数ベクトル、訓練データのレコード数と同じ長さ。訓練データの各レコードがどのリーフに落ちたかを表す。値は <code>frame</code> の行番号</li>
+<li><code>call</code>: このオブジェクトを作成するときに記述されたRコードのイメージ</li>
+<li><code>terms</code>: <code>terms.object</code> フォーミュラをサマライズしたもの、ユーザーは基本使わない</li>
+<li><code>splits</code>: 分割を記述する matrix。列は、&ldquo;count&rdquo;   &ldquo;ncat&rdquo;    &ldquo;improve&rdquo; &ldquo;index&rdquo;   &ldquo;adj&rdquo;、各行は分割に使われる変数名</li>
+<li><code>csplit</code>: 整数行列、少なくとも１つの分割変数が factor である場合に作成される</li>
+<li><code>method</code>: 文字列、(&ldquo;class&rdquo;, &ldquo;exp&rdquo;, &ldquo;poisson&rdquo;, &ldquo;anova&rdquo; or &ldquo;user&quot;のうちのどれか)、この tree を作成するときに使われた方法</li>
+<li><code>cptable</code>: 数値行列、complexityパラメタに基づいて決定された最適な枝刈りの情報？ 列名 &ldquo;CP&rdquo;        &ldquo;nsplit&rdquo;    &ldquo;rel error&rdquo; &ldquo;xerror&rdquo;    &ldquo;xstd&rdquo;</li>
+<li><code>variable.importance</code>: 名前付きベクトル、変数重要度、</li>
+<li><code>numresp</code>: 整数スカラー、目的変数の値の数、factorのレベルの数</li>
+<li><code>parms</code>: 学習時に与えられたパラメタの値</li>
+<li><code>control</code>: 学習時に与えられたパラメタの値</li>
+<li><code>functions</code>: <code>rpart</code>オブジェクトのMethodとして使われる関数 <code>summary()</code>, <code>print()</code> and <code>text()</code></li>
+<li><code>ordered</code>: 名前付き論理ベクトル、要素名は変数名、値はその変数が順序付きfactorであるかを表す</li>
+<li><code>na.action</code>: <code>stats::model.frame</code> から返される値、<code>NA</code> の取り扱いを決める</li>
+</ul>
+<p>rpart.object の属性 attributes()</p>
+<ul>
+<li><code>xlevels</code>: 説明変数にある factor 型のレベル</li>
+<li><code>ylevels</code>: 目的変数の factor 型のレベル</li>
+</ul>
+<h2 id="rpartpredictrpart">rpart:::predict.rpart()</h2>
+<p><code>rpart.object</code> を使って <code>predict()</code> したときに呼び出されるメソッド</p>
+<p><a href="https://www.rdocumentation.org/packages/rpart/versions/4.1-15/topics/predict.rpart">https://www.rdocumentation.org/packages/rpart/versions/4.1-15/topics/predict.rpart</a></p>
+<pre><code>predict(object, newdata,
+       type = c(&quot;vector&quot;, &quot;prob&quot;, &quot;class&quot;, &quot;matrix&quot;),
+       na.action = na.pass, …)
+</code></pre><p><code>type</code>: 分類ではデフォルトは <code>prob</code> クラス確率, <code>class</code> なら予測された目的変数 (<code>facor</code>) の値、<code>vector</code> なら目的変数 <code>factor</code> の <code>levels</code> 属性の要素番号、回帰の場合は デフォルトは <code>vector</code> で目的変数の値（多分）</p>
+<p><code>typpe=&quot;vector&quot;</code>　の時は、<code>rpart.object$frame$yval</code> の値が返されるらしい（各データが落ちたリーフの <code>yval</code> の値） これを使ってリーフ番号を取得できる</p>
+<h1 id="rpart関係の別のライブラリ">rpart関係の別のライブラリ</h1>
+<ul>
+<li><code>rpart.plot</code></li>
+<li><code>itree</code>: rpartの拡張らしい、rpartの作者もかかわっている</li>
+<li><code>treeClust</code></li>
+</ul>
+<h2 id="rpartplotrpartpredict">rpart.plot::rpart.predict()</h2>
+<p>新しいデータに対して予測する</p>
+<p><code>rpart::predict.rpart()</code> と同じだが、予測値のノード番号とルールを出力できる</p>
+<pre><code>rpart.plot::rpart.predict(object, newdata,
+         type = c(&quot;vector&quot;, &quot;prob&quot;, &quot;class&quot;, &quot;matrix&quot;),
+         na.action = na.pass,
+         nn=FALSE, rules=FALSE, ...)
+</code></pre><ul>
+<li><code>nn</code>: <code>TRUE</code> なら ノード番号の列も返す</li>
+<li><code>rules</code>: <code>TRUE</code> なら、ルールを文字列で記述した列も返す</li>
+<li><code>...</code>: <code>rpart.rules()</code> に渡される引数、例えば <code>clip.facs=TRUE</code></li>
+</ul>
+<h2 id="rpartplotrpartrules">rpart.plot::rpart.rules</h2>
+<p><code>rpart.object</code> から 各リーフに至るルールを表示する</p>
+<pre><code>rpart.rules(x = stop(&quot;no 'x' argument&quot;),
+            style = &quot;wide&quot;, cover = FALSE, nn = FALSE,
+            roundint = TRUE, clip.facs = FALSE,
+            varorder = NULL, ...)
+</code></pre><p>しかし、リーフの最大値は1000に制限されているので、それ以上に複雑なtreeのルールを生成したいときは、パッケージをいじる必要がある</p>
+<p><code>rpart.plot/R/rpart.rules.R</code> の中の <code>maxrules &lt;- 1e3</code> をもっと大きい値に書き換える</p>
+<p>そして、ローカルのソースからインストールする
+<code>install.packages(&quot;./rpart.plot/&quot;, type=&quot;source&quot;, repos = NULL)</code></p>
+<p>style = &ldquo;tall&rdquo;</p>
+<p>出力される値（class <code>c(&quot;rpart.rules&quot;, &quot;data.frame&quot;)</code>）</p>
+<ul>
+<li><code>target</code> : 分類：クラス確率の文字列</li>
+</ul>
+<p>行名: おそらく <code>rpart.object$frame</code> の行名に対応する？</p>
+<h2 id="treeclustrpartpredictleaves">treeClust::rpart.predict.leaves()</h2>
+<pre><code>rpart.predict.leaves(rp, newdata, type = &quot;where&quot;)
+</code></pre><ul>
+<li><code>type</code>
+<ul>
+<li><code>&quot;where&quot;</code> : &ldquo;rpart.object&rdquo; の要素 <code>frame</code> の行番号を返す</li>
+<li><code>&quot;leaf&quot;</code> : 実際のリーフ番号（<code>frame</code> の行名）を返す</li>
+</ul>
+</li>
+</ul>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+  <div><a class="flex align-center" href="https://github.com/teuder/notebook/commit/59b41a1a76e4a6cfb73de82cb838cfb2e14cca15" title='最終更新者 Masaki Tsuda | 2020-08-17' target="_blank" rel="noopener">
+      <img src="/notebook/svg/calendar.svg" class="book-icon" alt="Calendar" />
+      <span>2020-08-17</span>
+    </a>
+  </div>
+
+
+
+  <div>
+    <a class="flex align-center" href="https://github.com/teuder/notebook/edit/master/content/content/R/rpart.md" target="_blank" rel="noopener">
+      <img src="/notebook/svg/edit.svg" class="book-icon" alt="Edit" />
+      <span>このページを編集する</span>
+    </a>
+  </div>
+
+
+</div>
+
+
+
+  <script>(function(){function select(element){const selection=window.getSelection();const range=document.createRange();range.selectNodeContents(element);selection.removeAllRanges();selection.addRange(range);}
+document.querySelectorAll("pre code").forEach(code=>{code.addEventListener("click",function(event){select(code.parentElement);if(navigator.clipboard){navigator.clipboard.writeText(code.parentElement.textContent);}});});})();</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#rpartpredictrpart">rpart:::predict.rpart()</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#rpartplotrpartpredict">rpart.plot::rpart.predict()</a></li>
+    <li><a href="#rpartplotrpartrules">rpart.plot::rpart.rules</a></li>
+    <li><a href="#treeclustrpartpredictleaves">treeClust::rpart.predict.leaves()</a></li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

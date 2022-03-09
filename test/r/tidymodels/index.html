@@ -1,0 +1,1726 @@
+<!DOCTYPE html>
+<html lang="ja-JP" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="tidymodels tidymodels は統一的なインターフェースでモデリングを行うための、いくつかのパッケージをまとめたもの。 rsample ：訓練データ/テストデータの分割 recipe ：データの前">
+<meta name="theme-color" content="#FFFFFF">
+<meta name="color-scheme" content="light dark"><meta property="og:title" content="tidymodels" />
+<meta property="og:description" content="tidymodels tidymodels は統一的なインターフェースでモデリングを行うための、いくつかのパッケージをまとめたもの。 rsample ：訓練データ/テストデータの分割 recipe ：データの前" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://teuder.github.io/notebook/r/tidymodels/" />
+<meta property="article:modified_time" content="2021-08-26T17:35:35+09:00" />
+<title>tidymodels | notebook</title>
+<link rel="manifest" href="/notebook/manifest.json">
+<link rel="icon" href="/notebook/favicon.png" type="image/x-icon">
+<link rel="stylesheet" href="/notebook/book.min.da110f27d6a4d632dc8e162876b7216c5c1f82164fbdac7ff33021633767f034.css" integrity="sha256-2hEPJ9ak1jLcjhYodrchbFwfghZPvax/8zAhYzdn8DQ=" crossorigin="anonymous">
+  <script defer src="/notebook/flexsearch.min.js"></script>
+  <script defer src="/notebook/ja.search.min.a18513a271acced0d30f7431a9aaa27cc899947bc066ce44615e70bbd28aef7f.js" integrity="sha256-oYUTonGsztDTD3QxqaqifMiZlHvAZs5EYV5wu9KK738=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/notebook/"><span>notebook</span>
+  </a>
+</h2>
+
+
+<div class="book-search">
+  <input type="text" id="book-search-input" placeholder="検索" aria-label="検索" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/docs/" class="">About</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/python/" class="">Python</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/python/bigquery/" class="">BigQuery</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/python/environment/" class="">environment</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/python/jupyter/" class="">jupyter</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/python/pandas/" class="">Pandas</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/python/vscode/" class="">Python in VScode</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/python/anaconda/" class="">anaconda</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/r/" class="">R</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/r/leaflet/" class="">leaflet</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/r/rhdf5/" class="">rhdf5</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/r/ggplot2/" class="">ggplot2</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/r/raster/" class="">raster</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/r/sf/" class="">sf</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/r/bigrquery/" class="">bigrquery</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/r/dplyr/" class="">dplyr</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/r/future/" class="">future</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/r/gganimate/" class="">gganimate</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/r/lubridate/" class="">lubridate</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/r/purrr/" class="">purrr</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/r/package_development/" class="">R Package Development</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/r/r_python/" class="">R_Python</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/r/reticulate/" class="">reticulate</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/r/rmarkdown/" class="">Rmarkdown</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/r/rpart/" class="">rpart</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/r/rstudio/" class="">RStudio</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/r/rvest/" class="">rvest</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/r/stars/" class="">stars</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/r/stringr/" class="">stringr</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/r/tidymodels/" class=" active">tidymodels</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/r/tidyr/" class="">tidyr</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/r/wk/" class="">wk</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/r/dbi/" class="">DBI</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/datascience/" class="">Data Science</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/datascience/bayesian_statistics/" class="">Bayesian Staistics</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/gis/" class="">GIS &amp; Remote Sensing</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/gis/bigquerygis/" class="">BigQuery GIS</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/gis/sar/" class="">SAR</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/gis/terminology/" class="">用語</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/gis/viirs/" class="">VIIRS</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/gis/r_package/" class="">GIS関連Rパッケージ</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/mac/" class="">Mac</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/mac/homebrew/" class="">homebrew</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/maritime/" class="">Maritime</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/maritime/glossary/" class="">glossary</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/gcp/" class="">Google Cloud Platform</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/gcp/bigquery_gis/" class="">BigQuery GIS</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/gcp/bigquery_bq/" class="">BigQuery: bqコマンド</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/gcp/bigquery/" class="">BigQuery: general</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/gcp/bigquery_sql/" class="">BigQuery: SQL</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/miscellaneous/" class="">miscellaneous</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/miscellaneous/c_plus_plus/" class="">C&#43;&#43;</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/miscellaneous/english/" class="">english</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/miscellaneous/jinjia2/" class="">jinja</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/miscellaneous/jupyter/" class="">jupyter</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/miscellaneous/pc/" class="">PC</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/miscellaneous/tmux/" class="">tmux</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/miscellaneous/vscode/" class="">vscode</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/miscellaneous/windows/" class="">Windows</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/miscellaneous/wsl/" class="">wsl</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/miscellaneous/hugo/" class="">Hugo</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/miscellaneous/git/" class="">git</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var menu=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(event){localStorage.setItem("menu.scrollTop",menu.scrollTop);});menu.scrollTop=localStorage.getItem("menu.scrollTop");})();</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/notebook/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>tidymodels</strong>
+
+  <label for="toc-control">
+    
+    <img src="/notebook/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#データの分割--rsample-パッケージ">データの分割 : rsample パッケージ</a>
+      <ul>
+        <li><a href="#traintest-分割--initial_split">Train/Test 分割 : initial_split()</a></li>
+        <li><a href="#交差検証のための分割--vfold_cv">交差検証のための分割 : vfold_cv()</a></li>
+      </ul>
+    </li>
+    <li><a href="#前処理--recipes-パッケージ">前処理 : recipes パッケージ</a>
+      <ul>
+        <li><a href="#レシピオブジェクトの作成--recipe">レシピオブジェクトの作成 : recipe()</a></li>
+        <li><a href="#各前処理ステップの定義--step_">各前処理ステップの定義 : step_*()</a></li>
+        <li><a href="#prep-パラメータを持つステップの訓練更新">prep() パラメータを持つステップの訓練・更新</a></li>
+        <li><a href="#レシピを新しいデータに適用する-bake">レシピを新しいデータに適用する bake()</a></li>
+      </ul>
+    </li>
+    <li><a href="#モデリング--parsnip-パッケージ">モデリング : parsnip パッケージ</a>
+      <ul>
+        <li><a href="#モデルオブジェクトの作成">モデルオブジェクトの作成</a></li>
+        <li><a href="#モデル学習">モデル学習</a></li>
+        <li><a href="#予測--predict">予測 : predict</a></li>
+      </ul>
+    </li>
+    <li><a href="#ハイパーパラメータチューニング--tune">ハイパーパラメータ・チューニング : tune()</a>
+      <ul>
+        <li><a href="#クロスバリデーションのデータの分割">クロスバリデーションのデータの分割</a></li>
+        <li><a href="#機械学習アルゴリズムとチューニングしたいハイパーパラメータを指定する">機械学習アルゴリズムとチューニングしたいハイパーパラメータを指定する</a></li>
+        <li><a href="#cvの並列化">CVの並列化</a></li>
+        <li><a href="#グリッドサーチ-tunetune_grid">グリッドサーチ: <code>tune::tune_grid()</code></a></li>
+        <li><a href="#クロスバリデーションの結果の確認">クロスバリデーションの結果の確認</a></li>
+      </ul>
+    </li>
+    <li><a href="#精度検証--yardstick">精度検証 : yardstick</a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown"><h1 id="tidymodels">tidymodels</h1>
+<p><code>tidymodels</code> は統一的なインターフェースでモデリングを行うための、いくつかのパッケージをまとめたもの。</p>
+<ul>
+<li><code>rsample</code> ：訓練データ/テストデータの分割</li>
+<li><code>recipe</code> ：データの前処理（変数変換、サンプリングなど）</li>
+<li><code>parsnip</code> ：モデリング</li>
+<li><code>yardstic</code> ：モデルの精度評価</li>
+</ul>
+<h2 id="データの分割--rsample-パッケージ">データの分割 : rsample パッケージ</h2>
+<h3 id="traintest-分割--initial_split">Train/Test 分割 : initial_split()</h3>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#75af00">set.seed</span><span style="color:#111">(</span><span style="color:#ae81ff">10</span><span style="color:#111">)</span>
+<span style="color:#111">dm_split</span> <span style="color:#f92672">&lt;-</span> <span style="color:#111">rsample</span><span style="color:#f92672">::</span><span style="color:#75af00">initial_split</span><span style="color:#111">(</span><span style="color:#111">data</span><span style="color:#111">,</span> <span style="color:#111">prop</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span><span style="color:#f92672">/</span><span style="color:#ae81ff">4</span><span style="color:#111">,</span> <span style="color:#111">strata</span> <span style="color:#f92672">=</span> <span style="color:#00a8c8">NULL</span><span style="color:#111">,</span> <span style="color:#111">breaks</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">4</span><span style="color:#111">,</span> <span style="color:#00a8c8">...</span><span style="color:#111">)</span>
+
+
+<span style="color:#75715e"># 時系列データの分割の場合</span>
+<span style="color:#75715e"># dm_split &lt;- initial_time_split(data, prop = 3/4, lag = 0, ...)</span>
+
+<span style="color:#75715e"># 訓練データとテストデータのと取り出し</span>
+<span style="color:#111">train_df</span> <span style="color:#f92672">&lt;-</span> <span style="color:#111">rsample</span><span style="color:#f92672">::</span><span style="color:#75af00">training</span><span style="color:#111">(</span><span style="color:#111">dm_split</span><span style="color:#111">)</span>
+<span style="color:#111">test_df</span>  <span style="color:#f92672">&lt;-</span> <span style="color:#111">rsample</span><span style="color:#f92672">::</span><span style="color:#75af00">testing</span><span style="color:#111">(</span><span style="color:#111">dm_split</span><span style="color:#111">)</span>
+</code></pre></div><ul>
+<li><code>prop</code> : 訓練データの割合</li>
+<li><code>strata</code> : 層化サンプリングに使用する変数を指定する。（ここで指定した変数の値の頻度分布は、訓練データとテストデータで同じになる）</li>
+<li><code>breaks</code> : 整数スカラー。層化サンプリングしたい変数が連続変数の時に、連続地をいくつのビンに分けるか指定する。</li>
+<li><code>lag</code> : テストと訓練の間にラグを含めるための値。これはラグのある予測変数が使用される場合に便利です。</li>
+</ul>
+<h3 id="交差検証のための分割--vfold_cv">交差検証のための分割 : vfold_cv()</h3>
+<p><strong>K交差検証</strong></p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#111">rsample</span><span style="color:#f92672">::</span><span style="color:#75af00">vfold_cv</span><span style="color:#111">(</span><span style="color:#111">data</span><span style="color:#111">,</span> <span style="color:#111">v</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">10</span><span style="color:#111">,</span> <span style="color:#111">repeats</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span><span style="color:#111">,</span> <span style="color:#111">strata</span> <span style="color:#f92672">=</span> <span style="color:#00a8c8">NULL</span><span style="color:#111">,</span> <span style="color:#111">breaks</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">4</span><span style="color:#111">,</span> <span style="color:#00a8c8">...</span><span style="color:#111">)</span>
+</code></pre></div><ul>
+<li><code>data</code> : データフレーム</li>
+<li><code>v</code> : CVの分割数 (fold数)</li>
+<li><code>repeats</code> : CVの分割を何回繰り返すか。総計算回数は <code>v*repeats</code> になる。</li>
+<li><code>strata</code> : 層化サンプリング。CV分割の時に、fold間で割合を維持したい変数を指定する（例えば目的変数がカテゴリ変数の時に指定する）</li>
+<li><code>breaks</code> : 整数スカラー。層化サンプリングしたい変数が連続変数の時に、連続地をいくつのビンに分けるか指定する。</li>
+</ul>
+<p><strong>グループK交差検証</strong></p>
+<pre><code>rsample::group_vfold_cv(data, group = NULL, v = NULL, ...)
+</code></pre><ul>
+<li><code>data</code> : データフレーム</li>
+<li><code>group</code> : グルーピングに使いたい変数名１つ</li>
+<li><code>v</code> : データを分割したい数、 <code>NULL</code> の場合はグルーピング変数のユニークな値の数になる</li>
+</ul>
+<h4 id="foldのデータを参照する">Foldのデータを参照する</h4>
+<p>各Foldのデータを取り出すには以下の関数を使用する</p>
+<ul>
+<li><code>analysis()</code> : 訓練データを参照する</li>
+<li><code>assessment()</code> : 検証データを参照する</li>
+</ul>
+<p><code>vfold_cv()</code> 関数の出力値は <code>vfold_cv</code> オブジェクト、これは実際にはネストされたデータフレームである。</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#111">df_cv</span> <span style="color:#f92672">&lt;-</span> <span style="color:#111">rsample</span><span style="color:#f92672">::</span><span style="color:#75af00">vfold_cv</span><span style="color:#111">(</span><span style="color:#111">data</span><span style="color:#111">,</span> <span style="color:#111">v</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">10</span><span style="color:#111">,</span> <span style="color:#111">repeats</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span><span style="color:#111">)</span>
+<span style="color:#f92672">&gt;</span> <span style="color:#75af00">class</span><span style="color:#111">(</span><span style="color:#111">df_cv</span><span style="color:#111">)</span>
+<span style="color:#111">[1]</span> <span style="color:#d88200">&#34;vfold_cv&#34;</span>   <span style="color:#d88200">&#34;rset&#34;</span>       <span style="color:#d88200">&#34;tbl_df&#34;</span>     <span style="color:#d88200">&#34;tbl&#34;</span>        <span style="color:#d88200">&#34;data.frame&#34;</span>
+</code></pre></div><p>ある１つの訓練・検証データのペアを取り出す</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#111">train</span> <span style="color:#f92672">&lt;-</span> <span style="color:#111">rsample</span><span style="color:#f92672">::</span><span style="color:#75af00">analysis</span><span style="color:#111">(</span><span style="color:#111">df_cv</span><span style="color:#f92672">$</span><span style="color:#111">splits[[1]]</span><span style="color:#111">)</span>
+<span style="color:#111">validation</span> <span style="color:#f92672">&lt;-</span> <span style="color:#111">rsample</span><span style="color:#f92672">::</span><span style="color:#75af00">assessment</span><span style="color:#111">(</span><span style="color:#111">df_cv</span><span style="color:#f92672">$</span><span style="color:#111">splits[[1]]</span><span style="color:#111">)</span>
+</code></pre></div><p>リピートなしの分割</p>
+<pre><code>&gt; df_cv &lt;- rsample::vfold_cv(dm_info_train_df, strata = &quot;month&quot;, v = 2, repeats = 1)
+&gt; df_cv
+#  2-fold cross-validation using stratification 
+# A tibble: 2 x 2
+  splits             id   
+  &lt;list&gt;             &lt;chr&gt;
+1 &lt;rsplit [363/364]&gt; Fold1
+2 &lt;rsplit [364/363]&gt; Fold2
+</code></pre><p>リピートありの分割</p>
+<pre><code>&gt; df_cv &lt;- rsample::vfold_cv(dm_info_train_df, strata = &quot;month&quot;, v = 2, repeats = 2)
+&gt; df_cv 
+#  2-fold cross-validation repeated 2 times using stratification 
+# A tibble: 4 x 3
+  splits             id      id2  
+  &lt;list&gt;             &lt;chr&gt;   &lt;chr&gt;
+1 &lt;rsplit [363/364]&gt; Repeat1 Fold1
+2 &lt;rsplit [364/363]&gt; Repeat1 Fold2
+3 &lt;rsplit [363/364]&gt; Repeat2 Fold1
+4 &lt;rsplit [364/363]&gt; Repeat2 Fold2
+</code></pre><h2 id="前処理--recipes-パッケージ">前処理 : recipes パッケージ</h2>
+<p>訓練や新規データへのモデルの適用の前に実施する変数変換やデータサンプリングの手順をレシピオブジェクトとして定義する。</p>
+<p><code>recipes</code> パッケージで実施する前処理とは、特徴量作成というよりも、対数変換や標準化などデータの本質的な意味は変えないが、アルゴリズムの学習を適切に行えるようにするための処理のことを指す。</p>
+<p>そのため、この前処理は特徴量作成の後モデリングの直前に実施する。</p>
+<h3 id="レシピオブジェクトの作成--recipe">レシピオブジェクトの作成 : recipe()</h3>
+<p>最初に、変数加工のためのパラメタ（標準化のための平均と分散など）を決めるために使う訓練データ（一般には訓練データ）</p>
+<p>そのデータに含まれる目的変数と説明変数をフォーミュラとして与える。</p>
+<p>モデル式（目的変数と説明変数）を指定</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#111">recipes</span><span style="color:#f92672">::</span><span style="color:#75af00">recipe</span><span style="color:#111">(</span><span style="color:#111">x</span><span style="color:#111">,</span> <span style="color:#111">formula</span> <span style="color:#f92672">=</span> <span style="color:#00a8c8">NULL</span><span style="color:#111">,</span> <span style="color:#00a8c8">...</span><span style="color:#111">,</span> <span style="color:#111">vars</span> <span style="color:#f92672">=</span> <span style="color:#00a8c8">NULL</span><span style="color:#111">,</span> <span style="color:#111">roles</span> <span style="color:#f92672">=</span> <span style="color:#00a8c8">NULL</span><span style="color:#111">)</span>
+</code></pre></div><ul>
+<li><code>x</code>, <code>data</code> : 変数加工のためのパラメタ（標準化のための平均と分散など）を決めるために使う訓練データ</li>
+<li><code>formula</code> : モデル式、目的変数と説明変数の指定。<code>log(x)</code> とか <code>x:y</code> などの関数を含めてはいけない。マイナス符号をつけるのもダメ。</li>
+<li><code>vars</code> : 変数名を格納した文字列ベクトル</li>
+<li><code>roles</code> : <code>vars</code> と同じ長さの文字列ベクトル。各変数の役割を指定する。<code>&quot;outcome&quot;, &quot;predictor&quot;, &quot;case_weight&quot;, or &quot;ID&quot;</code> 他の値でもいい</li>
+</ul>
+<pre><code>mod_rec &lt;- 
+  df_rental %&gt;% 
+  recipes::recipe(formula = Y ~ Area)
+</code></pre><h3 id="各前処理ステップの定義--step_">各前処理ステップの定義 : step_*()</h3>
+<p>データに対する加工は <code>step_*()</code> 関数を使う</p>
+<p>dplyr</p>
+<ul>
+<li><code>step_filter</code>	Filter rows using dplyr</li>
+<li><code>step_arrange</code>	Sort rows using dplyr</li>
+<li><code>step_mutate</code>	Add new variables using &lsquo;mutate&rsquo;</li>
+<li><code>step_mutate_at</code>	Mutate multiple columns</li>
+<li><code>step_rename</code>	Rename variables by name</li>
+<li><code>step_rename_at</code>	Rename multiple columns</li>
+<li><code>step_slice</code>	Filter rows by position using dplyr</li>
+</ul>
+<p>数値データ変換</p>
+<ul>
+<li><code>step_center</code>	Centering numeric data</li>
+<li><code>step_cut</code>	Cut a numeric variable into a factor</li>
+<li><code>step_discretize</code>	Discretize Numeric Variables</li>
+<li><code>step_normalize</code>	Center and scale numeric data</li>
+<li><code>step_log</code>	Logarithmic Transformation</li>
+<li><code>step_logit</code>	Logit Transformation</li>
+<li><code>step_BoxCox</code>	Box-Cox Transformation for Non-Negative Data</li>
+<li><code>step_hyperbolic</code>	Hyperbolic Transformations</li>
+<li><code>step_inverse</code>	Inverse Transformation</li>
+<li><code>step_invlogit</code>	Inverse Logit Transformation</li>
+<li><code>step_range</code>	Scaling Numeric Data to a Specific Range</li>
+<li><code>step_relu</code>	Apply (Smoothed) Rectified Linear Transformation</li>
+<li><code>step_scale</code>	Scaling Numeric Data</li>
+<li><code>step_sqrt</code>	Square Root Transformation</li>
+<li><code>step_YeoJohnson</code>	Yeo-Johnson Transformation</li>
+</ul>
+<p>カテゴリ変数 factor</p>
+<ul>
+<li><code>step_factor2string</code>	Convert Factors to Strings</li>
+<li><code>step_integer</code>	Convert values to predefined integers</li>
+<li><code>step_bin2factor</code>	Create a Factors from A Dummy Variable</li>
+<li><code>step_novel</code>	Simple Value Assignments for Novel Factor Levels</li>
+<li><code>step_num2factor</code>	Convert Numbers to Factors</li>
+<li><code>step_other</code>	Collapse Some Categorical Levels</li>
+<li><code>step_ordinalscore</code>	Convert Ordinal Factors to Numeric Scores</li>
+<li><code>step_relevel</code>	Relevel factors to a desired level</li>
+<li><code>step_string2factor</code>	Convert Strings to Factors</li>
+<li><code>step_unknown</code>	Assign missing categories to &ldquo;unknown&rdquo;</li>
+<li><code>step_unorder</code>	Convert Ordered Factors to Unordered Factors</li>
+</ul>
+<p>変数取捨選択</p>
+<ul>
+<li>
+<p><code>step_shuffle</code>	Shuffle Variables</p>
+</li>
+<li>
+<p><code>step_rm</code>	General Variable Filter</p>
+</li>
+<li>
+<p><code>step_zv</code>	Zero Variance Filter</p>
+</li>
+<li>
+<p><code>step_nzv</code>	Near-Zero Variance Filter</p>
+</li>
+<li>
+<p><code>step_corr</code>	High Correlation Filter</p>
+</li>
+<li>
+<p><code>step_lincomb</code>	Linear Combination Filter</p>
+</li>
+</ul>
+<p>#変数追加</p>
+<ul>
+<li><code>step_count</code>	Create Counts of Patterns using Regular Expressions</li>
+<li><code>step_ratio</code>	Ratio Variable Creation</li>
+</ul>
+<p>時系列</p>
+<ul>
+<li><code>step_date</code>	Date Feature Generator</li>
+<li><code>step_holiday</code>	Holiday Feature Generator</li>
+<li><code>step_lag</code>	Create a lagged predictor</li>
+</ul>
+<p>サンプリング</p>
+<ul>
+<li><code>step_downsample</code>	Down-Sample a Data Set Based on a Factor Variable</li>
+<li><code>step_sample</code>	Sample rows using dplyr</li>
+<li><code>step_upsample</code>	Up-Sample a Data Set Based on a Factor Variable</li>
+</ul>
+<p>統計モデリング</p>
+<ul>
+<li><code>step_dummy</code>	Dummy Variables Creation</li>
+<li><code>step_interact</code>	Create Interaction Variables</li>
+<li><code>step_intercept</code>	Add intercept (or constant) column</li>
+<li><code>step_regex</code>	Create Dummy Variables using Regular Expressions</li>
+</ul>
+<p>地理情報</p>
+<ul>
+<li><code>step_geodist</code>	Distance between two locations</li>
+<li><code>step_spatialsign</code>	Spatial Sign Preprocessing</li>
+</ul>
+<p>欠損値</p>
+<ul>
+<li><code>step_naomit</code>	Remove observations with missing values</li>
+</ul>
+<p>欠損値補完 : imputation</p>
+<ul>
+<li><code>step_knnimpute</code>	Imputation via K-Nearest Neighbors</li>
+<li><code>step_lowerimpute</code>	Impute Numeric Data Below the Threshold of Measurement</li>
+<li><code>step_meanimpute</code>	Impute Numeric Data Using the Mean</li>
+<li><code>step_medianimpute</code>	Impute Numeric Data Using the Median</li>
+<li><code>step_modeimpute</code>	Impute Nominal Data Using the Most Common Value</li>
+<li><code>step_impute_linear</code>	Imputation of numeric variables via a linear model.</li>
+<li><code>step_bagimpute</code>	Imputation via Bagged Trees</li>
+<li><code>step_rollimpute</code>	Impute Numeric Data Using a Rolling Window Statistic</li>
+</ul>
+<p>抽出？ : Extraction</p>
+<ul>
+<li><code>step_ica</code>	ICA Signal Extraction</li>
+<li><code>step_kpca</code>	Kernel PCA Signal Extraction</li>
+<li><code>step_kpca_poly</code>	Polynomial Kernel PCA Signal Extraction</li>
+<li><code>step_kpca_rbf</code>	Radial Basis Function Kernel PCA Signal Extraction</li>
+<li><code>step_nnmf</code>	NNMF Signal Extraction</li>
+<li><code>step_pca</code>	PCA Signal Extraction</li>
+<li><code>step_pls</code>	Partial Least Squares Feature Extraction</li>
+</ul>
+<p>その他</p>
+<ul>
+<li>
+<p><code>step_bs</code>	B-Spline Basis Functions</p>
+</li>
+<li>
+<p><code>step_ns</code>	Natural Spline Basis Functions</p>
+</li>
+<li>
+<p><code>step_poly</code>	Orthogonal Polynomial Basis Functions</p>
+</li>
+<li>
+<p><code>step_window</code>	Moving Window Functions</p>
+</li>
+<li>
+<p><code>step_classdist</code>	Distances to Class Centroids</p>
+</li>
+<li>
+<p><code>step_depth</code>	Data Depths</p>
+</li>
+<li>
+<p><code>step_isomap</code>	Isomap Embedding</p>
+</li>
+<li>
+<p><code>step_profile</code>	Create a Profiling Version of a Data Set</p>
+</li>
+</ul>
+<h4 id="サンプリングステップ">サンプリング・ステップ</h4>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#75715e"># サンプリングを含むレシピを作成 (prep()しない)</span>
+<span style="color:#111">sampling_recipe</span> <span style="color:#f92672">&lt;-</span>
+  <span style="color:#111">recipes</span><span style="color:#f92672">::</span><span style="color:#75af00">recipe</span><span style="color:#111">(</span><span style="color:#111">Y</span> <span style="color:#f92672">~</span> <span style="color:#111">.,</span> <span style="color:#111">data</span> <span style="color:#f92672">=</span> <span style="color:#111">train_df</span><span style="color:#111">)</span> <span style="color:#f92672">%&gt;%</span> 
+  <span style="color:#75715e"># 目的変数 Y の値に基づいてサンプリングする</span>
+  <span style="color:#75715e"># 訓練データに対してはサンプリングするが</span>
+  <span style="color:#75715e"># テストデータや新規データに対してはサンプリングしない場合は skip = TRUE を指定する。</span>
+  <span style="color:#75715e"># この時点でサンプリングのための乱数 seed は固定される</span>
+  <span style="color:#111">themis</span><span style="color:#f92672">::</span><span style="color:#75af00">step_downsample</span><span style="color:#111">(</span><span style="color:#111">Y</span><span style="color:#111">,</span> <span style="color:#111">under_ratio</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.5</span><span style="color:#111">,</span> <span style="color:#111">skip</span> <span style="color:#f92672">=</span> <span style="color:#00a8c8">TRUE</span><span style="color:#111">)</span> <span style="color:#f92672">%&gt;%</span>
+  <span style="color:#75715e"># prep() を実行すると skip = TRUE を指定したステップも実行される</span>
+  <span style="color:#75715e"># retain = TRUE で、最初に渡した train_df にレシピが適用されたデータを</span>
+  <span style="color:#75715e"># レシピオブジェクトの中に保持する</span>
+  <span style="color:#111">recipes</span><span style="color:#f92672">::</span><span style="color:#75af00">prep</span><span style="color:#111">(</span><span style="color:#111">retain</span> <span style="color:#f92672">=</span> <span style="color:#00a8c8">TRUE</span><span style="color:#111">)</span>
+
+
+
+<span style="color:#75715e"># サンプリングが適用されたデータの作成方法</span>
+
+<span style="color:#75715e"># 1. レシピオブジェクトの中に存在する</span>
+<span style="color:#75715e">#    レシピ適用済みデータを取り出す</span>
+<span style="color:#111">sampled_train_df</span> <span style="color:#f92672">&lt;-</span>
+  <span style="color:#111">sampling_recipe</span><span style="color:#f92672">$</span><span style="color:#111">template</span>
+
+<span style="color:#75715e"># 2. レシピオブジェクトの中に存在する</span>
+<span style="color:#75715e">#    レシピ適用済みデータを bake(newdata=NULL) で取り出す</span>
+<span style="color:#111">sampled_train_df</span> <span style="color:#f92672">&lt;-</span>
+  <span style="color:#111">sampling_recipe</span> <span style="color:#f92672">%&gt;%</span>
+  <span style="color:#75af00">bake</span><span style="color:#111">(</span><span style="color:#111">newdata</span><span style="color:#f92672">=</span><span style="color:#00a8c8">NULL</span><span style="color:#111">)</span>
+
+<span style="color:#75715e"># 注意：bake() に新データを渡して新データにレシピを適用したときには、サンプリングステップ は実行されない。(正確は `skip = TRUE` が指定されたステップは実行されない) </span>
+<span style="color:#111">NOT_sampled_test_df</span> <span style="color:#f92672">&lt;-</span>
+  <span style="color:#111">sampling_recipe</span> <span style="color:#f92672">%&gt;%</span>
+  <span style="color:#75af00">bake</span><span style="color:#111">(</span><span style="color:#111">newdata</span><span style="color:#f92672">=</span><span style="color:#111">test_df</span><span style="color:#111">)</span> <span style="color:#75715e"># newdata で渡したデータにはサンプリングは適用されない</span>
+</code></pre></div><h4 id="サンプリングを含んだクロスバリデーション">サンプリングを含んだクロスバリデーション</h4>
+<p>クロスバリデーションをするときには、Validation データにはサンプリングを実施しないが、学習データに対してはサンプリングを実施したい。</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#75715e"># CVのために（サンプリングをされていない）訓練データを分割する</span>
+<span style="color:#111">df_cv</span> <span style="color:#f92672">&lt;-</span>
+  <span style="color:#111">rsample</span><span style="color:#f92672">::</span><span style="color:#75af00">vfold_cv</span><span style="color:#111">(</span><span style="color:#111">train_df</span><span style="color:#111">,</span> <span style="color:#111">v</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">5</span><span style="color:#111">,</span> <span style="color:#111">repeats</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span><span style="color:#111">)</span>
+
+<span style="color:#75715e"># サンプリングを含むレシピを作成 ()</span>
+<span style="color:#75715e"># 注意するのはここでは prep() しないということ</span>
+<span style="color:#111">sampling_recipe</span> <span style="color:#f92672">&lt;-</span>
+  <span style="color:#111">recipes</span><span style="color:#f92672">::</span><span style="color:#75af00">recipe</span><span style="color:#111">(</span><span style="color:#111">Y</span> <span style="color:#f92672">~</span> <span style="color:#111">.,</span> <span style="color:#111">data</span> <span style="color:#f92672">=</span> <span style="color:#111">train_df</span><span style="color:#111">)</span> <span style="color:#f92672">%&gt;%</span> 
+  <span style="color:#75715e"># テストデータや新規データに対してはサンプリングしない場合は skip = TRUE を指定する。</span>
+  <span style="color:#111">themis</span><span style="color:#f92672">::</span><span style="color:#75af00">step_downsample</span><span style="color:#111">(</span><span style="color:#111">Y</span><span style="color:#111">,</span> <span style="color:#111">under_ratio</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.5</span><span style="color:#111">,</span> <span style="color:#111">skip</span> <span style="color:#f92672">=</span> <span style="color:#00a8c8">TRUE</span><span style="color:#111">)</span> 
+  <span style="color:#75715e"># このレシピを使ってクロスバリデーションをする場合には、ここでは prep() しない</span>
+  <span style="color:#75715e"># おそらく rsample::vfold_cv() の中で prep() される</span>
+
+<span style="color:#75715e"># CV を実行する</span>
+<span style="color:#111">cv_result_df</span> <span style="color:#f92672">&lt;-</span>
+  <span style="color:#111">tune</span><span style="color:#f92672">::</span><span style="color:#75af00">tune_grid</span><span style="color:#111">(</span>
+    <span style="color:#111">object</span> <span style="color:#f92672">=</span> <span style="color:#111">rnd_forest_model</span><span style="color:#111">,</span> <span style="color:#75715e"># parsnip で作成したモデルオブジェクト</span>
+    <span style="color:#111">preprocessor</span> <span style="color:#f92672">=</span> <span style="color:#111">sampling_recipe</span><span style="color:#111">,</span>
+    <span style="color:#111">resamples</span> <span style="color:#f92672">=</span> <span style="color:#111">df_cv</span><span style="color:#111">,</span>
+    <span style="color:#111">grid</span> <span style="color:#f92672">=</span> <span style="color:#111">params_grid_df</span><span style="color:#111">,</span> <span style="color:#75715e"># 探索したいパラメータの値が格納されたデータフレーム</span>
+    <span style="color:#111">metrics</span> <span style="color:#f92672">=</span> <span style="color:#111">yardstick</span><span style="color:#f92672">::</span><span style="color:#75af00">metric_set</span><span style="color:#111">(</span><span style="color:#111">yardstick</span><span style="color:#f92672">::</span><span style="color:#111">pr_auc</span><span style="color:#111">,</span> <span style="color:#111">yardstick</span><span style="color:#f92672">::</span><span style="color:#111">roc_auc</span><span style="color:#111">),</span>
+    <span style="color:#111">control</span> <span style="color:#f92672">=</span> <span style="color:#111">tune</span><span style="color:#f92672">::</span><span style="color:#75af00">control_grid</span><span style="color:#111">(</span><span style="color:#111">verbose</span> <span style="color:#f92672">=</span> <span style="color:#00a8c8">TRUE</span><span style="color:#111">)</span>
+  <span style="color:#111">)</span>
+</code></pre></div><h4 id="skiptrue-について"><code>skip=TRUE</code> について</h4>
+<p><code>skip=TRUE</code> が指定されたステップは、 <code>recipes::prep(retain = TRUE)</code> を実行したときには適用されるが、<code>recipes::bake(newdata = new_df)</code> を実行したときには適用されない。</p>
+<p>次のように考えてもよいかもしれない</p>
+<ul>
+<li><code>recipes::prep()</code> は訓練データ作成用にレシピを実行する。</li>
+<li><code>recipes::bake()</code> は新データ・テストデータ・検証データ作成用にレシピを実行する</li>
+</ul>
+<p><code>skip = TRUE</code> を指定された処理は訓練データを作成するときには使用されるが、新データやテストデータや検証データに対しては使用されない。不均衡データ対策のためなど、目的変数を使ったサンプリングを実施するステップに対しては <code>skip = TRUE</code> を指定する。</p>
+<h4 id="step_-の中での変数の指定の仕方">step_*() の中での変数の指定の仕方</h4>
+<p>step_log(all_predictors(), all_outcomes())</p>
+<p>dplyrの　starts_with() contains() 等も使える</p>
+<h3 id="prep-パラメータを持つステップの訓練更新">prep() パラメータを持つステップの訓練・更新</h3>
+<pre><code>rec_trained &lt;- 
+  prep(mod_rec, retain = TRUE, verbose = TRUE)
+</code></pre><ul>
+<li><code>retain</code> : 処理済みの訓練データをオブジェクト内に保持する (<code>template</code> スロット)。後からステップを追加したいが、既存のステップの再トレーニングを避けたい場合に良いアイデア。<code>skip = FALSE</code> オプションを使用しているステップがある場合は、<code>retain = TRUE</code> を使用することをお勧めします。</li>
+<li><code>training</code> : データ処理のパラメタ（標準化のための平均と分散とか）の訓練のために使うデータフレームを別に指定する場合</li>
+<li><code>fresh</code> : <code>TRUE</code> なら、新たに訓練データを与えてパラメータを更新する。同時に、<code>training</code> に新たな訓練データを与えること。<code>fresh=TRUE</code> は前に <code>prep()</code> した <code>step_*()</code> の方も更新する。<code>fresh=FALSE</code> なら まだ <code>prep()</code> されていない <code>step_*()</code> を更新する。</li>
+</ul>
+<h3 id="レシピを新しいデータに適用する-bake">レシピを新しいデータに適用する bake()</h3>
+<p>以前は <code>bake()</code> は新データにレシピを適用する。 <code>juice()</code> はレシピ内に保持されたデータに対してレシピを適用するという意味だったが。今は <code>juice()</code> の代わりに <code>bake(newdata=NULL)</code> を使うことが推奨されている。</p>
+<h2 id="モデリング--parsnip-パッケージ">モデリング : parsnip パッケージ</h2>
+<p>まずは目的に合わせてアルゴリズムを指定して、モデルオブジェクトを作成する。</p>
+<p><code>parsnip</code> は異なるパッケージのアルゴリズムを同じインターフェースで扱えるようにする。</p>
+<h3 id="モデルオブジェクトの作成">モデルオブジェクトの作成</h3>
+<p>以下のアルゴリズムが使用できる</p>
+<ul>
+<li><code>parsnip::linear_reg()</code></li>
+<li><code>parsnip::decision_tree()</code></li>
+<li><code>parsnip::rand_forest()</code></li>
+</ul>
+<p>それぞれのアルゴリズムで具体的にどのパッケージを使うかは <code>parsnip::set_engine()</code> で指定する。この関数はさらに使用するパッケージの機械学習モデルに追加で渡す引数を指定することもできる。</p>
+<pre><code>rf_model &lt;-
+    parsnip::linear_reg() %&gt;% 
+    parsnip::set_engine(&quot;ranger&quot;, , num.threads = 10, seed = 42, importance = &quot;permutation)
+
+</code></pre><p>Thanks @ailich. Yea, that may be a confusion point. I would condider to add the explanation on the Chapter on the LogicalVector.</p>
+<p>I really appreciate this kinds of advice to make the book sensible for person who are not familiar to C++.</p>
+<h4 id="線形回帰--parsniplinear_reg">線形回帰 : parsnip::linear_reg()</h4>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#111">linear_regression_model</span> <span style="color:#f92672">&lt;-</span>
+    <span style="color:#111">parsnip</span><span style="color:#f92672">::</span><span style="color:#75af00">linear_reg</span><span style="color:#111">()</span> <span style="color:#f92672">%&gt;%</span> 
+    <span style="color:#111">parsnip</span><span style="color:#f92672">::</span><span style="color:#75af00">set_engine</span><span style="color:#111">(</span><span style="color:#d88200">&#34;lm&#34;</span><span style="color:#111">)</span>
+</code></pre></div><h4 id="決定木--parsnipdecision_tree">決定木 : parsnip::decision_tree()</h4>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#75715e"># 分類木</span>
+<span style="color:#111">decision_tree_model</span> <span style="color:#f92672">&lt;-</span>
+    <span style="color:#111">parsnip</span><span style="color:#f92672">::</span><span style="color:#75af00">decision_tree</span><span style="color:#111">(</span>
+        <span style="color:#111">mode</span> <span style="color:#f92672">=</span> <span style="color:#d88200">&#34;classification&#34;</span><span style="color:#111">,</span>
+        <span style="color:#111">cost_complexity</span> <span style="color:#f92672">=</span> <span style="color:#111">cost_complexity</span><span style="color:#111">,</span>
+        <span style="color:#111">tree_depth</span> <span style="color:#f92672">=</span> <span style="color:#111">tree_depth</span><span style="color:#111">,</span>
+        <span style="color:#111">min_n</span> <span style="color:#f92672">=</span> <span style="color:#111">min_n</span><span style="color:#111">)</span>
+
+</code></pre></div><p>決定木とランダムフォレストの実行の仕方 (<code>rpart</code>, <code>ranger</code>) は以下のサイトが参考になる</p>
+<p><a href="https://www.marketechlabo.com/r-decision-tree/">https://www.marketechlabo.com/r-decision-tree/</a></p>
+<h4 id="ランダムフォレスト--parsniprand_forest">ランダムフォレスト : parsnip::rand_forest()</h4>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#111">parsnip</span><span style="color:#f92672">::</span><span style="color:#75af00">rand_forest</span><span style="color:#111">(</span><span style="color:#111">mode</span> <span style="color:#f92672">=</span> <span style="color:#d88200">&#34;unknown&#34;</span><span style="color:#111">,</span> <span style="color:#111">mtry</span> <span style="color:#f92672">=</span> <span style="color:#00a8c8">NULL</span><span style="color:#111">,</span> <span style="color:#111">trees</span> <span style="color:#f92672">=</span> <span style="color:#00a8c8">NULL</span><span style="color:#111">,</span> <span style="color:#111">min_n</span> <span style="color:#f92672">=</span> <span style="color:#00a8c8">NULL</span><span style="color:#111">)</span>
+
+<span style="color:#75715e">## S3 method for class &#39;rand_forest&#39;</span>
+<span style="color:#75af00">update</span><span style="color:#111">(</span>
+  <span style="color:#111">object</span><span style="color:#111">,</span>
+  <span style="color:#111">parameters</span> <span style="color:#f92672">=</span> <span style="color:#00a8c8">NULL</span><span style="color:#111">,</span>
+  <span style="color:#111">mtry</span> <span style="color:#f92672">=</span> <span style="color:#00a8c8">NULL</span><span style="color:#111">,</span>
+  <span style="color:#111">trees</span> <span style="color:#f92672">=</span> <span style="color:#00a8c8">NULL</span><span style="color:#111">,</span>
+  <span style="color:#111">min_n</span> <span style="color:#f92672">=</span> <span style="color:#00a8c8">NULL</span><span style="color:#111">,</span>
+  <span style="color:#111">fresh</span> <span style="color:#f92672">=</span> <span style="color:#00a8c8">FALSE</span><span style="color:#111">,</span>
+  <span style="color:#00a8c8">...</span>
+<span style="color:#111">)</span>
+</code></pre></div><ul>
+<li>mode : Possible values for this model are &ldquo;unknown&rdquo;, &ldquo;regression&rdquo;, or &ldquo;classification&rdquo;.</li>
+<li>mtry: The number of predictors that will be randomly sampled at each split when creating the tree models.</li>
+<li>trees: The number of trees contained in the ensemble.</li>
+<li>min_n: The minimum number of data points in a node that are required for the node to be split further.</li>
+</ul>
+<p>エンジン</p>
+<pre><code>parsnip::set_engine(&quot;ranger&quot;, num.threads = 10, seed = 42, importance = &quot;permutation&quot;)
+</code></pre><p>set_engine()</p>
+<ul>
+<li>R: &ldquo;ranger&rdquo; (the default) or &ldquo;randomForest&rdquo;</li>
+<li>Spark: &ldquo;spark&rdquo;</li>
+</ul>
+<p>変数重要度</p>
+<p><code>ranger</code> で変数重要度を計算させる場合は <code>parsnip::set_engine()</code> に以下のいずれかを指定する</p>
+<ul>
+<li><code>importance = 'impurity'</code></li>
+<li><code>importance = 'permutation'</code></li>
+</ul>
+<h3 id="モデル学習">モデル学習</h3>
+<h4 id="モデル学習の実行--fit">モデル学習の実行 : fit()</h4>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#111">lm_fit</span> <span style="color:#f92672">&lt;-</span> <span style="color:#75715e"># 学習済みモデルオブジェクト</span>
+  <span style="color:#111">lm_mod</span> <span style="color:#f92672">%&gt;%</span> 
+  <span style="color:#75af00">fit</span><span style="color:#111">(</span><span style="color:#111">width</span> <span style="color:#f92672">~</span> <span style="color:#111">initial_volume</span> <span style="color:#f92672">*</span> <span style="color:#111">food_regime</span><span style="color:#111">,</span> <span style="color:#75715e"># 目的変数と説明変数をフォーミュラで指定</span>
+  <span style="color:#111">data</span> <span style="color:#f92672">=</span> <span style="color:#111">data_mart_df</span>
+  <span style="color:#111">)</span>
+</code></pre></div><h4 id="学習済みモデルオブジェクトの内容を確認する">学習済みモデルオブジェクトの内容を確認する</h4>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#75af00">tidy</span><span style="color:#111">(</span><span style="color:#111">lm_fit</span><span style="color:#111">)</span>
+
+</code></pre></div><div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#75715e"># 線形回帰の学習済みオブジェクトを tidy() で処理した出力を dotwhisker::dwplot() に入力して結果を見る</span>
+<span style="color:#75af00">tidy</span><span style="color:#111">(</span><span style="color:#111">lm_fit</span><span style="color:#111">)</span> <span style="color:#f92672">%&gt;%</span> 
+  <span style="color:#111">dotwhisker</span><span style="color:#f92672">::</span><span style="color:#75af00">dwplot</span><span style="color:#111">(</span><span style="color:#111">dot_args</span> <span style="color:#f92672">=</span> <span style="color:#75af00">list</span><span style="color:#111">(</span><span style="color:#111">size</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span><span style="color:#111">,</span> <span style="color:#111">color</span> <span style="color:#f92672">=</span> <span style="color:#d88200">&#34;black&#34;</span><span style="color:#111">),</span>
+         <span style="color:#111">whisker_args</span> <span style="color:#f92672">=</span> <span style="color:#75af00">list</span><span style="color:#111">(</span><span style="color:#111">color</span> <span style="color:#f92672">=</span> <span style="color:#d88200">&#34;black&#34;</span><span style="color:#111">),</span>
+         <span style="color:#111">vline</span> <span style="color:#f92672">=</span> <span style="color:#75af00">geom_vline</span><span style="color:#111">(</span><span style="color:#111">xintercept</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span><span style="color:#111">,</span> <span style="color:#111">colour</span> <span style="color:#f92672">=</span> <span style="color:#d88200">&#34;grey50&#34;</span><span style="color:#111">,</span> <span style="color:#111">linetype</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span><span style="color:#111">))</span>
+
+</code></pre></div><h3 id="予測--predict">予測 : predict</h3>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#111">mean_pred</span> <span style="color:#f92672">&lt;-</span> 
+    <span style="color:#75af00">predict</span><span style="color:#111">(</span>
+        <span style="color:#111">object</span> <span style="color:#f92672">=</span> <span style="color:#111">lm_fit</span><span style="color:#111">,</span>
+        <span style="color:#111">new_data</span> <span style="color:#f92672">=</span> <span style="color:#111">new_points</span><span style="color:#111">,</span>
+        <span style="color:#111">type</span> <span style="color:#f92672">=</span> <span style="color:#d88200">&#34;conf_int&#34;</span>
+        <span style="color:#111">)</span>
+</code></pre></div><ul>
+<li>
+<p><code>object</code> : 学習済みモデルオブジェクト <code>model_fit</code> クラス</p>
+</li>
+<li>
+<p><code>new_data</code> : 予測を適用するデータ</p>
+</li>
+<li>
+<p><code>type</code>: 予測で出力する値のタイプ <code>&quot;numeric&quot;, &quot;class&quot;, &quot;prob&quot;, &quot;conf_int&quot;, &quot;pred_int&quot;, &quot;quantile&quot;, or &quot;raw&quot;</code>、指定しない場合はモデルの <code>mode</code> に合わせて適切に選ばれる</p>
+</li>
+<li>
+<p><code>opts</code> : <code>type = &quot;raw &quot;</code> のときに使用される引数の値を指定したリスト</p>
+</li>
+<li>
+<p><code>...</code> : その他の引数</p>
+<ul>
+<li><code>level</code> : <code>type</code> が <code>&quot;conf_int&quot;</code> または <code>&quot;pred_int&quot;</code> の時、ここで <code>level=0.95</code> のように区間の値を指定する。</li>
+<li><code>std_error</code> : <code>type</code> が　<code>&quot;conf_int&quot;</code> and <code>&quot;pred_int&quot;</code> のときに、誤差の値も出力するか指定する。 <code>TRUE</code> なら出力する。 <code>FALSE</code> なら出力しない。デフォルトは <code>FALSE</code></li>
+</ul>
+<p>add the standard error of fit or prediction (on the scale of the linear predictors) for types of &ldquo;conf_int&rdquo; and &ldquo;pred_int&rdquo;. Default value is FALSE.</p>
+<ul>
+<li><code>quantile</code> : the quantile(s) for quantile regression (not implemented yet)</li>
+<li><code>time</code> : the time(s) for hazard probability estimates (not implemented yet)</li>
+</ul>
+</li>
+</ul>
+<h2 id="ハイパーパラメータチューニング--tune">ハイパーパラメータ・チューニング : tune()</h2>
+<p><a href="https://note.com/tqwst408/n/n2483a75d82a0">https://note.com/tqwst408/n/n2483a75d82a0</a></p>
+<p><a href="https://www.tidyverse.org/blog/2020/12/finetune-0-0-1/">finetune パッケージ</a>を使うと精度が低いと考えられるハイパラの値については繰り返しを削減して計算効率を上げることができる。</p>
+<h3 id="クロスバリデーションのデータの分割">クロスバリデーションのデータの分割</h3>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#75715e"># Partitioning data for CV</span>
+<span style="color:#111">df_cv</span> <span style="color:#f92672">&lt;-</span> <span style="color:#111">rsample</span><span style="color:#f92672">::</span><span style="color:#75af00">vfold_cv</span><span style="color:#111">(</span><span style="color:#111">sampled_train_df</span><span style="color:#111">,</span> <span style="color:#111">v</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">5</span><span style="color:#111">)</span>
+</code></pre></div><h3 id="機械学習アルゴリズムとチューニングしたいハイパーパラメータを指定する">機械学習アルゴリズムとチューニングしたいハイパーパラメータを指定する</h3>
+<p><code>parsnip</code> パッケージでモデルオブジェクトを作成する際に、交差検証で探索したいハイパーパラメータを選ぶ。そのために、探索したいパラメータの値として <code>tune::tune()</code> を指定する。</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#75715e"># モデルオブジェクトの作成と</span>
+<span style="color:#75715e"># チューニングするハイパーパラメータの指定</span>
+<span style="color:#111">rnd_forest_model</span> <span style="color:#f92672">&lt;-</span>
+  <span style="color:#111">parsnip</span><span style="color:#f92672">::</span><span style="color:#75af00">rand_forest</span><span style="color:#111">(</span>
+    <span style="color:#111">mode</span> <span style="color:#f92672">=</span> <span style="color:#d88200">&#34;classification&#34;</span><span style="color:#111">,</span>
+    <span style="color:#111">trees</span> <span style="color:#f92672">=</span> <span style="color:#111">tune</span><span style="color:#f92672">::</span><span style="color:#75af00">tune</span><span style="color:#111">(),</span>
+    <span style="color:#111">min_n</span> <span style="color:#f92672">=</span> <span style="color:#111">tune</span><span style="color:#f92672">::</span><span style="color:#75af00">tune</span><span style="color:#111">(),</span>
+    <span style="color:#111">mtry</span> <span style="color:#f92672">=</span> <span style="color:#111">tune</span><span style="color:#f92672">::</span><span style="color:#75af00">tune</span><span style="color:#111">()</span>
+  <span style="color:#111">)</span> <span style="color:#f92672">%&gt;%</span>
+  <span style="color:#111">parsnip</span><span style="color:#f92672">::</span><span style="color:#75af00">set_engine</span><span style="color:#111">(</span><span style="color:#d88200">&#34;ranger&#34;</span><span style="color:#111">,</span> <span style="color:#111">num.threads</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">10</span><span style="color:#111">,</span> <span style="color:#111">seed</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">42</span><span style="color:#111">)</span>
+</code></pre></div><h3 id="cvの並列化">CVの並列化</h3>
+<p>あるパラメタ値について、CVの各Foldの計算を並列化するために <code>foreach</code> パッケージを使用している。そのためには <code>foreach</code> のバックエンドの設定をする必要がある。</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#75715e"># コア数を調べる</span>
+<span style="color:#111">n.cores</span> <span style="color:#f92672">&lt;-</span> <span style="color:#111">parallel</span><span style="color:#f92672">::</span><span style="color:#75af00">detectCores</span><span style="color:#111">()</span> 
+
+
+<span style="color:#75715e"># クラスタを作成</span>
+<span style="color:#111">my.cluster</span> <span style="color:#f92672">&lt;-</span> <span style="color:#111">parallel</span><span style="color:#f92672">::</span><span style="color:#75af00">makeCluster</span><span style="color:#111">(</span>
+  <span style="color:#111">n.cores</span><span style="color:#111">,</span> <span style="color:#75715e"># 並列数は基本的にFold数と同じにする。Fold数よりも多くても意味がない。</span>
+  <span style="color:#111">type</span> <span style="color:#f92672">=</span> <span style="color:#d88200">&#34;PSOCK&#34;</span> <span style="color:#75715e"># Mac/Linux の場合は &#34;FORK&#34; にするそちらのほうが効率が良い</span>
+  <span style="color:#111">)</span>
+
+<span style="color:#75715e"># 作成したクラスタを確認</span>
+<span style="color:#75af00">print</span><span style="color:#111">(</span><span style="color:#111">my.cluster</span><span style="color:#111">)</span>
+
+<span style="color:#75715e"># 作成したクラスタを foreach に登録する</span>
+<span style="color:#111">doParallel</span><span style="color:#f92672">::</span><span style="color:#75af00">registerDoParallel</span><span style="color:#111">(</span><span style="color:#111">cl</span> <span style="color:#f92672">=</span> <span style="color:#111">my.cluster</span><span style="color:#111">)</span>
+
+<span style="color:#75715e"># 登録されたか確認する</span>
+<span style="color:#111">foreach</span><span style="color:#f92672">::</span><span style="color:#75af00">getDoParRegistered</span><span style="color:#111">()</span>
+
+<span style="color:#75715e"># クラスタを停止するとき</span>
+<span style="color:#111">parallel</span><span style="color:#f92672">::</span><span style="color:#75af00">stopCluster</span><span style="color:#111">(</span><span style="color:#111">my.cluster</span><span style="color:#111">)</span>
+</code></pre></div><h3 id="グリッドサーチ-tunetune_grid">グリッドサーチ: <code>tune::tune_grid()</code></h3>
+<p>探索したいパラメータの範囲を指定した後で、その範囲の中からランダム・規則的に100個の点を抽出する。</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#75715e"># 探索するパラメータの範囲を指定した後で、</span>
+<span style="color:#75715e"># その範囲の中からランダムに100個の点を抽出する</span>
+<span style="color:#111">params_grid_df</span> <span style="color:#f92672">&lt;-</span>
+  <span style="color:#75af00">list</span><span style="color:#111">(</span>
+    <span style="color:#111">min_n</span> <span style="color:#f92672">=</span> <span style="color:#111">dials</span><span style="color:#f92672">::</span><span style="color:#75af00">min_n</span><span style="color:#111">(</span><span style="color:#111">range</span> <span style="color:#f92672">=</span> <span style="color:#75af00">c</span><span style="color:#111">(</span><span style="color:#ae81ff">100</span><span style="color:#111">,</span> <span style="color:#ae81ff">1000</span><span style="color:#111">)),</span>
+    <span style="color:#111">mtry</span>  <span style="color:#f92672">=</span> <span style="color:#111">dials</span><span style="color:#f92672">::</span><span style="color:#75af00">mtry</span><span style="color:#111">(</span><span style="color:#111">range</span> <span style="color:#f92672">=</span> <span style="color:#75af00">c</span><span style="color:#111">(</span><span style="color:#ae81ff">3</span><span style="color:#111">,</span> <span style="color:#ae81ff">5</span><span style="color:#111">)),</span>
+    <span style="color:#111">trees</span> <span style="color:#f92672">=</span> <span style="color:#111">dials</span><span style="color:#f92672">::</span><span style="color:#75af00">trees</span><span style="color:#111">(</span><span style="color:#111">range</span> <span style="color:#f92672">=</span> <span style="color:#75af00">c</span><span style="color:#111">(</span><span style="color:#ae81ff">100</span><span style="color:#111">,</span> <span style="color:#ae81ff">1000</span><span style="color:#111">))</span>
+  <span style="color:#111">)</span> <span style="color:#f92672">%&gt;%</span>
+  <span style="color:#111">tune</span><span style="color:#f92672">::</span><span style="color:#75af00">parameters</span><span style="color:#111">()</span> <span style="color:#f92672">%&gt;%</span> 
+  <span style="color:#75715e"># ランダムグリッドの場合</span>
+  <span style="color:#111">dials</span><span style="color:#f92672">::</span><span style="color:#75af00">grid_random</span><span style="color:#111">(</span><span style="color:#111">size</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">100</span><span style="color:#111">)</span> 
+  <span style="color:#75715e"># レギュラーグリッドの場合</span>
+  <span style="color:#75715e">#dials::grid_regular(size = 100) </span>
+
+
+<span style="color:#75715e"># クロスバリデーションの実行</span>
+<span style="color:#111">cv_result_df</span> <span style="color:#f92672">&lt;-</span>
+  <span style="color:#111">tune</span><span style="color:#f92672">::</span><span style="color:#75af00">tune_grid</span><span style="color:#111">(</span>
+    <span style="color:#111">object</span> <span style="color:#f92672">=</span> <span style="color:#111">rnd_forest_model</span><span style="color:#111">,</span>
+    <span style="color:#111">preprocessor</span> <span style="color:#f92672">=</span> <span style="color:#111">y</span> <span style="color:#f92672">~</span> <span style="color:#111">.,</span>
+    <span style="color:#111">resamples</span> <span style="color:#f92672">=</span> <span style="color:#111">df_cv</span><span style="color:#111">,</span>
+    <span style="color:#111">grid</span> <span style="color:#f92672">=</span> <span style="color:#111">params_grid_df</span><span style="color:#111">,</span>
+    <span style="color:#111">metrics</span> <span style="color:#f92672">=</span> <span style="color:#111">yardstick</span><span style="color:#f92672">::</span><span style="color:#75af00">metric_set</span><span style="color:#111">(</span><span style="color:#111">yardstick</span><span style="color:#f92672">::</span><span style="color:#111">pr_auc</span><span style="color:#111">,</span> <span style="color:#111">yardstick</span><span style="color:#f92672">::</span><span style="color:#111">roc_auc</span><span style="color:#111">),</span>
+    <span style="color:#111">control</span> <span style="color:#f92672">=</span> <span style="color:#111">tune</span><span style="color:#f92672">::</span><span style="color:#75af00">control_grid</span><span style="color:#111">(</span><span style="color:#111">verbose</span> <span style="color:#f92672">=</span> <span style="color:#00a8c8">TRUE</span><span style="color:#111">)</span>
+  <span style="color:#111">)</span>
+
+</code></pre></div><ul>
+<li><code>object</code> : <code>parsnip</code> パッケージで作成したモデルオブジェクト、あるいは 内部でモデルを保持した <code>workflows::workflow()</code> で作成したワークフローオブジェクト</li>
+<li><code>preprocessor</code> : モデルフォーミュラ、あるいは、<code>recipes::recipe()</code> で作成したレシピオブジェクト</li>
+<li><code>resamples</code> : <code>rset</code> オブジェクト、<code>rsample::vfold_cv()</code> の出力結果</li>
+<li><code>param_info</code> : 探索したいハイパーパラメータの値の範囲、<code>dials::parameters()</code> オブジェクト、あるいは <code>NULL</code></li>
+<li><code>grid</code> : 1. <code>param_info=NULL</code>の時、探索したい具体的なパラメータの値が記録されたデータフレーム（カラム名はハイパーパラメータ名と一致する）、 2. 正の整数値、 <code>param_info</code> に値が渡されたとき （<code>param_info</code> の範囲から <code>grid</code> で指定された数のハイパーパラメータ点が探索される）</li>
+<li><code>metrics</code> : 計算したい精度指標を  <code>yardstick::metric_set()</code> を使って指定する。 <code>NULL</code> なら自動で選ばれる</li>
+<li><code>control</code> : チューニングをいじるために使われるオブジェクト。<code>control = tune::control_grid(verbose = TRUE)</code> でCVの経過を出力する（<code>Sys.setlocale(locale=&quot;English&quot;)</code> をセットしないと一部文字化けする）。</li>
+</ul>
+<h4 id="ベイジアン最適化--tunetune_bayes">ベイジアン最適化 : <code>tune::tune_bayes()</code></h4>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#75715e"># 探索するパラメータの範囲を指定する</span>
+<span style="color:#75715e"># その範囲の中からランダムに100個の点する</span>
+<span style="color:#111">params_grid_df</span> <span style="color:#f92672">&lt;-</span>
+  <span style="color:#75af00">list</span><span style="color:#111">(</span>
+    <span style="color:#111">min_n</span> <span style="color:#f92672">=</span> <span style="color:#111">dials</span><span style="color:#f92672">::</span><span style="color:#75af00">min_n</span><span style="color:#111">(</span><span style="color:#111">range</span> <span style="color:#f92672">=</span> <span style="color:#75af00">c</span><span style="color:#111">(</span><span style="color:#ae81ff">100</span><span style="color:#111">,</span> <span style="color:#ae81ff">1000</span><span style="color:#111">)),</span>
+    <span style="color:#111">mtry</span>  <span style="color:#f92672">=</span> <span style="color:#111">dials</span><span style="color:#f92672">::</span><span style="color:#75af00">mtry</span><span style="color:#111">(</span><span style="color:#111">range</span> <span style="color:#f92672">=</span> <span style="color:#75af00">c</span><span style="color:#111">(</span><span style="color:#ae81ff">3</span><span style="color:#111">,</span> <span style="color:#ae81ff">5</span><span style="color:#111">)),</span>
+    <span style="color:#111">trees</span> <span style="color:#f92672">=</span> <span style="color:#111">dials</span><span style="color:#f92672">::</span><span style="color:#75af00">trees</span><span style="color:#111">(</span><span style="color:#111">range</span> <span style="color:#f92672">=</span> <span style="color:#75af00">c</span><span style="color:#111">(</span><span style="color:#ae81ff">100</span><span style="color:#111">,</span> <span style="color:#ae81ff">1000</span><span style="color:#111">))</span>
+  <span style="color:#111">)</span> <span style="color:#f92672">%&gt;%</span>
+  <span style="color:#111">tune</span><span style="color:#f92672">::</span><span style="color:#75af00">parameters</span><span style="color:#111">()</span> 
+
+
+<span style="color:#75715e"># クロスバリデーションの実行</span>
+<span style="color:#111">cv_result_df</span> <span style="color:#f92672">&lt;-</span>
+  <span style="color:#111">tune</span><span style="color:#f92672">::</span><span style="color:#75af00">tune_grid</span><span style="color:#111">(</span>
+    <span style="color:#111">object</span> <span style="color:#f92672">=</span> <span style="color:#111">rnd_forest_model</span><span style="color:#111">,</span>
+    <span style="color:#111">preprocessor</span> <span style="color:#f92672">=</span> <span style="color:#111">y</span> <span style="color:#f92672">~</span> <span style="color:#111">.,</span>
+    <span style="color:#111">resamples</span> <span style="color:#f92672">=</span> <span style="color:#111">df_cv</span><span style="color:#111">,</span>
+    <span style="color:#111">grid</span> <span style="color:#f92672">=</span> <span style="color:#111">params_grid_df</span><span style="color:#111">,</span>
+    <span style="color:#111">metrics</span> <span style="color:#f92672">=</span> <span style="color:#111">yardstick</span><span style="color:#f92672">::</span><span style="color:#75af00">metric_set</span><span style="color:#111">(</span><span style="color:#111">yardstick</span><span style="color:#f92672">::</span><span style="color:#111">pr_auc</span><span style="color:#111">,</span> <span style="color:#111">yardstick</span><span style="color:#f92672">::</span><span style="color:#111">roc_auc</span><span style="color:#111">),</span>
+    <span style="color:#111">control</span> <span style="color:#f92672">=</span> <span style="color:#111">tune</span><span style="color:#f92672">::</span><span style="color:#75af00">control_grid</span><span style="color:#111">(</span><span style="color:#111">verbose</span> <span style="color:#f92672">=</span> <span style="color:#00a8c8">TRUE</span><span style="color:#111">)</span>
+  <span style="color:#111">)</span>
+
+</code></pre></div><div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#75af00">tune_bayes</span><span style="color:#111">(</span>
+  <span style="color:#111">object</span><span style="color:#111">,</span>
+  <span style="color:#00a8c8">...</span><span style="color:#111">,</span>
+  <span style="color:#111">preprocessor</span><span style="color:#111">,</span>
+  <span style="color:#111">resamples</span><span style="color:#111">,</span>
+
+  <span style="color:#111">iter</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">10</span><span style="color:#111">,</span>
+  <span style="color:#111">param_info</span> <span style="color:#f92672">=</span> <span style="color:#00a8c8">NULL</span><span style="color:#111">,</span>
+  <span style="color:#111">metrics</span> <span style="color:#f92672">=</span> <span style="color:#00a8c8">NULL</span><span style="color:#111">,</span>
+  <span style="color:#111">objective</span> <span style="color:#f92672">=</span> <span style="color:#75af00">exp_improve</span><span style="color:#111">(),</span>
+  <span style="color:#111">initial</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">5</span><span style="color:#111">,</span>
+  <span style="color:#111">control</span> <span style="color:#f92672">=</span> <span style="color:#75af00">control_bayes</span><span style="color:#111">()</span>
+<span style="color:#111">)</span>
+</code></pre></div><ul>
+<li><code>object</code> : <code>parsnip</code> で作成したモデルオブジェクトか workflows::workflow().</li>
+<li><code>...</code> : オプション、内部で使われる <code>GPfit::GP_fit()</code> に渡される引数 (主には <code>corr</code> 引数)</li>
+<li><code>preprocessor</code> : モデルフォーミュラか <code>recipes::recipe()</code> で作成したレシピ</li>
+<li><code>resamples</code>	: <code>rset()</code> オブジェクト <code>rsample::vfold_cv()</code> の返値とか</li>
+<li><code>iter</code> : 探索の繰り返しの最大回数</li>
+<li><code>param_info</code> : 探索したいパラメタの範囲を指定する <code>dials::parameters()</code> オブジェクト。 <code>NULL</code> の場合は他の引数に基づいてパラメターセットが生成される。</li>
+<li><code>metrics</code> : 精度評価指標 <code>yardstick::metric_set()</code> オブジェクト。複数の指標を与えた場合には最初の指標が最適化される。</li>
+<li><code>objective</code>	: どのメトリックを最適化すべきかを示す文字列、または 獲得関数(<code>acquisition function</code>)オブジェクト（これなら複数の精度指標を組み合わせた最適化ができる？？）。</li>
+<li><code>initial</code> : 初期値（<code>tune_grid()</code>の結果と同様の形式、というかユーザーが事前計算した<code>tune_grid()</code>の結果を <code>tune_bayes()</code> に渡す）。あるいは正の整数（この場合は内部で自動で<code>tune_grid()</code>をしてから計算する）。最初に渡す結果の数はパラメタの数よりも多いほうが良い。</li>
+<li><code>control</code> : <code>control_bayes()</code> で作成した control オブジェクト</li>
+</ul>
+<h4 id="tunefit_resamples"><code>tune::fit_resamples()</code></h4>
+<p>CVのなかの1つの計算は <code>tune::fit_resamples()</code> が使われている？？</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#75715e">## S3 method for class &#39;model_spec&#39;</span>
+<span style="color:#75af00">fit_resamples</span><span style="color:#111">(</span>
+  <span style="color:#111">object</span><span style="color:#111">,</span>
+  <span style="color:#111">preprocessor</span><span style="color:#111">,</span>
+  <span style="color:#111">resamples</span><span style="color:#111">,</span>
+  <span style="color:#00a8c8">...</span><span style="color:#111">,</span>
+  <span style="color:#111">metrics</span> <span style="color:#f92672">=</span> <span style="color:#00a8c8">NULL</span><span style="color:#111">,</span>
+  <span style="color:#111">control</span> <span style="color:#f92672">=</span> <span style="color:#75af00">control_resamples</span><span style="color:#111">()</span>
+<span style="color:#111">)</span>
+
+<span style="color:#75715e">## S3 method for class &#39;workflow&#39;</span>
+<span style="color:#75af00">fit_resamples</span><span style="color:#111">(</span>
+  <span style="color:#111">object</span><span style="color:#111">,</span>
+  <span style="color:#111">resamples</span><span style="color:#111">,</span>
+  <span style="color:#00a8c8">...</span><span style="color:#111">,</span>
+  <span style="color:#111">metrics</span> <span style="color:#f92672">=</span> <span style="color:#00a8c8">NULL</span><span style="color:#111">,</span>
+  <span style="color:#111">control</span> <span style="color:#f92672">=</span> <span style="color:#75af00">control_resamples</span><span style="color:#111">()</span>
+<span style="color:#111">)</span>
+</code></pre></div><h3 id="クロスバリデーションの結果の確認">クロスバリデーションの結果の確認</h3>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#111">tune</span><span style="color:#f92672">::</span><span style="color:#75af00">collect_metrics</span><span style="color:#111">(</span><span style="color:#111">cv_result_df</span><span style="color:#111">)</span> <span style="color:#f92672">%&gt;%</span> 
+  <span style="color:#75af00">filter</span><span style="color:#111">(</span><span style="color:#111">.metric</span> <span style="color:#f92672">==</span> <span style="color:#d88200">&#34;pr_auc&#34;</span><span style="color:#111">)</span> <span style="color:#f92672">%&gt;%</span> 
+  <span style="color:#75af00">arrange</span><span style="color:#111">(</span><span style="color:#75af00">desc</span><span style="color:#111">(</span><span style="color:#111">mean</span><span style="color:#111">))</span>
+
+</code></pre></div><p>ベストのパラメターで再学習</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#111">best_param</span>  <span style="color:#f92672">&lt;-</span>
+  <span style="color:#111">cv_result_df</span> <span style="color:#f92672">%&gt;%</span>
+  <span style="color:#75af00">select_best</span><span style="color:#111">(</span><span style="color:#111">metric</span> <span style="color:#f92672">=</span> <span style="color:#d88200">&#34;pr_auc&#34;</span><span style="color:#111">)</span> <span style="color:#f92672">%&gt;%</span>
+  <span style="color:#75af00">select</span><span style="color:#111">(</span><span style="color:#ae81ff">-.</span><span style="color:#111">config</span><span style="color:#111">)</span>
+
+<span style="color:#111">model_best</span>  <span style="color:#f92672">&lt;-</span>  <span style="color:#75af00">update</span><span style="color:#111">(</span><span style="color:#111">rnd_forest_model</span><span style="color:#111">,</span> <span style="color:#111">best_param</span><span style="color:#111">)</span>
+
+
+<span style="color:#111">fitted_model</span> <span style="color:#f92672">&lt;-</span> <span style="color:#75af00">fit</span><span style="color:#111">(</span><span style="color:#111">model_best</span><span style="color:#111">,</span>
+                    <span style="color:#111">formula</span> <span style="color:#f92672">=</span> <span style="color:#111">flag_detected_by_viirs</span> <span style="color:#f92672">~</span> <span style="color:#111">.,</span>
+                    <span style="color:#111">data</span> <span style="color:#f92672">=</span> <span style="color:#111">sampled_train_df</span><span style="color:#111">)</span>
+
+</code></pre></div><h2 id="精度検証--yardstick">精度検証 : yardstick</h2>
+<ul>
+<li><code>yardstick::roc_auc()</code></li>
+<li><code>yardstick::pr_auc()</code></li>
+<li><code>yardstick::roc_curve()</code></li>
+<li><code>yardstick::pr_curve()</code></li>
+<li><code>yardstick::gain_curve()</code></li>
+<li><code>yardstick::lift_curve()</code></li>
+</ul>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+  <div><a class="flex align-center" href="https://github.com/teuder/notebook/commit/5b1ab7acd37e5d4e91045103498fb0aeb6cfda0c" title='最終更新者 Masaki Tsuda | 2021-08-26' target="_blank" rel="noopener">
+      <img src="/notebook/svg/calendar.svg" class="book-icon" alt="Calendar" />
+      <span>2021-08-26</span>
+    </a>
+  </div>
+
+
+
+  <div>
+    <a class="flex align-center" href="https://github.com/teuder/notebook/edit/master/content/content/R/tidymodels.md" target="_blank" rel="noopener">
+      <img src="/notebook/svg/edit.svg" class="book-icon" alt="Edit" />
+      <span>このページを編集する</span>
+    </a>
+  </div>
+
+
+</div>
+
+
+
+  <script>(function(){function select(element){const selection=window.getSelection();const range=document.createRange();range.selectNodeContents(element);selection.removeAllRanges();selection.addRange(range);}
+document.querySelectorAll("pre code").forEach(code=>{code.addEventListener("click",function(event){select(code.parentElement);if(navigator.clipboard){navigator.clipboard.writeText(code.parentElement.textContent);}});});})();</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#データの分割--rsample-パッケージ">データの分割 : rsample パッケージ</a>
+      <ul>
+        <li><a href="#traintest-分割--initial_split">Train/Test 分割 : initial_split()</a></li>
+        <li><a href="#交差検証のための分割--vfold_cv">交差検証のための分割 : vfold_cv()</a></li>
+      </ul>
+    </li>
+    <li><a href="#前処理--recipes-パッケージ">前処理 : recipes パッケージ</a>
+      <ul>
+        <li><a href="#レシピオブジェクトの作成--recipe">レシピオブジェクトの作成 : recipe()</a></li>
+        <li><a href="#各前処理ステップの定義--step_">各前処理ステップの定義 : step_*()</a></li>
+        <li><a href="#prep-パラメータを持つステップの訓練更新">prep() パラメータを持つステップの訓練・更新</a></li>
+        <li><a href="#レシピを新しいデータに適用する-bake">レシピを新しいデータに適用する bake()</a></li>
+      </ul>
+    </li>
+    <li><a href="#モデリング--parsnip-パッケージ">モデリング : parsnip パッケージ</a>
+      <ul>
+        <li><a href="#モデルオブジェクトの作成">モデルオブジェクトの作成</a></li>
+        <li><a href="#モデル学習">モデル学習</a></li>
+        <li><a href="#予測--predict">予測 : predict</a></li>
+      </ul>
+    </li>
+    <li><a href="#ハイパーパラメータチューニング--tune">ハイパーパラメータ・チューニング : tune()</a>
+      <ul>
+        <li><a href="#クロスバリデーションのデータの分割">クロスバリデーションのデータの分割</a></li>
+        <li><a href="#機械学習アルゴリズムとチューニングしたいハイパーパラメータを指定する">機械学習アルゴリズムとチューニングしたいハイパーパラメータを指定する</a></li>
+        <li><a href="#cvの並列化">CVの並列化</a></li>
+        <li><a href="#グリッドサーチ-tunetune_grid">グリッドサーチ: <code>tune::tune_grid()</code></a></li>
+        <li><a href="#クロスバリデーションの結果の確認">クロスバリデーションの結果の確認</a></li>
+      </ul>
+    </li>
+    <li><a href="#精度検証--yardstick">精度検証 : yardstick</a></li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,1246 @@
+<!DOCTYPE html>
+<html lang="ja-JP" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="DBI DBIパッケージはRからデータベース（DB）とやりとりするためのインターフェースを提供している。これにより、ドライバーを切り替えるだけで、">
+<meta name="theme-color" content="#FFFFFF">
+<meta name="color-scheme" content="light dark"><meta property="og:title" content="DBI" />
+<meta property="og:description" content="DBI DBIパッケージはRからデータベース（DB）とやりとりするためのインターフェースを提供している。これにより、ドライバーを切り替えるだけで、" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://teuder.github.io/notebook/r/dbi/" />
+<meta property="article:published_time" content="2019-09-04T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-04-29T14:16:38+09:00" />
+<title>DBI | notebook</title>
+<link rel="manifest" href="/notebook/manifest.json">
+<link rel="icon" href="/notebook/favicon.png" type="image/x-icon">
+<link rel="stylesheet" href="/notebook/book.min.da110f27d6a4d632dc8e162876b7216c5c1f82164fbdac7ff33021633767f034.css" integrity="sha256-2hEPJ9ak1jLcjhYodrchbFwfghZPvax/8zAhYzdn8DQ=" crossorigin="anonymous">
+  <script defer src="/notebook/flexsearch.min.js"></script>
+  <script defer src="/notebook/ja.search.min.a18513a271acced0d30f7431a9aaa27cc899947bc066ce44615e70bbd28aef7f.js" integrity="sha256-oYUTonGsztDTD3QxqaqifMiZlHvAZs5EYV5wu9KK738=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/notebook/"><span>notebook</span>
+  </a>
+</h2>
+
+
+<div class="book-search">
+  <input type="text" id="book-search-input" placeholder="検索" aria-label="検索" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/docs/" class="">About</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/python/" class="">Python</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/python/bigquery/" class="">BigQuery</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/python/environment/" class="">environment</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/python/jupyter/" class="">jupyter</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/python/pandas/" class="">Pandas</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/python/vscode/" class="">Python in VScode</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/python/anaconda/" class="">anaconda</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/r/" class="">R</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/r/leaflet/" class="">leaflet</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/r/rhdf5/" class="">rhdf5</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/r/ggplot2/" class="">ggplot2</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/r/raster/" class="">raster</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/r/sf/" class="">sf</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/r/bigrquery/" class="">bigrquery</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/r/dplyr/" class="">dplyr</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/r/future/" class="">future</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/r/gganimate/" class="">gganimate</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/r/lubridate/" class="">lubridate</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/r/purrr/" class="">purrr</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/r/package_development/" class="">R Package Development</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/r/r_python/" class="">R_Python</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/r/reticulate/" class="">reticulate</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/r/rmarkdown/" class="">Rmarkdown</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/r/rpart/" class="">rpart</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/r/rstudio/" class="">RStudio</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/r/rvest/" class="">rvest</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/r/stars/" class="">stars</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/r/stringr/" class="">stringr</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/r/tidymodels/" class="">tidymodels</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/r/tidyr/" class="">tidyr</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/r/wk/" class="">wk</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/r/dbi/" class=" active">DBI</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/datascience/" class="">Data Science</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/datascience/bayesian_statistics/" class="">Bayesian Staistics</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/gis/" class="">GIS &amp; Remote Sensing</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/gis/bigquerygis/" class="">BigQuery GIS</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/gis/sar/" class="">SAR</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/gis/terminology/" class="">用語</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/gis/viirs/" class="">VIIRS</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/gis/r_package/" class="">GIS関連Rパッケージ</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/mac/" class="">Mac</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/mac/homebrew/" class="">homebrew</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/maritime/" class="">Maritime</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/maritime/glossary/" class="">glossary</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/gcp/" class="">Google Cloud Platform</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/gcp/bigquery_gis/" class="">BigQuery GIS</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/gcp/bigquery_bq/" class="">BigQuery: bqコマンド</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/gcp/bigquery/" class="">BigQuery: general</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/gcp/bigquery_sql/" class="">BigQuery: SQL</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/miscellaneous/" class="">miscellaneous</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/miscellaneous/c_plus_plus/" class="">C&#43;&#43;</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/miscellaneous/english/" class="">english</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/miscellaneous/jinjia2/" class="">jinja</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/miscellaneous/jupyter/" class="">jupyter</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/miscellaneous/pc/" class="">PC</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/miscellaneous/tmux/" class="">tmux</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/miscellaneous/vscode/" class="">vscode</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/miscellaneous/windows/" class="">Windows</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/miscellaneous/wsl/" class="">wsl</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/miscellaneous/hugo/" class="">Hugo</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/miscellaneous/git/" class="">git</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var menu=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(event){localStorage.setItem("menu.scrollTop",menu.scrollTop);});menu.scrollTop=localStorage.getItem("menu.scrollTop");})();</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/notebook/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>DBI</strong>
+
+  <label for="toc-control">
+    
+    <img src="/notebook/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#オブジェクト">オブジェクト</a></li>
+    <li><a href="#ドライバコネクションクエリ結果の情報dbgetinfo">ドライバ・コネクション・クエリ結果の情報：dbGetInfo()</a></li>
+    <li><a href="#接続したいdbへのドライバーをを用意する">接続したいDBへのドライバーをを用意する</a></li>
+    <li><a href="#dbサーバーへ接続するdbconnect">DBサーバーへ接続する：dbConnect</a></li>
+    <li><a href="#コネクションの情報を表示する">コネクションの情報を表示する</a></li>
+    <li><a href="#コネクションを解除する">コネクションを解除する</a></li>
+    <li><a href="#データフレームの内容からテーブルを作成するdbwritetable">データフレームの内容からテーブルを作成する：dbWriteTable</a></li>
+    <li><a href="#テーブルのリストdblisttables">テーブルのリスト：dbListTables</a></li>
+    <li><a href="#テーブルのカラム名dblistfields">テーブルのカラム名：dbListFields</a></li>
+    <li><a href="#dbのデータを取得する">DBのデータを取得する</a>
+      <ul>
+        <li><a href="#テーブルを指定して読み込む--dbreadtable">テーブルを指定して読み込む : dbReadTable</a></li>
+        <li><a href="#クエリの結果を読み込むdbgetquery">クエリの結果を読み込む：dbGetQuery</a></li>
+        <li><a href="#クエリの送信とデータの取得を分離するdbsendquery--fetch">クエリの送信とデータの取得を分離する：dbSendQuery &amp; fetch</a></li>
+      </ul>
+    </li>
+    <li><a href="#ファイルからクエリを読み込んで実行する">ファイルからクエリを読み込んで実行する</a></li>
+    <li><a href="#クエリ結果のリソースを開放するdbclearresult">クエリ結果のリソースを開放する：dbClearResult</a></li>
+    <li><a href="#テーブルを削除するdbremovetable">テーブルを削除する：dbRemoveTable</a></li>
+    <li><a href="#カラム情報を表示するdbcolumninfores-">カラム情報を表示する：dbColumnInfo(res, &hellip;)</a></li>
+    <li><a href="#結果の元クエリを表示dbgetstatement">結果の元クエリを表示：dbGetStatement</a></li>
+    <li><a href="#ローカルにあるクエリ結果のレコード数dbgetrowcountrs">ローカルにあるクエリ結果のレコード数：dbGetRowCount(rs)</a></li>
+    <li><a href="#テーブルの存在を確認dbexiststable">テーブルの存在を確認：dbExistsTable</a></li>
+    <li><a href="#クエリ結果オブジェクトのリストdblistresults">クエリ結果オブジェクトのリスト：dbListResults</a></li>
+    <li><a href="#現在開いているコネクションオブジェクトのリストdblistconnections">現在開いているコネクション・オブジェクトのリスト：dbListConnections</a></li>
+    <li><a href="#オブジェクトの型を調べるdbdatatype">オブジェクトの型を調べる：dbDataType</a></li>
+    <li><a href="#dbのでの例外エラー情報を取得するdbgetexception">DBのでの例外（エラー情報）を取得する：dbGetException</a></li>
+    <li><a href="#データ変更クエリにより影響を受ける行数dbgetrowsaffected">データ変更クエリにより影響を受ける行数：dbGetRowsAffected</a></li>
+    <li><a href="#クエリ結果に対する処理が完了しているかdbhascompleted">クエリ結果に対する処理が完了しているか？：dbHasCompleted</a></li>
+    <li><a href="#dbオブジェクトの状態が正常かチェックするdbisvalid">DBオブジェクトの状態が正常かチェックする：dbIsValid</a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown"><h1 id="dbi">DBI</h1>
+<p>DBIパッケージはRからデータベース（DB）とやりとりするためのインターフェースを提供している。これにより、ドライバーを切り替えるだけで、共通のインターフェースを用いて様々な種類のDBサーバーとやりとりすることができる。</p>
+<p>DBIパッケージはRとデータベース（DB）がやりとりするための基本的な関数を提供している。それぞれの関数の引数などは各DBのドライバーを提供している別のパッケージ（ RPostgreSQL や bigquery など）によって動作が細かく指定できるように拡張されているので、そちらのマニュアルを参照すること。</p>
+<h2 id="オブジェクト">オブジェクト</h2>
+<p>DBIパッケージでは主に下の３種類のオブジェクトが登場する。</p>
+<p><strong>DBIDriver: ドライバー・オブジェクト drv</strong></p>
+<ul>
+<li>dbDriver()</li>
+<li>RSQLite::RSQLite(), RPostgreSQL::RPostgreSQL(), RMySQL::RMySQL(), bigrquery::bigquery() などの関数が返すオブジェクト</li>
+</ul>
+<p><strong>DBIConnection: DBコネクション・オブジェクト con</strong></p>
+<p>dbConnect()が返すオブジェクト</p>
+<p><strong>DBIResult: クエリ結果のオブジェクト res</strong></p>
+<p>dbSendquery()が返すオブジェクト</p>
+<h2 id="ドライバコネクションクエリ結果の情報dbgetinfo">ドライバ・コネクション・クエリ結果の情報：dbGetInfo()</h2>
+<p>dbGetInfo()</p>
+<h2 id="接続したいdbへのドライバーをを用意する">接続したいDBへのドライバーをを用意する</h2>
+<p>DBIパッケージに対応した、各DBへのドライバを、提供するパッケージをインストールする。</p>
+<ul>
+<li>RPostgreSQL</li>
+<li>RMySQL</li>
+<li>RSQLite</li>
+<li>bigquery</li>
+</ul>
+<p>ドライバを用意する。下の２つの方法は等価。</p>
+<pre><code>drv &lt;- PostgreSQL()
+drv &lt;- dbDriver(&quot;PostgreSQL&quot;)
+</code></pre><p>ドライバを閉じる：dbUnloadDriver</p>
+<pre><code>dbUnloadDriver(drv) 
+</code></pre><h2 id="dbサーバーへ接続するdbconnect">DBサーバーへ接続する：dbConnect</h2>
+<p>ドライバーは例えば以下がある。各パッケージをインストールする。</p>
+<ul>
+<li>RSQLite::RSQLite()</li>
+<li>RPostgreSQL::RPostgreSQL()</li>
+<li>RMySQL::RMySQL()</li>
+</ul>
+<p>例）PostgreSQLへの接続</p>
+<pre><code>drv &lt;- PostgreSQL()
+con &lt;- dbConnect(drv, host=&quot;localhost&quot;, user= &quot;edd&quot;, password=&quot;.....&quot;, dbname=&quot;...&quot;)
+</code></pre><p>パスワードをRのソースに直接記述するのはセキュリティ上よろしくない。ファイルに書いておいてそれを読み出すようにする。そうすればRのソースを共有する場合にも安心である。</p>
+<p>例えば &ldquo;.pgpass&rdquo; というファイルにパスワードを保存してきそれを読み出す場合</p>
+<pre><code>password &lt;- scan(&quot;.pgpass&quot;, what=&quot;&quot;)
+</code></pre><p><strong>接続の設定</strong></p>
+<p>PostgreSQL() は接続の設定を変えられる。</p>
+<pre><code>PostgreSQL(max.con = 16, fetch.default.rec = 500, force.reload = FALSE)
+</code></pre><ul>
+<li>max.con：最大コネクション数</li>
+<li>fetch.default.rec：データを取得するときに一度に送信するレコード数。fetch()はこの値を利用する。</li>
+<li>force.reload：クライアントのコードをリロードするか。イミフ</li>
+</ul>
+<h2 id="コネクションの情報を表示する">コネクションの情報を表示する</h2>
+<pre><code>summary(con)
+</code></pre><h2 id="コネクションを解除する">コネクションを解除する</h2>
+<pre><code>dbDisconnect(con)   ## Closes the connection
+</code></pre><h2 id="データフレームの内容からテーブルを作成するdbwritetable">データフレームの内容からテーブルを作成する：dbWriteTable</h2>
+<pre><code>dbWriteTable(
+    con,
+    name = &quot;table_name&quot;, #テーブル名
+    value = df,          # データフレーム
+    overwrite=TRUE,      # テーブルを上書きする
+    append=FALSE,        # 行を追加する
+    row.names=FALSE      # 行番号
+    )
+</code></pre><h2 id="テーブルのリストdblisttables">テーブルのリスト：dbListTables</h2>
+<pre><code>dbListTables(con)
+</code></pre><h2 id="テーブルのカラム名dblistfields">テーブルのカラム名：dbListFields</h2>
+<pre><code>dbListFields(con, &quot;iris&quot;)
+</code></pre><h2 id="dbのデータを取得する">DBのデータを取得する</h2>
+<h3 id="テーブルを指定して読み込む--dbreadtable">テーブルを指定して読み込む : dbReadTable</h3>
+<pre><code>iris1 &lt;- dbReadTable(con, &quot;iris&quot;)
+</code></pre><h3 id="クエリの結果を読み込むdbgetquery">クエリの結果を読み込む：dbGetQuery</h3>
+<pre><code>data &lt;- dbGetQuery(con, &quot;SELECT * FROM iris ORDER BY weighted DESC LIMIT 5&quot;)
+</code></pre><h3 id="クエリの送信とデータの取得を分離するdbsendquery--fetch">クエリの送信とデータの取得を分離する：dbSendQuery &amp; fetch</h3>
+<p>上と同様クエリの結果を取得するが、クエリの送信とデータの取得を分離する。</p>
+<p>クエリを送信する</p>
+<pre><code>rs &lt;- dbSendQuery(con, &quot;SELECT * FROM iris&quot;)
+</code></pre><p>最初の10レコードだけ取得する</p>
+<pre><code>iris3.first10 &lt;- fetch(rs, 10)
+</code></pre><p>残りを全て取得する</p>
+<pre><code>iris3.rest &lt;- fetch(rs, -1)
+</code></pre><p>fetch はカーソルを移動させながらデータを取得する。なので上記の場合には <code>iris3.first10</code> と <code>iris3.rest</code> 合体させると全レコードになる。</p>
+<pre><code>rbind(iris3.first10, iris3.rest)
+</code></pre><p><strong>【重要】ローカルとリモート確保されたリソースを開放する</strong></p>
+<p>dbSendQueryの結果はリモートのリソースを消費するので必要がなくなったら <code>dbClearResult(rs)</code> すること。</p>
+<pre><code>dbClearResult(rs)
+</code></pre><h2 id="ファイルからクエリを読み込んで実行する">ファイルからクエリを読み込んで実行する</h2>
+<pre><code class="language-{r}" data-lang="{r}">fileName&lt;-&quot;test.sql&quot;
+q&lt;-readChar(fileName, file.info(fileName)$size)
+res &lt;- dbSendQuery(con, q)
+</code></pre><h2 id="クエリ結果のリソースを開放するdbclearresult">クエリ結果のリソースを開放する：dbClearResult</h2>
+<p>前のクエリの結果を全て取得していないうちに、同じコネクションで、次のクエリを実行しようとしてもできない。</p>
+<pre><code class="language-{r}" data-lang="{r}">rs &lt;- dbSendQuery(con, &quot;SELECT * FROM iris&quot;) #前のクエリ
+rs &lt;- dbSendQuery(con, &quot;SELECT * FROM hoge&quot;) #次のクエリ（エラー）
+</code></pre><p>実行する場合には、前のクエリの結果をクリアする必要がある。</p>
+<pre><code class="language-{r}" data-lang="{r}">dbClearResult(con, rs) 
+rs &lt;- dbSendQuery(con, &quot;SELECT * FROM hoge&quot;) #OK
+</code></pre><p><code>dbSendQuery()</code> するとサーバーでクエリが実行され、サーバー上に結果が保存されるらしい、そのままにしておくとメモリなどのリソースを消費するので、必要なくなった結果は適宜開放する。</p>
+<h2 id="テーブルを削除するdbremovetable">テーブルを削除する：dbRemoveTable</h2>
+<pre><code>dbRemoveTable(conn,&quot;table1&quot;)
+</code></pre><h2 id="カラム情報を表示するdbcolumninfores-">カラム情報を表示する：dbColumnInfo(res, &hellip;)</h2>
+<pre><code>dbColumnInfo(rs)
+##           name    Sclass   type len precision scale nullOK
+## 1 Sepal.Length    double FLOAT8   8        -1    -1   TRUE
+## 2  Sepal.Width    double FLOAT8   8        -1    -1   TRUE
+## 3 Petal.Length    double FLOAT8   8        -1    -1   TRUE
+## 4  Petal.Width    double FLOAT8   8        -1    -1   TRUE
+## 5      Species character   TEXT  -1        -1    -1   TRUE
+</code></pre><h2 id="結果の元クエリを表示dbgetstatement">結果の元クエリを表示：dbGetStatement</h2>
+<pre><code>dbGetStatement(rs)
+## [1] &quot;SELECT * FROM iris&quot;
+</code></pre><h2 id="ローカルにあるクエリ結果のレコード数dbgetrowcountrs">ローカルにあるクエリ結果のレコード数：dbGetRowCount(rs)</h2>
+<pre><code>dbGetRowCount(rs)
+## [1] 10
+#   ... just get the first 10 records
+</code></pre><p>結果のうち、ローカルに送られてきたレコード数？</p>
+<h2 id="テーブルの存在を確認dbexiststable">テーブルの存在を確認：dbExistsTable</h2>
+<pre><code>dbExistsTable(con, c(&quot;tmp&quot;,&quot;test_tbl&quot;))
+</code></pre><h2 id="クエリ結果オブジェクトのリストdblistresults">クエリ結果オブジェクトのリスト：dbListResults</h2>
+<p>現在のコネクションでアクティブな DBIResult のリストを返す。</p>
+<pre><code>dbClearResults(dbListResults(con)[[1]])
+</code></pre><h2 id="現在開いているコネクションオブジェクトのリストdblistconnections">現在開いているコネクション・オブジェクトのリスト：dbListConnections</h2>
+<h2 id="オブジェクトの型を調べるdbdatatype">オブジェクトの型を調べる：dbDataType</h2>
+<h2 id="dbのでの例外エラー情報を取得するdbgetexception">DBのでの例外（エラー情報）を取得する：dbGetException</h2>
+<h2 id="データ変更クエリにより影響を受ける行数dbgetrowsaffected">データ変更クエリにより影響を受ける行数：dbGetRowsAffected</h2>
+<h2 id="クエリ結果に対する処理が完了しているかdbhascompleted">クエリ結果に対する処理が完了しているか？：dbHasCompleted</h2>
+<h2 id="dbオブジェクトの状態が正常かチェックするdbisvalid">DBオブジェクトの状態が正常かチェックする：dbIsValid</h2>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+  <div><a class="flex align-center" href="https://github.com/teuder/notebook/commit/d38670e104d7702938d13bfbcfbc8186cd2f5154" title='最終更新者 Masaki Tsuda | 2021-04-29' target="_blank" rel="noopener">
+      <img src="/notebook/svg/calendar.svg" class="book-icon" alt="Calendar" />
+      <span>2021-04-29</span>
+    </a>
+  </div>
+
+
+
+  <div>
+    <a class="flex align-center" href="https://github.com/teuder/notebook/edit/master/content/content/R/DBI.md" target="_blank" rel="noopener">
+      <img src="/notebook/svg/edit.svg" class="book-icon" alt="Edit" />
+      <span>このページを編集する</span>
+    </a>
+  </div>
+
+
+</div>
+
+
+
+  <script>(function(){function select(element){const selection=window.getSelection();const range=document.createRange();range.selectNodeContents(element);selection.removeAllRanges();selection.addRange(range);}
+document.querySelectorAll("pre code").forEach(code=>{code.addEventListener("click",function(event){select(code.parentElement);if(navigator.clipboard){navigator.clipboard.writeText(code.parentElement.textContent);}});});})();</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#オブジェクト">オブジェクト</a></li>
+    <li><a href="#ドライバコネクションクエリ結果の情報dbgetinfo">ドライバ・コネクション・クエリ結果の情報：dbGetInfo()</a></li>
+    <li><a href="#接続したいdbへのドライバーをを用意する">接続したいDBへのドライバーをを用意する</a></li>
+    <li><a href="#dbサーバーへ接続するdbconnect">DBサーバーへ接続する：dbConnect</a></li>
+    <li><a href="#コネクションの情報を表示する">コネクションの情報を表示する</a></li>
+    <li><a href="#コネクションを解除する">コネクションを解除する</a></li>
+    <li><a href="#データフレームの内容からテーブルを作成するdbwritetable">データフレームの内容からテーブルを作成する：dbWriteTable</a></li>
+    <li><a href="#テーブルのリストdblisttables">テーブルのリスト：dbListTables</a></li>
+    <li><a href="#テーブルのカラム名dblistfields">テーブルのカラム名：dbListFields</a></li>
+    <li><a href="#dbのデータを取得する">DBのデータを取得する</a>
+      <ul>
+        <li><a href="#テーブルを指定して読み込む--dbreadtable">テーブルを指定して読み込む : dbReadTable</a></li>
+        <li><a href="#クエリの結果を読み込むdbgetquery">クエリの結果を読み込む：dbGetQuery</a></li>
+        <li><a href="#クエリの送信とデータの取得を分離するdbsendquery--fetch">クエリの送信とデータの取得を分離する：dbSendQuery &amp; fetch</a></li>
+      </ul>
+    </li>
+    <li><a href="#ファイルからクエリを読み込んで実行する">ファイルからクエリを読み込んで実行する</a></li>
+    <li><a href="#クエリ結果のリソースを開放するdbclearresult">クエリ結果のリソースを開放する：dbClearResult</a></li>
+    <li><a href="#テーブルを削除するdbremovetable">テーブルを削除する：dbRemoveTable</a></li>
+    <li><a href="#カラム情報を表示するdbcolumninfores-">カラム情報を表示する：dbColumnInfo(res, &hellip;)</a></li>
+    <li><a href="#結果の元クエリを表示dbgetstatement">結果の元クエリを表示：dbGetStatement</a></li>
+    <li><a href="#ローカルにあるクエリ結果のレコード数dbgetrowcountrs">ローカルにあるクエリ結果のレコード数：dbGetRowCount(rs)</a></li>
+    <li><a href="#テーブルの存在を確認dbexiststable">テーブルの存在を確認：dbExistsTable</a></li>
+    <li><a href="#クエリ結果オブジェクトのリストdblistresults">クエリ結果オブジェクトのリスト：dbListResults</a></li>
+    <li><a href="#現在開いているコネクションオブジェクトのリストdblistconnections">現在開いているコネクション・オブジェクトのリスト：dbListConnections</a></li>
+    <li><a href="#オブジェクトの型を調べるdbdatatype">オブジェクトの型を調べる：dbDataType</a></li>
+    <li><a href="#dbのでの例外エラー情報を取得するdbgetexception">DBのでの例外（エラー情報）を取得する：dbGetException</a></li>
+    <li><a href="#データ変更クエリにより影響を受ける行数dbgetrowsaffected">データ変更クエリにより影響を受ける行数：dbGetRowsAffected</a></li>
+    <li><a href="#クエリ結果に対する処理が完了しているかdbhascompleted">クエリ結果に対する処理が完了しているか？：dbHasCompleted</a></li>
+    <li><a href="#dbオブジェクトの状態が正常かチェックするdbisvalid">DBオブジェクトの状態が正常かチェックする：dbIsValid</a></li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

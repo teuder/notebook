@@ -1,0 +1,1311 @@
+<!DOCTYPE html>
+<html lang="ja-JP" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="BigQuery BigQuery を Python から使う https://cloud.google.com/bigquery/docs/pandas-gbq-migration pandas.read_gbq() 小さいクエリの結果をデータフレームとして受け取るのに便利 ライブラリ pandas_gbq をインストールしておく。 import pandas query = &quot;&quot;&quot; SELECT CONCAT( &#39;https://stackoverflow.com/questions/&#39;, CAST(id as STRING)) as url, view_count">
+<meta name="theme-color" content="#FFFFFF">
+<meta name="color-scheme" content="light dark"><meta property="og:title" content="BigQuery" />
+<meta property="og:description" content="BigQuery BigQuery を Python から使う https://cloud.google.com/bigquery/docs/pandas-gbq-migration pandas.read_gbq() 小さいクエリの結果をデータフレームとして受け取るのに便利 ライブラリ pandas_gbq をインストールしておく。 import pandas query = &quot;&quot;&quot; SELECT CONCAT( &#39;https://stackoverflow.com/questions/&#39;, CAST(id as STRING)) as url, view_count" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://teuder.github.io/notebook/python/bigquery/" />
+<meta property="article:published_time" content="2020-01-17T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-04-29T14:16:38+09:00" />
+<title>BigQuery | notebook</title>
+<link rel="manifest" href="/notebook/manifest.json">
+<link rel="icon" href="/notebook/favicon.png" type="image/x-icon">
+<link rel="stylesheet" href="/notebook/book.min.da110f27d6a4d632dc8e162876b7216c5c1f82164fbdac7ff33021633767f034.css" integrity="sha256-2hEPJ9ak1jLcjhYodrchbFwfghZPvax/8zAhYzdn8DQ=" crossorigin="anonymous">
+  <script defer src="/notebook/flexsearch.min.js"></script>
+  <script defer src="/notebook/ja.search.min.a18513a271acced0d30f7431a9aaa27cc899947bc066ce44615e70bbd28aef7f.js" integrity="sha256-oYUTonGsztDTD3QxqaqifMiZlHvAZs5EYV5wu9KK738=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/notebook/"><span>notebook</span>
+  </a>
+</h2>
+
+
+<div class="book-search">
+  <input type="text" id="book-search-input" placeholder="検索" aria-label="検索" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/docs/" class="">About</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/python/" class="">Python</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/python/bigquery/" class=" active">BigQuery</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/python/environment/" class="">environment</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/python/jupyter/" class="">jupyter</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/python/pandas/" class="">Pandas</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/python/vscode/" class="">Python in VScode</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/python/anaconda/" class="">anaconda</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/r/" class="">R</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/r/leaflet/" class="">leaflet</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/r/rhdf5/" class="">rhdf5</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/r/ggplot2/" class="">ggplot2</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/r/raster/" class="">raster</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/r/sf/" class="">sf</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/r/bigrquery/" class="">bigrquery</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/r/dplyr/" class="">dplyr</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/r/future/" class="">future</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/r/gganimate/" class="">gganimate</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/r/lubridate/" class="">lubridate</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/r/purrr/" class="">purrr</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/r/package_development/" class="">R Package Development</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/r/r_python/" class="">R_Python</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/r/reticulate/" class="">reticulate</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/r/rmarkdown/" class="">Rmarkdown</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/r/rpart/" class="">rpart</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/r/rstudio/" class="">RStudio</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/r/rvest/" class="">rvest</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/r/stars/" class="">stars</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/r/stringr/" class="">stringr</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/r/tidymodels/" class="">tidymodels</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/r/tidyr/" class="">tidyr</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/r/wk/" class="">wk</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/r/dbi/" class="">DBI</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/datascience/" class="">Data Science</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/datascience/bayesian_statistics/" class="">Bayesian Staistics</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/gis/" class="">GIS &amp; Remote Sensing</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/gis/bigquerygis/" class="">BigQuery GIS</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/gis/sar/" class="">SAR</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/gis/terminology/" class="">用語</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/gis/viirs/" class="">VIIRS</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/gis/r_package/" class="">GIS関連Rパッケージ</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/mac/" class="">Mac</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/mac/homebrew/" class="">homebrew</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/maritime/" class="">Maritime</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/maritime/glossary/" class="">glossary</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/gcp/" class="">Google Cloud Platform</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/gcp/bigquery_gis/" class="">BigQuery GIS</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/gcp/bigquery_bq/" class="">BigQuery: bqコマンド</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/gcp/bigquery/" class="">BigQuery: general</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/gcp/bigquery_sql/" class="">BigQuery: SQL</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/miscellaneous/" class="">miscellaneous</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/miscellaneous/c_plus_plus/" class="">C&#43;&#43;</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/miscellaneous/english/" class="">english</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/miscellaneous/jinjia2/" class="">jinja</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/miscellaneous/jupyter/" class="">jupyter</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/miscellaneous/pc/" class="">PC</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/miscellaneous/tmux/" class="">tmux</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/miscellaneous/vscode/" class="">vscode</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/miscellaneous/windows/" class="">Windows</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/miscellaneous/wsl/" class="">wsl</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/miscellaneous/hugo/" class="">Hugo</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notebook/miscellaneous/git/" class="">git</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var menu=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(event){localStorage.setItem("menu.scrollTop",menu.scrollTop);});menu.scrollTop=localStorage.getItem("menu.scrollTop");})();</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/notebook/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>BigQuery</strong>
+
+  <label for="toc-control">
+    
+    <img src="/notebook/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#pandasread_gbq">pandas.read_gbq()</a></li>
+    <li><a href="#googlecloudbigquery">google.cloud.bigquery</a>
+      <ul>
+        <li><a href="#環境変数-google_application_credentials">環境変数 GOOGLE_APPLICATION_CREDENTIALS</a></li>
+      </ul>
+    </li>
+    <li><a href="#データフレームをbigqueryへアップロードする">データフレームをBigQueryへアップロードする</a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown"><h1 id="bigquery">BigQuery</h1>
+<p>BigQuery を Python から使う</p>
+<p><a href="https://cloud.google.com/bigquery/docs/pandas-gbq-migration">https://cloud.google.com/bigquery/docs/pandas-gbq-migration</a></p>
+<h2 id="pandasread_gbq">pandas.read_gbq()</h2>
+<p>小さいクエリの結果をデータフレームとして受け取るのに便利</p>
+<p>ライブラリ <code>pandas_gbq</code> をインストールしておく。</p>
+<pre><code>import pandas
+
+query = &quot;&quot;&quot;
+        SELECT
+          CONCAT(
+            'https://stackoverflow.com/questions/',
+            CAST(id as STRING)) as url,
+          view_count
+        FROM `bigquery-public-data.stackoverflow.posts_questions`
+        WHERE tags like '%google-bigquery%'
+        ORDER BY view_count DESC
+        LIMIT 10&quot;&quot;&quot;
+        
+
+df = pandas.read_gbq(query, project_id='myproject')
+
+
+# 大きいデータをダウンロードするときは use_bqstorage_api=True
+df = pandas.read_gbq(query, project_id='myproject', dialect='standard', use_bqstorage_api=True)
+
+</code></pre><h2 id="googlecloudbigquery">google.cloud.bigquery</h2>
+<h3 id="環境変数-google_application_credentials">環境変数 GOOGLE_APPLICATION_CREDENTIALS</h3>
+<p>事前に環境変数 <code>GOOGLE_APPLICATION_CREDENTIALS</code> にクレデンシャル情報を保存したjsonファイルへのパスを格納しておく。</p>
+<p>クレデンシャル情報を保存したjsonファイルは <code>pandas.read_gbq()</code> を実行したときに以下に保存される。</p>
+<ul>
+<li>Windows
+<ul>
+<li><code>%APPDATA%\pandas_gbq\bigquery_credentials.dat</code></li>
+</ul>
+</li>
+<li>Linux/Mac/Unix
+<ul>
+<li><code>~/.config/pandas_gbq/bigquery_credentials.dat</code></li>
+</ul>
+</li>
+</ul>
+<p>RStudio の retuculate で Python を使うときWindowsで定義した環境変数 <code>GOOGLE_APPLICATION_CREDENTIALS</code> を認識してくれない。そのため retuculate で実行している Python の中で環境変数を定義する。</p>
+<pre><code>import os
+# Set environment variables
+os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = 'C:/Users/tsuda/AppData/Roaming/pandas_gbq/bigquery_credentials.dat'
+</code></pre><pre><code>from google.cloud import bigquery
+
+# Construct a BigQuery client object.
+client = bigquery.Client(project='world-fishing-827')
+
+query_job = client.query(
+    &quot;&quot;&quot;
+    SELECT
+      CONCAT(
+        'https://stackoverflow.com/questions/',
+        CAST(id as STRING)) as url,
+      view_count
+    FROM `bigquery-public-data.stackoverflow.posts_questions`
+    WHERE tags like '%google-bigquery%'
+    ORDER BY view_count DESC
+    LIMIT 10&quot;&quot;&quot;
+)
+
+results = query_job.result()  # Waits for job to complete.
+
+# save as dataframe
+df = client.query(sql).to_dataframe()
+
+# データのサイズが大きい時は create_bqstorage_client=True
+df = client.query(sql).to_dataframe(create_bqstorage_client=True)
+</code></pre><h2 id="データフレームをbigqueryへアップロードする">データフレームをBigQueryへアップロードする</h2>
+<p>pandas-gbq</p>
+<p>データフレームをCSVに変換して送信する。ネスとしたデータには対応しない</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#111">table_id</span> <span style="color:#f92672">=</span> <span style="color:#d88200">&#39;my_dataset.new_table&#39;</span>
+
+<span style="color:#111">df</span><span style="color:#f92672">.</span><span style="color:#111">to_gbq</span><span style="color:#111">(</span><span style="color:#111">table_id</span><span style="color:#111">)</span>
+</code></pre></div><p>google-cloud-bigquery</p>
+<p>pyarrow ライブラリに依存している。データフレームをparquetに変換して送信する。ネストしたデータにも対応。</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">
+<span style="color:#f92672">from</span> <span style="color:#111">google.cloud</span> <span style="color:#f92672">import</span> <span style="color:#111">bigquery</span>
+<span style="color:#f92672">import</span> <span style="color:#111">pandas</span>
+
+<span style="color:#111">df</span> <span style="color:#f92672">=</span> <span style="color:#111">pandas</span><span style="color:#f92672">.</span><span style="color:#111">DataFrame</span><span style="color:#111">(</span>
+    <span style="color:#111">{</span>
+        <span style="color:#d88200">&#39;my_string&#39;</span><span style="color:#111">:</span> <span style="color:#111">[</span><span style="color:#d88200">&#39;a&#39;</span><span style="color:#111">,</span> <span style="color:#d88200">&#39;b&#39;</span><span style="color:#111">,</span> <span style="color:#d88200">&#39;c&#39;</span><span style="color:#111">],</span>
+        <span style="color:#d88200">&#39;my_int64&#39;</span><span style="color:#111">:</span> <span style="color:#111">[</span><span style="color:#ae81ff">1</span><span style="color:#111">,</span> <span style="color:#ae81ff">2</span><span style="color:#111">,</span> <span style="color:#ae81ff">3</span><span style="color:#111">],</span>
+        <span style="color:#d88200">&#39;my_float64&#39;</span><span style="color:#111">:</span> <span style="color:#111">[</span><span style="color:#ae81ff">4.0</span><span style="color:#111">,</span> <span style="color:#ae81ff">5.0</span><span style="color:#111">,</span> <span style="color:#ae81ff">6.0</span><span style="color:#111">],</span>
+        <span style="color:#d88200">&#39;my_timestamp&#39;</span><span style="color:#111">:</span> <span style="color:#111">[</span>
+            <span style="color:#111">pandas</span><span style="color:#f92672">.</span><span style="color:#111">Timestamp</span><span style="color:#111">(</span><span style="color:#d88200">&#34;1998-09-04T16:03:14&#34;</span><span style="color:#111">),</span>
+            <span style="color:#111">pandas</span><span style="color:#f92672">.</span><span style="color:#111">Timestamp</span><span style="color:#111">(</span><span style="color:#d88200">&#34;2010-09-13T12:03:45&#34;</span><span style="color:#111">),</span>
+            <span style="color:#111">pandas</span><span style="color:#f92672">.</span><span style="color:#111">Timestamp</span><span style="color:#111">(</span><span style="color:#d88200">&#34;2015-10-02T16:00:00&#34;</span><span style="color:#111">)</span>
+        <span style="color:#111">],</span>
+    <span style="color:#111">}</span>
+<span style="color:#111">)</span>
+<span style="color:#111">client</span> <span style="color:#f92672">=</span> <span style="color:#111">bigquery</span><span style="color:#f92672">.</span><span style="color:#111">Client</span><span style="color:#111">()</span>
+<span style="color:#111">table_id</span> <span style="color:#f92672">=</span> <span style="color:#d88200">&#39;my_dataset.new_table&#39;</span>
+<span style="color:#75715e"># Since string columns use the &#34;object&#34; dtype, pass in a (partial) schema</span>
+<span style="color:#75715e"># to ensure the correct BigQuery data type.</span>
+<span style="color:#75715e"># 部分的にカラムの値の型を指定している</span>
+<span style="color:#111">job_config</span> <span style="color:#f92672">=</span> <span style="color:#111">bigquery</span><span style="color:#f92672">.</span><span style="color:#111">LoadJobConfig</span><span style="color:#111">(</span><span style="color:#111">schema</span><span style="color:#f92672">=</span><span style="color:#111">[</span>
+    <span style="color:#111">bigquery</span><span style="color:#f92672">.</span><span style="color:#111">SchemaField</span><span style="color:#111">(</span><span style="color:#d88200">&#34;my_string&#34;</span><span style="color:#111">,</span> <span style="color:#d88200">&#34;STRING&#34;</span><span style="color:#111">),</span>
+<span style="color:#111">])</span>
+
+<span style="color:#75715e"># アップロードジョブを定義</span>
+<span style="color:#111">job</span> <span style="color:#f92672">=</span> <span style="color:#111">client</span><span style="color:#f92672">.</span><span style="color:#111">load_table_from_dataframe</span><span style="color:#111">(</span>
+    <span style="color:#111">df</span><span style="color:#111">,</span> <span style="color:#111">table_id</span><span style="color:#111">,</span> <span style="color:#111">job_config</span><span style="color:#f92672">=</span><span style="color:#111">job_config</span>
+<span style="color:#111">)</span>
+
+<span style="color:#75715e"># ジョブの実行</span>
+<span style="color:#111">job</span><span style="color:#f92672">.</span><span style="color:#111">result</span><span style="color:#111">()</span>
+</code></pre></div><h1 id="csv-をアップロードする">csv をアップロードする</h1>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> <span style="color:#111">google.cloud</span> <span style="color:#f92672">import</span> <span style="color:#111">bigquery</span>
+<span style="color:#111">client</span> <span style="color:#f92672">=</span> <span style="color:#111">bigquery</span><span style="color:#f92672">.</span><span style="color:#111">Client</span><span style="color:#111">()</span>
+<span style="color:#111">filename</span> <span style="color:#f92672">=</span> <span style="color:#d88200">&#39;/home/ec2-user/ml-25m/movies.csv&#39;</span>
+<span style="color:#111">dataset_id</span> <span style="color:#f92672">=</span> <span style="color:#d88200">&#39;cmbqdataset&#39;</span>
+<span style="color:#111">table_id</span> <span style="color:#f92672">=</span> <span style="color:#d88200">&#39;bqtable_via_python&#39;</span>
+
+<span style="color:#111">dataset_ref</span> <span style="color:#f92672">=</span> <span style="color:#111">client</span><span style="color:#f92672">.</span><span style="color:#111">dataset</span><span style="color:#111">(</span><span style="color:#111">dataset_id</span><span style="color:#111">)</span>
+<span style="color:#111">table_ref</span> <span style="color:#f92672">=</span> <span style="color:#111">dataset_ref</span><span style="color:#f92672">.</span><span style="color:#111">table</span><span style="color:#111">(</span><span style="color:#111">table_id</span><span style="color:#111">)</span>
+<span style="color:#111">job_config</span> <span style="color:#f92672">=</span> <span style="color:#111">bigquery</span><span style="color:#f92672">.</span><span style="color:#111">LoadJobConfig</span><span style="color:#111">()</span>
+<span style="color:#111">job_config</span><span style="color:#f92672">.</span><span style="color:#111">source_format</span> <span style="color:#f92672">=</span> <span style="color:#111">bigquery</span><span style="color:#f92672">.</span><span style="color:#111">SourceFormat</span><span style="color:#f92672">.</span><span style="color:#111">CSV</span>
+<span style="color:#111">job_config</span><span style="color:#f92672">.</span><span style="color:#111">skip_leading_rows</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+<span style="color:#111">job_config</span><span style="color:#f92672">.</span><span style="color:#111">autodetect</span> <span style="color:#f92672">=</span> <span style="color:#111">True</span>
+
+<span style="color:#00a8c8">with</span> <span style="color:#111">open</span><span style="color:#111">(</span><span style="color:#111">filename</span><span style="color:#111">,</span> <span style="color:#d88200">&#34;rb&#34;</span><span style="color:#111">)</span> <span style="color:#00a8c8">as</span> <span style="color:#111">source_file</span><span style="color:#111">:</span>
+    <span style="color:#111">job</span> <span style="color:#f92672">=</span> <span style="color:#111">client</span><span style="color:#f92672">.</span><span style="color:#111">load_table_from_file</span><span style="color:#111">(</span><span style="color:#111">source_file</span><span style="color:#111">,</span> <span style="color:#111">table_ref</span><span style="color:#111">,</span> <span style="color:#111">job_config</span><span style="color:#f92672">=</span><span style="color:#111">job_config</span><span style="color:#111">)</span>
+
+<span style="color:#111">job</span><span style="color:#f92672">.</span><span style="color:#111">result</span><span style="color:#111">()</span>  <span style="color:#75715e"># Waits for table load to complete.</span>
+
+<span style="color:#00a8c8">print</span><span style="color:#111">(</span><span style="color:#d88200">&#34;Loaded {} rows into {}:{}.&#34;</span><span style="color:#f92672">.</span><span style="color:#111">format</span><span style="color:#111">(</span><span style="color:#111">job</span><span style="color:#f92672">.</span><span style="color:#111">output_rows</span><span style="color:#111">,</span> <span style="color:#111">dataset_id</span><span style="color:#111">,</span> <span style="color:#111">table_id</span><span style="color:#111">))</span>
+
+</code></pre></div><h1 id="runquery">Runquery</h1>
+<p>def RunQueryPandas(query, credentials):
+client = bigquery.Client(credentials=credentials)
+query_job = client.query(query)
+results = query_job.result()
+return(results)</p>
+<p>def RunQueryBq(query, destination_table):</p>
+<pre><code>command = f'bq query -n 10 --replace  --allow_large_results --use_legacy_sql=false \
+            &quot;{query}&quot;'
+
+#--destination_table={destination_table}
+print(command)
+os.system(command)
+</code></pre>
+<p>def RunQueryGCP(query):
+client = bigquery.Client(project='world-fishing-827&rsquo;)
+query_job = client.query(query)
+results = query_job.result()
+return(results)</p>
+<h1 id="check-if-the-table-exists">Check if the table exists</h1>
+<p>def table_exists(dataset_table):
+dataset = dataset_table.split('.')[-2]
+table = dataset_table.split('.')[-1]</p>
+<pre><code>q = '''SELECT size_bytes FROM {dataset}.__TABLES__ WHERE table_id='{table}' '''.format(dataset=dataset, table=table)
+print(q)
+df = pd.read_gbq(q, project_id='world-fishing-827',progress_bar_type=None)
+if(len(df))==0:
+    return False
+else:
+    return True
+</code></pre>
+<h1 id="create-date-partitioned-table-if-not-exist">Create date partitioned table if not exist</h1>
+<p>def make_date_parititoned_if_doesnt_exist(dataset_table):
+if not table_exists(dataset_table):
+dataset_table =<br>
+convert_period_between_project_and_dataset_to_colon(dataset_table)
+command = &ldquo;bq mk &ndash;time_partitioning_type=DAY {}&quot;.format(dataset_table)
+print(command)
+os.system(command)</p>
+<p>def convert_period_between_project_and_dataset_to_colon(table):
+t = table.split(&quot;.&quot;)
+if len(t) == 2:
+return table
+if len(t) == 3:
+return f&rdquo;{t[0]}:{t[1]}.{t[2]}&rdquo;</p>
+<pre><code>
+
+
+
+# try gcp API
+
+```{python}
+
+# project = client.project
+# dataset_ref = bigquery.DatasetReference(project, 'my_dataset')
+
+
+
+# OUTPUT
+dataset_id_full = f'{project}.{dataset}'
+
+# データセットへのリファレンス
+dataset_ref = bigquery.Dataset(dataset_id_full)
+
+# 作成したいテーブルへのリファレンス
+table_ref = dataset_ref.table(table)
+
+# テーブルオブジェクト
+table_obj = bigquery.Table(table_ref)
+
+# 日付でパーティションに指定する
+table_obj.time_partitioning = bigquery.TimePartitioning(
+    type_=bigquery.TimePartitioningType.DAY,
+    field=&quot;date&quot;  # name of column to use for partitioning
+)
+
+# パーティションに使うカラムについてはスキーマを定義する必要がある
+schema = [bigquery.SchemaField(&quot;date&quot;, &quot;DATE&quot;)]
+
+
+# テーブルを作成
+table_obj = client.create_table(table_obj, schema)
+
+tables.insert
+</code></pre><pre><code class="language-{python}" data-lang="{python}">table_ref
+</code></pre><h1 id="heading"></h1>
+<pre><code class="language-{python}" data-lang="{python}">
+
+
+
+# データセット内へ新しいテーブルへのリファレンス
+table_ref = dataset.table(table)
+
+# Configure the query job.
+job_config = bigquery.QueryJobConfig()
+
+# Set the destination table to the table reference created above.
+job_config.destination = table_ref
+
+# Run the query.
+query_job = client.query(query, job_config=job_config)
+query_job.result()  # Waits for the query to finish
+
+
+
+</code></pre></article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+  <div><a class="flex align-center" href="https://github.com/teuder/notebook/commit/d38670e104d7702938d13bfbcfbc8186cd2f5154" title='最終更新者 Masaki Tsuda | 2021-04-29' target="_blank" rel="noopener">
+      <img src="/notebook/svg/calendar.svg" class="book-icon" alt="Calendar" />
+      <span>2021-04-29</span>
+    </a>
+  </div>
+
+
+
+  <div>
+    <a class="flex align-center" href="https://github.com/teuder/notebook/edit/master/content/content/Python/bigquery.md" target="_blank" rel="noopener">
+      <img src="/notebook/svg/edit.svg" class="book-icon" alt="Edit" />
+      <span>このページを編集する</span>
+    </a>
+  </div>
+
+
+</div>
+
+
+
+  <script>(function(){function select(element){const selection=window.getSelection();const range=document.createRange();range.selectNodeContents(element);selection.removeAllRanges();selection.addRange(range);}
+document.querySelectorAll("pre code").forEach(code=>{code.addEventListener("click",function(event){select(code.parentElement);if(navigator.clipboard){navigator.clipboard.writeText(code.parentElement.textContent);}});});})();</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#pandasread_gbq">pandas.read_gbq()</a></li>
+    <li><a href="#googlecloudbigquery">google.cloud.bigquery</a>
+      <ul>
+        <li><a href="#環境変数-google_application_credentials">環境変数 GOOGLE_APPLICATION_CREDENTIALS</a></li>
+      </ul>
+    </li>
+    <li><a href="#データフレームをbigqueryへアップロードする">データフレームをBigQueryへアップロードする</a></li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
