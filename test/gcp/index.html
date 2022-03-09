@@ -1,0 +1,996 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><meta property="og:title" content="Google Cloud Platform" />
+<meta property="og:description" content="" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://teuder.github.io/notebook/gcp/" />
+
+<title>Google Cloud Platform | notebook</title>
+<link rel="icon" href="/notebook/favicon.png" type="image/x-icon">
+
+
+<link rel="stylesheet" href="/notebook/book.min.07c38dce7b6800da2a75a565d4d975e38f837294e24d00b5aae363037012d64b.css" integrity="sha256-B8ONzntoANoqdaVl1Nl144&#43;DcpTiTQC1quNjA3AS1ks=">
+
+
+<script defer src="/notebook/search.min.6279e57a9aa17777df1a228aca89ec533645b3f4b9f6a3f0f8e04fdcb10b67f4.js" integrity="sha256-Ynnlepqhd3ffGiKKyonsUzZFs/S59qPw&#43;OBP3LELZ/Q="></script>
+
+<link rel="alternate" type="application/rss+xml" href="https://teuder.github.io/notebook/gcp/index.xml" title="notebook" />
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+  
+</head>
+
+<body>
+  <input type="checkbox" class="hidden" id="menu-control" />
+  <main class="flex container">
+
+    <aside class="book-menu fixed">
+      <nav>
+<h2 class="book-brand">
+  <a href="https://teuder.github.io/notebook/"><span>notebook</span>
+  </a>
+</h2>
+
+
+<div class="book-search">
+  <input type="text" placeholder="Search" id="book-search-input" maxlength="64" />
+  <div class="book-search-spinner spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+
+
+
+
+
+    
+
+  
+
+
+
+
+
+
+  <ul>
+  
+    
+
+  <li >
+    
+      
+
+  <a href="/notebook/docs/" >
+      About
+  </a>
+
+
+    
+
+    
+
+
+
+
+  
+  <ul>
+    
+  </ul>
+  
+
+
+
+  </li>
+
+
+  
+    
+
+  <li >
+    
+      
+
+  <a href="/notebook/python/" >
+      Python
+  </a>
+
+
+    
+
+    
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+
+  <a href="/notebook/python/bigquery/" >
+      BigQuery
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/python/environment/" >
+      environment
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/python/jupyter/" >
+      jupyter
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/python/pandas/" >
+      Pandas
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/python/vscode/" >
+      Python in VScode
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/python/anaconda/" >
+      anaconda
+  </a>
+
+</li>
+      
+    
+  </ul>
+  
+
+
+
+  </li>
+
+
+  
+    
+
+  <li >
+    
+      
+
+  <a href="/notebook/r/" >
+      R
+  </a>
+
+
+    
+
+    
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+
+  <a href="/notebook/r/leaflet/" >
+      leaflet
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/r/rhdf5/" >
+      rhdf5
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/r/ggplot2/" >
+      ggplot2
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/r/raster/" >
+      raster
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/r/sf/" >
+      sf
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/r/bigrquery/" >
+      bigrquery
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/r/dplyr/" >
+      dplyr
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/r/future/" >
+      future
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/r/gganimate/" >
+      gganimate
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/r/lubridate/" >
+      lubridate
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/r/purrr/" >
+      purrr
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/r/package_development/" >
+      R Package Development
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/r/r_python/" >
+      R_Python
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/r/reticulate/" >
+      reticulate
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/r/rmarkdown/" >
+      Rmarkdown
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/r/rpart/" >
+      rpart
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/r/rstudio/" >
+      RStudio
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/r/rvest/" >
+      rvest
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/r/stars/" >
+      stars
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/r/stringr/" >
+      stringr
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/r/tidymodels/" >
+      tidymodels
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/r/tidyr/" >
+      tidyr
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/r/wk/" >
+      wk
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/r/dbi/" >
+      DBI
+  </a>
+
+</li>
+      
+    
+  </ul>
+  
+
+
+
+  </li>
+
+
+  
+    
+
+  <li >
+    
+      
+
+  <a href="/notebook/datascience/" >
+      Data Science
+  </a>
+
+
+    
+
+    
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+
+  <a href="/notebook/datascience/bayesian_statistics/" >
+      Bayesian Staistics
+  </a>
+
+</li>
+      
+    
+  </ul>
+  
+
+
+
+  </li>
+
+
+  
+    
+
+  <li >
+    
+      
+
+  <a href="/notebook/gis/" >
+      GIS &amp; Remote Sensing
+  </a>
+
+
+    
+
+    
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+
+  <a href="/notebook/gis/bigquerygis/" >
+      BigQuery GIS
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/gis/sar/" >
+      SAR
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/gis/terminology/" >
+      用語
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/gis/viirs/" >
+      VIIRS
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/gis/r_package/" >
+      GIS関連Rパッケージ
+  </a>
+
+</li>
+      
+    
+  </ul>
+  
+
+
+
+  </li>
+
+
+  
+    
+
+  <li >
+    
+      
+
+  <a href="/notebook/mac/" >
+      Mac
+  </a>
+
+
+    
+
+    
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+
+  <a href="/notebook/mac/homebrew/" >
+      homebrew
+  </a>
+
+</li>
+      
+    
+  </ul>
+  
+
+
+
+  </li>
+
+
+  
+    
+
+  <li >
+    
+      
+
+  <a href="/notebook/maritime/" >
+      Maritime
+  </a>
+
+
+    
+
+    
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+
+  <a href="/notebook/maritime/glossary/" >
+      glossary
+  </a>
+
+</li>
+      
+    
+  </ul>
+  
+
+
+
+  </li>
+
+
+  
+    
+
+  <li >
+    
+      
+
+  <a href="/notebook/gcp/"  class="active">
+      Google Cloud Platform
+  </a>
+
+
+    
+
+    
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+
+  <a href="/notebook/gcp/bigquery_gis/" >
+      BigQuery GIS
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/gcp/bigquery_bq/" >
+      BigQuery: bqコマンド
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/gcp/bigquery/" >
+      BigQuery: general
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/gcp/bigquery_sql/" >
+      BigQuery: SQL
+  </a>
+
+</li>
+      
+    
+  </ul>
+  
+
+
+
+  </li>
+
+
+  
+    
+
+  <li >
+    
+      
+
+  <a href="/notebook/miscellaneous/" >
+      miscellaneous
+  </a>
+
+
+    
+
+    
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+
+  <a href="/notebook/miscellaneous/c_plus_plus/" >
+      C&#43;&#43;
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/miscellaneous/english/" >
+      english
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/miscellaneous/jinjia2/" >
+      jinja
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/miscellaneous/jupyter/" >
+      jupyter
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/miscellaneous/pc/" >
+      PC
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/miscellaneous/tmux/" >
+      tmux
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/miscellaneous/vscode/" >
+      vscode
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/miscellaneous/windows/" >
+      Windows
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/miscellaneous/wsl/" >
+      wsl
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/miscellaneous/hugo/" >
+      Hugo
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/miscellaneous/git/" >
+      git
+  </a>
+
+</li>
+      
+    
+  </ul>
+  
+
+
+
+  </li>
+
+
+  
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+<script>
+(function() {
+  var menu = document.querySelector("aside.book-menu nav");
+  addEventListener("beforeunload", function(event) {
+    localStorage.setItem("menu.scrollTop", menu.scrollTop);
+  });
+  menu.scrollTop = localStorage.getItem("menu.scrollTop");
+})();
+</script>
+
+    </aside>
+
+    <div class="book-page">
+      <header class="flex align-center justify-between book-header">
+  <label for="menu-control">
+    <img src="/notebook/svg/menu.svg" alt="Menu" />
+  </label>
+  <strong>Google Cloud Platform</strong>
+</header>
+
+      
+<article class="markdown"><h1 id="google-cloud-platform">Google Cloud Platform</h1>
+<ul>
+<li><a href="bigquery">BigQuery</a></li>
+</ul>
+<h2 id="gloud-コマンド">gloud コマンド</h2>
+<h3 id="アカウントとプロジェクトの確認">アカウントとプロジェクトの確認</h3>
+<p>現在のデフォルトのアカウントとプロジェクトの確認</p>
+<pre><code>gcloud config list
+</code></pre><pre><code>[core]
+account = xxxx@gmail.com
+disable_usage_reporting = True
+
+Your active configuration is: [default]
+</code></pre><h3 id="アカウントの切り替え">アカウントの切り替え</h3>
+<pre><code>gcloud auth login
+</code></pre><p>表示されるURLにアクセスして、切り替えたい google アカウントにログインする、次にブラウザに表示されたコードをコピーして、ターミナルに入力する。</p>
+<h3 id="プロジェクトの切り替え">プロジェクトの切り替え</h3>
+<pre><code>gcloud config set project [PROJECT_ID]
+Updated property [core/project].
+</code></pre><h2 id="compute-engine">Compute Engine</h2>
+<h3 id="sshでのログイン">SSHでのログイン</h3>
+<p><a href="https://qiita.com/NewGyu/items/3a65e837519297951e79">https://qiita.com/NewGyu/items/3a65e837519297951e79</a></p>
+<p>ローカルでアカウントが有効になっているか確かめる</p>
+<pre><code>$ gcloud config list
+</code></pre><p>gcloud コマンドで ssh</p>
+<pre><code>gcloud compute ssh --project=プロジェクトID --zone=ゾーン インスタンス名   
+</code></pre><h2 id="google-cloud-strage">Google Cloud Strage</h2>
+<h3 id="バケットの中身を確認する">バケットの中身を確認する</h3>
+<pre><code>gsutil ls gs://BUCKET
+</code></pre><h3 id="ローカルファイルをgcsにアップロードする">ローカルファイルをGCSにアップロードする</h3>
+<pre><code>gsutil cp LOCAL_FILE gs://MY_BUCKET/
+
+# 並列でアップロードする場合（100M単位で分割）
+gsutil -o GSUtil:parallel_composite_upload_threshold=100M　cp LOCAL_FILE gs://MY_BUCKET/
+</code></pre></article>
+
+      
+<div class="book-footer justify-between">
+  
+  <div>
+    
+    <a class="flex align-center" href="https://github.com/teuder/notebook/commit/d38670e104d7702938d13bfbcfbc8186cd2f5154" title='Last modified 2021-04-29 by Masaki Tsuda' target="_blank" rel="noopener">
+      <img src="/notebook/svg/calendar.svg" alt="Changed" />
+      <span>2021-04-29</span>
+    </a>
+  </div>
+  
+  
+  <div>
+    
+    <a class="flex align-center" href="https://github.com/teuder/notebook/edit/master/content/gcp/_index.md" target="_blank" rel="noopener">
+      <img src="/notebook/svg/edit.svg" alt="Edit" />
+      <span>Edit this page</span>
+    </a>
+    
+  </div>
+  
+</div>
+
+
+      
+    </div>
+
+    
+  
+
+  <aside class="book-toc level-3 fixed">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#gloud-コマンド">gloud コマンド</a>
+      <ul>
+        <li><a href="#アカウントとプロジェクトの確認">アカウントとプロジェクトの確認</a></li>
+        <li><a href="#アカウントの切り替え">アカウントの切り替え</a></li>
+        <li><a href="#プロジェクトの切り替え">プロジェクトの切り替え</a></li>
+      </ul>
+    </li>
+    <li><a href="#compute-engine">Compute Engine</a>
+      <ul>
+        <li><a href="#sshでのログイン">SSHでのログイン</a></li>
+      </ul>
+    </li>
+    <li><a href="#google-cloud-strage">Google Cloud Strage</a>
+      <ul>
+        <li><a href="#バケットの中身を確認する">バケットの中身を確認する</a></li>
+        <li><a href="#ローカルファイルをgcsにアップロードする">ローカルファイルをGCSにアップロードする</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </aside>
+
+
+
+  </main>
+
+  
+</body>
+
+</html>

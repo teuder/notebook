@@ -1,0 +1,990 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><meta property="og:title" content="Rmarkdown" />
+<meta property="og:description" content="Rmarkdown Rmarkdown (.Rmd) から、html などに出力するパッケージは２つある knitr と rmarkdown、rmarkdown は内部で knitr を使用している。rmarkdown" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://teuder.github.io/notebook/r/rmarkdown/" />
+<meta property="article:modified_time" content="2021-04-29T14:16:38+09:00" />
+<title>Rmarkdown | notebook</title>
+<link rel="icon" href="/notebook/favicon.png" type="image/x-icon">
+
+
+<link rel="stylesheet" href="/notebook/book.min.07c38dce7b6800da2a75a565d4d975e38f837294e24d00b5aae363037012d64b.css" integrity="sha256-B8ONzntoANoqdaVl1Nl144&#43;DcpTiTQC1quNjA3AS1ks=">
+
+
+<script defer src="/notebook/search.min.6279e57a9aa17777df1a228aca89ec533645b3f4b9f6a3f0f8e04fdcb10b67f4.js" integrity="sha256-Ynnlepqhd3ffGiKKyonsUzZFs/S59qPw&#43;OBP3LELZ/Q="></script>
+
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+  
+</head>
+
+<body>
+  <input type="checkbox" class="hidden" id="menu-control" />
+  <main class="flex container">
+
+    <aside class="book-menu fixed">
+      <nav>
+<h2 class="book-brand">
+  <a href="https://teuder.github.io/notebook/"><span>notebook</span>
+  </a>
+</h2>
+
+
+<div class="book-search">
+  <input type="text" placeholder="Search" id="book-search-input" maxlength="64" />
+  <div class="book-search-spinner spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+
+
+
+
+
+    
+
+  
+
+
+
+
+
+
+  <ul>
+  
+    
+
+  <li >
+    
+      
+
+  <a href="/notebook/docs/" >
+      About
+  </a>
+
+
+    
+
+    
+
+
+
+
+  
+  <ul>
+    
+  </ul>
+  
+
+
+
+  </li>
+
+
+  
+    
+
+  <li >
+    
+      
+
+  <a href="/notebook/python/" >
+      Python
+  </a>
+
+
+    
+
+    
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+
+  <a href="/notebook/python/bigquery/" >
+      BigQuery
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/python/environment/" >
+      environment
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/python/jupyter/" >
+      jupyter
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/python/pandas/" >
+      Pandas
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/python/vscode/" >
+      Python in VScode
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/python/anaconda/" >
+      anaconda
+  </a>
+
+</li>
+      
+    
+  </ul>
+  
+
+
+
+  </li>
+
+
+  
+    
+
+  <li >
+    
+      
+
+  <a href="/notebook/r/" >
+      R
+  </a>
+
+
+    
+
+    
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+
+  <a href="/notebook/r/leaflet/" >
+      leaflet
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/r/rhdf5/" >
+      rhdf5
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/r/ggplot2/" >
+      ggplot2
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/r/raster/" >
+      raster
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/r/sf/" >
+      sf
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/r/bigrquery/" >
+      bigrquery
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/r/dplyr/" >
+      dplyr
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/r/future/" >
+      future
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/r/gganimate/" >
+      gganimate
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/r/lubridate/" >
+      lubridate
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/r/purrr/" >
+      purrr
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/r/package_development/" >
+      R Package Development
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/r/r_python/" >
+      R_Python
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/r/reticulate/" >
+      reticulate
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/r/rmarkdown/"  class="active">
+      Rmarkdown
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/r/rpart/" >
+      rpart
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/r/rstudio/" >
+      RStudio
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/r/rvest/" >
+      rvest
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/r/stars/" >
+      stars
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/r/stringr/" >
+      stringr
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/r/tidymodels/" >
+      tidymodels
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/r/tidyr/" >
+      tidyr
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/r/wk/" >
+      wk
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/r/dbi/" >
+      DBI
+  </a>
+
+</li>
+      
+    
+  </ul>
+  
+
+
+
+  </li>
+
+
+  
+    
+
+  <li >
+    
+      
+
+  <a href="/notebook/datascience/" >
+      Data Science
+  </a>
+
+
+    
+
+    
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+
+  <a href="/notebook/datascience/bayesian_statistics/" >
+      Bayesian Staistics
+  </a>
+
+</li>
+      
+    
+  </ul>
+  
+
+
+
+  </li>
+
+
+  
+    
+
+  <li >
+    
+      
+
+  <a href="/notebook/gis/" >
+      GIS &amp; Remote Sensing
+  </a>
+
+
+    
+
+    
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+
+  <a href="/notebook/gis/bigquerygis/" >
+      BigQuery GIS
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/gis/sar/" >
+      SAR
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/gis/terminology/" >
+      用語
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/gis/viirs/" >
+      VIIRS
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/gis/r_package/" >
+      GIS関連Rパッケージ
+  </a>
+
+</li>
+      
+    
+  </ul>
+  
+
+
+
+  </li>
+
+
+  
+    
+
+  <li >
+    
+      
+
+  <a href="/notebook/mac/" >
+      Mac
+  </a>
+
+
+    
+
+    
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+
+  <a href="/notebook/mac/homebrew/" >
+      homebrew
+  </a>
+
+</li>
+      
+    
+  </ul>
+  
+
+
+
+  </li>
+
+
+  
+    
+
+  <li >
+    
+      
+
+  <a href="/notebook/maritime/" >
+      Maritime
+  </a>
+
+
+    
+
+    
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+
+  <a href="/notebook/maritime/glossary/" >
+      glossary
+  </a>
+
+</li>
+      
+    
+  </ul>
+  
+
+
+
+  </li>
+
+
+  
+    
+
+  <li >
+    
+      
+
+  <a href="/notebook/gcp/" >
+      Google Cloud Platform
+  </a>
+
+
+    
+
+    
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+
+  <a href="/notebook/gcp/bigquery_gis/" >
+      BigQuery GIS
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/gcp/bigquery_bq/" >
+      BigQuery: bqコマンド
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/gcp/bigquery/" >
+      BigQuery: general
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/gcp/bigquery_sql/" >
+      BigQuery: SQL
+  </a>
+
+</li>
+      
+    
+  </ul>
+  
+
+
+
+  </li>
+
+
+  
+    
+
+  <li >
+    
+      
+
+  <a href="/notebook/miscellaneous/" >
+      miscellaneous
+  </a>
+
+
+    
+
+    
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+
+  <a href="/notebook/miscellaneous/c_plus_plus/" >
+      C&#43;&#43;
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/miscellaneous/english/" >
+      english
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/miscellaneous/jinjia2/" >
+      jinja
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/miscellaneous/jupyter/" >
+      jupyter
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/miscellaneous/pc/" >
+      PC
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/miscellaneous/tmux/" >
+      tmux
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/miscellaneous/vscode/" >
+      vscode
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/miscellaneous/windows/" >
+      Windows
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/miscellaneous/wsl/" >
+      wsl
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/miscellaneous/hugo/" >
+      Hugo
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/miscellaneous/git/" >
+      git
+  </a>
+
+</li>
+      
+    
+  </ul>
+  
+
+
+
+  </li>
+
+
+  
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+<script>
+(function() {
+  var menu = document.querySelector("aside.book-menu nav");
+  addEventListener("beforeunload", function(event) {
+    localStorage.setItem("menu.scrollTop", menu.scrollTop);
+  });
+  menu.scrollTop = localStorage.getItem("menu.scrollTop");
+})();
+</script>
+
+    </aside>
+
+    <div class="book-page">
+      <header class="flex align-center justify-between book-header">
+  <label for="menu-control">
+    <img src="/notebook/svg/menu.svg" alt="Menu" />
+  </label>
+  <strong>Rmarkdown</strong>
+</header>
+
+      
+<article class="markdown"><h1 id="rmarkdown">Rmarkdown</h1>
+<p>Rmarkdown (<code>.Rmd</code>) から、html などに出力するパッケージは２つある</p>
+<p><code>knitr</code> と <code>rmarkdown</code>、<code>rmarkdown</code> は内部で <code>knitr</code> を使用している。<code>rmarkdown</code> は  <code>knitr</code> の後継となるべく開発されているのかも知れない。</p>
+<h1 id="ドキュメント">ドキュメント</h1>
+<ul>
+<li>公式: <a href="https://bookdown.org/yihui/rmarkdown/">R Markdown: The Definitive Guide</a></li>
+<li><a href="https://kohske.github.io/R/rmarkdown/">rmarkdownパッケージで楽々ドキュメント生成</a></li>
+</ul>
+<h1 id="用語">用語</h1>
+<ul>
+<li>chunk</li>
+<li>YAMLヘッダ</li>
+</ul>
+<h1 id="出力形式の指定">出力形式の指定</h1>
+<p>公式 <a href="https://bookdown.org/yihui/rmarkdown/output-formats.html">2.4 Output formats</a></p>
+<p><code>.Rmd</code> ファイルの先頭の <code>YAML</code> ヘッダの <code>output:</code> セクションに記述する</p>
+<pre><code>---
+title: &quot;Title of this document&quot;
+
+output: rmarkdown::github_document
+---
+</code></pre><p><code>output:</code> で指定できるオプションは以下の通り</p>
+<ul>
+<li>html_document</li>
+<li>github_document</li>
+<li>pdf_document</li>
+<li>word_document</li>
+<li>latex_document</li>
+<li>md_document</li>
+<li>odt_document</li>
+<li>rtf_document</li>
+<li>context_document</li>
+<li>powerpoint_presentation</li>
+<li>beamer_presentation</li>
+<li>ioslides_presentation</li>
+<li>slidy_presentation</li>
+</ul>
+<h1 id="出力先の変更">出力先の変更</h1>
+<p>デフォルトでは <code>.Rmd</code> ファイルと同じフォルダに出力される。</p>
+<p><code>rmarkdown::render()</code> を使って出力する場合には、以下のようにする。</p>
+<pre><code>rmarkdown::render('my.Rmd', output_file = 'folder/my.html')
+</code></pre><p>RStudio の <code>Knit</code> ボタンを押したときの出力先を指定するには <code>.Rmd</code> ファイルの先頭の <code>YAML</code> ヘッダの <code>knit:</code> セクションに以下のように <code>output_dir</code> を指定する。パスの指定は <code>.Rmd</code> ファイルからの相対パス。</p>
+<pre><code>---
+title: &quot;Title of this document&quot;
+
+output: rmarkdown::github_document
+
+knit: (function(inputFile, encoding) {
+  rmarkdown::render(inputFile, encoding = encoding, output_dir = &quot;../share/markdown&quot;) })
+---
+</code></pre></article>
+
+      
+<div class="book-footer justify-between">
+  
+  <div>
+    
+    <a class="flex align-center" href="https://github.com/teuder/notebook/commit/d38670e104d7702938d13bfbcfbc8186cd2f5154" title='Last modified 2021-04-29 by Masaki Tsuda' target="_blank" rel="noopener">
+      <img src="/notebook/svg/calendar.svg" alt="Changed" />
+      <span>2021-04-29</span>
+    </a>
+  </div>
+  
+  
+  <div>
+    
+    <a class="flex align-center" href="https://github.com/teuder/notebook/edit/master/content/R/rmarkdown.md" target="_blank" rel="noopener">
+      <img src="/notebook/svg/edit.svg" alt="Edit" />
+      <span>Edit this page</span>
+    </a>
+    
+  </div>
+  
+</div>
+
+
+      
+    </div>
+
+    
+  
+
+  <aside class="book-toc level-3 fixed">
+    <nav id="TableOfContents"></nav>
+  </aside>
+
+
+
+  </main>
+
+  
+</body>
+
+</html>

@@ -1,0 +1,1239 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><meta property="og:title" content="environment" />
+<meta property="og:description" content="Python 環境設定 色々な環境構築の方法があるが、ここでは pyenv と pipenv を使った方法を採用する。 pyenv python本体のバージョン管理、インストール イントールと設" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://teuder.github.io/notebook/python/environment/" />
+<meta property="article:published_time" content="2020-01-17T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-03-04T18:32:50+09:00" />
+<title>environment | notebook</title>
+<link rel="icon" href="/notebook/favicon.png" type="image/x-icon">
+
+
+<link rel="stylesheet" href="/notebook/book.min.07c38dce7b6800da2a75a565d4d975e38f837294e24d00b5aae363037012d64b.css" integrity="sha256-B8ONzntoANoqdaVl1Nl144&#43;DcpTiTQC1quNjA3AS1ks=">
+
+
+<script defer src="/notebook/search.min.6279e57a9aa17777df1a228aca89ec533645b3f4b9f6a3f0f8e04fdcb10b67f4.js" integrity="sha256-Ynnlepqhd3ffGiKKyonsUzZFs/S59qPw&#43;OBP3LELZ/Q="></script>
+
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+  
+</head>
+
+<body>
+  <input type="checkbox" class="hidden" id="menu-control" />
+  <main class="flex container">
+
+    <aside class="book-menu fixed">
+      <nav>
+<h2 class="book-brand">
+  <a href="https://teuder.github.io/notebook/"><span>notebook</span>
+  </a>
+</h2>
+
+
+<div class="book-search">
+  <input type="text" placeholder="Search" id="book-search-input" maxlength="64" />
+  <div class="book-search-spinner spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+
+
+
+
+
+    
+
+  
+
+
+
+
+
+
+  <ul>
+  
+    
+
+  <li >
+    
+      
+
+  <a href="/notebook/docs/" >
+      About
+  </a>
+
+
+    
+
+    
+
+
+
+
+  
+  <ul>
+    
+  </ul>
+  
+
+
+
+  </li>
+
+
+  
+    
+
+  <li >
+    
+      
+
+  <a href="/notebook/python/" >
+      Python
+  </a>
+
+
+    
+
+    
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+
+  <a href="/notebook/python/bigquery/" >
+      BigQuery
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/python/environment/"  class="active">
+      environment
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/python/jupyter/" >
+      jupyter
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/python/pandas/" >
+      Pandas
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/python/vscode/" >
+      Python in VScode
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/python/anaconda/" >
+      anaconda
+  </a>
+
+</li>
+      
+    
+  </ul>
+  
+
+
+
+  </li>
+
+
+  
+    
+
+  <li >
+    
+      
+
+  <a href="/notebook/r/" >
+      R
+  </a>
+
+
+    
+
+    
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+
+  <a href="/notebook/r/leaflet/" >
+      leaflet
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/r/rhdf5/" >
+      rhdf5
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/r/ggplot2/" >
+      ggplot2
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/r/raster/" >
+      raster
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/r/sf/" >
+      sf
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/r/bigrquery/" >
+      bigrquery
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/r/dplyr/" >
+      dplyr
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/r/future/" >
+      future
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/r/gganimate/" >
+      gganimate
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/r/lubridate/" >
+      lubridate
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/r/purrr/" >
+      purrr
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/r/package_development/" >
+      R Package Development
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/r/r_python/" >
+      R_Python
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/r/reticulate/" >
+      reticulate
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/r/rmarkdown/" >
+      Rmarkdown
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/r/rpart/" >
+      rpart
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/r/rstudio/" >
+      RStudio
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/r/rvest/" >
+      rvest
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/r/stars/" >
+      stars
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/r/stringr/" >
+      stringr
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/r/tidymodels/" >
+      tidymodels
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/r/tidyr/" >
+      tidyr
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/r/wk/" >
+      wk
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/r/dbi/" >
+      DBI
+  </a>
+
+</li>
+      
+    
+  </ul>
+  
+
+
+
+  </li>
+
+
+  
+    
+
+  <li >
+    
+      
+
+  <a href="/notebook/datascience/" >
+      Data Science
+  </a>
+
+
+    
+
+    
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+
+  <a href="/notebook/datascience/bayesian_statistics/" >
+      Bayesian Staistics
+  </a>
+
+</li>
+      
+    
+  </ul>
+  
+
+
+
+  </li>
+
+
+  
+    
+
+  <li >
+    
+      
+
+  <a href="/notebook/gis/" >
+      GIS &amp; Remote Sensing
+  </a>
+
+
+    
+
+    
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+
+  <a href="/notebook/gis/bigquerygis/" >
+      BigQuery GIS
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/gis/sar/" >
+      SAR
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/gis/terminology/" >
+      用語
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/gis/viirs/" >
+      VIIRS
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/gis/r_package/" >
+      GIS関連Rパッケージ
+  </a>
+
+</li>
+      
+    
+  </ul>
+  
+
+
+
+  </li>
+
+
+  
+    
+
+  <li >
+    
+      
+
+  <a href="/notebook/mac/" >
+      Mac
+  </a>
+
+
+    
+
+    
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+
+  <a href="/notebook/mac/homebrew/" >
+      homebrew
+  </a>
+
+</li>
+      
+    
+  </ul>
+  
+
+
+
+  </li>
+
+
+  
+    
+
+  <li >
+    
+      
+
+  <a href="/notebook/maritime/" >
+      Maritime
+  </a>
+
+
+    
+
+    
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+
+  <a href="/notebook/maritime/glossary/" >
+      glossary
+  </a>
+
+</li>
+      
+    
+  </ul>
+  
+
+
+
+  </li>
+
+
+  
+    
+
+  <li >
+    
+      
+
+  <a href="/notebook/gcp/" >
+      Google Cloud Platform
+  </a>
+
+
+    
+
+    
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+
+  <a href="/notebook/gcp/bigquery_gis/" >
+      BigQuery GIS
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/gcp/bigquery_bq/" >
+      BigQuery: bqコマンド
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/gcp/bigquery/" >
+      BigQuery: general
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/gcp/bigquery_sql/" >
+      BigQuery: SQL
+  </a>
+
+</li>
+      
+    
+  </ul>
+  
+
+
+
+  </li>
+
+
+  
+    
+
+  <li >
+    
+      
+
+  <a href="/notebook/miscellaneous/" >
+      miscellaneous
+  </a>
+
+
+    
+
+    
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+
+  <a href="/notebook/miscellaneous/c_plus_plus/" >
+      C&#43;&#43;
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/miscellaneous/english/" >
+      english
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/miscellaneous/jinjia2/" >
+      jinja
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/miscellaneous/jupyter/" >
+      jupyter
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/miscellaneous/pc/" >
+      PC
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/miscellaneous/tmux/" >
+      tmux
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/miscellaneous/vscode/" >
+      vscode
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/miscellaneous/windows/" >
+      Windows
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/miscellaneous/wsl/" >
+      wsl
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/miscellaneous/hugo/" >
+      Hugo
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/miscellaneous/git/" >
+      git
+  </a>
+
+</li>
+      
+    
+  </ul>
+  
+
+
+
+  </li>
+
+
+  
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+<script>
+(function() {
+  var menu = document.querySelector("aside.book-menu nav");
+  addEventListener("beforeunload", function(event) {
+    localStorage.setItem("menu.scrollTop", menu.scrollTop);
+  });
+  menu.scrollTop = localStorage.getItem("menu.scrollTop");
+})();
+</script>
+
+    </aside>
+
+    <div class="book-page">
+      <header class="flex align-center justify-between book-header">
+  <label for="menu-control">
+    <img src="/notebook/svg/menu.svg" alt="Menu" />
+  </label>
+  <strong>environment</strong>
+</header>
+
+      
+<article class="markdown"><h1 id="python-環境設定">Python 環境設定</h1>
+<p>色々な環境構築の方法があるが、ここでは <code>pyenv</code> と <code>pipenv</code> を使った方法を採用する。</p>
+<h2 id="pyenv">pyenv</h2>
+<p>python本体のバージョン管理、インストール</p>
+<h3 id="イントールと設定">イントールと設定</h3>
+<p><code>~/.zshrc</code> などに以下の記述を追加</p>
+<pre><code>export PYENV_ROOT=&quot;$HOME/.pyenv&quot;
+export PATH=&quot;$PYENV_ROOT/bin:$PATH&quot;
+eval &quot;$(pyenv init -)&quot;
+</code></pre><h4 id="mac">Mac</h4>
+<pre><code>brew install pyenv
+</code></pre><h4 id="ubuntu-1804">Ubuntu 18.04</h4>
+<pre><code>sudo apt update &amp;&amp; sudo apt install -y --no-install-recommends \
+        build-essential \
+        libffi-dev \
+        libssl-dev \
+        zlib1g-dev \
+        libbz2-dev \
+        libreadline-dev \
+        libsqlite3-dev \
+        git
+
+# Download pyenv
+git clone https://github.com/pyenv/pyenv.git ~/.pyenv   
+</code></pre><h4 id="windows">Windows</h4>
+<p><code>pyenv-win</code> をインストールする。</p>
+<p>コマンドプロンプトで以下のコマンドを実行すると、<code>C:\Users\USERNAME\.pyenv\pyenv-win\bin</code> に <code>pyenv</code> がインストールされる</p>
+<p>（この方法では pip を使ってしまっているので、すでに Python がインストールされている前提になってしまっている。git のレポジトリからpyenv-winを zipでダウンロードして展開する方が良いかも。）</p>
+<pre><code>pip install pyenv-win --target %USERPROFILE%/.pyenv
+</code></pre><p>新しい環境変数 :</p>
+<p>pipenv に pyenv を認識させるため</p>
+<p>PYENV_ROOT : %USERPROFILE%.pyenv
+PYENV : %USERPROFILE%.pyenv\pyenv-win</p>
+<p>環境変数PATHの先頭に追加
+%PYENV%\bin
+%PYENV%\shims</p>
+<p>環境変数 <code>PYENV_ROOT</code> に <code>%USERPROFILE%\.pyenv\pyenv-win</code> をセットすると、<code>pipenv</code> が <code>pyenv</code> を認識するようになるが、<code>pipenv install</code> などを実行するとエラーになる。そのため結局使えない。</p>
+<p>なので <code>pipenv</code> から <code>pyenv</code> を使って自動でPythonをインストールするのはあきらめる。pipenv の環境で使われる Python は pyenv を直接使って別途インストールする。</p>
+<h2 id="pyenv-を使ったpython本体のインストール">pyenv を使ったPython本体のインストール</h2>
+<p><code>pyenv</code> を使ったPython本体のインストール方法</p>
+<p>インストールできるPythonの一覧</p>
+<pre><code>pyenv install -l
+</code></pre><p>バージョンを指定してインストール</p>
+<pre><code>pyenv install 3.8.2
+</code></pre><p>デフォルトで使う Python バージョンを指定する</p>
+<pre><code>pyenv local 3.8.2
+pyenv rehash
+</code></pre><pre><code># 2系の最新版のバージョン番号を取得
+python2=$(pyenv install -l | grep -v '[a-zA-Z]' | grep -e '\s2\.?*' | tail -1)
+# 3.6系の最新版のバージョン番号を取得
+python36=$(pyenv install -l | grep -v '[a-zA-Z]' | grep -e '\s3\.6?*' | tail -1)
+# 3.7系の最新版のバージョン番号を取得
+python37=$(pyenv install -l | grep -v '[a-zA-Z]' | grep -e '\s3\.7?*' | tail -1)
+# 3.8系の最新版のバージョン番号を取得
+python38=$(pyenv install -l | grep -v '[a-zA-Z]' | grep -e '\s3\.8?*' | tail -1)
+
+# pipenvを使ってインストール
+pyenv install $python2
+pyenv install $python36
+pyenv install $python37
+pyenv install $python38
+
+# python2 python3 のデフォルトのバージョンに指定
+# ログアウトしても引き継がれる
+pyenv global $python2 $python37
+pyenv global $python36
+pyenv rehash
+</code></pre><h1 id="pipenv">pipenv</h1>
+<p>プロジェクトで使用する Python とそのパッケージのインストールと管理を行う。</p>
+<p>基本的には１つのフォルダを１つのプロジェクトとして、そのフォルダの中で使いたい python 環境（pythonインタープリタのバージョン、パッケージのバージョン）を pipenv を使って構築すると、構築された Python のバージョン、パッケージのバージョンの情報が <code>Pipfile</code> と <code>Pipfile.lock</code> ファイルに記録される。</p>
+<p><code>Pipfile</code> と <code>Pipfile.lock</code> ファイルはプロジェクトのトップレベルに生成される。後で他の人が <code>Pipfile</code> や <code>Pipfile.lock</code> を使って、同じPython環境を再構築できる。</p>
+<ul>
+<li><code>Pipfile</code> ユーザーが自分で編集することもできる。</li>
+<li><code>Pipfile.lock</code> こちらは Pipenv により生成されるのでユーザーは自分で編集しない。<code>pipenv lock</code> で生成する。</li>
+</ul>
+<p><code>Pipfile.lock</code> には実際にインストールされた全ての依存パッケージとバージョンが記録される。なので完全に同じ環境が再現できる。</p>
+<p><code>pipenv</code> は、プロジェクトで使う Python インタープリタのインストール・アンインストール、バージョンの切替を行うために、<code>pyenv</code> に依存している。<code>pipenv</code> では最初にプロジェクトで使う Python インタープリタを指定するが、 <code>pipenv</code> は <code>pyenv</code> を使って指定されたPython インタープリタをインストールする。</p>
+<ul>
+<li><a href="https://github.com/pypa/pipenv">github</a></li>
+<li><a href="https://pipenv-ja.readthedocs.io/ja/translate-ja/index.html">Pipenv: 人間のためのPython開発ワークフロー</a></li>
+<li><a href="https://pipenv-ja.readthedocs.io/ja/translate-ja/advanced.html">Pipenvの進んだ使い方</a></li>
+</ul>
+<h3 id="環境とは">環境とは</h3>
+<p>環境とは、特定のPython インタープリタとそのパッケージのバージョンが有効になった状態。</p>
+<p><code>pipenv</code> では、1プロジェクト、1フォルダ、1環境になっていると想定する。</p>
+<p>まずはプロジェクトフォルダを作成し、そのフォルダの中に移動する、そしてそのフォルダ内で環境を作成し、その環境に入る、そして環境内で様々なパッケージをインストールし、実際の開発を行う。</p>
+<p>しかし、ある環境に入った時、この環境はこのプロジェクトフォルダの中でだけ有効になるわけではない。一度環境に入ればそのターミナルで作業している限り、プロジェクトフォルダの外でもその環境は有効になっている。なぜなら「環境に入る」と書いたが、正確には <code>pipenv</code> は <code>pipenv shell</code> でそのPython環境が有効になった新たな <code>shell</code> を起動する。つまり、実行中のそのターミナルがその環境に乗っ取られるということ。この環境は、別のターミナルウィンドウで開いた <code>shell</code> には影響しない、あくまでその環境に入ったターミナルの中でだけ有効になる。ただし、プロジェクトフォルダの外で <code>pipenv</code> コマンドを使ってしまうと、そのフォルダに新たな環境を作成してしまうらしい。</p>
+<p>とりあえず、OSにインストールされているPythonとは別に、独立した特定のPythonバージョンを使った開発環境を作成したいということであれば、ダミーのフォルダを作成して、そこをプロジェクトフォルダとして好きなPython環境を構築し、毎回シェルにログインするときに自動的にそのプロジェクト環境が有効になるように <code>.zshrc</code> などにコマンドを記述しておけばよいだろう。</p>
+<h2 id="インストール">インストール</h2>
+<pre><code>brew install pipenv
+</code></pre><p><em>ubuntu</em></p>
+<p>ubuntu では pip を使って pipeenv をインストールする。</p>
+<pre><code>sudo apt install python3-pip
+</code></pre><p>~/.local/bin に pip3 がインストールされる</p>
+<pre><code>pip3 install pipenv
+</code></pre><p>Windows</p>
+<p>Windows では pip を使って pipeenv をインストールする。</p>
+<p>コマンドプロンプト</p>
+<pre><code>pip install pipenv
+</code></pre><h2 id="環境の作成">環境の作成</h2>
+<p>プロジェクト用のフォルダを作成し、移動する</p>
+<pre><code>mkdir myproject
+cd myproject
+</code></pre><ul>
+<li>このプロジェクトで使用する Python バージョンを指定する。</li>
+<li>同時にこのプロジェクト用の仮想環境が作成される</li>
+<li>この時 <code>pyenv</code> がインストール＆設定されていれば自動でインストールされる。</li>
+<li>これにより <code>Pipfile</code> が作成される</li>
+</ul>
+<pre><code>pipenv --python 3.7.6
+
+# 下記のような指定も可能
+# Python 3を使う場合
+# pipenv --three  
+# Python 2を使う場合
+# pipenv --two  
+</code></pre><h3 id="pipfilepipfilelockから環境を再現する">Pipfile，Pipfile.lockから環境を再現する</h3>
+<p>既存の <code>Pipfile</code> <code>Pipfile.lock</code> を参照して、Pythonとパッケージをインストールすることもできる。</p>
+<p>プロジェクトフォルダを作成し、その中に、既存の Pipfile を配置する。そして次のコマンドを実行すると Pipfile に記述された環境が構築される。</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#75715e"># Pipfile.lock を参照してパッケージをインストールする</span>
+pipenv install
+<span style="color:#75715e"># 通常のパッケージの他に開発用パッケージもインストールしたい場合</span>
+pipenv install --dev    
+</code></pre></div><p>同様に、<code>Pipfile.lock</code> が手元にある場合は、以下のコマンドを用いる</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">pipenv sync
+pipenv sync --dev    <span style="color:#75715e"># 開発用パッケージもインストールする場合</span>
+
+</code></pre></div><p>Pipenv では、開発者が <code>Pipfile</code> にインストールしたいバージョンの希望を書き、<code>Pipfile.lock</code> に実際にインストールしたバージョンが記録される（らしい）。</p>
+<ul>
+<li><code>Pipfile</code> ユーザーが自分で編集することもできる。</li>
+<li><code>Pipfile.lock</code> こちらは Pipenv により生成されるのでユーザーは自分で編集しない。このファイルには実際にインストールされた全ての依存パッケージとバージョンが記録されている。なので完全に同じ環境が再現できる。</li>
+</ul>
+<h2 id="仮想環境の確認">仮想環境の確認</h2>
+<pre><code># 現在のプロジェクトのために作成された仮想環境のパスを表示する
+pipenv --venv
+</code></pre><p>デフォルトでは  <code>~/.local/share/virtualenvs</code> 以下に各プロジェクトの環境が保存される</p>
+<h2 id="仮想環境の削除">仮想環境の削除</h2>
+<pre><code># 現在のプロジェクトの仮想環境を削除
+pipenv --rm
+</code></pre><h2 id="仮想環境をプロジェクトフォルダ内に保存する">仮想環境をプロジェクトフォルダ内に保存する</h2>
+<p>デフォルトでは  <code>~/.local/share/virtualenvs</code> 以下に各プロジェクトの環境が保存されるが、これをプロジェクトフォルダ内に保存させるための設定。<code>.bashrc</code> などに以下の記述を追加する。</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#111">export</span> <span style="color:#111">PIPENV_VENV_IN_PROJECT</span><span style="color:#f92672">=</span><span style="color:#111">true</span>
+</code></pre></div><h2 id="既存の仮想環境にに対する操作">既存の仮想環境にに対する操作</h2>
+<h3 id="仮想環境にの中に入る">仮想環境にの中に入る</h3>
+<p>環境が作成されたプロジェクトフォルダに移動して環境の中に入る。正確にはPython環境が有用になったシェルを起動している。実行中のターミナルのpython環境が、ここで入った環境に乗っ取られる。</p>
+<pre><code>pipenv shell
+</code></pre><p>この環境はこのプロジェクトフォルダの外に出ても有効ではある。ただし、プロジェクトフォルダの外で pipenv コマンドを使うとそのフォルダに新しい環境が作成されてしまうので注意する。</p>
+<h3 id="仮想環境にライブラリをインストールする">仮想環境にライブラリをインストールする</h3>
+<p><code>pipenv</code> ではライブラリをインストールするときに通常のライブラリと開発用のライブラリを分けることができる。いくつかのライブラリは、プログラムの開発をするときには使用するが、完成したプログラムを実行するときには必要ない場合があるので、開発の時だけ使用するライブラリは開発用ライブラリとしてインストールするようにする。</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#75715e"># 通常のライブラリのインストール</span>
+pipenv install numpy
+
+<span style="color:#75715e"># 開発用ライブラリのインストール</span>
+pipenv install --dev autopep8
+</code></pre></div><p>仮想環境にライブラリをインストールすると、その情報が <code>Pipfile</code> と <code>Pipfile.lock</code> に記録される。</p>
+<p>例えば、<code>autopep8</code> はコードを成形するためのライブラリなので、プログラムの動作そのものには必要ない。</p>
+<h3 id="ライブラリのバージョンを指定してインストールする">ライブラリのバージョンを指定してインストールする</h3>
+<pre><code>pipenv install 'requests&gt;=3.7.2' geos
+</code></pre><h3 id="インストール済パッケージを列挙">インストール済パッケージを列挙</h3>
+<pre><code>pipenv graph
+</code></pre><h3 id="古いパッケージを探す">古いパッケージを探す</h3>
+<pre><code>pipenv update --outdated
+</code></pre><h3 id="古いパッケージを更新">古いパッケージを更新</h3>
+<pre><code>pipenv update
+</code></pre><h1 id="pip">pip</h1>
+<h2 id="パッケージのインストール先">パッケージのインストール先</h2>
+<p>pipでインストールされたパッケージのインストール先の確認</p>
+<pre><code>pip show [パッケージ名]
+</code></pre><pre><code>[user@local] /usr/local/bin/pip3 show matplotlib
+Name: matplotlib
+Version: 3.1.2
+Summary: Python plotting package
+Home-page: https://matplotlib.org
+Author: John D. Hunter, Michael Droettboom
+Author-email: matplotlib-users@python.org
+License: PSF
+Location: /usr/local/lib/python3.7/site-packages
+Requires: pyparsing, cycler, python-dateutil, kiwisolver, numpy
+Required-by: 
+</code></pre><h1 id="pythonパッケージの検索先">Pythonパッケージの検索先</h1>
+<h3 id="パッケージの検索先の確認法">パッケージの検索先の確認法</h3>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> <span style="color:#111">sys</span>
+<span style="color:#f92672">import</span> <span style="color:#111">pprint</span> <span style="color:#75715e"># print() より見やすい</span>
+
+<span style="color:#111">pprint</span><span style="color:#f92672">.</span><span style="color:#111">pprint</span><span style="color:#111">(</span><span style="color:#111">sys</span><span style="color:#f92672">.</span><span style="color:#111">path</span><span style="color:#111">)</span>
+</code></pre></div><p>インストールされている Python</p>
+<pre><code>/usr/bin/python3
+/usr/local/bin/python3
+/usr/local/opt/python/bin/python3.7
+$HOME/.pyenv/versions/3.7.6/bin/python3.7
+</code></pre><p>Mac 標準の python3</p>
+<p><code>/usr/bin/python3</code></p>
+<pre><code>Python 3.7.3 (default, Dec 13 2019, 19:58:14) 
+[Clang 11.0.0 (clang-1100.0.33.17)] on darwin
+['',
+ '/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.7/lib/python37.zip',
+ '/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.7/lib/python3.7',
+ '/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.7/lib/python3.7/lib-dynload',
+ '/Users/tsuda/Library/Python/3.7/lib/python/site-packages',
+ '/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.7/lib/python3.7/site-packages']
+</code></pre><p>Homebrew でいれた Python3</p>
+<p><code>/usr/local/bin/python3</code></p>
+<pre><code>Python 3.7.4 (default, Sep  7 2019, 18:27:02) 
+[Clang 10.0.1 (clang-1001.0.46.4)] on darwin
+['',
+ '/usr/local/Cellar/python/3.7.4_1/Frameworks/Python.framework/Versions/3.7/lib/python37.zip',
+ '/usr/local/Cellar/python/3.7.4_1/Frameworks/Python.framework/Versions/3.7/lib/python3.7',
+ '/usr/local/Cellar/python/3.7.4_1/Frameworks/Python.framework/Versions/3.7/lib/python3.7/lib-dynload',
+ '/Users/tsuda/Library/Python/3.7/lib/python/site-packages',
+ '/usr/local/lib/python3.7/site-packages',
+ '/usr/local/lib/python3.7/site-packages/geos',
+ '/usr/local/Cellar/numpy/1.16.4_1/libexec/nose/lib/python3.7/site-packages']
+</code></pre><p>Homebrew でいれた Python3?</p>
+<p><code>/usr/local/opt/python/bin/python3.7</code></p>
+<pre><code>Python 3.7.4 (default, Sep  7 2019, 18:27:02) 
+[Clang 10.0.1 (clang-1001.0.46.4)] on darwin
+['',
+ '/usr/local/Cellar/python/3.7.4_1/Frameworks/Python.framework/Versions/3.7/lib/python37.zip',
+ '/usr/local/Cellar/python/3.7.4_1/Frameworks/Python.framework/Versions/3.7/lib/python3.7',
+ '/usr/local/Cellar/python/3.7.4_1/Frameworks/Python.framework/Versions/3.7/lib/python3.7/lib-dynload',
+ '/Users/tsuda/Library/Python/3.7/lib/python/site-packages',
+ '/usr/local/lib/python3.7/site-packages',
+ '/usr/local/lib/python3.7/site-packages/geos',
+ '/usr/local/Cellar/numpy/1.16.4_1/libexec/nose/lib/python3.7/site-packages']
+</code></pre><p>pyenv で入れた Python</p>
+<p><code>.pyenv/versions/3.7.6/bin/python3.7</code></p>
+<pre><code>Python 3.7.6 (default, Mar 14 2020, 19:17:31) 
+[Clang 11.0.0 (clang-1100.0.33.17)] on darwin
+['',
+ '/Users/tsuda/.pyenv/versions/3.7.6/lib/python37.zip',
+ '/Users/tsuda/.pyenv/versions/3.7.6/lib/python3.7',
+ '/Users/tsuda/.pyenv/versions/3.7.6/lib/python3.7/lib-dynload',
+ '/Users/tsuda/.pyenv/versions/3.7.6/lib/python3.7/site-packages']
+</code></pre><h3 id="パッケージの検索先への追加">パッケージの検索先への追加</h3>
+<p><code>sys.path.append()</code> を使う方法</p>
+<p>これはこのときの実行限りで有効になる</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># スクリプトファイルの１階層上のディレクトリを追加</span>
+<span style="color:#f92672">import</span> <span style="color:#111">os</span>
+<span style="color:#f92672">import</span> <span style="color:#111">sys</span>
+
+<span style="color:#111">sys</span><span style="color:#f92672">.</span><span style="color:#111">path</span><span style="color:#f92672">.</span><span style="color:#111">append</span><span style="color:#111">(</span><span style="color:#111">os</span><span style="color:#f92672">.</span><span style="color:#111">path</span><span style="color:#f92672">.</span><span style="color:#111">join</span><span style="color:#111">(</span><span style="color:#111">os</span><span style="color:#f92672">.</span><span style="color:#111">path</span><span style="color:#f92672">.</span><span style="color:#111">dirname</span><span style="color:#111">(</span><span style="color:#111">__file__</span><span style="color:#111">),</span> <span style="color:#d88200">&#39;..&#39;</span><span style="color:#111">))</span>
+</code></pre></div><p><code>PYTHONPATH</code> に追加する方法</p>
+<p>Python2 と Python3 で <code>PYTHONPATH</code> を使い分けられない</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#111">export</span> <span style="color:#111">PYTHONPATH</span><span style="color:#f92672">=</span><span style="color:#d88200">&#34;/path/to/add:</span><span style="color:#111">$PYTHONPATH</span><span style="color:#d88200">&#34;</span><span style="color:#d88200">`</span>
+</code></pre></div><pre><code>'/usr/local/lib/python3.7/site-packages',
+import os
+import sys
+
+sys.path.append('/usr/local/lib/python3.7/site-packages')
+</code></pre></article>
+
+      
+<div class="book-footer justify-between">
+  
+  <div>
+    
+    <a class="flex align-center" href="https://github.com/teuder/notebook/commit/daa24cf5a1cce1e4aa4642fca296ef90762c307b" title='Last modified 2022-03-04 by Masaki Tsuda' target="_blank" rel="noopener">
+      <img src="/notebook/svg/calendar.svg" alt="Changed" />
+      <span>2022-03-04</span>
+    </a>
+  </div>
+  
+  
+  <div>
+    
+    <a class="flex align-center" href="https://github.com/teuder/notebook/edit/master/content/Python/environment.md" target="_blank" rel="noopener">
+      <img src="/notebook/svg/edit.svg" alt="Edit" />
+      <span>Edit this page</span>
+    </a>
+    
+  </div>
+  
+</div>
+
+
+      
+    </div>
+
+    
+  
+
+  <aside class="book-toc level-3 fixed">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#pyenv">pyenv</a>
+      <ul>
+        <li><a href="#イントールと設定">イントールと設定</a></li>
+      </ul>
+    </li>
+    <li><a href="#pyenv-を使ったpython本体のインストール">pyenv を使ったPython本体のインストール</a></li>
+  </ul>
+
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#環境とは">環境とは</a></li>
+      </ul>
+    </li>
+    <li><a href="#インストール">インストール</a></li>
+    <li><a href="#環境の作成">環境の作成</a>
+      <ul>
+        <li><a href="#pipfilepipfilelockから環境を再現する">Pipfile，Pipfile.lockから環境を再現する</a></li>
+      </ul>
+    </li>
+    <li><a href="#仮想環境の確認">仮想環境の確認</a></li>
+    <li><a href="#仮想環境の削除">仮想環境の削除</a></li>
+    <li><a href="#仮想環境をプロジェクトフォルダ内に保存する">仮想環境をプロジェクトフォルダ内に保存する</a></li>
+    <li><a href="#既存の仮想環境にに対する操作">既存の仮想環境にに対する操作</a>
+      <ul>
+        <li><a href="#仮想環境にの中に入る">仮想環境にの中に入る</a></li>
+        <li><a href="#仮想環境にライブラリをインストールする">仮想環境にライブラリをインストールする</a></li>
+        <li><a href="#ライブラリのバージョンを指定してインストールする">ライブラリのバージョンを指定してインストールする</a></li>
+        <li><a href="#インストール済パッケージを列挙">インストール済パッケージを列挙</a></li>
+        <li><a href="#古いパッケージを探す">古いパッケージを探す</a></li>
+        <li><a href="#古いパッケージを更新">古いパッケージを更新</a></li>
+      </ul>
+    </li>
+  </ul>
+
+  <ul>
+    <li><a href="#パッケージのインストール先">パッケージのインストール先</a></li>
+  </ul>
+
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#パッケージの検索先の確認法">パッケージの検索先の確認法</a></li>
+        <li><a href="#パッケージの検索先への追加">パッケージの検索先への追加</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </aside>
+
+
+
+  </main>
+
+  
+</body>
+
+</html>

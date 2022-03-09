@@ -1,0 +1,493 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Introduction on notebook</title>
+    <link>https://teuder.github.io/notebook/</link>
+    <description>Recent content in Introduction on notebook</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja-JP</language>
+    <lastBuildDate>Mon, 02 Sep 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://teuder.github.io/notebook/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>BigQuery GIS</title>
+      <link>https://teuder.github.io/notebook/gis/bigquerygis/</link>
+      <pubDate>Wed, 25 Dec 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://teuder.github.io/notebook/gis/bigquerygis/</guid>
+      <description>BigQuery GIS BigQuery標準SQLの地理関数</description>
+    </item>
+    
+    <item>
+      <title>SAR</title>
+      <link>https://teuder.github.io/notebook/gis/sar/</link>
+      <pubDate>Thu, 10 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://teuder.github.io/notebook/gis/sar/</guid>
+      <description>SAR 合成開口レーダ（SAR）のキホン～事例、分かること、センサ、衛星、波長～ 合成開口レーザー（SAR:Synthetic Aperture Radar）は、マイ</description>
+    </item>
+    
+    <item>
+      <title>用語</title>
+      <link>https://teuder.github.io/notebook/gis/terminology/</link>
+      <pubDate>Thu, 10 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://teuder.github.io/notebook/gis/terminology/</guid>
+      <description>用語 Panchromatic PAN 白黒の画像 Multispectral カラー画像 可視光 Visible VIS 近赤外線 Near InfraRed NIR 可視光と近赤外線をまとめて VNIR バンド センサーが感受する電磁波の波長帯域、バンドによって見</description>
+    </item>
+    
+    <item>
+      <title>VIIRS</title>
+      <link>https://teuder.github.io/notebook/gis/viirs/</link>
+      <pubDate>Sat, 14 Sep 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://teuder.github.io/notebook/gis/viirs/</guid>
+      <description>VIIRS Visible Infrared Imaging Radiometer Suite 赤外線〜可視光を含む波長の光を受信する22個のセンサーからなる「装置の名称」。様々な波長で観測することにより地表や海洋の色や夜間</description>
+    </item>
+    
+    <item>
+      <title>GIS関連Rパッケージ</title>
+      <link>https://teuder.github.io/notebook/gis/r_package/</link>
+      <pubDate>Mon, 26 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://teuder.github.io/notebook/gis/r_package/</guid>
+      <description>GIS関係のRパッケージの一覧 https://cran.r-project.org/web/views/Spatial.html https://cran.r-project.org/web/views/SpatioTemporal.html https://www.r-spatial.org/ 一般 sp：地理空間のクラスやメソッドを提供している sf : OGC Simple Featuresという標準に従って開発されてい</description>
+    </item>
+    
+    <item>
+      <title>Bayesian Staistics</title>
+      <link>https://teuder.github.io/notebook/datascience/bayesian_statistics/</link>
+      <pubDate>Mon, 26 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://teuder.github.io/notebook/datascience/bayesian_statistics/</guid>
+      <description>Bayesian Statistics Cmdstanr入門とreduce_sum()解説 rstan はもう更新されていないみたいなので、今後は Cmdstan のラッパーである Cmdstanr を使った方がよさそう Bayesian</description>
+    </item>
+    
+    <item>
+      <title>BigQuery GIS</title>
+      <link>https://teuder.github.io/notebook/gcp/bigquery_gis/</link>
+      <pubDate>Wed, 04 Sep 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://teuder.github.io/notebook/gcp/bigquery_gis/</guid>
+      <description>BigQuery GIS 標準 SQL の地理関数 地理オブジェクト作成 ST_GEOGPOINT(longitude, latitude) ST_GEOGFROMTEXT(wkt_string) 判定関数 ST_CONTAINS ST_CONTAINS(geography_1, geography_2) geography_2 は geography_1 の内部にある（外にはみ出していない）なら TRUE ST_WITHIN ST_WITHIN(geography_1, geography_2) geography_1 は geography_2 の内部にある（外には</description>
+    </item>
+    
+    <item>
+      <title>BigQuery: bqコマンド</title>
+      <link>https://teuder.github.io/notebook/gcp/bigquery_bq/</link>
+      <pubDate>Wed, 04 Sep 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://teuder.github.io/notebook/gcp/bigquery_bq/</guid>
+      <description>BigQuery：bqコマンド Data set を作成する bq mk \ --dataset \ --location=US \ --default_table_expiration 3600 \ --default_partition_expiration 3600 \ --description &#39;description&#39; \ project_id:dataset_name location US など default_table_expiration テーブル自動削除までの秒数を指定する、デフォルトでは</description>
+    </item>
+    
+    <item>
+      <title>BigQuery: general</title>
+      <link>https://teuder.github.io/notebook/gcp/bigquery/</link>
+      <pubDate>Wed, 04 Sep 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://teuder.github.io/notebook/gcp/bigquery/</guid>
+      <description>BigQuery BigQuery Advent カレンダー WebUI キーボードショートカット Mac の場合は Ctrl の代わりに Cmd にする キー アクション Ctrl Enter 現在のクエリを実行 Tab 現在の単語をオートコンプリート</description>
+    </item>
+    
+    <item>
+      <title>BigQuery: SQL</title>
+      <link>https://teuder.github.io/notebook/gcp/bigquery_sql/</link>
+      <pubDate>Wed, 04 Sep 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://teuder.github.io/notebook/gcp/bigquery_sql/</guid>
+      <description>BigQuery: SQL 基本文法 標準 SQL のクエリ構文 標準SQLの演算子 標準SQLの関数と演算子 レギュラーSQLをデフォルトにする クエリの前に #standardSQL の記述を追加する。逆</description>
+    </item>
+    
+    <item>
+      <title>C&#43;&#43;</title>
+      <link>https://teuder.github.io/notebook/miscellaneous/c_plus_plus/</link>
+      <pubDate>Tue, 03 Sep 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://teuder.github.io/notebook/miscellaneous/c_plus_plus/</guid>
+      <description>C++ https://hackingcpp.com/</description>
+    </item>
+    
+    <item>
+      <title>english</title>
+      <link>https://teuder.github.io/notebook/miscellaneous/english/</link>
+      <pubDate>Tue, 03 Sep 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://teuder.github.io/notebook/miscellaneous/english/</guid>
+      <description>English 数学 数学用語 英語 一覧 Exponents(指数)の英語表現</description>
+    </item>
+    
+    <item>
+      <title>jinja</title>
+      <link>https://teuder.github.io/notebook/miscellaneous/jinjia2/</link>
+      <pubDate>Tue, 03 Sep 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://teuder.github.io/notebook/miscellaneous/jinjia2/</guid>
+      <description>jinja2 jinja2 はテンプレートエンジン テンプレートエンジンとは、要するに、テンプレートの一部を、別の変数の値で置き換えて、新しいドキュメント（htmlと</description>
+    </item>
+    
+    <item>
+      <title>jupyter</title>
+      <link>https://teuder.github.io/notebook/miscellaneous/jupyter/</link>
+      <pubDate>Tue, 03 Sep 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://teuder.github.io/notebook/miscellaneous/jupyter/</guid>
+      <description>Visual Studio Code ショートカット jupyter の起動 起動しているサーバーのリスト jupyter notebook list</description>
+    </item>
+    
+    <item>
+      <title>PC</title>
+      <link>https://teuder.github.io/notebook/miscellaneous/pc/</link>
+      <pubDate>Tue, 03 Sep 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://teuder.github.io/notebook/miscellaneous/pc/</guid>
+      <description>PC CPU 4Gamer: Zen 3アーキテクチャ採用の新世代CPUはゲームにおける性能が大きく向上した: Ryzen 9 5900X, Ryzen 7 5800X メモリ規格 見れば全部わかるDDR4メモリ完全ガイ</description>
+    </item>
+    
+    <item>
+      <title>tmux</title>
+      <link>https://teuder.github.io/notebook/miscellaneous/tmux/</link>
+      <pubDate>Tue, 03 Sep 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://teuder.github.io/notebook/miscellaneous/tmux/</guid>
+      <description>tmux インストール sudo apt-get install tmux https://qiita.com/shin-ch13/items/9d207a70ccc8467f7bab 使い方 初めて tmux を実行する tmux 現在のシェルのバックグラウンドで tmux セッションが開始され、セッション管理下の shell が起動する。 tmux</description>
+    </item>
+    
+    <item>
+      <title>vscode</title>
+      <link>https://teuder.github.io/notebook/miscellaneous/vscode/</link>
+      <pubDate>Tue, 03 Sep 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://teuder.github.io/notebook/miscellaneous/vscode/</guid>
+      <description>Visual Studio Code ショートカット ショートカットエディタ Preferences &amp;gt;&amp;gt; Keyboard Shortcuts 【Mac版】 VSCode キーボードショートカット コマンドパレット shift cmd P タブの移動 opt cmd → 単語単位でカー</description>
+    </item>
+    
+    <item>
+      <title>Windows</title>
+      <link>https://teuder.github.io/notebook/miscellaneous/windows/</link>
+      <pubDate>Tue, 03 Sep 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://teuder.github.io/notebook/miscellaneous/windows/</guid>
+      <description>Windows ディスクのマウント/アンマウント コマンドプロンプトを管理者権限で起動し、以下のコマンド # マウント mountvol D:\ \\?\Volume{b57198fe-cc68-4509-b771-f81d0fdae196}\ # アンマウント（Dドライブをアンマウ</description>
+    </item>
+    
+    <item>
+      <title>wsl</title>
+      <link>https://teuder.github.io/notebook/miscellaneous/wsl/</link>
+      <pubDate>Tue, 03 Sep 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://teuder.github.io/notebook/miscellaneous/wsl/</guid>
+      <description>WSL Windows Subsystem for Linux の Tips https://xn--xdocs-c53drk.microsoft.com/ja-jp/windows/wsl/install インストールしているLinux仮想マシンと、そのWSLバージョンの確認 wsl -l -v PS C:\Users\XXX&amp;gt; wsl -l -v NAME STATE VERSION * Ubuntu-18.04 Running 1 Ubuntu-20.04 Running 1 WSL2を有効化す</description>
+    </item>
+    
+    <item>
+      <title>homebrew</title>
+      <link>https://teuder.github.io/notebook/mac/homebrew/</link>
+      <pubDate>Mon, 02 Sep 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://teuder.github.io/notebook/mac/homebrew/</guid>
+      <description>homebrew 基本コマンド brew search [TEXT|/REGEX/] brew info [FORMULA...] brew install FORMULA brew update brew upgrade [FORMULA...] brew uninstall FORMULA... brew list [FORMULA...] brew doctor : 診断 インストール先： /usr/local/Cellar もう少し詳細には： /usr/local/Cellar/パッ</description>
+    </item>
+    
+    <item>
+      <title>Hugo</title>
+      <link>https://teuder.github.io/notebook/miscellaneous/hugo/</link>
+      <pubDate>Thu, 22 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://teuder.github.io/notebook/miscellaneous/hugo/</guid>
+      <description>Hugo Hugoはマークダウンから静的サイトのためのhtmlを生成するソフトウェア Hugoフォルダの構成 /contents フォルダの中にサイトの内容を記述したマー</description>
+    </item>
+    
+    <item>
+      <title>glossary</title>
+      <link>https://teuder.github.io/notebook/maritime/glossary/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://teuder.github.io/notebook/maritime/glossary/</guid>
+      <description>用語集 組織 RFMO Regional Fisheries Management Office 地域の漁業管理組織 IMO International Maritime Organization 国際海事専門機関 RFMO（マグロ類） WCPFC Western and Central Pacific Fisheries Commission 中西部太平洋まぐろ類委員会 IATTC Inter-American Tropical Tuna Commission 全米熱帯</description>
+    </item>
+    
+    <item>
+      <title>leaflet</title>
+      <link>https://teuder.github.io/notebook/r/leaflet/</link>
+      <pubDate>Tue, 17 Sep 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://teuder.github.io/notebook/r/leaflet/</guid>
+      <description>leaflet leaflet はインタラクティブな地図の可視化をするためのパッケージ https://rstudio.github.io/leaflet/ 例 df &amp;lt;- data.frame( lon = rnorm(10, 140, 1), lat = rnorm(10, 35.7, 1), val1 = LETTERS[1:10], val2 = runif(10, 1, 100) ) df %&amp;gt;% mutate(caption = paste(&amp;#34;lon=&amp;#34;, lon, &amp;#34;&amp;lt;br&amp;gt; lat = &amp;#34;, lat)) %&amp;gt;% leaflet::leaflet() %&amp;gt;% leaflet::addTiles() %&amp;gt;% leaflet::setView(lng</description>
+    </item>
+    
+    <item>
+      <title>rhdf5</title>
+      <link>https://teuder.github.io/notebook/r/rhdf5/</link>
+      <pubDate>Tue, 17 Sep 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://teuder.github.io/notebook/r/rhdf5/</guid>
+      <description>rhdf5 HDF5形式のファイルを扱うためのパッケージ CRANにはなく bioconductor のパッケージらしいので、bioconductor のレポジトリからインストール</description>
+    </item>
+    
+    <item>
+      <title>ggplot2</title>
+      <link>https://teuder.github.io/notebook/r/ggplot2/</link>
+      <pubDate>Tue, 03 Sep 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://teuder.github.io/notebook/r/ggplot2/</guid>
+      <description>ggplot2 ggplot2: Elegant Graphics for Data Analysis The R Graph Gallery 色々なグラフの例とコード 基本的な使い方 使い方の例 set.seed(7) data_df &amp;lt;- data.frame( var1 = 1:10, var2 = rnorm(10), var3 = rep(LETTERS[1:3], length.out = 10)) ggplot(data = data_df) + geom_point(aes(x = var1, y = var2, color = var3)) + geom_line(aes(x = var1, y =</description>
+    </item>
+    
+    <item>
+      <title>git</title>
+      <link>https://teuder.github.io/notebook/miscellaneous/git/</link>
+      <pubDate>Mon, 26 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://teuder.github.io/notebook/miscellaneous/git/</guid>
+      <description>Git Gitの基本コマンド .gitignoreの仕様詳解 Happy Git and GitHub for the useR サル先生のGit入門 サブコマンド サブコマンド 実行内容 clone リポジトリのクローン</description>
+    </item>
+    
+    <item>
+      <title>raster</title>
+      <link>https://teuder.github.io/notebook/r/raster/</link>
+      <pubDate>Mon, 26 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://teuder.github.io/notebook/r/raster/</guid>
+      <description>raster # GooTiffの読み込み data &amp;lt;- raster::raster(&amp;quot;path/data.tif&amp;quot;) 値と座標のデータフレームに変換する df &amp;lt;- raster::rasterToPoint(data) 緯度経度と値のデータフレームからラスタデータを作成する test &amp;lt;- raster::rasterize(x = data[c(&amp;quot;lon&amp;quot;,&amp;quot;lat&amp;quot;)], #</description>
+    </item>
+    
+    <item>
+      <title>sf</title>
+      <link>https://teuder.github.io/notebook/r/sf/</link>
+      <pubDate>Mon, 26 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://teuder.github.io/notebook/r/sf/</guid>
+      <description>sf 定義されたクラス sfg ：個別の地物オブジェクト sfc ： sfg オブジェクトのリスト、リストの各要素が１地物に相当 sf ： sfc オブジェクトを geometry 列としてもつデータ</description>
+    </item>
+    
+    <item>
+      <title>bigrquery</title>
+      <link>https://teuder.github.io/notebook/r/bigrquery/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://teuder.github.io/notebook/r/bigrquery/</guid>
+      <description>bigrquery R から BigQuery を操作するためのパッケージ コネクションの作成 ds &amp;lt;- DBI::dbConnect( drv = bigrquery::bigquery(), project = &amp;quot;project_name&amp;quot;, dataset = &amp;quot;dataset_name&amp;quot;, use_legacy_sql = FALSE ) ds &amp;lt;- bq_dataset( project = &amp;quot;project_name&amp;quot;, dataset = &amp;quot;dataset_name&amp;quot;,) 大きなデータをダウンロードしようとす</description>
+    </item>
+    
+    <item>
+      <title>dplyr</title>
+      <link>https://teuder.github.io/notebook/r/dplyr/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://teuder.github.io/notebook/r/dplyr/</guid>
+      <description>dplyr データフレームに対する操作 列の選択 select() 列選択のヘルパー関数 これらの関数は select() の中で使う all_of(x) 変数 x に記録されたカラムを選択する 行の選択 行の並べ替え</description>
+    </item>
+    
+    <item>
+      <title>future</title>
+      <link>https://teuder.github.io/notebook/r/future/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://teuder.github.io/notebook/r/future/</guid>
+      <description>future future パッケージは１つのPC内での並列計算、および、複数PCをまたいだ分散計算を実行するためのパッケージ</description>
+    </item>
+    
+    <item>
+      <title>gganimate</title>
+      <link>https://teuder.github.io/notebook/r/gganimate/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://teuder.github.io/notebook/r/gganimate/</guid>
+      <description>gganimate transition_manual() コマ撮りアニメのように、１枚１枚のコマが切り替わるようなアニメーション transition_manual(frames, ..., cumulative = FALSE) frames でコマ分けに使いたいカラムを指定する。 cumulative = TRUE なら前のコ</description>
+    </item>
+    
+    <item>
+      <title>lubridate</title>
+      <link>https://teuder.github.io/notebook/r/lubridate/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://teuder.github.io/notebook/r/lubridate/</guid>
+      <description>lubridate 日付を扱うパッケージ 文字列から Date, POSIXct オブジェクトの生成 ymd(..., quiet = FALSE, tz = NULL, locale = Sys.getlocale(&amp;quot;LC_TIME&amp;quot;), truncated = 0) ymd_hms(..., quiet = FALSE, tz = &amp;quot;UTC&amp;quot;, locale = Sys.getlocale(&amp;quot;LC_TIME&amp;quot;), truncated = 0) ymd_hm(..., quiet = FALSE, tz = &amp;quot;UTC&amp;quot;, locale = Sys.getlocale(&amp;quot;LC_TIME&amp;quot;), truncated = 0) ymd_h(..., quiet = FALSE,</description>
+    </item>
+    
+    <item>
+      <title>purrr</title>
+      <link>https://teuder.github.io/notebook/r/purrr/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://teuder.github.io/notebook/r/purrr/</guid>
+      <description>purrr ベクトルやリストなどの各要素に対する繰り返し処理 基本関数 map_* map2_* reduce() accumulate pmap purrr::pmap(.l, .f, &amp;hellip;) 3つ以上の引数を受け取る関数を適用する 渡すリスト（データフレームで</description>
+    </item>
+    
+    <item>
+      <title>R Package Development</title>
+      <link>https://teuder.github.io/notebook/r/package_development/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://teuder.github.io/notebook/r/package_development/</guid>
+      <description>Rパッケージ開発 パッケージにデータを含める data/ ユーザーもアクセスできる。例データなど R/sysdata.rda に含める ユーザーはアクセスできない。関数内で使用するデー</description>
+    </item>
+    
+    <item>
+      <title>R_Python</title>
+      <link>https://teuder.github.io/notebook/r/r_python/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://teuder.github.io/notebook/r/r_python/</guid>
+      <description>RとPython Rとnumpy dplyr と Pandas</description>
+    </item>
+    
+    <item>
+      <title>reticulate</title>
+      <link>https://teuder.github.io/notebook/r/reticulate/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://teuder.github.io/notebook/r/reticulate/</guid>
+      <description>reticulate R から Python を呼び出すためのパッケージ 使用する Python を指定する .Rprofile で RETICULATE_PYTHON 環境変数に、使用するPythonを指定するのが安全 Sys.setenv(RETICULATE_PYTHON = &#39;/usr/local/bin/python3&#39;) pipenv で Python 環境を管理してい</description>
+    </item>
+    
+    <item>
+      <title>Rmarkdown</title>
+      <link>https://teuder.github.io/notebook/r/rmarkdown/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://teuder.github.io/notebook/r/rmarkdown/</guid>
+      <description>Rmarkdown Rmarkdown (.Rmd) から、html などに出力するパッケージは２つある knitr と rmarkdown、rmarkdown は内部で knitr を使用している。rmarkdown</description>
+    </item>
+    
+    <item>
+      <title>rpart</title>
+      <link>https://teuder.github.io/notebook/r/rpart/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://teuder.github.io/notebook/r/rpart/</guid>
+      <description>rpart 決定木 rpart.object https://rdrr.io/cran/rpart/man/rpart.object.html rpart() による学習結果のオブジェクト rpart.object の要素 frame: データフレーム、tree を表現する var: 分割に使用される変数、&amp;lt;leaf&amp;gt; は末端</description>
+    </item>
+    
+    <item>
+      <title>RStudio</title>
+      <link>https://teuder.github.io/notebook/r/rstudio/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://teuder.github.io/notebook/r/rstudio/</guid>
+      <description>RStudio インストール WSL の Ubuntu 18.04 にインストール Ubuntuの場合と同じ、事前に Rをインストールしておく sudo apt-get install gdebi-core wget https://download2.rstudio.org/server/bionic/amd64/rstudio-server-1.3.959-amd64.deb sudo gdebi rstudio-server-1.3.959-amd64.deb しかし、次のようなエラーが出た</description>
+    </item>
+    
+    <item>
+      <title>rvest</title>
+      <link>https://teuder.github.io/notebook/r/rvest/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://teuder.github.io/notebook/r/rvest/</guid>
+      <description>rvest スクレイピングするためのパッケージ 取り出したい要素の確認 スクレイピングしたいウェブページをブラウザ（Chrome）で開く → F12 を押すと、デベ</description>
+    </item>
+    
+    <item>
+      <title>stars</title>
+      <link>https://teuder.github.io/notebook/r/stars/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://teuder.github.io/notebook/r/stars/</guid>
+      <description>stars 時空間のハイパーキューブを扱うためのパッケージらしい stars sfオブジェクトをラスター化する st_rasterize(sf, template = st_as_stars(st_bbox(sf), values = NA_real_, ...), file = tempfile(), driver = &amp;quot;GTiff&amp;quot;, options = character(0), ...) template : ラスターのグ</description>
+    </item>
+    
+    <item>
+      <title>stringr</title>
+      <link>https://teuder.github.io/notebook/r/stringr/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://teuder.github.io/notebook/r/stringr/</guid>
+      <description>stringr 文字列を操作するパッケージ 正規表現 パターンを含む要素の抽出 str_detect(string, pattern, negate = FALSE) 文字列ベクトル string を渡して、 pattern と一致する文字列に対して TRUE を返す。nega</description>
+    </item>
+    
+    <item>
+      <title>tidymodels</title>
+      <link>https://teuder.github.io/notebook/r/tidymodels/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://teuder.github.io/notebook/r/tidymodels/</guid>
+      <description>tidymodels tidymodels は統一的なインターフェースでモデリングを行うための、いくつかのパッケージをまとめたもの。 rsample ：訓練データ/テストデータの分割 recipe ：データの前</description>
+    </item>
+    
+    <item>
+      <title>tidyr</title>
+      <link>https://teuder.github.io/notebook/r/tidyr/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://teuder.github.io/notebook/r/tidyr/</guid>
+      <description>tidyr データフレーム内の情報を変化させずに、セルの並びを改変する pivot_longer( data, cols, names_to = &amp;#34;name&amp;#34;, names_prefix = NULL, names_sep = NULL, names_pattern = NULL, names_ptypes = list(), names_transform = list(), names_repair = &amp;#34;check_unique&amp;#34;, values_to = &amp;#34;value&amp;#34;, values_drop_na = FALSE, values_ptypes = list(), values_transform = list(), ... ) cols: １</description>
+    </item>
+    
+    <item>
+      <title>wk</title>
+      <link>https://teuder.github.io/notebook/r/wk/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://teuder.github.io/notebook/r/wk/</guid>
+      <description>wk 地理データで登場する Well Known Text (WKT) や Well Known Binary (WKB) 形式のデータを扱うためのパッケージ このパッケージをインストールすると bigrquery パッケージで BigQuery から GEOGRAPHY 型のカラム</description>
+    </item>
+    
+    <item>
+      <title>BigQuery</title>
+      <link>https://teuder.github.io/notebook/python/bigquery/</link>
+      <pubDate>Fri, 17 Jan 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://teuder.github.io/notebook/python/bigquery/</guid>
+      <description>BigQuery BigQuery を Python から使う https://cloud.google.com/bigquery/docs/pandas-gbq-migration pandas.read_gbq() 小さいクエリの結果をデータフレームとして受け取るのに便利 ライブラリ pandas_gbq をインストールしておく。 import pandas query = &amp;quot;&amp;quot;&amp;quot; SELECT CONCAT( &#39;https://stackoverflow.com/questions/&#39;, CAST(id as STRING)) as url, view_count</description>
+    </item>
+    
+    <item>
+      <title>environment</title>
+      <link>https://teuder.github.io/notebook/python/environment/</link>
+      <pubDate>Fri, 17 Jan 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://teuder.github.io/notebook/python/environment/</guid>
+      <description>Python 環境設定 色々な環境構築の方法があるが、ここでは pyenv と pipenv を使った方法を採用する。 pyenv python本体のバージョン管理、インストール イントールと設</description>
+    </item>
+    
+    <item>
+      <title>jupyter</title>
+      <link>https://teuder.github.io/notebook/python/jupyter/</link>
+      <pubDate>Fri, 17 Jan 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://teuder.github.io/notebook/python/jupyter/</guid>
+      <description>jypyter インストール Jupyter インストール プロジェクトフォルダに移動して、仮想環境に入ってから cd Project pipenv shell pipenv install jupyter jupyter を起動する jupyter notebook pipenv の仮想環境の中の jupyter を起動する</description>
+    </item>
+    
+    <item>
+      <title>Pandas</title>
+      <link>https://teuder.github.io/notebook/python/pandas/</link>
+      <pubDate>Fri, 17 Jan 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://teuder.github.io/notebook/python/pandas/</guid>
+      <description>Pandas DataFrame 提供するライブラリ BigQuery との連携 import pandas_gbq df = pandas_gbq.read_gbq(&amp;#34;SELECT my_col FROM `my_project.my_dataset.my_table`&amp;#34;) 初回に実行した時にブラウザが開いてアクセスコードの入力が求められる ユーザーごとのアクセス情報</description>
+    </item>
+    
+    <item>
+      <title>Python in VScode</title>
+      <link>https://teuder.github.io/notebook/python/vscode/</link>
+      <pubDate>Fri, 17 Jan 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://teuder.github.io/notebook/python/vscode/</guid>
+      <description>Python in VScode VScode で Python を使う時の Tips 参考：[VS Code でPython，Jupyter を動かす](https://qii ta.com/surei/items/9f25d7efa7c67d55d98f) 拡張機能 Python 必須 はじめに コマンドパレッ</description>
+    </item>
+    
+    <item>
+      <title>anaconda</title>
+      <link>https://teuder.github.io/notebook/python/anaconda/</link>
+      <pubDate>Tue, 01 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://teuder.github.io/notebook/python/anaconda/</guid>
+      <description>Anaconda minoconda
+https://conda.io/projects/conda/en/latest/user-guide/concepts/environments.html</description>
+    </item>
+    
+    <item>
+      <title>DBI</title>
+      <link>https://teuder.github.io/notebook/r/dbi/</link>
+      <pubDate>Wed, 04 Sep 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://teuder.github.io/notebook/r/dbi/</guid>
+      <description>DBI DBIパッケージはRからデータベース（DB）とやりとりするためのインターフェースを提供している。これにより、ドライバーを切り替えるだけで、</description>
+    </item>
+    
+  </channel>
+</rss>

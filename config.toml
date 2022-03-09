@@ -3,7 +3,7 @@ title = 'notebook'
 theme = 'book'
 
 # for github pages
-publishDir = "docs" 
+publishDir = "test" 
 
 # Language
 languageCode = "ja-JP"
