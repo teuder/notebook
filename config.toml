@@ -5,7 +5,7 @@ theme = 'hugo-book'
 
 
 # for github pages
-publishDir = "test" 
+publishDir = "docs" 
 
 # Language
 languageCode = "ja-JP"
