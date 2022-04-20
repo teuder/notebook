@@ -43,7 +43,7 @@
       <pubDate>Wed, 04 Sep 2019 00:00:00 +0000</pubDate>
       
       <guid>https://teuder.github.io/notebook/gcp/bigquery_sql/</guid>
-      <description>BigQuery: SQL 基本文法 標準 SQL のクエリ構文 標準SQLの演算子 標準SQLの関数と演算子 レギュラーSQLをデフォルトにする クエリの前に #standardSQL の記述を追加する。逆</description>
+      <description>BigQuery: SQL 基本文法 標準 SQL のクエリ構文 標準SQLの演算子 標準SQLの関数と演算子 データセットの中からテーブルの情報を取得する select * dataset.TABLES_SUMMARY INFORMAIT</description>
     </item>
     
   </channel>

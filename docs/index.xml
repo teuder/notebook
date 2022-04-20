@@ -98,7 +98,7 @@
       <pubDate>Wed, 04 Sep 2019 00:00:00 +0000</pubDate>
       
       <guid>https://teuder.github.io/notebook/gcp/bigquery_sql/</guid>
-      <description>BigQuery: SQL 基本文法 標準 SQL のクエリ構文 標準SQLの演算子 標準SQLの関数と演算子 レギュラーSQLをデフォルトにする クエリの前に #standardSQL の記述を追加する。逆</description>
+      <description>BigQuery: SQL 基本文法 標準 SQL のクエリ構文 標準SQLの演算子 標準SQLの関数と演算子 データセットの中からテーブルの情報を取得する select * dataset.TABLES_SUMMARY INFORMAIT</description>
     </item>
     
     <item>
@@ -279,6 +279,15 @@
       
       <guid>https://teuder.github.io/notebook/r/dplyr/</guid>
       <description>dplyr データフレームに対する操作 列の選択 select() 列選択のヘルパー関数 これらの関数は select() の中で使う all_of(x) 変数 x に記録されたカラムを選択する 行の選択 行の並べ替え</description>
+    </item>
+    
+    <item>
+      <title>forcats</title>
+      <link>https://teuder.github.io/notebook/r/forcats/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://teuder.github.io/notebook/r/forcats/</guid>
+      <description>forcats forcats パッケージは factor 型を操作するためのパッケージ https://kazutan.github.io/kazutanR/forcats_test.html 関数の一覧 library(forcats) ls(&amp;quot;package:forcats&amp;quot;) [1] &amp;quot;%&amp;gt;%&amp;quot; &amp;quot;as_factor&amp;quot; &amp;quot;fct_anon&amp;quot; [4] &amp;quot;fct_c&amp;quot; &amp;quot;fct_collapse&amp;quot; &amp;quot;fct_count&amp;quot; [7] &amp;quot;fct_cross&amp;quot; &amp;quot;fct_drop&amp;quot; &amp;quot;fct_expand&amp;quot; [10] &amp;quot;fct_explicit_na&amp;quot; &amp;quot;fct_infreq&amp;quot; &amp;quot;fct_inorder&amp;quot; [13] &amp;quot;fct_inseq&amp;quot; &amp;quot;fct_lump&amp;quot; &amp;quot;fct_lump_lowfreq&amp;quot; [16] &amp;quot;fct_lump_min&amp;quot; &amp;quot;fct_lump_n&amp;quot; &amp;quot;fct_lump_prop&amp;quot; [19] &amp;quot;fct_match&amp;quot; &amp;quot;fct_other&amp;quot; &amp;quot;fct_recode&amp;quot; [22] &amp;quot;fct_relabel&amp;quot; &amp;quot;fct_relevel&amp;quot; &amp;quot;fct_reorder&amp;quot; [25] &amp;quot;fct_reorder2&amp;quot; &amp;quot;fct_rev&amp;quot; &amp;quot;fct_shift&amp;quot; [28] &amp;quot;fct_shuffle&amp;quot; &amp;quot;fct_unify&amp;quot;</description>
     </item>
     
     <item>

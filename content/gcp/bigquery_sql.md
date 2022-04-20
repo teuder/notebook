@@ -17,6 +17,12 @@ weight: 10
 - [標準SQLの関数と演算子](https://cloud.google.com/bigquery/docs/reference/standard-sql/functions-and-operators?hl=ja)
 
 
+データセットの中からテーブルの情報を取得する
+
+select *
+dataset._TABLES_SUMMARY_
+
+INFORMAITON＿SCHEMA.COLUMS
 
 ## レギュラーSQLをデフォルトにする
 
