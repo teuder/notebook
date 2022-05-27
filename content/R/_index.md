@@ -4,7 +4,7 @@ draft: false
 date : 2019-08-26
 publishdate : 2019-08-26
 weight : 2
-bookHidden: falsetolls
+
 type: docs
 ---
 
@@ -14,6 +14,7 @@ type: docs
 
 [The tidyverse style guide](https://style.tidyverse.org/)
 
+なんで？
 
 ## github にあるパッケージをインストールする
 
