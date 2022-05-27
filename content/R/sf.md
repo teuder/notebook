@@ -143,6 +143,10 @@ lwgeom::st_asewkt(x, digits = options("digits"))
 
 # 地物同士の位置関係の判定
 
+## バックエンドのライブラリを切り替える
+
+新しいバージョンの sf パッケージでは地理情報処理のバックエンドとしてS2ライブラリを使用するようになった。S2ライブラリは処理が高速なので通常はそのままでよい。しかし、S2ライブラリは地球を球面として扱うが、平面として扱った処理をしたい場合はS2ライブラリを無効にすると良い。
+
 ```r
 # sf 1.0 以降 s2 パッケージを使うようになった
 # s2を使わない以前の計算方法にしたいときは以下を実行する
@@ -152,6 +156,8 @@ sf::sf_use_s2(FALSE)
 predicate whether `x` touches/contains/within/ `y` 
 
 `sparse=FALSE` にすると論理値ベクトルを返す。
+
+## 地理情報処理関数
 
 `st_intersects(x, y, sparse = TRUE, ...)`
 
@@ -180,14 +186,7 @@ predicate whether `x` touches/contains/within/ `y`
 `st_is_within_distance(x, y, dist, sparse = TRUE)`
 
 
-
-
-
-
-
-
-
-sf::st_wrap_dateline(options = c("WRAPDATELINE=YES", "DATELINEOFFSET=180"), quiet = FALSE)
+`sf::st_wrap_dateline(options = c("WRAPDATELINE=YES", "DATELINEOFFSET=180"), quiet = FALSE)`
 
 
 

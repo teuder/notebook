@@ -4,7 +4,7 @@ draft: false
 date : 2019-08-26
 publishdate : 2019-08-26
 weight : 2
-bookHidden: false
+bookHidden: falsetolls
 type: docs
 ---
 
@@ -13,6 +13,17 @@ type: docs
 ## コーディングスタイル
 
 [The tidyverse style guide](https://style.tidyverse.org/)
+
+
+## github にあるパッケージをインストールする
+
+```
+devtools::install_github("jimhester/lookup")
+
+# ブランチを指定してインストールする場合
+devtools::install_github("jimhester/lookup@develop")
+```
+
 
 
 ## ソースコードを確認

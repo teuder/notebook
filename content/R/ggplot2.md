@@ -524,6 +524,13 @@ scale_colour_discrete(guide=FALSE)
 theme(legend.position = 'none')
 ```
 
+凡例のタイトルを消す
+
+```r
+theme(legend.title = element_blank())
+```
+
+
 ## 凡例の位置
 
 ```r
