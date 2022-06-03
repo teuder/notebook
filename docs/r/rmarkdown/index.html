@@ -15,7 +15,7 @@
 <link rel="stylesheet" href="/notebook/book.min.07c38dce7b6800da2a75a565d4d975e38f837294e24d00b5aae363037012d64b.css" integrity="sha256-B8ONzntoANoqdaVl1Nl144&#43;DcpTiTQC1quNjA3AS1ks=">
 
 
-<script defer src="/notebook/search.min.41faf91e4efb7ea7f5519242fe228ad2250ac0b5f0089d49ed0961a39479d12c.js" integrity="sha256-Qfr5Hk77fqf1UZJC/iKK0iUKwLXwCJ1J7Qlho5R50Sw="></script>
+<script defer src="/notebook/search.min.3ff5ae9024269d2e09a80857b598f558ae2f03fe8c78f2e121b0bdc1ecb958e0.js" integrity="sha256-P/WukCQmnS4JqAhXtZj1WK4vA/6MePLhIbC9wey5WOA="></script>
 
 <!--
 Made with Book Theme
@@ -954,6 +954,54 @@ output: rmarkdown::github_document
 knit: (function(inputFile, encoding) {
   rmarkdown::render(inputFile, encoding = encoding, output_dir = &quot;../share/markdown&quot;) })
 ---
+</code></pre><h1 id="chunk-options">chunk options</h1>
+<p>{r, fig.height=5}</p>
+<p>図のサイズ <code>fig.height=5</code> 5インチ</p>
+<ul>
+<li><code>eval=TRUE</code> : このchunkを実行するかどうか</li>
+<li><code>echo=TRUE</code> : chunkのコードを出力に含めるか</li>
+<li><code>results='hide'</code> : &lsquo;hide&rsquo; ならテキスト出力が隠される。 &lsquo;asis&rsquo; ならそのまま出力する</li>
+<li><code>collapse=TRUE</code> : TRUEならRのコードとテキスト出力をまとめて出力する。デフォルトはFALSE</li>
+<li><code>warning=TRUE, message=TRUE, error=TRUE</code> : これらを出力するかどうか</li>
+<li><code>include=FALSE</code> : コードやテキスト出力を隠す。<code>echo = FALSE, results = 'hide', warning = FALSE, message = FALSE</code> と同等</li>
+<li><code>cache=TRUE</code> : TRUEにしておくと、chunkを変更していない場合は、次回Rmarkdownをレンダリングするときには、この chunk の実行を省略する。</li>
+<li><code>cache.lazy=FALSE</code> : cache=TRUE でRのオブジェクトを保存しておいたRDSファイルを読込んだらエラーになった。<code>cache.lazy=FALSE</code> をセットしたら正常に実行された。</li>
+<li><code>fig.width=1, fig.height=2, fig.dim = c(1, 2)</code>  : 図のサイズ（インチ）</li>
+<li><code>out.width='80%',  out.height</code> : 図のサイズ、出力ドキュメントの幅に応じて決める</li>
+<li><code>fig.align='center'</code> : 図の配置 &lsquo;left&rsquo;, &lsquo;center&rsquo;, or &lsquo;right&rsquo;.</li>
+<li><code>dev='png'</code> : 画像デバイス &lsquo;pdf&rsquo; &lsquo;png&rsquo; &lsquo;svg&rsquo; &lsquo;jpeg&rsquo;</li>
+<li><code>fig.cap</code> : 図のキャプション</li>
+<li><code>child='path/to/other/document'</code> : 外部ファイルの埋め込み</li>
+</ul>
+<p>ドキュメント全体で共通の chunk option を設定する</p>
+<pre><code>```{r, setup, include=FALSE}
+knitr::opts_chunk$set(fig.width = 8, collapse = TRUE)
+</code></pre><pre><code>
+chunk option の中で、Rの式を評価できるので、事前の実行結果を利用して、以降のchunkを実行するかどうかを制御することもできる。
+
+</code></pre><pre><code class="language-{r}" data-lang="{r}">x &lt;- TRUE
+</code></pre><pre><code class="language-{r," data-lang="{r,">y = rnorm(100)
+</code></pre><pre><code>
+
+
+
+# 既存の画像ファイルを埋め込む
+
+</code></pre><pre><code class="language-{r," data-lang="{r,">knitr::include_graphics('images/hex-rmarkdown.png')
+</code></pre><pre><code>
+# テーブルを埋め込む
+
+
+</code></pre><pre><code class="language-{r}" data-lang="{r}">knitr::kable(iris[1:5, ], caption = 'A caption')
+</code></pre><pre><code>
+高度なテーブル操作は `kableExtra` パッケージを使う
+
+
+
+せめて自分が接する子供たちにとって良き機会となれる大人でありたいものです。
+
+
+
 </code></pre></article>
 
       
