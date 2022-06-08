@@ -573,3 +573,18 @@ JSON_EXTRACT(列, "$.要素名")
 # 値を整数として抽
 JSON_EXTRACT_SCALAR(列, "$.要素名")
 ```
+
+
+
+# パーティションドテーブルを作成する
+
+```sql
+CREATE TABLE
+  mydataset.newtable (transaction_id INT64, transaction_date DATE)
+PARTITION BY
+  transaction_date
+OPTIONS(
+  partition_expiration_days=3,
+  require_partition_filter=true
+)
+```

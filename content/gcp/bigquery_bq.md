@@ -50,18 +50,18 @@ bq query --use_legacy_sql=false --parameter=percent:INT64:29 \
 
 ## データをアップロードする : bq load
 
-ローカルファイル（.parquet）から
+ローカルファイル（.parquet）から（1つのファイルしか指定できない）
 
 ```
 bq load \
+--replace=TRUE\
 --source_format=PARQUET \
 --autodetect \
---replace=TRUE\
 PROJECT:DATASET.TABLE \
 LOCAL_FILE.parquet
 ```
 
-GCSから取り込み
+GCSから取り込み（複数のファイルをまとめて指定できる）
 
 ```
 bq load \
@@ -69,6 +69,10 @@ bq load \
 PROJECT:DATASET.TABLE \
 "gs://mybucket/00/*.parquet","gs://mybucket/01/*.parquet"
 ```
+
+
+
+
 
 ## テーブルを削除する : bq rm
 
@@ -96,13 +100,61 @@ bq ls -a project_id:dataset_id
 
 
 
-## パーティションドテーブル
 
-パーティションドテーブルの作成
+## パーティションドテーブルの作成
+
+https://cloud.google.com/bigquery/docs/creating-partitioned-tables?hl=ja
+
+bqコマンドを使う場合
+
+```sh
+bq mk --table \
+  --schema date:DATE,orbit_number:INT64,lon:FLOAT64,lat:FLOAT64 \
+  --time_partitioning_field date \
+  --time_partitioning_type DAY \
+  --require_partition_filter=FALSE \
+gfw-fra:fra_vbd.fra_vbd_with_overlap 
+```
+
+
+
+## スキーマ
+
+https://cloud.google.com/bigquery/docs/schemas?hl=ja
+
+
+コマンドラインで入力する場合
 
 ```
-bq mk --time_partitioning_type=DAY myproject:mydataset.mytable
+列名:データ型,qtr:STRING,sales:FLOAT,year:STRING
 ```
+
+
+JSONファイルで記述する場合
+
+```
+[
+  {
+    "description": "quarter",
+    "mode": "REQUIRED",
+    "name": "qtr",
+    "type": "STRING"
+  },
+  {
+    "description": "sales representative",
+    "mode": "NULLABLE",
+    "name": "rep",
+    "type": "STRING"
+  },
+  {
+    "description": "total sales",
+    "mode": "NULLABLE",
+    "name": "sales",
+    "type": "FLOAT"
+  }
+]
+```
+
 
 パーティションを指定してクエリ結果を書き込む
 

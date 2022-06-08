@@ -16,7 +16,7 @@
 <link rel="stylesheet" href="/notebook/book.min.07c38dce7b6800da2a75a565d4d975e38f837294e24d00b5aae363037012d64b.css" integrity="sha256-B8ONzntoANoqdaVl1Nl144&#43;DcpTiTQC1quNjA3AS1ks=">
 
 
-<script defer src="/notebook/search.min.3ff5ae9024269d2e09a80857b598f558ae2f03fe8c78f2e121b0bdc1ecb958e0.js" integrity="sha256-P/WukCQmnS4JqAhXtZj1WK4vA/6MePLhIbC9wey5WOA="></script>
+<script defer src="/notebook/search.min.c83aeba253607bdab1cb338046556fd8a443e770eb9285b17f60f79b076f9890.js" integrity="sha256-yDrrolNge9qxyzOARlVv2KRD53DrkoWxf2D3mwdvmJA="></script>
 
 <!--
 Made with Book Theme
@@ -1296,7 +1296,16 @@ QUALIFY</p>
 JSON_EXTRACT(列, &quot;$.要素名&quot;)
 # 値を整数として抽
 JSON_EXTRACT_SCALAR(列, &quot;$.要素名&quot;)
-</code></pre></article>
+</code></pre><h1 id="パーティションドテーブルを作成する">パーティションドテーブルを作成する</h1>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#00a8c8">CREATE</span> <span style="color:#00a8c8">TABLE</span>
+  <span style="color:#111">mydataset</span><span style="color:#111">.</span><span style="color:#111">newtable</span> <span style="color:#111">(</span><span style="color:#111">transaction_id</span> <span style="color:#111">INT64</span><span style="color:#111">,</span> <span style="color:#111">transaction_date</span> <span style="color:#111">DATE</span><span style="color:#111">)</span>
+<span style="color:#111">PARTITION</span> <span style="color:#00a8c8">BY</span>
+  <span style="color:#111">transaction_date</span>
+<span style="color:#00a8c8">OPTIONS</span><span style="color:#111">(</span>
+  <span style="color:#111">partition_expiration_days</span><span style="color:#f92672">=</span><span style="color:#ae81ff">3</span><span style="color:#111">,</span>
+  <span style="color:#111">require_partition_filter</span><span style="color:#f92672">=</span><span style="color:#00a8c8">true</span>
+<span style="color:#111">)</span>
+</code></pre></div></article>
 
       
 <div class="book-footer justify-between">
