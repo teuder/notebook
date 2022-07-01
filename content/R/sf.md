@@ -233,3 +233,11 @@ https://r-spatial.github.io/sf/articles/sf2.html
 # Nate の中心合わせ
 
 https://github.com/natemiller/mapping
+
+
+# invalidな図形を修正する
+
+```r
+sf::st_is_valid(target_sf, reason = TRUE)
+valid_sf <- sf::st_make_valid(target_sf)
+```

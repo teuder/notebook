@@ -705,3 +705,21 @@ ggplot(diamonds, aes(x=carat, y=price)) +
   facet_grid(. ~ color)   # Horizontal 横に並べる
   #facet_grid(color ~ .)  # Vertical 縦に並べる
 ```
+
+
+# テキストボックスを追加する
+
+`ggtext`パッケージを使うのが楽
+
+```
+library(ggtext)
+
+gglot()+
+  geom_textbox()
+
+```
+
+
+# 色の指定
+
+![R colors in text](https://derekogle.com/NCGraphing/img/colorbynames.png)

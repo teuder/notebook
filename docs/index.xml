@@ -80,7 +80,7 @@
       <pubDate>Wed, 04 Sep 2019 00:00:00 +0000</pubDate>
       
       <guid>https://teuder.github.io/notebook/gcp/bigquery_bq/</guid>
-      <description>BigQuery：bqコマンド Data set を作成する bq mk \ --dataset \ --location=US \ --default_table_expiration 3600 \ --default_partition_expiration 3600 \ --description &#39;description&#39; \ project_id:dataset_name location US など default_table_expiration テーブル自動削除までの秒数を指定する、デフォルトでは</description>
+      <description>BigQuery：bqコマンド クエリを実行する : bq query bq query &#39;select * from hoge&#39; -n 0 : クエリの実行結果が標準されるのを抑制する --destination_table=project:dataset.table : クエリの出力をテーブルに書</description>
     </item>
     
     <item>
@@ -378,6 +378,15 @@
       
       <guid>https://teuder.github.io/notebook/r/rstudio/</guid>
       <description>RStudio インストール WSL の Ubuntu 18.04 にインストール Ubuntuの場合と同じ、事前に Rをインストールしておく sudo apt-get install gdebi-core wget https://download2.rstudio.org/server/bionic/amd64/rstudio-server-1.3.959-amd64.deb sudo gdebi rstudio-server-1.3.959-amd64.deb しかし、次のようなエラーが出た</description>
+    </item>
+    
+    <item>
+      <title>Rstudio server</title>
+      <link>https://teuder.github.io/notebook/r/rstudio_server/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://teuder.github.io/notebook/r/rstudio_server/</guid>
+      <description>Rstudio server プラウザから使えるRStudio 起動再起動 sudo rstudio-server start sudo rstudio-server stop sudo rstudio-server restart &amp;gt; rstudio-server --help Usage: rstudio-server {status|start|stop|restart|test-config|verify-installation|suspend-session|suspend-all|force-suspend-session|force-suspend-all|kill-session|kill-all|offline|online|active-sessions|version}</description>
     </item>
     
     <item>

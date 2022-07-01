@@ -121,3 +121,8 @@ type: docs
 [JapanMapCompare](https://mapcompare.jp/3/14/35.6795/139.7672/tPale/osm/tOrt)
 
 日本の地図サービスの画像を比較できる
+
+
+# 機械学習
+
+- [torchgeo](https://pytorch.org/blog/geospatial-deep-learning-with-torchgeo/): 地理情報処理のためのPytorchライブラリ

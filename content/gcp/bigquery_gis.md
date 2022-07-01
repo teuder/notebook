@@ -62,3 +62,12 @@ FROM
     ST_DWithin(a.point, b.point, 10000) -- search radius in meter
 GROUP BY a.house_id
 ```
+
+
+# invalidな図形を修正する
+
+
+```sql
+SELECT ST_GEOGFROMTEXT (string_field_1, make_valid => TRUE)
+FROM `ocean_shapefiles_all_purpose.IOTC_shape_feb2021`
+```

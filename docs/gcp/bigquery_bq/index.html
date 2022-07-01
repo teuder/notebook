@@ -4,11 +4,11 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0"><meta property="og:title" content="BigQuery: bqコマンド" />
-<meta property="og:description" content="BigQuery：bqコマンド Data set を作成する bq mk \ --dataset \ --location=US \ --default_table_expiration 3600 \ --default_partition_expiration 3600 \ --description &#39;description&#39; \ project_id:dataset_name location US など default_table_expiration テーブル自動削除までの秒数を指定する、デフォルトでは" />
+<meta property="og:description" content="BigQuery：bqコマンド クエリを実行する : bq query bq query &#39;select * from hoge&#39; -n 0 : クエリの実行結果が標準されるのを抑制する --destination_table=project:dataset.table : クエリの出力をテーブルに書" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://teuder.github.io/notebook/gcp/bigquery_bq/" />
 <meta property="article:published_time" content="2019-09-04T00:00:00+00:00" />
-<meta property="article:modified_time" content="2021-08-26T17:35:35+09:00" />
+<meta property="article:modified_time" content="2022-06-08T12:47:42+09:00" />
 <title>BigQuery: bqコマンド | notebook</title>
 <link rel="icon" href="/notebook/favicon.png" type="image/x-icon">
 
@@ -16,7 +16,7 @@
 <link rel="stylesheet" href="/notebook/book.min.07c38dce7b6800da2a75a565d4d975e38f837294e24d00b5aae363037012d64b.css" integrity="sha256-B8ONzntoANoqdaVl1Nl144&#43;DcpTiTQC1quNjA3AS1ks=">
 
 
-<script defer src="/notebook/search.min.c83aeba253607bdab1cb338046556fd8a443e770eb9285b17f60f79b076f9890.js" integrity="sha256-yDrrolNge9qxyzOARlVv2KRD53DrkoWxf2D3mwdvmJA="></script>
+<script defer src="/notebook/search.min.9dabf21614be3d985c6d1f4feaa20227acd00dc7073e721ac7ba9e3f721dcf95.js" integrity="sha256-navyFhS&#43;PZhcbR9P6qICJ6zQDccHPnIax7qeP3Idz5U="></script>
 
 <!--
 Made with Book Theme
@@ -375,6 +375,16 @@ https://github.com/alex-shpak/hugo-book
 
   <a href="/notebook/r/rstudio/" >
       RStudio
+  </a>
+
+</li>
+      
+    
+      
+        <li>
+
+  <a href="/notebook/r/rstudio_server/" >
+      Rstudio server
   </a>
 
 </li>
@@ -906,7 +916,19 @@ https://github.com/alex-shpak/hugo-book
 
       
 <article class="markdown"><h1 id="bigquerybqコマンド">BigQuery：bqコマンド</h1>
-<h2 id="data-set-を作成する">Data set を作成する</h2>
+<h1 id="クエリを実行する--bq-query">クエリを実行する : bq query</h1>
+<pre><code> bq query 'select * from hoge'
+</code></pre><ul>
+<li><code>-n 0</code> : クエリの実行結果が標準されるのを抑制する</li>
+<li><code>--destination_table=project:dataset.table</code> : クエリの出力をテーブルに書き込む</li>
+<li><code>--replace</code> : 出力先のテーブルを置き換える</li>
+<li><code>--allow_large_results</code></li>
+<li><code>--use_legacy_sql=false</code></li>
+</ul>
+<h2 id="クエリの一部を-bq-のパラメタとして与える">クエリの一部を bq のパラメタとして与える</h2>
+<pre><code>bq query --use_legacy_sql=false --parameter=percent:INT64:29 \
+    'SELECT * FROM `dataset.my_table` TABLESAMPLE SYSTEM (@percent PERCENT)`
+</code></pre><h1 id="data-set-を作成する">Data set を作成する</h1>
 <pre><code>bq mk \
 --dataset \
 --location=US \
@@ -921,19 +943,17 @@ project_id:dataset_name
 <li><code>description</code> データセットの説明、<code>'</code> か <code>&quot;</code> で括る</li>
 <li><code>project_id:dataset_name</code> プロジェクトIDと、作成するデータセットの名前</li>
 </ul>
-<h2 id="クエリを実行する--bq-query">クエリを実行する : bq query</h2>
-<pre><code> bq query 'select * from hoge'
-</code></pre><ul>
-<li><code>-n 0</code> : クエリの実行結果が標準されるのを抑制する</li>
-<li><code>--destination_table=project:dataset.table</code> : クエリの出力をテーブルに書き込む</li>
-<li><code>--replace</code> : 出力先のテーブルを置き換える</li>
-<li><code>--allow_large_results</code></li>
-<li><code>--use_legacy_sql=false</code></li>
-</ul>
-<h3 id="クエリの一部を-bq-のパラメタとして与える">クエリの一部を bq のパラメタとして与える</h3>
-<pre><code>bq query --use_legacy_sql=false --parameter=percent:INT64:29 \
-    'SELECT * FROM `dataset.my_table` TABLESAMPLE SYSTEM (@percent PERCENT)`
-</code></pre><h2 id="データをアップロードする--bq-load">データをアップロードする : bq load</h2>
+<h1 id="パーティションドテーブルの作成">パーティションドテーブルの作成</h1>
+<p><a href="https://cloud.google.com/bigquery/docs/creating-partitioned-tables?hl=ja">https://cloud.google.com/bigquery/docs/creating-partitioned-tables?hl=ja</a></p>
+<p>bqコマンドを使う場合</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">bq mk --table <span style="color:#8045ff">\
+</span><span style="color:#8045ff"></span>  --schema date:DATE,orbit_number:INT64,lon:FLOAT64,lat:FLOAT64 <span style="color:#8045ff">\
+</span><span style="color:#8045ff"></span>  --time_partitioning_field date <span style="color:#8045ff">\
+</span><span style="color:#8045ff"></span>  --time_partitioning_type DAY <span style="color:#8045ff">\
+</span><span style="color:#8045ff"></span>  --require_partition_filter<span style="color:#f92672">=</span>FALSE <span style="color:#8045ff">\
+</span><span style="color:#8045ff"></span>gfw-fra:fra_vbd.fra_vbd_with_overlap 
+</code></pre></div><p><code>--time_partitioning_field</code> を指定して特定のカラムでパーティションをする場合には、テーブル作成時にスキーマを指定する必要がある。</p>
+<h1 id="データをアップロードする--bq-load">データをアップロードする : bq load</h1>
 <p>ローカルファイル（.parquet）から（1つのファイルしか指定できない）</p>
 <pre><code>bq load \
 --replace=TRUE\
@@ -946,27 +966,29 @@ LOCAL_FILE.parquet
 --source_format=PARQUET \
 PROJECT:DATASET.TABLE \
 &quot;gs://mybucket/00/*.parquet&quot;,&quot;gs://mybucket/01/*.parquet&quot;
-</code></pre><h2 id="テーブルを削除する--bq-rm">テーブルを削除する : bq rm</h2>
+</code></pre><h1 id="テーブルを削除する--bq-rm">テーブルを削除する : bq rm</h1>
 <pre><code>bq rm --table project_id:dataset.table
 </code></pre><ul>
 <li><code>--table</code> または <code>-t</code> でテーブルを削除</li>
 <li><code>--force</code> または <code>-f</code> は確認を省略する</li>
 </ul>
-<h3 id="複数のテーブルをまとめて削除する">複数のテーブルをまとめて削除する</h3>
+<h2 id="複数のテーブルをまとめて削除する">複数のテーブルをまとめて削除する</h2>
 <p>特定のデータセット内の、名前が特定のパターン <code>pattern</code> に合致するテーブルを一括で削除する</p>
 <pre><code>bq ls -a project_id:dataset_id | grep pattern | xargs -n 1 bq rm -t -f --project_id project_id --dataset_id dataset_id
-</code></pre><h2 id="テーブルの一覧--bq-ls">テーブルの一覧 : bq ls</h2>
+</code></pre><h1 id="テーブルの一覧--bq-ls">テーブルの一覧 : bq ls</h1>
 <pre><code>bq ls -a project_id:dataset_id
-</code></pre><h2 id="パーティションドテーブルの作成">パーティションドテーブルの作成</h2>
-<p><a href="https://cloud.google.com/bigquery/docs/creating-partitioned-tables?hl=ja">https://cloud.google.com/bigquery/docs/creating-partitioned-tables?hl=ja</a></p>
-<p>bqコマンドを使う場合</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">bq mk --table <span style="color:#8045ff">\
-</span><span style="color:#8045ff"></span>  --schema date:DATE,orbit_number:INT64,lon:FLOAT64,lat:FLOAT64 <span style="color:#8045ff">\
-</span><span style="color:#8045ff"></span>  --time_partitioning_field date <span style="color:#8045ff">\
-</span><span style="color:#8045ff"></span>  --time_partitioning_type DAY <span style="color:#8045ff">\
-</span><span style="color:#8045ff"></span>  --require_partition_filter<span style="color:#f92672">=</span>FALSE <span style="color:#8045ff">\
-</span><span style="color:#8045ff"></span>gfw-fra:fra_vbd.fra_vbd_with_overlap 
-</code></pre></div><h2 id="スキーマ">スキーマ</h2>
+</code></pre><h2 id="パーティションテーブルへの書き込み">パーティションテーブルへの書き込み</h2>
+<p>パーティションを指定してクエリ結果を書き込む</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#75715e"># 日付でパーティションされたテーブルの2020-01-01のパーティションを置き換える `--replace`</span>
+bq query --replace  --destination_table<span style="color:#f92672">=</span>dataset.table<span style="color:#111">$20200101</span> <span style="color:#d88200">&#39;SELECT  * FROM hoge&#39;</span>
+</code></pre></div><p>特定パーティションにデータをロードすることもできる</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">bq load <span style="color:#8045ff">\
+</span><span style="color:#8045ff"></span>--replace<span style="color:#f92672">=</span>TRUE<span style="color:#8045ff">\
+</span><span style="color:#8045ff"></span>--source_format<span style="color:#f92672">=</span>PARQUET <span style="color:#8045ff">\
+</span><span style="color:#8045ff"></span>--autodetect <span style="color:#8045ff">\
+</span><span style="color:#8045ff"></span>PROJECT:DATASET.TABLE<span style="color:#111">$20200101</span> <span style="color:#8045ff">\
+</span><span style="color:#8045ff"></span>LOCAL_FILE.parquet
+</code></pre></div><h1 id="スキーマの指定方法">スキーマの指定方法</h1>
 <p><a href="https://cloud.google.com/bigquery/docs/schemas?hl=ja">https://cloud.google.com/bigquery/docs/schemas?hl=ja</a></p>
 <p>コマンドラインで入力する場合</p>
 <pre><code>列名:データ型,qtr:STRING,sales:FLOAT,year:STRING
@@ -991,9 +1013,6 @@ PROJECT:DATASET.TABLE \
     &quot;type&quot;: &quot;FLOAT&quot;
   }
 ]
-</code></pre><p>パーティションを指定してクエリ結果を書き込む</p>
-<pre><code># 日付でパーティションされたテーブルの2020-01-01のパーティションを置き換える `--replace`
-bq query --replace  --destination_table=dataset.table$20200101 'SELECT  * FROM hoge'
 </code></pre></article>
 
       
@@ -1001,9 +1020,9 @@ bq query --replace  --destination_table=dataset.table$20200101 'SELECT  * FROM h
   
   <div>
     
-    <a class="flex align-center" href="https://github.com/teuder/notebook/commit/5b1ab7acd37e5d4e91045103498fb0aeb6cfda0c" title='Last modified 2021-08-26 by Masaki Tsuda' target="_blank" rel="noopener">
+    <a class="flex align-center" href="https://github.com/teuder/notebook/commit/37df570c88387bf0656695e0a8465c10a344a468" title='Last modified 2022-06-08 by Masaki Tsuda' target="_blank" rel="noopener">
       <img src="/notebook/svg/calendar.svg" alt="Changed" />
-      <span>2021-08-26</span>
+      <span>2022-06-08</span>
     </a>
   </div>
   
@@ -1029,21 +1048,15 @@ bq query --replace  --destination_table=dataset.table$20200101 'SELECT  * FROM h
   <aside class="book-toc level-3 fixed">
     <nav id="TableOfContents">
   <ul>
-    <li><a href="#data-set-を作成する">Data set を作成する</a></li>
-    <li><a href="#クエリを実行する--bq-query">クエリを実行する : bq query</a>
-      <ul>
-        <li><a href="#クエリの一部を-bq-のパラメタとして与える">クエリの一部を bq のパラメタとして与える</a></li>
-      </ul>
-    </li>
-    <li><a href="#データをアップロードする--bq-load">データをアップロードする : bq load</a></li>
-    <li><a href="#テーブルを削除する--bq-rm">テーブルを削除する : bq rm</a>
-      <ul>
-        <li><a href="#複数のテーブルをまとめて削除する">複数のテーブルをまとめて削除する</a></li>
-      </ul>
-    </li>
-    <li><a href="#テーブルの一覧--bq-ls">テーブルの一覧 : bq ls</a></li>
-    <li><a href="#パーティションドテーブルの作成">パーティションドテーブルの作成</a></li>
-    <li><a href="#スキーマ">スキーマ</a></li>
+    <li><a href="#クエリの一部を-bq-のパラメタとして与える">クエリの一部を bq のパラメタとして与える</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#複数のテーブルをまとめて削除する">複数のテーブルをまとめて削除する</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#パーティションテーブルへの書き込み">パーティションテーブルへの書き込み</a></li>
   </ul>
 </nav>
   </aside>
