@@ -241,3 +241,11 @@ https://github.com/natemiller/mapping
 sf::st_is_valid(target_sf, reason = TRUE)
 valid_sf <- sf::st_make_valid(target_sf)
 ```
+
+
+# Shapefileとして保存する
+
+```r
+dir.create("joint_fishries_area")
+sf::write_sf(joint_fisheries_areas_with_values_sf, "joint_fishries_area/joint_fishries_area.shp")
+```
