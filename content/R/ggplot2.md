@@ -87,17 +87,17 @@ aes(x = X, y = Y, group = interaction(A , B)) # 複数変数を使う場合
 ```
 
 
-# グラフの種類: geom_*()
+## グラフの種類: geom_*()
 
 `geom` は `geometry` （ジオメトリ）の略、グラフの基礎となる構造を指定する
 
-## 散布図
+### 散布図
 
 ```r
 geom_point(aes(x, y))
 ```
 
-### 点の種類
+#### 点の種類
 
 shape
 
@@ -110,11 +110,10 @@ shape
  - 19
 
 
-
-
 geom_point(aes(fill=id, size=id), colour="black", shape=21, stroke = 2)
 
-## 折れ線・経路
+
+### 折れ線・経路
 
 
 ```r
@@ -127,7 +126,7 @@ geom_path(aes(x, y))
 
 
 
-## ヒストグラム・密度分布
+### ヒストグラム・密度分布
 
 連続変数 x の値のビンごとの度数、頻度を、棒グラフ、曲線、折線で描画する
 
@@ -137,7 +136,7 @@ geom_density()   # なめらかな曲線（デフォルトは密度文王）
 geom_freqpoly()  # 折線（デフォルトは頻度）
 ```
 
-### 頻度分布と密度分布の切り替え
+#### 頻度分布と密度分布の切り替え
 
 いずれの `geom_*` でも、`aes()` の中で `y` を指定することで縦軸をカウント `..count..` 、密度（%） `..density..` のどちらにも対応できる
 
@@ -146,7 +145,7 @@ geom_histogram(aes(x, y = ..density..))
 geom_density(  aes(x, y = ..count..  ))
 ```
 
-### 色分けした変数の位置
+#### 色分けした変数の位置
 
 ```
 position = "identity" # 重ね描き
@@ -155,7 +154,7 @@ position = "dodge"`   # 隣接
 position = "fill"     # 割合
 ```
 
-### ビンの切り方: `stat_bin()`
+#### ビンの切り方: `stat_bin()`
 
 `stat_bin()` の `binwidth` から下の引数は `geom_*()` の中でも指定できる。
 
@@ -193,7 +192,7 @@ stat_bin(
  `x` が離散変数なら `stat_count()` の方がいい
 
 
-### 連続変数の離散化
+#### 連続変数の離散化
 
 
 ```r
@@ -206,7 +205,7 @@ cut_interval(x, 10)
 
 
 
-## 棒グラフ
+### 棒グラフ
 
 1変数（カテゴリ変数）だけ指定すると、指定されたカテゴリ変数の値の数をそれぞれカウントした値が Y 軸になる。`stat = "count"` がデフォルトなので、暗黙に `stat_count()` が使用される。
 
@@ -236,7 +235,7 @@ geom_bar(aes(x = category), width = 1)
 
 
 
-### 積み上げ棒グラフ
+#### 積み上げ棒グラフ
 
 X 軸（カテゴリ変数）と Y 軸（量的変数）のほかに、変数Z（カテゴリ変数）で色分けした積み上げ棒グラフ `aes(fill = z)`
 
@@ -253,7 +252,7 @@ geom_bar(aes(x = category, y = value, fill = category2), stat = "identity", posi
 scale_y_continuous(labels = percent)
 ```
 
-### 棒の順序を変える
+#### 棒の順序を変える
 
 数が多い順に棒を並べ替えるなど。基本的には、予め、x軸（カテゴリ）ごとのy軸の値（カウントなど）を計算しておく必要がある。つまり、 `stat = "identity"` を指定するやり方が前提。
 
@@ -269,7 +268,7 @@ ggplot(df, aes(x=reorder(x, desc(y)), y=y), stat = "identity")
 ```
 
 
-### 棒の向きを水平にする
+#### 棒の向きを水平にする
 
 横向きの棒グラフを作成するには最後に `coord_flip()` を付け加えるだけ
 
@@ -284,7 +283,7 @@ coord_flip()
 
 
 
-## 箱ひげ図・バイオリンプロット
+### 箱ひげ図・バイオリンプロット
 
 
 ```
@@ -310,7 +309,7 @@ geom_violin(
 
 
 
-## 線分
+### 線分
 
 ```r
 # 垂直線
@@ -323,10 +322,10 @@ geom_abline(intercept = 37, slope = -5)+
 linetype="dashed"
 
 
-## 多角形
 
 
-## テキストラベル
+
+### テキストラベル
 
 ```
 # 文字列
@@ -360,7 +359,7 @@ p + annotate("text", x = 4, y = 25,
 ```
 
 
-# 色の指定
+## 色の指定
 
 色分けに使用する変数は `aes()` の中で `aes(color = var1, fill = var2)` のように指定する。
 
@@ -370,7 +369,14 @@ p + annotate("text", x = 4, y = 25,
 
 をそれぞれ使用する。
 
-## 連続値に対する色つけ : `scale_*_gradient`
+
+### 色の種類
+
+![R colors in text](https://derekogle.com/NCGraphing/img/colorbynames.png)
+
+
+
+### 連続値に対する色つけ : `scale_*_gradient`
 
 連続値: `integer`, `numeric`
 
@@ -402,7 +408,7 @@ scale_fill_gradientn(..., colours, values = NULL, space = "Lab",
   colors)
 ```
 
-## 離散値に対する色つけ
+### 離散値に対する色つけ
 
 離散値: `character`, `factor`
 
@@ -411,7 +417,7 @@ scale_fill_gradientn(..., colours, values = NULL, space = "Lab",
 
 
 
-## レイヤーごとに異なる色を指定する
+### レイヤーごとに異なる色の軸を指定する
 
 ```r
 ggnewscale::new_scale("color")
@@ -425,7 +431,7 @@ new_scale(new_aes)
 new_scale_colour()
 
 
-# タイトル
+## タイトル
 
 ```r
 labs(
@@ -436,7 +442,7 @@ labs(
 )
 ```
 
-## タイトルとサブタイトル
+### タイトルとサブタイトル
 
 ```r
 ggtitle(label, subtitle = waiver())
@@ -445,7 +451,7 @@ ggtitle(label, subtitle = waiver())
 
 
 
-# 軸のスケールや目盛の設定
+## 軸のスケールや目盛の設定
 
 
 `x`軸、`y`軸、`color`軸、`fill`軸などそれぞれの軸 (`AXIS`) とそのデータ型 (`DATATYPE`) に対応した関数 (`scale_AXIS_DATATYPE`) が用意されている。
@@ -466,7 +472,7 @@ scale_[x,y,color,fill]_[condinuous,descrete,date](
 
 [geom_barやgeom_histgramでの軸の変換](https://qiita.com/nozma/items/2954b21e7136b3011580)
 
-## 軸の名前
+### 軸の名前
 
 X軸ラベル、Y軸ラベル
 
@@ -476,7 +482,7 @@ ylab(label)
 ```
 
 
-## 2軸グラフ
+### 2軸グラフ
 
 
 ```r
@@ -502,9 +508,9 @@ ggplot(count_df, aes(x=date)) +
 
 
 
-# 凡例
+## 凡例
 
-## 凡例を消す
+### 凡例を消す
 
 特定の凡例（colour）を消す１
 
@@ -531,7 +537,7 @@ theme(legend.title = element_blank())
 ```
 
 
-## 凡例の位置
+### 凡例の位置
 
 ```r
 # テキストで位置を指定
@@ -544,7 +550,7 @@ theme(legend.position=c(1,1)) # 右上
 theme(legend.position=c(0.5,0.5)) # 中央
 ```
 
-## 凡例の点のサイズ変更
+### 凡例の点のサイズ変更
 
 デフォルトでは `geom_*()` で指定したサイズで凡例の点も表示されるが、点が小さい時には困る。凡例だけで大きいサイズでプロットしたい場合。
 
@@ -566,14 +572,14 @@ ggplot()+
   ) 
 ```
 
-## 凡例の名前（変数名）を変更する
+### 凡例の名前（変数名）を変更する
 
 ```r
 labs(shape="Male/Female", colour="Male/Female")
 ```
 
 
-# 画像として保存する : ggsave()
+## 画像として保存する : ggsave()
 
 ```r
 gsave(
@@ -601,7 +607,7 @@ gsave(
 - `limitsize` : TRUE だと 50x50インチより大きいサイズでプロットしない、エラーを防ぐため
 
 
-# テーマ
+## テーマ
 
 テーマの要素の色を変える
 
@@ -634,7 +640,7 @@ color <- "black"
 
 
 
-# 複数のプロットを１つをまとめる
+## 複数のプロットを１つをまとめる
 
 `patchwork` パッケージを使うのが楽ちん
 
@@ -693,7 +699,7 @@ plot_annotation(
 
 
 
-## 特定の変数の値を使って図を分離する
+### 特定の変数の値を使って図を分離する
 
 `facet_grid()` や  `facet_wrap()` を使う
 
@@ -707,7 +713,7 @@ ggplot(diamonds, aes(x=carat, y=price)) +
 ```
 
 
-# テキストボックスを追加する
+## テキストボックスを追加する
 
 `ggtext`パッケージを使うのが楽
 
@@ -720,6 +726,3 @@ gglot()+
 ```
 
 
-# 色の指定
-
-![R colors in text](https://derekogle.com/NCGraphing/img/colorbynames.png)
