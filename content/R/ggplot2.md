@@ -463,6 +463,7 @@ scale_[x,y,color,fill]_[condinuous,descrete,date](
   labels = c("01","02", "03","04"), # 目盛に表示する値のラベル
   limits=c(0,120),   # 表示する値の範囲
   trans = "log10",   # 軸のスケールを変換する関数 
+  name = "X axis",   # 軸の名前
   guide = guide_axis(n.dodge = 2), # 目盛のラベルが重なっているときに位置をずらす
 )
 ```
