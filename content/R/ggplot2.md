@@ -696,6 +696,14 @@ plot_annotation(
   )
 ```
 
+凡例が共通の時は1つにまとめることができる。
+
+```r
+p1 + p2 + plot_layout(guides = "collect") &
+# さらに凡例の位置を下にする
+  theme(legend.position='bottom')
+```
+
 
 
 

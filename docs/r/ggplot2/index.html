@@ -8,7 +8,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://teuder.github.io/notebook/r/ggplot2/" />
 <meta property="article:published_time" content="2019-09-03T00:00:00+00:00" />
-<meta property="article:modified_time" content="2022-07-06T13:50:00+09:00" />
+<meta property="article:modified_time" content="2022-07-08T14:14:53+09:00" />
 <title>ggplot2 | notebook</title>
 <link rel="icon" href="/notebook/favicon.png" type="image/x-icon">
 
@@ -16,7 +16,7 @@
 <link rel="stylesheet" href="/notebook/book.min.07c38dce7b6800da2a75a565d4d975e38f837294e24d00b5aae363037012d64b.css" integrity="sha256-B8ONzntoANoqdaVl1Nl144&#43;DcpTiTQC1quNjA3AS1ks=">
 
 
-<script defer src="/notebook/search.min.6d7127c3e662f36b025f79f4bff4a290785823eea6e031f4c599bd23d0b6e703.js" integrity="sha256-bXEnw&#43;Zi82sCX3n0v/SikHhYI&#43;6m4DH0xZm9I9C25wM="></script>
+<script defer src="/notebook/search.min.b5b1ba206a81ac6adfe7ac1419e75e00a1c2bec454014fb2ac8dacb5ace3f912.js" integrity="sha256-tbG6IGqBrGrf56wUGedeAKHCvsRUAU&#43;yrI2stazj&#43;RI="></script>
 
 <!--
 Made with Book Theme
@@ -1310,6 +1310,10 @@ annotate(&quot;label&quot;, x = bbox[&quot;xmin&quot;], y = bbox[&quot;ymax&quot
     <span style="color:#111">tag_prefix</span> <span style="color:#f92672">=</span> <span style="color:#d88200">&#34;fig &#34;</span><span style="color:#111">,</span>
     <span style="color:#111">tag_suffix</span> <span style="color:#f92672">=</span> <span style="color:#d88200">&#34;:&#34;</span>
   <span style="color:#111">)</span>
+</code></pre></div><p>凡例が共通の時は1つにまとめることができる。</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#111">p1</span> <span style="color:#f92672">+</span> <span style="color:#111">p2</span> <span style="color:#f92672">+</span> <span style="color:#75af00">plot_layout</span><span style="color:#111">(</span><span style="color:#111">guides</span> <span style="color:#f92672">=</span> <span style="color:#d88200">&#34;collect&#34;</span><span style="color:#111">)</span> <span style="color:#f92672">&amp;</span>
+<span style="color:#75715e"># さらに凡例の位置を下にする</span>
+  <span style="color:#75af00">theme</span><span style="color:#111">(</span><span style="color:#111">legend.position</span><span style="color:#f92672">=</span><span style="color:#d88200">&#39;bottom&#39;</span><span style="color:#111">)</span>
 </code></pre></div><h3 id="特定の変数の値を使って図を分離する">特定の変数の値を使って図を分離する</h3>
 <p><code>facet_grid()</code> や  <code>facet_wrap()</code> を使う</p>
 <p><code>facet_grid()</code> は図を2次元に配置する</p>
@@ -1331,9 +1335,9 @@ gglot()+
   
   <div>
     
-    <a class="flex align-center" href="https://github.com/teuder/notebook/commit/b3bca4163f6056a6266e331cd426fcd397a3795e" title='Last modified 2022-07-06 by Masaki Tsuda' target="_blank" rel="noopener">
+    <a class="flex align-center" href="https://github.com/teuder/notebook/commit/364eff3dbe13832a995784c6ab79ad84c945d148" title='Last modified 2022-07-08 by Masaki Tsuda' target="_blank" rel="noopener">
       <img src="/notebook/svg/calendar.svg" alt="Changed" />
-      <span>2022-07-06</span>
+      <span>2022-07-08</span>
     </a>
   </div>
   

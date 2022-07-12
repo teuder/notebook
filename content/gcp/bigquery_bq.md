@@ -9,7 +9,7 @@ weight: 10
 # BigQuery：bqコマンド
 
 
-# クエリを実行する : bq query
+## クエリを実行する : bq query
 
 ```
  bq query 'select * from hoge'
@@ -22,7 +22,7 @@ weight: 10
 - `--use_legacy_sql=false`
 
 
-## クエリの一部を bq のパラメタとして与える
+### クエリの一部を bq のパラメタとして与える
 
 ```
 bq query --use_legacy_sql=false --parameter=percent:INT64:29 \
@@ -30,7 +30,7 @@ bq query --use_legacy_sql=false --parameter=percent:INT64:29 \
 ```
 
 
-# Data set を作成する
+## Data set を作成する
 
 ```
 bq mk \
@@ -49,7 +49,7 @@ project_id:dataset_name
 - `project_id:dataset_name` プロジェクトIDと、作成するデータセットの名前
 
 
-# パーティションドテーブルの作成
+## パーティションドテーブルの作成
 
 https://cloud.google.com/bigquery/docs/creating-partitioned-tables?hl=ja
 
@@ -68,7 +68,7 @@ gfw-fra:fra_vbd.fra_vbd_with_overlap
 
 
 
-# データをアップロードする : bq load
+## データをアップロードする : bq load
 
 ローカルファイル（.parquet）から（1つのファイルしか指定できない）
 
@@ -92,7 +92,7 @@ PROJECT:DATASET.TABLE \
 
 
 
-# テーブルを削除する : bq rm
+## テーブルを削除する : bq rm
 
 ```
 bq rm --table project_id:dataset.table
@@ -102,7 +102,7 @@ bq rm --table project_id:dataset.table
 - `--force` または `-f` は確認を省略する
 
  
-## 複数のテーブルをまとめて削除する
+### 複数のテーブルをまとめて削除する
 
 特定のデータセット内の、名前が特定のパターン `pattern` に合致するテーブルを一括で削除する
 
@@ -110,7 +110,7 @@ bq rm --table project_id:dataset.table
 bq ls -a project_id:dataset_id | grep pattern | xargs -n 1 bq rm -t -f --project_id project_id --dataset_id dataset_id
 ```
 
-# テーブルの一覧 : bq ls
+## テーブルの一覧 : bq ls
 
 ```
 bq ls -a project_id:dataset_id
@@ -119,7 +119,7 @@ bq ls -a project_id:dataset_id
 
 
 
-## パーティションテーブルへの書き込み
+### パーティションテーブルへの書き込み
 
 パーティションを指定してクエリ結果を書き込む
 
@@ -141,7 +141,7 @@ LOCAL_FILE.parquet
 
 
 
-# スキーマの指定方法
+## スキーマの指定方法
 
 https://cloud.google.com/bigquery/docs/schemas?hl=ja
 
