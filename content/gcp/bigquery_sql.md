@@ -429,7 +429,7 @@ ARRAY_CONCAT() のような関数を使用して複数の配列を結合し、AR
 
 ## User Defined Functions
 
-```
+```sql
 # 定数をUDFとして保存する
 CREATE TEMP FUNCTION START_DATE() AS (TIMESTAMP('2012-04-01'));
 
@@ -482,10 +482,10 @@ select * from ownner_pet
 
 
 
-# WINDOW関数の結果でフィルター QUALIFY
+## WINDOW関数の結果でフィルター QUALIFY
 
 
-```
+```sql
 
 SELECT
     date,
@@ -507,7 +507,7 @@ QUALIFY
 
 
 
-# RECORD型
+## RECORD型
 
 構造体のように複数の型の値を１つにまとめる。
 
@@ -549,7 +549,7 @@ WHERE
 ```
 
 
-# 行の抽出
+## 行の抽出
 
 WHERE
 EXIST
@@ -565,7 +565,7 @@ where array_length(registory) >0
 
 
 
-# JSON
+## JSON
 
 ```
 # 値を文字列として抽出
@@ -576,7 +576,17 @@ JSON_EXTRACT_SCALAR(列, "$.要素名")
 
 
 
-# パーティションドテーブルを作成する
+## パーティションドテーブルを作成する
+
+```sql
+CREATE TABLE
+  データセット.テーブル名 (スキーマ)
+PARTITION BY
+  パーティションに利用する列
+OPTIONS(
+  オプション
+)
+```
 
 ```sql
 CREATE TABLE
@@ -588,3 +598,33 @@ OPTIONS(
   require_partition_filter=true
 )
 ```
+
+## ワイルドカードでのテーブルの指定
+
+シャーデットテーブルなど https://cloud.google.com/bigquery/docs/querying-wildcard-tables
+
+```sql
+select
+  *
+from
+  mydataset.my_sharded_table_*
+```
+
+```sql
+select
+  *
+from
+  mydataset.my_sharded_table_2020*
+```
+
+```sql
+select
+  *
+from
+  mydataset.my_sharded_table_*
+where
+  _TABLE_SUFFIX BETWEEN '20200101' AND '20200301'
+```
+
+
+ 

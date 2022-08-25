@@ -16,7 +16,7 @@
 <link rel="stylesheet" href="/notebook/book.min.07c38dce7b6800da2a75a565d4d975e38f837294e24d00b5aae363037012d64b.css" integrity="sha256-B8ONzntoANoqdaVl1Nl144&#43;DcpTiTQC1quNjA3AS1ks=">
 
 
-<script defer src="/notebook/search.min.b5b1ba206a81ac6adfe7ac1419e75e00a1c2bec454014fb2ac8dacb5ace3f912.js" integrity="sha256-tbG6IGqBrGrf56wUGedeAKHCvsRUAU&#43;yrI2stazj&#43;RI="></script>
+<script defer src="/notebook/search.min.f0410f94d917c7f071b482af17895617bf908308a9dd8b37110f9bf656a6aec0.js" integrity="sha256-8EEPlNkXx/BxtIKvF4lWF7&#43;Qgwip3Ys3EQ&#43;b9lamrsA="></script>
 
 <!--
 Made with Book Theme
@@ -1019,70 +1019,70 @@ https://github.com/alex-shpak/hugo-book
 </tr>
 </tbody>
 </table>
-<h1 id="レポジトリを作成するコピーする">レポジトリを作成する、コピーする</h1>
-<h2 id="init--既存のフォルダをレポジトリにする">init : 既存のフォルダをレポジトリにする</h2>
+<h2 id="レポジトリを作成するコピーする">レポジトリを作成する、コピーする</h2>
+<h3 id="init--既存のフォルダをレポジトリにする">init : 既存のフォルダをレポジトリにする</h3>
 <p>git init して登録されたフォルダがレポジトリとなる。他の人は、このレポジトリを <code>clone</code> することで、開発に参加できる。</p>
 <p>この <code>git init</code> して作成されたオリジナルのレポジトリは <code>origin</code> と呼ばれる。</p>
-<h2 id="clone--既存のレポジトリをコピーする">clone : 既存のレポジトリをコピーする</h2>
+<h3 id="clone--既存のレポジトリをコピーする">clone : 既存のレポジトリをコピーする</h3>
 <p>既にあるレポジトリの内容を複製して、ローカルにレポジトリのクローンを作成する</p>
 <p>このクローンに、変更を加えることで、元レポジトリの開発に参加できる。</p>
 <p><code>git clone オリジン・レポジトリのURL.git</code></p>
 <p>クローンしたレポジトリのオリジナルのレポジトリの確認方法</p>
 <p><code>git remote -v</code></p>
-<h1 id="既にあるレポジトリへの操作">既にあるレポジトリへの操作</h1>
-<h2 id="add">add</h2>
+<h2 id="既にあるレポジトリへの操作">既にあるレポジトリへの操作</h2>
+<h3 id="add">add</h3>
 <p>作成したファイルを git の管理下に追加する（ステージングする）。一度追加したら同じファイルを再度追加する必要はない。</p>
 <p>git は add されたファイルの変更を検出し、</p>
 <pre><code>git add path_to_file
 git add . # カレント以下の全てのファイル
 git add *.java # 拡張子が .java
-</code></pre><h3 id="add-の取り消し">add の取り消し</h3>
+</code></pre><h4 id="add-の取り消し">add の取り消し</h4>
 <pre><code>git reset HEAD [ファイル名/ファイルパス]
-</code></pre><h2 id="commit">commit</h2>
+</code></pre><h3 id="commit">commit</h3>
 <p>ステージングしたファイルの変更内容を記録する（コミットする）</p>
 <pre><code>git commit -m 'コメント'
-</code></pre><h2 id="push-リモートレポジトリに反映する">push リモートレポジトリに反映する</h2>
+</code></pre><h3 id="push-リモートレポジトリに反映する">push リモートレポジトリに反映する</h3>
 <p>現状のローカルレポジトリの最新 コミット 状態を、リモートレポジトリに反映する（プッシュする）</p>
 <pre><code>git push レポジトリ ブランチ
 </code></pre><p>例：<code>git push origin master</code></p>
 <p>ここで <code>origin</code> レポジトリは、このレポジトリの大本である、リモートにあるレポジトリを意味する（<code>clone</code> するもとになったやつ）</p>
-<h1 id="ブランチ">ブランチ</h1>
+<h2 id="ブランチ">ブランチ</h2>
 <p>ブランチとは１つのレポジトリで複数の状態（例えば正式版、開発版）などを保持しておく仕組み。ブランチを切り替えるとフォルダの中身も変化する。開発版のブランチに切り替えてファイルを編集すると正式版を壊すことなく、開発版を変更して、開発版が完成したら、それを正式版のブランチにマージするといったことができる。</p>
 <p>レポジトリを作成したときにできる最初のブランチが <code>master</code></p>
 <p>ローカルレポジトリとリモートレポジトリの</p>
-<h2 id="既存のブランチを確認する">既存のブランチを確認する</h2>
+<h3 id="既存のブランチを確認する">既存のブランチを確認する</h3>
 <pre><code>git branch
-</code></pre><h2 id="ブランチの作成--branch">ブランチの作成 : branch</h2>
+</code></pre><h3 id="ブランチの作成--branch">ブランチの作成 : branch</h3>
 <pre><code>git branch ブランチ名 # ブランチの作成
 git checkout -b ブランチ名 #ブランチの作成とそのブランチへの切り替え
 </code></pre><p><code>git branch ブランチ名</code> だとブランチを作成するだけだが、<code>git checkout -b ブランチ名</code> にするとブランチを作成して、そのブランチに切り替える（<code>git branch ブランチ名; git checkout ブランチ名;</code> と同じ）</p>
-<h2 id="ブランチの切り替え--checkout">ブランチの切り替え : checkout</h2>
+<h3 id="ブランチの切り替え--checkout">ブランチの切り替え : checkout</h3>
 <p>ブランチを切り替えると、フォルダの中身の状態が、そのブランチの最新の状態になる</p>
 <pre><code>git checkout ブランチ名
-</code></pre><h2 id="カレントブランチの確認">カレントブランチの確認</h2>
+</code></pre><h3 id="カレントブランチの確認">カレントブランチの確認</h3>
 <p>カレントブランチには <code>*</code> が付く</p>
 <pre><code>$ git branch --contains
 * develop
   master
-</code></pre><h2 id="ブランチの削除">ブランチの削除</h2>
+</code></pre><h3 id="ブランチの削除">ブランチの削除</h3>
 <p>ローカルにあるブランチを削除する</p>
 <p>git branch &ndash;delete [ブランチ名]
 git branch -d [ブランチ名]
 git branch -D [ブランチ名]</p>
-<h2 id="ブランチをマージする">ブランチをマージする</h2>
+<h3 id="ブランチをマージする">ブランチをマージする</h3>
 <p>branchA に branchB の内容を統合する</p>
 <pre><code># まずは branchA にチェックアウトして
 git checkout branchA
 
 # そこに branchB をマージする
 git merge branchB
-</code></pre><h2 id="リモートにあるブランチをローカルに持ってくる">リモートにあるブランチをローカルに持ってくる</h2>
-<pre><code># 最初にリモートブランチにチェックアウトして
-git checkout origin/[ブランチ名]
+</code></pre><h3 id="リモートにあるブランチをローカルに持ってくる">リモートにあるブランチをローカルに持ってくる</h3>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#75715e"># 最初にリモートブランチにチェックアウトして</span>
+git checkout origin/<span style="color:#f92672">[</span>ブランチ名<span style="color:#f92672">]</span>
 
-# 次にしそれをローカルブランチとしてコピーする
-git checkout -b [ブランチ名]
-</code></pre><p>最初のコマンドを打った後に次のようなメッセージが出る。
+<span style="color:#75715e"># 次にしそれをローカルブランチとしてコピーする</span>
+git checkout -b <span style="color:#f92672">[</span>ブランチ名<span style="color:#f92672">]</span>
+</code></pre></div><p>最初のコマンドを打った後に次のようなメッセージが出る。
 最初のコマンドを売った状態だと、リモートレポジトリの内容を見て、試しに変更したりできるけど、変更を commit してもリモートにもローカルにも反映されないらしい。変更をローカルレポジトリとしてコピーするために2番目のコマンドを使う。その後は、commit した変更を保存することができる。</p>
 <pre><code>Note: checking out 'origin/[ブランチ名]'.
 
@@ -1096,14 +1096,22 @@ do so (now or later) by using -b with the checkout command again. Example:
   git checkout -b &lt;new-branch-name&gt;
 
 HEAD is now at a3fe87c updated where the tables are saved, and fixed source and source_ssvid fields. Also made small edit to extract_top_match.sql.j2
-</code></pre><h2 id="ローカルブランチをコピーして別のローカルブランチを作る">ローカルブランチをコピーして別のローカルブランチを作る</h2>
+</code></pre><h3 id="ローカルで作成したブランチをリモートにプッシュする">ローカルで作成したブランチをリモートにプッシュする</h3>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#75715e"># ローカルに新しいブランチを作成する</span>
+git checkout -b <span style="color:#f92672">[</span>ブランチ名<span style="color:#f92672">]</span>
+
+
+<span style="color:#75715e"># ローカルブランチをリモートのレポジトリにプッシュする</span>
+<span style="color:#75715e"># この場合、「リモートレポジトリのmainブランチ」(origin)が、作成したブランチの上流ブランチとして設定される。</span>
+git push --set-upstream origin <span style="color:#f92672">[</span>ブランチ名<span style="color:#f92672">]</span>
+</code></pre></div><h3 id="ローカルブランチをコピーして別のローカルブランチを作る">ローカルブランチをコピーして別のローカルブランチを作る</h3>
 <pre><code># コピーしたいローカルブランチ(hoge)にチェックアウトする
 git checkout hoge
 
 # そこで新しいレポジトリ(hoge_copied)を作る
 git checkout -b hoge_copied
 
-</code></pre><h2 id="ローカルとリモートのブランチ名を変更する">ローカルとリモートのブランチ名を変更する</h2>
+</code></pre><h3 id="ローカルとリモートのブランチ名を変更する">ローカルとリモートのブランチ名を変更する</h3>
 <p>ブランチ名を hoge から foo に変更する例</p>
 <pre><code># ローカルのブランチ名変更
 git branch -m hoge foo
@@ -1111,23 +1119,23 @@ git branch -m hoge foo
 git push origin :hoge
 # 変更済みローカルブランチをプッシュ
 git push origin foo
-</code></pre><h1 id="レポジトリの状態を表示する--status">レポジトリの状態を表示する : status</h1>
+</code></pre><h2 id="レポジトリの状態を表示する--status">レポジトリの状態を表示する : status</h2>
 <pre><code>git status
 </code></pre><p>新たに作成されたけど <code>add</code> されていないファイルや、編集されたけど <code>commit</code> されていないファイルなどを表示する。</p>
-<h1 id="ファイルフォルダを復元する">ファイル/フォルダを復元する</h1>
+<h2 id="ファイルフォルダを復元する">ファイル/フォルダを復元する</h2>
 <p>以前にコミットした状態に復元する</p>
 <pre><code>git checkout [コミット番号] [ファイルパス]
-</code></pre><h1 id="ファイルへの操作">ファイルへの操作</h1>
+</code></pre><h2 id="ファイルへの操作">ファイルへの操作</h2>
 <p>基本的に、名前の変更や削除など、ファイル・ディレクトリに対する操作は全て git を通して行う。そうしないと git がそれらの変更をトラッキングできない。</p>
 <p>ファイル名を変えて内容を変更するとき、git を使わないでファイル名を変更すると、元のファイルとは別のファイルとして扱われるので、どこを変更したのかわからなくなる。</p>
 <pre><code># ファイルの削除
 git rm
 # ファイルの移動・名前変更
 git mv
-</code></pre><h2 id="ファイル名を変更する移動する--git-mv">ファイル名を変更する・移動する : git mv</h2>
+</code></pre><h3 id="ファイル名を変更する移動する--git-mv">ファイル名を変更する・移動する : git mv</h3>
 <pre><code>git mv 
 
-</code></pre><h2 id="ローカルで削除したファイルフォルダをリモートレポジトリからも削除する">ローカルで削除したファイル・フォルダを、リモートレポジトリからも削除する</h2>
+</code></pre><h3 id="ローカルで削除したファイルフォルダをリモートレポジトリからも削除する">ローカルで削除したファイル・フォルダを、リモートレポジトリからも削除する</h3>
 <p><code>git rm</code> を使ってファイルを削除した場合には、その変更を commit &amp; push すればリモートレポジトリからもファイルは削除される。
 しかし、それ以外の方法でファイルを削除して　commit &amp; push　してもリモートレポジトリにはファイルが残ってしまう。</p>
 <p>リモートレポジトリにあるファイルを削除するには以下のようにする。</p>
@@ -1165,7 +1173,7 @@ git commit -m &quot;remove some files&quot;
 
 # リモートに反映
 git push origin master
-</code></pre><h1 id="githubへのプルリク">Githubへのプルリク</h1>
+</code></pre><h2 id="githubへのプルリク">Githubへのプルリク</h2>
 <p>プルリク（pull request）は git ではなく Github や Gitlab の機能</p>
 <p>ブランチをマージする前にチェックして、Github 上でマージできる</p>
 <p><a href="https://qiita.com/samurairunner/items/7442521bce2d6ac9330b">初心者向けGithubへのPullRequest方法</a></p>
@@ -1237,38 +1245,42 @@ git push origin master
     <nav id="TableOfContents">
   <ul>
     <li><a href="#サブコマンド">サブコマンド</a></li>
-  </ul>
-
-  <ul>
-    <li><a href="#init--既存のフォルダをレポジトリにする">init : 既存のフォルダをレポジトリにする</a></li>
-    <li><a href="#clone--既存のレポジトリをコピーする">clone : 既存のレポジトリをコピーする</a></li>
-  </ul>
-
-  <ul>
-    <li><a href="#add">add</a>
+    <li><a href="#レポジトリを作成するコピーする">レポジトリを作成する、コピーする</a>
       <ul>
-        <li><a href="#add-の取り消し">add の取り消し</a></li>
+        <li><a href="#init--既存のフォルダをレポジトリにする">init : 既存のフォルダをレポジトリにする</a></li>
+        <li><a href="#clone--既存のレポジトリをコピーする">clone : 既存のレポジトリをコピーする</a></li>
       </ul>
     </li>
-    <li><a href="#commit">commit</a></li>
-    <li><a href="#push-リモートレポジトリに反映する">push リモートレポジトリに反映する</a></li>
-  </ul>
-
-  <ul>
-    <li><a href="#既存のブランチを確認する">既存のブランチを確認する</a></li>
-    <li><a href="#ブランチの作成--branch">ブランチの作成 : branch</a></li>
-    <li><a href="#ブランチの切り替え--checkout">ブランチの切り替え : checkout</a></li>
-    <li><a href="#カレントブランチの確認">カレントブランチの確認</a></li>
-    <li><a href="#ブランチの削除">ブランチの削除</a></li>
-    <li><a href="#ブランチをマージする">ブランチをマージする</a></li>
-    <li><a href="#リモートにあるブランチをローカルに持ってくる">リモートにあるブランチをローカルに持ってくる</a></li>
-    <li><a href="#ローカルブランチをコピーして別のローカルブランチを作る">ローカルブランチをコピーして別のローカルブランチを作る</a></li>
-    <li><a href="#ローカルとリモートのブランチ名を変更する">ローカルとリモートのブランチ名を変更する</a></li>
-  </ul>
-
-  <ul>
-    <li><a href="#ファイル名を変更する移動する--git-mv">ファイル名を変更する・移動する : git mv</a></li>
-    <li><a href="#ローカルで削除したファイルフォルダをリモートレポジトリからも削除する">ローカルで削除したファイル・フォルダを、リモートレポジトリからも削除する</a></li>
+    <li><a href="#既にあるレポジトリへの操作">既にあるレポジトリへの操作</a>
+      <ul>
+        <li><a href="#add">add</a></li>
+        <li><a href="#commit">commit</a></li>
+        <li><a href="#push-リモートレポジトリに反映する">push リモートレポジトリに反映する</a></li>
+      </ul>
+    </li>
+    <li><a href="#ブランチ">ブランチ</a>
+      <ul>
+        <li><a href="#既存のブランチを確認する">既存のブランチを確認する</a></li>
+        <li><a href="#ブランチの作成--branch">ブランチの作成 : branch</a></li>
+        <li><a href="#ブランチの切り替え--checkout">ブランチの切り替え : checkout</a></li>
+        <li><a href="#カレントブランチの確認">カレントブランチの確認</a></li>
+        <li><a href="#ブランチの削除">ブランチの削除</a></li>
+        <li><a href="#ブランチをマージする">ブランチをマージする</a></li>
+        <li><a href="#リモートにあるブランチをローカルに持ってくる">リモートにあるブランチをローカルに持ってくる</a></li>
+        <li><a href="#ローカルで作成したブランチをリモートにプッシュする">ローカルで作成したブランチをリモートにプッシュする</a></li>
+        <li><a href="#ローカルブランチをコピーして別のローカルブランチを作る">ローカルブランチをコピーして別のローカルブランチを作る</a></li>
+        <li><a href="#ローカルとリモートのブランチ名を変更する">ローカルとリモートのブランチ名を変更する</a></li>
+      </ul>
+    </li>
+    <li><a href="#レポジトリの状態を表示する--status">レポジトリの状態を表示する : status</a></li>
+    <li><a href="#ファイルフォルダを復元する">ファイル/フォルダを復元する</a></li>
+    <li><a href="#ファイルへの操作">ファイルへの操作</a>
+      <ul>
+        <li><a href="#ファイル名を変更する移動する--git-mv">ファイル名を変更する・移動する : git mv</a></li>
+        <li><a href="#ローカルで削除したファイルフォルダをリモートレポジトリからも削除する">ローカルで削除したファイル・フォルダを、リモートレポジトリからも削除する</a></li>
+      </ul>
+    </li>
+    <li><a href="#githubへのプルリク">Githubへのプルリク</a></li>
   </ul>
 </nav>
   </aside>

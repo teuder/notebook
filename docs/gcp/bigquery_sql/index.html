@@ -16,7 +16,7 @@
 <link rel="stylesheet" href="/notebook/book.min.07c38dce7b6800da2a75a565d4d975e38f837294e24d00b5aae363037012d64b.css" integrity="sha256-B8ONzntoANoqdaVl1Nl144&#43;DcpTiTQC1quNjA3AS1ks=">
 
 
-<script defer src="/notebook/search.min.b5b1ba206a81ac6adfe7ac1419e75e00a1c2bec454014fb2ac8dacb5ace3f912.js" integrity="sha256-tbG6IGqBrGrf56wUGedeAKHCvsRUAU&#43;yrI2stazj&#43;RI="></script>
+<script defer src="/notebook/search.min.f0410f94d917c7f071b482af17895617bf908308a9dd8b37110f9bf656a6aec0.js" integrity="sha256-8EEPlNkXx/BxtIKvF4lWF7&#43;Qgwip3Ys3EQ&#43;b9lamrsA="></script>
 
 <!--
 Made with Book Theme
@@ -1207,24 +1207,24 @@ FROM
 </code></pre></div><h2 id="arrayの要素の結合">ARRAYの要素の結合</h2>
 <p>ARRAY_CONCAT() のような関数を使用して複数の配列を結合し、ARRAY_TO_STRING() を使用して配列を文字列に変換できます。</p>
 <h2 id="user-defined-functions">User Defined Functions</h2>
-<pre><code># 定数をUDFとして保存する
-CREATE TEMP FUNCTION START_DATE() AS (TIMESTAMP('2012-04-01'));
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#f92672">#</span> <span style="color:#960050;background-color:#1e0010">定数を</span><span style="color:#111">UDFとして保存する</span>
+<span style="color:#00a8c8">CREATE</span> <span style="color:#111">TEMP</span> <span style="color:#00a8c8">FUNCTION</span> <span style="color:#111">START_DATE</span><span style="color:#111">()</span> <span style="color:#00a8c8">AS</span> <span style="color:#111">(</span><span style="color:#00a8c8">TIMESTAMP</span><span style="color:#111">(</span><span style="color:#d88200">&#39;2012-04-01&#39;</span><span style="color:#111">));</span>
 
-# 使い捨て関数
-CREATE TEMP FUNCTION SORT_ARRAY(arr ANY TYPE, ascending BOOL) AS (
-IF (ascending,
-    ARRAY (SELECT * FROM UNNEST (arr) a ORDER BY a),
-    ARRAY (SELECT * FROM UNNEST (arr) a ORDER BY a DESC) )
-);
+<span style="color:#f92672">#</span> <span style="color:#960050;background-color:#1e0010">使い捨て関数</span>
+<span style="color:#00a8c8">CREATE</span> <span style="color:#111">TEMP</span> <span style="color:#00a8c8">FUNCTION</span> <span style="color:#111">SORT_ARRAY</span><span style="color:#111">(</span><span style="color:#111">arr</span> <span style="color:#00a8c8">ANY</span> <span style="color:#00a8c8">TYPE</span><span style="color:#111">,</span> <span style="color:#111">ascending</span> <span style="color:#111">BOOL</span><span style="color:#111">)</span> <span style="color:#00a8c8">AS</span> <span style="color:#111">(</span>
+<span style="color:#00a8c8">IF</span> <span style="color:#111">(</span><span style="color:#111">ascending</span><span style="color:#111">,</span>
+    <span style="color:#111">ARRAY</span> <span style="color:#111">(</span><span style="color:#00a8c8">SELECT</span> <span style="color:#f92672">*</span> <span style="color:#00a8c8">FROM</span> <span style="color:#00a8c8">UNNEST</span> <span style="color:#111">(</span><span style="color:#111">arr</span><span style="color:#111">)</span> <span style="color:#111">a</span> <span style="color:#00a8c8">ORDER</span> <span style="color:#00a8c8">BY</span> <span style="color:#111">a</span><span style="color:#111">),</span>
+    <span style="color:#111">ARRAY</span> <span style="color:#111">(</span><span style="color:#00a8c8">SELECT</span> <span style="color:#f92672">*</span> <span style="color:#00a8c8">FROM</span> <span style="color:#00a8c8">UNNEST</span> <span style="color:#111">(</span><span style="color:#111">arr</span><span style="color:#111">)</span> <span style="color:#111">a</span> <span style="color:#00a8c8">ORDER</span> <span style="color:#00a8c8">BY</span> <span style="color:#111">a</span> <span style="color:#00a8c8">DESC</span><span style="color:#111">)</span> <span style="color:#111">)</span>
+<span style="color:#111">);</span>
 
 
-# テーブルを作成するときと同じようにUDFを保存することもできる
-CREATE OR REPLACE FUNCTION `your_project.your_dataset.SORT_ARRAY`(arr ANY TYPE, ascending BOOL) AS (
-IF (ascending,
-    ARRAY (SELECT * FROM UNNEST (arr) a ORDER BY a),
-    ARRAY (SELECT * FROM UNNEST (arr) a ORDER BY a DESC) )
-);
-</code></pre><h2 id="struct">STRUCT</h2>
+<span style="color:#f92672">#</span> <span style="color:#960050;background-color:#1e0010">テーブルを作成するときと同じように</span><span style="color:#111">UDFを保存することもできる</span>
+<span style="color:#00a8c8">CREATE</span> <span style="color:#00a8c8">OR</span> <span style="color:#00a8c8">REPLACE</span> <span style="color:#00a8c8">FUNCTION</span> <span style="color:#f92672">`</span><span style="color:#111">your_project</span><span style="color:#111">.</span><span style="color:#111">your_dataset</span><span style="color:#111">.</span><span style="color:#111">SORT_ARRAY</span><span style="color:#f92672">`</span><span style="color:#111">(</span><span style="color:#111">arr</span> <span style="color:#00a8c8">ANY</span> <span style="color:#00a8c8">TYPE</span><span style="color:#111">,</span> <span style="color:#111">ascending</span> <span style="color:#111">BOOL</span><span style="color:#111">)</span> <span style="color:#00a8c8">AS</span> <span style="color:#111">(</span>
+<span style="color:#00a8c8">IF</span> <span style="color:#111">(</span><span style="color:#111">ascending</span><span style="color:#111">,</span>
+    <span style="color:#111">ARRAY</span> <span style="color:#111">(</span><span style="color:#00a8c8">SELECT</span> <span style="color:#f92672">*</span> <span style="color:#00a8c8">FROM</span> <span style="color:#00a8c8">UNNEST</span> <span style="color:#111">(</span><span style="color:#111">arr</span><span style="color:#111">)</span> <span style="color:#111">a</span> <span style="color:#00a8c8">ORDER</span> <span style="color:#00a8c8">BY</span> <span style="color:#111">a</span><span style="color:#111">),</span>
+    <span style="color:#111">ARRAY</span> <span style="color:#111">(</span><span style="color:#00a8c8">SELECT</span> <span style="color:#f92672">*</span> <span style="color:#00a8c8">FROM</span> <span style="color:#00a8c8">UNNEST</span> <span style="color:#111">(</span><span style="color:#111">arr</span><span style="color:#111">)</span> <span style="color:#111">a</span> <span style="color:#00a8c8">ORDER</span> <span style="color:#00a8c8">BY</span> <span style="color:#111">a</span> <span style="color:#00a8c8">DESC</span><span style="color:#111">)</span> <span style="color:#111">)</span>
+<span style="color:#111">);</span>
+</code></pre></div><h2 id="struct">STRUCT</h2>
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#f92672">#</span> <span style="color:#111">STRUCT</span> <span style="color:#960050;background-color:#1e0010">を要素に持つカラム</span>
 <span style="color:#f92672">#</span> <span style="color:#960050;background-color:#1e0010">これだと</span><span style="color:#111">structとしてまとめる意義があまりないかも</span>
 <span style="color:#00a8c8">WITH</span>
@@ -1243,25 +1243,25 @@ IF (ascending,
 <span style="color:#00a8c8">SELECT</span> <span style="color:#d88200">&#39;nancy&#39;</span> <span style="color:#00a8c8">as</span> <span style="color:#00a8c8">owner</span><span style="color:#111">,</span>  <span style="color:#111">[(</span><span style="color:#d88200">&#39;fish&#39;</span><span style="color:#111">,</span> <span style="color:#ae81ff">10</span><span style="color:#111">),</span> <span style="color:#111">(</span><span style="color:#d88200">&#39;bird&#39;</span><span style="color:#111">,</span> <span style="color:#ae81ff">3</span><span style="color:#111">),</span> <span style="color:#111">(</span><span style="color:#d88200">&#39;horse&#39;</span><span style="color:#111">,</span><span style="color:#ae81ff">3</span><span style="color:#111">)]</span>
 <span style="color:#111">)</span>
 <span style="color:#00a8c8">select</span> <span style="color:#f92672">*</span> <span style="color:#00a8c8">from</span> <span style="color:#111">ownner_pet</span>
-</code></pre></div><h1 id="window関数の結果でフィルター-qualify">WINDOW関数の結果でフィルター QUALIFY</h1>
-<pre><code>
-SELECT
-    date,
-    lat_bin,
-    lon_bin,
-    OrbitNumber,
-    AVG(SATZ_GDNBO) as angle,
-    # WINDOW FUNCITON
-    RANK() OVER (PARTITION BY date, lat_bin, lon_bin ORDER BY AVG(SATZ_GDNBO)) AS rank
-FROM 
-    viirs
-GROUP BY 
-    date, lat_bin, lon_bin, OrbitNumber
-QUALIFY
-    # Extract records having minimum AVG(SATZ_GDNBO)
-    rank = 1
-)
-</code></pre><h1 id="record型">RECORD型</h1>
+</code></pre></div><h2 id="window関数の結果でフィルター-qualify">WINDOW関数の結果でフィルター QUALIFY</h2>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql">
+<span style="color:#00a8c8">SELECT</span>
+    <span style="color:#111">date</span><span style="color:#111">,</span>
+    <span style="color:#111">lat_bin</span><span style="color:#111">,</span>
+    <span style="color:#111">lon_bin</span><span style="color:#111">,</span>
+    <span style="color:#111">OrbitNumber</span><span style="color:#111">,</span>
+    <span style="color:#00a8c8">AVG</span><span style="color:#111">(</span><span style="color:#111">SATZ_GDNBO</span><span style="color:#111">)</span> <span style="color:#00a8c8">as</span> <span style="color:#111">angle</span><span style="color:#111">,</span>
+    <span style="color:#f92672">#</span> <span style="color:#111">WINDOW</span> <span style="color:#111">FUNCITON</span>
+    <span style="color:#111">RANK</span><span style="color:#111">()</span> <span style="color:#111">OVER</span> <span style="color:#111">(</span><span style="color:#111">PARTITION</span> <span style="color:#00a8c8">BY</span> <span style="color:#111">date</span><span style="color:#111">,</span> <span style="color:#111">lat_bin</span><span style="color:#111">,</span> <span style="color:#111">lon_bin</span> <span style="color:#00a8c8">ORDER</span> <span style="color:#00a8c8">BY</span> <span style="color:#00a8c8">AVG</span><span style="color:#111">(</span><span style="color:#111">SATZ_GDNBO</span><span style="color:#111">))</span> <span style="color:#00a8c8">AS</span> <span style="color:#111">rank</span>
+<span style="color:#00a8c8">FROM</span> 
+    <span style="color:#111">viirs</span>
+<span style="color:#00a8c8">GROUP</span> <span style="color:#00a8c8">BY</span> 
+    <span style="color:#111">date</span><span style="color:#111">,</span> <span style="color:#111">lat_bin</span><span style="color:#111">,</span> <span style="color:#111">lon_bin</span><span style="color:#111">,</span> <span style="color:#111">OrbitNumber</span>
+<span style="color:#111">QUALIFY</span>
+    <span style="color:#f92672">#</span> <span style="color:#00a8c8">Extract</span> <span style="color:#111">records</span> <span style="color:#00a8c8">having</span> <span style="color:#111">minimum</span> <span style="color:#00a8c8">AVG</span><span style="color:#111">(</span><span style="color:#111">SATZ_GDNBO</span><span style="color:#111">)</span>
+    <span style="color:#111">rank</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+<span style="color:#111">)</span>
+</code></pre></div><h2 id="record型">RECORD型</h2>
 <p>構造体のように複数の型の値を１つにまとめる。</p>
 <p>Type: RECORD型
 Mode: NULLABLE</p>
@@ -1293,7 +1293,7 @@ flag</p>
    <span style="color:#00a8c8">LEFT</span> <span style="color:#00a8c8">JOIN</span> <span style="color:#00a8c8">UNNEST</span><span style="color:#111">(</span><span style="color:#111">activity</span><span style="color:#111">)</span> <span style="color:#111">a</span>
 <span style="color:#00a8c8">WHERE</span>
   <span style="color:#00a8c8">identity</span><span style="color:#111">.</span><span style="color:#111">ssvid</span> <span style="color:#f92672">=</span> <span style="color:#d88200">&#39;353154000&#39;</span>
-</code></pre></div><h1 id="行の抽出-1">行の抽出</h1>
+</code></pre></div><h2 id="行の抽出-1">行の抽出</h2>
 <p>WHERE
 EXIST
 HAVING
@@ -1301,13 +1301,20 @@ QUALIFY</p>
 <p>array (selsct distinct as struct from unnest(registry) where list_uvi like &ldquo;iccat&rdquo;) as registry</p>
 <p>from all_vessels</p>
 <p>where array_length(registory) &gt;0</p>
-<h1 id="json">JSON</h1>
+<h2 id="json">JSON</h2>
 <pre><code># 値を文字列として抽出
 JSON_EXTRACT(列, &quot;$.要素名&quot;)
 # 値を整数として抽
 JSON_EXTRACT_SCALAR(列, &quot;$.要素名&quot;)
-</code></pre><h1 id="パーティションドテーブルを作成する">パーティションドテーブルを作成する</h1>
+</code></pre><h2 id="パーティションドテーブルを作成する">パーティションドテーブルを作成する</h2>
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#00a8c8">CREATE</span> <span style="color:#00a8c8">TABLE</span>
+  <span style="color:#960050;background-color:#1e0010">データセット</span><span style="color:#111">.</span><span style="color:#960050;background-color:#1e0010">テーブル名</span> <span style="color:#111">(</span><span style="color:#960050;background-color:#1e0010">スキーマ</span><span style="color:#111">)</span>
+<span style="color:#111">PARTITION</span> <span style="color:#00a8c8">BY</span>
+  <span style="color:#960050;background-color:#1e0010">パーティションに利用する列</span>
+<span style="color:#00a8c8">OPTIONS</span><span style="color:#111">(</span>
+  <span style="color:#960050;background-color:#1e0010">オプション</span>
+<span style="color:#111">)</span>
+</code></pre></div><div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#00a8c8">CREATE</span> <span style="color:#00a8c8">TABLE</span>
   <span style="color:#111">mydataset</span><span style="color:#111">.</span><span style="color:#111">newtable</span> <span style="color:#111">(</span><span style="color:#111">transaction_id</span> <span style="color:#111">INT64</span><span style="color:#111">,</span> <span style="color:#111">transaction_date</span> <span style="color:#111">DATE</span><span style="color:#111">)</span>
 <span style="color:#111">PARTITION</span> <span style="color:#00a8c8">BY</span>
   <span style="color:#111">transaction_date</span>
@@ -1315,6 +1322,22 @@ JSON_EXTRACT_SCALAR(列, &quot;$.要素名&quot;)
   <span style="color:#111">partition_expiration_days</span><span style="color:#f92672">=</span><span style="color:#ae81ff">3</span><span style="color:#111">,</span>
   <span style="color:#111">require_partition_filter</span><span style="color:#f92672">=</span><span style="color:#00a8c8">true</span>
 <span style="color:#111">)</span>
+</code></pre></div><h2 id="ワイルドカードでのテーブルの指定">ワイルドカードでのテーブルの指定</h2>
+<p>シャーデットテーブルなど <a href="https://cloud.google.com/bigquery/docs/querying-wildcard-tables">https://cloud.google.com/bigquery/docs/querying-wildcard-tables</a></p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#00a8c8">select</span>
+  <span style="color:#f92672">*</span>
+<span style="color:#00a8c8">from</span>
+  <span style="color:#111">mydataset</span><span style="color:#111">.</span><span style="color:#111">my_sharded_table_</span><span style="color:#f92672">*</span>
+</code></pre></div><div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#00a8c8">select</span>
+  <span style="color:#f92672">*</span>
+<span style="color:#00a8c8">from</span>
+  <span style="color:#111">mydataset</span><span style="color:#111">.</span><span style="color:#111">my_sharded_table_2020</span><span style="color:#f92672">*</span>
+</code></pre></div><div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#00a8c8">select</span>
+  <span style="color:#f92672">*</span>
+<span style="color:#00a8c8">from</span>
+  <span style="color:#111">mydataset</span><span style="color:#111">.</span><span style="color:#111">my_sharded_table_</span><span style="color:#f92672">*</span>
+<span style="color:#00a8c8">where</span>
+  <span style="color:#111">_TABLE_SUFFIX</span> <span style="color:#00a8c8">BETWEEN</span> <span style="color:#d88200">&#39;20200101&#39;</span> <span style="color:#00a8c8">AND</span> <span style="color:#d88200">&#39;20200301&#39;</span>
 </code></pre></div></article>
 
       
@@ -1393,6 +1416,12 @@ JSON_EXTRACT_SCALAR(列, &quot;$.要素名&quot;)
     <li><a href="#arrayの要素の結合">ARRAYの要素の結合</a></li>
     <li><a href="#user-defined-functions">User Defined Functions</a></li>
     <li><a href="#struct">STRUCT</a></li>
+    <li><a href="#window関数の結果でフィルター-qualify">WINDOW関数の結果でフィルター QUALIFY</a></li>
+    <li><a href="#record型">RECORD型</a></li>
+    <li><a href="#行の抽出-1">行の抽出</a></li>
+    <li><a href="#json">JSON</a></li>
+    <li><a href="#パーティションドテーブルを作成する">パーティションドテーブルを作成する</a></li>
+    <li><a href="#ワイルドカードでのテーブルの指定">ワイルドカードでのテーブルの指定</a></li>
   </ul>
 </nav>
   </aside>

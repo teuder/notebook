@@ -68,6 +68,10 @@ gfw-fra:fra_vbd.fra_vbd_with_overlap
 
 
 
+
+
+
+
 ## データをアップロードする : bq load
 
 ローカルファイル（.parquet）から（1つのファイルしか指定できない）
@@ -146,6 +150,16 @@ LOCAL_FILE.parquet
 https://cloud.google.com/bigquery/docs/schemas?hl=ja
 
 
+- INT64
+- FLOAT64
+- BOOL
+- DATE
+- DATETIME: タイムゾーンに依存せずに時計に表示される日時を表します。これには年、月、日、時、分、秒、サブ秒が含まれます。絶対的な時刻を表すには、タイムスタンプを使用します
+- TIMESTAMP 値は、タイムゾーンや夏時間などの慣習に関係なく、マイクロ秒精度の絶対的な時刻を表します。
+- STRING
+- GEOGRAPHY 
+
+
 コマンドラインで入力する場合
 
 ```
@@ -156,7 +170,7 @@ https://cloud.google.com/bigquery/docs/schemas?hl=ja
 JSONファイルで記述する場合
 
 ```
-[
+[ 
   {
     "description": "quarter",
     "mode": "REQUIRED",

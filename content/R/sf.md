@@ -130,7 +130,9 @@ data_df <- as.data.frame(data_sf)
 
 `sf` オブジェクトから `geometory` 列を削除すると、ただのデータフレームになる。そのために、`st_set_geometry()` はデータフレームにgeometry列をくっつける関数だけど、NULLを渡すとsfオブジェクトからgeomeotry列を削除できる。
 
-`df <- st_set_geometry(data_sf, NULL)`
+```r
+df <- sf::st_set_geometry(data_sf, NULL)
+```
 
 ## WKT形式に変換する
 
@@ -248,4 +250,25 @@ valid_sf <- sf::st_make_valid(target_sf)
 ```r
 dir.create("joint_fishries_area")
 sf::write_sf(joint_fisheries_areas_with_values_sf, "joint_fishries_area/joint_fishries_area.shp")
+```
+
+
+# 特定のエリア内の点を削除する
+
+`points_df`から `target_area_sf` 内にある点を削除する。
+
+target_area_sf は 1つのエリア（1行）だけ含んでいるという前提
+
+```r
+points_new_df <-
+  points_df %>%
+  sf::st_as_sf(
+    coords = c("lon", "lat"),
+    dim = "XY",
+    remove = FALSE,
+    crs = 4326
+  ) %>%
+  filter(!as.logical(sf::st_within(., target_area_sf, sparse = FALSE))) %>%
+  sf::st_set_geometry(NULL)
+
 ```

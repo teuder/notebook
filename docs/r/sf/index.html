@@ -16,7 +16,7 @@
 <link rel="stylesheet" href="/notebook/book.min.07c38dce7b6800da2a75a565d4d975e38f837294e24d00b5aae363037012d64b.css" integrity="sha256-B8ONzntoANoqdaVl1Nl144&#43;DcpTiTQC1quNjA3AS1ks=">
 
 
-<script defer src="/notebook/search.min.b5b1ba206a81ac6adfe7ac1419e75e00a1c2bec454014fb2ac8dacb5ace3f912.js" integrity="sha256-tbG6IGqBrGrf56wUGedeAKHCvsRUAU&#43;yrI2stazj&#43;RI="></script>
+<script defer src="/notebook/search.min.f0410f94d917c7f071b482af17895617bf908308a9dd8b37110f9bf656a6aec0.js" integrity="sha256-8EEPlNkXx/BxtIKvF4lWF7&#43;Qgwip3Ys3EQ&#43;b9lamrsA="></script>
 
 <!--
 Made with Book Theme
@@ -975,8 +975,8 @@ https://github.com/alex-shpak/hugo-book
 <p>sfオブジェクトをデータフレームに変換する（この時、df には geometry 列（リスト列=sfcオブジェクト）が残る）</p>
 <pre><code>data_df &lt;- as.data.frame(data_sf)
 </code></pre><p><code>sf</code> オブジェクトから <code>geometory</code> 列を削除すると、ただのデータフレームになる。そのために、<code>st_set_geometry()</code> はデータフレームにgeometry列をくっつける関数だけど、NULLを渡すとsfオブジェクトからgeomeotry列を削除できる。</p>
-<p><code>df &lt;- st_set_geometry(data_sf, NULL)</code></p>
-<h2 id="wkt形式に変換する">WKT形式に変換する</h2>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#111">df</span> <span style="color:#f92672">&lt;-</span> <span style="color:#111">sf</span><span style="color:#f92672">::</span><span style="color:#75af00">st_set_geometry</span><span style="color:#111">(</span><span style="color:#111">data_sf</span><span style="color:#111">,</span> <span style="color:#00a8c8">NULL</span><span style="color:#111">)</span>
+</code></pre></div><h2 id="wkt形式に変換する">WKT形式に変換する</h2>
 <pre><code>lwgeom::st_astext(x, digits = options(&quot;digits&quot;), ..., EWKT = FALSE)
 lwgeom::st_asewkt(x, digits = options(&quot;digits&quot;))
 </code></pre><h1 id="地物同士の位置関係の判定">地物同士の位置関係の判定</h1>
@@ -1029,6 +1029,20 @@ lwgeom::st_asewkt(x, digits = options(&quot;digits&quot;))
 </code></pre></div><h1 id="shapefileとして保存する">Shapefileとして保存する</h1>
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#75af00">dir.create</span><span style="color:#111">(</span><span style="color:#d88200">&#34;joint_fishries_area&#34;</span><span style="color:#111">)</span>
 <span style="color:#111">sf</span><span style="color:#f92672">::</span><span style="color:#75af00">write_sf</span><span style="color:#111">(</span><span style="color:#111">joint_fisheries_areas_with_values_sf</span><span style="color:#111">,</span> <span style="color:#d88200">&#34;joint_fishries_area/joint_fishries_area.shp&#34;</span><span style="color:#111">)</span>
+</code></pre></div><h1 id="特定のエリア内の点を削除する">特定のエリア内の点を削除する</h1>
+<p><code>points_df</code>から <code>target_area_sf</code> 内にある点を削除する。</p>
+<p>target_area_sf は 1つのエリア（1行）だけ含んでいるという前提</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#111">points_new_df</span> <span style="color:#f92672">&lt;-</span>
+  <span style="color:#111">points_df</span> <span style="color:#f92672">%&gt;%</span>
+  <span style="color:#111">sf</span><span style="color:#f92672">::</span><span style="color:#75af00">st_as_sf</span><span style="color:#111">(</span>
+    <span style="color:#111">coords</span> <span style="color:#f92672">=</span> <span style="color:#75af00">c</span><span style="color:#111">(</span><span style="color:#d88200">&#34;lon&#34;</span><span style="color:#111">,</span> <span style="color:#d88200">&#34;lat&#34;</span><span style="color:#111">),</span>
+    <span style="color:#111">dim</span> <span style="color:#f92672">=</span> <span style="color:#d88200">&#34;XY&#34;</span><span style="color:#111">,</span>
+    <span style="color:#111">remove</span> <span style="color:#f92672">=</span> <span style="color:#00a8c8">FALSE</span><span style="color:#111">,</span>
+    <span style="color:#111">crs</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">4326</span>
+  <span style="color:#111">)</span> <span style="color:#f92672">%&gt;%</span>
+  <span style="color:#75af00">filter</span><span style="color:#111">(</span><span style="color:#f92672">!</span><span style="color:#75af00">as.logical</span><span style="color:#111">(</span><span style="color:#111">sf</span><span style="color:#f92672">::</span><span style="color:#75af00">st_within</span><span style="color:#111">(</span><span style="color:#111">.,</span> <span style="color:#111">target_area_sf</span><span style="color:#111">,</span> <span style="color:#111">sparse</span> <span style="color:#f92672">=</span> <span style="color:#00a8c8">FALSE</span><span style="color:#111">)))</span> <span style="color:#f92672">%&gt;%</span>
+  <span style="color:#111">sf</span><span style="color:#f92672">::</span><span style="color:#75af00">st_set_geometry</span><span style="color:#111">(</span><span style="color:#00a8c8">NULL</span><span style="color:#111">)</span>
+
 </code></pre></div></article>
 
       

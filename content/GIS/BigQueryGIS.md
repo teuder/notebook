@@ -12,4 +12,7 @@ type: docs
 
 [BigQuery標準SQLの地理関数](https://cloud.google.com/bigquery/docs/reference/standard-sql/geography_functions?hl=ja)
 
+[BigQuery Geo Viz](https://bigquerygeoviz.appspot.com/): BigQueryの地理オブジェクトの可視化
+
+
 
