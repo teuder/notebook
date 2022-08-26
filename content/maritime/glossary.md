@@ -85,6 +85,8 @@ MMSI Maritime Mobile Service Identity 海上移動業務識別コード、AISな
 
 # 水産学・漁業用語
 
+
+[水産資源評価の専門用語の解説](https://www.jfa.maff.go.jp/j/suisin/s_kouiki/setouti/pdf/s23-7.pdf)
 漁労体 ぎょろうたい Fishing unit
 海面漁業経営体 かいめんぎょぎょうけいえいたい Marine fishery establishment
 水揚機関 みずあげきかん Catch landing organization
