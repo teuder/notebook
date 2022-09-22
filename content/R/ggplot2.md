@@ -462,11 +462,26 @@ scale_[x,y,color,fill]_[condinuous,descrete,date](
   breaks=c(1,2,3,4), # 目盛位置
   labels = c("01","02", "03","04"), # 目盛に表示する値のラベル
   limits=c(0,120),   # 表示する値の範囲
+  # 表示する値の範囲を絞った時に、範囲外の値をどのように表示するか
+  # oob = scales::censor(), # NAに置換する
+  # oob = scales::squish(), # 範囲内の値に変換する
+  # oob = scales::squish_infinite(), # 無限値を範囲内の値に変換する
+  oob = scales::censor(), 
   trans = "log10",   # 軸のスケールを変換する関数 
   name = "X axis",   # 軸の名前
   guide = guide_axis(n.dodge = 2), # 目盛のラベルが重なっているときに位置をずらす
 )
 ```
+
+
+
+Function that handles limits outside of the scale limits (out of bounds).
+
+The default (scales::censor()) replaces out of bounds values with NA.
+
+scales::squish() for squishing out of bounds values into range.
+
+scales::squish_infinite() for squishing infinite values into range.
 
 
 

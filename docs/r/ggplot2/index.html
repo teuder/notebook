@@ -16,7 +16,7 @@
 <link rel="stylesheet" href="/notebook/book.min.07c38dce7b6800da2a75a565d4d975e38f837294e24d00b5aae363037012d64b.css" integrity="sha256-B8ONzntoANoqdaVl1Nl144&#43;DcpTiTQC1quNjA3AS1ks=">
 
 
-<script defer src="/notebook/search.min.b713fa19819ca9833f6454a48fadd35ed1ab81b992612d566a0129bf7acf3a31.js" integrity="sha256-txP6GYGcqYM/ZFSkj63TXtGrgbmSYS1WagEpv3rPOjE="></script>
+<script defer src="/notebook/search.min.0eda550b50198df42e019c38a9b61c7802c8b34adccb4e22080f2adb150a4adf.js" integrity="sha256-DtpVC1AZjfQuAZw4qbYceALIs0rcy04iCA8q2xUKSt8="></script>
 
 <!--
 Made with Book Theme
@@ -1169,11 +1169,20 @@ annotate(&quot;label&quot;, x = bbox[&quot;xmin&quot;], y = bbox[&quot;ymax&quot
   <span style="color:#111">breaks</span><span style="color:#f92672">=</span><span style="color:#75af00">c</span><span style="color:#111">(</span><span style="color:#ae81ff">1</span><span style="color:#111">,</span><span style="color:#ae81ff">2</span><span style="color:#111">,</span><span style="color:#ae81ff">3</span><span style="color:#111">,</span><span style="color:#ae81ff">4</span><span style="color:#111">),</span> <span style="color:#75715e"># 目盛位置</span>
   <span style="color:#111">labels</span> <span style="color:#f92672">=</span> <span style="color:#75af00">c</span><span style="color:#111">(</span><span style="color:#d88200">&#34;01&#34;</span><span style="color:#111">,</span><span style="color:#d88200">&#34;02&#34;</span><span style="color:#111">,</span> <span style="color:#d88200">&#34;03&#34;</span><span style="color:#111">,</span><span style="color:#d88200">&#34;04&#34;</span><span style="color:#111">),</span> <span style="color:#75715e"># 目盛に表示する値のラベル</span>
   <span style="color:#111">limits</span><span style="color:#f92672">=</span><span style="color:#75af00">c</span><span style="color:#111">(</span><span style="color:#ae81ff">0</span><span style="color:#111">,</span><span style="color:#ae81ff">120</span><span style="color:#111">),</span>   <span style="color:#75715e"># 表示する値の範囲</span>
+  <span style="color:#75715e"># 表示する値の範囲を絞った時に、範囲外の値をどのように表示するか</span>
+  <span style="color:#75715e"># oob = scales::censor(), # NAに置換する</span>
+  <span style="color:#75715e"># oob = scales::squish(), # 範囲内の値に変換する</span>
+  <span style="color:#75715e"># oob = scales::squish_infinite(), # 無限値を範囲内の値に変換する</span>
+  <span style="color:#111">oob</span> <span style="color:#f92672">=</span> <span style="color:#111">scales</span><span style="color:#f92672">::</span><span style="color:#75af00">censor</span><span style="color:#111">(),</span> 
   <span style="color:#111">trans</span> <span style="color:#f92672">=</span> <span style="color:#d88200">&#34;log10&#34;</span><span style="color:#111">,</span>   <span style="color:#75715e"># 軸のスケールを変換する関数 </span>
   <span style="color:#111">name</span> <span style="color:#f92672">=</span> <span style="color:#d88200">&#34;X axis&#34;</span><span style="color:#111">,</span>   <span style="color:#75715e"># 軸の名前</span>
   <span style="color:#111">guide</span> <span style="color:#f92672">=</span> <span style="color:#75af00">guide_axis</span><span style="color:#111">(</span><span style="color:#111">n.dodge</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span><span style="color:#111">),</span> <span style="color:#75715e"># 目盛のラベルが重なっているときに位置をずらす</span>
 <span style="color:#111">)</span>
-</code></pre></div><p><a href="https://qiita.com/nozma/items/2954b21e7136b3011580">geom_barやgeom_histgramでの軸の変換</a></p>
+</code></pre></div><p>Function that handles limits outside of the scale limits (out of bounds).</p>
+<p>The default (scales::censor()) replaces out of bounds values with NA.</p>
+<p>scales::squish() for squishing out of bounds values into range.</p>
+<p>scales::squish_infinite() for squishing infinite values into range.</p>
+<p><a href="https://qiita.com/nozma/items/2954b21e7136b3011580">geom_barやgeom_histgramでの軸の変換</a></p>
 <h3 id="軸の名前">軸の名前</h3>
 <p>X軸ラベル、Y軸ラベル</p>
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#75af00">xlab</span><span style="color:#111">(</span><span style="color:#111">label</span><span style="color:#111">)</span>
