@@ -363,11 +363,14 @@ p + annotate("text", x = 4, y = 25,
 
 色分けに使用する変数は `aes()` の中で `aes(color = var1, fill = var2)` のように指定する。
 
-`color` に対しては `scale_color_gradient()`
+`color` （線や点の色）に対しては `scale_color_gradient()`
 
-`fill` に対しては `scale_fill_gradient()`
+`fill` （塗りつぶし色）に対しては `scale_fill_gradient()`
 
 をそれぞれ使用する。
+
+色もある種の軸であるので　scale_x_continuous() と同様に scale_color_continuous() や scale_fill_continuous() のように scale_*_()関数の一種として扱われている。
+
 
 
 ### 色の種類
@@ -451,11 +454,16 @@ ggtitle(label, subtitle = waiver())
 
 
 
-## 軸のスケールや目盛の設定
+## 軸のスケールや目盛の設定: scale_*()
+
+軸に対する様々な設定は `scale_軸_データ型()` 関数により行う。 
+
+- 軸の種類： `x`, `y`, `color`, `fill`, `alpha`, `size`, `linetype`, `radius`, `shape`
+- 軸のデータ型: `condinuous`,`descrete`,`date`, `datetime`, `binned` 
 
 
-`x`軸、`y`軸、`color`軸、`fill`軸などそれぞれの軸 (`AXIS`) とそのデータ型 (`DATATYPE`) に対応した関数 (`scale_AXIS_DATATYPE`) が用意されている。
 
+`scale_軸_データ型()`
 
 ```r
 scale_[x,y,color,fill]_[condinuous,descrete,date](
@@ -470,23 +478,13 @@ scale_[x,y,color,fill]_[condinuous,descrete,date](
   trans = "log10",   # 軸のスケールを変換する関数 
   name = "X axis",   # 軸の名前
   guide = guide_axis(n.dodge = 2), # 目盛のラベルが重なっているときに位置をずらす
+  expand = c(0,0) # x軸, y軸に対して、上下の隙間の大きさ、c(0,0)は隙間なし
 )
 ```
 
 
-
-Function that handles limits outside of the scale limits (out of bounds).
-
-The default (scales::censor()) replaces out of bounds values with NA.
-
-scales::squish() for squishing out of bounds values into range.
-
-scales::squish_infinite() for squishing infinite values into range.
-
-
-
-
 [geom_barやgeom_histgramでの軸の変換](https://qiita.com/nozma/items/2954b21e7136b3011580)
+
 
 ### 軸の名前
 

@@ -13,12 +13,12 @@ weight: 10
 # 用語集
 
 
-# 組織
+## 組織
 
 RFMO Regional Fisheries Management Office 地域の漁業管理組織
 IMO International Maritime Organization 国際海事専門機関
 
-## RFMO（マグロ類）
+### RFMO（マグロ類）
 
 WCPFC Western and Central Pacific Fisheries Commission 中西部太平洋まぐろ類委員会
 IATTC Inter-American Tropical Tuna Commission 全米熱帯まぐろ類委員会
@@ -27,7 +27,7 @@ IOTC Indian Ocean Tuna Commission インド洋まぐろ類委員会
 CCSBT Commission for the Conservation of Southern Bluefin Tuna みなみまぐろ保存委員会
 tuna RFMO
 
-## RFMO（その他）
+###  RFMO（その他）
 
 NPFC North Pacific Fisheries Commission 北太平洋漁業委員会
 SPRMO South Pacific Regional Fisheries Management Organisation 南太平洋地域漁業管理機構
@@ -37,7 +37,7 @@ SEAFO South East Atlantic Fisheries Organisation 南東大西洋漁業機関
 SIOFA Southern Indian Ocean Fisheries Agreement 南インド洋漁業協定
 NPAFC North Pacific Anadromous Fish Commission 北太平洋溯河性魚類委員会
 
-## 組織その他
+###  組織その他
 
 JFA
 Japan Fisheries Agency 水産庁
@@ -54,7 +54,7 @@ Japan Fisheries Information Service Center 日本漁業情報サービスセン�
 水産海洋学会 http://www.jsfo.jp/sympo/history.html
 
 
-# RFMO用語
+## RFMO用語
 
 CPC ICCATに加盟している国、または、協力的加盟国、地域、組織、 Contracting Parties and Cooperating non-Contracting Parties, Entities or Fishing Entities (CPCs)
 CCM WCPFCに加盟している国、または、協力的加盟国、地域、組織
@@ -82,8 +82,15 @@ Reefer refrigerated cargo ship 冷凍船
 bunker （燃料）補給船
 MMSI Maritime Mobile Service Identity 海上移動業務識別コード、AISなどの通信機器を識別するために発行されるID
 
+## 条約・協定
 
-# 水産学・漁業用語
+- PSMA: Agreement on Port State Measures (PSMA)
+  - 違法漁業防止寄港国措置協定
+  - https://www.fao.org/port-state-measures/en/
+
+
+
+## 水産学・漁業用語
 
 
 [水産資源評価の専門用語の解説](https://www.jfa.maff.go.jp/j/suisin/s_kouiki/setouti/pdf/s23-7.pdf)
@@ -101,9 +108,9 @@ MMSI Maritime Mobile Service Identity 海上移動業務識別コード、AISな
 漁場 fishing grounds
 
 
-## 漁業・漁法
+### 漁業・漁法
 
-### 漁業種別
+#### 漁業種別
 
 沿岸漁業 えんがんぎょぎょう Coastal fishery
 沖合漁業 おきあいぎょぎょう Offshore fishery
@@ -112,7 +119,7 @@ MMSI Maritime Mobile Service Identity 海上移動業務識別コード、AISな
 内水面漁業 ないすいめんぎょぎょう Inland water fishery
 養殖業　ようしょくぎょう Aquaculture
 
-### 漁法
+####  漁法
 
 Gear type 漁船の漁獲装置の種類
 底びき網漁業 そこびきあみぎょぎょう Trawl fishery
@@ -139,7 +146,7 @@ Gear type 漁船の漁獲装置の種類
 FADs Fish Aggregating Devices マグロなどの魚を引きつけるために海に浮かべる機械、巻き網で使うらしい
 
 
-# 魚種
+## 魚種
 
 (Pacific) saury サンマ
 chub mackerel マサバ
@@ -151,19 +158,19 @@ Swordfish メカジキ
 groundfish 底生魚
 toothfish マジェランアイナメ 南極周辺の深海魚、ギンダラの代わりに使われている
 
-# 海洋
+## 海洋
 
 ECS East China Sea
 WCPO Western Central Pacific Ocean
 
-# 持続可能な漁業
+## 持続可能な漁業
 
 - FIP : Fishery Improvement Project
   - 持続可能な漁業を推進するために地域漁業者と進めているプロジェクト一般（シーフードレガシーなどが進めている）
 - IUU : Illegal Unreported Unregulated
 - "three no" vessels : No boat name and number, No homeport, No boat certification. 主に中国漁船における用語、中国政府においても登録されていない、管理外になっている？？
 
-# 観測技術
+## 観測技術
 
 AIS
 Automatic Identification System 船が位置情報を発信している。基本的には船の衝突防止のためのシステムなのでAIS装置は他のAIS装置の信号を受信できる。International Maritime Organization (IMO) により一定サイズ（300GT）以上の船には搭載が義務付けられている。 人工衛星や地上の基地局により受信される。データを受信した企業がデータを売っている。数秒に１度発信されるが、受診する衛星側の問題で受信間隔は変わる。AIS CLASS-A と CLASS-B があり、CLASS-Bは電波弱い。
@@ -176,7 +183,7 @@ Synthetic Aperture Radar 合成開口レーダー 人工衛星からレーダー
 DSC
 Digital Selective Calling デジタル選択呼出装置、AISや無線などで、MMSIにより識別される電波の送受信装置、救難信号などを発する
 
-# 人工衛星
+## 人工衛星
 ALOS だいち 陸域観測衛星 SARを搭載
 ALOS-2＝大地２ AISとSARの両方のデータを受信できるから、AISとSARの検出のマッチングが容易にできる？
 SUOMI NPP 2011年に打ち上げられた。VIIRSを搭載している。 NOAA/NASAにより運用されている。

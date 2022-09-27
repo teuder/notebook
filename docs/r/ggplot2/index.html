@@ -8,7 +8,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://teuder.github.io/notebook/r/ggplot2/" />
 <meta property="article:published_time" content="2019-09-03T00:00:00+00:00" />
-<meta property="article:modified_time" content="2022-07-12T16:33:49+09:00" />
+<meta property="article:modified_time" content="2022-09-22T17:46:34+09:00" />
 <title>ggplot2 | notebook</title>
 <link rel="icon" href="/notebook/favicon.png" type="image/x-icon">
 
@@ -16,7 +16,7 @@
 <link rel="stylesheet" href="/notebook/book.min.07c38dce7b6800da2a75a565d4d975e38f837294e24d00b5aae363037012d64b.css" integrity="sha256-B8ONzntoANoqdaVl1Nl144&#43;DcpTiTQC1quNjA3AS1ks=">
 
 
-<script defer src="/notebook/search.min.0eda550b50198df42e019c38a9b61c7802c8b34adccb4e22080f2adb150a4adf.js" integrity="sha256-DtpVC1AZjfQuAZw4qbYceALIs0rcy04iCA8q2xUKSt8="></script>
+<script defer src="/notebook/search.min.0c507ce3f4f5452e1cca5a7f141ab926de6c3ca1e236df1aae4dc836d2d38967.js" integrity="sha256-DFB84/T1RS4cylp/FBq5Jt5sPKHiNt8ark3INtLTiWc="></script>
 
 <!--
 Made with Book Theme
@@ -1113,9 +1113,10 @@ annotate(&quot;label&quot;, x = bbox[&quot;xmin&quot;], y = bbox[&quot;ymax&quot
   <span style="color:#111">label</span> <span style="color:#f92672">=</span> <span style="color:#d88200">&#34;paste(italic(R) ^ 2, \&#34; = .75\&#34;)&#34;</span><span style="color:#111">,</span> <span style="color:#111">parse</span> <span style="color:#f92672">=</span> <span style="color:#00a8c8">TRUE</span><span style="color:#111">)</span>
 </code></pre></div><h2 id="色の指定">色の指定</h2>
 <p>色分けに使用する変数は <code>aes()</code> の中で <code>aes(color = var1, fill = var2)</code> のように指定する。</p>
-<p><code>color</code> に対しては <code>scale_color_gradient()</code></p>
-<p><code>fill</code> に対しては <code>scale_fill_gradient()</code></p>
+<p><code>color</code> （線や点の色）に対しては <code>scale_color_gradient()</code></p>
+<p><code>fill</code> （塗りつぶし色）に対しては <code>scale_fill_gradient()</code></p>
 <p>をそれぞれ使用する。</p>
+<p>色もある種の軸であるので　scale_x_continuous() と同様に scale_color_continuous() や scale_fill_continuous() のように scale_*_()関数の一種として扱われている。</p>
 <h3 id="色の種類">色の種類</h3>
 <p><img src="https://derekogle.com/NCGraphing/img/colorbynames.png" alt="R colors in text"></p>
 <h3 id="連続値に対する色つけ--scale__gradient">連続値に対する色つけ : <code>scale_*_gradient</code></h3>
@@ -1163,8 +1164,13 @@ annotate(&quot;label&quot;, x = bbox[&quot;xmin&quot;], y = bbox[&quot;ymax&quot
 <span style="color:#111">)</span>
 </code></pre></div><h3 id="タイトルとサブタイトル">タイトルとサブタイトル</h3>
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#75af00">ggtitle</span><span style="color:#111">(</span><span style="color:#111">label</span><span style="color:#111">,</span> <span style="color:#111">subtitle</span> <span style="color:#f92672">=</span> <span style="color:#75af00">waiver</span><span style="color:#111">())</span>
-</code></pre></div><h2 id="軸のスケールや目盛の設定">軸のスケールや目盛の設定</h2>
-<p><code>x</code>軸、<code>y</code>軸、<code>color</code>軸、<code>fill</code>軸などそれぞれの軸 (<code>AXIS</code>) とそのデータ型 (<code>DATATYPE</code>) に対応した関数 (<code>scale_AXIS_DATATYPE</code>) が用意されている。</p>
+</code></pre></div><h2 id="軸のスケールや目盛の設定-scale_">軸のスケールや目盛の設定: scale_*()</h2>
+<p>軸に対する様々な設定は <code>scale_軸_データ型()</code> 関数により行う。</p>
+<ul>
+<li>軸の種類： <code>x</code>, <code>y</code>, <code>color</code>, <code>fill</code>, <code>alpha</code>, <code>size</code>, <code>linetype</code>, <code>radius</code>, <code>shape</code></li>
+<li>軸のデータ型: <code>condinuous</code>,<code>descrete</code>,<code>date</code>, <code>datetime</code>, <code>binned</code></li>
+</ul>
+<p><code>scale_軸_データ型()</code></p>
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#111">scale_[x</span><span style="color:#111">,</span><span style="color:#111">y</span><span style="color:#111">,</span><span style="color:#111">color</span><span style="color:#111">,</span><span style="color:#111">fill]_[condinuous</span><span style="color:#111">,</span><span style="color:#111">descrete</span><span style="color:#111">,</span><span style="color:#111">date</span><span style="color:#75af00">]</span><span style="color:#111">(</span>
   <span style="color:#111">breaks</span><span style="color:#f92672">=</span><span style="color:#75af00">c</span><span style="color:#111">(</span><span style="color:#ae81ff">1</span><span style="color:#111">,</span><span style="color:#ae81ff">2</span><span style="color:#111">,</span><span style="color:#ae81ff">3</span><span style="color:#111">,</span><span style="color:#ae81ff">4</span><span style="color:#111">),</span> <span style="color:#75715e"># 目盛位置</span>
   <span style="color:#111">labels</span> <span style="color:#f92672">=</span> <span style="color:#75af00">c</span><span style="color:#111">(</span><span style="color:#d88200">&#34;01&#34;</span><span style="color:#111">,</span><span style="color:#d88200">&#34;02&#34;</span><span style="color:#111">,</span> <span style="color:#d88200">&#34;03&#34;</span><span style="color:#111">,</span><span style="color:#d88200">&#34;04&#34;</span><span style="color:#111">),</span> <span style="color:#75715e"># 目盛に表示する値のラベル</span>
@@ -1177,12 +1183,9 @@ annotate(&quot;label&quot;, x = bbox[&quot;xmin&quot;], y = bbox[&quot;ymax&quot
   <span style="color:#111">trans</span> <span style="color:#f92672">=</span> <span style="color:#d88200">&#34;log10&#34;</span><span style="color:#111">,</span>   <span style="color:#75715e"># 軸のスケールを変換する関数 </span>
   <span style="color:#111">name</span> <span style="color:#f92672">=</span> <span style="color:#d88200">&#34;X axis&#34;</span><span style="color:#111">,</span>   <span style="color:#75715e"># 軸の名前</span>
   <span style="color:#111">guide</span> <span style="color:#f92672">=</span> <span style="color:#75af00">guide_axis</span><span style="color:#111">(</span><span style="color:#111">n.dodge</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span><span style="color:#111">),</span> <span style="color:#75715e"># 目盛のラベルが重なっているときに位置をずらす</span>
+  <span style="color:#111">expand</span> <span style="color:#f92672">=</span> <span style="color:#75af00">c</span><span style="color:#111">(</span><span style="color:#ae81ff">0</span><span style="color:#111">,</span><span style="color:#ae81ff">0</span><span style="color:#111">)</span> <span style="color:#75715e"># x軸, y軸に対して、上下の隙間の大きさ、c(0,0)は隙間なし</span>
 <span style="color:#111">)</span>
-</code></pre></div><p>Function that handles limits outside of the scale limits (out of bounds).</p>
-<p>The default (scales::censor()) replaces out of bounds values with NA.</p>
-<p>scales::squish() for squishing out of bounds values into range.</p>
-<p>scales::squish_infinite() for squishing infinite values into range.</p>
-<p><a href="https://qiita.com/nozma/items/2954b21e7136b3011580">geom_barやgeom_histgramでの軸の変換</a></p>
+</code></pre></div><p><a href="https://qiita.com/nozma/items/2954b21e7136b3011580">geom_barやgeom_histgramでの軸の変換</a></p>
 <h3 id="軸の名前">軸の名前</h3>
 <p>X軸ラベル、Y軸ラベル</p>
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#75af00">xlab</span><span style="color:#111">(</span><span style="color:#111">label</span><span style="color:#111">)</span>
@@ -1344,9 +1347,9 @@ gglot()+
   
   <div>
     
-    <a class="flex align-center" href="https://github.com/teuder/notebook/commit/8fa261f9a12f9ca86f3987fcc85b1469d4f51f0a" title='Last modified 2022-07-12 by Masaki Tsuda' target="_blank" rel="noopener">
+    <a class="flex align-center" href="https://github.com/teuder/notebook/commit/122a3304bde224ac7bb6ccb2d1c3edc48e8c59bc" title='Last modified 2022-09-22 by Masaki Tsuda' target="_blank" rel="noopener">
       <img src="/notebook/svg/calendar.svg" alt="Changed" />
-      <span>2022-07-12</span>
+      <span>2022-09-22</span>
     </a>
   </div>
   
@@ -1403,7 +1406,7 @@ gglot()+
         <li><a href="#タイトルとサブタイトル">タイトルとサブタイトル</a></li>
       </ul>
     </li>
-    <li><a href="#軸のスケールや目盛の設定">軸のスケールや目盛の設定</a>
+    <li><a href="#軸のスケールや目盛の設定-scale_">軸のスケールや目盛の設定: scale_*()</a>
       <ul>
         <li><a href="#軸の名前">軸の名前</a></li>
         <li><a href="#2軸グラフ">2軸グラフ</a></li>
