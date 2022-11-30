@@ -267,6 +267,8 @@ ggplot(df, aes(x=reorder(x, desc(y)), y=y), stat = "identity")
 
 ```
 
+`reorder(x, y)` は基本的に `relevel()` の特殊なバージョン、つまり、変数 `x` を `factor` に変換し、その `level` の順序を 変数 `y` の値に戻づいて設定する。
+
 
 #### 棒の向きを水平にする
 
@@ -357,6 +359,15 @@ p + annotate("text", x = 4, y = 25, label = "italic(R) ^ 2 == 0.75",
 p + annotate("text", x = 4, y = 25,
   label = "paste(italic(R) ^ 2, \" = .75\")", parse = TRUE)
 ```
+
+## 点の形
+
+`geom_point()` の `shape` 引数に数値を指定することで点の形を指定する
+
+![R shapes](https://blog.albertkuo.me/post/2019-03-24-point-shapes-in-ggplot_files/figure-html/unnamed-chunk-2-1.png)
+
+
+
 
 
 ## 色の指定
@@ -471,9 +482,9 @@ scale_[x,y,color,fill]_[condinuous,descrete,date](
   labels = c("01","02", "03","04"), # 目盛に表示する値のラベル
   limits=c(0,120),   # 表示する値の範囲
   # 表示する値の範囲を絞った時に、範囲外の値をどのように表示するか
-  # oob = scales::censor(), # NAに置換する
-  # oob = scales::squish(), # 範囲内の値に変換する
-  # oob = scales::squish_infinite(), # 無限値を範囲内の値に変換する
+  # oob = scales::censor, # NAに置換する
+  # oob = scales::squish, # 範囲内の値に変換する
+  # oob = scales::squish_infinite, # 無限値を範囲内の値に変換する
   oob = scales::censor(), 
   trans = "log10",   # 軸のスケールを変換する関数 
   name = "X axis",   # 軸の名前

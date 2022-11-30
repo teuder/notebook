@@ -8,7 +8,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://teuder.github.io/notebook/r/ggplot2/" />
 <meta property="article:published_time" content="2019-09-03T00:00:00+00:00" />
-<meta property="article:modified_time" content="2022-09-22T17:46:34+09:00" />
+<meta property="article:modified_time" content="2022-09-27T12:04:53+09:00" />
 <title>ggplot2 | notebook</title>
 <link rel="icon" href="/notebook/favicon.png" type="image/x-icon">
 
@@ -16,7 +16,7 @@
 <link rel="stylesheet" href="/notebook/book.min.07c38dce7b6800da2a75a565d4d975e38f837294e24d00b5aae363037012d64b.css" integrity="sha256-B8ONzntoANoqdaVl1Nl144&#43;DcpTiTQC1quNjA3AS1ks=">
 
 
-<script defer src="/notebook/search.min.0c507ce3f4f5452e1cca5a7f141ab926de6c3ca1e236df1aae4dc836d2d38967.js" integrity="sha256-DFB84/T1RS4cylp/FBq5Jt5sPKHiNt8ark3INtLTiWc="></script>
+<script defer src="/notebook/search.min.ead873c1b8b841a60df2d90ced517204eab30cb2ddefb40f14cc96c4a7f3a621.js" integrity="sha256-6thzwbi4QaYN8tkM7VFyBOqzDLLd77QPFMyWxKfzpiE="></script>
 
 <!--
 Made with Book Theme
@@ -1057,7 +1057,8 @@ ggplot(df, aes(x=reorder(x, y), y=y), stat = &quot;identity&quot;)
 # 降順の場合
 ggplot(df, aes(x=reorder(x, desc(y)), y=y), stat = &quot;identity&quot;)
 
-</code></pre><h4 id="棒の向きを水平にする">棒の向きを水平にする</h4>
+</code></pre><p><code>reorder(x, y)</code> は基本的に <code>relevel()</code> の特殊なバージョン、つまり、変数 <code>x</code> を <code>factor</code> に変換し、その <code>level</code> の順序を 変数 <code>y</code> の値に戻づいて設定する。</p>
+<h4 id="棒の向きを水平にする">棒の向きを水平にする</h4>
 <p>横向きの棒グラフを作成するには最後に <code>coord_flip()</code> を付け加えるだけ</p>
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#75af00">ggplot</span><span style="color:#111">(</span><span style="color:#111">df</span><span style="color:#111">)</span> <span style="color:#f92672">+</span> 
 <span style="color:#75af00">geom_bar</span><span style="color:#111">(</span><span style="color:#75af00">aes</span><span style="color:#111">(</span><span style="color:#111">x</span> <span style="color:#f92672">=</span> <span style="color:#111">category</span><span style="color:#111">,</span> <span style="color:#111">y</span> <span style="color:#f92672">=</span> <span style="color:#111">value</span><span style="color:#111">,</span> <span style="color:#111">fill</span> <span style="color:#f92672">=</span> <span style="color:#111">category2</span><span style="color:#111">),</span> <span style="color:#111">stat</span> <span style="color:#f92672">=</span> <span style="color:#d88200">&#34;identity&#34;</span><span style="color:#111">)</span> <span style="color:#f92672">+</span>
@@ -1111,7 +1112,10 @@ annotate(&quot;label&quot;, x = bbox[&quot;xmin&quot;], y = bbox[&quot;ymax&quot
   <span style="color:#111">parse</span> <span style="color:#f92672">=</span> <span style="color:#00a8c8">TRUE</span><span style="color:#111">)</span>
 <span style="color:#111">p</span> <span style="color:#f92672">+</span> <span style="color:#75af00">annotate</span><span style="color:#111">(</span><span style="color:#d88200">&#34;text&#34;</span><span style="color:#111">,</span> <span style="color:#111">x</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">4</span><span style="color:#111">,</span> <span style="color:#111">y</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">25</span><span style="color:#111">,</span>
   <span style="color:#111">label</span> <span style="color:#f92672">=</span> <span style="color:#d88200">&#34;paste(italic(R) ^ 2, \&#34; = .75\&#34;)&#34;</span><span style="color:#111">,</span> <span style="color:#111">parse</span> <span style="color:#f92672">=</span> <span style="color:#00a8c8">TRUE</span><span style="color:#111">)</span>
-</code></pre></div><h2 id="色の指定">色の指定</h2>
+</code></pre></div><h2 id="点の形">点の形</h2>
+<p><code>geom_point()</code> の <code>shape</code> 引数に数値を指定することで点の形を指定する</p>
+<p><img src="https://blog.albertkuo.me/post/2019-03-24-point-shapes-in-ggplot_files/figure-html/unnamed-chunk-2-1.png" alt="R shapes"></p>
+<h2 id="色の指定">色の指定</h2>
 <p>色分けに使用する変数は <code>aes()</code> の中で <code>aes(color = var1, fill = var2)</code> のように指定する。</p>
 <p><code>color</code> （線や点の色）に対しては <code>scale_color_gradient()</code></p>
 <p><code>fill</code> （塗りつぶし色）に対しては <code>scale_fill_gradient()</code></p>
@@ -1176,9 +1180,9 @@ annotate(&quot;label&quot;, x = bbox[&quot;xmin&quot;], y = bbox[&quot;ymax&quot
   <span style="color:#111">labels</span> <span style="color:#f92672">=</span> <span style="color:#75af00">c</span><span style="color:#111">(</span><span style="color:#d88200">&#34;01&#34;</span><span style="color:#111">,</span><span style="color:#d88200">&#34;02&#34;</span><span style="color:#111">,</span> <span style="color:#d88200">&#34;03&#34;</span><span style="color:#111">,</span><span style="color:#d88200">&#34;04&#34;</span><span style="color:#111">),</span> <span style="color:#75715e"># 目盛に表示する値のラベル</span>
   <span style="color:#111">limits</span><span style="color:#f92672">=</span><span style="color:#75af00">c</span><span style="color:#111">(</span><span style="color:#ae81ff">0</span><span style="color:#111">,</span><span style="color:#ae81ff">120</span><span style="color:#111">),</span>   <span style="color:#75715e"># 表示する値の範囲</span>
   <span style="color:#75715e"># 表示する値の範囲を絞った時に、範囲外の値をどのように表示するか</span>
-  <span style="color:#75715e"># oob = scales::censor(), # NAに置換する</span>
-  <span style="color:#75715e"># oob = scales::squish(), # 範囲内の値に変換する</span>
-  <span style="color:#75715e"># oob = scales::squish_infinite(), # 無限値を範囲内の値に変換する</span>
+  <span style="color:#75715e"># oob = scales::censor, # NAに置換する</span>
+  <span style="color:#75715e"># oob = scales::squish, # 範囲内の値に変換する</span>
+  <span style="color:#75715e"># oob = scales::squish_infinite, # 無限値を範囲内の値に変換する</span>
   <span style="color:#111">oob</span> <span style="color:#f92672">=</span> <span style="color:#111">scales</span><span style="color:#f92672">::</span><span style="color:#75af00">censor</span><span style="color:#111">(),</span> 
   <span style="color:#111">trans</span> <span style="color:#f92672">=</span> <span style="color:#d88200">&#34;log10&#34;</span><span style="color:#111">,</span>   <span style="color:#75715e"># 軸のスケールを変換する関数 </span>
   <span style="color:#111">name</span> <span style="color:#f92672">=</span> <span style="color:#d88200">&#34;X axis&#34;</span><span style="color:#111">,</span>   <span style="color:#75715e"># 軸の名前</span>
@@ -1347,9 +1351,9 @@ gglot()+
   
   <div>
     
-    <a class="flex align-center" href="https://github.com/teuder/notebook/commit/122a3304bde224ac7bb6ccb2d1c3edc48e8c59bc" title='Last modified 2022-09-22 by Masaki Tsuda' target="_blank" rel="noopener">
+    <a class="flex align-center" href="https://github.com/teuder/notebook/commit/a4404af917e434b5c4416313e23564c906cb1cf4" title='Last modified 2022-09-27 by Masaki Tsuda' target="_blank" rel="noopener">
       <img src="/notebook/svg/calendar.svg" alt="Changed" />
-      <span>2022-09-22</span>
+      <span>2022-09-27</span>
     </a>
   </div>
   
@@ -1393,6 +1397,7 @@ gglot()+
         <li><a href="#テキストラベル">テキストラベル</a></li>
       </ul>
     </li>
+    <li><a href="#点の形">点の形</a></li>
     <li><a href="#色の指定">色の指定</a>
       <ul>
         <li><a href="#色の種類">色の種類</a></li>

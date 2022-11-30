@@ -64,3 +64,33 @@ future::plan(future::multiprocess(), workers = 10L)
 result <-furrr::future_map()
 ```
 
+
+# list を vector に変換する purrr::flatten_*()
+
+例えば、purrr::map()で返ってくる値が、文字列ベクトルを要素として持つ List である場合に、リストの要素を１つの文字列ベクトルとしてまとめたいことがある。
+
+
+
+```r
+# ベクトルを要素として持つリスト `.x` をベクトルに変換する。
+purrr::flatten_lgl(.x)
+purrr::flatten_int(.x)
+purrr::flatten_dbl(.x)
+purrr::flatten_chr(.x)
+purrr::flatten_raw(.x)
+
+# 階層性のあるlistを一段階解消する。返値はリスト
+purrr::flatten(.x)
+
+# リストの要素をデータフレームに結合して返す
+purrr::flatten_dfr(.x, .id = NULL)
+purrr::flatten_dfc(.x)
+```
+
+
+
+
+
+
+
+
