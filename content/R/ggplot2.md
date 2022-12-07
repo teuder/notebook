@@ -101,9 +101,9 @@ geom_point(aes(x, y))
 
 shape
 
-- color = 内部色　フチなし
+- color = 外部色　フチなし
 
-- 1 丸, color 色指定 内部が塗りつぶされる
+- 1 丸, color 色指定 外部が塗りつぶされる
 
 - color = 縁の色 縁あり
 
@@ -483,8 +483,8 @@ scale_[x,y,color,fill]_[condinuous,descrete,date](
   limits=c(0,120),   # 表示する値の範囲
   # 表示する値の範囲を絞った時に、範囲外の値をどのように表示するか
   # oob = scales::censor, # NAに置換する
-  # oob = scales::squish, # 範囲内の値に変換する
-  # oob = scales::squish_infinite, # 無限値を範囲内の値に変換する
+  # oob = scales::squish, # 範囲外の値に変換する
+  # oob = scales::squish_infinite, # 無限値を範囲外の値に変換する
   oob = scales::censor(), 
   trans = "log10",   # 軸のスケールを変換する関数 
   name = "X axis",   # 軸の名前
@@ -748,14 +748,48 @@ ggplot(diamonds, aes(x=carat, y=price)) +
 
 ## テキストボックスを追加する
 
-`ggtext`パッケージを使うのが楽
+[`ggtext`](https://wilkelab.org/ggtext/reference/geom_textbox.html) パッケージを使うのが楽
+
+
+
 
 ```
 library(ggtext)
 
 gglot()+
-  geom_textbox()
+  geom_textbox(aes(x, y, label, ))
 
 ```
+
+引数
+- nudge_x, nudge_y ボックスの位置座標からのオフセット
+- box.padding : 長さ4のベクトル、ボックス外の余白を指定  grid::unit(c(1,1,1,1), "cm")) 
+- box.margin : 長さ4のベクトル、ボックス外の余白を指定
+- box.r : 長さ1のベクトル、ボックスの角の丸みを指定 grid::unit(c(1), "cm")) 
+- width, height : 長さ1のベクトル、ボックスの幅と高さを指定 grid::unit(c(1), "cm")) 
+- minwidth, maxwidth: ボックスの幅の最小最大値
+- minheight, maxheight: ボックスの高さの最小最大値
+
+aes()
+- x : ボックス位置のx座標
+- y : ボックス位置のy座標
+- label : テキスト
+- colour : テキストとボックスの縁線の色
+- box.colour : ボックスの縁線の色
+- box.size  : ボックスの縁線の太さ
+- fill : ボックスの色
+- alpha : 透明度
+- halign ボックス外のテキストの水平位置 0なら左寄せ、1なら右寄せ
+- valign ボックス外のテキストの垂直位置 0なら下寄せ、1なら上寄せ
+- orientation : テキストの向き  "upright", "left-rotated", "right-rotated", "inverted".
+- hjust : 0ならボックスの左端を座標に合わせる、1なら右端を座標に合わせる
+- vjust : 0ならボックスの下端を座標に合わせる、1なら上端を座標に合わせる
+- text.colour : テキストの色
+- size : フォントサイズ
+- family : フォント
+- fontface : bold italic
+- lineheight : ?
+- group : ?
+
 
 
