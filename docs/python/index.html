@@ -15,7 +15,7 @@
 <link rel="stylesheet" href="/notebook/book.min.07c38dce7b6800da2a75a565d4d975e38f837294e24d00b5aae363037012d64b.css" integrity="sha256-B8ONzntoANoqdaVl1Nl144&#43;DcpTiTQC1quNjA3AS1ks=">
 
 
-<script defer src="/notebook/search.min.1068c032166d090decc193a0c76ff6f36cc1afc6f8d49fc26959dc8e8c138dbf.js" integrity="sha256-EGjAMhZtCQ3swZOgx2/282zBr8b41J/CaVncjowTjb8="></script>
+<script defer src="/notebook/search.min.849cc7a3cdac6d6d267d8a0c8b0132abcdc55ddb12ed423d139dadfd8b5d0e51.js" integrity="sha256-hJzHo82sbW0mfYoMiwEyq83FXdsS7UI9E52t/YtdDlE="></script>
 
 <link rel="alternate" type="application/rss+xml" href="https://teuder.github.io/notebook/python/index.xml" title="notebook" />
 <!--
@@ -109,6 +109,16 @@ https://github.com/alex-shpak/hugo-book
 
   
   <ul>
+    
+      
+        <li>
+
+  <a href="/notebook/python/poloars/" >
+      polars
+  </a>
+
+</li>
+      
     
       
         <li>
@@ -917,9 +927,37 @@ https://github.com/alex-shpak/hugo-book
       
 <article class="markdown"><h1 id="python">Python</h1>
 <ul>
-<li><a href="https://sites.google.com/view/ut-python/resource/%E6%95%99%E6%9D%90%E8%AC%9B%E7%BE%A9%E5%8B%95%E7%94%BB">Pythonプログラミング入門 #utpython</a></li>
+<li><a href="https://utokyo-ipp.github.io/">東京大学のPythonプログラミング入門</a></li>
 </ul>
-<h2 id="文字列">文字列</h2>
+<h2 id="コーディング規約">コーディング規約</h2>
+<p><a href="https://pep8-ja.readthedocs.io/ja/latest/">PEP8</a></p>
+<h2 id="数値計算">数値計算</h2>
+<h3 id="基本数値演算">基本数値演算</h3>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#00a8c8">print</span><span style="color:#111">(</span><span style="color:#ae81ff">1</span><span style="color:#f92672">+</span><span style="color:#ae81ff">2</span><span style="color:#111">)</span>
+<span style="color:#00a8c8">print</span><span style="color:#111">(</span><span style="color:#ae81ff">3</span><span style="color:#f92672">-</span><span style="color:#ae81ff">4</span><span style="color:#111">)</span>
+<span style="color:#00a8c8">print</span><span style="color:#111">(</span><span style="color:#ae81ff">5</span><span style="color:#f92672">*</span><span style="color:#ae81ff">6</span><span style="color:#111">)</span>
+<span style="color:#00a8c8">print</span><span style="color:#111">(</span><span style="color:#ae81ff">10</span><span style="color:#f92672">/</span><span style="color:#ae81ff">3</span><span style="color:#111">)</span>
+<span style="color:#00a8c8">print</span><span style="color:#111">(</span><span style="color:#ae81ff">3</span><span style="color:#f92672">**</span><span style="color:#ae81ff">2</span><span style="color:#111">)</span> <span style="color:#75715e"># べき乗</span>
+<span style="color:#00a8c8">print</span><span style="color:#111">(</span><span style="color:#ae81ff">10</span><span style="color:#f92672">//</span><span style="color:#ae81ff">3</span><span style="color:#111">)</span> <span style="color:#75715e"># 割った時の「商」</span>
+<span style="color:#00a8c8">print</span><span style="color:#111">(</span><span style="color:#ae81ff">10</span><span style="color:#f92672">%</span><span style="color:#ae81ff">3</span><span style="color:#111">)</span> <span style="color:#75715e"># 割った時の「余り」</span>
+</code></pre></div><p>出力結果</p>
+<pre><code>3
+-1
+30
+3.3333333333333335
+9
+3
+1
+</code></pre><h3 id="数値型の変換">数値型の変換</h3>
+<pre><code># 実数を整数に変換
+# 小数点以下を切り捨て
+print(int(9.1))
+print(int(-9.1))
+print(int(0.8))
+</code></pre><pre><code>9
+-9
+0
+</code></pre><h2 id="文字列">文字列</h2>
 <h3 id="ファイルを文字列として読み込む">ファイルを文字列として読み込む</h3>
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#111">f</span> <span style="color:#f92672">=</span> <span style="color:#111">open</span><span style="color:#111">(</span><span style="color:#d88200">&#39;path_to_file&#39;</span><span style="color:#111">,</span> <span style="color:#d88200">&#39;r&#39;</span><span style="color:#111">)</span>
 <span style="color:#111">data</span> <span style="color:#f92672">=</span> <span style="color:#111">f</span><span style="color:#f92672">.</span><span style="color:#111">read</span><span style="color:#111">()</span>
@@ -980,6 +1018,13 @@ https://github.com/alex-shpak/hugo-book
   <aside class="book-toc level-3 fixed">
     <nav id="TableOfContents">
   <ul>
+    <li><a href="#コーディング規約">コーディング規約</a></li>
+    <li><a href="#数値計算">数値計算</a>
+      <ul>
+        <li><a href="#基本数値演算">基本数値演算</a></li>
+        <li><a href="#数値型の変換">数値型の変換</a></li>
+      </ul>
+    </li>
     <li><a href="#文字列">文字列</a>
       <ul>
         <li><a href="#ファイルを文字列として読み込む">ファイルを文字列として読み込む</a></li>

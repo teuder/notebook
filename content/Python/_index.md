@@ -11,8 +11,54 @@ type: docs
 # Python
 
 
-- [Pythonプログラミング入門 #utpython](https://sites.google.com/view/ut-python/resource/%E6%95%99%E6%9D%90%E8%AC%9B%E7%BE%A9%E5%8B%95%E7%94%BB)
+- [東京大学のPythonプログラミング入門](https://utokyo-ipp.github.io/)
 
+
+## コーディング規約
+
+[PEP8](https://pep8-ja.readthedocs.io/ja/latest/)
+
+
+## 数値計算
+
+### 基本数値演算
+
+```python
+print(1+2)
+print(3-4)
+print(5*6)
+print(10/3)
+print(3**2) # べき乗
+print(10//3) # 割った時の「商」
+print(10%3) # 割った時の「余り」
+```
+
+出力結果
+
+```
+3
+-1
+30
+3.3333333333333335
+9
+3
+1
+```
+
+### 数値型の変換
+
+```
+# 実数を整数に変換
+# 小数点以下を切り捨て
+print(int(9.1))
+print(int(-9.1))
+print(int(0.8))
+```
+```
+9
+-9
+0
+```
 
 ## 文字列
 
