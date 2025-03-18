@@ -13,10 +13,10 @@
 <link rel="icon" href="/notebook/favicon.png" type="image/x-icon">
 
 
-<link rel="stylesheet" href="/notebook/book.min.07c38dce7b6800da2a75a565d4d975e38f837294e24d00b5aae363037012d64b.css" integrity="sha256-B8ONzntoANoqdaVl1Nl144&#43;DcpTiTQC1quNjA3AS1ks=">
+<link rel="stylesheet" href="/notebook/book.min.1b994bd28c6ce2255f069b6bf6837b4d396307637fc48d61dcb2a6caac26e031.css" integrity="sha256-G5lL0oxs4iVfBptr9oN7TTljB2N/xI1h3LKmyqwm4DE=">
 
 
-<script defer src="/notebook/search.min.41244b17d88563adf4d2969d57343659e6e979194cdc54758589e4a6bb23dfab.js" integrity="sha256-QSRLF9iFY6300padVzQ2WebpeRlM3FR1hYnkprsj36s="></script>
+<script defer src="/notebook/search.min.e50f4978caa8ea9d9c3d92a39ce60172ac017f8cc877aace48252f3ed36fef5e.js" integrity="sha256-5Q9JeMqo6p2cPZKjnOYBcqwBf4zId6rOSCUvPtNv714="></script>
 
 <!--
 Made with Book Theme
@@ -485,6 +485,36 @@ https://github.com/alex-shpak/hugo-book
     
       
 
+  <a href="/notebook/llm/" >
+      LLM: Large Language Models
+  </a>
+
+
+    
+
+    
+
+
+
+
+  
+  <ul>
+    
+  </ul>
+  
+
+
+
+  </li>
+
+
+  
+    
+
+  <li >
+    
+      
+
   <a href="/notebook/datascience/" >
       Data Science
   </a>
@@ -925,19 +955,36 @@ https://github.com/alex-shpak/hugo-book
 </header>
 
       
-<article class="markdown"><h1 id="bigquery-gis">BigQuery GIS</h1>
+<article class="markdown">
+
+<h1 id="bigquery-gis">BigQuery GIS</h1>
+
 <p><a href="https://cloud.google.com/bigquery/docs/reference/standard-sql/geography_functions?hl=ja">標準 SQL の地理関数</a></p>
+
 <h2 id="地理オブジェクト作成">地理オブジェクト作成</h2>
+
 <pre><code>ST_GEOGPOINT(longitude, latitude)
 ST_GEOGFROMTEXT(wkt_string)
-</code></pre><h2 id="判定関数">判定関数</h2>
-<h4 id="st_contains">ST_CONTAINS</h4>
+</code></pre>
+
+<h2 id="判定関数">判定関数</h2>
+
+<h4 id="st-contains">ST_CONTAINS</h4>
+
 <pre><code>ST_CONTAINS(geography_1, geography_2)
-</code></pre><p><code>geography_2</code> は <code>geography_1</code> の内部にある（外にはみ出していない）なら <code>TRUE</code></p>
-<h4 id="st_within">ST_WITHIN</h4>
+</code></pre>
+
+<p><code>geography_2</code> は <code>geography_1</code> の内部にある（外にはみ出していない）なら <code>TRUE</code></p>
+
+<h4 id="st-within">ST_WITHIN</h4>
+
 <pre><code>ST_WITHIN(geography_1, geography_2)
-</code></pre><p><code>geography_1</code> は <code>geography_2</code> の内部にある（外にはみ出していない）なら <code>TRUE</code></p>
+</code></pre>
+
+<p><code>geography_1</code> は <code>geography_2</code> の内部にある（外にはみ出していない）なら <code>TRUE</code></p>
+
 <p><code>ST_CONTAINS</code> とは <code>geography_1</code> と <code>geography_2</code> の順序が逆になっている</p>
+
 <h2 id="最近傍">最近傍</h2>
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#00a8c8">SELECT</span> 
   <span style="color:#111">a</span><span style="color:#111">.</span><span style="color:#111">house_id</span><span style="color:#111">,</span> 
@@ -950,11 +997,10 @@ ST_GEOGFROMTEXT(wkt_string)
   <span style="color:#00a8c8">ON</span> 
     <span style="color:#f92672">#</span> <span style="color:#00a8c8">Extract</span> <span style="color:#00a8c8">only</span> <span style="color:#111">restaurant</span> <span style="color:#111">around</span> <span style="color:#00a8c8">each</span> <span style="color:#111">house</span>
     <span style="color:#111">ST_DWithin</span><span style="color:#111">(</span><span style="color:#111">a</span><span style="color:#111">.</span><span style="color:#111">point</span><span style="color:#111">,</span> <span style="color:#111">b</span><span style="color:#111">.</span><span style="color:#111">point</span><span style="color:#111">,</span> <span style="color:#ae81ff">10000</span><span style="color:#111">)</span> <span style="color:#75715e">-- search radius in meter
-</span><span style="color:#75715e"></span><span style="color:#00a8c8">GROUP</span> <span style="color:#00a8c8">BY</span> <span style="color:#111">a</span><span style="color:#111">.</span><span style="color:#111">house_id</span>
-</code></pre></div><h1 id="invalidな図形を修正する">invalidな図形を修正する</h1>
+</span><span style="color:#75715e"></span><span style="color:#00a8c8">GROUP</span> <span style="color:#00a8c8">BY</span> <span style="color:#111">a</span><span style="color:#111">.</span><span style="color:#111">house_id</span></code></pre></div>
+<h1 id="invalidな図形を修正する">invalidな図形を修正する</h1>
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#00a8c8">SELECT</span> <span style="color:#111">ST_GEOGFROMTEXT</span> <span style="color:#111">(</span><span style="color:#111">string_field_1</span><span style="color:#111">,</span> <span style="color:#111">make_valid</span> <span style="color:#f92672">=&gt;</span> <span style="color:#00a8c8">TRUE</span><span style="color:#111">)</span>
-<span style="color:#00a8c8">FROM</span> <span style="color:#f92672">`</span><span style="color:#111">ocean_shapefiles_all_purpose</span><span style="color:#111">.</span><span style="color:#111">IOTC_shape_feb2021</span><span style="color:#f92672">`</span>
-</code></pre></div></article>
+<span style="color:#00a8c8">FROM</span> <span style="color:#f92672">`</span><span style="color:#111">ocean_shapefiles_all_purpose</span><span style="color:#111">.</span><span style="color:#111">IOTC_shape_feb2021</span><span style="color:#f92672">`</span></code></pre></div></article>
 
       
 <div class="book-footer justify-between">
@@ -988,15 +1034,22 @@ ST_GEOGFROMTEXT(wkt_string)
 
   <aside class="book-toc level-3 fixed">
     <nav id="TableOfContents">
-  <ul>
-    <li><a href="#地理オブジェクト作成">地理オブジェクト作成</a></li>
-    <li><a href="#判定関数">判定関数</a>
-      <ul>
-        <li></li>
-      </ul>
-    </li>
-    <li><a href="#最近傍">最近傍</a></li>
-  </ul>
+<ul>
+<li><a href="#bigquery-gis">BigQuery GIS</a>
+<ul>
+<li><a href="#地理オブジェクト作成">地理オブジェクト作成</a></li>
+<li><a href="#判定関数">判定関数</a>
+<ul>
+<li>
+<ul>
+<li><a href="#st-contains">ST_CONTAINS</a></li>
+<li><a href="#st-within">ST_WITHIN</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#最近傍">最近傍</a></li>
+</ul></li>
+<li><a href="#invalidな図形を修正する">invalidな図形を修正する</a></li>
+</ul>
 </nav>
   </aside>
 

@@ -12,10 +12,10 @@
 <link rel="icon" href="/notebook/favicon.png" type="image/x-icon">
 
 
-<link rel="stylesheet" href="/notebook/book.min.07c38dce7b6800da2a75a565d4d975e38f837294e24d00b5aae363037012d64b.css" integrity="sha256-B8ONzntoANoqdaVl1Nl144&#43;DcpTiTQC1quNjA3AS1ks=">
+<link rel="stylesheet" href="/notebook/book.min.1b994bd28c6ce2255f069b6bf6837b4d396307637fc48d61dcb2a6caac26e031.css" integrity="sha256-G5lL0oxs4iVfBptr9oN7TTljB2N/xI1h3LKmyqwm4DE=">
 
 
-<script defer src="/notebook/search.min.41244b17d88563adf4d2969d57343659e6e979194cdc54758589e4a6bb23dfab.js" integrity="sha256-QSRLF9iFY6300padVzQ2WebpeRlM3FR1hYnkprsj36s="></script>
+<script defer src="/notebook/search.min.e50f4978caa8ea9d9c3d92a39ce60172ac017f8cc877aace48252f3ed36fef5e.js" integrity="sha256-5Q9JeMqo6p2cPZKjnOYBcqwBf4zId6rOSCUvPtNv714="></script>
 
 <link rel="alternate" type="application/rss+xml" href="https://teuder.github.io/notebook/gcp/index.xml" title="notebook" />
 <!--
@@ -485,6 +485,36 @@ https://github.com/alex-shpak/hugo-book
     
       
 
+  <a href="/notebook/llm/" >
+      LLM: Large Language Models
+  </a>
+
+
+    
+
+    
+
+
+
+
+  
+  <ul>
+    
+  </ul>
+  
+
+
+
+  </li>
+
+
+  
+    
+
+  <li >
+    
+      
+
   <a href="/notebook/datascience/" >
       Data Science
   </a>
@@ -925,41 +955,74 @@ https://github.com/alex-shpak/hugo-book
 </header>
 
       
-<article class="markdown"><h1 id="google-cloud-platform">Google Cloud Platform</h1>
+<article class="markdown">
+
+<h1 id="google-cloud-platform">Google Cloud Platform</h1>
+
 <ul>
 <li><a href="bigquery">BigQuery</a></li>
 </ul>
+
 <h2 id="gloud-コマンド">gloud コマンド</h2>
+
 <h3 id="アカウントとプロジェクトの確認">アカウントとプロジェクトの確認</h3>
+
 <p>現在のデフォルトのアカウントとプロジェクトの確認</p>
+
 <pre><code>gcloud config list
-</code></pre><pre><code>[core]
+</code></pre>
+
+<pre><code>[core]
 account = xxxx@gmail.com
 disable_usage_reporting = True
 
 Your active configuration is: [default]
-</code></pre><h3 id="アカウントの切り替え">アカウントの切り替え</h3>
+</code></pre>
+
+<h3 id="アカウントの切り替え">アカウントの切り替え</h3>
+
 <pre><code>gcloud auth login
-</code></pre><p>表示されるURLにアクセスして、切り替えたい google アカウントにログインする、次にブラウザに表示されたコードをコピーして、ターミナルに入力する。</p>
+</code></pre>
+
+<p>表示されるURLにアクセスして、切り替えたい google アカウントにログインする、次にブラウザに表示されたコードをコピーして、ターミナルに入力する。</p>
+
 <h3 id="プロジェクトの切り替え">プロジェクトの切り替え</h3>
+
 <pre><code>gcloud config set project [PROJECT_ID]
 Updated property [core/project].
-</code></pre><h2 id="compute-engine">Compute Engine</h2>
+</code></pre>
+
+<h2 id="compute-engine">Compute Engine</h2>
+
 <h3 id="sshでのログイン">SSHでのログイン</h3>
+
 <p><a href="https://qiita.com/NewGyu/items/3a65e837519297951e79">https://qiita.com/NewGyu/items/3a65e837519297951e79</a></p>
+
 <p>ローカルでアカウントが有効になっているか確かめる</p>
+
 <pre><code>$ gcloud config list
-</code></pre><p>gcloud コマンドで ssh</p>
+</code></pre>
+
+<p>gcloud コマンドで ssh</p>
+
 <pre><code>gcloud compute ssh --project=プロジェクトID --zone=ゾーン インスタンス名   
-</code></pre><h2 id="google-cloud-strage">Google Cloud Strage</h2>
+</code></pre>
+
+<h2 id="google-cloud-strage">Google Cloud Strage</h2>
+
 <h3 id="バケットの中身を確認する">バケットの中身を確認する</h3>
+
 <pre><code>gsutil ls gs://BUCKET
-</code></pre><h3 id="ローカルファイルをgcsにアップロードする">ローカルファイルをGCSにアップロードする</h3>
+</code></pre>
+
+<h3 id="ローカルファイルをgcsにアップロードする">ローカルファイルをGCSにアップロードする</h3>
+
 <pre><code>gsutil cp LOCAL_FILE gs://MY_BUCKET/
 
 # 並列でアップロードする場合（100M単位で分割）
 gsutil -o GSUtil:parallel_composite_upload_threshold=100M　cp LOCAL_FILE gs://MY_BUCKET/
-</code></pre></article>
+</code></pre>
+</article>
 
       
 <div class="book-footer justify-between">
@@ -993,26 +1056,26 @@ gsutil -o GSUtil:parallel_composite_upload_threshold=100M　cp LOCAL_FILE gs://M
 
   <aside class="book-toc level-3 fixed">
     <nav id="TableOfContents">
-  <ul>
-    <li><a href="#gloud-コマンド">gloud コマンド</a>
-      <ul>
-        <li><a href="#アカウントとプロジェクトの確認">アカウントとプロジェクトの確認</a></li>
-        <li><a href="#アカウントの切り替え">アカウントの切り替え</a></li>
-        <li><a href="#プロジェクトの切り替え">プロジェクトの切り替え</a></li>
-      </ul>
-    </li>
-    <li><a href="#compute-engine">Compute Engine</a>
-      <ul>
-        <li><a href="#sshでのログイン">SSHでのログイン</a></li>
-      </ul>
-    </li>
-    <li><a href="#google-cloud-strage">Google Cloud Strage</a>
-      <ul>
-        <li><a href="#バケットの中身を確認する">バケットの中身を確認する</a></li>
-        <li><a href="#ローカルファイルをgcsにアップロードする">ローカルファイルをGCSにアップロードする</a></li>
-      </ul>
-    </li>
-  </ul>
+<ul>
+<li><a href="#google-cloud-platform">Google Cloud Platform</a>
+<ul>
+<li><a href="#gloud-コマンド">gloud コマンド</a>
+<ul>
+<li><a href="#アカウントとプロジェクトの確認">アカウントとプロジェクトの確認</a></li>
+<li><a href="#アカウントの切り替え">アカウントの切り替え</a></li>
+<li><a href="#プロジェクトの切り替え">プロジェクトの切り替え</a></li>
+</ul></li>
+<li><a href="#compute-engine">Compute Engine</a>
+<ul>
+<li><a href="#sshでのログイン">SSHでのログイン</a></li>
+</ul></li>
+<li><a href="#google-cloud-strage">Google Cloud Strage</a>
+<ul>
+<li><a href="#バケットの中身を確認する">バケットの中身を確認する</a></li>
+<li><a href="#ローカルファイルをgcsにアップロードする">ローカルファイルをGCSにアップロードする</a></li>
+</ul></li>
+</ul></li>
+</ul>
 </nav>
   </aside>
 

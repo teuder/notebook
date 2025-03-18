@@ -35,10 +35,10 @@ x < y
 x <= y
 x > y
 x >= y
-x == y // 値が等しい
-x != y // 値が等しくない
-x is y // 同一のオブジェクトである
-x is not y // 同一のオブジェクトではない
+x == y # 値が等しい
+x != y # 値が等しくない
+x is y # 同一のオブジェクトである
+x is not y # 同一のオブジェクトではない
 ```
 
 ## 論理演算
@@ -52,9 +52,9 @@ y = False
 x and y
 x or y
 not x
-x & y // and 
-x | y // or
-x ^ y // xor
+x & y # and 
+x | y # or
+x ^ y # xor
 ```
 
 
@@ -63,9 +63,9 @@ x ^ y // xor
 ### 数値型
 
 ```python
-1 // int 整数
-1.0 // float 実数
-complex(1,2) // 複素数
+1 # int 整数
+1.0 # float 実数
+complex(1,2) # 複素数
 ```
 
 浮動小数点数は、文字列 "nan" と "inf" を、オプションの接頭辞 "+" または "-" と共に、非数 (Not a Number (NaN)) や正、負の無限大として受け付けます。
@@ -99,8 +99,9 @@ print(abs(-123)) # 絶対値
 ```
 
 ```python
-x = -12.3
-
+x = 1
+x += 1
+print(x) # 2
 ```
 
 
@@ -150,20 +151,41 @@ print(s3)
 
 ### メソッド
 
+
+#### str.capitalize()
+
+文字列 str の先頭を大文字、残りを小文字にした文字列を返す
+
 ```python
 str = "aBcDe"
-print(str)
-print(str.capitalize()) # 先頭を大文字、残りを小文字にした文字列を返す
-print(str.casefold())   # 英語以外のアルファベットも小文字化する
-print(str.center(10, "x")) # 元の文字列を中央に配置した、長さ10の文字列を生成する、足りない部分はxで埋める
+print(str.capitalize()) # 
 ```
+Abcde
+
+#### str.casefold()
+
+文字列 str の英語以外のアルファベットも、英語のアルファベット小文字化する
+
+```python
+str = "aBcDe"
+print(str.casefold())  
+```
+abcde
+
+#### str.center(width, fillchar)
+
+元の文字列 `str` を中央に配置した、長さ `width` の文字列を生成する、足りない部分は文字列 `fillchar` （デフォルトはスペース）で埋める。
+
+```python
+str = "aBcDe"
+print(str.center(10, "x")) 
 
 ```
-aBcDe
-Abcde
-abcde
-xxaBcDexxx
-```
+
+ #### str.count(sub, start, end)
+
+ 文字列 `str` 内にある部分文字列 `sub` が出現する個数を数える。指定された場合は `star` 文字目から `end` 文字目の間を検索する。
+ マッチする個数を数えるとき、一度マッチした部分は以降の検索では除外される。
 
 ```python
 # 部分文字列のカウント
@@ -179,6 +201,30 @@ print(str2.count("aa",3, 13))
 2
 ```
 
+#### str.endswith(suffix, start, end)
+
+文字列 `str` が文字列 `suffix` で終わる場合は `True` を返す。指定された場合は `start` 番目から `end` 番目までの部分文字列を判定する。
+
+#### str.find(sub, start, end)
+
+文字列 `str` に部分文字列 `sub` が含まれる場合、その最小のインデックスを返します。インデックス `start`, `end` が指定されたら部分文字列 `str[start:end]` の中で検索します。`sub` が見つからなかった場合 -1 を返します。
+
+```python
+"Python".find("th")
+# 2
+```
+
+文字列 `str` に部分文字列 `sub` が存在するかどうかだけを知りたい場合には `in` を使う。
+
+```python
+
+"Py" in "Python"
+# True
+```
+
+#### str.index(sub, start, end)
+
+`str.find()` と同じだが、`sub` が見つからないとき `ValueError` を送出する。
 
 ### ファイルを文字列として読み込む
 
@@ -193,7 +239,7 @@ f.close()
 
 オブジェクトの値を用いてテンプレート文字列の中身を置換する
 
-#### format メソッド
+#### format() メソッド
 
 ```python
 project = 'my_project'
@@ -210,6 +256,11 @@ print(template.format(project=project, dataset=dataset, table=table))
 template = 'SELECT size_bytes FROM `{}.{}.{}`'
 print(template.format(project, dataset, table))
 # SELECT size_bytes FROM `my_project.my_dataset.my_table`
+
+# テンプレート内の {数字} はformat()関数に与えた引数の位置として解釈される
+template = 'SELECT size_bytes FROM `{0}.{1}.{2}`'
+print(template.format(project, dataset, table))
+# SELECT size_bytes FROM `my_project.my_dataset.my_table`
 ```
 
 #### f文字列を使った方法
@@ -217,9 +268,43 @@ print(template.format(project, dataset, table))
 こちらの方が format メソッドより簡単だが、テンプレート文字列をオブジェクトして保存した場合には使えない
 
 ```python
-# f文字列を使った方法
+project = 'my_project'
+dataset = 'my_dataset'
+table = 'my_table'
+
+# f文字列を使った方法、変数内の値が展開される
 print(f'SELECT size_bytes FROM `{project}.{dataset}.{table}`')
 ```
+
+#### str.format_mapping(mapping)
+
+```python
+# dict型の値を作成
+d = {"name": "Mike", "country": "America"}
+
+# dict を使ってテンプレート文字列を置換する
+str = '{name} was born in {country}'
+str.format_map(d)
+```
+
+#### 文字列種の判定
+
+- str.isalnum()
+- str.isalpha()
+- str.isascii()
+- str.isdecimal()
+- str.isdigit()
+- str.isidentifier()
+- str.islower()
+- str.isnumeric()
+- str.isprintable()
+- str.isspace()
+- str.istitle()
+- str.isupper()
+- 
+
+
+
 
 
 ## シーケンスコンテナ
@@ -321,15 +406,23 @@ tuple(['a','b','c']) # list で tuple を初期化
 ### 名前付き tuple
 
 ```python
-
 from collections import namedtuple
 
 # 名前付きタプルのクラスを定義
 Point = namedtuple('Point', ['x', 'y'])
 # インスタンスを生成
 p = Point(x=1, y=2)
+
+# インスタンスを表示
 print(p)
-print(p['x'])
+
+# インデックスで値にアクセス
+print(p[0])
+print(p[1])
+
+# 属性名から値にアクセス
+z = p.x + p.y
+print(z)
 ```
 
 ## range

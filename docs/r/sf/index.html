@@ -13,10 +13,10 @@
 <link rel="icon" href="/notebook/favicon.png" type="image/x-icon">
 
 
-<link rel="stylesheet" href="/notebook/book.min.07c38dce7b6800da2a75a565d4d975e38f837294e24d00b5aae363037012d64b.css" integrity="sha256-B8ONzntoANoqdaVl1Nl144&#43;DcpTiTQC1quNjA3AS1ks=">
+<link rel="stylesheet" href="/notebook/book.min.1b994bd28c6ce2255f069b6bf6837b4d396307637fc48d61dcb2a6caac26e031.css" integrity="sha256-G5lL0oxs4iVfBptr9oN7TTljB2N/xI1h3LKmyqwm4DE=">
 
 
-<script defer src="/notebook/search.min.41244b17d88563adf4d2969d57343659e6e979194cdc54758589e4a6bb23dfab.js" integrity="sha256-QSRLF9iFY6300padVzQ2WebpeRlM3FR1hYnkprsj36s="></script>
+<script defer src="/notebook/search.min.e50f4978caa8ea9d9c3d92a39ce60172ac017f8cc877aace48252f3ed36fef5e.js" integrity="sha256-5Q9JeMqo6p2cPZKjnOYBcqwBf4zId6rOSCUvPtNv714="></script>
 
 <!--
 Made with Book Theme
@@ -485,6 +485,36 @@ https://github.com/alex-shpak/hugo-book
     
       
 
+  <a href="/notebook/llm/" >
+      LLM: Large Language Models
+  </a>
+
+
+    
+
+    
+
+
+
+
+  
+  <ul>
+    
+  </ul>
+  
+
+
+
+  </li>
+
+
+  
+    
+
+  <li >
+    
+      
+
   <a href="/notebook/datascience/" >
       Data Science
   </a>
@@ -925,14 +955,20 @@ https://github.com/alex-shpak/hugo-book
 </header>
 
       
-<article class="markdown"><h1 id="sf">sf</h1>
+<article class="markdown">
+
+<h1 id="sf">sf</h1>
+
 <h1 id="定義されたクラス">定義されたクラス</h1>
+
 <ul>
 <li><code>sfg</code> ：個別の地物オブジェクト</li>
 <li><code>sfc</code> ： <code>sfg</code> オブジェクトのリスト、リストの各要素が１地物に相当</li>
 <li><code>sf</code> ： <code>sfc</code> オブジェクトを <code>geometry</code> 列としてもつデータフレーム、１行が１地物、 <code>geometory</code> 列以外の列は地物がもつ値</li>
 </ul>
-<h1 id="地物sfgオブジェクトの型">地物（sfgオブジェクト）の型</h1>
+
+<h1 id="地物-sfgオブジェクト-の型">地物（sfgオブジェクト）の型</h1>
+
 <ul>
 <li>POINT：点</li>
 <li>LINESTRING：線分</li>
@@ -941,119 +977,176 @@ https://github.com/alex-shpak/hugo-book
 <li>MULTILINESTRING：線分の集合</li>
 <li>GEOMETORYCOLLECTION：様々な型のデータの集合</li>
 </ul>
-<h1 id="sfオブジェクトの読み込み書き出し">sfオブジェクトの読み込み・書き出し</h1>
+
+<h1 id="sfオブジェクトの読み込み-書き出し">sfオブジェクトの読み込み・書き出し</h1>
+
 <p><a href="https://r-spatial.github.io/sf/articles/sf2.html">https://r-spatial.github.io/sf/articles/sf2.html</a></p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#111">pref_simple_sf</span> <span style="color:#f92672">&lt;-</span> <span style="color:#111">sf</span><span style="color:#f92672">::</span><span style="color:#75af00">st_read</span><span style="color:#111">(</span><span style="color:#d88200">&#34;../output/pref_simple.shp&#34;</span><span style="color:#111">)</span>
-<span style="color:#111">sf</span><span style="color:#f92672">::</span><span style="color:#75af00">st_write</span><span style="color:#111">(</span><span style="color:#111">pref_simple_sf</span><span style="color:#111">,</span> <span style="color:#d88200">&#34;../output/pref_simple.shp&#34;</span><span style="color:#111">,</span> <span style="color:#111">layer_options</span> <span style="color:#f92672">=</span> <span style="color:#d88200">&#34;ENCODING=UTF-8&#34;</span><span style="color:#111">)</span>
-</code></pre></div><h1 id="sf-オブジェクトの作成">sf オブジェクトの作成</h1>
-<h2 id="緯度経度列を持つデータフレームから作成する--st_as_sf">緯度経度列を持つデータフレームから作成する : st_as_sf()</h2>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">pref_simple_sf <span style="color:#f92672">&lt;-</span> sf<span style="color:#f92672">::</span>st_read<span style="color:#111">(</span><span style="color:#d88200">&#34;../output/pref_simple.shp&#34;</span><span style="color:#111">)</span>
+sf<span style="color:#f92672">::</span>st_write<span style="color:#111">(</span>pref_simple_sf<span style="color:#111">,</span> <span style="color:#d88200">&#34;../output/pref_simple.shp&#34;</span><span style="color:#111">,</span> layer_options <span style="color:#f92672">=</span> <span style="color:#d88200">&#34;ENCODING=UTF-8&#34;</span><span style="color:#111">)</span></code></pre></div>
+<h1 id="sf-オブジェクトの作成">sf オブジェクトの作成</h1>
+
+<h2 id="緯度経度列を持つデータフレームから作成する-st-as-sf">緯度経度列を持つデータフレームから作成する : st_as_sf()</h2>
+
 <p>１行が１点を表すデータフレーム <code>df</code> （緯度 <code>lat</code> 経度 <code>lon</code>）から <code>sf</code> オブジェクトを作成する。<code>coords = c(&quot;lon&quot;, &quot;lat&quot;)</code>、はXY座標に相当するカラム名を指定している。<code>crs = 4326</code>  で座標参照系を設定している。EPSGコード 4326 は WGS84 を表す。 <code>remove = FALSE</code> は <code>coords = c(&quot;lon&quot;, &quot;lat&quot;)</code> で指定した列を削除しないという意味。</p>
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#75715e"># df は 各行が1POINTを表していて、その座標が &#34;lon&#34;, &#34;lat&#34; という列名で保持されているデータフレーム</span>
-<span style="color:#111">sf</span> <span style="color:#f92672">&lt;-</span> <span style="color:#111">df</span> <span style="color:#f92672">%&gt;%</span> 
-      <span style="color:#75af00">st_as_sf</span><span style="color:#111">(</span><span style="color:#111">coords</span> <span style="color:#f92672">=</span> <span style="color:#75af00">c</span><span style="color:#111">(</span><span style="color:#d88200">&#34;lon&#34;</span><span style="color:#111">,</span> <span style="color:#d88200">&#34;lat&#34;</span><span style="color:#111">),</span> <span style="color:#111">dim</span> <span style="color:#f92672">=</span> <span style="color:#d88200">&#34;XY&#34;</span><span style="color:#111">,</span> <span style="color:#111">remove</span> <span style="color:#f92672">=</span> <span style="color:#00a8c8">FALSE</span><span style="color:#111">,</span> <span style="color:#111">crs</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">4326</span><span style="color:#111">)</span>
-</code></pre></div><h2 id="wkt列を持つデータフレームから作成する">WKT列を持つデータフレームから作成する</h2>
+sf <span style="color:#f92672">&lt;-</span> df <span style="color:#f92672">%&gt;%</span> 
+      st_as_sf<span style="color:#111">(</span>coords <span style="color:#f92672">=</span> <span style="color:#00a8c8">c</span><span style="color:#111">(</span><span style="color:#d88200">&#34;lon&#34;</span><span style="color:#111">,</span> <span style="color:#d88200">&#34;lat&#34;</span><span style="color:#111">),</span> dim <span style="color:#f92672">=</span> <span style="color:#d88200">&#34;XY&#34;</span><span style="color:#111">,</span> remove <span style="color:#f92672">=</span> <span style="color:#00a8c8">FALSE</span><span style="color:#111">,</span> crs <span style="color:#f92672">=</span> <span style="color:#ae81ff">4326</span><span style="color:#111">)</span></code></pre></div>
+<h2 id="wkt列を持つデータフレームから作成する">WKT列を持つデータフレームから作成する</h2>
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#75715e"># squid_area_df の geometry には WKT文字列が格納されている</span>
-<span style="color:#111">squid_area_sf</span> <span style="color:#f92672">&lt;-</span> 
-  <span style="color:#111">sf</span><span style="color:#f92672">::</span><span style="color:#75af00">st_as_sf</span><span style="color:#111">(</span><span style="color:#111">squid_area_df</span><span style="color:#111">,</span> <span style="color:#111">wkt</span> <span style="color:#f92672">=</span> <span style="color:#d88200">&#34;geometry&#34;</span><span style="color:#111">,</span> <span style="color:#111">crs</span><span style="color:#f92672">=</span><span style="color:#ae81ff">4326</span><span style="color:#111">)</span>
-</code></pre></div><h2 id="データフレームから作成する--st_set_geometry">データフレームから作成する : st_set_geometry()</h2>
+squid_area_sf <span style="color:#f92672">&lt;-</span> 
+  sf<span style="color:#f92672">::</span>st_as_sf<span style="color:#111">(</span>squid_area_df<span style="color:#111">,</span> wkt <span style="color:#f92672">=</span> <span style="color:#d88200">&#34;geometry&#34;</span><span style="color:#111">,</span> crs<span style="color:#f92672">=</span><span style="color:#ae81ff">4326</span><span style="color:#111">)</span></code></pre></div>
+<h2 id="データフレームから作成する-st-set-geometry">データフレームから作成する : st_set_geometry()</h2>
+
 <p>すでにある <code>sfc</code> オブジェクトを、データフレームに、<code>geometry</code> 列として追加する。</p>
+
 <p><code>data_sf &lt;- st_set_geometry(data_df, geom_sfc)</code></p>
+
 <h2 id="wkt形式の文字列ベクトルから作成">WKT形式の文字列ベクトルから作成</h2>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#111">area_wkt</span> <span style="color:#f92672">&lt;-</span> <span style="color:#d88200">&#34;Polygon ((165.06947186552821449 48.95836601433594382, 169.89568502076190271 45.13709077274640435, -149.95899646070347444 44.98161022438796408, -149.95031841566071762 53.86930346517581114, -163.23108263759604597 52.2378116240458894, -168.71541576854343703 50.45207289660321948, 164.95978520290927349 51.55926363240160981, 165.06947186552821449 48.95836601433594382))&#34;</span>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">area_wkt <span style="color:#f92672">&lt;-</span> <span style="color:#d88200">&#34;Polygon ((165.06947186552821449 48.95836601433594382, 169.89568502076190271 45.13709077274640435, -149.95899646070347444 44.98161022438796408, -149.95031841566071762 53.86930346517581114, -163.23108263759604597 52.2378116240458894, -168.71541576854343703 50.45207289660321948, 164.95978520290927349 51.55926363240160981, 165.06947186552821449 48.95836601433594382))&#34;</span>
 
 
 <span style="color:#75715e"># SFC の作成</span>
-<span style="color:#111">target_sfc</span> <span style="color:#f92672">&lt;-</span> <span style="color:#111">sf</span><span style="color:#f92672">::</span><span style="color:#75af00">st_as_sfc</span><span style="color:#111">(</span><span style="color:#111">area_wkt</span><span style="color:#111">)</span>
-<span style="color:#111">sf</span><span style="color:#f92672">::</span><span style="color:#75af00">st_crs</span><span style="color:#111">(</span><span style="color:#111">target_sfc</span><span style="color:#111">)</span> <span style="color:#f92672">&lt;-</span> <span style="color:#ae81ff">4326</span>
+target_sfc <span style="color:#f92672">&lt;-</span> sf<span style="color:#f92672">::</span>st_as_sfc<span style="color:#111">(</span>area_wkt<span style="color:#111">)</span>
+sf<span style="color:#f92672">::</span>st_crs<span style="color:#111">(</span>target_sfc<span style="color:#111">)</span> <span style="color:#f92672">&lt;-</span> <span style="color:#ae81ff">4326</span>
 
 <span style="color:#75715e"># SFCからSFの作成</span>
-<span style="color:#111">data_df</span> <span style="color:#f92672">&lt;-</span> <span style="color:#111">tibble</span><span style="color:#f92672">::</span><span style="color:#75af00">tibble</span><span style="color:#111">(</span><span style="color:#111">data</span><span style="color:#f92672">=</span><span style="color:#ae81ff">1</span><span style="color:#111">)</span>
-<span style="color:#111">target_sf</span> <span style="color:#f92672">&lt;-</span> <span style="color:#111">sf</span><span style="color:#f92672">::</span><span style="color:#75af00">st_set_geometry</span><span style="color:#111">(</span><span style="color:#111">data_df</span><span style="color:#111">,</span> <span style="color:#111">target_sfc</span><span style="color:#111">)</span>
-</code></pre></div><h1 id="処理関数">処理関数</h1>
+data_df <span style="color:#f92672">&lt;-</span> tibble<span style="color:#f92672">::</span>tibble<span style="color:#111">(</span>data<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span><span style="color:#111">)</span>
+target_sf <span style="color:#f92672">&lt;-</span> sf<span style="color:#f92672">::</span>st_set_geometry<span style="color:#111">(</span>data_df<span style="color:#111">,</span> target_sfc<span style="color:#111">)</span></code></pre></div>
+<h1 id="処理関数">処理関数</h1>
+
 <h3 id="sfオブジェクトの切り抜き">sfオブジェクトの切り抜き</h3>
-<p><code>st_crop() </code></p>
+
+<p><code>st_crop()</code></p>
+
 <pre><code>land_crop &lt;- st_crop(land, c(xmax=180, xmin=-180, ymin = -80, ymax=80))
-</code></pre><h2 id="日付変更線で地物に切れ目を作る">日付変更線で地物に切れ目を作る</h2>
+</code></pre>
+
+<h2 id="日付変更線で地物に切れ目を作る">日付変更線で地物に切れ目を作る</h2>
+
 <p>-180:180 の経度で作成された地物は、日付変更線をまたいでいるときにうまく描画・処理できない。そこで、日付変更線のラインで地物を分断する。</p>
+
 <pre><code>sf::st_wrap_dateline(options = c(&quot;WRAPDATELINE=YES&quot;, &quot;DATELINEOFFSET=0&quot;), quiet = FALSE)
-</code></pre><h2 id="日付変更線の切れ目をつなぐ">日付変更線の切れ目をつなぐ</h2>
+</code></pre>
+
+<h2 id="日付変更線の切れ目をつなぐ">日付変更線の切れ目をつなぐ</h2>
+
 <p><a href="https://stackoverflow.com/questions/56146735/visual-bug-when-changing-robinson-projections-central-meridian-with-ggplot2/56155662#56155662">https://stackoverflow.com/questions/56146735/visual-bug-when-changing-robinson-projections-central-meridian-with-ggplot2/56155662#56155662</a></p>
+
 <h1 id="型の変換">型の変換</h1>
+
 <h2 id="地物の型の変換">地物の型の変換</h2>
+
 <p><code>st_cast()</code></p>
-<h2 id="sf-を-dataframe-に変換する">sf を data.frame に変換する</h2>
+
+<h2 id="sf-を-data-frame-に変換する">sf を data.frame に変換する</h2>
+
 <p>sfオブジェクトをデータフレームに変換する（この時、df には geometry 列（リスト列=sfcオブジェクト）が残る）</p>
+
 <pre><code>data_df &lt;- as.data.frame(data_sf)
-</code></pre><p><code>sf</code> オブジェクトから <code>geometory</code> 列を削除すると、ただのデータフレームになる。そのために、<code>st_set_geometry()</code> はデータフレームにgeometry列をくっつける関数だけど、NULLを渡すとsfオブジェクトからgeomeotry列を削除できる。</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#111">df</span> <span style="color:#f92672">&lt;-</span> <span style="color:#111">sf</span><span style="color:#f92672">::</span><span style="color:#75af00">st_set_geometry</span><span style="color:#111">(</span><span style="color:#111">data_sf</span><span style="color:#111">,</span> <span style="color:#00a8c8">NULL</span><span style="color:#111">)</span>
-</code></pre></div><h2 id="wkt形式に変換する">WKT形式に変換する</h2>
+</code></pre>
+
+<p><code>sf</code> オブジェクトから <code>geometory</code> 列を削除すると、ただのデータフレームになる。そのために、<code>st_set_geometry()</code> はデータフレームにgeometry列をくっつける関数だけど、NULLを渡すとsfオブジェクトからgeomeotry列を削除できる。</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">df <span style="color:#f92672">&lt;-</span> sf<span style="color:#f92672">::</span>st_set_geometry<span style="color:#111">(</span>data_sf<span style="color:#111">,</span> <span style="color:#00a8c8">NULL</span><span style="color:#111">)</span></code></pre></div>
+<h2 id="wkt形式に変換する">WKT形式に変換する</h2>
+
 <pre><code>lwgeom::st_astext(x, digits = options(&quot;digits&quot;), ..., EWKT = FALSE)
 lwgeom::st_asewkt(x, digits = options(&quot;digits&quot;))
-</code></pre><h1 id="地物同士の位置関係の判定">地物同士の位置関係の判定</h1>
+</code></pre>
+
+<h1 id="地物同士の位置関係の判定">地物同士の位置関係の判定</h1>
+
 <h2 id="バックエンドのライブラリを切り替える">バックエンドのライブラリを切り替える</h2>
+
 <p>新しいバージョンの sf パッケージでは地理情報処理のバックエンドとしてS2ライブラリを使用するようになった。S2ライブラリは処理が高速なので通常はそのままでよい。しかし、S2ライブラリは地球を球面として扱うが、平面として扱った処理をしたい場合はS2ライブラリを無効にすると良い。</p>
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#75715e"># sf 1.0 以降 s2 パッケージを使うようになった</span>
 <span style="color:#75715e"># s2を使わない以前の計算方法にしたいときは以下を実行する</span>
-<span style="color:#111">sf</span><span style="color:#f92672">::</span><span style="color:#75af00">sf_use_s2</span><span style="color:#111">(</span><span style="color:#00a8c8">FALSE</span><span style="color:#111">)</span>
-</code></pre></div><p>predicate whether <code>x</code> touches/contains/within/ <code>y</code></p>
+sf<span style="color:#f92672">::</span>sf_use_s2<span style="color:#111">(</span><span style="color:#00a8c8">FALSE</span><span style="color:#111">)</span></code></pre></div>
+<p>predicate whether <code>x</code> touches/contains/within/ <code>y</code></p>
+
 <p><code>sparse=FALSE</code> にすると論理値ベクトルを返す。</p>
+
 <h2 id="地理情報処理関数">地理情報処理関数</h2>
+
 <p><code>st_intersects(x, y, sparse = TRUE, ...)</code></p>
+
 <p><code>st_disjoint(x, y = x, sparse = TRUE, prepared = TRUE)</code></p>
+
 <p><code>st_touches(x, y, sparse = TRUE, prepared = TRUE)</code></p>
+
 <p><code>st_crosses(x, y, sparse = TRUE, prepared = TRUE)</code></p>
+
 <p><code>st_within(x, y, sparse = TRUE, prepared = TRUE)</code></p>
+
 <p><code>st_contains(x, y, sparse = TRUE, prepared = TRUE)</code></p>
+
 <p><code>st_contains_properly(x, y, sparse = TRUE, prepared = TRUE)</code></p>
+
 <p><code>st_overlaps(x, y, sparse = TRUE, prepared = TRUE)</code></p>
+
 <p><code>st_equals(x, y, sparse = TRUE, prepared = FALSE)</code></p>
+
 <p><code>st_covers(x, y, sparse = TRUE, prepared = TRUE)</code></p>
+
 <p><code>st_covered_by(x, y, sparse = TRUE, prepared = TRUE)</code></p>
+
 <p><code>st_equals_exact(x, y, par, sparse = TRUE, prepared = FALSE)</code></p>
+
 <p><code>st_is_within_distance(x, y, dist, sparse = TRUE)</code></p>
+
 <p><code>sf::st_wrap_dateline(options = c(&quot;WRAPDATELINE=YES&quot;, &quot;DATELINEOFFSET=180&quot;), quiet = FALSE)</code></p>
+
 <h1 id="ggplot2">ggplot2</h1>
+
 <p>プロット時に投影図法を指定する</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#75af00">library</span><span style="color:#111">(</span><span style="color:#111">sf</span><span style="color:#111">)</span>
-<span style="color:#75af00">library</span><span style="color:#111">(</span><span style="color:#111">ggplot2</span><span style="color:#111">)</span>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#f92672">library</span><span style="color:#111">(</span>sf<span style="color:#111">)</span>
+<span style="color:#f92672">library</span><span style="color:#111">(</span>ggplot2<span style="color:#111">)</span>
 
-<span style="color:#111">land</span> <span style="color:#f92672">&lt;-</span> <span style="color:#75af00">read_sf</span><span style="color:#111">(</span><span style="color:#d88200">&#34;data/ne_10m_land/ne_10m_land.shp&#34;</span><span style="color:#111">)</span>
-<span style="color:#111">land_crop</span> <span style="color:#f92672">&lt;-</span> <span style="color:#75af00">st_crop</span><span style="color:#111">(</span><span style="color:#111">land</span><span style="color:#111">,</span> <span style="color:#75af00">c</span><span style="color:#111">(</span><span style="color:#111">xmax</span><span style="color:#f92672">=</span><span style="color:#ae81ff">180</span><span style="color:#111">,</span> <span style="color:#111">xmin</span><span style="color:#f92672">=</span><span style="color:#ae81ff">-180</span><span style="color:#111">,</span> <span style="color:#111">ymin</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">-80</span><span style="color:#111">,</span> <span style="color:#111">ymax</span><span style="color:#f92672">=</span><span style="color:#ae81ff">80</span><span style="color:#111">))</span>
+land <span style="color:#f92672">&lt;-</span> read_sf<span style="color:#111">(</span><span style="color:#d88200">&#34;data/ne_10m_land/ne_10m_land.shp&#34;</span><span style="color:#111">)</span>
+land_crop <span style="color:#f92672">&lt;-</span> st_crop<span style="color:#111">(</span>land<span style="color:#111">,</span> <span style="color:#00a8c8">c</span><span style="color:#111">(</span>xmax<span style="color:#f92672">=</span><span style="color:#ae81ff">180</span><span style="color:#111">,</span> xmin<span style="color:#f92672">=</span><span style="color:#ae81ff">-180</span><span style="color:#111">,</span> ymin <span style="color:#f92672">=</span> <span style="color:#ae81ff">-80</span><span style="color:#111">,</span> ymax<span style="color:#f92672">=</span><span style="color:#ae81ff">80</span><span style="color:#111">))</span>
 
-<span style="color:#75af00">ggplot</span><span style="color:#111">(</span><span style="color:#111">land_crop</span><span style="color:#111">)</span><span style="color:#f92672">+</span>
-  <span style="color:#75af00">geom_sf</span><span style="color:#111">()</span><span style="color:#f92672">+</span>
+ggplot<span style="color:#111">(</span>land_crop<span style="color:#111">)</span><span style="color:#f92672">+</span>
+  geom_sf<span style="color:#111">()</span><span style="color:#f92672">+</span>
   <span style="color:#75715e">#coord_sf(crs = sf::st_crs(&#39;+proj=moll&#39;)) # モルワイデ図法</span>
-  <span style="color:#75af00">coord_sf</span><span style="color:#111">(</span><span style="color:#111">crs</span> <span style="color:#f92672">=</span> <span style="color:#111">sf</span><span style="color:#f92672">::</span><span style="color:#75af00">st_crs</span><span style="color:#111">(</span><span style="color:#d88200">&#39;+proj=wag6&#39;</span><span style="color:#111">))</span> <span style="color:#75715e"># Wagner VI projection</span>
-</code></pre></div><h2 id="30-day-map-challenge">30 day map challenge</h2>
-<p>Twitter の #30DayMapChallenge で地理情報可視化の例がたくさんある</p>
-<p>R の sf &amp; ggplot メインで挑戦した人がBookdownでまとめてくれている</p>
-<p><a href="https://twitter.com/tjukanov/status/1187713840550744066">https://twitter.com/tjukanov/status/1187713840550744066</a></p>
-<p><a href="https://rud.is/books/30-day-map-challenge/">https://rud.is/books/30-day-map-challenge/</a></p>
-<h1 id="データベースへの読み書き">データベースへの読み書き</h1>
-<p><a href="https://r-spatial.github.io/sf/articles/sf2.html">https://r-spatial.github.io/sf/articles/sf2.html</a></p>
-<h1 id="nate-の中心合わせ">Nate の中心合わせ</h1>
-<p><a href="https://github.com/natemiller/mapping">https://github.com/natemiller/mapping</a></p>
-<h1 id="invalidな図形を修正する">invalidな図形を修正する</h1>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#111">sf</span><span style="color:#f92672">::</span><span style="color:#75af00">st_is_valid</span><span style="color:#111">(</span><span style="color:#111">target_sf</span><span style="color:#111">,</span> <span style="color:#111">reason</span> <span style="color:#f92672">=</span> <span style="color:#00a8c8">TRUE</span><span style="color:#111">)</span>
-<span style="color:#111">valid_sf</span> <span style="color:#f92672">&lt;-</span> <span style="color:#111">sf</span><span style="color:#f92672">::</span><span style="color:#75af00">st_make_valid</span><span style="color:#111">(</span><span style="color:#111">target_sf</span><span style="color:#111">)</span>
-</code></pre></div><h1 id="shapefileとして保存する">Shapefileとして保存する</h1>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#75af00">dir.create</span><span style="color:#111">(</span><span style="color:#d88200">&#34;joint_fishries_area&#34;</span><span style="color:#111">)</span>
-<span style="color:#111">sf</span><span style="color:#f92672">::</span><span style="color:#75af00">write_sf</span><span style="color:#111">(</span><span style="color:#111">joint_fisheries_areas_with_values_sf</span><span style="color:#111">,</span> <span style="color:#d88200">&#34;joint_fishries_area/joint_fishries_area.shp&#34;</span><span style="color:#111">)</span>
-</code></pre></div><h1 id="特定のエリア内の点を削除する">特定のエリア内の点を削除する</h1>
-<p><code>points_df</code>から <code>target_area_sf</code> 内にある点を削除する。</p>
-<p>target_area_sf は 1つのエリア（1行）だけ含んでいるという前提</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#111">points_new_df</span> <span style="color:#f92672">&lt;-</span>
-  <span style="color:#111">points_df</span> <span style="color:#f92672">%&gt;%</span>
-  <span style="color:#111">sf</span><span style="color:#f92672">::</span><span style="color:#75af00">st_as_sf</span><span style="color:#111">(</span>
-    <span style="color:#111">coords</span> <span style="color:#f92672">=</span> <span style="color:#75af00">c</span><span style="color:#111">(</span><span style="color:#d88200">&#34;lon&#34;</span><span style="color:#111">,</span> <span style="color:#d88200">&#34;lat&#34;</span><span style="color:#111">),</span>
-    <span style="color:#111">dim</span> <span style="color:#f92672">=</span> <span style="color:#d88200">&#34;XY&#34;</span><span style="color:#111">,</span>
-    <span style="color:#111">remove</span> <span style="color:#f92672">=</span> <span style="color:#00a8c8">FALSE</span><span style="color:#111">,</span>
-    <span style="color:#111">crs</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">4326</span>
-  <span style="color:#111">)</span> <span style="color:#f92672">%&gt;%</span>
-  <span style="color:#75af00">filter</span><span style="color:#111">(</span><span style="color:#f92672">!</span><span style="color:#75af00">as.logical</span><span style="color:#111">(</span><span style="color:#111">sf</span><span style="color:#f92672">::</span><span style="color:#75af00">st_within</span><span style="color:#111">(</span><span style="color:#111">.,</span> <span style="color:#111">target_area_sf</span><span style="color:#111">,</span> <span style="color:#111">sparse</span> <span style="color:#f92672">=</span> <span style="color:#00a8c8">FALSE</span><span style="color:#111">)))</span> <span style="color:#f92672">%&gt;%</span>
-  <span style="color:#111">sf</span><span style="color:#f92672">::</span><span style="color:#75af00">st_set_geometry</span><span style="color:#111">(</span><span style="color:#00a8c8">NULL</span><span style="color:#111">)</span>
+  coord_sf<span style="color:#111">(</span>crs <span style="color:#f92672">=</span> sf<span style="color:#f92672">::</span>st_crs<span style="color:#111">(</span><span style="color:#d88200">&#39;+proj=wag6&#39;</span><span style="color:#111">))</span> <span style="color:#75715e"># Wagner VI projection</span></code></pre></div>
+<h2 id="30-day-map-challenge">30 day map challenge</h2>
 
-</code></pre></div></article>
+<p>Twitter の #30DayMapChallenge で地理情報可視化の例がたくさんある</p>
+
+<p>R の sf &amp; ggplot メインで挑戦した人がBookdownでまとめてくれている</p>
+
+<p><a href="https://twitter.com/tjukanov/status/1187713840550744066">https://twitter.com/tjukanov/status/1187713840550744066</a></p>
+
+<p><a href="https://rud.is/books/30-day-map-challenge/">https://rud.is/books/30-day-map-challenge/</a></p>
+
+<h1 id="データベースへの読み書き">データベースへの読み書き</h1>
+
+<p><a href="https://r-spatial.github.io/sf/articles/sf2.html">https://r-spatial.github.io/sf/articles/sf2.html</a></p>
+
+<h1 id="nate-の中心合わせ">Nate の中心合わせ</h1>
+
+<p><a href="https://github.com/natemiller/mapping">https://github.com/natemiller/mapping</a></p>
+
+<h1 id="invalidな図形を修正する">invalidな図形を修正する</h1>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">sf<span style="color:#f92672">::</span>st_is_valid<span style="color:#111">(</span>target_sf<span style="color:#111">,</span> reason <span style="color:#f92672">=</span> <span style="color:#00a8c8">TRUE</span><span style="color:#111">)</span>
+valid_sf <span style="color:#f92672">&lt;-</span> sf<span style="color:#f92672">::</span>st_make_valid<span style="color:#111">(</span>target_sf<span style="color:#111">)</span></code></pre></div>
+<h1 id="shapefileとして保存する">Shapefileとして保存する</h1>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#00a8c8">dir.create</span><span style="color:#111">(</span><span style="color:#d88200">&#34;joint_fishries_area&#34;</span><span style="color:#111">)</span>
+sf<span style="color:#f92672">::</span>write_sf<span style="color:#111">(</span>joint_fisheries_areas_with_values_sf<span style="color:#111">,</span> <span style="color:#d88200">&#34;joint_fishries_area/joint_fishries_area.shp&#34;</span><span style="color:#111">)</span></code></pre></div>
+<h1 id="特定のエリア内の点を削除する">特定のエリア内の点を削除する</h1>
+
+<p><code>points_df</code>から <code>target_area_sf</code> 内にある点を削除する。</p>
+
+<p>target_area_sf は 1つのエリア（1行）だけ含んでいるという前提</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">points_new_df <span style="color:#f92672">&lt;-</span>
+  points_df <span style="color:#f92672">%&gt;%</span>
+  sf<span style="color:#f92672">::</span>st_as_sf<span style="color:#111">(</span>
+    coords <span style="color:#f92672">=</span> <span style="color:#00a8c8">c</span><span style="color:#111">(</span><span style="color:#d88200">&#34;lon&#34;</span><span style="color:#111">,</span> <span style="color:#d88200">&#34;lat&#34;</span><span style="color:#111">),</span>
+    dim <span style="color:#f92672">=</span> <span style="color:#d88200">&#34;XY&#34;</span><span style="color:#111">,</span>
+    remove <span style="color:#f92672">=</span> <span style="color:#00a8c8">FALSE</span><span style="color:#111">,</span>
+    crs <span style="color:#f92672">=</span> <span style="color:#ae81ff">4326</span>
+  <span style="color:#111">)</span> <span style="color:#f92672">%&gt;%</span>
+  filter<span style="color:#111">(</span><span style="color:#f92672">!</span><span style="color:#00a8c8">as.logical</span><span style="color:#111">(</span>sf<span style="color:#f92672">::</span>st_within<span style="color:#111">(</span><span style="color:#ae81ff">.</span><span style="color:#111">,</span> target_area_sf<span style="color:#111">,</span> sparse <span style="color:#f92672">=</span> <span style="color:#00a8c8">FALSE</span><span style="color:#111">)))</span> <span style="color:#f92672">%&gt;%</span>
+  sf<span style="color:#f92672">::</span>st_set_geometry<span style="color:#111">(</span><span style="color:#00a8c8">NULL</span><span style="color:#111">)</span></code></pre></div></article>
 
       
 <div class="book-footer justify-between">
@@ -1087,37 +1180,48 @@ lwgeom::st_asewkt(x, digits = options(&quot;digits&quot;))
 
   <aside class="book-toc level-3 fixed">
     <nav id="TableOfContents">
-  <ul>
-    <li><a href="#緯度経度列を持つデータフレームから作成する--st_as_sf">緯度経度列を持つデータフレームから作成する : st_as_sf()</a></li>
-    <li><a href="#wkt列を持つデータフレームから作成する">WKT列を持つデータフレームから作成する</a></li>
-    <li><a href="#データフレームから作成する--st_set_geometry">データフレームから作成する : st_set_geometry()</a></li>
-    <li><a href="#wkt形式の文字列ベクトルから作成">WKT形式の文字列ベクトルから作成</a></li>
-  </ul>
-
-  <ul>
-    <li>
-      <ul>
-        <li><a href="#sfオブジェクトの切り抜き">sfオブジェクトの切り抜き</a></li>
-      </ul>
-    </li>
-    <li><a href="#日付変更線で地物に切れ目を作る">日付変更線で地物に切れ目を作る</a></li>
-    <li><a href="#日付変更線の切れ目をつなぐ">日付変更線の切れ目をつなぐ</a></li>
-  </ul>
-
-  <ul>
-    <li><a href="#地物の型の変換">地物の型の変換</a></li>
-    <li><a href="#sf-を-dataframe-に変換する">sf を data.frame に変換する</a></li>
-    <li><a href="#wkt形式に変換する">WKT形式に変換する</a></li>
-  </ul>
-
-  <ul>
-    <li><a href="#バックエンドのライブラリを切り替える">バックエンドのライブラリを切り替える</a></li>
-    <li><a href="#地理情報処理関数">地理情報処理関数</a></li>
-  </ul>
-
-  <ul>
-    <li><a href="#30-day-map-challenge">30 day map challenge</a></li>
-  </ul>
+<ul>
+<li><a href="#sf">sf</a></li>
+<li><a href="#定義されたクラス">定義されたクラス</a></li>
+<li><a href="#地物-sfgオブジェクト-の型">地物（sfgオブジェクト）の型</a></li>
+<li><a href="#sfオブジェクトの読み込み-書き出し">sfオブジェクトの読み込み・書き出し</a></li>
+<li><a href="#sf-オブジェクトの作成">sf オブジェクトの作成</a>
+<ul>
+<li><a href="#緯度経度列を持つデータフレームから作成する-st-as-sf">緯度経度列を持つデータフレームから作成する : st_as_sf()</a></li>
+<li><a href="#wkt列を持つデータフレームから作成する">WKT列を持つデータフレームから作成する</a></li>
+<li><a href="#データフレームから作成する-st-set-geometry">データフレームから作成する : st_set_geometry()</a></li>
+<li><a href="#wkt形式の文字列ベクトルから作成">WKT形式の文字列ベクトルから作成</a></li>
+</ul></li>
+<li><a href="#処理関数">処理関数</a>
+<ul>
+<li>
+<ul>
+<li><a href="#sfオブジェクトの切り抜き">sfオブジェクトの切り抜き</a></li>
+</ul></li>
+<li><a href="#日付変更線で地物に切れ目を作る">日付変更線で地物に切れ目を作る</a></li>
+<li><a href="#日付変更線の切れ目をつなぐ">日付変更線の切れ目をつなぐ</a></li>
+</ul></li>
+<li><a href="#型の変換">型の変換</a>
+<ul>
+<li><a href="#地物の型の変換">地物の型の変換</a></li>
+<li><a href="#sf-を-data-frame-に変換する">sf を data.frame に変換する</a></li>
+<li><a href="#wkt形式に変換する">WKT形式に変換する</a></li>
+</ul></li>
+<li><a href="#地物同士の位置関係の判定">地物同士の位置関係の判定</a>
+<ul>
+<li><a href="#バックエンドのライブラリを切り替える">バックエンドのライブラリを切り替える</a></li>
+<li><a href="#地理情報処理関数">地理情報処理関数</a></li>
+</ul></li>
+<li><a href="#ggplot2">ggplot2</a>
+<ul>
+<li><a href="#30-day-map-challenge">30 day map challenge</a></li>
+</ul></li>
+<li><a href="#データベースへの読み書き">データベースへの読み書き</a></li>
+<li><a href="#nate-の中心合わせ">Nate の中心合わせ</a></li>
+<li><a href="#invalidな図形を修正する">invalidな図形を修正する</a></li>
+<li><a href="#shapefileとして保存する">Shapefileとして保存する</a></li>
+<li><a href="#特定のエリア内の点を削除する">特定のエリア内の点を削除する</a></li>
+</ul>
 </nav>
   </aside>
 

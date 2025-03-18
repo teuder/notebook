@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Introduction on notebook</title>
@@ -98,7 +98,7 @@
       <pubDate>Wed, 04 Sep 2019 00:00:00 +0000</pubDate>
       
       <guid>https://teuder.github.io/notebook/gcp/bigquery_sql/</guid>
-      <description>BigQuery: SQL 基本文法 標準 SQL のクエリ構文 標準SQLの演算子 標準SQLの関数と演算子 データセットの中からテーブルの情報を取得する select * dataset.TABLES_SUMMARY INFORMAIT</description>
+      <description>BigQuery: SQL 基本文法 標準 SQL のクエリ構文 標準SQLの演算子 標準SQLの関数と演算子 データセットの中からテーブルの情報を取得する select * dataset._TABLESSUMMARY INFORMAIT</description>
     </item>
     
     <item>
@@ -251,7 +251,7 @@
       <pubDate>Mon, 26 Aug 2019 00:00:00 +0000</pubDate>
       
       <guid>https://teuder.github.io/notebook/r/raster/</guid>
-      <description>raster # GooTiffの読み込み data &amp;lt;- raster::raster(&amp;quot;path/data.tif&amp;quot;) 値と座標のデータフレームに変換する df &amp;lt;- raster::rasterToPoint(data) 緯度経度と値のデータフレームからラスタデータを作成する test &amp;lt;- raster::rasterize(x = data[c(&amp;quot;lon&amp;quot;,&amp;quot;lat&amp;quot;)], #</description>
+      <description>raster # GooTiffの読み込み data &amp;lt;- raster::raster(&amp;#34;path/data.tif&amp;#34;) 値と座標のデータフレームに変換する df &amp;lt;- raster::rasterToPoint(data) 緯度経度と値のデータフレームからラスタデータを作成する test &amp;lt;- raster::rasterize(x = data[c(&amp;quot;lon&amp;quot;,&amp;quot;lat&amp;quot;)], #</description>
     </item>
     
     <item>
@@ -494,7 +494,7 @@
       <pubDate>Fri, 17 Jan 2020 00:00:00 +0000</pubDate>
       
       <guid>https://teuder.github.io/notebook/python/vscode/</guid>
-      <description>Python in VScode VScode で Python を使う時の Tips 参考：[VS Code でPython，Jupyter を動かす](https://qii ta.com/surei/items/9f25d7efa7c67d55d98f) 拡張機能 Python 必須 はじめに コマンドパレッ</description>
+      <description>Python in VScode VScode で Python を使う時の Tips 参考：VS Code でPython，Jupyter を動かす 拡張機能 Python 必須 はじめに コマンドパレットで select interpreter と入力 VScodeと一</description>
     </item>
     
     <item>

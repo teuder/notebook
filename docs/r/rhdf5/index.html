@@ -13,10 +13,10 @@
 <link rel="icon" href="/notebook/favicon.png" type="image/x-icon">
 
 
-<link rel="stylesheet" href="/notebook/book.min.07c38dce7b6800da2a75a565d4d975e38f837294e24d00b5aae363037012d64b.css" integrity="sha256-B8ONzntoANoqdaVl1Nl144&#43;DcpTiTQC1quNjA3AS1ks=">
+<link rel="stylesheet" href="/notebook/book.min.1b994bd28c6ce2255f069b6bf6837b4d396307637fc48d61dcb2a6caac26e031.css" integrity="sha256-G5lL0oxs4iVfBptr9oN7TTljB2N/xI1h3LKmyqwm4DE=">
 
 
-<script defer src="/notebook/search.min.41244b17d88563adf4d2969d57343659e6e979194cdc54758589e4a6bb23dfab.js" integrity="sha256-QSRLF9iFY6300padVzQ2WebpeRlM3FR1hYnkprsj36s="></script>
+<script defer src="/notebook/search.min.e50f4978caa8ea9d9c3d92a39ce60172ac017f8cc877aace48252f3ed36fef5e.js" integrity="sha256-5Q9JeMqo6p2cPZKjnOYBcqwBf4zId6rOSCUvPtNv714="></script>
 
 <!--
 Made with Book Theme
@@ -485,6 +485,36 @@ https://github.com/alex-shpak/hugo-book
     
       
 
+  <a href="/notebook/llm/" >
+      LLM: Large Language Models
+  </a>
+
+
+    
+
+    
+
+
+
+
+  
+  <ul>
+    
+  </ul>
+  
+
+
+
+  </li>
+
+
+  
+    
+
+  <li >
+    
+      
+
   <a href="/notebook/datascience/" >
       Data Science
   </a>
@@ -925,24 +955,42 @@ https://github.com/alex-shpak/hugo-book
 </header>
 
       
-<article class="markdown"><h1 id="rhdf5">rhdf5</h1>
+<article class="markdown">
+
+<h1 id="rhdf5">rhdf5</h1>
+
 <p>HDF5形式のファイルを扱うためのパッケージ</p>
+
 <p>CRANにはなく bioconductor のパッケージらしいので、bioconductor のレポジトリからインストールする</p>
+
 <p><a href="https://www.bioconductor.org/packages/release/bioc/vignettes/rhdf5/inst/doc/rhdf5.html">rhdf5 - HDF5 interface for R</a></p>
+
 <h1 id="インストール">インストール</h1>
+
 <pre><code>install.packages(&quot;BiocManager&quot;)
 BiocManager::install(&quot;rhdf5&quot;)
-</code></pre><h1 id="基本的な関数">基本的な関数</h1>
+</code></pre>
+
+<h1 id="基本的な関数">基本的な関数</h1>
+
 <h2 id="ファイルの構造を表示する">ファイルの構造を表示する</h2>
+
 <pre><code>h5ls(&quot;myhdf5file.h5&quot;)
-</code></pre><h2 id="ファイルの中身を読み取る">ファイルの中身を読み取る</h2>
+</code></pre>
+
+<h2 id="ファイルの中身を読み取る">ファイルの中身を読み取る</h2>
+
 <pre><code>D = h5read(&quot;myhdf5file.h5&quot;,&quot;foo/A&quot;)
-</code></pre><h2 id="ファイルを開く">ファイルを開く</h2>
+</code></pre>
+
+<h2 id="ファイルを開く">ファイルを開く</h2>
+
 <pre><code>h5f = H5Fopen(&quot;myhdf5file.h5&quot;)
 
 # アクセス
 h5f$df
-</code></pre></article>
+</code></pre>
+</article>
 
       
 <div class="book-footer justify-between">
@@ -976,11 +1024,16 @@ h5f$df
 
   <aside class="book-toc level-3 fixed">
     <nav id="TableOfContents">
-  <ul>
-    <li><a href="#ファイルの構造を表示する">ファイルの構造を表示する</a></li>
-    <li><a href="#ファイルの中身を読み取る">ファイルの中身を読み取る</a></li>
-    <li><a href="#ファイルを開く">ファイルを開く</a></li>
-  </ul>
+<ul>
+<li><a href="#rhdf5">rhdf5</a></li>
+<li><a href="#インストール">インストール</a></li>
+<li><a href="#基本的な関数">基本的な関数</a>
+<ul>
+<li><a href="#ファイルの構造を表示する">ファイルの構造を表示する</a></li>
+<li><a href="#ファイルの中身を読み取る">ファイルの中身を読み取る</a></li>
+<li><a href="#ファイルを開く">ファイルを開く</a></li>
+</ul></li>
+</ul>
 </nav>
   </aside>
 

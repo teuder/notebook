@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0"><meta property="og:title" content="raster" />
-<meta property="og:description" content="raster # GooTiffの読み込み data &lt;- raster::raster(&quot;path/data.tif&quot;) 値と座標のデータフレームに変換する df &lt;- raster::rasterToPoint(data) 緯度経度と値のデータフレームからラスタデータを作成する test &lt;- raster::rasterize(x = data[c(&quot;lon&quot;,&quot;lat&quot;)], #" />
+<meta property="og:description" content="raster # GooTiffの読み込み data &lt;- raster::raster(&#34;path/data.tif&#34;) 値と座標のデータフレームに変換する df &lt;- raster::rasterToPoint(data) 緯度経度と値のデータフレームからラスタデータを作成する test &lt;- raster::rasterize(x = data[c(&quot;lon&quot;,&quot;lat&quot;)], #" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://teuder.github.io/notebook/r/raster/" />
 <meta property="article:published_time" content="2019-08-26T00:00:00+00:00" />
@@ -13,10 +13,10 @@
 <link rel="icon" href="/notebook/favicon.png" type="image/x-icon">
 
 
-<link rel="stylesheet" href="/notebook/book.min.07c38dce7b6800da2a75a565d4d975e38f837294e24d00b5aae363037012d64b.css" integrity="sha256-B8ONzntoANoqdaVl1Nl144&#43;DcpTiTQC1quNjA3AS1ks=">
+<link rel="stylesheet" href="/notebook/book.min.1b994bd28c6ce2255f069b6bf6837b4d396307637fc48d61dcb2a6caac26e031.css" integrity="sha256-G5lL0oxs4iVfBptr9oN7TTljB2N/xI1h3LKmyqwm4DE=">
 
 
-<script defer src="/notebook/search.min.41244b17d88563adf4d2969d57343659e6e979194cdc54758589e4a6bb23dfab.js" integrity="sha256-QSRLF9iFY6300padVzQ2WebpeRlM3FR1hYnkprsj36s="></script>
+<script defer src="/notebook/search.min.e50f4978caa8ea9d9c3d92a39ce60172ac017f8cc877aace48252f3ed36fef5e.js" integrity="sha256-5Q9JeMqo6p2cPZKjnOYBcqwBf4zId6rOSCUvPtNv714="></script>
 
 <!--
 Made with Book Theme
@@ -485,6 +485,36 @@ https://github.com/alex-shpak/hugo-book
     
       
 
+  <a href="/notebook/llm/" >
+      LLM: Large Language Models
+  </a>
+
+
+    
+
+    
+
+
+
+
+  
+  <ul>
+    
+  </ul>
+  
+
+
+
+  </li>
+
+
+  
+    
+
+  <li >
+    
+      
+
   <a href="/notebook/datascience/" >
       Data Science
   </a>
@@ -925,12 +955,18 @@ https://github.com/alex-shpak/hugo-book
 </header>
 
       
-<article class="markdown"><h1 id="raster">raster</h1>
-<pre><code class="language-{r}" data-lang="{r}"># GooTiffの読み込み
-data &lt;- raster::raster(&quot;path/data.tif&quot;)
-</code></pre><p>値と座標のデータフレームに変換する</p>
+<article class="markdown">
+
+<h1 id="raster">raster</h1>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#75715e"># GooTiffの読み込み</span>
+data <span style="color:#f92672">&lt;-</span> raster<span style="color:#f92672">::</span>raster<span style="color:#111">(</span><span style="color:#d88200">&#34;path/data.tif&#34;</span><span style="color:#111">)</span></code></pre></div>
+<p>値と座標のデータフレームに変換する</p>
+
 <pre><code>df &lt;- raster::rasterToPoint(data)
-</code></pre><h1 id="緯度経度と値のデータフレームからラスタデータを作成する">緯度経度と値のデータフレームからラスタデータを作成する</h1>
+</code></pre>
+
+<h1 id="緯度経度と値のデータフレームからラスタデータを作成する">緯度経度と値のデータフレームからラスタデータを作成する</h1>
+
 <pre><code>test &lt;- 
   raster::rasterize(x = data[c(&quot;lon&quot;,&quot;lat&quot;)], # データフレームの経度、緯度のカラムの指定、n行2列の行列でもいい
           y = raster::raster(ncols=32512, nrows=24576), # 雛形となるラスタオブジェクト（ピクセル数を指定する）
@@ -941,8 +977,12 @@ data &lt;- raster::raster(&quot;path/data.tif&quot;)
 
 #raster::writeRaster(test, &quot;./output/peru_20190828_4608_6096.tif&quot;, overwrite=TRUE)
 
-</code></pre><h1 id="関数">関数</h1>
+</code></pre>
+
+<h1 id="関数">関数</h1>
+
 <h2 id="rasterize">rasterize</h2>
+
 <pre><code>## S4 method for signature 'matrix,Raster'
 rasterize(x, y, field, fun='last', background=NA,
      mask=FALSE, update=FALSE, updateValue='all', filename=&quot;&quot;, na.rm=TRUE, ...)
@@ -959,42 +999,62 @@ rasterize(x, y, field, fun='last', background=NA,
 rasterize(x, y, field, fun='last', background=NA,
     mask=FALSE, update=FALSE, updateValue='all', filename=&quot;&quot;,
     getCover=FALSE, silent=TRUE, ...)
-</code></pre><p>ラスタの各セルに、空間データオブジェクト（点、線、ポリゴン）と紐づいた値を、付与する。</p>
+</code></pre>
+
+<p>ラスタの各セルに、空間データオブジェクト（点、線、ポリゴン）と紐づいた値を、付与する。</p>
+
 <p>ポリゴン：ポリゴンがセルの中心に被っていたら値が転送される。線：その線と触れているセル全てに値が転送される。この挙動を、ポリゴンを線としてラスタ化した後で、ポリゴンをポリゴンとしてラスタ化することで、合体させることができる？？</p>
+
 <p>xが点を表す場合、各点がセルと紐づく。セル同士の境界に点が落ちる場合は右側あるいは下側のセルに配置される。セルに付与される値は、点の値と関数　fun により決定される。</p>
+
 <p>x
 各セルに値を転送したい地物のオブジェクト
-点を表すオブジェクト（SpatialPoints<em>オブジェクト、２列行列、２列データフレーム）、
-SpatialLines</em>オブジェクト、
+点を表すオブジェクト（SpatialPoints*オブジェクト、２列行列、２列データフレーム）、
+SpatialLines*オブジェクト、
 SpatialPolygons*オブジェクト、
 あるいはその拡張オブジェクト</p>
-<p>y
+
+<p>y<br />
 値を転送したいラスタオブジェクト（Raster*）（既存のラスタオブジェクト）</p>
-<p>field
+
+<p>field<br />
 数値あるいは文字列。ラスタに転送する値。スカラ値、あるいは、数値ベクター（長さはxの地物の数と同じ）
 x が Spatial*DataFrame の場合は、カラム名を指定することができる。
 指定しない場合、その属性インデックスが</p>
+
 <p>If missing, the attribute index is used (i.e. numbers from 1 to the number of features). You can also provide a vector with the same length as the number of spatial features, or a matrix where the number of rows matches the number of spatial features</p>
+
 <p>fun
 function or character. To determine what values to assign to cells that are covered by multiple spatial features. You can use functions such as min, max, or mean, or one of the following character values: &lsquo;first&rsquo;, &lsquo;last&rsquo;, &lsquo;count&rsquo;. The default value is &lsquo;last&rsquo;. In the case of SpatialLines*, &lsquo;length&rsquo; is also allowed (currently for planar coordinate systems only).</p>
-<p>If x represents points, fun must accept a na.rm argument, either explicitly or through &lsquo;dots&rsquo;. This means that fun=length fails, but fun=function(x,&hellip;)length(x) works, although it ignores the na.rm argument. To use the na.rm argument you can use a function like this: fun=function(x, na.rm)if (na.rm) length(na.omit(x)) else (length(x), or use a function that removes NA values in all cases, like this function to compute the number of unique values per grid cell &ldquo;richness&rdquo;: fun=function(x, &hellip;) {length(unique(na.omit(x)))} . If you want to count the number of points in each grid cell, you can use fun='count&rsquo; or fun=function(x,&hellip;){length(x)}.</p>
+
+<p>If x represents points, fun must accept a na.rm argument, either explicitly or through &lsquo;dots&rsquo;. This means that fun=length fails, but fun=function(x,&hellip;)length(x) works, although it ignores the na.rm argument. To use the na.rm argument you can use a function like this: fun=function(x, na.rm)if (na.rm) length(na.omit(x)) else (length(x), or use a function that removes NA values in all cases, like this function to compute the number of unique values per grid cell &ldquo;richness&rdquo;: fun=function(x, &hellip;) {length(unique(na.omit(x)))} . If you want to count the number of points in each grid cell, you can use fun=&lsquo;count&rsquo; or fun=function(x,&hellip;){length(x)}.</p>
+
 <p>You can also pass multiple functions using a statement like fun=function(x, &hellip;) c(length(x),mean(x)), in which case the returned object is a RasterBrick (multiple layers).</p>
-<p>background
+
+<p>background<br />
 numeric. Value to put in the cells that are not covered by any of the features of x. Default is NA</p>
-<p>mask
+
+<p>mask<br />
 logical. If TRUE the values of the input Raster object are &lsquo;masked&rsquo; by the spatial features of x. That is, cells that spatially overlap with the spatial features retain their values, the other cells become NA. Default is FALSE. This option cannot be used when update=TRUE</p>
-<p>update
+
+<p>update<br />
 logical. If TRUE, the values of the Raster* object are updated for the cells that overlap the spatial features of x. Default is FALSE. Cannot be used when mask=TRUE</p>
+
 <p>updateValue
 numeric (normally an integer), or character. Only relevant when update=TRUE. Select, by their values, the cells to be updated with the values of the spatial features. Valid character values are &lsquo;all&rsquo;, &lsquo;NA&rsquo;, and &lsquo;!NA&rsquo;. Default is &lsquo;all&rsquo;</p>
-<p>filename
+
+<p>filename<br />
 character. Output filename (optional)</p>
-<p>na.rm
+
+<p>na.rm<br />
 If TRUE, NA values are removed if fun honors the na.rm argument</p>
-<p>getCover
+
+<p>getCover<br />
 logical. If TRUE, the fraction of each grid cell that is covered by the polygons is returned (and the values of field, fun, mask, and update are ignored. The fraction covered is estimated by dividing each cell into 100 subcells and determining presence/absence of the polygon in the center of each subcell</p>
-<p>silent
+
+<p>silent<br />
 Logical. If TRUE, feedback on the polygon count is suppressed. Default is FALSE</p>
+
 <p>&hellip;
 Additional arguments for file writing as for writeRaster</p>
 </article>
@@ -1031,9 +1091,14 @@ Additional arguments for file writing as for writeRaster</p>
 
   <aside class="book-toc level-3 fixed">
     <nav id="TableOfContents">
-  <ul>
-    <li><a href="#rasterize">rasterize</a></li>
-  </ul>
+<ul>
+<li><a href="#raster">raster</a></li>
+<li><a href="#緯度経度と値のデータフレームからラスタデータを作成する">緯度経度と値のデータフレームからラスタデータを作成する</a></li>
+<li><a href="#関数">関数</a>
+<ul>
+<li><a href="#rasterize">rasterize</a></li>
+</ul></li>
+</ul>
 </nav>
   </aside>
 

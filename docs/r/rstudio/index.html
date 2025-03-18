@@ -12,10 +12,10 @@
 <link rel="icon" href="/notebook/favicon.png" type="image/x-icon">
 
 
-<link rel="stylesheet" href="/notebook/book.min.07c38dce7b6800da2a75a565d4d975e38f837294e24d00b5aae363037012d64b.css" integrity="sha256-B8ONzntoANoqdaVl1Nl144&#43;DcpTiTQC1quNjA3AS1ks=">
+<link rel="stylesheet" href="/notebook/book.min.1b994bd28c6ce2255f069b6bf6837b4d396307637fc48d61dcb2a6caac26e031.css" integrity="sha256-G5lL0oxs4iVfBptr9oN7TTljB2N/xI1h3LKmyqwm4DE=">
 
 
-<script defer src="/notebook/search.min.41244b17d88563adf4d2969d57343659e6e979194cdc54758589e4a6bb23dfab.js" integrity="sha256-QSRLF9iFY6300padVzQ2WebpeRlM3FR1hYnkprsj36s="></script>
+<script defer src="/notebook/search.min.e50f4978caa8ea9d9c3d92a39ce60172ac017f8cc877aace48252f3ed36fef5e.js" integrity="sha256-5Q9JeMqo6p2cPZKjnOYBcqwBf4zId6rOSCUvPtNv714="></script>
 
 <!--
 Made with Book Theme
@@ -484,6 +484,36 @@ https://github.com/alex-shpak/hugo-book
     
       
 
+  <a href="/notebook/llm/" >
+      LLM: Large Language Models
+  </a>
+
+
+    
+
+    
+
+
+
+
+  
+  <ul>
+    
+  </ul>
+  
+
+
+
+  </li>
+
+
+  
+    
+
+  <li >
+    
+      
+
   <a href="/notebook/datascience/" >
       Data Science
   </a>
@@ -924,44 +954,83 @@ https://github.com/alex-shpak/hugo-book
 </header>
 
       
-<article class="markdown"><h1 id="rstudio">RStudio</h1>
+<article class="markdown">
+
+<h1 id="rstudio">RStudio</h1>
+
 <h2 id="インストール">インストール</h2>
-<h3 id="wsl-の-ubuntu-1804-にインストール">WSL の Ubuntu 18.04 にインストール</h3>
+
+<h3 id="wsl-の-ubuntu-18-04-にインストール">WSL の Ubuntu 18.04 にインストール</h3>
+
 <p>Ubuntuの場合と同じ、事前に <a href="https://teuder.github.io/notebook/r/#ubuntu">Rをインストール</a>しておく</p>
+
 <pre><code>sudo apt-get install gdebi-core
 wget https://download2.rstudio.org/server/bionic/amd64/rstudio-server-1.3.959-amd64.deb
 sudo gdebi rstudio-server-1.3.959-amd64.deb
-</code></pre><p>しかし、次のようなエラーが出た</p>
+</code></pre>
+
+<p>しかし、次のようなエラーが出た</p>
+
 <pre><code>$sudo gdebi rstudio-server-1.3.959-amd64.deb
 Traceback (most recent call last):
   File &quot;/usr/bin/gdebi&quot;, line 38, in &lt;module&gt;
     from GDebi.GDebiCli import GDebiCli
   File &quot;/usr/share/gdebi/GDebi/GDebiCli.py&quot;, line 103
     def get_dependencies_info(self):
-</code></pre><p>ロケールを設定して再度インストールして解決</p>
+</code></pre>
+
+<p>ロケールを設定して再度インストールして解決</p>
+
 <pre><code>export LC_ALL=en_US.UTF-8
-</code></pre><h2 id="rstudio-server-の起動">RStudio Server の起動</h2>
+</code></pre>
+
+<h2 id="rstudio-server-の起動">RStudio Server の起動</h2>
+
 <pre><code>sudo service rstudio-server start
-</code></pre><p>その後、ブラウザから <code>http://localhost:8787/</code> にアクセスする</p>
+</code></pre>
+
+<p>その後、ブラウザから <code>http://localhost:8787/</code> にアクセスする</p>
+
 <p>おまけ</p>
+
 <p><a href="https://qiita.com/t-yui/items/62eeb5ac39f5cd360118">WSLにインストールしたRStudio Serverの起動を楽にする</a></p>
+
 <h2 id="rstudio-server-のアップデート">RStudio Server のアップデート</h2>
+
 <p><a href="https://support.rstudio.com/hc/en-us/articles/216079967-Upgrading-RStudio-Server">RStudio Server のパージョンを新しくする</a></p>
+
 <p>実行中のRセッションの確認</p>
+
 <pre><code>sudo rstudio-server active-sessions
-</code></pre><p>実行中のRセッションの停止</p>
+</code></pre>
+
+<p>実行中のRセッションの停止</p>
+
 <pre><code>sudo rstudio-server suspend-all
-</code></pre><p>オフラインモードにする</p>
+</code></pre>
+
+<p>オフラインモードにする</p>
+
 <pre><code>sudo rstudio-server offline
-</code></pre><p>新しいバージョンのRStudio Serverをインストール</p>
+</code></pre>
+
+<p>新しいバージョンのRStudio Serverをインストール</p>
+
 <p><a href="https://rstudio.com/products/rstudio/download-server/">Download RStudio Server</a></p>
+
 <pre><code>sudo gdebi &lt;rstudio-server-package.deb&gt;
 # or
 sudo yum install --nogpgcheck &lt;rstudio-server-package.rpm&gt;
-</code></pre><p>アップデートしたサーバーを再起動</p>
+</code></pre>
+
+<p>アップデートしたサーバーを再起動</p>
+
 <pre><code>sudo rstudio-server restart
-</code></pre><pre><code>sudo rstudio-server online
-</code></pre></article>
+</code></pre>
+
+<pre><code>sudo rstudio-server online
+</code></pre>
+</article>
 
       
 <div class="book-footer justify-between">
@@ -995,15 +1064,17 @@ sudo yum install --nogpgcheck &lt;rstudio-server-package.rpm&gt;
 
   <aside class="book-toc level-3 fixed">
     <nav id="TableOfContents">
-  <ul>
-    <li><a href="#インストール">インストール</a>
-      <ul>
-        <li><a href="#wsl-の-ubuntu-1804-にインストール">WSL の Ubuntu 18.04 にインストール</a></li>
-      </ul>
-    </li>
-    <li><a href="#rstudio-server-の起動">RStudio Server の起動</a></li>
-    <li><a href="#rstudio-server-のアップデート">RStudio Server のアップデート</a></li>
-  </ul>
+<ul>
+<li><a href="#rstudio">RStudio</a>
+<ul>
+<li><a href="#インストール">インストール</a>
+<ul>
+<li><a href="#wsl-の-ubuntu-18-04-にインストール">WSL の Ubuntu 18.04 にインストール</a></li>
+</ul></li>
+<li><a href="#rstudio-server-の起動">RStudio Server の起動</a></li>
+<li><a href="#rstudio-server-のアップデート">RStudio Server のアップデート</a></li>
+</ul></li>
+</ul>
 </nav>
   </aside>
 

@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500">
+  <!-- Background -->
+  <rect width="800" height="500" fill="#1A1A1A"/>
+  
+  <!-- Title -->
+  <text x="40" y="50" fill="#ffffff" font-size="24" font-weight="bold">🏆 最新LLMモデルランキング トップ5</text>
+  
+  <!-- Decorative line -->
+  <line x1="40" y1="70" x2="760" y2="70" stroke="#444" stroke-width="2"/>
+  
+  <!-- Model cards -->
+  <!-- GPT-4 -->
+  <g transform="translate(40,100)">
+    <rect width="720" height="70" rx="10" fill="#2D2D2D"/>
+    <!-- OpenAI Icon -->
+    <circle cx="35" cy="35" r="25" fill="#10a37f"/>
+    <path d="M25,35 L45,35 M35,25 L35,45" stroke="white" stroke-width="2"/>
+    <text x="80" y="30" fill="#FFD700" font-size="24" font-weight="bold">1. GPT-4</text>
+    <text x="80" y="55" fill="#999" font-size="16">開発：OpenAI • 最も強力な汎用LLM</text>
+    <circle cx="680" cy="35" r="25" fill="#FFD700"/>
+    <text x="680" y="45" fill="#000" font-size="20" text-anchor="middle" font-weight="bold">1</text>
+  </g>
+  
+  <!-- Claude 3 -->
+  <g transform="translate(40,180)">
+    <rect width="720" height="70" rx="10" fill="#2D2D2D"/>
+    <!-- Anthropic Icon -->
+    <circle cx="35" cy="35" r="25" fill="#6b48ff"/>
+    <path d="M25,35 Q35,25 45,35 Q35,45 25,35" fill="none" stroke="white" stroke-width="2"/>
+    <text x="80" y="30" fill="#C0C0C0" font-size="24" font-weight="bold">2. Claude 3</text>
+    <text x="80" y="55" fill="#999" font-size="16">開発：Anthropic • 優れた推論能力と安全性</text>
+    <circle cx="680" cy="35" r="25" fill="#C0C0C0"/>
+    <text x="680" y="45" fill="#000" font-size="20" text-anchor="middle" font-weight="bold">2</text>
+  </g>
+  
+  <!-- Gemini -->
+  <g transform="translate(40,260)">
+    <rect width="720" height="70" rx="10" fill="#2D2D2D"/>
+    <!-- Google Icon -->
+    <circle cx="35" cy="35" r="25" fill="#4285f4"/>
+    <path d="M25,35 h20 M35,25 v20" stroke="white" stroke-width="2"/>
+    <circle cx="35" cy="35" r="8" fill="white"/>
+    <text x="80" y="30" fill="#CD7F32" font-size="24" font-weight="bold">3. Gemini</text>
+    <text x="80" y="55" fill="#999" font-size="16">開発：Google • マルチモーダル性能に優れる</text>
+    <circle cx="680" cy="35" r="25" fill="#CD7F32"/>
+    <text x="680" y="45" fill="#000" font-size="20" text-anchor="middle" font-weight="bold">3</text>
+  </g>
+  
+  <!-- Llama 2 -->
+  <g transform="translate(40,340)">
+    <rect width="720" height="70" rx="10" fill="#2D2D2D"/>
+    <!-- Meta Icon -->
+    <circle cx="35" cy="35" r="25" fill="#0668E1"/>
+    <path d="M25,30 Q35,45 45,30" fill="none" stroke="white" stroke-width="2"/>
+    <text x="80" y="30" fill="#ffffff" font-size="24" font-weight="bold">4. Llama 2</text>
+    <text x="80" y="55" fill="#999" font-size="16">開発：Meta • オープンソースのリーダー</text>
+    <circle cx="680" cy="35" r="25" fill="#4A4A4A"/>
+    <text x="680" y="45" fill="#fff" font-size="20" text-anchor="middle" font-weight="bold">4</text>
+  </g>
+  
+  <!-- Mistral -->
+  <g transform="translate(40,420)">
+    <rect width="720" height="70" rx="10" fill="#2D2D2D"/>
+    <!-- Mistral Icon -->
+    <circle cx="35" cy="35" r="25" fill="#0042DA"/>
+    <path d="M25,35 Q35,25 45,35 M25,35 Q35,45 45,35" fill="none" stroke="white" stroke-width="2"/>
+    <text x="80" y="30" fill="#ffffff" font-size="24" font-weight="bold">5. Mistral</text>
+    <text x="80" y="55" fill="#999" font-size="16">開発：Mistral AI • 効率的で高性能</text>
+    <circle cx="680" cy="35" r="25" fill="#4A4A4A"/>
+    <text x="680" y="45" fill="#fff" font-size="20" text-anchor="middle" font-weight="bold">5</text>
+  </g>
+  
+  <!-- Footer -->
+  <text x="40" y="480" fill="#666" font-size="14">※ 総合的な性能と業界への影響力に基づくランキング</text>
+</svg>

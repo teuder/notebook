@@ -7,15 +7,16 @@
 <meta property="og:description" content="" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://teuder.github.io/notebook/r/" />
+
 <meta property="og:updated_time" content="2019-08-26T00:00:00+00:00" />
 <title>R | notebook</title>
 <link rel="icon" href="/notebook/favicon.png" type="image/x-icon">
 
 
-<link rel="stylesheet" href="/notebook/book.min.07c38dce7b6800da2a75a565d4d975e38f837294e24d00b5aae363037012d64b.css" integrity="sha256-B8ONzntoANoqdaVl1Nl144&#43;DcpTiTQC1quNjA3AS1ks=">
+<link rel="stylesheet" href="/notebook/book.min.1b994bd28c6ce2255f069b6bf6837b4d396307637fc48d61dcb2a6caac26e031.css" integrity="sha256-G5lL0oxs4iVfBptr9oN7TTljB2N/xI1h3LKmyqwm4DE=">
 
 
-<script defer src="/notebook/search.min.41244b17d88563adf4d2969d57343659e6e979194cdc54758589e4a6bb23dfab.js" integrity="sha256-QSRLF9iFY6300padVzQ2WebpeRlM3FR1hYnkprsj36s="></script>
+<script defer src="/notebook/search.min.e50f4978caa8ea9d9c3d92a39ce60172ac017f8cc877aace48252f3ed36fef5e.js" integrity="sha256-5Q9JeMqo6p2cPZKjnOYBcqwBf4zId6rOSCUvPtNv714="></script>
 
 <link rel="alternate" type="application/rss+xml" href="https://teuder.github.io/notebook/r/index.xml" title="notebook" />
 <!--
@@ -485,6 +486,36 @@ https://github.com/alex-shpak/hugo-book
     
       
 
+  <a href="/notebook/llm/" >
+      LLM: Large Language Models
+  </a>
+
+
+    
+
+    
+
+
+
+
+  
+  <ul>
+    
+  </ul>
+  
+
+
+
+  </li>
+
+
+  
+    
+
+  <li >
+    
+      
+
   <a href="/notebook/datascience/" >
       Data Science
   </a>
@@ -925,52 +956,89 @@ https://github.com/alex-shpak/hugo-book
 </header>
 
       
-<article class="markdown"><h1 id="r">R</h1>
+<article class="markdown">
+
+<h1 id="r">R</h1>
+
 <h2 id="コーディングスタイル">コーディングスタイル</h2>
+
 <p><a href="https://style.tidyverse.org/">The tidyverse style guide</a></p>
+
 <p>なんで？</p>
+
 <h2 id="github-にあるパッケージをインストールする">github にあるパッケージをインストールする</h2>
+
 <pre><code>devtools::install_github(&quot;jimhester/lookup&quot;)
 
 # ブランチを指定してインストールする場合
 devtools::install_github(&quot;jimhester/lookup@develop&quot;)
-</code></pre><h2 id="ソースコードを確認">ソースコードを確認</h2>
+</code></pre>
+
+<h2 id="ソースコードを確認">ソースコードを確認</h2>
+
 <p>lookup パッケージ</p>
+
 <pre><code>devtools::install_github(&quot;jimhester/lookup&quot;)
 lookup::lookup(dplyr::summarise)
-</code></pre><h2 id="バージョン管理">バージョン管理</h2>
+</code></pre>
+
+<h2 id="バージョン管理">バージョン管理</h2>
+
 <ul>
 <li><a href="https://rud.is/rswitch/">RSwitch</a> R本体のバージョン管理 <a href="https://twitter.com/hrbrmstr">https://twitter.com/hrbrmstr</a></li>
 <li>renv, packrat : パッケージのバージョン管理</li>
 </ul>
+
 <h2 id="並列計算">並列計算</h2>
+
 <p><code>furrr</code> : <code>purrr</code> と同様の使い方で並列に計算できる</p>
+
 <h1 id="可視化">可視化</h1>
+
 <p><a href="https://www.data-to-viz.com/">Data to Viz</a></p>
+
 <h2 id="インストール">インストール</h2>
+
 <h3 id="ubuntu">Ubuntu</h3>
+
 <ul>
 <li><a href="https://cran.rstudio.com/bin/linux/ubuntu/README.html">UBUNTU PACKAGES FOR R</a></li>
 <li><a href="https://qiita.com/JeJeNeNo/items/43fc95c4710c668e86a2">Ubuntuに最新版のRをインストールする</a></li>
 </ul>
+
 <h2 id="環境設定">環境設定</h2>
+
 <h3 id="環境変数">環境変数</h3>
+
 <pre><code>Sys.getenv()
-</code></pre><pre><code>Sys.setenv(&quot;LANGUAGE&quot;=&quot;ja_Jp.UTF-8&quot;)
-</code></pre><h3 id="環境設定ファイル">環境設定ファイル</h3>
+</code></pre>
+
+<pre><code>Sys.setenv(&quot;LANGUAGE&quot;=&quot;ja_Jp.UTF-8&quot;)
+</code></pre>
+
+<h3 id="環境設定ファイル">環境設定ファイル</h3>
+
 <p>Rの設定ファイルには以下がある。</p>
+
 <ul>
 <li><code>.Renviron</code></li>
 <li><code>.Rprofile</code></li>
 <li><code>.R/Makevars</code></li>
 </ul>
+
 <p>ユーザーごとのこれらの設定ファイルは、ユーザーのRホームディレクトリ <code>R_USER</code> に配置しておくとよい。</p>
+
 <pre><code># ユーザーのRホームディレクトリの確認方法
 &gt; Sys.getenv(&quot;R_USER&quot;)
 [1] &quot;C:/Users/hoge/Documents&quot;
-</code></pre><h4 id="renviron">.Renviron</h4>
+</code></pre>
+
+<h4 id="renviron">.Renviron</h4>
+
 <p>環境変数を指定するシェルスクリプト</p>
+
 <p><code>usethis::edit_r_environ()</code> からアクセスできる。</p>
+
 <pre><code>R_USER=${HOME}/.R
 R_LIBS_USER=${R_USER}/library
 R_ENVIRON_USER=${R_USER}/.Renviron
@@ -979,11 +1047,18 @@ R_HISTFILE=${R_USER}/.Rhistory
 R_HISTSIZE=65535
 LANG=C
 LC_CTYPE=en_US.UTF-8
-</code></pre><h4 id="rprofile">.Rprofile</h4>
+</code></pre>
+
+<h4 id="rprofile">.Rprofile</h4>
+
 <p>Rの起動時や終了時に実行したいRのスクリプト</p>
+
 <p><a href="https://cran.r-project.org/doc/manuals/R-intro.html#Customizing-the-environment">https://cran.r-project.org/doc/manuals/R-intro.html#Customizing-the-environment</a></p>
-<h4 id="rmakevars">~/.R/Makevars</h4>
+
+<h4 id="r-makevars">~/.R/Makevars</h4>
+
 <p><a href="https://cran.r-project.org/doc/manuals/r-release/R-exts.html#Using-Makevars">https://cran.r-project.org/doc/manuals/r-release/R-exts.html#Using-Makevars</a></p>
+
 <pre><code>CC=/opt/local/bin/gcc-mp-4.7
 CXX=/opt/local/bin/g++-mp-4.7
 
@@ -992,42 +1067,59 @@ LD_LIBRARY_PATH=/opt/local/lib:$LD_LIBRARY_PATH
 CXXFLAGS= -g0 -O3 -Wall
 
 MAKE=make -j4
-</code></pre><h2 id="ロケール文字コード">ロケール、文字コード</h2>
+</code></pre>
+
+<h2 id="ロケール-文字コード">ロケール、文字コード</h2>
+
 <h3 id="ロケールを指定する文字列">ロケールを指定する文字列</h3>
+
 <p>ロケールとは表示する言語・文字コードや数字や時刻の表示形式を変更するための設定のこと</p>
+
 <ul>
 <li><a href="https://cran.r-project.org/doc/manuals/r-patched/R-admin.html#Locales">R manual: Locale</a></li>
 <li><a href="https://notchained.hatenablog.com/entry/2015/06/19/233502">WindowsでRのロケールを設定するときのメモ</a></li>
 </ul>
+
 <p>次の３つの情報を指定する文字列</p>
+
 <ul>
 <li>言語 ja</li>
 <li>領域 jp</li>
 <li>文字コード utf-8</li>
 </ul>
+
 <p>ロケールの指定形式はOSにより異なる</p>
+
 <ul>
 <li>Windows
+
 <ul>
 <li><code>Japanese_Japan.932</code> 日本語、日本国、Windows拡張Shift-JIS（コードページ932）</li>
 <li><code>English_United States.1252</code></li>
 <li>省略した入力として <code>Japanese</code> <code>English</code> でも良い（エンコーディングはデフォルトで言語だけ変えたいとき）</li>
-</ul>
-</li>
+</ul></li>
 <li>Mac, Linux
+
 <ul>
 <li><code>ja_JP.UTF-8</code></li>
 <li><code>en_US.UTF-8</code></li>
+</ul></li>
 </ul>
-</li>
-</ul>
+
 <h3 id="環境変数-1">環境変数</h3>
+
 <p>メッセージを変えたいだけなら <code>.Renviron</code> ファイルの中で <code>LANGUAGE</code> 環境変数を設定する</p>
+
 <p>.Renviron</p>
+
 <pre><code>LANGUAGE=English
 #LANGUAGE=Japanese
-</code></pre><p>表示されるメッセージの言語は、最初に環境変数 <code>LANGUAGE</code> の設定が読まれる。次に <code>LC_ALL</code>, <code>LC_MESSAGES</code> and <code>LANG</code></p>
+</code></pre>
+
+<p>表示されるメッセージの言語は、最初に環境変数 <code>LANGUAGE</code> の設定が読まれる。次に <code>LC_ALL</code>, <code>LC_MESSAGES</code> and <code>LANG</code></p>
+
 <p>Rでロケールに関連する環境変数</p>
+
 <ul>
 <li><code>LC_MESSAGES</code> : R で表示されるメッセージの設定</li>
 <li><code>LC_COLLATE</code> : 並び換えや正規表現に用いる文字の照合順序に影響します。</li>
@@ -1035,14 +1127,19 @@ MAKE=make -j4
 <li><code>LC_MONETARY</code> : 金額に関連する数値、通貨記号の表示に影響します。</li>
 <li><code>LC_NUMERIC</code> : 金額に関係しない数値の表示（小数の区切り文字など）に影響します。</li>
 <li><code>LC_TIME</code> : 日付と時刻の表示に影響します。</li>
-<li><code>LC_ALL</code> : これが設定されていると他のロケール設定（<code>LC_*</code>）よりも優先して、こちらの設定が使われる</li>
-</ul>
+
+<li><p><code>LC_ALL</code> : これが設定されていると他のロケール設定（<code>LC_*</code>）よりも優先して、こちらの設定が使われる</p>
+
 <pre><code>Sys.setlocale(&quot;LC_ALL&quot;, &quot;C&quot;)
- Sys.setlocale(&quot;LC_MESSAGES&quot;, &quot;English&quot;)
-</code></pre><p>現在のロケールを確認する（windows）</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#f92672">&gt;</span> <span style="color:#75af00">Sys.getlocale</span><span style="color:#111">()</span>
-<span style="color:#111">[1]</span> <span style="color:#d88200">&#34;LC_COLLATE=Japanese_Japan.932;LC_CTYPE=English_United States.1252;LC_MONETARY=Japanese_Japan.932;LC_NUMERIC=C;LC_TIME=Japanese_Japan.932&#34;</span>
-</code></pre></div><p>Ubuntu でロケールを表示してみた。　ロケールに関連する環境変数はもっと多い</p>
+Sys.setlocale(&quot;LC_MESSAGES&quot;, &quot;English&quot;)
+</code></pre></li>
+</ul>
+
+<p>現在のロケールを確認する（windows）</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#f92672">&gt;</span> <span style="color:#00a8c8">Sys.getlocale</span><span style="color:#111">()</span>
+<span style="color:#111">[</span><span style="color:#ae81ff">1</span><span style="color:#111">]</span> <span style="color:#d88200">&#34;LC_COLLATE=Japanese_Japan.932;LC_CTYPE=English_United States.1252;LC_MONETARY=Japanese_Japan.932;LC_NUMERIC=C;LC_TIME=Japanese_Japan.932&#34;</span></code></pre></div>
+<p>Ubuntu でロケールを表示してみた。　ロケールに関連する環境変数はもっと多い</p>
+
 <pre><code>$ locale
 LANG=ja_JP.UTF-8
 LANGUAGE=
@@ -1059,35 +1156,46 @@ LC_TELEPHONE=&quot;ja_JP.UTF-8&quot;
 LC_MEASUREMENT=&quot;ja_JP.UTF-8&quot;
 LC_IDENTIFICATION=&quot;ja_JP.UTF-8&quot;
 LC_ALL=ja_JP.UTF-8
-</code></pre><h1 id="フォント">フォント</h1>
+</code></pre>
+
+<h1 id="フォント">フォント</h1>
+
 <p>Windows 環境でフォントを使うときの注意は <a href="https://cran.r-project.org/web/packages/extrafont/README.html">extrafontパッケージのREADME</a> に詳しく書いてある。</p>
+
 <p>こちらも悪くない <a href="https://qiita.com/zakkiiii/items/9bbfdaf46a097677205d">【ggplot2】 好きなフォントを適用できるようにする</a></p>
+
 <h3 id="フォントのインストール">フォントのインストール</h3>
+
 <p>フォントをインストールすると以下の場所にインストールされる多分。</p>
+
 <p>Windows OS が認識するのフォントの場所</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#111">sysfonts</span><span style="color:#f92672">::</span><span style="color:#75af00">font_paths</span><span style="color:#111">()</span>
-</code></pre></div><p>WIndowsにインストールされたフォントファイルの一覧をデータフレームで返す</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#111">sysfonts</span><span style="color:#f92672">::</span><span style="color:#75af00">font_files</span><span style="color:#111">()</span>  
-</code></pre></div><p>次のセクションでRにフォントをインポートするのに成功したら、この一覧にある <code>family</code> と <code>face</code> が R から利用できるようになるはず。</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">sysfonts<span style="color:#f92672">::</span>font_paths<span style="color:#111">()</span></code></pre></div>
+<p>WIndowsにインストールされたフォントファイルの一覧をデータフレームで返す</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">sysfonts<span style="color:#f92672">::</span>font_files<span style="color:#111">()</span>  </code></pre></div>
+<p>次のセクションでRにフォントをインポートするのに成功したら、この一覧にある <code>family</code> と <code>face</code> が R から利用できるようになるはず。</p>
+
 <h3 id="rへのフォントのインポート-windows">Rへのフォントのインポート (Windows)</h3>
-<p>参考　http://www.zg.em-net.ne.jp/~mlab/_src/sc271/82p8ac28bab82c683t83h839383g.pdf</p>
+
+<p>参考　<a href="http://www.zg.em-net.ne.jp/~mlab/_src/sc271/82p8ac28bab82c683t83h839383g.pdf">http://www.zg.em-net.ne.jp/~mlab/_src/sc271/82p8ac28bab82c683t83h839383g.pdf</a></p>
+
 <p>新しいフォントをインストールした時、*R をメジャーアップデートした時、Rにフォントをインポートする必要がある。
 （フォントをOSにインストールするだけではなく、インストールしたフォントをRから利用可能にする必要がある）</p>
+
 <p><code>extrafont::font_import()</code> がエラーでフォントのインポートができない。<code>Rttf2pt1</code>  パッケージをダウングレートするとインポートできるようになる。</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#111">remotes</span><span style="color:#f92672">::</span><span style="color:#75af00">install_version</span><span style="color:#111">(</span><span style="color:#d88200">&#34;Rttf2pt1&#34;</span><span style="color:#111">,</span> <span style="color:#111">version</span> <span style="color:#f92672">=</span> <span style="color:#d88200">&#34;1.3.8&#34;</span><span style="color:#111">)</span>
-<span style="color:#111">extrafont</span><span style="color:#f92672">::</span><span style="color:#75af00">font_import</span><span style="color:#111">()</span>
-</code></pre></div><div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#111">extrafont</span><span style="color:#f92672">::</span><span style="color:#75af00">font_import</span><span style="color:#111">()</span>
-</code></pre></div><p>その後、以下を実行すると R で指定可能なフォント family の一覧が出力される。（ここの出力に表示されないフォントは利用できない。）</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#111">grDevices</span><span style="color:#f92672">::</span><span style="color:#75af00">windowsFont</span><span style="color:#111">()</span>
-</code></pre></div><p>Windowsの場合、さらに毎回Rを起動したときに以下を実行する。</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#111">extrafont</span><span style="color:#f92672">::</span><span style="color:#75af00">loadfonts</span><span style="color:#111">(</span><span style="color:#111">device</span> <span style="color:#f92672">=</span> <span style="color:#d88200">&#34;win&#34;</span><span style="color:#111">)</span>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">remotes<span style="color:#f92672">::</span>install_version<span style="color:#111">(</span><span style="color:#d88200">&#34;Rttf2pt1&#34;</span><span style="color:#111">,</span> version <span style="color:#f92672">=</span> <span style="color:#d88200">&#34;1.3.8&#34;</span><span style="color:#111">)</span>
+extrafont<span style="color:#f92672">::</span>font_import<span style="color:#111">()</span></code></pre></div><div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">extrafont<span style="color:#f92672">::</span>font_import<span style="color:#111">()</span></code></pre></div>
+<p>その後、以下を実行すると R で指定可能なフォント family の一覧が出力される。（ここの出力に表示されないフォントは利用できない。）</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">grDevices<span style="color:#f92672">::</span>windowsFont<span style="color:#111">()</span></code></pre></div>
+<p>Windowsの場合、さらに毎回Rを起動したときに以下を実行する。</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">extrafont<span style="color:#f92672">::</span>loadfonts<span style="color:#111">(</span>device <span style="color:#f92672">=</span> <span style="color:#d88200">&#34;win&#34;</span><span style="color:#111">)</span>
 <span style="color:#75715e"># pdf や postscript で出力する場合は以下も必要らしい</span>
 <span style="color:#75715e">#extrafont::loadfonts(&#34;pdf&#34;, quiet = TRUE)</span>
-<span style="color:#75715e">#extrafont::loadfonts(&#34;postscript&#34;, quiet = TRUE)</span>
-</code></pre></div><p>利用可能なフォントの一覧の表示？
+<span style="color:#75715e">#extrafont::loadfonts(&#34;postscript&#34;, quiet = TRUE)</span></code></pre></div>
+<p>利用可能なフォントの一覧の表示？
 これらのフォント名は family で指定できる？</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#111">extrafont</span><span style="color:#f92672">::</span><span style="color:#75af00">fonts</span><span style="color:#111">()</span>
-</code></pre></div><p>pdf デバイスで使えるフォントの一覧</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">extrafont<span style="color:#f92672">::</span>fonts<span style="color:#111">()</span></code></pre></div>
+<p>pdf デバイスで使えるフォントの一覧</p>
+
 <pre><code>names(pdfFonts())
 
 # Vector of font family names
@@ -1095,75 +1203,104 @@ fonts()
 
 # Show entire table
 fonttable()
-</code></pre><h3 id="フォントの指定">フォントの指定</h3>
+</code></pre>
+
+<h3 id="フォントの指定">フォントの指定</h3>
+
 <h4 id="font-family-とは">Font family とは</h4>
+
 <p>まずはフォント family と face を理解する。</p>
+
 <pre><code>family = &quot;Roboto&quot;
 face = &quot;bold&quot; # bold, italic
-</code></pre><p>フォントにはいわゆる &ldquo;ＭＳ ゴシック&rdquo; や &ldquo;Roboto&rdquo; など字体の違いのほかに、同じ字体の中で普通（Regular）や太字 (Bold) や斜体 (Italic) などがある。</p>
+</code></pre>
+
+<p>フォントにはいわゆる &ldquo;ＭＳ ゴシック&rdquo; や &ldquo;Roboto&rdquo; など字体の違いのほかに、同じ字体の中で普通（Regular）や太字 (Bold) や斜体 (Italic) などがある。</p>
+
 <p>フォントの実体はフォントファイルに記録されているが、実は普通・太字・斜体も別のフォントファイルに保存されている。なので厳密には異なるフォントと言うこともできる。</p>
+
 <p>そこで同じ字体を持つフォントをフォント <code>family</code> と呼ぶ、その中に普通・太字・斜体のことを <code>face</code> と呼ぶ。</p>
+
 <h3 id="sysfonts-パッケージを使った方法">sysfonts パッケージを使った方法</h3>
+
 <ul>
 <li>sysfonts</li>
-<li><a href="https://cran.rstudio.com/web/packages/showtext/vignettes/introduction.html">showtext パッケージ</a></li>
-</ul>
+
+<li><p><a href="https://cran.rstudio.com/web/packages/showtext/vignettes/introduction.html">showtext パッケージ</a></p>
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#75715e"># https://fonts.google.com/featured/Superfamilies</span>
 
 <span style="color:#75715e"># Google から name で指定したフォントをインストールして、</span>
 <span style="color:#75715e"># それを R から family で指定した名前で利用可能にする</span>
-<span style="color:#111">sysfonts</span><span style="color:#f92672">::</span><span style="color:#75af00">font_add_google</span><span style="color:#111">(</span> <span style="color:#111">name</span> <span style="color:#f92672">=</span> <span style="color:#d88200">&#34;Roboto&#34;</span><span style="color:#111">,</span> <span style="color:#111">family</span> <span style="color:#f92672">=</span> <span style="color:#d88200">&#34;Roboto&#34;</span><span style="color:#111">)</span>
-<span style="color:#75715e">#sysfonts::font_add_google(&#34;Montserrat&#34;, &#34;Montserrat&#34;)</span>
-</code></pre></div><p>フォントの保存場所の確認＆追加</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#111">sysfonts</span><span style="color:#f92672">::</span><span style="color:#75af00">font_paths</span><span style="color:#111">()</span> <span style="color:#75715e"># システムフォントの場所の確認</span>
-<span style="color:#111">sysfonts</span><span style="color:#f92672">::</span><span style="color:#75af00">font_paths</span><span style="color:#111">(</span><span style="color:#d88200">&#39;path&#39;</span><span style="color:#111">)</span> <span style="color:#75715e"># ユーザーのフォントの保存場所を追加する</span>
-</code></pre></div><div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#75715e"># ローカルにあるフォントをRから利用可能なように登録する</span>
+sysfonts<span style="color:#f92672">::</span>font_add_google<span style="color:#111">(</span> name <span style="color:#f92672">=</span> <span style="color:#d88200">&#34;Roboto&#34;</span><span style="color:#111">,</span> family <span style="color:#f92672">=</span> <span style="color:#d88200">&#34;Roboto&#34;</span><span style="color:#111">)</span>
+<span style="color:#75715e">#sysfonts::font_add_google(&#34;Montserrat&#34;, &#34;Montserrat&#34;)</span></code></pre></div></li>
+</ul>
+
+<p>フォントの保存場所の確認＆追加</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">sysfonts<span style="color:#f92672">::</span>font_paths<span style="color:#111">()</span> <span style="color:#75715e"># システムフォントの場所の確認</span>
+sysfonts<span style="color:#f92672">::</span>font_paths<span style="color:#111">(</span><span style="color:#d88200">&#39;path&#39;</span><span style="color:#111">)</span> <span style="color:#75715e"># ユーザーのフォントの保存場所を追加する</span></code></pre></div><div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#75715e"># ローカルにあるフォントをRから利用可能なように登録する</span>
 <span style="color:#75715e"># フォントは上で指定したフォルダから探されるみたい</span>
-<span style="color:#111">sysfonts</span><span style="color:#f92672">::</span><span style="color:#75af00">font_add</span><span style="color:#111">(</span><span style="color:#111">family</span> <span style="color:#f92672">=</span> <span style="color:#d88200">&#34;Roboto&#34;</span><span style="color:#111">,</span> <span style="color:#111">regular</span> <span style="color:#f92672">=</span> <span style="color:#d88200">&#34;/path/to/font/file&#34;</span><span style="color:#111">)</span>
+sysfonts<span style="color:#f92672">::</span>font_add<span style="color:#111">(</span>family <span style="color:#f92672">=</span> <span style="color:#d88200">&#34;Roboto&#34;</span><span style="color:#111">,</span> regular <span style="color:#f92672">=</span> <span style="color:#d88200">&#34;/path/to/font/file&#34;</span><span style="color:#111">)</span>
 <span style="color:#75715e"># sysfonts::font_add(&#39;noto&#39;, &#39;NotoSansCJKjp-Regular.otf&#39;) # Noto</span>
 <span style="color:#75715e"># sysfonts::font_add(&#39;hana&#39;, &#39;HanaMinA.ttf&#39;)              # 花園明朝</span>
-<span style="color:#75715e"># sysfonts::font_add(&#39;spop&#39;, &#39;HGRPP1.ttc&#39;)                # 創英角ポップ</span>
-</code></pre></div><div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#75715e"># sysfonts でRにロードしたフォント family 名を確認する</span>
-<span style="color:#111">sysfonts</span><span style="color:#f92672">::</span><span style="color:#75af00">font_families</span><span style="color:#111">()</span>
-</code></pre></div><h2 id="パッケージのインストール">パッケージのインストール</h2>
+<span style="color:#75715e"># sysfonts::font_add(&#39;spop&#39;, &#39;HGRPP1.ttc&#39;)                # 創英角ポップ</span></code></pre></div><div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#75715e"># sysfonts でRにロードしたフォント family 名を確認する</span>
+sysfonts<span style="color:#f92672">::</span>font_families<span style="color:#111">()</span></code></pre></div>
+<h2 id="パッケージのインストール">パッケージのインストール</h2>
+
 <h3 id="rstudio-package-manager">RStudio Package Manager</h3>
+
 <p>これを使うと Linux でもコンパイル済みパッケージをインストールできる。
 また、特定の日付のCRANの状態を指定してインストールすることができる。</p>
+
 <p><a href="https://packagemanager.rstudio.com/client/">https://packagemanager.rstudio.com/client/</a></p>
+
 <p>Get Started</p>
+
 <p>右上、<code>CLIENT OS</code> を選択</p>
+
 <p>Setup</p>
+
 <p><code>Latest</code>　あるいは <code>Freeze</code> で日付を選ぶ</p>
+
 <p><code>Binary</code></p>
+
 <p><a href="https://packagemanager.rstudio.com/all/__linux__/focal/latest">https://packagemanager.rstudio.com/all/__linux__/focal/latest</a></p>
+
 <p>Install System Prerequisites for the Repo’s Packages のコードを実行</p>
+
 <p><code>.Rprofile</code> に以下を記述</p>
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#75715e"># ここは OS により変わる</span>
-<span style="color:#75af00">options</span><span style="color:#111">(</span><span style="color:#111">repos</span> <span style="color:#f92672">=</span> <span style="color:#75af00">c</span><span style="color:#111">(</span><span style="color:#111">REPO_NAME</span> <span style="color:#f92672">=</span> <span style="color:#d88200">&#34;https://packagemanager.rstudio.com/all/__linux__/focal/latest&#34;</span><span style="color:#111">))</span>
+<span style="color:#00a8c8">options</span><span style="color:#111">(</span>repos <span style="color:#f92672">=</span> <span style="color:#00a8c8">c</span><span style="color:#111">(</span>REPO_NAME <span style="color:#f92672">=</span> <span style="color:#d88200">&#34;https://packagemanager.rstudio.com/all/__linux__/focal/latest&#34;</span><span style="color:#111">))</span>
 
 <span style="color:#75715e"># Set the default HTTP user agent</span>
-<span style="color:#75af00">options</span><span style="color:#111">(</span><span style="color:#111">HTTPUserAgent</span> <span style="color:#f92672">=</span> <span style="color:#75af00">sprintf</span><span style="color:#111">(</span><span style="color:#d88200">&#34;R/%s R (%s)&#34;</span><span style="color:#111">,</span> <span style="color:#75af00">getRversion</span><span style="color:#111">(),</span> <span style="color:#75af00">paste</span><span style="color:#111">(</span><span style="color:#75af00">getRversion</span><span style="color:#111">(),</span> <span style="color:#111">R.version</span><span style="color:#f92672">$</span><span style="color:#111">platform</span><span style="color:#111">,</span> <span style="color:#111">R.version</span><span style="color:#f92672">$</span><span style="color:#111">arch</span><span style="color:#111">,</span> <span style="color:#111">R.version</span><span style="color:#f92672">$</span><span style="color:#111">os</span><span style="color:#111">)))</span>
-</code></pre></div><h2 id="os-の区別">OS の区別</h2>
+<span style="color:#00a8c8">options</span><span style="color:#111">(</span>HTTPUserAgent <span style="color:#f92672">=</span> <span style="color:#00a8c8">sprintf</span><span style="color:#111">(</span><span style="color:#d88200">&#34;R/%s R (%s)&#34;</span><span style="color:#111">,</span> <span style="color:#00a8c8">getRversion</span><span style="color:#111">(),</span> <span style="color:#00a8c8">paste</span><span style="color:#111">(</span><span style="color:#00a8c8">getRversion</span><span style="color:#111">(),</span> <span style="color:#00a8c8">R.version</span><span style="color:#f92672">$</span>platform<span style="color:#111">,</span> <span style="color:#00a8c8">R.version</span><span style="color:#f92672">$</span>arch<span style="color:#111">,</span> <span style="color:#00a8c8">R.version</span><span style="color:#f92672">$</span>os<span style="color:#111">)))</span></code></pre></div>
+<h2 id="os-の区別">OS の区別</h2>
+
 <p>R が実行されているOSを区別する方法</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#75af00">if</span><span style="color:#111">(</span><span style="color:#75af00">Sys.info</span><span style="color:#111">()</span><span style="color:#111">[</span><span style="color:#d88200">&#39;sysname&#39;</span><span style="color:#111">]</span>  <span style="color:#f92672">==</span> <span style="color:#d88200">&#34;Windows&#34;</span><span style="color:#111">){</span>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#00a8c8">if</span><span style="color:#111">(</span><span style="color:#00a8c8">Sys.info</span><span style="color:#111">()[</span><span style="color:#d88200">&#39;sysname&#39;</span><span style="color:#111">]</span>  <span style="color:#f92672">==</span> <span style="color:#d88200">&#34;Windows&#34;</span><span style="color:#111">){</span>
   <span style="color:#75715e"># Windows</span>
-<span style="color:#111">}</span> <span style="color:#111">else</span> <span style="color:#75af00">if </span><span style="color:#111">(</span><span style="color:#75af00">Sys.info</span><span style="color:#111">()</span><span style="color:#111">[</span><span style="color:#d88200">&#39;sysname&#39;</span><span style="color:#111">]</span>  <span style="color:#f92672">==</span> <span style="color:#d88200">&#34;Darwin&#34;</span><span style="color:#111">)</span> <span style="color:#111">{</span>
+<span style="color:#111">}</span> <span style="color:#00a8c8">else</span> <span style="color:#00a8c8">if</span> <span style="color:#111">(</span><span style="color:#00a8c8">Sys.info</span><span style="color:#111">()[</span><span style="color:#d88200">&#39;sysname&#39;</span><span style="color:#111">]</span>  <span style="color:#f92672">==</span> <span style="color:#d88200">&#34;Darwin&#34;</span><span style="color:#111">)</span> <span style="color:#111">{</span>
   <span style="color:#75715e"># MacOS</span>
-<span style="color:#111">}</span> <span style="color:#111">else</span> <span style="color:#111">{</span>
+<span style="color:#111">}</span> <span style="color:#00a8c8">else</span> <span style="color:#111">{</span>
   <span style="color:#75715e"># Other</span>
-<span style="color:#111">}</span>
-</code></pre></div><h2 id="パッケージをアンロードする方法">パッケージをアンロードする方法</h2>
+<span style="color:#111">}</span></code></pre></div>
+<h2 id="パッケージをアンロードする方法">パッケージをアンロードする方法</h2>
+
 <p>一度 <code>library()</code> してしまったパッケージをはずす</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#75af00">detach</span><span style="color:#111">(</span><span style="color:#d88200">&#34;package:fishwatchr&#34;</span><span style="color:#111">,</span> <span style="color:#111">unload</span><span style="color:#f92672">=</span><span style="color:#00a8c8">TRUE</span><span style="color:#111">)</span>
-</code></pre></div><h2 id="きになるパッケージ">きになるパッケージ</h2>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#f92672">detach</span><span style="color:#111">(</span><span style="color:#d88200">&#34;package:fishwatchr&#34;</span><span style="color:#111">,</span> unload<span style="color:#f92672">=</span><span style="color:#00a8c8">TRUE</span><span style="color:#111">)</span></code></pre></div>
+<h2 id="きになるパッケージ">きになるパッケージ</h2>
+
 <h3 id="可視化-1">可視化</h3>
+
 <ul>
 <li>gganimate : gifアニメ</li>
 <li>export : ggplotオブジェクトをパワポに変換する</li>
 <li>ggridge 複数のヒストグラム比べるやつ</li>
 </ul>
+
 <h2 id="オブジェクトを調べる">オブジェクトを調べる</h2>
+
 <p><code>class()</code> <code>typeof()</code> <code>mode()</code></p>
+
 <p><code>str()</code> <code>attributes()</code></p>
 </article>
 
@@ -1199,57 +1336,62 @@ face = &quot;bold&quot; # bold, italic
 
   <aside class="book-toc level-3 fixed">
     <nav id="TableOfContents">
-  <ul>
-    <li><a href="#コーディングスタイル">コーディングスタイル</a></li>
-    <li><a href="#github-にあるパッケージをインストールする">github にあるパッケージをインストールする</a></li>
-    <li><a href="#ソースコードを確認">ソースコードを確認</a></li>
-    <li><a href="#バージョン管理">バージョン管理</a></li>
-    <li><a href="#並列計算">並列計算</a></li>
-  </ul>
-
-  <ul>
-    <li><a href="#インストール">インストール</a>
-      <ul>
-        <li><a href="#ubuntu">Ubuntu</a></li>
-      </ul>
-    </li>
-    <li><a href="#環境設定">環境設定</a>
-      <ul>
-        <li><a href="#環境変数">環境変数</a></li>
-        <li><a href="#環境設定ファイル">環境設定ファイル</a></li>
-      </ul>
-    </li>
-    <li><a href="#ロケール文字コード">ロケール、文字コード</a>
-      <ul>
-        <li><a href="#ロケールを指定する文字列">ロケールを指定する文字列</a></li>
-        <li><a href="#環境変数-1">環境変数</a></li>
-      </ul>
-    </li>
-  </ul>
-
-  <ul>
-    <li>
-      <ul>
-        <li><a href="#フォントのインストール">フォントのインストール</a></li>
-        <li><a href="#rへのフォントのインポート-windows">Rへのフォントのインポート (Windows)</a></li>
-        <li><a href="#フォントの指定">フォントの指定</a></li>
-        <li><a href="#sysfonts-パッケージを使った方法">sysfonts パッケージを使った方法</a></li>
-      </ul>
-    </li>
-    <li><a href="#パッケージのインストール">パッケージのインストール</a>
-      <ul>
-        <li><a href="#rstudio-package-manager">RStudio Package Manager</a></li>
-      </ul>
-    </li>
-    <li><a href="#os-の区別">OS の区別</a></li>
-    <li><a href="#パッケージをアンロードする方法">パッケージをアンロードする方法</a></li>
-    <li><a href="#きになるパッケージ">きになるパッケージ</a>
-      <ul>
-        <li><a href="#可視化-1">可視化</a></li>
-      </ul>
-    </li>
-    <li><a href="#オブジェクトを調べる">オブジェクトを調べる</a></li>
-  </ul>
+<ul>
+<li><a href="#r">R</a>
+<ul>
+<li><a href="#コーディングスタイル">コーディングスタイル</a></li>
+<li><a href="#github-にあるパッケージをインストールする">github にあるパッケージをインストールする</a></li>
+<li><a href="#ソースコードを確認">ソースコードを確認</a></li>
+<li><a href="#バージョン管理">バージョン管理</a></li>
+<li><a href="#並列計算">並列計算</a></li>
+</ul></li>
+<li><a href="#可視化">可視化</a>
+<ul>
+<li><a href="#インストール">インストール</a>
+<ul>
+<li><a href="#ubuntu">Ubuntu</a></li>
+</ul></li>
+<li><a href="#環境設定">環境設定</a>
+<ul>
+<li><a href="#環境変数">環境変数</a></li>
+<li><a href="#環境設定ファイル">環境設定ファイル</a>
+<ul>
+<li><a href="#renviron">.Renviron</a></li>
+<li><a href="#rprofile">.Rprofile</a></li>
+<li><a href="#r-makevars">~/.R/Makevars</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#ロケール-文字コード">ロケール、文字コード</a>
+<ul>
+<li><a href="#ロケールを指定する文字列">ロケールを指定する文字列</a></li>
+<li><a href="#環境変数-1">環境変数</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#フォント">フォント</a>
+<ul>
+<li>
+<ul>
+<li><a href="#フォントのインストール">フォントのインストール</a></li>
+<li><a href="#rへのフォントのインポート-windows">Rへのフォントのインポート (Windows)</a></li>
+<li><a href="#フォントの指定">フォントの指定</a>
+<ul>
+<li><a href="#font-family-とは">Font family とは</a></li>
+</ul></li>
+<li><a href="#sysfonts-パッケージを使った方法">sysfonts パッケージを使った方法</a></li>
+</ul></li>
+<li><a href="#パッケージのインストール">パッケージのインストール</a>
+<ul>
+<li><a href="#rstudio-package-manager">RStudio Package Manager</a></li>
+</ul></li>
+<li><a href="#os-の区別">OS の区別</a></li>
+<li><a href="#パッケージをアンロードする方法">パッケージをアンロードする方法</a></li>
+<li><a href="#きになるパッケージ">きになるパッケージ</a>
+<ul>
+<li><a href="#可視化-1">可視化</a></li>
+</ul></li>
+<li><a href="#オブジェクトを調べる">オブジェクトを調べる</a></li>
+</ul></li>
+</ul>
 </nav>
   </aside>
 

@@ -12,10 +12,10 @@
 <link rel="icon" href="/notebook/favicon.png" type="image/x-icon">
 
 
-<link rel="stylesheet" href="/notebook/book.min.07c38dce7b6800da2a75a565d4d975e38f837294e24d00b5aae363037012d64b.css" integrity="sha256-B8ONzntoANoqdaVl1Nl144&#43;DcpTiTQC1quNjA3AS1ks=">
+<link rel="stylesheet" href="/notebook/book.min.1b994bd28c6ce2255f069b6bf6837b4d396307637fc48d61dcb2a6caac26e031.css" integrity="sha256-G5lL0oxs4iVfBptr9oN7TTljB2N/xI1h3LKmyqwm4DE=">
 
 
-<script defer src="/notebook/search.min.41244b17d88563adf4d2969d57343659e6e979194cdc54758589e4a6bb23dfab.js" integrity="sha256-QSRLF9iFY6300padVzQ2WebpeRlM3FR1hYnkprsj36s="></script>
+<script defer src="/notebook/search.min.e50f4978caa8ea9d9c3d92a39ce60172ac017f8cc877aace48252f3ed36fef5e.js" integrity="sha256-5Q9JeMqo6p2cPZKjnOYBcqwBf4zId6rOSCUvPtNv714="></script>
 
 <!--
 Made with Book Theme
@@ -484,6 +484,36 @@ https://github.com/alex-shpak/hugo-book
     
       
 
+  <a href="/notebook/llm/" >
+      LLM: Large Language Models
+  </a>
+
+
+    
+
+    
+
+
+
+
+  
+  <ul>
+    
+  </ul>
+  
+
+
+
+  </li>
+
+
+  
+    
+
+  <li >
+    
+      
+
   <a href="/notebook/datascience/" >
       Data Science
   </a>
@@ -924,44 +954,64 @@ https://github.com/alex-shpak/hugo-book
 </header>
 
       
-<article class="markdown"><h1 id="purrr">purrr</h1>
+<article class="markdown">
+
+<h1 id="purrr">purrr</h1>
+
 <p>ベクトルやリストなどの各要素に対する繰り返し処理</p>
+
 <h1 id="基本関数">基本関数</h1>
+
 <p>map_*</p>
+
 <p>map2_*</p>
+
 <p>reduce()</p>
+
 <p>accumulate</p>
+
 <h2 id="pmap">pmap</h2>
+
 <p>purrr::pmap(.l, .f, &hellip;)</p>
+
 <p>3つ以上の引数を受け取る関数を適用する</p>
+
 <p>渡すリスト（データフレームでもいい）の(<code>.l</code>)の要素名と、適用する関数 (<code>.f</code>) の引数名を一致させる必要がある。</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#75af00">pmap</span><span style="color:#111">(</span><span style="color:#75af00">data.frame</span><span style="color:#111">(</span><span style="color:#111">a</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span><span style="color:#f92672">:</span><span style="color:#ae81ff">3</span><span style="color:#111">,</span> <span style="color:#111">b</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">4</span><span style="color:#f92672">:</span><span style="color:#ae81ff">6</span><span style="color:#111">),</span> <span style="color:#75af00">function</span><span style="color:#111">(</span><span style="color:#111">a</span><span style="color:#111">,</span> <span style="color:#111">b</span><span style="color:#111">)</span> <span style="color:#111">{</span><span style="color:#111">a</span> <span style="color:#f92672">*</span> <span style="color:#111">b</span><span style="color:#111">})</span>
-</code></pre></div><h1 id="その他関数">その他関数</h1>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">pmap<span style="color:#111">(</span><span style="color:#00a8c8">data.frame</span><span style="color:#111">(</span>a <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span><span style="color:#f92672">:</span><span style="color:#ae81ff">3</span><span style="color:#111">,</span> b <span style="color:#f92672">=</span> <span style="color:#ae81ff">4</span><span style="color:#f92672">:</span><span style="color:#ae81ff">6</span><span style="color:#111">),</span> <span style="color:#00a8c8">function</span><span style="color:#111">(</span>a<span style="color:#111">,</span> b<span style="color:#111">)</span> <span style="color:#111">{</span>a <span style="color:#f92672">*</span> b<span style="color:#111">})</span></code></pre></div>
+<h1 id="その他関数">その他関数</h1>
+
 <h2 id="エラー処理">エラー処理</h2>
+
 <p>plyr::failwith()
 purrr::possibly
 pmap</p>
+
 <p>partial</p>
+
 <h1 id="データフレームの各行に対する繰り返し">データフレームの各行に対する繰り返し</h1>
+
 <h1 id="furrr">furrr</h1>
+
 <pre><code>future::plan(future::multiprocess(), workers = 10L)
 result &lt;-furrr::future_map()
-</code></pre><h1 id="list-を-vector-に変換する-purrrflatten_">list を vector に変換する purrr::flatten_*()</h1>
+</code></pre>
+
+<h1 id="list-を-vector-に変換する-purrr-flatten">list を vector に変換する purrr::flatten_*()</h1>
+
 <p>例えば、purrr::map()で返ってくる値が、文字列ベクトルを要素として持つ List である場合に、リストの要素を１つの文字列ベクトルとしてまとめたいことがある。</p>
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#75715e"># ベクトルを要素として持つリスト `.x` をベクトルに変換する。</span>
-<span style="color:#111">purrr</span><span style="color:#f92672">::</span><span style="color:#75af00">flatten_lgl</span><span style="color:#111">(</span><span style="color:#111">.x</span><span style="color:#111">)</span>
-<span style="color:#111">purrr</span><span style="color:#f92672">::</span><span style="color:#75af00">flatten_int</span><span style="color:#111">(</span><span style="color:#111">.x</span><span style="color:#111">)</span>
-<span style="color:#111">purrr</span><span style="color:#f92672">::</span><span style="color:#75af00">flatten_dbl</span><span style="color:#111">(</span><span style="color:#111">.x</span><span style="color:#111">)</span>
-<span style="color:#111">purrr</span><span style="color:#f92672">::</span><span style="color:#75af00">flatten_chr</span><span style="color:#111">(</span><span style="color:#111">.x</span><span style="color:#111">)</span>
-<span style="color:#111">purrr</span><span style="color:#f92672">::</span><span style="color:#75af00">flatten_raw</span><span style="color:#111">(</span><span style="color:#111">.x</span><span style="color:#111">)</span>
+purrr<span style="color:#f92672">::</span>flatten_lgl<span style="color:#111">(</span><span style="color:#ae81ff">.</span>x<span style="color:#111">)</span>
+purrr<span style="color:#f92672">::</span>flatten_int<span style="color:#111">(</span><span style="color:#ae81ff">.</span>x<span style="color:#111">)</span>
+purrr<span style="color:#f92672">::</span>flatten_dbl<span style="color:#111">(</span><span style="color:#ae81ff">.</span>x<span style="color:#111">)</span>
+purrr<span style="color:#f92672">::</span>flatten_chr<span style="color:#111">(</span><span style="color:#ae81ff">.</span>x<span style="color:#111">)</span>
+purrr<span style="color:#f92672">::</span>flatten_raw<span style="color:#111">(</span><span style="color:#ae81ff">.</span>x<span style="color:#111">)</span>
 
 <span style="color:#75715e"># 階層性のあるlistを一段階解消する。返値はリスト</span>
-<span style="color:#111">purrr</span><span style="color:#f92672">::</span><span style="color:#75af00">flatten</span><span style="color:#111">(</span><span style="color:#111">.x</span><span style="color:#111">)</span>
+purrr<span style="color:#f92672">::</span>flatten<span style="color:#111">(</span><span style="color:#ae81ff">.</span>x<span style="color:#111">)</span>
 
 <span style="color:#75715e"># リストの要素をデータフレームに結合して返す</span>
-<span style="color:#111">purrr</span><span style="color:#f92672">::</span><span style="color:#75af00">flatten_dfr</span><span style="color:#111">(</span><span style="color:#111">.x</span><span style="color:#111">,</span> <span style="color:#111">.id</span> <span style="color:#f92672">=</span> <span style="color:#00a8c8">NULL</span><span style="color:#111">)</span>
-<span style="color:#111">purrr</span><span style="color:#f92672">::</span><span style="color:#75af00">flatten_dfc</span><span style="color:#111">(</span><span style="color:#111">.x</span><span style="color:#111">)</span>
-</code></pre></div></article>
+purrr<span style="color:#f92672">::</span>flatten_dfr<span style="color:#111">(</span><span style="color:#ae81ff">.</span>x<span style="color:#111">,</span> <span style="color:#ae81ff">.i</span>d <span style="color:#f92672">=</span> <span style="color:#00a8c8">NULL</span><span style="color:#111">)</span>
+purrr<span style="color:#f92672">::</span>flatten_dfc<span style="color:#111">(</span><span style="color:#ae81ff">.</span>x<span style="color:#111">)</span></code></pre></div></article>
 
       
 <div class="book-footer justify-between">
@@ -995,13 +1045,20 @@ result &lt;-furrr::future_map()
 
   <aside class="book-toc level-3 fixed">
     <nav id="TableOfContents">
-  <ul>
-    <li><a href="#pmap">pmap</a></li>
-  </ul>
-
-  <ul>
-    <li><a href="#エラー処理">エラー処理</a></li>
-  </ul>
+<ul>
+<li><a href="#purrr">purrr</a></li>
+<li><a href="#基本関数">基本関数</a>
+<ul>
+<li><a href="#pmap">pmap</a></li>
+</ul></li>
+<li><a href="#その他関数">その他関数</a>
+<ul>
+<li><a href="#エラー処理">エラー処理</a></li>
+</ul></li>
+<li><a href="#データフレームの各行に対する繰り返し">データフレームの各行に対する繰り返し</a></li>
+<li><a href="#furrr">furrr</a></li>
+<li><a href="#list-を-vector-に変換する-purrr-flatten">list を vector に変換する purrr::flatten_*()</a></li>
+</ul>
 </nav>
   </aside>
 

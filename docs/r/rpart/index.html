@@ -12,10 +12,10 @@
 <link rel="icon" href="/notebook/favicon.png" type="image/x-icon">
 
 
-<link rel="stylesheet" href="/notebook/book.min.07c38dce7b6800da2a75a565d4d975e38f837294e24d00b5aae363037012d64b.css" integrity="sha256-B8ONzntoANoqdaVl1Nl144&#43;DcpTiTQC1quNjA3AS1ks=">
+<link rel="stylesheet" href="/notebook/book.min.1b994bd28c6ce2255f069b6bf6837b4d396307637fc48d61dcb2a6caac26e031.css" integrity="sha256-G5lL0oxs4iVfBptr9oN7TTljB2N/xI1h3LKmyqwm4DE=">
 
 
-<script defer src="/notebook/search.min.41244b17d88563adf4d2969d57343659e6e979194cdc54758589e4a6bb23dfab.js" integrity="sha256-QSRLF9iFY6300padVzQ2WebpeRlM3FR1hYnkprsj36s="></script>
+<script defer src="/notebook/search.min.e50f4978caa8ea9d9c3d92a39ce60172ac017f8cc877aace48252f3ed36fef5e.js" integrity="sha256-5Q9JeMqo6p2cPZKjnOYBcqwBf4zId6rOSCUvPtNv714="></script>
 
 <!--
 Made with Book Theme
@@ -484,6 +484,36 @@ https://github.com/alex-shpak/hugo-book
     
       
 
+  <a href="/notebook/llm/" >
+      LLM: Large Language Models
+  </a>
+
+
+    
+
+    
+
+
+
+
+  
+  <ul>
+    
+  </ul>
+  
+
+
+
+  </li>
+
+
+  
+    
+
+  <li >
+    
+      
+
   <a href="/notebook/datascience/" >
       Data Science
   </a>
@@ -924,14 +954,23 @@ https://github.com/alex-shpak/hugo-book
 </header>
 
       
-<article class="markdown"><h1 id="rpart">rpart</h1>
+<article class="markdown">
+
+<h1 id="rpart">rpart</h1>
+
 <p>決定木</p>
+
 <p><code>rpart.object</code></p>
+
 <p><a href="https://rdrr.io/cran/rpart/man/rpart.object.html">https://rdrr.io/cran/rpart/man/rpart.object.html</a></p>
+
 <p><code>rpart()</code> による学習結果のオブジェクト</p>
+
 <p>rpart.object の要素</p>
+
 <ul>
 <li><code>frame</code>: データフレーム、tree を表現する
+
 <ul>
 <li><code>var</code>: 分割に使用される変数、<code>&lt;leaf&gt;</code> は末端ノード</li>
 <li><code>n</code></li>
@@ -942,14 +981,13 @@ https://github.com/alex-shpak/hugo-book
 <li><code>ncompete</code></li>
 <li><code>nsurrogate</code></li>
 <li><code>yval2</code></li>
-</ul>
-</li>
+</ul></li>
 <li><code>where</code>: 整数ベクトル、訓練データのレコード数と同じ長さ。訓練データの各レコードがどのリーフに落ちたかを表す。値は <code>frame</code> の行番号</li>
 <li><code>call</code>: このオブジェクトを作成するときに記述されたRコードのイメージ</li>
 <li><code>terms</code>: <code>terms.object</code> フォーミュラをサマライズしたもの、ユーザーは基本使わない</li>
-<li><code>splits</code>: 分割を記述する matrix。列は、&ldquo;count&rdquo;   &ldquo;ncat&rdquo;    &ldquo;improve&rdquo; &ldquo;index&rdquo;   &ldquo;adj&rdquo;、各行は分割に使われる変数名</li>
+<li><code>splits</code>: 分割を記述する matrix。列は、&rdquo;count&rdquo;   &ldquo;ncat&rdquo;    &ldquo;improve&rdquo; &ldquo;index&rdquo;   &ldquo;adj&rdquo;、各行は分割に使われる変数名</li>
 <li><code>csplit</code>: 整数行列、少なくとも１つの分割変数が factor である場合に作成される</li>
-<li><code>method</code>: 文字列、(&ldquo;class&rdquo;, &ldquo;exp&rdquo;, &ldquo;poisson&rdquo;, &ldquo;anova&rdquo; or &ldquo;user&quot;のうちのどれか)、この tree を作成するときに使われた方法</li>
+<li><code>method</code>: 文字列、(&ldquo;class&rdquo;, &ldquo;exp&rdquo;, &ldquo;poisson&rdquo;, &ldquo;anova&rdquo; or &ldquo;user&rdquo;のうちのどれか)、この tree を作成するときに使われた方法</li>
 <li><code>cptable</code>: 数値行列、complexityパラメタに基づいて決定された最適な枝刈りの情報？ 列名 &ldquo;CP&rdquo;        &ldquo;nsplit&rdquo;    &ldquo;rel error&rdquo; &ldquo;xerror&rdquo;    &ldquo;xstd&rdquo;</li>
 <li><code>variable.importance</code>: 名前付きベクトル、変数重要度、</li>
 <li><code>numresp</code>: 整数スカラー、目的変数の値の数、factorのレベルの数</li>
@@ -959,62 +997,94 @@ https://github.com/alex-shpak/hugo-book
 <li><code>ordered</code>: 名前付き論理ベクトル、要素名は変数名、値はその変数が順序付きfactorであるかを表す</li>
 <li><code>na.action</code>: <code>stats::model.frame</code> から返される値、<code>NA</code> の取り扱いを決める</li>
 </ul>
+
 <p>rpart.object の属性 attributes()</p>
+
 <ul>
 <li><code>xlevels</code>: 説明変数にある factor 型のレベル</li>
 <li><code>ylevels</code>: 目的変数の factor 型のレベル</li>
 </ul>
-<h2 id="rpartpredictrpart">rpart:::predict.rpart()</h2>
+
+<h2 id="rpart-predict-rpart">rpart:::predict.rpart()</h2>
+
 <p><code>rpart.object</code> を使って <code>predict()</code> したときに呼び出されるメソッド</p>
+
 <p><a href="https://www.rdocumentation.org/packages/rpart/versions/4.1-15/topics/predict.rpart">https://www.rdocumentation.org/packages/rpart/versions/4.1-15/topics/predict.rpart</a></p>
+
 <pre><code>predict(object, newdata,
        type = c(&quot;vector&quot;, &quot;prob&quot;, &quot;class&quot;, &quot;matrix&quot;),
        na.action = na.pass, …)
-</code></pre><p><code>type</code>: 分類ではデフォルトは <code>prob</code> クラス確率, <code>class</code> なら予測された目的変数 (<code>facor</code>) の値、<code>vector</code> なら目的変数 <code>factor</code> の <code>levels</code> 属性の要素番号、回帰の場合は デフォルトは <code>vector</code> で目的変数の値（多分）</p>
+</code></pre>
+
+<p><code>type</code>: 分類ではデフォルトは <code>prob</code> クラス確率, <code>class</code> なら予測された目的変数 (<code>facor</code>) の値、<code>vector</code> なら目的変数 <code>factor</code> の <code>levels</code> 属性の要素番号、回帰の場合は デフォルトは <code>vector</code> で目的変数の値（多分）</p>
+
 <p><code>typpe=&quot;vector&quot;</code>　の時は、<code>rpart.object$frame$yval</code> の値が返されるらしい（各データが落ちたリーフの <code>yval</code> の値） これを使ってリーフ番号を取得できる</p>
+
 <h1 id="rpart関係の別のライブラリ">rpart関係の別のライブラリ</h1>
+
 <ul>
 <li><code>rpart.plot</code></li>
 <li><code>itree</code>: rpartの拡張らしい、rpartの作者もかかわっている</li>
 <li><code>treeClust</code></li>
 </ul>
-<h2 id="rpartplotrpartpredict">rpart.plot::rpart.predict()</h2>
+
+<h2 id="rpart-plot-rpart-predict">rpart.plot::rpart.predict()</h2>
+
 <p>新しいデータに対して予測する</p>
+
 <p><code>rpart::predict.rpart()</code> と同じだが、予測値のノード番号とルールを出力できる</p>
+
 <pre><code>rpart.plot::rpart.predict(object, newdata,
          type = c(&quot;vector&quot;, &quot;prob&quot;, &quot;class&quot;, &quot;matrix&quot;),
          na.action = na.pass,
          nn=FALSE, rules=FALSE, ...)
-</code></pre><ul>
+</code></pre>
+
+<ul>
 <li><code>nn</code>: <code>TRUE</code> なら ノード番号の列も返す</li>
 <li><code>rules</code>: <code>TRUE</code> なら、ルールを文字列で記述した列も返す</li>
 <li><code>...</code>: <code>rpart.rules()</code> に渡される引数、例えば <code>clip.facs=TRUE</code></li>
 </ul>
-<h2 id="rpartplotrpartrules">rpart.plot::rpart.rules</h2>
+
+<h2 id="rpart-plot-rpart-rules">rpart.plot::rpart.rules</h2>
+
 <p><code>rpart.object</code> から 各リーフに至るルールを表示する</p>
+
 <pre><code>rpart.rules(x = stop(&quot;no 'x' argument&quot;),
             style = &quot;wide&quot;, cover = FALSE, nn = FALSE,
             roundint = TRUE, clip.facs = FALSE,
             varorder = NULL, ...)
-</code></pre><p>しかし、リーフの最大値は1000に制限されているので、それ以上に複雑なtreeのルールを生成したいときは、パッケージをいじる必要がある</p>
+</code></pre>
+
+<p>しかし、リーフの最大値は1000に制限されているので、それ以上に複雑なtreeのルールを生成したいときは、パッケージをいじる必要がある</p>
+
 <p><code>rpart.plot/R/rpart.rules.R</code> の中の <code>maxrules &lt;- 1e3</code> をもっと大きい値に書き換える</p>
+
 <p>そして、ローカルのソースからインストールする
 <code>install.packages(&quot;./rpart.plot/&quot;, type=&quot;source&quot;, repos = NULL)</code></p>
+
 <p>style = &ldquo;tall&rdquo;</p>
+
 <p>出力される値（class <code>c(&quot;rpart.rules&quot;, &quot;data.frame&quot;)</code>）</p>
+
 <ul>
 <li><code>target</code> : 分類：クラス確率の文字列</li>
 </ul>
+
 <p>行名: おそらく <code>rpart.object$frame</code> の行名に対応する？</p>
-<h2 id="treeclustrpartpredictleaves">treeClust::rpart.predict.leaves()</h2>
+
+<h2 id="treeclust-rpart-predict-leaves">treeClust::rpart.predict.leaves()</h2>
+
 <pre><code>rpart.predict.leaves(rp, newdata, type = &quot;where&quot;)
-</code></pre><ul>
+</code></pre>
+
+<ul>
 <li><code>type</code>
+
 <ul>
 <li><code>&quot;where&quot;</code> : &ldquo;rpart.object&rdquo; の要素 <code>frame</code> の行番号を返す</li>
 <li><code>&quot;leaf&quot;</code> : 実際のリーフ番号（<code>frame</code> の行名）を返す</li>
-</ul>
-</li>
+</ul></li>
 </ul>
 </article>
 
@@ -1050,15 +1120,18 @@ https://github.com/alex-shpak/hugo-book
 
   <aside class="book-toc level-3 fixed">
     <nav id="TableOfContents">
-  <ul>
-    <li><a href="#rpartpredictrpart">rpart:::predict.rpart()</a></li>
-  </ul>
-
-  <ul>
-    <li><a href="#rpartplotrpartpredict">rpart.plot::rpart.predict()</a></li>
-    <li><a href="#rpartplotrpartrules">rpart.plot::rpart.rules</a></li>
-    <li><a href="#treeclustrpartpredictleaves">treeClust::rpart.predict.leaves()</a></li>
-  </ul>
+<ul>
+<li><a href="#rpart">rpart</a>
+<ul>
+<li><a href="#rpart-predict-rpart">rpart:::predict.rpart()</a></li>
+</ul></li>
+<li><a href="#rpart関係の別のライブラリ">rpart関係の別のライブラリ</a>
+<ul>
+<li><a href="#rpart-plot-rpart-predict">rpart.plot::rpart.predict()</a></li>
+<li><a href="#rpart-plot-rpart-rules">rpart.plot::rpart.rules</a></li>
+<li><a href="#treeclust-rpart-predict-leaves">treeClust::rpart.predict.leaves()</a></li>
+</ul></li>
+</ul>
 </nav>
   </aside>
 

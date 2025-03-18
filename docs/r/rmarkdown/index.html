@@ -12,10 +12,10 @@
 <link rel="icon" href="/notebook/favicon.png" type="image/x-icon">
 
 
-<link rel="stylesheet" href="/notebook/book.min.07c38dce7b6800da2a75a565d4d975e38f837294e24d00b5aae363037012d64b.css" integrity="sha256-B8ONzntoANoqdaVl1Nl144&#43;DcpTiTQC1quNjA3AS1ks=">
+<link rel="stylesheet" href="/notebook/book.min.1b994bd28c6ce2255f069b6bf6837b4d396307637fc48d61dcb2a6caac26e031.css" integrity="sha256-G5lL0oxs4iVfBptr9oN7TTljB2N/xI1h3LKmyqwm4DE=">
 
 
-<script defer src="/notebook/search.min.41244b17d88563adf4d2969d57343659e6e979194cdc54758589e4a6bb23dfab.js" integrity="sha256-QSRLF9iFY6300padVzQ2WebpeRlM3FR1hYnkprsj36s="></script>
+<script defer src="/notebook/search.min.e50f4978caa8ea9d9c3d92a39ce60172ac017f8cc877aace48252f3ed36fef5e.js" integrity="sha256-5Q9JeMqo6p2cPZKjnOYBcqwBf4zId6rOSCUvPtNv714="></script>
 
 <!--
 Made with Book Theme
@@ -484,6 +484,36 @@ https://github.com/alex-shpak/hugo-book
     
       
 
+  <a href="/notebook/llm/" >
+      LLM: Large Language Models
+  </a>
+
+
+    
+
+    
+
+
+
+
+  
+  <ul>
+    
+  </ul>
+  
+
+
+
+  </li>
+
+
+  
+    
+
+  <li >
+    
+      
+
   <a href="/notebook/datascience/" >
       Data Science
   </a>
@@ -924,28 +954,43 @@ https://github.com/alex-shpak/hugo-book
 </header>
 
       
-<article class="markdown"><h1 id="rmarkdown">Rmarkdown</h1>
+<article class="markdown">
+
+<h1 id="rmarkdown">Rmarkdown</h1>
+
 <p>Rmarkdown (<code>.Rmd</code>) から、html などに出力するパッケージは２つある</p>
+
 <p><code>knitr</code> と <code>rmarkdown</code>、<code>rmarkdown</code> は内部で <code>knitr</code> を使用している。<code>rmarkdown</code> は  <code>knitr</code> の後継となるべく開発されているのかも知れない。</p>
+
 <h1 id="ドキュメント">ドキュメント</h1>
+
 <ul>
 <li>公式: <a href="https://bookdown.org/yihui/rmarkdown/">R Markdown: The Definitive Guide</a></li>
 <li><a href="https://kohske.github.io/R/rmarkdown/">rmarkdownパッケージで楽々ドキュメント生成</a></li>
 </ul>
+
 <h1 id="用語">用語</h1>
+
 <ul>
 <li>chunk</li>
 <li>YAMLヘッダ</li>
 </ul>
+
 <h1 id="出力形式の指定">出力形式の指定</h1>
+
 <p>公式 <a href="https://bookdown.org/yihui/rmarkdown/output-formats.html">2.4 Output formats</a></p>
+
 <p><code>.Rmd</code> ファイルの先頭の <code>YAML</code> ヘッダの <code>output:</code> セクションに記述する</p>
+
 <pre><code>---
 title: &quot;Title of this document&quot;
 
 output: rmarkdown::github_document
 ---
-</code></pre><p><code>output:</code> で指定できるオプションは以下の通り</p>
+</code></pre>
+
+<p><code>output:</code> で指定できるオプションは以下の通り</p>
+
 <ul>
 <li>html_document</li>
 <li>github_document</li>
@@ -961,11 +1006,18 @@ output: rmarkdown::github_document
 <li>ioslides_presentation</li>
 <li>slidy_presentation</li>
 </ul>
+
 <h1 id="出力先の変更">出力先の変更</h1>
+
 <p>デフォルトでは <code>.Rmd</code> ファイルと同じフォルダに出力される。</p>
+
 <p><code>rmarkdown::render()</code> を使って出力する場合には、以下のようにする。</p>
+
 <pre><code>rmarkdown::render('my.Rmd', output_file = 'folder/my.html')
-</code></pre><p>RStudio の <code>Knit</code> ボタンを押したときの出力先を指定するには <code>.Rmd</code> ファイルの先頭の <code>YAML</code> ヘッダの <code>knit:</code> セクションに以下のように <code>output_dir</code> を指定する。パスの指定は <code>.Rmd</code> ファイルからの相対パス。</p>
+</code></pre>
+
+<p>RStudio の <code>Knit</code> ボタンを押したときの出力先を指定するには <code>.Rmd</code> ファイルの先頭の <code>YAML</code> ヘッダの <code>knit:</code> セクションに以下のように <code>output_dir</code> を指定する。パスの指定は <code>.Rmd</code> ファイルからの相対パス。</p>
+
 <pre><code>---
 title: &quot;Title of this document&quot;
 
@@ -974,9 +1026,14 @@ output: rmarkdown::github_document
 knit: (function(inputFile, encoding) {
   rmarkdown::render(inputFile, encoding = encoding, output_dir = &quot;../share/markdown&quot;) })
 ---
-</code></pre><h1 id="chunk-options">chunk options</h1>
+</code></pre>
+
+<h1 id="chunk-options">chunk options</h1>
+
 <p>{r, fig.height=5}</p>
+
 <p>図のサイズ <code>fig.height=5</code> 5インチ</p>
+
 <ul>
 <li><code>eval=TRUE</code> : このchunkを実行するかどうか</li>
 <li><code>echo=TRUE</code> : chunkのコードを出力に含めるか</li>
@@ -993,36 +1050,53 @@ knit: (function(inputFile, encoding) {
 <li><code>fig.cap</code> : 図のキャプション</li>
 <li><code>child='path/to/other/document'</code> : 外部ファイルの埋め込み</li>
 </ul>
+
 <p>ドキュメント全体で共通の chunk option を設定する</p>
-<pre><code>```{r, setup, include=FALSE}
-knitr::opts_chunk$set(fig.width = 8, collapse = TRUE)
-</code></pre><pre><code>
-chunk option の中で、Rの式を評価できるので、事前の実行結果を利用して、以降のchunkを実行するかどうかを制御することもできる。
 
-</code></pre><pre><code class="language-{r}" data-lang="{r}">x &lt;- TRUE
-</code></pre><pre><code class="language-{r," data-lang="{r,">y = rnorm(100)
-</code></pre><pre><code>
+<pre><code></code></pre>
 
+<p>{r, setup, include=FALSE}
+knitr::opts_chunk$set(fig.width = 8, collapse = TRUE)</p>
 
+<pre><code></code></pre>
 
-# 既存の画像ファイルを埋め込む
+<p>chunk option の中で、Rの式を評価できるので、事前の実行結果を利用して、以降のchunkを実行するかどうかを制御することもできる。</p>
 
-</code></pre><pre><code class="language-{r," data-lang="{r,">knitr::include_graphics('images/hex-rmarkdown.png')
-</code></pre><pre><code>
-# テーブルを埋め込む
+<pre><code></code></pre>
 
+<p>{r}
+x &lt;- TRUE</p>
 
-</code></pre><pre><code class="language-{r}" data-lang="{r}">knitr::kable(iris[1:5, ], caption = 'A caption')
-</code></pre><pre><code>
-高度なテーブル操作は `kableExtra` パッケージを使う
+<pre><code>
+</code></pre>
 
+<p>{r, eval=x}
+y = rnorm(100)</p>
 
+<pre><code></code></pre>
 
-せめて自分が接する子供たちにとって良き機会となれる大人でありたいものです。
+<h1 id="既存の画像ファイルを埋め込む">既存の画像ファイルを埋め込む</h1>
 
+<pre><code></code></pre>
 
+<p>{r, out.width=&lsquo;25%&rsquo;, fig.align=&lsquo;center&rsquo;, fig.cap=&lsquo;&hellip;&rsquo;}
+knitr::include_graphics(&lsquo;images/hex-rmarkdown.png&rsquo;)</p>
 
-</code></pre></article>
+<pre><code></code></pre>
+
+<h1 id="テーブルを埋め込む">テーブルを埋め込む</h1>
+
+<pre><code></code></pre>
+
+<p>{r}
+knitr::kable(iris[1:5, ], caption = &lsquo;A caption&rsquo;)</p>
+
+<pre><code></code></pre>
+
+<p>高度なテーブル操作は <code>kableExtra</code> パッケージを使う</p>
+
+<p>せめて自分が接する子供たちにとって良き機会となれる大人でありたいものです。</p>
+</article>
 
       
 <div class="book-footer justify-between">
@@ -1055,7 +1129,18 @@ chunk option の中で、Rの式を評価できるので、事前の実行結果
   
 
   <aside class="book-toc level-3 fixed">
-    <nav id="TableOfContents"></nav>
+    <nav id="TableOfContents">
+<ul>
+<li><a href="#rmarkdown">Rmarkdown</a></li>
+<li><a href="#ドキュメント">ドキュメント</a></li>
+<li><a href="#用語">用語</a></li>
+<li><a href="#出力形式の指定">出力形式の指定</a></li>
+<li><a href="#出力先の変更">出力先の変更</a></li>
+<li><a href="#chunk-options">chunk options</a></li>
+<li><a href="#既存の画像ファイルを埋め込む">既存の画像ファイルを埋め込む</a></li>
+<li><a href="#テーブルを埋め込む">テーブルを埋め込む</a></li>
+</ul>
+</nav>
   </aside>
 
 
