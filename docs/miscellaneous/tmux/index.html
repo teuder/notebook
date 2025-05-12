@@ -6,17 +6,18 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0"><meta property="og:title" content="tmux" />
 <meta property="og:description" content="tmux インストール sudo apt-get install tmux https://qiita.com/shin-ch13/items/9d207a70ccc8467f7bab 使い方 初めて tmux を実行する tmux 現在のシェルのバックグラウンドで tmux セッションが開始され、セッション管理下の shell が起動する。 tmux" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://teuder.github.io/notebook/miscellaneous/tmux/" />
+<meta property="og:url" content="https://teuder.github.io/notebook/miscellaneous/tmux/" /><meta property="article:section" content="miscellaneous" />
 <meta property="article:published_time" content="2019-09-03T00:00:00+00:00" />
 <meta property="article:modified_time" content="2021-04-29T14:16:38+09:00" />
+
 <title>tmux | notebook</title>
 <link rel="icon" href="/notebook/favicon.png" type="image/x-icon">
 
 
-<link rel="stylesheet" href="/notebook/book.min.1b994bd28c6ce2255f069b6bf6837b4d396307637fc48d61dcb2a6caac26e031.css" integrity="sha256-G5lL0oxs4iVfBptr9oN7TTljB2N/xI1h3LKmyqwm4DE=">
+<link rel="stylesheet" href="/notebook/book.min.2771458f1d859600effb70312702cd7e488eefb7c2c5ed4c083e65b6b95e5cae.css" integrity="sha256-J3FFjx2FlgDv&#43;3AxJwLNfkiO77fCxe1MCD5ltrleXK4=">
 
 
-<script defer src="/notebook/search.min.e50f4978caa8ea9d9c3d92a39ce60172ac017f8cc877aace48252f3ed36fef5e.js" integrity="sha256-5Q9JeMqo6p2cPZKjnOYBcqwBf4zId6rOSCUvPtNv714="></script>
+<script defer src="/notebook/search.min.ea3aecd4faed767f2a3c113b94ece297d71ed5ecc34ece71fca215c4565ddcc7.js" integrity="sha256-6jrs1Prtdn8qPBE7lOzil9ce1ezDTs5x/KIVxFZd3Mc="></script>
 
 <!--
 Made with Book Theme
@@ -955,40 +956,23 @@ https://github.com/alex-shpak/hugo-book
 </header>
 
       
-<article class="markdown">
-
-<h1 id="tmux">tmux</h1>
-
+<article class="markdown"><h1 id="tmux">tmux</h1>
 <h2 id="インストール">インストール</h2>
-
 <p>sudo apt-get install tmux</p>
-
 <p><a href="https://qiita.com/shin-ch13/items/9d207a70ccc8467f7bab">https://qiita.com/shin-ch13/items/9d207a70ccc8467f7bab</a></p>
-
 <h2 id="使い方">使い方</h2>
-
 <p>初めて tmux を実行する</p>
+<pre tabindex="0"><code>tmux 
 
-<pre><code>tmux 
-
-</code></pre>
-
-<p>現在のシェルのバックグラウンドで tmux セッションが開始され、セッション管理下の shell が起動する。</p>
-
+</code></pre><p>現在のシェルのバックグラウンドで tmux セッションが開始され、セッション管理下の shell が起動する。</p>
 <p>tmux はキーボードのみで操作する。</p>
-
 <p>デフォルトでは <code>Ctrl</code> と <code>b</code> を一度同時押ししてから、別のキーを押すことで tmux を操作する。</p>
-
 <p><code>Ctrl b</code> ではないキーの組み合わせに変更することもできる (<code>~/.tmux.conf</code> で設定する)。</p>
-
 <p>ここでは <code>Ctrl b</code> の代わりに <code>prefix</code> と表記する。</p>
-
 <h3 id="セッション作成">セッション作成</h3>
-
-<p>````
-tmux new -s 名前</p>
-
-<pre><code>### セッションから離れる(detach)
+<pre tabindex="0"><code>tmux new -s 名前
+```
+### セッションから離れる(detach)
 
 元のターミナルのシェルに戻る。tmux のセッションはバックグラウンドで動き続ける。
 
@@ -998,36 +982,32 @@ tmux new -s 名前</p>
 
 セッションの外にいるとき
 
-</code></pre>
+```
+tmux list-sessions
+```
 
-<p>tmux list-sessions</p>
-
-<pre><code>
 セッションの中にいるとき
 
-</code></pre>
-
-<p>Ctrl-b s</p>
-
-<pre><code>セッション一覧を表示させた後で、↑↓キーでセッションを選んでリターンで選択できる。
+```
+Ctrl-b s
+```
+セッション一覧を表示させた後で、↑↓キーでセッションを選んでリターンで選択できる。
 
 
 
 ### 既存のセッションに再接続
 
-</code></pre>
+```
+tmux a -t セッション名
+```
 
-<p>tmux a -t セッション名</p>
-
-<pre><code>
 
 ### 既存のセッションを消去
 
-</code></pre>
+```
+tmux kill-session -t 名前
+```
 
-<p>tmux kill-session -t 名前</p>
-
-<pre><code>
 
 
 
@@ -1035,141 +1015,109 @@ tmux new -s 名前</p>
 
 実行中の tmux サーバーに設定を再読み込みさせる
 
-</code></pre>
+```
+tmux source-file ~/.tmux.conf
+```
 
-<p>tmux source-file ~/.tmux.conf</p>
-
-<pre><code>
 セッションの中にいるときにも設定を入力できる。
 
 `prefix` を押してから続けて以下を入力すると、マウスでスクロールすることができるようになる
 
-</code></pre>
+```
+:set -g mouse on
+```
 
-<p>:set -g mouse on</p>
-
-<pre><code>
 
 ### .tmux.conf 例
 
-</code></pre>
+```
+# tmux起動時のシェルをzshにする
+set-option -g default-shell /bin/zsh
 
-<h1 id="tmux起動時のシェルをzshにする">tmux起動時のシェルをzshにする</h1>
+# tmuxを256色表示できるようにする
+set-option -g default-terminal screen-256color
+set -g terminal-overrides 'xterm:colors=256'
 
-<p>set-option -g default-shell /bin/zsh</p>
+# prefixキーをC-qに変更
+# set -g prefix C-q
 
-<h1 id="tmuxを256色表示できるようにする">tmuxを256色表示できるようにする</h1>
+# C-bのキーバインドを解除
+# unbind C-b
 
-<p>set-option -g default-terminal screen-256color
-set -g terminal-overrides &lsquo;xterm:colors=256&rsquo;</p>
+# ステータスバーをトップに配置する
+set-option -g status-position top
 
-<h1 id="prefixキーをc-qに変更">prefixキーをC-qに変更</h1>
+# 左右のステータスバーの長さを決定する 
+set-option -g status-left-length 90
+set-option -g status-right-length 90
 
-<h1 id="set-g-prefix-c-q">set -g prefix C-q</h1>
+# #P =&gt; ペイン番号
+# 最左に表示
+set-option -g status-left '#H:[#P]'
 
-<h1 id="c-bのキーバインドを解除">C-bのキーバインドを解除</h1>
+# Wi-Fi、バッテリー残量、現在時刻
+# 最右に表示
+set-option -g status-right '#(wifi) #(battery --tmux) [%Y-%m-%d(%a) %H:%M]'
 
-<h1 id="unbind-c-b">unbind C-b</h1>
+# ステータスバーを1秒毎に描画し直す
+set-option -g status-interval 1
 
-<h1 id="ステータスバーをトップに配置する">ステータスバーをトップに配置する</h1>
+# センタライズ（主にウィンドウ番号など）
+set-option -g status-justify centre
 
-<p>set-option -g status-position top</p>
+# ステータスバーの色を設定する
+set-option -g status-bg &quot;colour238&quot;
 
-<h1 id="左右のステータスバーの長さを決定する">左右のステータスバーの長さを決定する</h1>
+# status line の文字色を指定する。
+set-option -g status-fg &quot;colour255&quot;
 
-<p>set-option -g status-left-length 90
-set-option -g status-right-length 90</p>
-
-<h1 id="p-ペイン番号">#P =&gt; ペイン番号</h1>
-
-<h1 id="最左に表示">最左に表示</h1>
-
-<p>set-option -g status-left &lsquo;#H:[#P]&rsquo;</p>
-
-<h1 id="wi-fi-バッテリー残量-現在時刻">Wi-Fi、バッテリー残量、現在時刻</h1>
-
-<h1 id="最右に表示">最右に表示</h1>
-
-<p>set-option -g status-right &lsquo;#(wifi) #(battery &ndash;tmux) [%Y-%m-%d(%a) %H:%M]&rsquo;</p>
-
-<h1 id="ステータスバーを1秒毎に描画し直す">ステータスバーを1秒毎に描画し直す</h1>
-
-<p>set-option -g status-interval 1</p>
-
-<h1 id="センタライズ-主にウィンドウ番号など">センタライズ（主にウィンドウ番号など）</h1>
-
-<p>set-option -g status-justify centre</p>
-
-<h1 id="ステータスバーの色を設定する">ステータスバーの色を設定する</h1>
-
-<p>set-option -g status-bg &ldquo;colour238&rdquo;</p>
-
-<h1 id="status-line-の文字色を指定する">status line の文字色を指定する。</h1>
-
-<p>set-option -g status-fg &ldquo;colour255&rdquo;</p>
-
-<h1 id="vimのキーバインドでペインを移動する">vimのキーバインドでペインを移動する</h1>
-
-<p>bind h select-pane -L
+# vimのキーバインドでペインを移動する
+bind h select-pane -L
 bind j select-pane -D
 bind k select-pane -U
-bind l select-pane -R</p>
+bind l select-pane -R
 
-<h1 id="vimのキーバインドでペインをリサイズする">vimのキーバインドでペインをリサイズする</h1>
-
-<p>bind -r H resize-pane -L 5
+# vimのキーバインドでペインをリサイズする
+bind -r H resize-pane -L 5
 bind -r J resize-pane -D 5
 bind -r K resize-pane -U 5
-bind -r L resize-pane -R 5</p>
+bind -r L resize-pane -R 5
 
-<h1 id="でペインを縦分割する">| でペインを縦分割する</h1>
+# | でペインを縦分割する
+bind | split-window -h
 
-<p>bind | split-window -h</p>
+# - でペインを縦分割する
+bind - split-window -v
 
-<h1 id="でペインを縦分割する-1">- でペインを縦分割する</h1>
+# 番号基準値を変更
+set-option -g base-index 1
 
-<p>bind - split-window -v</p>
+# マウス操作を有効にする
+set-option -g mouse on
+bind -n WheelUpPane if-shell -F -t = &quot;#{mouse_any_flag}&quot; &quot;send-keys -M&quot; &quot;if -Ft= '#{pane_in_mode}' 'send-keys -M' 'copy-mode -e'&quot;
 
-<h1 id="番号基準値を変更">番号基準値を変更</h1>
+# コピーモードを設定する
+# コピーモードでvimキーバインドを使う
+setw -g mode-keys vi
 
-<p>set-option -g base-index 1</p>
+# 'v' で選択を始める
+bind -T copy-mode-vi v send -X begin-selection
 
-<h1 id="マウス操作を有効にする">マウス操作を有効にする</h1>
+# 'V' で行選択
+bind -T copy-mode-vi V send -X select-line
 
-<p>set-option -g mouse on
-bind -n WheelUpPane if-shell -F -t = &ldquo;#{mouse_any_flag}&rdquo; &ldquo;send-keys -M&rdquo; &ldquo;if -Ft= &lsquo;#{pane_in_mode}&rsquo; &lsquo;send-keys -M&rsquo; &lsquo;copy-mode -e&rsquo;&rdquo;</p>
+# 'C-v' で矩形選択
+bind -T copy-mode-vi C-v send -X rectangle-toggle
 
-<h1 id="コピーモードを設定する">コピーモードを設定する</h1>
+# 'y' でヤンク
+bind -T copy-mode-vi y send -X copy-selection
 
-<h1 id="コピーモードでvimキーバインドを使う">コピーモードでvimキーバインドを使う</h1>
+# 'Y' で行ヤンク
+bind -T copy-mode-vi Y send -X copy-line
 
-<p>setw -g mode-keys vi</p>
-
-<h1 id="v-で選択を始める">&lsquo;v&rsquo; で選択を始める</h1>
-
-<p>bind -T copy-mode-vi v send -X begin-selection</p>
-
-<h1 id="v-で行選択">&lsquo;V&rsquo; で行選択</h1>
-
-<p>bind -T copy-mode-vi V send -X select-line</p>
-
-<h1 id="c-v-で矩形選択">&lsquo;C-v&rsquo; で矩形選択</h1>
-
-<p>bind -T copy-mode-vi C-v send -X rectangle-toggle</p>
-
-<h1 id="y-でヤンク">&lsquo;y&rsquo; でヤンク</h1>
-
-<p>bind -T copy-mode-vi y send -X copy-selection</p>
-
-<h1 id="y-で行ヤンク">&lsquo;Y&rsquo; で行ヤンク</h1>
-
-<p>bind -T copy-mode-vi Y send -X copy-line</p>
-
-<h1 id="c-p-でペースト">&lsquo;C-p&rsquo;でペースト</h1>
-
-<p>bind-key C-p paste-buffer
-```</p>
-</article>
+# 'C-p'でペースト
+bind-key C-p paste-buffer
+```</code></pre></article>
 
       
 <div class="book-footer justify-between">
@@ -1203,46 +1151,14 @@ bind -n WheelUpPane if-shell -F -t = &ldquo;#{mouse_any_flag}&rdquo; &ldquo;send
 
   <aside class="book-toc level-3 fixed">
     <nav id="TableOfContents">
-<ul>
-<li><a href="#tmux">tmux</a>
-<ul>
-<li><a href="#インストール">インストール</a></li>
-<li><a href="#使い方">使い方</a>
-<ul>
-<li><a href="#セッション作成">セッション作成</a></li>
-</ul></li>
-</ul></li>
-<li><a href="#tmux起動時のシェルをzshにする">tmux起動時のシェルをzshにする</a></li>
-<li><a href="#tmuxを256色表示できるようにする">tmuxを256色表示できるようにする</a></li>
-<li><a href="#prefixキーをc-qに変更">prefixキーをC-qに変更</a></li>
-<li><a href="#set-g-prefix-c-q">set -g prefix C-q</a></li>
-<li><a href="#c-bのキーバインドを解除">C-bのキーバインドを解除</a></li>
-<li><a href="#unbind-c-b">unbind C-b</a></li>
-<li><a href="#ステータスバーをトップに配置する">ステータスバーをトップに配置する</a></li>
-<li><a href="#左右のステータスバーの長さを決定する">左右のステータスバーの長さを決定する</a></li>
-<li><a href="#p-ペイン番号">#P =&gt; ペイン番号</a></li>
-<li><a href="#最左に表示">最左に表示</a></li>
-<li><a href="#wi-fi-バッテリー残量-現在時刻">Wi-Fi、バッテリー残量、現在時刻</a></li>
-<li><a href="#最右に表示">最右に表示</a></li>
-<li><a href="#ステータスバーを1秒毎に描画し直す">ステータスバーを1秒毎に描画し直す</a></li>
-<li><a href="#センタライズ-主にウィンドウ番号など">センタライズ（主にウィンドウ番号など）</a></li>
-<li><a href="#ステータスバーの色を設定する">ステータスバーの色を設定する</a></li>
-<li><a href="#status-line-の文字色を指定する">status line の文字色を指定する。</a></li>
-<li><a href="#vimのキーバインドでペインを移動する">vimのキーバインドでペインを移動する</a></li>
-<li><a href="#vimのキーバインドでペインをリサイズする">vimのキーバインドでペインをリサイズする</a></li>
-<li><a href="#でペインを縦分割する">| でペインを縦分割する</a></li>
-<li><a href="#でペインを縦分割する-1">- でペインを縦分割する</a></li>
-<li><a href="#番号基準値を変更">番号基準値を変更</a></li>
-<li><a href="#マウス操作を有効にする">マウス操作を有効にする</a></li>
-<li><a href="#コピーモードを設定する">コピーモードを設定する</a></li>
-<li><a href="#コピーモードでvimキーバインドを使う">コピーモードでvimキーバインドを使う</a></li>
-<li><a href="#v-で選択を始める">&lsquo;v&rsquo; で選択を始める</a></li>
-<li><a href="#v-で行選択">&lsquo;V&rsquo; で行選択</a></li>
-<li><a href="#c-v-で矩形選択">&lsquo;C-v&rsquo; で矩形選択</a></li>
-<li><a href="#y-でヤンク">&lsquo;y&rsquo; でヤンク</a></li>
-<li><a href="#y-で行ヤンク">&lsquo;Y&rsquo; で行ヤンク</a></li>
-<li><a href="#c-p-でペースト">&lsquo;C-p&rsquo;でペースト</a></li>
-</ul>
+  <ul>
+    <li><a href="#インストール">インストール</a></li>
+    <li><a href="#使い方">使い方</a>
+      <ul>
+        <li><a href="#セッション作成">セッション作成</a></li>
+      </ul>
+    </li>
+  </ul>
 </nav>
   </aside>
 

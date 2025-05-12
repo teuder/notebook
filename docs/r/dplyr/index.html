@@ -6,16 +6,18 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0"><meta property="og:title" content="dplyr" />
 <meta property="og:description" content="dplyr データフレームに対する操作 列の選択 select() 列選択のヘルパー関数 これらの関数は select() の中で使う all_of(x) 変数 x に記録されたカラムを選択する 行の選択 行の並べ替え" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://teuder.github.io/notebook/r/dplyr/" />
+<meta property="og:url" content="https://teuder.github.io/notebook/r/dplyr/" /><meta property="article:section" content="R" />
+
 <meta property="article:modified_time" content="2021-01-21T20:01:52+09:00" />
+
 <title>dplyr | notebook</title>
 <link rel="icon" href="/notebook/favicon.png" type="image/x-icon">
 
 
-<link rel="stylesheet" href="/notebook/book.min.1b994bd28c6ce2255f069b6bf6837b4d396307637fc48d61dcb2a6caac26e031.css" integrity="sha256-G5lL0oxs4iVfBptr9oN7TTljB2N/xI1h3LKmyqwm4DE=">
+<link rel="stylesheet" href="/notebook/book.min.2771458f1d859600effb70312702cd7e488eefb7c2c5ed4c083e65b6b95e5cae.css" integrity="sha256-J3FFjx2FlgDv&#43;3AxJwLNfkiO77fCxe1MCD5ltrleXK4=">
 
 
-<script defer src="/notebook/search.min.e50f4978caa8ea9d9c3d92a39ce60172ac017f8cc877aace48252f3ed36fef5e.js" integrity="sha256-5Q9JeMqo6p2cPZKjnOYBcqwBf4zId6rOSCUvPtNv714="></script>
+<script defer src="/notebook/search.min.ea3aecd4faed767f2a3c113b94ece297d71ed5ecc34ece71fca215c4565ddcc7.js" integrity="sha256-6jrs1Prtdn8qPBE7lOzil9ce1ezDTs5x/KIVxFZd3Mc="></script>
 
 <!--
 Made with Book Theme
@@ -954,54 +956,41 @@ https://github.com/alex-shpak/hugo-book
 </header>
 
       
-<article class="markdown">
-
-<h1 id="dplyr">dplyr</h1>
-
+<article class="markdown"><h1 id="dplyr">dplyr</h1>
 <p>データフレームに対する操作</p>
-
 <h1 id="列の選択">列の選択</h1>
-
 <p>select()</p>
-
 <h2 id="列選択のヘルパー関数">列選択のヘルパー関数</h2>
-
 <p>これらの関数は <code>select()</code> の中で使う</p>
-
 <p><code>all_of(x)</code> 変数 <code>x</code> に記録されたカラムを選択する</p>
-
 <h1 id="行の選択">行の選択</h1>
-
 <h1 id="行の並べ替え">行の並べ替え</h1>
-
 <h1 id="グループ化">グループ化</h1>
-
 <h1 id="集計">集計</h1>
-
 <h2 id="レコード数のカウント">レコード数のカウント</h2>
-
 <p>以下の3つは全て同じ結果を返す。カラム x の値ごとにレコード数をカウントする。</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">df <span style="color:#f92672">%&gt;%</span>
-  group_by<span style="color:#111">(</span>x<span style="color:#111">)</span> <span style="color:#f92672">%&gt;%</span>
-  summarize<span style="color:#111">(</span>n <span style="color:#f92672">=</span> n<span style="color:#111">())</span>
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#111">df</span> <span style="color:#f92672">%&gt;%</span>
+  <span style="color:#75af00">group_by</span><span style="color:#111">(</span><span style="color:#111">x</span><span style="color:#111">)</span> <span style="color:#f92672">%&gt;%</span>
+  <span style="color:#75af00">summarize</span><span style="color:#111">(</span><span style="color:#111">n</span> <span style="color:#f92672">=</span> <span style="color:#75af00">n</span><span style="color:#111">())</span>
 
-df <span style="color:#f92672">%&gt;%</span>
-  group_by<span style="color:#111">(</span>x<span style="color:#111">)</span> <span style="color:#f92672">%&gt;%</span>
-  tally<span style="color:#111">()</span>
+<span style="color:#111">df</span> <span style="color:#f92672">%&gt;%</span>
+  <span style="color:#75af00">group_by</span><span style="color:#111">(</span><span style="color:#111">x</span><span style="color:#111">)</span> <span style="color:#f92672">%&gt;%</span>
+  <span style="color:#75af00">tally</span><span style="color:#111">()</span>
 
-df <span style="color:#f92672">%&gt;%</span>
-  count<span style="color:#111">(</span>x<span style="color:#111">)</span></code></pre></div>
-<p><code>add_count()</code> と <code>add_tally()</code> は、上の例の <code>summarize()</code> を <code>mutate()</code> に変えたもの、元の df の行数は変えずにグループごとのカウント列を追加する</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">df <span style="color:#f92672">%&gt;%</span>
-  group_by<span style="color:#111">(</span>x<span style="color:#111">)</span> <span style="color:#f92672">%&gt;%</span>
-  mutate<span style="color:#111">(</span>n <span style="color:#f92672">=</span> n<span style="color:#111">())</span>
+<span style="color:#111">df</span> <span style="color:#f92672">%&gt;%</span>
+  <span style="color:#75af00">count</span><span style="color:#111">(</span><span style="color:#111">x</span><span style="color:#111">)</span>
+</code></pre></div><p><code>add_count()</code> と <code>add_tally()</code> は、上の例の <code>summarize()</code> を <code>mutate()</code> に変えたもの、元の df の行数は変えずにグループごとのカウント列を追加する</p>
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#111">df</span> <span style="color:#f92672">%&gt;%</span>
+  <span style="color:#75af00">group_by</span><span style="color:#111">(</span><span style="color:#111">x</span><span style="color:#111">)</span> <span style="color:#f92672">%&gt;%</span>
+  <span style="color:#75af00">mutate</span><span style="color:#111">(</span><span style="color:#111">n</span> <span style="color:#f92672">=</span> <span style="color:#75af00">n</span><span style="color:#111">())</span>
 
-df <span style="color:#f92672">%&gt;%</span>
-  group_by<span style="color:#111">(</span>x<span style="color:#111">)</span> <span style="color:#f92672">%&gt;%</span>
-  add_tally<span style="color:#111">()</span>
+<span style="color:#111">df</span> <span style="color:#f92672">%&gt;%</span>
+  <span style="color:#75af00">group_by</span><span style="color:#111">(</span><span style="color:#111">x</span><span style="color:#111">)</span> <span style="color:#f92672">%&gt;%</span>
+  <span style="color:#75af00">add_tally</span><span style="color:#111">()</span>
 
-df <span style="color:#f92672">%&gt;%</span>
-  add_count<span style="color:#111">(</span>x<span style="color:#111">)</span></code></pre></div></article>
+<span style="color:#111">df</span> <span style="color:#f92672">%&gt;%</span>
+  <span style="color:#75af00">add_count</span><span style="color:#111">(</span><span style="color:#111">x</span><span style="color:#111">)</span>
+</code></pre></div></article>
 
       
 <div class="book-footer justify-between">
@@ -1035,20 +1024,13 @@ df <span style="color:#f92672">%&gt;%</span>
 
   <aside class="book-toc level-3 fixed">
     <nav id="TableOfContents">
-<ul>
-<li><a href="#dplyr">dplyr</a></li>
-<li><a href="#列の選択">列の選択</a>
-<ul>
-<li><a href="#列選択のヘルパー関数">列選択のヘルパー関数</a></li>
-</ul></li>
-<li><a href="#行の選択">行の選択</a></li>
-<li><a href="#行の並べ替え">行の並べ替え</a></li>
-<li><a href="#グループ化">グループ化</a></li>
-<li><a href="#集計">集計</a>
-<ul>
-<li><a href="#レコード数のカウント">レコード数のカウント</a></li>
-</ul></li>
-</ul>
+  <ul>
+    <li><a href="#列選択のヘルパー関数">列選択のヘルパー関数</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#レコード数のカウント">レコード数のカウント</a></li>
+  </ul>
 </nav>
   </aside>
 

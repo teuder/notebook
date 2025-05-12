@@ -6,16 +6,18 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0"><meta property="og:title" content="forcats" />
 <meta property="og:description" content="forcats forcats パッケージは factor 型を操作するためのパッケージ https://kazutan.github.io/kazutanR/forcats_test.html 関数の一覧 library(forcats) ls(&quot;package:forcats&quot;) [1] &quot;%&gt;%&quot; &quot;as_factor&quot; &quot;fct_anon&quot; [4] &quot;fct_c&quot; &quot;fct_collapse&quot; &quot;fct_count&quot; [7] &quot;fct_cross&quot; &quot;fct_drop&quot; &quot;fct_expand&quot; [10] &quot;fct_explicit_na&quot; &quot;fct_infreq&quot; &quot;fct_inorder&quot; [13] &quot;fct_inseq&quot; &quot;fct_lump&quot; &quot;fct_lump_lowfreq&quot; [16] &quot;fct_lump_min&quot; &quot;fct_lump_n&quot; &quot;fct_lump_prop&quot; [19] &quot;fct_match&quot; &quot;fct_other&quot; &quot;fct_recode&quot; [22] &quot;fct_relabel&quot; &quot;fct_relevel&quot; &quot;fct_reorder&quot; [25] &quot;fct_reorder2&quot; &quot;fct_rev&quot; &quot;fct_shift&quot; [28] &quot;fct_shuffle&quot; &quot;fct_unify&quot;" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://teuder.github.io/notebook/r/forcats/" />
+<meta property="og:url" content="https://teuder.github.io/notebook/r/forcats/" /><meta property="article:section" content="R" />
+
 <meta property="article:modified_time" content="2022-04-20T12:34:18+09:00" />
+
 <title>forcats | notebook</title>
 <link rel="icon" href="/notebook/favicon.png" type="image/x-icon">
 
 
-<link rel="stylesheet" href="/notebook/book.min.1b994bd28c6ce2255f069b6bf6837b4d396307637fc48d61dcb2a6caac26e031.css" integrity="sha256-G5lL0oxs4iVfBptr9oN7TTljB2N/xI1h3LKmyqwm4DE=">
+<link rel="stylesheet" href="/notebook/book.min.2771458f1d859600effb70312702cd7e488eefb7c2c5ed4c083e65b6b95e5cae.css" integrity="sha256-J3FFjx2FlgDv&#43;3AxJwLNfkiO77fCxe1MCD5ltrleXK4=">
 
 
-<script defer src="/notebook/search.min.e50f4978caa8ea9d9c3d92a39ce60172ac017f8cc877aace48252f3ed36fef5e.js" integrity="sha256-5Q9JeMqo6p2cPZKjnOYBcqwBf4zId6rOSCUvPtNv714="></script>
+<script defer src="/notebook/search.min.ea3aecd4faed767f2a3c113b94ece297d71ed5ecc34ece71fca215c4565ddcc7.js" integrity="sha256-6jrs1Prtdn8qPBE7lOzil9ce1ezDTs5x/KIVxFZd3Mc="></script>
 
 <!--
 Made with Book Theme
@@ -954,17 +956,11 @@ https://github.com/alex-shpak/hugo-book
 </header>
 
       
-<article class="markdown">
-
-<h1 id="forcats">forcats</h1>
-
+<article class="markdown"><h1 id="forcats">forcats</h1>
 <p><code>forcats</code> パッケージは <code>factor</code> 型を操作するためのパッケージ</p>
-
 <p><a href="https://kazutan.github.io/kazutanR/forcats_test.html">https://kazutan.github.io/kazutanR/forcats_test.html</a></p>
-
 <p>関数の一覧</p>
-
-<pre><code>library(forcats)
+<pre tabindex="0"><code>library(forcats)
 ls(&quot;package:forcats&quot;)
  [1] &quot;%&gt;%&quot;              &quot;as_factor&quot;        &quot;fct_anon&quot;        
  [4] &quot;fct_c&quot;            &quot;fct_collapse&quot;     &quot;fct_count&quot;       
@@ -980,35 +976,33 @@ ls(&quot;package:forcats&quot;)
 [34] &quot;lvls_expand&quot;      &quot;lvls_reorder&quot;     &quot;lvls_revalue&quot;    
 [37] &quot;lvls_union&quot;   
 
-</code></pre>
-
-<h2 id="レベルを並べ替える">レベルを並べ替える</h2>
-
+</code></pre><h2 id="レベルを並べ替える">レベルを並べ替える</h2>
 <p>既存の factor 型のレベルそのものは変更せずに、レベルの順序を変更する。可視化のときに便利</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#75715e"># レベルが登場する順にならべかえ</span>
-forcats<span style="color:#f92672">::</span>fct_inorder<span style="color:#111">(</span>x<span style="color:#111">)</span> 
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#75715e"># レベルが登場する順にならべかえ</span>
+<span style="color:#111">forcats</span><span style="color:#f92672">::</span><span style="color:#75af00">fct_inorder</span><span style="color:#111">(</span><span style="color:#111">x</span><span style="color:#111">)</span> 
 <span style="color:#75715e"># 各レベルの頻度順に並べ替え</span>
-forcats<span style="color:#f92672">::</span>fct_infreq<span style="color:#111">(</span>x<span style="color:#111">)</span> 
+<span style="color:#111">forcats</span><span style="color:#f92672">::</span><span style="color:#75af00">fct_infreq</span><span style="color:#111">(</span><span style="color:#111">x</span><span style="color:#111">)</span> 
 
 <span style="color:#75715e"># マニュアルで並べ替え</span>
-forcats<span style="color:#f92672">::</span>fct_relevel<span style="color:#111">(</span>x<span style="color:#111">,</span> <span style="color:#00a8c8">c</span><span style="color:#111">(</span><span style="color:#d88200">&#34;level_C&#34;</span><span style="color:#111">,</span> <span style="color:#d88200">&#34;level_A&#34;</span><span style="color:#111">,</span> <span style="color:#d88200">&#34;level_B&#34;</span><span style="color:#111">))</span>
+<span style="color:#111">forcats</span><span style="color:#f92672">::</span><span style="color:#75af00">fct_relevel</span><span style="color:#111">(</span><span style="color:#111">x</span><span style="color:#111">,</span> <span style="color:#75af00">c</span><span style="color:#111">(</span><span style="color:#d88200">&#34;level_C&#34;</span><span style="color:#111">,</span> <span style="color:#d88200">&#34;level_A&#34;</span><span style="color:#111">,</span> <span style="color:#d88200">&#34;level_B&#34;</span><span style="color:#111">))</span>
 
 <span style="color:#75715e"># 別の変数 y の値を使って並べ替え</span>
 <span style="color:#75715e"># ... には na.rm = TRUE とか</span>
-forcats<span style="color:#f92672">::</span>fct_reorder<span style="color:#111">(</span>x<span style="color:#111">,</span> y<span style="color:#111">,</span> fun <span style="color:#f92672">=</span> median<span style="color:#111">,</span> <span style="color:#00a8c8">...</span><span style="color:#111">,</span> <span style="color:#ae81ff">.</span>desc <span style="color:#f92672">=</span> <span style="color:#00a8c8">FALSE</span><span style="color:#111">)</span></code></pre></div>
-<h2 id="レベルをマージする">レベルをマージする</h2>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#75715e"># ある割合以下のレベルをOtherにまとめる</span>
-forcats<span style="color:#f92672">::</span>fct_lump_prop<span style="color:#111">(</span>x<span style="color:#111">,</span> prop <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.01</span><span style="color:#111">))</span>
+<span style="color:#111">forcats</span><span style="color:#f92672">::</span><span style="color:#75af00">fct_reorder</span><span style="color:#111">(</span><span style="color:#111">x</span><span style="color:#111">,</span> <span style="color:#111">y</span><span style="color:#111">,</span> <span style="color:#111">fun</span> <span style="color:#f92672">=</span> <span style="color:#111">median</span><span style="color:#111">,</span> <span style="color:#00a8c8">...</span><span style="color:#111">,</span> <span style="color:#111">.desc</span> <span style="color:#f92672">=</span> <span style="color:#00a8c8">FALSE</span><span style="color:#111">)</span>
+</code></pre></div><h2 id="レベルをマージする">レベルをマージする</h2>
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#75715e"># ある割合以下のレベルをOtherにまとめる</span>
+<span style="color:#111">forcats</span><span style="color:#f92672">::</span><span style="color:#75af00">fct_lump_prop</span><span style="color:#111">(</span><span style="color:#111">x</span><span style="color:#111">,</span> <span style="color:#111">prop</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.01</span><span style="color:#111">))</span>
 
 <span style="color:#75715e"># マニュアルで既存のレベルをまとめて新しいレベルを作る</span>
-forcats<span style="color:#f92672">::</span>fct_collapse<span style="color:#111">(</span>gss_cat<span style="color:#f92672">$</span>partyid<span style="color:#111">,</span>
-  new_level_1 <span style="color:#f92672">=</span> <span style="color:#00a8c8">c</span><span style="color:#111">(</span><span style="color:#d88200">&#34;Level_A&#34;</span><span style="color:#111">,</span> <span style="color:#d88200">&#34;Level_B&#34;</span><span style="color:#111">),</span>
-  new_level_2 <span style="color:#f92672">=</span> <span style="color:#d88200">&#34;Level_C&#34;</span><span style="color:#111">,</span>
-  new_level_3 <span style="color:#f92672">=</span> <span style="color:#00a8c8">c</span><span style="color:#111">(</span><span style="color:#d88200">&#34;Level_D&#34;</span><span style="color:#111">,</span> <span style="color:#d88200">&#34;Level_E&#34;</span><span style="color:#111">),</span>
-<span style="color:#111">)</span></code></pre></div>
-<h2 id="新しいレベルを追加する">新しいレベルを追加する</h2>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#75715e"># 欠損値を明示的にレベルに加える</span>
-forcats<span style="color:#f92672">::</span>fct_explicit_na<span style="color:#111">(</span>x<span style="color:#111">,</span> na_level <span style="color:#f92672">=</span> <span style="color:#d88200">&#34;Missing&#34;</span><span style="color:#111">)</span></code></pre></div></article>
+<span style="color:#111">forcats</span><span style="color:#f92672">::</span><span style="color:#75af00">fct_collapse</span><span style="color:#111">(</span><span style="color:#111">gss_cat</span><span style="color:#f92672">$</span><span style="color:#111">partyid</span><span style="color:#111">,</span>
+  <span style="color:#111">new_level_1</span> <span style="color:#f92672">=</span> <span style="color:#75af00">c</span><span style="color:#111">(</span><span style="color:#d88200">&#34;Level_A&#34;</span><span style="color:#111">,</span> <span style="color:#d88200">&#34;Level_B&#34;</span><span style="color:#111">),</span>
+  <span style="color:#111">new_level_2</span> <span style="color:#f92672">=</span> <span style="color:#d88200">&#34;Level_C&#34;</span><span style="color:#111">,</span>
+  <span style="color:#111">new_level_3</span> <span style="color:#f92672">=</span> <span style="color:#75af00">c</span><span style="color:#111">(</span><span style="color:#d88200">&#34;Level_D&#34;</span><span style="color:#111">,</span> <span style="color:#d88200">&#34;Level_E&#34;</span><span style="color:#111">),</span>
+<span style="color:#111">)</span>
+</code></pre></div><h2 id="新しいレベルを追加する">新しいレベルを追加する</h2>
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#75715e"># 欠損値を明示的にレベルに加える</span>
+<span style="color:#111">forcats</span><span style="color:#f92672">::</span><span style="color:#75af00">fct_explicit_na</span><span style="color:#111">(</span><span style="color:#111">x</span><span style="color:#111">,</span> <span style="color:#111">na_level</span> <span style="color:#f92672">=</span> <span style="color:#d88200">&#34;Missing&#34;</span><span style="color:#111">)</span>
+</code></pre></div></article>
 
       
 <div class="book-footer justify-between">
@@ -1042,14 +1036,11 @@ forcats<span style="color:#f92672">::</span>fct_explicit_na<span style="color:#1
 
   <aside class="book-toc level-3 fixed">
     <nav id="TableOfContents">
-<ul>
-<li><a href="#forcats">forcats</a>
-<ul>
-<li><a href="#レベルを並べ替える">レベルを並べ替える</a></li>
-<li><a href="#レベルをマージする">レベルをマージする</a></li>
-<li><a href="#新しいレベルを追加する">新しいレベルを追加する</a></li>
-</ul></li>
-</ul>
+  <ul>
+    <li><a href="#レベルを並べ替える">レベルを並べ替える</a></li>
+    <li><a href="#レベルをマージする">レベルをマージする</a></li>
+    <li><a href="#新しいレベルを追加する">新しいレベルを追加する</a></li>
+  </ul>
 </nav>
   </aside>
 

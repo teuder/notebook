@@ -6,17 +6,18 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0"><meta property="og:title" content="Bayesian Staistics" />
 <meta property="og:description" content="Bayesian Statistics Cmdstanr入門とreduce_sum()解説 rstan はもう更新されていないみたいなので、今後は Cmdstan のラッパーである Cmdstanr を使った方がよさそう Bayesian" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://teuder.github.io/notebook/datascience/bayesian_statistics/" />
+<meta property="og:url" content="https://teuder.github.io/notebook/datascience/bayesian_statistics/" /><meta property="article:section" content="DataScience" />
 <meta property="article:published_time" content="2019-08-26T00:00:00+00:00" />
 <meta property="article:modified_time" content="2021-09-21T20:07:15+09:00" />
+
 <title>Bayesian Staistics | notebook</title>
 <link rel="icon" href="/notebook/favicon.png" type="image/x-icon">
 
 
-<link rel="stylesheet" href="/notebook/book.min.1b994bd28c6ce2255f069b6bf6837b4d396307637fc48d61dcb2a6caac26e031.css" integrity="sha256-G5lL0oxs4iVfBptr9oN7TTljB2N/xI1h3LKmyqwm4DE=">
+<link rel="stylesheet" href="/notebook/book.min.2771458f1d859600effb70312702cd7e488eefb7c2c5ed4c083e65b6b95e5cae.css" integrity="sha256-J3FFjx2FlgDv&#43;3AxJwLNfkiO77fCxe1MCD5ltrleXK4=">
 
 
-<script defer src="/notebook/search.min.e50f4978caa8ea9d9c3d92a39ce60172ac017f8cc877aace48252f3ed36fef5e.js" integrity="sha256-5Q9JeMqo6p2cPZKjnOYBcqwBf4zId6rOSCUvPtNv714="></script>
+<script defer src="/notebook/search.min.ea3aecd4faed767f2a3c113b94ece297d71ed5ecc34ece71fca215c4565ddcc7.js" integrity="sha256-6jrs1Prtdn8qPBE7lOzil9ce1ezDTs5x/KIVxFZd3Mc="></script>
 
 <!--
 Made with Book Theme
@@ -955,42 +956,51 @@ https://github.com/alex-shpak/hugo-book
 </header>
 
       
-<article class="markdown">
-
-<h1 id="bayesian-statistics">Bayesian Statistics</h1>
-
+<article class="markdown"><h1 id="bayesian-statistics">Bayesian Statistics</h1>
 <ul>
-<li><p><a href="https://www.slideshare.net/simizu706/cmdstanrreducesum">Cmdstanr入門とreduce_sum()解説</a></p>
-
-<ul>
-<li>rstan はもう更新されていないみたいなので、今後は Cmdstan のラッパーである <code>Cmdstanr</code> を使った方がよさそう</li>
-</ul></li>
-
-<li><p><a href="https://speakerdeck.com/kilometer/bayesian-statistics-tokyo-dot-r-number-94">Bayesian statistics</a></p></li>
-
-<li><p><a href="https://speakerdeck.com/y__mattu/set-up-rstan">rstanの環境構築 </a></p></li>
-
-<li><p><a href="https://www.slideshare.net/kotora_0507/tokyo-r94-beginnerssession3">初心者セッション3 Introduction to rstan</a></p></li>
-
-<li><p><a href="https://speakerdeck.com/kosugitti/tokyo-dot-r-number-94-tuo-rstanchu-xin-zhe">めざせ脱rstan初心者</a></p></li>
-
-<li><p><a href="https://www.slideshare.net/ssuser95ebb9/ss-250169801">実験ゲームの統計モデリング</a></p></li>
-
-<li><p><a href="https://speakerdeck.com/masakazoo/stantui-ding-hou-falseke-shi-hua-nituite-tokyo-dot-r-number-94">stan推定後の可視化について</a></p></li>
-
-<li><p><a href="https://das-kino.hatenablog.com/entry/2018/12/10/211511">Introduction to bayesplot (ppc_ series)</a></p></li>
-
-<li><p><a href="https://dastatis.github.io/pdf/StanAdvent2018/bayesplot.html">Introduction to bayesplot (mcmc_ series)</a></p></li>
-
-<li><p><a href="https://www.slideshare.net/daikihojo/stan-70425025">Stanの便利な事後処理関数</a></p></li>
-
-<li><p><a href="https://mc-stan.org/rstan/reference/stan_plot.html">ggplot2 for RStan</a></p></li>
-
-<li><p><a href="https://mc-stan.org/bayesplot/index.html">bayesplot</a></p></li>
-
-<li><p><a href="https://qiita.com/advent-calendar/2018/stan">Stan Advent Calendar 2018</a></p></li>
+<li>
+<p><a href="https://www.slideshare.net/simizu706/cmdstanrreducesum">Cmdstanr入門とreduce_sum()解説</a></p>
+</li>
+<li>
+<p>rstan はもう更新されていないみたいなので、今後は Cmdstan のラッパーである <code>Cmdstanr</code> を使った方がよさそう</p>
+</li>
+<li>
+<p><a href="https://speakerdeck.com/kilometer/bayesian-statistics-tokyo-dot-r-number-94">Bayesian statistics</a></p>
+</li>
+<li>
+<p><a href="https://speakerdeck.com/y__mattu/set-up-rstan">rstanの環境構築 </a></p>
+</li>
+<li>
+<p><a href="https://www.slideshare.net/kotora_0507/tokyo-r94-beginnerssession3">初心者セッション3 Introduction to rstan</a></p>
+</li>
+<li>
+<p><a href="https://speakerdeck.com/kosugitti/tokyo-dot-r-number-94-tuo-rstanchu-xin-zhe">めざせ脱rstan初心者</a></p>
+</li>
+<li>
+<p><a href="https://www.slideshare.net/ssuser95ebb9/ss-250169801">実験ゲームの統計モデリング</a></p>
+</li>
+<li>
+<p><a href="https://speakerdeck.com/masakazoo/stantui-ding-hou-falseke-shi-hua-nituite-tokyo-dot-r-number-94">stan推定後の可視化について</a></p>
+</li>
+<li>
+<p><a href="https://das-kino.hatenablog.com/entry/2018/12/10/211511">Introduction to bayesplot (ppc_ series)</a></p>
+</li>
+<li>
+<p><a href="https://dastatis.github.io/pdf/StanAdvent2018/bayesplot.html">Introduction to bayesplot (mcmc_ series)</a></p>
+</li>
+<li>
+<p><a href="https://www.slideshare.net/daikihojo/stan-70425025">Stanの便利な事後処理関数</a></p>
+</li>
+<li>
+<p><a href="https://mc-stan.org/rstan/reference/stan_plot.html">ggplot2 for RStan</a></p>
+</li>
+<li>
+<p><a href="https://mc-stan.org/bayesplot/index.html">bayesplot</a></p>
+</li>
+<li>
+<p><a href="https://qiita.com/advent-calendar/2018/stan">Stan Advent Calendar 2018</a></p>
+</li>
 </ul>
-
 <p><a href="https://cpp-laboratory.hatenablog.com/entry/2019/12/02/010757">RstanにDockerはいいゾ</a></p>
 </article>
 
@@ -1025,11 +1035,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   <aside class="book-toc level-3 fixed">
-    <nav id="TableOfContents">
-<ul>
-<li><a href="#bayesian-statistics">Bayesian Statistics</a></li>
-</ul>
-</nav>
+    <nav id="TableOfContents"></nav>
   </aside>
 
 

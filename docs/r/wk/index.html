@@ -6,16 +6,18 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0"><meta property="og:title" content="wk" />
 <meta property="og:description" content="wk 地理データで登場する Well Known Text (WKT) や Well Known Binary (WKB) 形式のデータを扱うためのパッケージ このパッケージをインストールすると bigrquery パッケージで BigQuery から GEOGRAPHY 型のカラム" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://teuder.github.io/notebook/r/wk/" />
+<meta property="og:url" content="https://teuder.github.io/notebook/r/wk/" /><meta property="article:section" content="R" />
+
 <meta property="article:modified_time" content="2021-11-01T17:33:00+09:00" />
+
 <title>wk | notebook</title>
 <link rel="icon" href="/notebook/favicon.png" type="image/x-icon">
 
 
-<link rel="stylesheet" href="/notebook/book.min.1b994bd28c6ce2255f069b6bf6837b4d396307637fc48d61dcb2a6caac26e031.css" integrity="sha256-G5lL0oxs4iVfBptr9oN7TTljB2N/xI1h3LKmyqwm4DE=">
+<link rel="stylesheet" href="/notebook/book.min.2771458f1d859600effb70312702cd7e488eefb7c2c5ed4c083e65b6b95e5cae.css" integrity="sha256-J3FFjx2FlgDv&#43;3AxJwLNfkiO77fCxe1MCD5ltrleXK4=">
 
 
-<script defer src="/notebook/search.min.e50f4978caa8ea9d9c3d92a39ce60172ac017f8cc877aace48252f3ed36fef5e.js" integrity="sha256-5Q9JeMqo6p2cPZKjnOYBcqwBf4zId6rOSCUvPtNv714="></script>
+<script defer src="/notebook/search.min.ea3aecd4faed767f2a3c113b94ece297d71ed5ecc34ece71fca215c4565ddcc7.js" integrity="sha256-6jrs1Prtdn8qPBE7lOzil9ce1ezDTs5x/KIVxFZd3Mc="></script>
 
 <!--
 Made with Book Theme
@@ -954,36 +956,29 @@ https://github.com/alex-shpak/hugo-book
 </header>
 
       
-<article class="markdown">
-
-<h1 id="wk">wk</h1>
-
+<article class="markdown"><h1 id="wk">wk</h1>
 <p>地理データで登場する <code>Well Known Text (WKT)</code> や <code>Well Known Binary (WKB)</code> 形式のデータを扱うためのパッケージ</p>
-
 <p>このパッケージをインストールすると <code>bigrquery</code> パッケージで BigQuery から <code>GEOGRAPHY</code> 型のカラムを含むテーブルをそのままダウンロードすることができるようになる。 <code>wkutils</code> パッケージも一緒にインストールすると良い</p>
-
 <ul>
 <li><a href="https://cran.r-project.org/package=wk">https://cran.r-project.org/package=wk</a></li>
 <li><a href="https://paleolimbot.github.io/wk/">https://paleolimbot.github.io/wk/</a></li>
 </ul>
-
 <p>GEOMETRY カラムを含む BigQuery テーブルを取得して、それを <code>sf</code> オブジェクトに変換する</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#75715e"># テーブルの取得</span>
-geometry_df <span style="color:#f92672">&lt;-</span> DBI<span style="color:#f92672">::</span>dbGetQuery<span style="color:#111">(</span>con<span style="color:#111">,</span> query<span style="color:#111">)</span>
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#75715e"># テーブルの取得</span>
+<span style="color:#111">geometry_df</span> <span style="color:#f92672">&lt;-</span> <span style="color:#111">DBI</span><span style="color:#f92672">::</span><span style="color:#75af00">dbGetQuery</span><span style="color:#111">(</span><span style="color:#111">con</span><span style="color:#111">,</span> <span style="color:#111">query</span><span style="color:#111">)</span>
 
 <span style="color:#75715e"># GEOMETRY カラム (`geometry_wkt`) を `sfc` オブジェクトに変換</span>
-geometry_sfc <span style="color:#f92672">&lt;-</span> sf<span style="color:#f92672">::</span>st_as_sfc<span style="color:#111">(</span>geometry_df<span style="color:#f92672">$</span>geometry_wkt<span style="color:#111">,</span> crs<span style="color:#f92672">=</span><span style="color:#ae81ff">4326</span><span style="color:#111">)</span>
+<span style="color:#111">geometry_sfc</span> <span style="color:#f92672">&lt;-</span> <span style="color:#111">sf</span><span style="color:#f92672">::</span><span style="color:#75af00">st_as_sfc</span><span style="color:#111">(</span><span style="color:#111">geometry_df</span><span style="color:#f92672">$</span><span style="color:#111">geometry_wkt</span><span style="color:#111">,</span> <span style="color:#111">crs</span><span style="color:#f92672">=</span><span style="color:#ae81ff">4326</span><span style="color:#111">)</span>
 
 <span style="color:#75715e"># データフレームから GEOMETRY カラムを削除</span>
-data_df <span style="color:#f92672">&lt;-</span> geometry_df <span style="color:#f92672">%&gt;%</span> select<span style="color:#111">(</span><span style="color:#f92672">-</span>geometry_wkt<span style="color:#111">)</span>
+<span style="color:#111">data_df</span> <span style="color:#f92672">&lt;-</span> <span style="color:#111">geometry_df</span> <span style="color:#f92672">%&gt;%</span> <span style="color:#75af00">select</span><span style="color:#111">(</span><span style="color:#f92672">-</span><span style="color:#111">geometry_wkt</span><span style="color:#111">)</span>
 
 <span style="color:#75715e"># データフレームと `sfc` オブジェクトを合体して `sf` オブジェクトを作成する</span>
-geometry_sf <span style="color:#f92672">&lt;-</span> 
-    sf<span style="color:#f92672">::</span>st_set_geometry<span style="color:#111">(</span>data_df<span style="color:#111">,</span> geometry_sfc<span style="color:#111">)</span> 
+<span style="color:#111">geometry_sf</span> <span style="color:#f92672">&lt;-</span> 
+    <span style="color:#111">sf</span><span style="color:#f92672">::</span><span style="color:#75af00">st_set_geometry</span><span style="color:#111">(</span><span style="color:#111">data_df</span><span style="color:#111">,</span> <span style="color:#111">geometry_sfc</span><span style="color:#111">)</span> 
 
-sf<span style="color:#f92672">::</span>st_crs<span style="color:#111">(</span>geometry_sf<span style="color:#111">)</span> <span style="color:#f92672">&lt;-</span>  <span style="color:#ae81ff">4326</span>   </code></pre></div>
-<h1 id="wkutil">wkutil</h1>
-
+<span style="color:#111">sf</span><span style="color:#f92672">::</span><span style="color:#75af00">st_crs</span><span style="color:#111">(</span><span style="color:#111">geometry_sf</span><span style="color:#111">)</span> <span style="color:#f92672">&lt;-</span>  <span style="color:#ae81ff">4326</span>   
+</code></pre></div><h1 id="wkutil">wkutil</h1>
 <p><a href="https://paleolimbot.github.io/wkutils/index.html">https://paleolimbot.github.io/wkutils/index.html</a></p>
 </article>
 
@@ -1018,12 +1013,7 @@ sf<span style="color:#f92672">::</span>st_crs<span style="color:#111">(</span>ge
   
 
   <aside class="book-toc level-3 fixed">
-    <nav id="TableOfContents">
-<ul>
-<li><a href="#wk">wk</a></li>
-<li><a href="#wkutil">wkutil</a></li>
-</ul>
-</nav>
+    <nav id="TableOfContents"></nav>
   </aside>
 
 

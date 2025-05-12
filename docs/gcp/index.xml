@@ -1,15 +1,11 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Google Cloud Platform on notebook</title>
     <link>https://teuder.github.io/notebook/gcp/</link>
     <description>Recent content in Google Cloud Platform on notebook</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>ja-JP</language>
-    
-	<atom:link href="https://teuder.github.io/notebook/gcp/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <language>ja-JP</language><atom:link href="https://teuder.github.io/notebook/gcp/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>BigQuery GIS</title>
       <link>https://teuder.github.io/notebook/gcp/bigquery_gis/</link>
@@ -43,7 +39,7 @@
       <pubDate>Wed, 04 Sep 2019 00:00:00 +0000</pubDate>
       
       <guid>https://teuder.github.io/notebook/gcp/bigquery_sql/</guid>
-      <description>BigQuery: SQL 基本文法 標準 SQL のクエリ構文 標準SQLの演算子 標準SQLの関数と演算子 データセットの中からテーブルの情報を取得する select * dataset._TABLESSUMMARY INFORMAIT</description>
+      <description>BigQuery: SQL 基本文法 標準 SQL のクエリ構文 標準SQLの演算子 標準SQLの関数と演算子 データセットの中からテーブルの情報を取得する select * dataset.TABLES_SUMMARY INFORMAIT</description>
     </item>
     
   </channel>

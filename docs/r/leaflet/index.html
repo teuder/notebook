@@ -6,17 +6,18 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0"><meta property="og:title" content="leaflet" />
 <meta property="og:description" content="leaflet leaflet はインタラクティブな地図の可視化をするためのパッケージ https://rstudio.github.io/leaflet/ 例 df &lt;- data.frame( lon = rnorm(10, 140, 1), lat = rnorm(10, 35.7, 1), val1 = LETTERS[1:10], val2 = runif(10, 1, 100) ) df %&gt;% mutate(caption = paste(&#34;lon=&#34;, lon, &#34;&lt;br&gt; lat = &#34;, lat)) %&gt;% leaflet::leaflet() %&gt;% leaflet::addTiles() %&gt;% leaflet::setView(lng" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://teuder.github.io/notebook/r/leaflet/" />
+<meta property="og:url" content="https://teuder.github.io/notebook/r/leaflet/" /><meta property="article:section" content="R" />
 <meta property="article:published_time" content="2019-09-17T00:00:00+00:00" />
 <meta property="article:modified_time" content="2021-04-29T14:16:38+09:00" />
+
 <title>leaflet | notebook</title>
 <link rel="icon" href="/notebook/favicon.png" type="image/x-icon">
 
 
-<link rel="stylesheet" href="/notebook/book.min.1b994bd28c6ce2255f069b6bf6837b4d396307637fc48d61dcb2a6caac26e031.css" integrity="sha256-G5lL0oxs4iVfBptr9oN7TTljB2N/xI1h3LKmyqwm4DE=">
+<link rel="stylesheet" href="/notebook/book.min.2771458f1d859600effb70312702cd7e488eefb7c2c5ed4c083e65b6b95e5cae.css" integrity="sha256-J3FFjx2FlgDv&#43;3AxJwLNfkiO77fCxe1MCD5ltrleXK4=">
 
 
-<script defer src="/notebook/search.min.e50f4978caa8ea9d9c3d92a39ce60172ac017f8cc877aace48252f3ed36fef5e.js" integrity="sha256-5Q9JeMqo6p2cPZKjnOYBcqwBf4zId6rOSCUvPtNv714="></script>
+<script defer src="/notebook/search.min.ea3aecd4faed767f2a3c113b94ece297d71ed5ecc34ece71fca215c4565ddcc7.js" integrity="sha256-6jrs1Prtdn8qPBE7lOzil9ce1ezDTs5x/KIVxFZd3Mc="></script>
 
 <!--
 Made with Book Theme
@@ -955,47 +956,38 @@ https://github.com/alex-shpak/hugo-book
 </header>
 
       
-<article class="markdown">
-
-<h1 id="leaflet">leaflet</h1>
-
+<article class="markdown"><h1 id="leaflet">leaflet</h1>
 <p><code>leaflet</code> はインタラクティブな地図の可視化をするためのパッケージ</p>
-
 <p><a href="https://rstudio.github.io/leaflet/">https://rstudio.github.io/leaflet/</a></p>
-
 <h1 id="例">例</h1>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">df <span style="color:#f92672">&lt;-</span>
-  <span style="color:#00a8c8">data.frame</span><span style="color:#111">(</span>
-    lon <span style="color:#f92672">=</span> rnorm<span style="color:#111">(</span><span style="color:#ae81ff">10</span><span style="color:#111">,</span> <span style="color:#ae81ff">140</span><span style="color:#111">,</span> <span style="color:#ae81ff">1</span><span style="color:#111">),</span>
-    lat <span style="color:#f92672">=</span> rnorm<span style="color:#111">(</span><span style="color:#ae81ff">10</span><span style="color:#111">,</span> <span style="color:#ae81ff">35.7</span><span style="color:#111">,</span> <span style="color:#ae81ff">1</span><span style="color:#111">),</span>
-    val1 <span style="color:#f92672">=</span> <span style="color:#00a8c8">LETTERS</span><span style="color:#111">[</span><span style="color:#ae81ff">1</span><span style="color:#f92672">:</span><span style="color:#ae81ff">10</span><span style="color:#111">],</span>
-    val2 <span style="color:#f92672">=</span> runif<span style="color:#111">(</span><span style="color:#ae81ff">10</span><span style="color:#111">,</span> <span style="color:#ae81ff">1</span><span style="color:#111">,</span> <span style="color:#ae81ff">100</span><span style="color:#111">)</span>
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#111">df</span> <span style="color:#f92672">&lt;-</span>
+  <span style="color:#75af00">data.frame</span><span style="color:#111">(</span>
+    <span style="color:#111">lon</span> <span style="color:#f92672">=</span> <span style="color:#75af00">rnorm</span><span style="color:#111">(</span><span style="color:#ae81ff">10</span><span style="color:#111">,</span> <span style="color:#ae81ff">140</span><span style="color:#111">,</span> <span style="color:#ae81ff">1</span><span style="color:#111">),</span>
+    <span style="color:#111">lat</span> <span style="color:#f92672">=</span> <span style="color:#75af00">rnorm</span><span style="color:#111">(</span><span style="color:#ae81ff">10</span><span style="color:#111">,</span> <span style="color:#ae81ff">35.7</span><span style="color:#111">,</span> <span style="color:#ae81ff">1</span><span style="color:#111">),</span>
+    <span style="color:#111">val1</span> <span style="color:#f92672">=</span> <span style="color:#00a8c8">LETTERS</span><span style="color:#111">[1</span><span style="color:#f92672">:</span><span style="color:#ae81ff">10</span><span style="color:#111">]</span><span style="color:#111">,</span>
+    <span style="color:#111">val2</span> <span style="color:#f92672">=</span> <span style="color:#75af00">runif</span><span style="color:#111">(</span><span style="color:#ae81ff">10</span><span style="color:#111">,</span> <span style="color:#ae81ff">1</span><span style="color:#111">,</span> <span style="color:#ae81ff">100</span><span style="color:#111">)</span>
   <span style="color:#111">)</span>
 
 
-df <span style="color:#f92672">%&gt;%</span>
-  mutate<span style="color:#111">(</span>caption <span style="color:#f92672">=</span> <span style="color:#00a8c8">paste</span><span style="color:#111">(</span><span style="color:#d88200">&#34;lon=&#34;</span><span style="color:#111">,</span> lon<span style="color:#111">,</span> <span style="color:#d88200">&#34;&lt;br&gt; lat = &#34;</span><span style="color:#111">,</span> lat<span style="color:#111">))</span> <span style="color:#f92672">%&gt;%</span>
-  leaflet<span style="color:#f92672">::</span>leaflet<span style="color:#111">()</span> <span style="color:#f92672">%&gt;%</span>
-  leaflet<span style="color:#f92672">::</span>addTiles<span style="color:#111">()</span> <span style="color:#f92672">%&gt;%</span>
-  leaflet<span style="color:#f92672">::</span>setView<span style="color:#111">(</span>lng <span style="color:#f92672">=</span> <span style="color:#ae81ff">140</span><span style="color:#111">,</span> lat <span style="color:#f92672">=</span> <span style="color:#ae81ff">35.7</span><span style="color:#111">,</span> zoom <span style="color:#f92672">=</span> <span style="color:#ae81ff">7</span><span style="color:#111">)</span> <span style="color:#f92672">%&gt;%</span>
-  leaflet<span style="color:#f92672">::</span>addCircleMarkers<span style="color:#111">(</span>
-    lng <span style="color:#f92672">=</span>  <span style="color:#f92672">~</span> lon<span style="color:#111">,</span>
-    lat <span style="color:#f92672">=</span>  <span style="color:#f92672">~</span> lat<span style="color:#111">,</span>
-    color <span style="color:#f92672">=</span> rainbow<span style="color:#111">(</span><span style="color:#ae81ff">10</span><span style="color:#111">),</span>
-    popup <span style="color:#f92672">=</span> <span style="color:#f92672">~</span> caption
-    radius <span style="color:#f92672">=</span> <span style="color:#ae81ff">10</span><span style="color:#111">,</span>
-    weight <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span><span style="color:#111">,</span>
-  <span style="color:#111">)</span></code></pre></div>
-<h1 id="leaflet-leaflet">leaflet::leaflet()</h1>
-
+<span style="color:#111">df</span> <span style="color:#f92672">%&gt;%</span>
+  <span style="color:#75af00">mutate</span><span style="color:#111">(</span><span style="color:#111">caption</span> <span style="color:#f92672">=</span> <span style="color:#75af00">paste</span><span style="color:#111">(</span><span style="color:#d88200">&#34;lon=&#34;</span><span style="color:#111">,</span> <span style="color:#111">lon</span><span style="color:#111">,</span> <span style="color:#d88200">&#34;&lt;br&gt; lat = &#34;</span><span style="color:#111">,</span> <span style="color:#111">lat</span><span style="color:#111">))</span> <span style="color:#f92672">%&gt;%</span>
+  <span style="color:#111">leaflet</span><span style="color:#f92672">::</span><span style="color:#75af00">leaflet</span><span style="color:#111">()</span> <span style="color:#f92672">%&gt;%</span>
+  <span style="color:#111">leaflet</span><span style="color:#f92672">::</span><span style="color:#75af00">addTiles</span><span style="color:#111">()</span> <span style="color:#f92672">%&gt;%</span>
+  <span style="color:#111">leaflet</span><span style="color:#f92672">::</span><span style="color:#75af00">setView</span><span style="color:#111">(</span><span style="color:#111">lng</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">140</span><span style="color:#111">,</span> <span style="color:#111">lat</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">35.7</span><span style="color:#111">,</span> <span style="color:#111">zoom</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">7</span><span style="color:#111">)</span> <span style="color:#f92672">%&gt;%</span>
+  <span style="color:#111">leaflet</span><span style="color:#f92672">::</span><span style="color:#75af00">addCircleMarkers</span><span style="color:#111">(</span>
+    <span style="color:#111">lng</span> <span style="color:#f92672">=</span>  <span style="color:#f92672">~</span> <span style="color:#111">lon</span><span style="color:#111">,</span>
+    <span style="color:#111">lat</span> <span style="color:#f92672">=</span>  <span style="color:#f92672">~</span> <span style="color:#111">lat</span><span style="color:#111">,</span>
+    <span style="color:#111">color</span> <span style="color:#f92672">=</span> <span style="color:#75af00">rainbow</span><span style="color:#111">(</span><span style="color:#ae81ff">10</span><span style="color:#111">),</span>
+    <span style="color:#111">popup</span> <span style="color:#f92672">=</span> <span style="color:#f92672">~</span> <span style="color:#111">caption</span>
+    <span style="color:#111">radius</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">10</span><span style="color:#111">,</span>
+    <span style="color:#111">weight</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span><span style="color:#111">,</span>
+  <span style="color:#111">)</span>
+</code></pre></div><h1 id="leafletleaflet">leaflet::leaflet()</h1>
 <p><code>ggplot()</code> と同様に、データを最初に <code>leaflet()</code> に渡して描画オブジェクトを作成し、それにレイヤーを <code>%&gt;%</code> で追加してゆく。</p>
-
-<pre><code>leaflet::leaflet() %&gt;% 
+<pre tabindex="0"><code>leaflet::leaflet() %&gt;% 
     leaflet::addTiles() %&gt;% # 背景とする地図レイヤー
     leaflet::setView(lng=-100,lat=-2,zoom=5) # 初期位置とズームレベル
-</code></pre>
-
-<pre><code>leaflet(
+</code></pre><pre tabindex="0"><code>leaflet(
   data = NULL,
   width = NULL,
   height = NULL,
@@ -1004,48 +996,35 @@ df <span style="color:#f92672">%&gt;%</span>
   elementId = NULL,
   sizingPolicy = leafletSizingPolicy(padding = padding)
 )
-</code></pre>
-
-<h1 id="マーカーを表示する">マーカーを表示する</h1>
-
+</code></pre><h1 id="マーカーを表示する">マーカーを表示する</h1>
 <p>マーカーとは地図上の点に対して「アイコン」または「円」を表示する。マーカーをマウスでクリックすると情報が表示される。</p>
-
-<p>点の位置情報として使えるのは緯度経度の2次元
-- <code>sp</code> パッケージの <code>SpatialPoints</code> か <code>SpatialPointsDataFrame</code>
-- <code>sf</code> パッケージの <code>POINT</code>, <code>sfc_POINT</code> （<code>MULTIPOINT</code> はサポートされていない）
-- 緯度・経度をカラムとして持つデータフレーム (カラム名が <code>lat</code>/<code>latitude</code> and <code>lon</code>/<code>lng</code>/<code>long</code>/<code>longitude</code> の場合は自動で見つかる)
-- 緯度経度を格納したベクター</p>
-
+<p>点の位置情報として使えるのは緯度経度の2次元</p>
+<ul>
+<li><code>sp</code> パッケージの <code>SpatialPoints</code> か <code>SpatialPointsDataFrame</code></li>
+<li><code>sf</code> パッケージの <code>POINT</code>, <code>sfc_POINT</code> （<code>MULTIPOINT</code> はサポートされていない）</li>
+<li>緯度・経度をカラムとして持つデータフレーム (カラム名が <code>lat</code>/<code>latitude</code> and <code>lon</code>/<code>lng</code>/<code>long</code>/<code>longitude</code> の場合は自動で見つかる)</li>
+<li>緯度経度を格納したベクター</li>
+</ul>
 <h2 id="addmarkers">addMarkers()</h2>
-
-<pre><code>addMarkers(map, lng = NULL, lat = NULL, layerId = NULL,
+<pre tabindex="0"><code>addMarkers(map, lng = NULL, lat = NULL, layerId = NULL,
   group = NULL, icon = NULL, popup = NULL, popupOptions = NULL,
   label = NULL, labelOptions = NULL, options = markerOptions(),
   clusterOptions = NULL, clusterId = NULL, data = getMapData(map))
-</code></pre>
-
-<h2 id="addcirclemarkers">addCircleMarkers()</h2>
-
-<pre><code>addCircleMarkers(map, lng = NULL, lat = NULL, radius = 10,
+</code></pre><h2 id="addcirclemarkers">addCircleMarkers()</h2>
+<pre tabindex="0"><code>addCircleMarkers(map, lng = NULL, lat = NULL, radius = 10,
   layerId = NULL, group = NULL, stroke = TRUE, color = &quot;#03F&quot;,
   weight = 5, opacity = 0.5, fill = TRUE, fillColor = color,
   fillOpacity = 0.2, dashArray = NULL, popup = NULL,
   popupOptions = NULL, label = NULL, labelOptions = NULL,
   options = pathOptions(), clusterOptions = NULL, clusterId = NULL,
   data = getMapData(map))
-</code></pre>
-
-<h2 id="addlabelonlymarkers">addLabelOnlyMarkers</h2>
-
-<pre><code>addLabelOnlyMarkers(map, lng = NULL, lat = NULL, layerId = NULL,
+</code></pre><h2 id="addlabelonlymarkers">addLabelOnlyMarkers</h2>
+<pre tabindex="0"><code>addLabelOnlyMarkers(map, lng = NULL, lat = NULL, layerId = NULL,
   group = NULL, icon = NULL, label = NULL, labelOptions = NULL,
   options = markerOptions(), clusterOptions = NULL, clusterId = NULL,
   data = getMapData(map))
-</code></pre>
-
-<h1 id="その他関数">その他関数</h1>
-
-<pre><code>addControl(map, html, position = c(&quot;topleft&quot;, &quot;topright&quot;, &quot;bottomleft&quot;,
+</code></pre><h1 id="その他関数">その他関数</h1>
+<pre tabindex="0"><code>addControl(map, html, position = c(&quot;topleft&quot;, &quot;topright&quot;, &quot;bottomleft&quot;,
   &quot;bottomright&quot;), layerId = NULL, className = &quot;info legend&quot;,
   data = getMapData(map))
 
@@ -1115,8 +1094,7 @@ addTopoJSON(map, topojson, layerId = NULL, group = NULL,
   fill = TRUE, fillColor = color, fillOpacity = 0.2,
   dashArray = NULL, smoothFactor = 1, noClip = FALSE,
   options = pathOptions())
-</code></pre>
-</article>
+</code></pre></article>
 
       
 <div class="book-footer justify-between">
@@ -1150,18 +1128,11 @@ addTopoJSON(map, topojson, layerId = NULL, group = NULL,
 
   <aside class="book-toc level-3 fixed">
     <nav id="TableOfContents">
-<ul>
-<li><a href="#leaflet">leaflet</a></li>
-<li><a href="#例">例</a></li>
-<li><a href="#leaflet-leaflet">leaflet::leaflet()</a></li>
-<li><a href="#マーカーを表示する">マーカーを表示する</a>
-<ul>
-<li><a href="#addmarkers">addMarkers()</a></li>
-<li><a href="#addcirclemarkers">addCircleMarkers()</a></li>
-<li><a href="#addlabelonlymarkers">addLabelOnlyMarkers</a></li>
-</ul></li>
-<li><a href="#その他関数">その他関数</a></li>
-</ul>
+  <ul>
+    <li><a href="#addmarkers">addMarkers()</a></li>
+    <li><a href="#addcirclemarkers">addCircleMarkers()</a></li>
+    <li><a href="#addlabelonlymarkers">addLabelOnlyMarkers</a></li>
+  </ul>
 </nav>
   </aside>
 

@@ -6,17 +6,18 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0"><meta property="og:title" content="rhdf5" />
 <meta property="og:description" content="rhdf5 HDF5形式のファイルを扱うためのパッケージ CRANにはなく bioconductor のパッケージらしいので、bioconductor のレポジトリからインストール" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://teuder.github.io/notebook/r/rhdf5/" />
+<meta property="og:url" content="https://teuder.github.io/notebook/r/rhdf5/" /><meta property="article:section" content="R" />
 <meta property="article:published_time" content="2019-09-17T00:00:00+00:00" />
 <meta property="article:modified_time" content="2020-05-27T18:54:29+09:00" />
+
 <title>rhdf5 | notebook</title>
 <link rel="icon" href="/notebook/favicon.png" type="image/x-icon">
 
 
-<link rel="stylesheet" href="/notebook/book.min.1b994bd28c6ce2255f069b6bf6837b4d396307637fc48d61dcb2a6caac26e031.css" integrity="sha256-G5lL0oxs4iVfBptr9oN7TTljB2N/xI1h3LKmyqwm4DE=">
+<link rel="stylesheet" href="/notebook/book.min.2771458f1d859600effb70312702cd7e488eefb7c2c5ed4c083e65b6b95e5cae.css" integrity="sha256-J3FFjx2FlgDv&#43;3AxJwLNfkiO77fCxe1MCD5ltrleXK4=">
 
 
-<script defer src="/notebook/search.min.e50f4978caa8ea9d9c3d92a39ce60172ac017f8cc877aace48252f3ed36fef5e.js" integrity="sha256-5Q9JeMqo6p2cPZKjnOYBcqwBf4zId6rOSCUvPtNv714="></script>
+<script defer src="/notebook/search.min.ea3aecd4faed767f2a3c113b94ece297d71ed5ecc34ece71fca215c4565ddcc7.js" integrity="sha256-6jrs1Prtdn8qPBE7lOzil9ce1ezDTs5x/KIVxFZd3Mc="></script>
 
 <!--
 Made with Book Theme
@@ -955,42 +956,24 @@ https://github.com/alex-shpak/hugo-book
 </header>
 
       
-<article class="markdown">
-
-<h1 id="rhdf5">rhdf5</h1>
-
+<article class="markdown"><h1 id="rhdf5">rhdf5</h1>
 <p>HDF5形式のファイルを扱うためのパッケージ</p>
-
 <p>CRANにはなく bioconductor のパッケージらしいので、bioconductor のレポジトリからインストールする</p>
-
 <p><a href="https://www.bioconductor.org/packages/release/bioc/vignettes/rhdf5/inst/doc/rhdf5.html">rhdf5 - HDF5 interface for R</a></p>
-
 <h1 id="インストール">インストール</h1>
-
-<pre><code>install.packages(&quot;BiocManager&quot;)
+<pre tabindex="0"><code>install.packages(&quot;BiocManager&quot;)
 BiocManager::install(&quot;rhdf5&quot;)
-</code></pre>
-
-<h1 id="基本的な関数">基本的な関数</h1>
-
+</code></pre><h1 id="基本的な関数">基本的な関数</h1>
 <h2 id="ファイルの構造を表示する">ファイルの構造を表示する</h2>
-
-<pre><code>h5ls(&quot;myhdf5file.h5&quot;)
-</code></pre>
-
-<h2 id="ファイルの中身を読み取る">ファイルの中身を読み取る</h2>
-
-<pre><code>D = h5read(&quot;myhdf5file.h5&quot;,&quot;foo/A&quot;)
-</code></pre>
-
-<h2 id="ファイルを開く">ファイルを開く</h2>
-
-<pre><code>h5f = H5Fopen(&quot;myhdf5file.h5&quot;)
+<pre tabindex="0"><code>h5ls(&quot;myhdf5file.h5&quot;)
+</code></pre><h2 id="ファイルの中身を読み取る">ファイルの中身を読み取る</h2>
+<pre tabindex="0"><code>D = h5read(&quot;myhdf5file.h5&quot;,&quot;foo/A&quot;)
+</code></pre><h2 id="ファイルを開く">ファイルを開く</h2>
+<pre tabindex="0"><code>h5f = H5Fopen(&quot;myhdf5file.h5&quot;)
 
 # アクセス
 h5f$df
-</code></pre>
-</article>
+</code></pre></article>
 
       
 <div class="book-footer justify-between">
@@ -1024,16 +1007,11 @@ h5f$df
 
   <aside class="book-toc level-3 fixed">
     <nav id="TableOfContents">
-<ul>
-<li><a href="#rhdf5">rhdf5</a></li>
-<li><a href="#インストール">インストール</a></li>
-<li><a href="#基本的な関数">基本的な関数</a>
-<ul>
-<li><a href="#ファイルの構造を表示する">ファイルの構造を表示する</a></li>
-<li><a href="#ファイルの中身を読み取る">ファイルの中身を読み取る</a></li>
-<li><a href="#ファイルを開く">ファイルを開く</a></li>
-</ul></li>
-</ul>
+  <ul>
+    <li><a href="#ファイルの構造を表示する">ファイルの構造を表示する</a></li>
+    <li><a href="#ファイルの中身を読み取る">ファイルの中身を読み取る</a></li>
+    <li><a href="#ファイルを開く">ファイルを開く</a></li>
+  </ul>
 </nav>
   </aside>
 
