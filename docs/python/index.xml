@@ -49,7 +49,7 @@
       <pubDate>Fri, 17 Jan 2020 00:00:00 +0000</pubDate>
       
       <guid>https://teuder.github.io/notebook/python/pandas/</guid>
-      <description>Pandas DataFrame 提供するライブラリ エクセルファイルの読み込み import pandas as pd df = pd.read_excel(&amp;#34;test.xlsx&amp;#34;, sheet_name=&amp;#34;mysheet&amp;#34;, skiprows = 1) 列の選択 df2 = df[[&amp;#34;col1&amp;#34;, &amp;#34;col2&amp;#34;]] # 名前で列をpandas.Seriesとして取り出し col</description>
+      <description>Pandas DataFrame 提供するライブラリ Pandas User Guide 型 Series: 列の型（要素の名前付きベクター） DataFrame: Seriesを列とするテーブル データフレームのメタデータの取得 df.columns # 列名(=</description>
     </item>
     
     <item>

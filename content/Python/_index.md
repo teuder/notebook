@@ -21,6 +21,13 @@ type: docs
 [PEP8](https://pep8-ja.readthedocs.io/ja/latest/)
 
 
+## 関数定義
+
+```python
+# センチメートルをインチに変換する関数
+def cm_to_inch(cm):
+    return cm / 2.54
+```
 
 ## 演算子
 
