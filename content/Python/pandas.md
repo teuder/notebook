@@ -87,10 +87,23 @@ df2 = df.iloc[:, 0:5]  # A列～D列を抽出 0:5は[0,1,2,3,4]と同義
 
 ```
 
-company_idx = pivot_table.loc[idx]:
+```python
+# 特定の文字列を含む列を抽出
+df.filter(like='得点', axis=1)
 
-pivot_tableの中でインデックスがidxの行を抽出しています。
-これはPandasのSeriesとして扱われます。
+# 列名を正規表現で抽出
+df.filter(regex='^点数', axis=1)
+
+# 数値型の列だけを抽出
+df.select_dtypes(include='number')
+
+# 文字列型の列だけを抽出
+df.select_dtypes(include='object')
+
+```
+
+
+
 
 ## 行の選択
 
@@ -132,11 +145,54 @@ df.tail(10)
 
 ### 特定の列の値で行を抽出
 
+数値型の列の例
+
 ```python
 
-df2 = df[df["col1"].isin(df2["col1"])]
+# 数値がある値より大きい
+ddf_high_score f2 = df[df['点数'] > 80]
+
+# 数値がある値の範囲
+df_age_range = df[(df['年齢'] >= 30) & (df['年齢'] < 40)]
+
+# 数値が特定のリストに含まれる
+df_selected_scores = df[df['点数'].isin([70, 90])]
+
+# ある列に欠損値を含まない行
+df_notna = df[df['年齢'].notna()]
+
+# 特定条件に合致する行のインデックスのみを取得する場合
+index_high_score = df[df['点数'] > 80].index
 
 ```
+
+文字列型の列の例
+
+```python
+
+# 特定の文字列と一致する行
+df_sales = df[df['部署'] == '営業']
+
+# 複数の文字列のどれかと一致する行
+df_selected = df[df['部署'].isin(['営業', '人事'])]
+
+# 特定の文字列を含んでいる行
+df_tanaka = df[df['氏名'].str.contains('田中', na=False)]
+
+# 特定の文字列を含んでいる行（アルファベットで大文字小文字を区別しない）
+df_ignore_case = df[df['name'].str.contains('TARO', case=False, na=False)]
+
+# 特定の文字列を含まない行
+df_not_tanaka = df[~df['氏名'].str.contains('田中', na=False)]
+
+# 特定の文字列で始まる行
+df_start_tanaka = df[df['氏名'].str.startswith('田中', na=False)]
+
+# 特定の文字列で終わる行
+df_rou = df[df['氏名'].str.endswith('郎', na=False)]
+
+```
+
 
 
 ### 重複行の削除

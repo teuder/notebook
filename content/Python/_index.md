@@ -449,3 +449,35 @@ print(list(range(1, 15,3))) # 開始1 終了15 間隔3
 [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
 [1, 4, 7, 10, 13]
 ```
+
+
+# リスト内包表記
+
+
+`[式 for 要素 in イテラブル [if 条件]]`
+
+- イテラブル：リストやrangeなど繰り返し処理できるもの
+- 要素：イテラブルから順番に取り出される各要素
+- 式：生成するリストの要素に変換される式
+- if 条件（任意）：その条件を満たすときだけ式を評価
+
+```python
+# 0~9の2乗
+squares = [x**2 for x in range(10)]
+print(squares)
+
+# 偶数だけの２乗
+even_squares = [x**2 for x in range(10) if x % 2 == 0]
+print(even_squares)
+
+# 文字列リストの中からaで始まる要素のみからなるリスト
+words = ['apple', 'banana', 'apricot', 'cherry']
+a_words = [w for w in words if w.startswith('a')]
+print(a_words)
+
+# 入れ子のリストを使うこともできる
+matrix = [[1, 2], [3, 4], [5, 6]]
+flattened = [item for row in matrix for item in row]
+print(flattened)
+
+```
