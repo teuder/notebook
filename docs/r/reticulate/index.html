@@ -6,18 +6,16 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0"><meta property="og:title" content="reticulate" />
 <meta property="og:description" content="reticulate R から Python を呼び出すためのパッケージ 使用する Python を指定する .Rprofile で RETICULATE_PYTHON 環境変数に、使用するPythonを指定するのが安全 Sys.setenv(RETICULATE_PYTHON = &#39;/usr/local/bin/python3&#39;) pipenv で Python 環境を管理してい" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://teuder.github.io/notebook/r/reticulate/" /><meta property="article:section" content="R" />
-
+<meta property="og:url" content="https://teuder.github.io/notebook/r/reticulate/" />
 <meta property="article:modified_time" content="2021-04-29T14:16:38+09:00" />
-
 <title>reticulate | notebook</title>
 <link rel="icon" href="/notebook/favicon.png" type="image/x-icon">
 
 
-<link rel="stylesheet" href="/notebook/book.min.2771458f1d859600effb70312702cd7e488eefb7c2c5ed4c083e65b6b95e5cae.css" integrity="sha256-J3FFjx2FlgDv&#43;3AxJwLNfkiO77fCxe1MCD5ltrleXK4=">
+<link rel="stylesheet" href="/notebook/book.min.07c38dce7b6800da2a75a565d4d975e38f837294e24d00b5aae363037012d64b.css" integrity="sha256-B8ONzntoANoqdaVl1Nl144&#43;DcpTiTQC1quNjA3AS1ks=">
 
 
-<script defer src="/notebook/search.min.4d5b5c452080f29e93094dc45a0d2e9f0eb286a7d80f0ee863601a336abfdaaa.js" integrity="sha256-TVtcRSCA8p6TCU3EWg0unw6yhqfYDw7oY2AaM2q/2qo="></script>
+<script defer src="/notebook/search.min.59aba8ad73f64e9bcc717f4672059c7caf9bec1ba569218018477a201303075e.js" integrity="sha256-WauorXP2TpvMcX9GcgWcfK&#43;b7BulaSGAGEd6IBMDB14="></script>
 
 <!--
 Made with Book Theme
@@ -960,31 +958,31 @@ https://github.com/alex-shpak/hugo-book
 <p>R から Python を呼び出すためのパッケージ</p>
 <h1 id="使用する-python-を指定する">使用する Python を指定する</h1>
 <p><code>.Rprofile</code> で <code>RETICULATE_PYTHON</code> 環境変数に、使用するPythonを指定するのが安全</p>
-<pre tabindex="0"><code>Sys.setenv(RETICULATE_PYTHON = '/usr/local/bin/python3')
+<pre><code>Sys.setenv(RETICULATE_PYTHON = '/usr/local/bin/python3')
 </code></pre><p>pipenv で Python 環境を管理している場合</p>
 <h2 id="pipenv-で作成した環境を利用する">Pipenv で作成した環境を利用する</h2>
 <p>R のプロジェクトフォルダに pipenv の環境が作成されている前提</p>
 <p>カレントフォルダはR のプロジェクトフォルダにいる前提</p>
 <p>Pipenv で作成した環境を <code>reticulate</code> で利用する。</p>
-<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#111">venv</span> <span style="color:#f92672">&lt;-</span> <span style="color:#75af00">system</span><span style="color:#111">(</span><span style="color:#d88200">&#34;pipenv --venv&#34;</span><span style="color:#111">,</span> <span style="color:#111">inter</span> <span style="color:#f92672">=</span> <span style="color:#00a8c8">TRUE</span><span style="color:#111">)</span>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#111">venv</span> <span style="color:#f92672">&lt;-</span> <span style="color:#75af00">system</span><span style="color:#111">(</span><span style="color:#d88200">&#34;pipenv --venv&#34;</span><span style="color:#111">,</span> <span style="color:#111">inter</span> <span style="color:#f92672">=</span> <span style="color:#00a8c8">TRUE</span><span style="color:#111">)</span>
 <span style="color:#111">reticulate</span><span style="color:#f92672">::</span><span style="color:#75af00">use_virtualenv</span><span style="color:#111">(</span><span style="color:#111">venv</span><span style="color:#111">,</span> <span style="color:#111">required</span> <span style="color:#f92672">=</span> <span style="color:#00a8c8">TRUE</span><span style="color:#111">)</span>
 <span style="color:#111">reticulate</span><span style="color:#f92672">::</span><span style="color:#75af00">py_config</span><span style="color:#111">()</span>
 </code></pre></div><p>Windows の場合は <code>venv</code> のパスの文字列をRの書式に合わせるために変換をかませる</p>
-<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#111">venv</span> <span style="color:#f92672">&lt;-</span> <span style="color:#75af00">system</span><span style="color:#111">(</span><span style="color:#d88200">&#34;pipenv --venv&#34;</span><span style="color:#111">,</span> <span style="color:#111">inter</span> <span style="color:#f92672">=</span> <span style="color:#00a8c8">TRUE</span><span style="color:#111">)</span>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#111">venv</span> <span style="color:#f92672">&lt;-</span> <span style="color:#75af00">system</span><span style="color:#111">(</span><span style="color:#d88200">&#34;pipenv --venv&#34;</span><span style="color:#111">,</span> <span style="color:#111">inter</span> <span style="color:#f92672">=</span> <span style="color:#00a8c8">TRUE</span><span style="color:#111">)</span>
 <span style="color:#111">venv</span> <span style="color:#f92672">&lt;-</span> <span style="color:#111">stringr</span><span style="color:#f92672">::</span><span style="color:#75af00">str_replace_all</span><span style="color:#111">(</span><span style="color:#111">stringr</span><span style="color:#f92672">::</span><span style="color:#75af00">str_sub</span><span style="color:#111">(</span><span style="color:#111">venv</span><span style="color:#111">,</span> <span style="color:#ae81ff">1</span><span style="color:#111">,</span> <span style="color:#ae81ff">-2</span><span style="color:#111">),</span> <span style="color:#d88200">&#34;\\\\&#34;</span><span style="color:#111">,</span> <span style="color:#d88200">&#34;/&#34;</span><span style="color:#111">)</span>
 <span style="color:#111">reticulate</span><span style="color:#f92672">::</span><span style="color:#75af00">use_virtualenv</span><span style="color:#111">(</span><span style="color:#111">venv</span><span style="color:#111">,</span> <span style="color:#111">required</span> <span style="color:#f92672">=</span> <span style="color:#00a8c8">TRUE</span><span style="color:#111">)</span>
 <span style="color:#111">reticulate</span><span style="color:#f92672">::</span><span style="color:#75af00">py_config</span><span style="color:#111">()</span>
 </code></pre></div><h1 id="reticulate-で使用されているpython環境を確認する">reticulate で使用されているPython環境を確認する</h1>
-<pre tabindex="0"><code>reticulate::py_config()
+<pre><code>reticulate::py_config()
 </code></pre><h2 id="python-コンソールを確認する">Python コンソールを確認する</h2>
-<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#111">reticulate</span><span style="color:#f92672">::</span><span style="color:#75af00">repl_python</span><span style="color:#111">()</span>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#111">reticulate</span><span style="color:#f92672">::</span><span style="color:#75af00">repl_python</span><span style="color:#111">()</span>
 </code></pre></div><p>Pythonコンソールから出たいときは <code>exit</code> を入力する。</p>
 <h2 id="r-から-python-のオブジェクトにアクセスする">R から Python のオブジェクトにアクセスする</h2>
 <p><code>reticulate::py</code> を通して Python のオブジェクトにアクセスできる。</p>
-<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">
 <span style="color:#111">x</span> <span style="color:#f92672">=</span> <span style="color:#d88200">&#34;hoge&#34;</span>
 
-</code></pre></div><div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#75715e"># R</span>
+</code></pre></div><div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#75715e"># R</span>
 <span style="color:#111">reticulate</span><span style="color:#f92672">::</span><span style="color:#111">py</span><span style="color:#f92672">$</span><span style="color:#111">x</span>
 </code></pre></div></article>
 

@@ -12,10 +12,10 @@
 <link rel="icon" href="/notebook/favicon.png" type="image/x-icon">
 
 
-<link rel="stylesheet" href="/notebook/book.min.2771458f1d859600effb70312702cd7e488eefb7c2c5ed4c083e65b6b95e5cae.css" integrity="sha256-J3FFjx2FlgDv&#43;3AxJwLNfkiO77fCxe1MCD5ltrleXK4=">
+<link rel="stylesheet" href="/notebook/book.min.07c38dce7b6800da2a75a565d4d975e38f837294e24d00b5aae363037012d64b.css" integrity="sha256-B8ONzntoANoqdaVl1Nl144&#43;DcpTiTQC1quNjA3AS1ks=">
 
 
-<script defer src="/notebook/search.min.4d5b5c452080f29e93094dc45a0d2e9f0eb286a7d80f0ee863601a336abfdaaa.js" integrity="sha256-TVtcRSCA8p6TCU3EWg0unw6yhqfYDw7oY2AaM2q/2qo="></script>
+<script defer src="/notebook/search.min.59aba8ad73f64e9bcc717f4672059c7caf9bec1ba569218018477a201303075e.js" integrity="sha256-WauorXP2TpvMcX9GcgWcfK&#43;b7BulaSGAGEd6IBMDB14="></script>
 
 <link rel="alternate" type="application/rss+xml" href="https://teuder.github.io/notebook/gcp/index.xml" title="notebook" />
 <!--
@@ -962,30 +962,30 @@ https://github.com/alex-shpak/hugo-book
 <h2 id="gloud-コマンド">gloud コマンド</h2>
 <h3 id="アカウントとプロジェクトの確認">アカウントとプロジェクトの確認</h3>
 <p>現在のデフォルトのアカウントとプロジェクトの確認</p>
-<pre tabindex="0"><code>gcloud config list
-</code></pre><pre tabindex="0"><code>[core]
+<pre><code>gcloud config list
+</code></pre><pre><code>[core]
 account = xxxx@gmail.com
 disable_usage_reporting = True
 
 Your active configuration is: [default]
 </code></pre><h3 id="アカウントの切り替え">アカウントの切り替え</h3>
-<pre tabindex="0"><code>gcloud auth login
+<pre><code>gcloud auth login
 </code></pre><p>表示されるURLにアクセスして、切り替えたい google アカウントにログインする、次にブラウザに表示されたコードをコピーして、ターミナルに入力する。</p>
 <h3 id="プロジェクトの切り替え">プロジェクトの切り替え</h3>
-<pre tabindex="0"><code>gcloud config set project [PROJECT_ID]
+<pre><code>gcloud config set project [PROJECT_ID]
 Updated property [core/project].
 </code></pre><h2 id="compute-engine">Compute Engine</h2>
 <h3 id="sshでのログイン">SSHでのログイン</h3>
 <p><a href="https://qiita.com/NewGyu/items/3a65e837519297951e79">https://qiita.com/NewGyu/items/3a65e837519297951e79</a></p>
 <p>ローカルでアカウントが有効になっているか確かめる</p>
-<pre tabindex="0"><code>$ gcloud config list
+<pre><code>$ gcloud config list
 </code></pre><p>gcloud コマンドで ssh</p>
-<pre tabindex="0"><code>gcloud compute ssh --project=プロジェクトID --zone=ゾーン インスタンス名   
+<pre><code>gcloud compute ssh --project=プロジェクトID --zone=ゾーン インスタンス名   
 </code></pre><h2 id="google-cloud-strage">Google Cloud Strage</h2>
 <h3 id="バケットの中身を確認する">バケットの中身を確認する</h3>
-<pre tabindex="0"><code>gsutil ls gs://BUCKET
+<pre><code>gsutil ls gs://BUCKET
 </code></pre><h3 id="ローカルファイルをgcsにアップロードする">ローカルファイルをGCSにアップロードする</h3>
-<pre tabindex="0"><code>gsutil cp LOCAL_FILE gs://MY_BUCKET/
+<pre><code>gsutil cp LOCAL_FILE gs://MY_BUCKET/
 
 # 並列でアップロードする場合（100M単位で分割）
 gsutil -o GSUtil:parallel_composite_upload_threshold=100M　cp LOCAL_FILE gs://MY_BUCKET/

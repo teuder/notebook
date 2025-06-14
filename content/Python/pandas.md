@@ -211,29 +211,115 @@ df.iat[0,1]    # 行番号と列番号で単一要素の取り出し
 
 ```
 
+## 列の加工
+
+既存の列を加工して新しい列を追加する。
+
+```python
+# assign()とlambdaの組み合わせ
+# xはdf全体を意味する
+import pandas as pd
+
+df = pd.DataFrame({
+    'price': [100, 200, 300],
+    'quantity': [1, 3, 2]
+})
+
+# よくあるやり方
+df['total'] = df['price'] +  df['quantity']
+
+# assign() & lambdaを使った方法
+# xはdf全体を意味する
+df = (
+    df
+    .assign(
+        total=lambda x: x['price'] * x['quantity'],
+        price_with_tax=lambda x: x['price'] * 1.10
+    )
+)
+```
+
+
+
+
+
+
 ## 集計
 
 
 ### groupby()
 
+
 ```python
+import pandas as pd
 
-# 「小児」を含む製品かどうかのフラグ列を作成
-df['小児用'] = df['製品名'].str.contains('小児', na=False)
+df = pd.DataFrame({
+    'category': ['A', 'B', 'A', 'B', 'A'],
+    'price': [100, 200, 150, 250, 120],
+    'quantity': [1, 2, 1, 1, 3]
+})
 
-# 集計：企業ごとの製品数と小児用製品数
-df_summary = (
-    df.groupby('グループ列名', as_index=False) # as_index=Trueだと、出力結果にグループ化に使った列が含まれずindexになる
-    	.agg(
-        	総製品数=('製品名', 'count'), # ここのcountとかsumはSeriesのメソッドでいいのかな？
-        	小児用製品数=('小児用', 'sum')
-    	)
+# 基本はこの形で覚える
+result = (
+    df
+    # category列の値でグループ化
+    .groupby('category', as_index=False)
+    # as_index=False だと結果に category 列を含める
+    # as_index=True  だと category の値が行インデックスになる
+    # グループごとに集計
+    .agg(
+        # price列の meanを計算して、price_mean列を作成
+        price_mean=('price', 'mean'),
+        price_max=('price', 'max'),
+        total_quantity=('quantity', 'sum')
+    )
 )
 
-# 割合を計算
-df_summary['小児用割合'] = df_summary['小児用製品数'] / df_summary['総製品数']
+# この形だと、結果の行('category')と列（'price', 'quantity'）にインデックスが付与される
+result = (
+    df
+    .groupby('category')
+    .agg({
+        'price': 'sum',
+        'quantity': 'sum'
+    })
+)
 
+# 複数の関数を適用することもできる
+# ただし結果が列名ではなく、マルチインデックス（入れ子になったインデックス）になるのでわかりにくい
+result = (
+    df
+    .groupby('category')
+    .agg({
+        'price': ['mean', 'sum', 'max'],
+        'quantity': ['sum', 'count']
+    })
+)
 ```
+
+| 関数名         | 説明                  |
+| ----------- | ------------------- |
+| `'sum'`     | 合計                  |
+| `'mean'`    | 平均                  |
+| `'median'`  | 中央値                 |
+| `'max'`     | 最大値                 |
+| `'min'`     | 最小値                 |
+| `'count'`   | 件数（NaNを除く）          |
+| `'size'`    | 件数（NaN含む、countとの違い） |
+| `'std'`     | 標準偏差                |
+| `'var'`     | 分散                  |
+| `'first'`   | 最初の値                |
+| `'last'`    | 最後の値                |
+| `'nunique'` | 重複を除いた件数            |
+| `'any'`     | 真偽値でいずれかがTrue       |
+| `'all'`     | 真偽値で全てTrue          |
+
+
+
+
+
+
+
 
 
 

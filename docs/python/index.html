@@ -7,15 +7,15 @@
 <meta property="og:description" content="" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://teuder.github.io/notebook/python/" />
-
+<meta property="og:updated_time" content="2019-10-01T00:00:00+00:00" />
 <title>Python | notebook</title>
 <link rel="icon" href="/notebook/favicon.png" type="image/x-icon">
 
 
-<link rel="stylesheet" href="/notebook/book.min.2771458f1d859600effb70312702cd7e488eefb7c2c5ed4c083e65b6b95e5cae.css" integrity="sha256-J3FFjx2FlgDv&#43;3AxJwLNfkiO77fCxe1MCD5ltrleXK4=">
+<link rel="stylesheet" href="/notebook/book.min.07c38dce7b6800da2a75a565d4d975e38f837294e24d00b5aae363037012d64b.css" integrity="sha256-B8ONzntoANoqdaVl1Nl144&#43;DcpTiTQC1quNjA3AS1ks=">
 
 
-<script defer src="/notebook/search.min.4d5b5c452080f29e93094dc45a0d2e9f0eb286a7d80f0ee863601a336abfdaaa.js" integrity="sha256-TVtcRSCA8p6TCU3EWg0unw6yhqfYDw7oY2AaM2q/2qo="></script>
+<script defer src="/notebook/search.min.59aba8ad73f64e9bcc717f4672059c7caf9bec1ba569218018477a201303075e.js" integrity="sha256-WauorXP2TpvMcX9GcgWcfK&#43;b7BulaSGAGEd6IBMDB14="></script>
 
 <link rel="alternate" type="application/rss+xml" href="https://teuder.github.io/notebook/python/index.xml" title="notebook" />
 <!--
@@ -967,11 +967,11 @@ https://github.com/alex-shpak/hugo-book
 <h2 id="コーディング規約">コーディング規約</h2>
 <p><a href="https://pep8-ja.readthedocs.io/ja/latest/">PEP8</a></p>
 <h2 id="関数定義">関数定義</h2>
-<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># センチメートルをインチに変換する関数</span>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># センチメートルをインチに変換する関数</span>
 <span style="color:#00a8c8">def</span> <span style="color:#75af00">cm_to_inch</span><span style="color:#111">(</span><span style="color:#111">cm</span><span style="color:#111">):</span>
     <span style="color:#00a8c8">return</span> <span style="color:#111">cm</span> <span style="color:#f92672">/</span> <span style="color:#ae81ff">2.54</span>
 </code></pre></div><h2 id="演算子">演算子</h2>
-<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># 論理演算</span>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># 論理演算</span>
 <span style="color:#111">x</span> <span style="color:#f92672">or</span> <span style="color:#111">y</span>
 <span style="color:#111">x</span> <span style="color:#f92672">and</span> <span style="color:#111">y</span>
 <span style="color:#f92672">not</span> <span style="color:#111">x</span>
@@ -987,7 +987,7 @@ https://github.com/alex-shpak/hugo-book
 <span style="color:#111">x</span> <span style="color:#f92672">is</span> <span style="color:#f92672">not</span> <span style="color:#111">y</span> <span style="color:#75715e"># 同一のオブジェクトではない</span>
 </code></pre></div><h2 id="論理演算">論理演算</h2>
 <h3 id="論理値型-bool">論理値型 bool()</h3>
-<pre tabindex="0"><code>x = True
+<pre><code>x = True
 y = False 
 # 論理演算
 x and y
@@ -998,135 +998,135 @@ x | y # or
 x ^ y # xor
 </code></pre><h2 id="数値計算">数値計算</h2>
 <h3 id="数値型">数値型</h3>
-<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#ae81ff">1</span> <span style="color:#75715e"># int 整数</span>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#ae81ff">1</span> <span style="color:#75715e"># int 整数</span>
 <span style="color:#ae81ff">1.0</span> <span style="color:#75715e"># float 実数</span>
 <span style="color:#111">complex</span><span style="color:#111">(</span><span style="color:#ae81ff">1</span><span style="color:#111">,</span><span style="color:#ae81ff">2</span><span style="color:#111">)</span> <span style="color:#75715e"># 複素数</span>
 </code></pre></div><p>浮動小数点数は、文字列 &ldquo;nan&rdquo; と &ldquo;inf&rdquo; を、オプションの接頭辞 &ldquo;+&rdquo; または &ldquo;-&rdquo; と共に、非数 (Not a Number (NaN)) や正、負の無限大として受け付けます。</p>
 <h3 id="基本数値演算">基本数値演算</h3>
-<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#111">print</span><span style="color:#111">(</span><span style="color:#ae81ff">1</span><span style="color:#f92672">+</span><span style="color:#ae81ff">2</span><span style="color:#111">)</span>
-<span style="color:#111">print</span><span style="color:#111">(</span><span style="color:#ae81ff">3</span><span style="color:#f92672">-</span><span style="color:#ae81ff">4</span><span style="color:#111">)</span>
-<span style="color:#111">print</span><span style="color:#111">(</span><span style="color:#ae81ff">5</span><span style="color:#f92672">*</span><span style="color:#ae81ff">6</span><span style="color:#111">)</span>
-<span style="color:#111">print</span><span style="color:#111">(</span><span style="color:#ae81ff">10</span><span style="color:#f92672">/</span><span style="color:#ae81ff">3</span><span style="color:#111">)</span> <span style="color:#75715e"># 返値は実数</span>
-<span style="color:#111">print</span><span style="color:#111">(</span><span style="color:#ae81ff">3</span><span style="color:#f92672">**</span><span style="color:#ae81ff">2</span><span style="color:#111">)</span> <span style="color:#75715e"># べき乗</span>
-<span style="color:#111">print</span><span style="color:#111">(</span><span style="color:#111">pow</span><span style="color:#111">(</span><span style="color:#ae81ff">3</span><span style="color:#111">,</span> <span style="color:#ae81ff">2</span><span style="color:#111">))</span> <span style="color:#75715e"># べき乗</span>
-<span style="color:#111">print</span><span style="color:#111">(</span><span style="color:#ae81ff">10</span><span style="color:#f92672">//</span><span style="color:#ae81ff">3</span><span style="color:#111">)</span> <span style="color:#75715e"># 割った時の「商」</span>
-<span style="color:#111">print</span><span style="color:#111">(</span><span style="color:#ae81ff">10</span><span style="color:#f92672">%</span><span style="color:#ae81ff">3</span><span style="color:#111">)</span> <span style="color:#75715e"># 割った時の「余り」</span>
-<span style="color:#111">print</span><span style="color:#111">(</span><span style="color:#111">divmod</span><span style="color:#111">(</span><span style="color:#ae81ff">10</span><span style="color:#111">,</span><span style="color:#ae81ff">3</span><span style="color:#111">))</span> <span style="color:#75715e"># (商, 余り) の tupleが返値</span>
-<span style="color:#111">print</span><span style="color:#111">(</span><span style="color:#111">abs</span><span style="color:#111">(</span><span style="color:#f92672">-</span><span style="color:#ae81ff">123</span><span style="color:#111">))</span> <span style="color:#75715e"># 絶対値</span>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#00a8c8">print</span><span style="color:#111">(</span><span style="color:#ae81ff">1</span><span style="color:#f92672">+</span><span style="color:#ae81ff">2</span><span style="color:#111">)</span>
+<span style="color:#00a8c8">print</span><span style="color:#111">(</span><span style="color:#ae81ff">3</span><span style="color:#f92672">-</span><span style="color:#ae81ff">4</span><span style="color:#111">)</span>
+<span style="color:#00a8c8">print</span><span style="color:#111">(</span><span style="color:#ae81ff">5</span><span style="color:#f92672">*</span><span style="color:#ae81ff">6</span><span style="color:#111">)</span>
+<span style="color:#00a8c8">print</span><span style="color:#111">(</span><span style="color:#ae81ff">10</span><span style="color:#f92672">/</span><span style="color:#ae81ff">3</span><span style="color:#111">)</span> <span style="color:#75715e"># 返値は実数</span>
+<span style="color:#00a8c8">print</span><span style="color:#111">(</span><span style="color:#ae81ff">3</span><span style="color:#f92672">**</span><span style="color:#ae81ff">2</span><span style="color:#111">)</span> <span style="color:#75715e"># べき乗</span>
+<span style="color:#00a8c8">print</span><span style="color:#111">(</span><span style="color:#111">pow</span><span style="color:#111">(</span><span style="color:#ae81ff">3</span><span style="color:#111">,</span> <span style="color:#ae81ff">2</span><span style="color:#111">))</span> <span style="color:#75715e"># べき乗</span>
+<span style="color:#00a8c8">print</span><span style="color:#111">(</span><span style="color:#ae81ff">10</span><span style="color:#f92672">//</span><span style="color:#ae81ff">3</span><span style="color:#111">)</span> <span style="color:#75715e"># 割った時の「商」</span>
+<span style="color:#00a8c8">print</span><span style="color:#111">(</span><span style="color:#ae81ff">10</span><span style="color:#f92672">%</span><span style="color:#ae81ff">3</span><span style="color:#111">)</span> <span style="color:#75715e"># 割った時の「余り」</span>
+<span style="color:#00a8c8">print</span><span style="color:#111">(</span><span style="color:#111">divmod</span><span style="color:#111">(</span><span style="color:#ae81ff">10</span><span style="color:#111">,</span><span style="color:#ae81ff">3</span><span style="color:#111">))</span> <span style="color:#75715e"># (商, 余り) の tupleが返値</span>
+<span style="color:#00a8c8">print</span><span style="color:#111">(</span><span style="color:#111">abs</span><span style="color:#111">(</span><span style="color:#f92672">-</span><span style="color:#ae81ff">123</span><span style="color:#111">))</span> <span style="color:#75715e"># 絶対値</span>
 </code></pre></div><p>出力結果</p>
-<pre tabindex="0"><code>3
+<pre><code>3
 -1
 30
 3.3333333333333335
 9
 3
 1
-</code></pre><div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#111">x</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+</code></pre><div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#111">x</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
 <span style="color:#111">x</span> <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>
-<span style="color:#111">print</span><span style="color:#111">(</span><span style="color:#111">x</span><span style="color:#111">)</span> <span style="color:#75715e"># 2</span>
+<span style="color:#00a8c8">print</span><span style="color:#111">(</span><span style="color:#111">x</span><span style="color:#111">)</span> <span style="color:#75715e"># 2</span>
 </code></pre></div><h3 id="数値型の変換">数値型の変換</h3>
-<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># 実数を整数に変換</span>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># 実数を整数に変換</span>
 <span style="color:#75715e"># 小数点以下を切り捨て</span>
-<span style="color:#111">print</span><span style="color:#111">(</span><span style="color:#111">int</span><span style="color:#111">(</span><span style="color:#ae81ff">9.1</span><span style="color:#111">))</span>
-<span style="color:#111">print</span><span style="color:#111">(</span><span style="color:#111">int</span><span style="color:#111">(</span><span style="color:#f92672">-</span><span style="color:#ae81ff">9.1</span><span style="color:#111">))</span>
-<span style="color:#111">print</span><span style="color:#111">(</span><span style="color:#111">int</span><span style="color:#111">(</span><span style="color:#ae81ff">0.8</span><span style="color:#111">))</span>
-</code></pre></div><pre tabindex="0"><code>9
+<span style="color:#00a8c8">print</span><span style="color:#111">(</span><span style="color:#111">int</span><span style="color:#111">(</span><span style="color:#ae81ff">9.1</span><span style="color:#111">))</span>
+<span style="color:#00a8c8">print</span><span style="color:#111">(</span><span style="color:#111">int</span><span style="color:#111">(</span><span style="color:#f92672">-</span><span style="color:#ae81ff">9.1</span><span style="color:#111">))</span>
+<span style="color:#00a8c8">print</span><span style="color:#111">(</span><span style="color:#111">int</span><span style="color:#111">(</span><span style="color:#ae81ff">0.8</span><span style="color:#111">))</span>
+</code></pre></div><pre><code>9
 -9
 0
 </code></pre><h2 id="文字列">文字列</h2>
 <p><a href="https://docs.python.org/ja/3/reference/lexical_analysis.html#strings">文字列およびバイト列リテラル</a></p>
-<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#111">s1</span> <span style="color:#f92672">=</span> <span style="color:#d88200">&#34;ほげ&#39;あほ&#39;ほげ&#34;</span> <span style="color:#75715e"># &#34; &#34; で生成するときは内部に &#39; を入れられる</span>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#111">s1</span> <span style="color:#f92672">=</span> <span style="color:#d88200">&#34;ほげ&#39;あほ&#39;ほげ&#34;</span> <span style="color:#75715e"># &#34; &#34; で生成するときは内部に &#39; を入れられる</span>
 <span style="color:#111">s2</span> <span style="color:#f92672">=</span> <span style="color:#d88200">&#39;ほげ&#34;あほ&#34;ほげ&#39;</span> <span style="color:#75715e"># &#39; &#39; で生成するときは内部に &#34; を入れられる</span>
 <span style="color:#111">s3</span> <span style="color:#f92672">=</span> <span style="color:#d88200">&#34;&#34;&#34;改行をいれるときは、
 </span><span style="color:#d88200">クォート3つで生成する
 </span><span style="color:#d88200"> &#34;&#34;&#34;</span>
 
-<span style="color:#111">print</span><span style="color:#111">(</span><span style="color:#111">s1</span><span style="color:#111">)</span>
-<span style="color:#111">print</span><span style="color:#111">(</span><span style="color:#111">s2</span><span style="color:#111">)</span>
-<span style="color:#111">print</span><span style="color:#111">(</span><span style="color:#111">s3</span><span style="color:#111">)</span>
-</code></pre></div><pre tabindex="0"><code>ほげ'あほ'ほげ
+<span style="color:#00a8c8">print</span><span style="color:#111">(</span><span style="color:#111">s1</span><span style="color:#111">)</span>
+<span style="color:#00a8c8">print</span><span style="color:#111">(</span><span style="color:#111">s2</span><span style="color:#111">)</span>
+<span style="color:#00a8c8">print</span><span style="color:#111">(</span><span style="color:#111">s3</span><span style="color:#111">)</span>
+</code></pre></div><pre><code>ほげ'あほ'ほげ
 ほげ&quot;あほ&quot;ほげ
 改行をいれるときは、
 クォート3つで生成する
 </code></pre><h3 id="メソッド">メソッド</h3>
 <h4 id="strcapitalize">str.capitalize()</h4>
 <p>文字列 str の先頭を大文字、残りを小文字にした文字列を返す</p>
-<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#111">str</span> <span style="color:#f92672">=</span> <span style="color:#d88200">&#34;aBcDe&#34;</span>
-<span style="color:#111">print</span><span style="color:#111">(</span><span style="color:#111">str</span><span style="color:#f92672">.</span><span style="color:#111">capitalize</span><span style="color:#111">())</span> <span style="color:#75715e"># </span>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#111">str</span> <span style="color:#f92672">=</span> <span style="color:#d88200">&#34;aBcDe&#34;</span>
+<span style="color:#00a8c8">print</span><span style="color:#111">(</span><span style="color:#111">str</span><span style="color:#f92672">.</span><span style="color:#111">capitalize</span><span style="color:#111">())</span> <span style="color:#75715e"># </span>
 </code></pre></div><p>Abcde</p>
 <h4 id="strcasefold">str.casefold()</h4>
 <p>文字列 str の英語以外のアルファベットも、英語のアルファベット小文字化する</p>
-<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#111">str</span> <span style="color:#f92672">=</span> <span style="color:#d88200">&#34;aBcDe&#34;</span>
-<span style="color:#111">print</span><span style="color:#111">(</span><span style="color:#111">str</span><span style="color:#f92672">.</span><span style="color:#111">casefold</span><span style="color:#111">())</span>  
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#111">str</span> <span style="color:#f92672">=</span> <span style="color:#d88200">&#34;aBcDe&#34;</span>
+<span style="color:#00a8c8">print</span><span style="color:#111">(</span><span style="color:#111">str</span><span style="color:#f92672">.</span><span style="color:#111">casefold</span><span style="color:#111">())</span>  
 </code></pre></div><p>abcde</p>
 <h4 id="strcenterwidth-fillchar">str.center(width, fillchar)</h4>
 <p>元の文字列 <code>str</code> を中央に配置した、長さ <code>width</code> の文字列を生成する、足りない部分は文字列 <code>fillchar</code> （デフォルトはスペース）で埋める。</p>
-<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#111">str</span> <span style="color:#f92672">=</span> <span style="color:#d88200">&#34;aBcDe&#34;</span>
-<span style="color:#111">print</span><span style="color:#111">(</span><span style="color:#111">str</span><span style="color:#f92672">.</span><span style="color:#111">center</span><span style="color:#111">(</span><span style="color:#ae81ff">10</span><span style="color:#111">,</span> <span style="color:#d88200">&#34;x&#34;</span><span style="color:#111">))</span> 
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#111">str</span> <span style="color:#f92672">=</span> <span style="color:#d88200">&#34;aBcDe&#34;</span>
+<span style="color:#00a8c8">print</span><span style="color:#111">(</span><span style="color:#111">str</span><span style="color:#f92672">.</span><span style="color:#111">center</span><span style="color:#111">(</span><span style="color:#ae81ff">10</span><span style="color:#111">,</span> <span style="color:#d88200">&#34;x&#34;</span><span style="color:#111">))</span> 
 
 </code></pre></div><h4 id="strcountsub-start-end">str.count(sub, start, end)</h4>
 <p>文字列 <code>str</code> 内にある部分文字列 <code>sub</code> が出現する個数を数える。指定された場合は <code>star</code> 文字目から <code>end</code> 文字目の間を検索する。
 マッチする個数を数えるとき、一度マッチした部分は以降の検索では除外される。</p>
-<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># 部分文字列のカウント</span>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># 部分文字列のカウント</span>
 <span style="color:#111">str2</span> <span style="color:#f92672">=</span> <span style="color:#d88200">&#34;aaaaaAAAAAaaaaaAAAAA日本語はどうですか日本語&#34;</span>
-<span style="color:#111">print</span><span style="color:#111">(</span><span style="color:#111">str2</span><span style="color:#f92672">.</span><span style="color:#111">count</span><span style="color:#111">(</span><span style="color:#d88200">&#34;日本語&#34;</span><span style="color:#111">))</span>
-<span style="color:#111">print</span><span style="color:#111">(</span><span style="color:#111">str2</span><span style="color:#f92672">.</span><span style="color:#111">count</span><span style="color:#111">(</span><span style="color:#d88200">&#34;aa&#34;</span><span style="color:#111">,</span><span style="color:#ae81ff">3</span><span style="color:#111">))</span>
-<span style="color:#111">print</span><span style="color:#111">(</span><span style="color:#111">str2</span><span style="color:#f92672">.</span><span style="color:#111">count</span><span style="color:#111">(</span><span style="color:#d88200">&#34;aa&#34;</span><span style="color:#111">,</span><span style="color:#ae81ff">3</span><span style="color:#111">,</span> <span style="color:#ae81ff">13</span><span style="color:#111">))</span>
-</code></pre></div><pre tabindex="0"><code>2
+<span style="color:#00a8c8">print</span><span style="color:#111">(</span><span style="color:#111">str2</span><span style="color:#f92672">.</span><span style="color:#111">count</span><span style="color:#111">(</span><span style="color:#d88200">&#34;日本語&#34;</span><span style="color:#111">))</span>
+<span style="color:#00a8c8">print</span><span style="color:#111">(</span><span style="color:#111">str2</span><span style="color:#f92672">.</span><span style="color:#111">count</span><span style="color:#111">(</span><span style="color:#d88200">&#34;aa&#34;</span><span style="color:#111">,</span><span style="color:#ae81ff">3</span><span style="color:#111">))</span>
+<span style="color:#00a8c8">print</span><span style="color:#111">(</span><span style="color:#111">str2</span><span style="color:#f92672">.</span><span style="color:#111">count</span><span style="color:#111">(</span><span style="color:#d88200">&#34;aa&#34;</span><span style="color:#111">,</span><span style="color:#ae81ff">3</span><span style="color:#111">,</span> <span style="color:#ae81ff">13</span><span style="color:#111">))</span>
+</code></pre></div><pre><code>2
 3
 2
 </code></pre><h4 id="strendswithsuffix-start-end">str.endswith(suffix, start, end)</h4>
 <p>文字列 <code>str</code> が文字列 <code>suffix</code> で終わる場合は <code>True</code> を返す。指定された場合は <code>start</code> 番目から <code>end</code> 番目までの部分文字列を判定する。</p>
 <h4 id="strfindsub-start-end">str.find(sub, start, end)</h4>
 <p>文字列 <code>str</code> に部分文字列 <code>sub</code> が含まれる場合、その最小のインデックスを返します。インデックス <code>start</code>, <code>end</code> が指定されたら部分文字列 <code>str[start:end]</code> の中で検索します。<code>sub</code> が見つからなかった場合 -1 を返します。</p>
-<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#d88200">&#34;Python&#34;</span><span style="color:#f92672">.</span><span style="color:#111">find</span><span style="color:#111">(</span><span style="color:#d88200">&#34;th&#34;</span><span style="color:#111">)</span>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#d88200">&#34;Python&#34;</span><span style="color:#f92672">.</span><span style="color:#111">find</span><span style="color:#111">(</span><span style="color:#d88200">&#34;th&#34;</span><span style="color:#111">)</span>
 <span style="color:#75715e"># 2</span>
 </code></pre></div><p>文字列 <code>str</code> に部分文字列 <code>sub</code> が存在するかどうかだけを知りたい場合には <code>in</code> を使う。</p>
-<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">
 <span style="color:#d88200">&#34;Py&#34;</span> <span style="color:#f92672">in</span> <span style="color:#d88200">&#34;Python&#34;</span>
 <span style="color:#75715e"># True</span>
 </code></pre></div><h4 id="strindexsub-start-end">str.index(sub, start, end)</h4>
 <p><code>str.find()</code> と同じだが、<code>sub</code> が見つからないとき <code>ValueError</code> を送出する。</p>
 <h3 id="ファイルを文字列として読み込む">ファイルを文字列として読み込む</h3>
-<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#111">f</span> <span style="color:#f92672">=</span> <span style="color:#111">open</span><span style="color:#111">(</span><span style="color:#d88200">&#39;path_to_file&#39;</span><span style="color:#111">,</span> <span style="color:#d88200">&#39;r&#39;</span><span style="color:#111">)</span>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#111">f</span> <span style="color:#f92672">=</span> <span style="color:#111">open</span><span style="color:#111">(</span><span style="color:#d88200">&#39;path_to_file&#39;</span><span style="color:#111">,</span> <span style="color:#d88200">&#39;r&#39;</span><span style="color:#111">)</span>
 <span style="color:#111">data</span> <span style="color:#f92672">=</span> <span style="color:#111">f</span><span style="color:#f92672">.</span><span style="color:#111">read</span><span style="color:#111">()</span>
 <span style="color:#111">f</span><span style="color:#f92672">.</span><span style="color:#111">close</span><span style="color:#111">()</span>
 </code></pre></div><h3 id="テンプレート文字列の置換">テンプレート文字列の置換</h3>
 <p>オブジェクトの値を用いてテンプレート文字列の中身を置換する</p>
 <h4 id="format-メソッド">format() メソッド</h4>
-<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#111">project</span> <span style="color:#f92672">=</span> <span style="color:#d88200">&#39;my_project&#39;</span>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#111">project</span> <span style="color:#f92672">=</span> <span style="color:#d88200">&#39;my_project&#39;</span>
 <span style="color:#111">dataset</span> <span style="color:#f92672">=</span> <span style="color:#d88200">&#39;my_dataset&#39;</span>
 <span style="color:#111">table</span> <span style="color:#f92672">=</span> <span style="color:#d88200">&#39;my_table&#39;</span>
 
 <span style="color:#75715e"># format メソッドを使った方法 1 </span>
-<span style="color:#111">template</span> <span style="color:#f92672">=</span> <span style="color:#d88200">&#39;SELECT size_bytes FROM `</span><span style="color:#d88200">{project}</span><span style="color:#d88200">.</span><span style="color:#d88200">{dataset}</span><span style="color:#d88200">.</span><span style="color:#d88200">{table}</span><span style="color:#d88200">`&#39;</span>
-<span style="color:#111">print</span><span style="color:#111">(</span><span style="color:#111">template</span><span style="color:#f92672">.</span><span style="color:#111">format</span><span style="color:#111">(</span><span style="color:#111">project</span><span style="color:#f92672">=</span><span style="color:#111">project</span><span style="color:#111">,</span> <span style="color:#111">dataset</span><span style="color:#f92672">=</span><span style="color:#111">dataset</span><span style="color:#111">,</span> <span style="color:#111">table</span><span style="color:#f92672">=</span><span style="color:#111">table</span><span style="color:#111">))</span>
+<span style="color:#111">template</span> <span style="color:#f92672">=</span> <span style="color:#d88200">&#39;SELECT size_bytes FROM `{project}.{dataset}.{table}`&#39;</span>
+<span style="color:#00a8c8">print</span><span style="color:#111">(</span><span style="color:#111">template</span><span style="color:#f92672">.</span><span style="color:#111">format</span><span style="color:#111">(</span><span style="color:#111">project</span><span style="color:#f92672">=</span><span style="color:#111">project</span><span style="color:#111">,</span> <span style="color:#111">dataset</span><span style="color:#f92672">=</span><span style="color:#111">dataset</span><span style="color:#111">,</span> <span style="color:#111">table</span><span style="color:#f92672">=</span><span style="color:#111">table</span><span style="color:#111">))</span>
 <span style="color:#75715e"># SELECT size_bytes FROM `my_project.my_dataset.my_table`</span>
 
 <span style="color:#75715e"># format メソッドを使った方法 2</span>
 <span style="color:#75715e"># テンプレートに置換する名前を指定しない場合は、与えたオブジェクトが順に適用される</span>
-<span style="color:#111">template</span> <span style="color:#f92672">=</span> <span style="color:#d88200">&#39;SELECT size_bytes FROM `</span><span style="color:#d88200">{}</span><span style="color:#d88200">.</span><span style="color:#d88200">{}</span><span style="color:#d88200">.</span><span style="color:#d88200">{}</span><span style="color:#d88200">`&#39;</span>
-<span style="color:#111">print</span><span style="color:#111">(</span><span style="color:#111">template</span><span style="color:#f92672">.</span><span style="color:#111">format</span><span style="color:#111">(</span><span style="color:#111">project</span><span style="color:#111">,</span> <span style="color:#111">dataset</span><span style="color:#111">,</span> <span style="color:#111">table</span><span style="color:#111">))</span>
+<span style="color:#111">template</span> <span style="color:#f92672">=</span> <span style="color:#d88200">&#39;SELECT size_bytes FROM `{}.{}.{}`&#39;</span>
+<span style="color:#00a8c8">print</span><span style="color:#111">(</span><span style="color:#111">template</span><span style="color:#f92672">.</span><span style="color:#111">format</span><span style="color:#111">(</span><span style="color:#111">project</span><span style="color:#111">,</span> <span style="color:#111">dataset</span><span style="color:#111">,</span> <span style="color:#111">table</span><span style="color:#111">))</span>
 <span style="color:#75715e"># SELECT size_bytes FROM `my_project.my_dataset.my_table`</span>
 
 <span style="color:#75715e"># テンプレート内の {数字} はformat()関数に与えた引数の位置として解釈される</span>
-<span style="color:#111">template</span> <span style="color:#f92672">=</span> <span style="color:#d88200">&#39;SELECT size_bytes FROM `</span><span style="color:#d88200">{0}</span><span style="color:#d88200">.</span><span style="color:#d88200">{1}</span><span style="color:#d88200">.</span><span style="color:#d88200">{2}</span><span style="color:#d88200">`&#39;</span>
-<span style="color:#111">print</span><span style="color:#111">(</span><span style="color:#111">template</span><span style="color:#f92672">.</span><span style="color:#111">format</span><span style="color:#111">(</span><span style="color:#111">project</span><span style="color:#111">,</span> <span style="color:#111">dataset</span><span style="color:#111">,</span> <span style="color:#111">table</span><span style="color:#111">))</span>
+<span style="color:#111">template</span> <span style="color:#f92672">=</span> <span style="color:#d88200">&#39;SELECT size_bytes FROM `{0}.{1}.{2}`&#39;</span>
+<span style="color:#00a8c8">print</span><span style="color:#111">(</span><span style="color:#111">template</span><span style="color:#f92672">.</span><span style="color:#111">format</span><span style="color:#111">(</span><span style="color:#111">project</span><span style="color:#111">,</span> <span style="color:#111">dataset</span><span style="color:#111">,</span> <span style="color:#111">table</span><span style="color:#111">))</span>
 <span style="color:#75715e"># SELECT size_bytes FROM `my_project.my_dataset.my_table`</span>
 </code></pre></div><h4 id="f文字列を使った方法">f文字列を使った方法</h4>
 <p>こちらの方が format メソッドより簡単だが、テンプレート文字列をオブジェクトして保存した場合には使えない</p>
-<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#111">project</span> <span style="color:#f92672">=</span> <span style="color:#d88200">&#39;my_project&#39;</span>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#111">project</span> <span style="color:#f92672">=</span> <span style="color:#d88200">&#39;my_project&#39;</span>
 <span style="color:#111">dataset</span> <span style="color:#f92672">=</span> <span style="color:#d88200">&#39;my_dataset&#39;</span>
 <span style="color:#111">table</span> <span style="color:#f92672">=</span> <span style="color:#d88200">&#39;my_table&#39;</span>
 
 <span style="color:#75715e"># f文字列を使った方法、変数内の値が展開される</span>
-<span style="color:#111">print</span><span style="color:#111">(</span><span style="color:#d88200">f</span><span style="color:#d88200">&#39;SELECT size_bytes FROM `</span><span style="color:#d88200">{</span><span style="color:#111">project</span><span style="color:#d88200">}</span><span style="color:#d88200">.</span><span style="color:#d88200">{</span><span style="color:#111">dataset</span><span style="color:#d88200">}</span><span style="color:#d88200">.</span><span style="color:#d88200">{</span><span style="color:#111">table</span><span style="color:#d88200">}</span><span style="color:#d88200">`&#39;</span><span style="color:#111">)</span>
+<span style="color:#00a8c8">print</span><span style="color:#111">(</span><span style="color:#111">f</span><span style="color:#d88200">&#39;SELECT size_bytes FROM `{project}.{dataset}.{table}`&#39;</span><span style="color:#111">)</span>
 </code></pre></div><h4 id="strformat_mappingmapping">str.format_mapping(mapping)</h4>
-<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># dict型の値を作成</span>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># dict型の値を作成</span>
 <span style="color:#111">d</span> <span style="color:#f92672">=</span> <span style="color:#111">{</span><span style="color:#d88200">&#34;name&#34;</span><span style="color:#111">:</span> <span style="color:#d88200">&#34;Mike&#34;</span><span style="color:#111">,</span> <span style="color:#d88200">&#34;country&#34;</span><span style="color:#111">:</span> <span style="color:#d88200">&#34;America&#34;</span><span style="color:#111">}</span>
 
 <span style="color:#75715e"># dict を使ってテンプレート文字列を置換する</span>
-<span style="color:#111">str</span> <span style="color:#f92672">=</span> <span style="color:#d88200">&#39;</span><span style="color:#d88200">{name}</span><span style="color:#d88200"> was born in </span><span style="color:#d88200">{country}</span><span style="color:#d88200">&#39;</span>
+<span style="color:#111">str</span> <span style="color:#f92672">=</span> <span style="color:#d88200">&#39;{name} was born in {country}&#39;</span>
 <span style="color:#111">str</span><span style="color:#f92672">.</span><span style="color:#111">format_map</span><span style="color:#111">(</span><span style="color:#111">d</span><span style="color:#111">)</span>
 </code></pre></div><h4 id="文字列種の判定">文字列種の判定</h4>
 <ul>
@@ -1152,7 +1152,7 @@ x ^ y # xor
 <li><code>n</code>、 <code>i</code>、 <code>j</code> 、 <code>k</code> は整数</li>
 <li><code>x</code> は <code>s</code> に課された型と値の条件を満たす任意のオブジェクトです。</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#111">x</span> <span style="color:#f92672">in</span> <span style="color:#111">s</span>      <span style="color:#75715e"># s のある要素が x と等しければ True , そうでなければ False</span>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#111">x</span> <span style="color:#f92672">in</span> <span style="color:#111">s</span>      <span style="color:#75715e"># s のある要素が x と等しければ True , そうでなければ False</span>
 <span style="color:#111">x</span> <span style="color:#f92672">not</span> <span style="color:#f92672">in</span> <span style="color:#111">s</span>  <span style="color:#75715e"># s のある要素が x と等しければ False, そうでなければ True</span>
 <span style="color:#111">s</span> <span style="color:#f92672">+</span> <span style="color:#111">t</span>       <span style="color:#75715e"># s と t の結合</span>
 <span style="color:#111">s</span> <span style="color:#f92672">*</span> <span style="color:#111">n</span>       <span style="color:#75715e"># s 自身を n 回足すのと同じ</span>
@@ -1167,39 +1167,39 @@ x ^ y # xor
 <span style="color:#111">s</span><span style="color:#f92672">.</span><span style="color:#111">index</span><span style="color:#111">(</span><span style="color:#111">x</span><span style="color:#111">,</span> <span style="color:#111">i</span><span style="color:#111">,</span> <span style="color:#111">j</span><span style="color:#111">)</span> <span style="color:#75715e"># s の i 番目から j 番目の要素の中で x が最初に出現するインデックス </span>
 </code></pre></div><h2 id="list">list</h2>
 <p>同じ型の値を要素として持つシーケンスコンテナ</p>
-<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#111">l1</span> <span style="color:#f92672">=</span> <span style="color:#111">[]</span> <span style="color:#75715e"># 空のリスト</span>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#111">l1</span> <span style="color:#f92672">=</span> <span style="color:#111">[]</span> <span style="color:#75715e"># 空のリスト</span>
 <span style="color:#111">l2</span> <span style="color:#f92672">=</span> <span style="color:#111">[</span><span style="color:#ae81ff">1</span><span style="color:#111">,</span><span style="color:#ae81ff">2</span><span style="color:#111">,</span><span style="color:#ae81ff">3</span><span style="color:#111">]</span>
 <span style="color:#111">l3</span> <span style="color:#f92672">=</span> <span style="color:#111">[</span><span style="color:#111">x</span><span style="color:#f92672">**</span><span style="color:#ae81ff">2</span> <span style="color:#00a8c8">for</span> <span style="color:#111">x</span> <span style="color:#f92672">in</span> <span style="color:#111">range</span><span style="color:#111">(</span><span style="color:#ae81ff">0</span><span style="color:#111">,</span><span style="color:#ae81ff">3</span><span style="color:#111">)]</span> <span style="color:#75715e"># リスト内包表記を使ったリストの生成</span>
 <span style="color:#111">l4</span> <span style="color:#f92672">=</span> <span style="color:#111">[</span><span style="color:#111">x</span><span style="color:#f92672">**</span><span style="color:#ae81ff">2</span> <span style="color:#00a8c8">for</span> <span style="color:#111">x</span> <span style="color:#f92672">in</span> <span style="color:#111">[</span><span style="color:#ae81ff">0</span><span style="color:#111">,</span><span style="color:#ae81ff">1</span><span style="color:#111">,</span><span style="color:#ae81ff">2</span><span style="color:#111">,</span><span style="color:#ae81ff">3</span><span style="color:#111">]]</span>   <span style="color:#75715e">#  </span>
-<span style="color:#111">print</span><span style="color:#111">(</span><span style="color:#111">l3</span><span style="color:#111">)</span>
-<span style="color:#111">print</span><span style="color:#111">(</span><span style="color:#111">l4</span><span style="color:#111">)</span>
-</code></pre></div><pre tabindex="0"><code>[0, 1, 4]
+<span style="color:#00a8c8">print</span><span style="color:#111">(</span><span style="color:#111">l3</span><span style="color:#111">)</span>
+<span style="color:#00a8c8">print</span><span style="color:#111">(</span><span style="color:#111">l4</span><span style="color:#111">)</span>
+</code></pre></div><pre><code>[0, 1, 4]
 [0, 1, 4, 9]
 </code></pre><h3 id="メソッド-1">メソッド</h3>
 <h4 id="sort">sort()</h4>
-<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#111">l</span> <span style="color:#f92672">=</span> <span style="color:#111">[</span><span style="color:#ae81ff">3</span><span style="color:#111">,</span><span style="color:#ae81ff">4</span><span style="color:#111">,</span><span style="color:#ae81ff">2</span><span style="color:#111">,</span><span style="color:#ae81ff">9</span><span style="color:#111">,</span><span style="color:#ae81ff">7</span><span style="color:#111">]</span>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#111">l</span> <span style="color:#f92672">=</span> <span style="color:#111">[</span><span style="color:#ae81ff">3</span><span style="color:#111">,</span><span style="color:#ae81ff">4</span><span style="color:#111">,</span><span style="color:#ae81ff">2</span><span style="color:#111">,</span><span style="color:#ae81ff">9</span><span style="color:#111">,</span><span style="color:#ae81ff">7</span><span style="color:#111">]</span>
 <span style="color:#111">l</span><span style="color:#f92672">.</span><span style="color:#111">sort</span><span style="color:#111">()</span> <span style="color:#75715e"># lの要素を直接ソートする、ソートしたリストを返さない</span>
-<span style="color:#111">print</span><span style="color:#111">(</span><span style="color:#111">l</span><span style="color:#111">)</span>
-</code></pre></div><pre tabindex="0"><code>[2, 3, 4, 7, 9]
-</code></pre><div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#111">l</span> <span style="color:#f92672">=</span> <span style="color:#111">[</span><span style="color:#ae81ff">3</span><span style="color:#111">,</span><span style="color:#ae81ff">4</span><span style="color:#111">,</span><span style="color:#ae81ff">2</span><span style="color:#111">,</span><span style="color:#ae81ff">9</span><span style="color:#111">,</span><span style="color:#ae81ff">7</span><span style="color:#111">]</span>
-<span style="color:#111">l</span><span style="color:#f92672">.</span><span style="color:#111">sort</span><span style="color:#111">(</span><span style="color:#111">reverse</span> <span style="color:#f92672">=</span> <span style="color:#00a8c8">True</span><span style="color:#111">)</span> <span style="color:#75715e"># lの要素を逆順でソートする</span>
-<span style="color:#111">print</span><span style="color:#111">(</span><span style="color:#111">l</span><span style="color:#111">)</span>
-</code></pre></div><pre tabindex="0"><code>[9, 7, 4, 3, 2]
+<span style="color:#00a8c8">print</span><span style="color:#111">(</span><span style="color:#111">l</span><span style="color:#111">)</span>
+</code></pre></div><pre><code>[2, 3, 4, 7, 9]
+</code></pre><div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#111">l</span> <span style="color:#f92672">=</span> <span style="color:#111">[</span><span style="color:#ae81ff">3</span><span style="color:#111">,</span><span style="color:#ae81ff">4</span><span style="color:#111">,</span><span style="color:#ae81ff">2</span><span style="color:#111">,</span><span style="color:#ae81ff">9</span><span style="color:#111">,</span><span style="color:#ae81ff">7</span><span style="color:#111">]</span>
+<span style="color:#111">l</span><span style="color:#f92672">.</span><span style="color:#111">sort</span><span style="color:#111">(</span><span style="color:#111">reverse</span> <span style="color:#f92672">=</span> <span style="color:#111">True</span><span style="color:#111">)</span> <span style="color:#75715e"># lの要素を逆順でソートする</span>
+<span style="color:#00a8c8">print</span><span style="color:#111">(</span><span style="color:#111">l</span><span style="color:#111">)</span>
+</code></pre></div><pre><code>[9, 7, 4, 3, 2]
 </code></pre><p>元のリストをそのままにして、ソートされたリストが欲しい時は <code>sorted()</code> を利用する</p>
-<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#111">l1</span> <span style="color:#f92672">=</span> <span style="color:#111">[</span><span style="color:#ae81ff">3</span><span style="color:#111">,</span><span style="color:#ae81ff">4</span><span style="color:#111">,</span><span style="color:#ae81ff">2</span><span style="color:#111">,</span><span style="color:#ae81ff">9</span><span style="color:#111">,</span><span style="color:#ae81ff">7</span><span style="color:#111">]</span>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#111">l1</span> <span style="color:#f92672">=</span> <span style="color:#111">[</span><span style="color:#ae81ff">3</span><span style="color:#111">,</span><span style="color:#ae81ff">4</span><span style="color:#111">,</span><span style="color:#ae81ff">2</span><span style="color:#111">,</span><span style="color:#ae81ff">9</span><span style="color:#111">,</span><span style="color:#ae81ff">7</span><span style="color:#111">]</span>
 <span style="color:#111">l2</span> <span style="color:#f92672">=</span> <span style="color:#111">sorted</span><span style="color:#111">(</span><span style="color:#111">l1</span><span style="color:#111">)</span>
-<span style="color:#111">print</span><span style="color:#111">(</span><span style="color:#111">l</span><span style="color:#111">)</span>
-<span style="color:#111">print</span><span style="color:#111">(</span><span style="color:#111">l2</span><span style="color:#111">)</span>
-</code></pre></div><pre tabindex="0"><code>[3, 4, 2, 9, 7]
+<span style="color:#00a8c8">print</span><span style="color:#111">(</span><span style="color:#111">l</span><span style="color:#111">)</span>
+<span style="color:#00a8c8">print</span><span style="color:#111">(</span><span style="color:#111">l2</span><span style="color:#111">)</span>
+</code></pre></div><pre><code>[3, 4, 2, 9, 7]
 [2, 3, 4, 7, 9]
 </code></pre><h2 id="tuple">tuple</h2>
 <p>タプルはイミュータブルの型なので、値は変更できない、基本的に使い捨て</p>
-<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#111">(</span><span style="color:#ae81ff">1</span><span style="color:#111">,</span><span style="color:#ae81ff">2</span><span style="color:#111">,</span><span style="color:#ae81ff">3</span><span style="color:#111">)</span> <span style="color:#75715e"># 丸括弧で作成するのが基本</span>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#111">(</span><span style="color:#ae81ff">1</span><span style="color:#111">,</span><span style="color:#ae81ff">2</span><span style="color:#111">,</span><span style="color:#ae81ff">3</span><span style="color:#111">)</span> <span style="color:#75715e"># 丸括弧で作成するのが基本</span>
 <span style="color:#ae81ff">1</span><span style="color:#111">,</span><span style="color:#ae81ff">2</span><span style="color:#111">,</span><span style="color:#ae81ff">3</span>   <span style="color:#75715e"># 丸括弧なしでも作成できる</span>
 <span style="color:#111">tuple</span><span style="color:#111">((</span><span style="color:#ae81ff">1</span><span style="color:#111">,</span><span style="color:#ae81ff">2</span><span style="color:#111">,</span><span style="color:#ae81ff">3</span><span style="color:#111">))</span> <span style="color:#75715e"># tupleで tuple を初期化</span>
 <span style="color:#111">tuple</span><span style="color:#111">([</span><span style="color:#d88200">&#39;a&#39;</span><span style="color:#111">,</span><span style="color:#d88200">&#39;b&#39;</span><span style="color:#111">,</span><span style="color:#d88200">&#39;c&#39;</span><span style="color:#111">])</span> <span style="color:#75715e"># list で tuple を初期化</span>
 </code></pre></div><h3 id="名前付き-tuple">名前付き tuple</h3>
-<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> <span style="color:#111">collections</span> <span style="color:#f92672">import</span> <span style="color:#111">namedtuple</span>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> <span style="color:#111">collections</span> <span style="color:#f92672">import</span> <span style="color:#111">namedtuple</span>
 
 <span style="color:#75715e"># 名前付きタプルのクラスを定義</span>
 <span style="color:#111">Point</span> <span style="color:#f92672">=</span> <span style="color:#111">namedtuple</span><span style="color:#111">(</span><span style="color:#d88200">&#39;Point&#39;</span><span style="color:#111">,</span> <span style="color:#111">[</span><span style="color:#d88200">&#39;x&#39;</span><span style="color:#111">,</span> <span style="color:#d88200">&#39;y&#39;</span><span style="color:#111">])</span>
@@ -1207,22 +1207,22 @@ x ^ y # xor
 <span style="color:#111">p</span> <span style="color:#f92672">=</span> <span style="color:#111">Point</span><span style="color:#111">(</span><span style="color:#111">x</span><span style="color:#f92672">=</span><span style="color:#ae81ff">1</span><span style="color:#111">,</span> <span style="color:#111">y</span><span style="color:#f92672">=</span><span style="color:#ae81ff">2</span><span style="color:#111">)</span>
 
 <span style="color:#75715e"># インスタンスを表示</span>
-<span style="color:#111">print</span><span style="color:#111">(</span><span style="color:#111">p</span><span style="color:#111">)</span>
+<span style="color:#00a8c8">print</span><span style="color:#111">(</span><span style="color:#111">p</span><span style="color:#111">)</span>
 
 <span style="color:#75715e"># インデックスで値にアクセス</span>
-<span style="color:#111">print</span><span style="color:#111">(</span><span style="color:#111">p</span><span style="color:#111">[</span><span style="color:#ae81ff">0</span><span style="color:#111">])</span>
-<span style="color:#111">print</span><span style="color:#111">(</span><span style="color:#111">p</span><span style="color:#111">[</span><span style="color:#ae81ff">1</span><span style="color:#111">])</span>
+<span style="color:#00a8c8">print</span><span style="color:#111">(</span><span style="color:#111">p</span><span style="color:#111">[</span><span style="color:#ae81ff">0</span><span style="color:#111">])</span>
+<span style="color:#00a8c8">print</span><span style="color:#111">(</span><span style="color:#111">p</span><span style="color:#111">[</span><span style="color:#ae81ff">1</span><span style="color:#111">])</span>
 
 <span style="color:#75715e"># 属性名から値にアクセス</span>
 <span style="color:#111">z</span> <span style="color:#f92672">=</span> <span style="color:#111">p</span><span style="color:#f92672">.</span><span style="color:#111">x</span> <span style="color:#f92672">+</span> <span style="color:#111">p</span><span style="color:#f92672">.</span><span style="color:#111">y</span>
-<span style="color:#111">print</span><span style="color:#111">(</span><span style="color:#111">z</span><span style="color:#111">)</span>
+<span style="color:#00a8c8">print</span><span style="color:#111">(</span><span style="color:#111">z</span><span style="color:#111">)</span>
 </code></pre></div><h2 id="range">range</h2>
 <p>整数の範囲を示す</p>
 <p>forループやlistを初期化するときに使うことが多い</p>
-<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#111">print</span><span style="color:#111">(</span><span style="color:#111">list</span><span style="color:#111">(</span><span style="color:#111">range</span><span style="color:#111">(</span><span style="color:#ae81ff">10</span><span style="color:#111">)))</span>      <span style="color:#75715e"># 終了10</span>
-<span style="color:#111">print</span><span style="color:#111">(</span><span style="color:#111">list</span><span style="color:#111">(</span><span style="color:#111">range</span><span style="color:#111">(</span><span style="color:#ae81ff">1</span><span style="color:#111">,</span> <span style="color:#ae81ff">15</span><span style="color:#111">)))</span>   <span style="color:#75715e"># 開始1 終了15</span>
-<span style="color:#111">print</span><span style="color:#111">(</span><span style="color:#111">list</span><span style="color:#111">(</span><span style="color:#111">range</span><span style="color:#111">(</span><span style="color:#ae81ff">1</span><span style="color:#111">,</span> <span style="color:#ae81ff">15</span><span style="color:#111">,</span><span style="color:#ae81ff">3</span><span style="color:#111">)))</span> <span style="color:#75715e"># 開始1 終了15 間隔3</span>
-</code></pre></div><pre tabindex="0"><code>[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#00a8c8">print</span><span style="color:#111">(</span><span style="color:#111">list</span><span style="color:#111">(</span><span style="color:#111">range</span><span style="color:#111">(</span><span style="color:#ae81ff">10</span><span style="color:#111">)))</span>      <span style="color:#75715e"># 終了10</span>
+<span style="color:#00a8c8">print</span><span style="color:#111">(</span><span style="color:#111">list</span><span style="color:#111">(</span><span style="color:#111">range</span><span style="color:#111">(</span><span style="color:#ae81ff">1</span><span style="color:#111">,</span> <span style="color:#ae81ff">15</span><span style="color:#111">)))</span>   <span style="color:#75715e"># 開始1 終了15</span>
+<span style="color:#00a8c8">print</span><span style="color:#111">(</span><span style="color:#111">list</span><span style="color:#111">(</span><span style="color:#111">range</span><span style="color:#111">(</span><span style="color:#ae81ff">1</span><span style="color:#111">,</span> <span style="color:#ae81ff">15</span><span style="color:#111">,</span><span style="color:#ae81ff">3</span><span style="color:#111">)))</span> <span style="color:#75715e"># 開始1 終了15 間隔3</span>
+</code></pre></div><pre><code>[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
 [1, 4, 7, 10, 13]
 </code></pre><h1 id="リスト内包表記">リスト内包表記</h1>
@@ -1233,23 +1233,23 @@ x ^ y # xor
 <li>式：生成するリストの要素に変換される式</li>
 <li>if 条件（任意）：その条件を満たすときだけ式を評価</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># 0~9の2乗</span>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># 0~9の2乗</span>
 <span style="color:#111">squares</span> <span style="color:#f92672">=</span> <span style="color:#111">[</span><span style="color:#111">x</span><span style="color:#f92672">**</span><span style="color:#ae81ff">2</span> <span style="color:#00a8c8">for</span> <span style="color:#111">x</span> <span style="color:#f92672">in</span> <span style="color:#111">range</span><span style="color:#111">(</span><span style="color:#ae81ff">10</span><span style="color:#111">)]</span>
-<span style="color:#111">print</span><span style="color:#111">(</span><span style="color:#111">squares</span><span style="color:#111">)</span>
+<span style="color:#00a8c8">print</span><span style="color:#111">(</span><span style="color:#111">squares</span><span style="color:#111">)</span>
 
 <span style="color:#75715e"># 偶数だけの２乗</span>
 <span style="color:#111">even_squares</span> <span style="color:#f92672">=</span> <span style="color:#111">[</span><span style="color:#111">x</span><span style="color:#f92672">**</span><span style="color:#ae81ff">2</span> <span style="color:#00a8c8">for</span> <span style="color:#111">x</span> <span style="color:#f92672">in</span> <span style="color:#111">range</span><span style="color:#111">(</span><span style="color:#ae81ff">10</span><span style="color:#111">)</span> <span style="color:#00a8c8">if</span> <span style="color:#111">x</span> <span style="color:#f92672">%</span> <span style="color:#ae81ff">2</span> <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span><span style="color:#111">]</span>
-<span style="color:#111">print</span><span style="color:#111">(</span><span style="color:#111">even_squares</span><span style="color:#111">)</span>
+<span style="color:#00a8c8">print</span><span style="color:#111">(</span><span style="color:#111">even_squares</span><span style="color:#111">)</span>
 
 <span style="color:#75715e"># 文字列リストの中からaで始まる要素のみからなるリスト</span>
 <span style="color:#111">words</span> <span style="color:#f92672">=</span> <span style="color:#111">[</span><span style="color:#d88200">&#39;apple&#39;</span><span style="color:#111">,</span> <span style="color:#d88200">&#39;banana&#39;</span><span style="color:#111">,</span> <span style="color:#d88200">&#39;apricot&#39;</span><span style="color:#111">,</span> <span style="color:#d88200">&#39;cherry&#39;</span><span style="color:#111">]</span>
 <span style="color:#111">a_words</span> <span style="color:#f92672">=</span> <span style="color:#111">[</span><span style="color:#111">w</span> <span style="color:#00a8c8">for</span> <span style="color:#111">w</span> <span style="color:#f92672">in</span> <span style="color:#111">words</span> <span style="color:#00a8c8">if</span> <span style="color:#111">w</span><span style="color:#f92672">.</span><span style="color:#111">startswith</span><span style="color:#111">(</span><span style="color:#d88200">&#39;a&#39;</span><span style="color:#111">)]</span>
-<span style="color:#111">print</span><span style="color:#111">(</span><span style="color:#111">a_words</span><span style="color:#111">)</span>
+<span style="color:#00a8c8">print</span><span style="color:#111">(</span><span style="color:#111">a_words</span><span style="color:#111">)</span>
 
 <span style="color:#75715e"># 入れ子のリストを使うこともできる</span>
 <span style="color:#111">matrix</span> <span style="color:#f92672">=</span> <span style="color:#111">[[</span><span style="color:#ae81ff">1</span><span style="color:#111">,</span> <span style="color:#ae81ff">2</span><span style="color:#111">],</span> <span style="color:#111">[</span><span style="color:#ae81ff">3</span><span style="color:#111">,</span> <span style="color:#ae81ff">4</span><span style="color:#111">],</span> <span style="color:#111">[</span><span style="color:#ae81ff">5</span><span style="color:#111">,</span> <span style="color:#ae81ff">6</span><span style="color:#111">]]</span>
 <span style="color:#111">flattened</span> <span style="color:#f92672">=</span> <span style="color:#111">[</span><span style="color:#111">item</span> <span style="color:#00a8c8">for</span> <span style="color:#111">row</span> <span style="color:#f92672">in</span> <span style="color:#111">matrix</span> <span style="color:#00a8c8">for</span> <span style="color:#111">item</span> <span style="color:#f92672">in</span> <span style="color:#111">row</span><span style="color:#111">]</span>
-<span style="color:#111">print</span><span style="color:#111">(</span><span style="color:#111">flattened</span><span style="color:#111">)</span>
+<span style="color:#00a8c8">print</span><span style="color:#111">(</span><span style="color:#111">flattened</span><span style="color:#111">)</span>
 
 </code></pre></div></article>
 
@@ -1258,9 +1258,9 @@ x ^ y # xor
   
   <div>
     
-    <a class="flex align-center" href="https://github.com/teuder/notebook/commit/4a08cf2e68f91465a969c30abf92d62982b5075c" title='Last modified 2025-06-13 by Masaki Tsuda' target="_blank" rel="noopener">
+    <a class="flex align-center" href="https://github.com/teuder/notebook/commit/bc995c93b96125c1b269b1da3799b9b972e1e49f" title='Last modified 2025-06-14 by Masaki Tsuda' target="_blank" rel="noopener">
       <img src="/notebook/svg/calendar.svg" alt="Changed" />
-      <span>2025-06-13</span>
+      <span>2025-06-14</span>
     </a>
   </div>
   

@@ -55,15 +55,25 @@ git clone https://github.com/pyenv/pyenv.git ~/.pyenv
 
 `pyenv-win` をインストールする。
 
-コマンドプロンプトで以下のコマンドを実行すると、`C:\Users\USERNAME\.pyenv\pyenv-win\bin` に `pyenv` がインストールされる
-
-（この方法では pip を使ってしまっているので、すでに Python がインストールされている前提になってしまっている。git のレポジトリからpyenv-winを zipでダウンロードして展開する方が良いかも。）
-
-```
-pip install pyenv-win --target %USERPROFILE%/.pyenv
+PowerShell
+```PowerShell
+git clone https://github.com/pyenv-win/pyenv-win.git "$HOME\.pyenv"
 ```
 
-新しい環境変数 : 
+環境変数を設定
+
+```PowerShell
+[System.Environment]::SetEnvironmentVariable('PYENV',$env:USERPROFILE + "\.pyenv\pyenv-win\","User")
+[System.Environment]::SetEnvironmentVariable('PYENV_ROOT',$env:USERPROFILE + "\.pyenv\pyenv-win\","User")
+[System.Environment]::SetEnvironmentVariable('PYENV_HOME',$env:USERPROFILE + "\.pyenv\pyenv-win\","User")
+```
+
+環境変数PATHを更新
+
+```PowerShell
+[System.Environment]::SetEnvironmentVariable('PATH', $env:USERPROFILE + "\.pyenv\pyenv-win\bin;" + $env:USERPROFILE + "\.pyenv\pyenv-win\shims;" + [System.Environment]::GetEnvironmentVariable('PATH', "User"),"User")
+```
+
 
 pipenv に pyenv を認識させるため
 
@@ -74,9 +84,7 @@ PYENV : %USERPROFILE%\.pyenv\pyenv-win
 %PYENV%\bin
 %PYENV%\shims
 
-環境変数 `PYENV_ROOT` に `%USERPROFILE%\.pyenv\pyenv-win` をセットすると、`pipenv` が `pyenv` を認識するようになるが、`pipenv install` などを実行するとエラーになる。そのため結局使えない。
 
-なので `pipenv` から `pyenv` を使って自動でPythonをインストールするのはあきらめる。pipenv の環境で使われる Python は pyenv を直接使って別途インストールする。
 
 
 
@@ -100,7 +108,8 @@ pyenv install 3.8.2
 デフォルトで使う Python バージョンを指定する
 
 ```
-pyenv local 3.8.2
+pyenv global 3.8.2 # 全体のデフォルト設定
+# pyenv local 3.8.2 # 特定のフォルダの中だけ
 pyenv rehash
 ```
 
@@ -130,6 +139,13 @@ pyenv global $python2 $python37
 pyenv global $python36
 pyenv rehash
 ```
+
+# Poetry
+
+Python本体とライブラリを含んだ環境管理は、最近はpipenvよりもPoetryが主流になってきているらしい。
+
+とりあえずは後回し
+
 
 
 
