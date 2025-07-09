@@ -6,17 +6,18 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0"><meta property="og:title" content="VIIRS" />
 <meta property="og:description" content="VIIRS Visible Infrared Imaging Radiometer Suite 赤外線〜可視光を含む波長の光を受信する22個のセンサーからなる「装置の名称」。様々な波長で観測することにより地表や海洋の色や夜間" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://teuder.github.io/notebook/gis/viirs/" />
+<meta property="og:url" content="https://teuder.github.io/notebook/gis/viirs/" /><meta property="article:section" content="GIS" />
 <meta property="article:published_time" content="2019-09-14T00:00:00+00:00" />
 <meta property="article:modified_time" content="2021-11-01T17:33:00+09:00" />
+
 <title>VIIRS | notebook</title>
 <link rel="icon" href="/notebook/favicon.png" type="image/x-icon">
 
 
-<link rel="stylesheet" href="/notebook/book.min.07c38dce7b6800da2a75a565d4d975e38f837294e24d00b5aae363037012d64b.css" integrity="sha256-B8ONzntoANoqdaVl1Nl144&#43;DcpTiTQC1quNjA3AS1ks=">
+<link rel="stylesheet" href="/notebook/book.min.2771458f1d859600effb70312702cd7e488eefb7c2c5ed4c083e65b6b95e5cae.css" integrity="sha256-J3FFjx2FlgDv&#43;3AxJwLNfkiO77fCxe1MCD5ltrleXK4=">
 
 
-<script defer src="/notebook/search.min.59aba8ad73f64e9bcc717f4672059c7caf9bec1ba569218018477a201303075e.js" integrity="sha256-WauorXP2TpvMcX9GcgWcfK&#43;b7BulaSGAGEd6IBMDB14="></script>
+<script defer src="/notebook/search.min.d19bca4ea00c90e1207092b4772a90945a205559e45263d0a5d203fda190da10.js" integrity="sha256-0ZvKTqAMkOEgcJK0dyqQlFogVVnkUmPQpdID/aGQ2hA="></script>
 
 <!--
 Made with Book Theme
@@ -1176,11 +1177,11 @@ I wish I had VIIRS data in relational database. To be honest, I&rsquo;m tired of
 </li>
 </ul>
 <p>NetCDF4ファイルをRで読み込んでメタデータを表示する</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#111">path_ncdf</span> <span style="color:#f92672">&lt;-</span> <span style="color:#d88200">&#34;JRR-CloudMask_v1r1_npp_s201804161754397_e201804161756039_c201804162011060.nc&#34;</span>
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#111">path_ncdf</span> <span style="color:#f92672">&lt;-</span> <span style="color:#d88200">&#34;JRR-CloudMask_v1r1_npp_s201804161754397_e201804161756039_c201804162011060.nc&#34;</span>
 <span style="color:#111">nc</span> <span style="color:#f92672">&lt;-</span> <span style="color:#111">ncdf4</span><span style="color:#f92672">::</span><span style="color:#75af00">nc_open</span><span style="color:#111">(</span><span style="color:#111">path_ncdf</span><span style="color:#111">)</span>
 <span style="color:#75af00">print</span><span style="color:#111">(</span><span style="color:#111">nc</span><span style="color:#111">)</span>
 </code></pre></div><p>NetCDF4ファイルに格納された値の取得方法</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#75715e"># 変数の値を取得</span>
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#75715e"># 変数の値を取得</span>
 <span style="color:#111">CloudMask</span> <span style="color:#f92672">&lt;-</span> <span style="color:#111">ncdf4</span><span style="color:#f92672">::</span><span style="color:#75af00">ncvar_get</span><span style="color:#111">(</span><span style="color:#111">nc</span><span style="color:#111">,</span> <span style="color:#d88200">&#34;CloudMask&#34;</span><span style="color:#111">)</span>
 
 <span style="color:#75715e"># グローバル属性の取得</span>
@@ -1194,7 +1195,7 @@ I wish I had VIIRS data in relational database. To be honest, I&rsquo;m tired of
 <li>CloudMaskPacked ビットごとにATBTの</li>
 </ul>
 <p>chunkingは各要素のデータサイズ？単位はbite?</p>
-<pre><code>File JRR-CloudMask_v1r1_npp_s201804161754397_e201804161756039_c201804162011060.nc (NC_FORMAT_NETCDF4):
+<pre tabindex="0"><code>File JRR-CloudMask_v1r1_npp_s201804161754397_e201804161756039_c201804162011060.nc (NC_FORMAT_NETCDF4):
 
      30 variables (excluding dimension variables):
         float Latitude[Columns,Rows]   (Chunking: [200,256])  (Compression: shuffle,level 2)

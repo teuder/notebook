@@ -6,16 +6,18 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0"><meta property="og:title" content="dplyr" />
 <meta property="og:description" content="dplyr データフレームに対する操作 列の選択 select() 列選択のヘルパー関数 これらの関数は select() の中で使う all_of(x) 変数 x に記録されたカラムを選択する 行の選択: slice() 行番号を" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://teuder.github.io/notebook/r/dplyr/" />
+<meta property="og:url" content="https://teuder.github.io/notebook/r/dplyr/" /><meta property="article:section" content="R" />
+
 <meta property="article:modified_time" content="2025-05-28T16:33:26+09:00" />
+
 <title>dplyr | notebook</title>
 <link rel="icon" href="/notebook/favicon.png" type="image/x-icon">
 
 
-<link rel="stylesheet" href="/notebook/book.min.07c38dce7b6800da2a75a565d4d975e38f837294e24d00b5aae363037012d64b.css" integrity="sha256-B8ONzntoANoqdaVl1Nl144&#43;DcpTiTQC1quNjA3AS1ks=">
+<link rel="stylesheet" href="/notebook/book.min.2771458f1d859600effb70312702cd7e488eefb7c2c5ed4c083e65b6b95e5cae.css" integrity="sha256-J3FFjx2FlgDv&#43;3AxJwLNfkiO77fCxe1MCD5ltrleXK4=">
 
 
-<script defer src="/notebook/search.min.59aba8ad73f64e9bcc717f4672059c7caf9bec1ba569218018477a201303075e.js" integrity="sha256-WauorXP2TpvMcX9GcgWcfK&#43;b7BulaSGAGEd6IBMDB14="></script>
+<script defer src="/notebook/search.min.d19bca4ea00c90e1207092b4772a90945a205559e45263d0a5d203fda190da10.js" integrity="sha256-0ZvKTqAMkOEgcJK0dyqQlFogVVnkUmPQpdID/aGQ2hA="></script>
 
 <!--
 Made with Book Theme
@@ -963,35 +965,35 @@ https://github.com/alex-shpak/hugo-book
 <p><code>all_of(x)</code> 変数 <code>x</code> に記録されたカラムを選択する</p>
 <h1 id="行の選択-slice">行の選択: slice()</h1>
 <h2 id="行番号を指定して抽出slice">行番号を指定して抽出:slice()</h2>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#75715e"># 1,3,5行目を抽出</span>
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#75715e"># 1,3,5行目を抽出</span>
 <span style="color:#111">df</span> <span style="color:#f92672">%&gt;%</span> <span style="color:#75af00">slice</span><span style="color:#111">(</span><span style="color:#75af00">c</span><span style="color:#111">(</span><span style="color:#ae81ff">1</span><span style="color:#111">,</span><span style="color:#ae81ff">3</span><span style="color:#111">,</span><span style="color:#ae81ff">5</span><span style="color:#111">))</span>
 </code></pre></div><h2 id="先頭から-n-行を抽出-slice_head">先頭から n 行を抽出: slice_head()</h2>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#75715e"># 最初の3行を抽出</span>
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#75715e"># 最初の3行を抽出</span>
 <span style="color:#111">df</span> <span style="color:#f92672">%&gt;%</span> <span style="color:#75af00">slice_head</span><span style="color:#111">(</span><span style="color:#111">n</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span><span style="color:#111">)</span>
 </code></pre></div><h2 id="最後から-n-行を抽出-slice_tail">最後から n 行を抽出: slice_tail()</h2>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#75715e"># 最後の2行を抽出</span>
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#75715e"># 最後の2行を抽出</span>
 <span style="color:#111">df</span> <span style="color:#f92672">%&gt;%</span> <span style="color:#75af00">slice_tail</span><span style="color:#111">(</span><span style="color:#111">n</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span><span style="color:#111">)</span>
 </code></pre></div><h2 id="ランダムにサンプル-slice_sample">ランダムにサンプル: slice_sample()</h2>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#75715e"># ランダムに3行を抽出</span>
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#75715e"># ランダムに3行を抽出</span>
 <span style="color:#111">df</span> <span style="color:#f92672">%&gt;%</span> <span style="color:#75af00">slice_sample</span><span style="color:#111">(</span><span style="color:#111">n</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span><span style="color:#111">)</span>
 
 <span style="color:#75715e"># ランダムに全体の30%を抽出</span>
 <span style="color:#111">df</span> <span style="color:#f92672">%&gt;%</span> <span style="color:#75af00">slice_sample</span><span style="color:#111">(</span><span style="color:#111">prop</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.3</span><span style="color:#111">)</span>
 </code></pre></div><h2 id="列の値で抽出-slice_min-slice_max">列の値で抽出: slice_min(), slice_max()</h2>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#75715e"># valが小さい方から2行を抽出</span>
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#75715e"># valが小さい方から2行を抽出</span>
 <span style="color:#111">df_num</span> <span style="color:#f92672">%&gt;%</span> <span style="color:#75af00">slice_min</span><span style="color:#111">(</span><span style="color:#111">val</span><span style="color:#111">,</span> <span style="color:#111">n</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span><span style="color:#111">)</span>
 
 <span style="color:#75715e"># valが大きいほうから2行を抽出</span>
 <span style="color:#111">df_num</span> <span style="color:#f92672">%&gt;%</span> <span style="color:#75af00">slice_max</span><span style="color:#111">(</span><span style="color:#111">val</span><span style="color:#111">,</span> <span style="color:#111">n</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span><span style="color:#111">)</span>
 </code></pre></div><h2 id="各行の複製を作成">各行の複製を作成:</h2>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#75715e"># 各行を3回ずつ複製</span>
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#75715e"># 各行を3回ずつ複製</span>
 <span style="color:#111">df</span> <span style="color:#f92672">%&gt;%</span> <span style="color:#75af00">slice</span><span style="color:#111">(</span><span style="color:#75af00">rep</span><span style="color:#111">(</span><span style="color:#ae81ff">1</span><span style="color:#f92672">:</span><span style="color:#75af00">n</span><span style="color:#111">(),</span> <span style="color:#111">each</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span><span style="color:#111">))</span>
 </code></pre></div><h1 id="行の並べ替え-arrange">行の並べ替え: arrange()</h1>
 <h1 id="グループ化-group_by">グループ化: group_by()</h1>
 <h1 id="集計-summarize">集計: summarize()</h1>
 <h2 id="レコード数のカウント-n-tally-count">レコード数のカウント: n(), tally(), count()</h2>
 <p>以下の3つは全て同じ結果を返す。カラム x の値ごとにレコード数をカウントする。</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#111">df</span> <span style="color:#f92672">%&gt;%</span>
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#111">df</span> <span style="color:#f92672">%&gt;%</span>
   <span style="color:#75af00">group_by</span><span style="color:#111">(</span><span style="color:#111">x</span><span style="color:#111">)</span> <span style="color:#f92672">%&gt;%</span>
   <span style="color:#75af00">summarize</span><span style="color:#111">(</span><span style="color:#111">n</span> <span style="color:#f92672">=</span> <span style="color:#75af00">n</span><span style="color:#111">())</span>
 
@@ -1002,7 +1004,7 @@ https://github.com/alex-shpak/hugo-book
 <span style="color:#111">df</span> <span style="color:#f92672">%&gt;%</span>
   <span style="color:#75af00">count</span><span style="color:#111">(</span><span style="color:#111">x</span><span style="color:#111">)</span>
 </code></pre></div><p><code>add_count()</code> と <code>add_tally()</code> は、上の例の <code>summarize()</code> を <code>mutate()</code> に変えたもの、元の df の行数は変えずにグループごとのカウント列を追加する</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#111">df</span> <span style="color:#f92672">%&gt;%</span>
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#111">df</span> <span style="color:#f92672">%&gt;%</span>
   <span style="color:#75af00">group_by</span><span style="color:#111">(</span><span style="color:#111">x</span><span style="color:#111">)</span> <span style="color:#f92672">%&gt;%</span>
   <span style="color:#75af00">mutate</span><span style="color:#111">(</span><span style="color:#111">n</span> <span style="color:#f92672">=</span> <span style="color:#75af00">n</span><span style="color:#111">())</span>
 

@@ -6,16 +6,18 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0"><meta property="og:title" content="purrr" />
 <meta property="og:description" content="purrr ベクトルやリストなどの各要素に対する繰り返し処理 基本関数 map_* map2_* reduce() accumulate pmap purrr::pmap(.l, .f, &hellip;) 3つ以上の引数を受け取る関数を適用する 渡すリスト（データフレームで" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://teuder.github.io/notebook/r/purrr/" />
+<meta property="og:url" content="https://teuder.github.io/notebook/r/purrr/" /><meta property="article:section" content="R" />
+
 <meta property="article:modified_time" content="2022-11-30T16:59:35+09:00" />
+
 <title>purrr | notebook</title>
 <link rel="icon" href="/notebook/favicon.png" type="image/x-icon">
 
 
-<link rel="stylesheet" href="/notebook/book.min.07c38dce7b6800da2a75a565d4d975e38f837294e24d00b5aae363037012d64b.css" integrity="sha256-B8ONzntoANoqdaVl1Nl144&#43;DcpTiTQC1quNjA3AS1ks=">
+<link rel="stylesheet" href="/notebook/book.min.2771458f1d859600effb70312702cd7e488eefb7c2c5ed4c083e65b6b95e5cae.css" integrity="sha256-J3FFjx2FlgDv&#43;3AxJwLNfkiO77fCxe1MCD5ltrleXK4=">
 
 
-<script defer src="/notebook/search.min.59aba8ad73f64e9bcc717f4672059c7caf9bec1ba569218018477a201303075e.js" integrity="sha256-WauorXP2TpvMcX9GcgWcfK&#43;b7BulaSGAGEd6IBMDB14="></script>
+<script defer src="/notebook/search.min.d19bca4ea00c90e1207092b4772a90945a205559e45263d0a5d203fda190da10.js" integrity="sha256-0ZvKTqAMkOEgcJK0dyqQlFogVVnkUmPQpdID/aGQ2hA="></script>
 
 <!--
 Made with Book Theme
@@ -965,7 +967,7 @@ https://github.com/alex-shpak/hugo-book
 <p>purrr::pmap(.l, .f, &hellip;)</p>
 <p>3つ以上の引数を受け取る関数を適用する</p>
 <p>渡すリスト（データフレームでもいい）の(<code>.l</code>)の要素名と、適用する関数 (<code>.f</code>) の引数名を一致させる必要がある。</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#75af00">pmap</span><span style="color:#111">(</span><span style="color:#75af00">data.frame</span><span style="color:#111">(</span><span style="color:#111">a</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span><span style="color:#f92672">:</span><span style="color:#ae81ff">3</span><span style="color:#111">,</span> <span style="color:#111">b</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">4</span><span style="color:#f92672">:</span><span style="color:#ae81ff">6</span><span style="color:#111">),</span> <span style="color:#75af00">function</span><span style="color:#111">(</span><span style="color:#111">a</span><span style="color:#111">,</span> <span style="color:#111">b</span><span style="color:#111">)</span> <span style="color:#111">{</span><span style="color:#111">a</span> <span style="color:#f92672">*</span> <span style="color:#111">b</span><span style="color:#111">})</span>
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#75af00">pmap</span><span style="color:#111">(</span><span style="color:#75af00">data.frame</span><span style="color:#111">(</span><span style="color:#111">a</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span><span style="color:#f92672">:</span><span style="color:#ae81ff">3</span><span style="color:#111">,</span> <span style="color:#111">b</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">4</span><span style="color:#f92672">:</span><span style="color:#ae81ff">6</span><span style="color:#111">),</span> <span style="color:#75af00">function</span><span style="color:#111">(</span><span style="color:#111">a</span><span style="color:#111">,</span> <span style="color:#111">b</span><span style="color:#111">)</span> <span style="color:#111">{</span><span style="color:#111">a</span> <span style="color:#f92672">*</span> <span style="color:#111">b</span><span style="color:#111">})</span>
 </code></pre></div><h1 id="その他関数">その他関数</h1>
 <h2 id="エラー処理">エラー処理</h2>
 <p>plyr::failwith()
@@ -974,11 +976,11 @@ pmap</p>
 <p>partial</p>
 <h1 id="データフレームの各行に対する繰り返し">データフレームの各行に対する繰り返し</h1>
 <h1 id="furrr">furrr</h1>
-<pre><code>future::plan(future::multiprocess(), workers = 10L)
+<pre tabindex="0"><code>future::plan(future::multiprocess(), workers = 10L)
 result &lt;-furrr::future_map()
 </code></pre><h1 id="list-を-vector-に変換する-purrrflatten_">list を vector に変換する purrr::flatten_*()</h1>
 <p>例えば、purrr::map()で返ってくる値が、文字列ベクトルを要素として持つ List である場合に、リストの要素を１つの文字列ベクトルとしてまとめたいことがある。</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#75715e"># ベクトルを要素として持つリスト `.x` をベクトルに変換する。</span>
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#75715e"># ベクトルを要素として持つリスト `.x` をベクトルに変換する。</span>
 <span style="color:#111">purrr</span><span style="color:#f92672">::</span><span style="color:#75af00">flatten_lgl</span><span style="color:#111">(</span><span style="color:#111">.x</span><span style="color:#111">)</span>
 <span style="color:#111">purrr</span><span style="color:#f92672">::</span><span style="color:#75af00">flatten_int</span><span style="color:#111">(</span><span style="color:#111">.x</span><span style="color:#111">)</span>
 <span style="color:#111">purrr</span><span style="color:#f92672">::</span><span style="color:#75af00">flatten_dbl</span><span style="color:#111">(</span><span style="color:#111">.x</span><span style="color:#111">)</span>

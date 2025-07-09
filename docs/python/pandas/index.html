@@ -6,17 +6,18 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0"><meta property="og:title" content="Pandas" />
 <meta property="og:description" content="Pandas DataFrame 提供するライブラリ Pandas User Guide 型 Series: 列の型（要素の名前付きベクター） DataFrame: Seriesを列とするテーブル データフレームのメタデータの取得 df.columns # 列名(=" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://teuder.github.io/notebook/python/pandas/" />
+<meta property="og:url" content="https://teuder.github.io/notebook/python/pandas/" /><meta property="article:section" content="Python" />
 <meta property="article:published_time" content="2020-01-17T00:00:00+00:00" />
 <meta property="article:modified_time" content="2025-06-14T16:41:35+09:00" />
+
 <title>Pandas | notebook</title>
 <link rel="icon" href="/notebook/favicon.png" type="image/x-icon">
 
 
-<link rel="stylesheet" href="/notebook/book.min.07c38dce7b6800da2a75a565d4d975e38f837294e24d00b5aae363037012d64b.css" integrity="sha256-B8ONzntoANoqdaVl1Nl144&#43;DcpTiTQC1quNjA3AS1ks=">
+<link rel="stylesheet" href="/notebook/book.min.2771458f1d859600effb70312702cd7e488eefb7c2c5ed4c083e65b6b95e5cae.css" integrity="sha256-J3FFjx2FlgDv&#43;3AxJwLNfkiO77fCxe1MCD5ltrleXK4=">
 
 
-<script defer src="/notebook/search.min.59aba8ad73f64e9bcc717f4672059c7caf9bec1ba569218018477a201303075e.js" integrity="sha256-WauorXP2TpvMcX9GcgWcfK&#43;b7BulaSGAGEd6IBMDB14="></script>
+<script defer src="/notebook/search.min.d19bca4ea00c90e1207092b4772a90945a205559e45263d0a5d203fda190da10.js" integrity="sha256-0ZvKTqAMkOEgcJK0dyqQlFogVVnkUmPQpdID/aGQ2hA="></script>
 
 <!--
 Made with Book Theme
@@ -964,21 +965,22 @@ https://github.com/alex-shpak/hugo-book
 <li><code>DataFrame</code>: Seriesを列とするテーブル</li>
 </ul>
 <h2 id="データフレームのメタデータの取得">データフレームのメタデータの取得</h2>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#111">df</span><span style="color:#f92672">.</span><span style="color:#111">columns</span> <span style="color:#75715e"># 列名(=文字列型の列インデックス)</span>
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#111">df</span><span style="color:#f92672">.</span><span style="color:#111">columns</span> <span style="color:#75715e"># 列名(=文字列型の列インデックス)</span>
 <span style="color:#111">df</span><span style="color:#f92672">.</span><span style="color:#111">index</span>   <span style="color:#75715e"># 行インデックス</span>
 <span style="color:#111">df</span><span style="color:#f92672">.</span><span style="color:#111">values</span>  <span style="color:#75715e"># データフレームの値ををNumPy配列（ndarray）として取り出す</span>
 <span style="color:#111">df</span><span style="color:#f92672">.</span><span style="color:#111">dtypes</span>  <span style="color:#75715e"># 各列の型を返す</span>
 </code></pre></div><h2 id="メソッドを繋げる">メソッドを繋げる</h2>
 <p>DataFrameを何回も再帰代入するより、メソッドを繋いだほうが書きやすいし読みやすい。 カッコかバックスラッシュを使えばドット前に改行やスペースを入れて整形可能。</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#111">(</span><span style="color:#111">iris</span><span style="color:#f92672">.</span><span style="color:#111">query</span><span style="color:#111">(</span><span style="color:#d88200">&#39;species != &#34;setosa&#34;&#39;</span><span style="color:#111">)</span>
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#111">(</span><span style="color:#111">iris</span><span style="color:#f92672">.</span><span style="color:#111">query</span><span style="color:#111">(</span><span style="color:#d88200">&#39;species != &#34;setosa&#34;&#39;</span><span style="color:#111">)</span>
      <span style="color:#f92672">.</span><span style="color:#111">filter</span><span style="color:#111">(</span><span style="color:#111">regex</span><span style="color:#f92672">=</span><span style="color:#d88200">&#39;^(?!sepal)&#39;</span><span style="color:#111">)</span>
      <span style="color:#f92672">.</span><span style="color:#111">assign</span><span style="color:#111">(</span><span style="color:#111">petal_area</span><span style="color:#f92672">=</span><span style="color:#00a8c8">lambda</span> <span style="color:#111">x</span><span style="color:#111">:</span> <span style="color:#111">x</span><span style="color:#111">[</span><span style="color:#d88200">&#39;petal_length&#39;</span><span style="color:#111">]</span> <span style="color:#f92672">*</span> <span style="color:#111">x</span><span style="color:#111">[</span><span style="color:#d88200">&#39;petal_width&#39;</span><span style="color:#111">]</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">0.5</span><span style="color:#111">)</span>
      <span style="color:#f92672">.</span><span style="color:#111">groupby</span><span style="color:#111">(</span><span style="color:#d88200">&#39;species&#39;</span><span style="color:#111">)</span>
      <span style="color:#f92672">.</span><span style="color:#111">aggregate</span><span style="color:#111">(</span><span style="color:#111">np</span><span style="color:#f92672">.</span><span style="color:#111">mean</span><span style="color:#111">)</span>
-     <span style="color:#f92672">.</span><span style="color:#111">sort_values</span><span style="color:#111">([</span><span style="color:#d88200">&#39;petal_length&#39;</span><span style="color:#111">],</span> <span style="color:#111">ascending</span><span style="color:#f92672">=</span><span style="color:#111">False</span><span style="color:#111">)</span>
+     <span style="color:#f92672">.</span><span style="color:#111">sort_values</span><span style="color:#111">([</span><span style="color:#d88200">&#39;petal_length&#39;</span><span style="color:#111">],</span> <span style="color:#111">ascending</span><span style="color:#f92672">=</span><span style="color:#00a8c8">False</span><span style="color:#111">)</span>
 <span style="color:#111">)</span>
 </code></pre></div><h2 id="ファイルの読み書き">ファイルの読み書き</h2>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> <span style="color:#111">pandas</span> <span style="color:#f92672">as</span> <span style="color:#111">pd</span>
+<h3 id="読み込み">読み込み</h3>
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> <span style="color:#111">pandas</span> <span style="color:#00a8c8">as</span> <span style="color:#111">pd</span>
 
 <span style="color:#75715e"># 読み込み</span>
 <span style="color:#111">df</span> <span style="color:#f92672">=</span> <span style="color:#111">pd</span><span style="color:#f92672">.</span><span style="color:#111">read_excel</span><span style="color:#111">(</span><span style="color:#d88200">&#34;test.xlsx&#34;</span><span style="color:#111">,</span> <span style="color:#111">sheet_name</span><span style="color:#f92672">=</span><span style="color:#d88200">&#34;mysheet&#34;</span><span style="color:#111">,</span> <span style="color:#111">skiprows</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span><span style="color:#111">)</span>
@@ -987,14 +989,14 @@ https://github.com/alex-shpak/hugo-book
 <span style="color:#75715e"># pd.read_parquet()</span>
 <span style="color:#75715e"># pd.read_feather()</span>
 
-
-<span style="color:#75715e"># 書き出し</span>
-<span style="color:#111">df</span><span style="color:#f92672">.</span><span style="color:#111">to_excel</span><span style="color:#111">(</span><span style="color:#111">filepath</span><span style="color:#111">,</span> <span style="color:#111">index</span><span style="color:#f92672">=</span><span style="color:#111">False</span><span style="color:#111">)</span>
+</code></pre></div><h3 id="書き出し">書き出し</h3>
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># 書き出し</span>
+<span style="color:#111">df</span><span style="color:#f92672">.</span><span style="color:#111">to_excel</span><span style="color:#111">(</span><span style="color:#111">filepath</span><span style="color:#111">,</span> <span style="color:#111">index</span><span style="color:#f92672">=</span><span style="color:#00a8c8">False</span><span style="color:#111">)</span>
 <span style="color:#75715e"># df.to_csv()</span>
 <span style="color:#75715e"># df.to_parquet()</span>
 <span style="color:#75715e"># df.to_feather()</span>
 </code></pre></div><h2 id="列の選択">列の選択</h2>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">
 <span style="color:#75715e"># df[]の返値はSeries</span>
 <span style="color:#75715e"># 列名での列の抽出</span>
 <span style="color:#111">col</span> <span style="color:#f92672">=</span> <span style="color:#111">df</span><span style="color:#f92672">.</span><span style="color:#111">loc</span><span style="color:#111">[</span><span style="color:#d88200">&#34;col1&#34;</span><span style="color:#111">]</span>
@@ -1012,7 +1014,7 @@ https://github.com/alex-shpak/hugo-book
 <span style="color:#75715e"># 複数列を抽出（列の範囲を指定）</span>
 <span style="color:#111">df2</span> <span style="color:#f92672">=</span> <span style="color:#111">df</span><span style="color:#f92672">.</span><span style="color:#111">iloc</span><span style="color:#111">[:,</span> <span style="color:#ae81ff">0</span><span style="color:#111">:</span><span style="color:#ae81ff">5</span><span style="color:#111">]</span>  <span style="color:#75715e"># A列～D列を抽出 0:5は[0,1,2,3,4]と同義</span>
 
-</code></pre></div><div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># 特定の文字列を含む列を抽出</span>
+</code></pre></div><div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># 特定の文字列を含む列を抽出</span>
 <span style="color:#111">df</span><span style="color:#f92672">.</span><span style="color:#111">filter</span><span style="color:#111">(</span><span style="color:#111">like</span><span style="color:#f92672">=</span><span style="color:#d88200">&#39;得点&#39;</span><span style="color:#111">,</span> <span style="color:#111">axis</span><span style="color:#f92672">=</span><span style="color:#ae81ff">1</span><span style="color:#111">)</span>
 
 <span style="color:#75715e"># 列名を正規表現で抽出</span>
@@ -1027,7 +1029,7 @@ https://github.com/alex-shpak/hugo-book
 </code></pre></div><h2 id="行の選択">行の選択</h2>
 <h3 id="行インデックスや行番号での指定">行インデックスや行番号での指定</h3>
 <p>DataFrameの「行インデックス」と「行番号」は異なる。行番号は先頭行を0番とした連番だが、行インデックスには「文字列や数値・日付など」を自由に付けらえる。なので3番目の行の行インデックスが0であるかもしれない。</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">
 <span style="color:#75715e"># 行インデックスで行を取得</span>
 <span style="color:#111">df</span><span style="color:#f92672">.</span><span style="color:#111">loc</span><span style="color:#111">[</span><span style="color:#ae81ff">1000</span><span style="color:#111">]</span> <span style="color:#75715e"># インデックスが1000の行</span>
 <span style="color:#111">df</span><span style="color:#f92672">.</span><span style="color:#111">loc</span><span style="color:#111">[</span><span style="color:#d88200">&#34;A&#34;</span><span style="color:#111">]</span>  <span style="color:#75715e"># インデックスがAの行</span>
@@ -1050,11 +1052,11 @@ https://github.com/alex-shpak/hugo-book
 <span style="color:#111">df2</span> <span style="color:#f92672">=</span> <span style="color:#111">df</span><span style="color:#f92672">.</span><span style="color:#111">iloc</span><span style="color:#111">[</span><span style="color:#ae81ff">1</span><span style="color:#111">:</span><span style="color:#ae81ff">5</span><span style="color:#111">,</span> <span style="color:#111">:]</span> <span style="color:#75715e"># df.iloc[1:5] と同義</span>
 
 </code></pre></div><h3 id="先頭行末尾行の取得">先頭行、末尾行の取得</h3>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#111">df</span><span style="color:#f92672">.</span><span style="color:#111">head</span><span style="color:#111">(</span><span style="color:#ae81ff">10</span><span style="color:#111">)</span>
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#111">df</span><span style="color:#f92672">.</span><span style="color:#111">head</span><span style="color:#111">(</span><span style="color:#ae81ff">10</span><span style="color:#111">)</span>
 <span style="color:#111">df</span><span style="color:#f92672">.</span><span style="color:#111">tail</span><span style="color:#111">(</span><span style="color:#ae81ff">10</span><span style="color:#111">)</span>
 </code></pre></div><h3 id="特定の列の値で行を抽出">特定の列の値で行を抽出</h3>
 <p>数値型の列の例</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">
 <span style="color:#75715e"># 数値がある値より大きい</span>
 <span style="color:#111">ddf_high_score</span> <span style="color:#111">f2</span> <span style="color:#f92672">=</span> <span style="color:#111">df</span><span style="color:#111">[</span><span style="color:#111">df</span><span style="color:#111">[</span><span style="color:#d88200">&#39;点数&#39;</span><span style="color:#111">]</span> <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">80</span><span style="color:#111">]</span>
 
@@ -1071,7 +1073,7 @@ https://github.com/alex-shpak/hugo-book
 <span style="color:#111">index_high_score</span> <span style="color:#f92672">=</span> <span style="color:#111">df</span><span style="color:#111">[</span><span style="color:#111">df</span><span style="color:#111">[</span><span style="color:#d88200">&#39;点数&#39;</span><span style="color:#111">]</span> <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">80</span><span style="color:#111">]</span><span style="color:#f92672">.</span><span style="color:#111">index</span>
 
 </code></pre></div><p>文字列型の列の例</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">
 <span style="color:#75715e"># 特定の文字列と一致する行</span>
 <span style="color:#111">df_sales</span> <span style="color:#f92672">=</span> <span style="color:#111">df</span><span style="color:#111">[</span><span style="color:#111">df</span><span style="color:#111">[</span><span style="color:#d88200">&#39;部署&#39;</span><span style="color:#111">]</span> <span style="color:#f92672">==</span> <span style="color:#d88200">&#39;営業&#39;</span><span style="color:#111">]</span>
 
@@ -1079,32 +1081,33 @@ https://github.com/alex-shpak/hugo-book
 <span style="color:#111">df_selected</span> <span style="color:#f92672">=</span> <span style="color:#111">df</span><span style="color:#111">[</span><span style="color:#111">df</span><span style="color:#111">[</span><span style="color:#d88200">&#39;部署&#39;</span><span style="color:#111">]</span><span style="color:#f92672">.</span><span style="color:#111">isin</span><span style="color:#111">([</span><span style="color:#d88200">&#39;営業&#39;</span><span style="color:#111">,</span> <span style="color:#d88200">&#39;人事&#39;</span><span style="color:#111">])]</span>
 
 <span style="color:#75715e"># 特定の文字列を含んでいる行</span>
-<span style="color:#111">df_tanaka</span> <span style="color:#f92672">=</span> <span style="color:#111">df</span><span style="color:#111">[</span><span style="color:#111">df</span><span style="color:#111">[</span><span style="color:#d88200">&#39;氏名&#39;</span><span style="color:#111">]</span><span style="color:#f92672">.</span><span style="color:#111">str</span><span style="color:#f92672">.</span><span style="color:#111">contains</span><span style="color:#111">(</span><span style="color:#d88200">&#39;田中&#39;</span><span style="color:#111">,</span> <span style="color:#111">na</span><span style="color:#f92672">=</span><span style="color:#111">False</span><span style="color:#111">)]</span>
+<span style="color:#111">df_tanaka</span> <span style="color:#f92672">=</span> <span style="color:#111">df</span><span style="color:#111">[</span><span style="color:#111">df</span><span style="color:#111">[</span><span style="color:#d88200">&#39;氏名&#39;</span><span style="color:#111">]</span><span style="color:#f92672">.</span><span style="color:#111">str</span><span style="color:#f92672">.</span><span style="color:#111">contains</span><span style="color:#111">(</span><span style="color:#d88200">&#39;田中&#39;</span><span style="color:#111">,</span> <span style="color:#111">na</span><span style="color:#f92672">=</span><span style="color:#00a8c8">False</span><span style="color:#111">)]</span>
 
 <span style="color:#75715e"># 特定の文字列を含んでいる行（アルファベットで大文字小文字を区別しない）</span>
-<span style="color:#111">df_ignore_case</span> <span style="color:#f92672">=</span> <span style="color:#111">df</span><span style="color:#111">[</span><span style="color:#111">df</span><span style="color:#111">[</span><span style="color:#d88200">&#39;name&#39;</span><span style="color:#111">]</span><span style="color:#f92672">.</span><span style="color:#111">str</span><span style="color:#f92672">.</span><span style="color:#111">contains</span><span style="color:#111">(</span><span style="color:#d88200">&#39;TARO&#39;</span><span style="color:#111">,</span> <span style="color:#111">case</span><span style="color:#f92672">=</span><span style="color:#111">False</span><span style="color:#111">,</span> <span style="color:#111">na</span><span style="color:#f92672">=</span><span style="color:#111">False</span><span style="color:#111">)]</span>
+<span style="color:#111">df_ignore_case</span> <span style="color:#f92672">=</span> <span style="color:#111">df</span><span style="color:#111">[</span><span style="color:#111">df</span><span style="color:#111">[</span><span style="color:#d88200">&#39;name&#39;</span><span style="color:#111">]</span><span style="color:#f92672">.</span><span style="color:#111">str</span><span style="color:#f92672">.</span><span style="color:#111">contains</span><span style="color:#111">(</span><span style="color:#d88200">&#39;TARO&#39;</span><span style="color:#111">,</span> <span style="color:#111">case</span><span style="color:#f92672">=</span><span style="color:#00a8c8">False</span><span style="color:#111">,</span> <span style="color:#111">na</span><span style="color:#f92672">=</span><span style="color:#00a8c8">False</span><span style="color:#111">)]</span>
 
 <span style="color:#75715e"># 特定の文字列を含まない行</span>
-<span style="color:#111">df_not_tanaka</span> <span style="color:#f92672">=</span> <span style="color:#111">df</span><span style="color:#111">[</span><span style="color:#f92672">~</span><span style="color:#111">df</span><span style="color:#111">[</span><span style="color:#d88200">&#39;氏名&#39;</span><span style="color:#111">]</span><span style="color:#f92672">.</span><span style="color:#111">str</span><span style="color:#f92672">.</span><span style="color:#111">contains</span><span style="color:#111">(</span><span style="color:#d88200">&#39;田中&#39;</span><span style="color:#111">,</span> <span style="color:#111">na</span><span style="color:#f92672">=</span><span style="color:#111">False</span><span style="color:#111">)]</span>
+<span style="color:#111">df_not_tanaka</span> <span style="color:#f92672">=</span> <span style="color:#111">df</span><span style="color:#111">[</span><span style="color:#f92672">~</span><span style="color:#111">df</span><span style="color:#111">[</span><span style="color:#d88200">&#39;氏名&#39;</span><span style="color:#111">]</span><span style="color:#f92672">.</span><span style="color:#111">str</span><span style="color:#f92672">.</span><span style="color:#111">contains</span><span style="color:#111">(</span><span style="color:#d88200">&#39;田中&#39;</span><span style="color:#111">,</span> <span style="color:#111">na</span><span style="color:#f92672">=</span><span style="color:#00a8c8">False</span><span style="color:#111">)]</span>
 
 <span style="color:#75715e"># 特定の文字列で始まる行</span>
-<span style="color:#111">df_start_tanaka</span> <span style="color:#f92672">=</span> <span style="color:#111">df</span><span style="color:#111">[</span><span style="color:#111">df</span><span style="color:#111">[</span><span style="color:#d88200">&#39;氏名&#39;</span><span style="color:#111">]</span><span style="color:#f92672">.</span><span style="color:#111">str</span><span style="color:#f92672">.</span><span style="color:#111">startswith</span><span style="color:#111">(</span><span style="color:#d88200">&#39;田中&#39;</span><span style="color:#111">,</span> <span style="color:#111">na</span><span style="color:#f92672">=</span><span style="color:#111">False</span><span style="color:#111">)]</span>
+<span style="color:#111">df_start_tanaka</span> <span style="color:#f92672">=</span> <span style="color:#111">df</span><span style="color:#111">[</span><span style="color:#111">df</span><span style="color:#111">[</span><span style="color:#d88200">&#39;氏名&#39;</span><span style="color:#111">]</span><span style="color:#f92672">.</span><span style="color:#111">str</span><span style="color:#f92672">.</span><span style="color:#111">startswith</span><span style="color:#111">(</span><span style="color:#d88200">&#39;田中&#39;</span><span style="color:#111">,</span> <span style="color:#111">na</span><span style="color:#f92672">=</span><span style="color:#00a8c8">False</span><span style="color:#111">)]</span>
 
 <span style="color:#75715e"># 特定の文字列で終わる行</span>
-<span style="color:#111">df_rou</span> <span style="color:#f92672">=</span> <span style="color:#111">df</span><span style="color:#111">[</span><span style="color:#111">df</span><span style="color:#111">[</span><span style="color:#d88200">&#39;氏名&#39;</span><span style="color:#111">]</span><span style="color:#f92672">.</span><span style="color:#111">str</span><span style="color:#f92672">.</span><span style="color:#111">endswith</span><span style="color:#111">(</span><span style="color:#d88200">&#39;郎&#39;</span><span style="color:#111">,</span> <span style="color:#111">na</span><span style="color:#f92672">=</span><span style="color:#111">False</span><span style="color:#111">)]</span>
+<span style="color:#111">df_rou</span> <span style="color:#f92672">=</span> <span style="color:#111">df</span><span style="color:#111">[</span><span style="color:#111">df</span><span style="color:#111">[</span><span style="color:#d88200">&#39;氏名&#39;</span><span style="color:#111">]</span><span style="color:#f92672">.</span><span style="color:#111">str</span><span style="color:#f92672">.</span><span style="color:#111">endswith</span><span style="color:#111">(</span><span style="color:#d88200">&#39;郎&#39;</span><span style="color:#111">,</span> <span style="color:#111">na</span><span style="color:#f92672">=</span><span style="color:#00a8c8">False</span><span style="color:#111">)]</span>
 
 </code></pre></div><h3 id="重複行の削除">重複行の削除</h3>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#111">df_nodup</span> <span style="color:#f92672">=</span> <span style="color:#111">df</span><span style="color:#f92672">.</span><span style="color:#111">drop_duplicates</span><span style="color:#111">()</span>
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#111">df_nodup</span> <span style="color:#f92672">=</span> <span style="color:#111">df</span><span style="color:#f92672">.</span><span style="color:#111">drop_duplicates</span><span style="color:#111">()</span>
 </code></pre></div><h2 id="単一要素の取得">単一要素の取得</h2>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># fast scalar (single value) lookup</span>
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># fast scalar (single value) lookup</span>
 <span style="color:#111">df</span><span style="color:#f92672">.</span><span style="color:#111">at</span><span style="color:#111">[</span><span style="color:#ae81ff">0</span><span style="color:#111">,</span><span style="color:#d88200">&#39;col&#39;</span><span style="color:#111">]</span> <span style="color:#75715e"># 行番号（行インデックス？）と列名での単一要素の取り出し</span>
 <span style="color:#111">df</span><span style="color:#f92672">.</span><span style="color:#111">iat</span><span style="color:#111">[</span><span style="color:#ae81ff">0</span><span style="color:#111">,</span><span style="color:#ae81ff">1</span><span style="color:#111">]</span>    <span style="color:#75715e"># 行番号と列番号で単一要素の取り出し</span>
 
 </code></pre></div><h2 id="列の加工">列の加工</h2>
+<h3 id="加工列の作成">加工列の作成</h3>
 <p>既存の列を加工して新しい列を追加する。</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># assign()とlambdaの組み合わせ</span>
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># assign()とlambdaの組み合わせ</span>
 <span style="color:#75715e"># xはdf全体を意味する</span>
-<span style="color:#f92672">import</span> <span style="color:#111">pandas</span> <span style="color:#f92672">as</span> <span style="color:#111">pd</span>
+<span style="color:#f92672">import</span> <span style="color:#111">pandas</span> <span style="color:#00a8c8">as</span> <span style="color:#111">pd</span>
 
 <span style="color:#111">df</span> <span style="color:#f92672">=</span> <span style="color:#111">pd</span><span style="color:#f92672">.</span><span style="color:#111">DataFrame</span><span style="color:#111">({</span>
     <span style="color:#d88200">&#39;price&#39;</span><span style="color:#111">:</span> <span style="color:#111">[</span><span style="color:#ae81ff">100</span><span style="color:#111">,</span> <span style="color:#ae81ff">200</span><span style="color:#111">,</span> <span style="color:#ae81ff">300</span><span style="color:#111">],</span>
@@ -1123,9 +1126,20 @@ https://github.com/alex-shpak/hugo-book
         <span style="color:#111">price_with_tax</span><span style="color:#f92672">=</span><span style="color:#00a8c8">lambda</span> <span style="color:#111">x</span><span style="color:#111">:</span> <span style="color:#111">x</span><span style="color:#111">[</span><span style="color:#d88200">&#39;price&#39;</span><span style="color:#111">]</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">1.10</span>
     <span style="color:#111">)</span>
 <span style="color:#111">)</span>
+</code></pre></div><h3 id="列名の変更rename">列名の変更.rename()</h3>
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#111">df_renamed</span> <span style="color:#f92672">=</span> <span style="color:#111">df</span><span style="color:#f92672">.</span><span style="color:#111">rename</span><span style="color:#111">(</span><span style="color:#111">columns</span><span style="color:#f92672">=</span><span style="color:#111">{</span>
+    <span style="color:#d88200">&#39;size&#39;</span><span style="color:#111">:</span> <span style="color:#d88200">&#39;件数&#39;</span><span style="color:#111">,</span>
+    <span style="color:#d88200">&#39;③成分名&#39;</span><span style="color:#111">:</span> <span style="color:#d88200">&#39;成分&#39;</span><span style="color:#111">,</span>
+    <span style="color:#d88200">&#39;⑫製造販売業者の</span><span style="color:#8045ff">\n</span><span style="color:#d88200">「出荷対応」の状況&#39;</span><span style="color:#111">:</span> <span style="color:#d88200">&#39;出荷状況&#39;</span>
+<span style="color:#111">})</span>
+</code></pre></div><h2 id="行をソートする">行をソートする</h2>
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#111">df_sorted</span> <span style="color:#f92672">=</span> <span style="color:#111">df</span><span style="color:#f92672">.</span><span style="color:#111">sort_values</span><span style="color:#111">(</span>
+    <span style="color:#111">by</span><span style="color:#f92672">=</span><span style="color:#111">[</span><span style="color:#d88200">&#39;列A&#39;</span><span style="color:#111">,</span> <span style="color:#d88200">&#39;列B&#39;</span><span style="color:#111">],</span>        <span style="color:#75715e"># ソート基準の列</span>
+    <span style="color:#111">ascending</span><span style="color:#f92672">=</span><span style="color:#111">[</span><span style="color:#00a8c8">False</span><span style="color:#111">,</span> <span style="color:#00a8c8">False</span><span style="color:#111">]</span>  <span style="color:#75715e"># どちらも降順</span>
+<span style="color:#111">)</span>
 </code></pre></div><h2 id="集計">集計</h2>
 <h3 id="groupby">groupby()</h3>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> <span style="color:#111">pandas</span> <span style="color:#f92672">as</span> <span style="color:#111">pd</span>
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> <span style="color:#111">pandas</span> <span style="color:#00a8c8">as</span> <span style="color:#111">pd</span>
 
 <span style="color:#111">df</span> <span style="color:#f92672">=</span> <span style="color:#111">pd</span><span style="color:#f92672">.</span><span style="color:#111">DataFrame</span><span style="color:#111">({</span>
     <span style="color:#d88200">&#39;category&#39;</span><span style="color:#111">:</span> <span style="color:#111">[</span><span style="color:#d88200">&#39;A&#39;</span><span style="color:#111">,</span> <span style="color:#d88200">&#39;B&#39;</span><span style="color:#111">,</span> <span style="color:#d88200">&#39;A&#39;</span><span style="color:#111">,</span> <span style="color:#d88200">&#39;B&#39;</span><span style="color:#111">,</span> <span style="color:#d88200">&#39;A&#39;</span><span style="color:#111">],</span>
@@ -1133,11 +1147,16 @@ https://github.com/alex-shpak/hugo-book
     <span style="color:#d88200">&#39;quantity&#39;</span><span style="color:#111">:</span> <span style="color:#111">[</span><span style="color:#ae81ff">1</span><span style="color:#111">,</span> <span style="color:#ae81ff">2</span><span style="color:#111">,</span> <span style="color:#ae81ff">1</span><span style="color:#111">,</span> <span style="color:#ae81ff">1</span><span style="color:#111">,</span> <span style="color:#ae81ff">3</span><span style="color:#111">]</span>
 <span style="color:#111">})</span>
 
+
+<span style="color:#75715e"># 2つの列でグループ化し、件数をカウント</span>
+<span style="color:#111">grouped</span> <span style="color:#f92672">=</span> <span style="color:#111">df</span><span style="color:#f92672">.</span><span style="color:#111">groupby</span><span style="color:#111">([</span><span style="color:#d88200">&#39;列A&#39;</span><span style="color:#111">,</span> <span style="color:#d88200">&#39;列B&#39;</span><span style="color:#111">],</span> <span style="color:#111">as_index</span><span style="color:#f92672">=</span><span style="color:#00a8c8">False</span><span style="color:#111">)</span><span style="color:#f92672">.</span><span style="color:#111">size</span><span style="color:#111">()</span><span style="color:#f92672">.</span><span style="color:#111">reset_index</span><span style="color:#111">(</span><span style="color:#111">name</span><span style="color:#f92672">=</span><span style="color:#d88200">&#39;件数&#39;</span><span style="color:#111">)</span>
+
+
 <span style="color:#75715e"># 基本はこの形で覚える</span>
 <span style="color:#111">result</span> <span style="color:#f92672">=</span> <span style="color:#111">(</span>
     <span style="color:#111">df</span>
     <span style="color:#75715e"># category列の値でグループ化</span>
-    <span style="color:#f92672">.</span><span style="color:#111">groupby</span><span style="color:#111">(</span><span style="color:#d88200">&#39;category&#39;</span><span style="color:#111">,</span> <span style="color:#111">as_index</span><span style="color:#f92672">=</span><span style="color:#111">False</span><span style="color:#111">)</span>
+    <span style="color:#f92672">.</span><span style="color:#111">groupby</span><span style="color:#111">(</span><span style="color:#d88200">&#39;category&#39;</span><span style="color:#111">,</span> <span style="color:#111">as_index</span><span style="color:#f92672">=</span><span style="color:#00a8c8">False</span><span style="color:#111">)</span>
     <span style="color:#75715e"># as_index=False だと結果に category 列を含める</span>
     <span style="color:#75715e"># as_index=True  だと category の値が行インデックスになる</span>
     <span style="color:#75715e"># グループごとに集計</span>
@@ -1235,39 +1254,51 @@ https://github.com/alex-shpak/hugo-book
 </tr>
 </tbody>
 </table>
+<h2 id="データフレームの結合">データフレームの結合</h2>
+<h3 id="pdmerge">pd.merge</h3>
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#111">pd</span><span style="color:#f92672">.</span><span style="color:#111">merge</span><span style="color:#111">(</span><span style="color:#111">df1</span><span style="color:#111">,</span> <span style="color:#111">df2</span><span style="color:#111">,</span> <span style="color:#111">on</span><span style="color:#f92672">=</span><span style="color:#d88200">&#39;キー列&#39;</span><span style="color:#111">,</span> <span style="color:#111">how</span><span style="color:#f92672">=</span><span style="color:#d88200">&#39;left&#39;</span><span style="color:#111">)</span>
+
+<span style="color:#75715e"># 複数列</span>
+<span style="color:#111">pd</span><span style="color:#f92672">.</span><span style="color:#111">merge</span><span style="color:#111">(</span><span style="color:#111">df1</span><span style="color:#111">,</span> <span style="color:#111">df2</span><span style="color:#111">,</span> <span style="color:#111">on</span><span style="color:#f92672">=</span><span style="color:#111">[</span><span style="color:#d88200">&#39;成分名&#39;</span><span style="color:#111">,</span> <span style="color:#d88200">&#39;製造会社名&#39;</span><span style="color:#111">],</span> <span style="color:#111">how</span><span style="color:#f92672">=</span><span style="color:#d88200">&#39;outer&#39;</span><span style="color:#111">)</span>
+
+<span style="color:#75715e"># キーとなる列名が異なる場合</span>
+<span style="color:#111">pd</span><span style="color:#f92672">.</span><span style="color:#111">merge</span><span style="color:#111">(</span><span style="color:#111">df1</span><span style="color:#111">,</span> <span style="color:#111">df2</span><span style="color:#111">,</span> <span style="color:#111">left_on</span><span style="color:#f92672">=</span><span style="color:#d88200">&#39;df1側の列&#39;</span><span style="color:#111">,</span> <span style="color:#111">right_on</span><span style="color:#f92672">=</span><span style="color:#d88200">&#39;df2側の列&#39;</span><span style="color:#111">,</span> <span style="color:#111">how</span><span style="color:#f92672">=</span><span style="color:#d88200">&#39;inner&#39;</span><span style="color:#111">)</span>
+</code></pre></div><p>how	&lsquo;inner&rsquo;, &lsquo;left&rsquo;, &lsquo;right&rsquo;, &lsquo;outer&rsquo;</p>
 <h2 id="データの変形">データの変形</h2>
 <p><a href="https://pandas.pydata.org/pandas-docs/stable/user_guide/reshaping.html">https://pandas.pydata.org/pandas-docs/stable/user_guide/reshaping.html</a></p>
-<h3 id="dfmelt-dfpivot">df.melt(), df.pivot()</h3>
+<h3 id="縦持ち変換melt-横持ち変換pivot">縦持ち変換.melt() 横持ち変換.pivot()</h3>
+<h4 id="縦持ち変換">縦持ち変換</h4>
 <p><code>df.melt(id_vars=None, value_vars=None, var_name=None, value_name='value', ...)</code></p>
-<p>縦長に変形。Rでいう <code>tidyr::pivot_longer()</code>。</p>
+<p>Rでいう <code>tidyr::pivot_longer()</code>。</p>
+<h4 id="横持ち変換">横持ち変換</h4>
 <p><code>df.pivot(index=None, columns=None, values=None)</code></p>
-<p>横長に変形。Rでいう <code>tidyr::pivot_wider()</code>。</p>
+<p>Rでいう <code>tidyr::pivot_wider()</code>。</p>
 <h3 id="dfpivot_table">df.pivot_table()</h3>
 <h2 id="インデックス">インデックス</h2>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># 指定した列を**インデックス（行ラベル）**に変換します。</span>
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># 指定した列を**インデックス（行ラベル）**に変換します。</span>
 <span style="color:#75715e"># # inplace=Trueを指定すると元のデータフレームに対して直接変更されます。</span>
-<span style="color:#111">df</span><span style="color:#f92672">.</span><span style="color:#111">set_index</span><span style="color:#111">(</span><span style="color:#d88200">&#39;列名&#39;</span><span style="color:#111">,</span> <span style="color:#111">inplace</span><span style="color:#f92672">=</span><span style="color:#111">False</span><span style="color:#111">)</span>
+<span style="color:#111">df</span><span style="color:#f92672">.</span><span style="color:#111">set_index</span><span style="color:#111">(</span><span style="color:#d88200">&#39;列名&#39;</span><span style="color:#111">,</span> <span style="color:#111">inplace</span><span style="color:#f92672">=</span><span style="color:#00a8c8">False</span><span style="color:#111">)</span>
 
 <span style="color:#75715e"># 現在のインデックスを通常の列として戻し、デフォルトの数値インデックスに戻します。</span>
 <span style="color:#75715e"># drop=Trueを指定すると、インデックス列をデータフレームに戻さず削除します。</span>
 <span style="color:#75715e"># inplace=Trueを使えば元のDataFrameを直接変更します。</span>
-<span style="color:#111">df</span><span style="color:#f92672">.</span><span style="color:#111">reset_index</span><span style="color:#111">(</span><span style="color:#111">inplace</span><span style="color:#f92672">=</span><span style="color:#111">False</span><span style="color:#111">,</span> <span style="color:#111">drop</span><span style="color:#f92672">=</span><span style="color:#111">False</span><span style="color:#111">)</span>
+<span style="color:#111">df</span><span style="color:#f92672">.</span><span style="color:#111">reset_index</span><span style="color:#111">(</span><span style="color:#111">inplace</span><span style="color:#f92672">=</span><span style="color:#00a8c8">False</span><span style="color:#111">,</span> <span style="color:#111">drop</span><span style="color:#f92672">=</span><span style="color:#00a8c8">False</span><span style="color:#111">)</span>
 </code></pre></div><h2 id="pandasseries">Pandas.Series</h2>
 <p>名前付きベクトルのようなもの、データフレームの列や行をSeriesとして取り出すこともできる。</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#111">s</span> <span style="color:#f92672">=</span> <span style="color:#111">pd</span><span style="color:#f92672">.</span><span style="color:#111">Series</span><span style="color:#111">([</span><span style="color:#ae81ff">1</span><span style="color:#111">,</span> <span style="color:#ae81ff">2</span><span style="color:#111">,</span> <span style="color:#ae81ff">3</span><span style="color:#111">,</span> <span style="color:#ae81ff">4</span><span style="color:#111">],</span> <span style="color:#111">index</span><span style="color:#f92672">=</span><span style="color:#111">[</span><span style="color:#d88200">&#39;a&#39;</span><span style="color:#111">,</span> <span style="color:#d88200">&#39;b&#39;</span><span style="color:#111">,</span> <span style="color:#d88200">&#39;c&#39;</span><span style="color:#111">,</span> <span style="color:#d88200">&#39;d&#39;</span><span style="color:#111">])</span>
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#111">s</span> <span style="color:#f92672">=</span> <span style="color:#111">pd</span><span style="color:#f92672">.</span><span style="color:#111">Series</span><span style="color:#111">([</span><span style="color:#ae81ff">1</span><span style="color:#111">,</span> <span style="color:#ae81ff">2</span><span style="color:#111">,</span> <span style="color:#ae81ff">3</span><span style="color:#111">,</span> <span style="color:#ae81ff">4</span><span style="color:#111">],</span> <span style="color:#111">index</span><span style="color:#f92672">=</span><span style="color:#111">[</span><span style="color:#d88200">&#39;a&#39;</span><span style="color:#111">,</span> <span style="color:#d88200">&#39;b&#39;</span><span style="color:#111">,</span> <span style="color:#d88200">&#39;c&#39;</span><span style="color:#111">,</span> <span style="color:#d88200">&#39;d&#39;</span><span style="color:#111">])</span>
 
-<span style="color:#00a8c8">print</span><span style="color:#111">(</span><span style="color:#111">s</span><span style="color:#111">[</span><span style="color:#d88200">&#39;a&#39;</span><span style="color:#111">])</span>  <span style="color:#75715e"># 出力: 1</span>
-<span style="color:#00a8c8">print</span><span style="color:#111">(</span><span style="color:#111">s</span><span style="color:#111">[</span><span style="color:#ae81ff">0</span><span style="color:#111">])</span>    <span style="color:#75715e"># 出力: 1</span>
+<span style="color:#111">print</span><span style="color:#111">(</span><span style="color:#111">s</span><span style="color:#111">[</span><span style="color:#d88200">&#39;a&#39;</span><span style="color:#111">])</span>  <span style="color:#75715e"># 出力: 1</span>
+<span style="color:#111">print</span><span style="color:#111">(</span><span style="color:#111">s</span><span style="color:#111">[</span><span style="color:#ae81ff">0</span><span style="color:#111">])</span>    <span style="color:#75715e"># 出力: 1</span>
 
 <span style="color:#75715e"># 値で抽出</span>
-<span style="color:#00a8c8">print</span><span style="color:#111">(</span><span style="color:#111">s</span><span style="color:#111">[</span><span style="color:#111">s</span> <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">2</span><span style="color:#111">])</span>
+<span style="color:#111">print</span><span style="color:#111">(</span><span style="color:#111">s</span><span style="color:#111">[</span><span style="color:#111">s</span> <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">2</span><span style="color:#111">])</span>
 
 <span style="color:#75715e"># 計算集計</span>
-<span style="color:#00a8c8">print</span><span style="color:#111">(</span><span style="color:#111">s</span><span style="color:#f92672">.</span><span style="color:#111">sum</span><span style="color:#111">())</span>  <span style="color:#75715e"># 出力: 10</span>
-<span style="color:#00a8c8">print</span><span style="color:#111">(</span><span style="color:#111">s</span><span style="color:#f92672">.</span><span style="color:#111">mean</span><span style="color:#111">())</span> <span style="color:#75715e"># 出力: 2.5</span>
+<span style="color:#111">print</span><span style="color:#111">(</span><span style="color:#111">s</span><span style="color:#f92672">.</span><span style="color:#111">sum</span><span style="color:#111">())</span>  <span style="color:#75715e"># 出力: 10</span>
+<span style="color:#111">print</span><span style="color:#111">(</span><span style="color:#111">s</span><span style="color:#f92672">.</span><span style="color:#111">mean</span><span style="color:#111">())</span> <span style="color:#75715e"># 出力: 2.5</span>
 
 </code></pre></div><h2 id="bigquery-との連携">BigQuery との連携</h2>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> <span style="color:#111">pandas_gbq</span>
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> <span style="color:#111">pandas_gbq</span>
 
 <span style="color:#111">df</span> <span style="color:#f92672">=</span> <span style="color:#111">pandas_gbq</span><span style="color:#f92672">.</span><span style="color:#111">read_gbq</span><span style="color:#111">(</span><span style="color:#d88200">&#34;SELECT my_col FROM `my_project.my_dataset.my_table`&#34;</span><span style="color:#111">)</span>
 
@@ -1325,7 +1356,12 @@ https://github.com/alex-shpak/hugo-book
     <li><a href="#型">型</a></li>
     <li><a href="#データフレームのメタデータの取得">データフレームのメタデータの取得</a></li>
     <li><a href="#メソッドを繋げる">メソッドを繋げる</a></li>
-    <li><a href="#ファイルの読み書き">ファイルの読み書き</a></li>
+    <li><a href="#ファイルの読み書き">ファイルの読み書き</a>
+      <ul>
+        <li><a href="#読み込み">読み込み</a></li>
+        <li><a href="#書き出し">書き出し</a></li>
+      </ul>
+    </li>
     <li><a href="#列の選択">列の選択</a></li>
     <li><a href="#行の選択">行の選択</a>
       <ul>
@@ -1336,15 +1372,26 @@ https://github.com/alex-shpak/hugo-book
       </ul>
     </li>
     <li><a href="#単一要素の取得">単一要素の取得</a></li>
-    <li><a href="#列の加工">列の加工</a></li>
+    <li><a href="#列の加工">列の加工</a>
+      <ul>
+        <li><a href="#加工列の作成">加工列の作成</a></li>
+        <li><a href="#列名の変更rename">列名の変更.rename()</a></li>
+      </ul>
+    </li>
+    <li><a href="#行をソートする">行をソートする</a></li>
     <li><a href="#集計">集計</a>
       <ul>
         <li><a href="#groupby">groupby()</a></li>
       </ul>
     </li>
+    <li><a href="#データフレームの結合">データフレームの結合</a>
+      <ul>
+        <li><a href="#pdmerge">pd.merge</a></li>
+      </ul>
+    </li>
     <li><a href="#データの変形">データの変形</a>
       <ul>
-        <li><a href="#dfmelt-dfpivot">df.melt(), df.pivot()</a></li>
+        <li><a href="#縦持ち変換melt-横持ち変換pivot">縦持ち変換.melt() 横持ち変換.pivot()</a></li>
         <li><a href="#dfpivot_table">df.pivot_table()</a></li>
       </ul>
     </li>

@@ -6,17 +6,18 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0"><meta property="og:title" content="git" />
 <meta property="og:description" content="Git Gitの基本コマンド .gitignoreの仕様詳解 Happy Git and GitHub for the useR サル先生のGit入門 サブコマンド サブコマンド 実行内容 clone リポジトリのクローン" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://teuder.github.io/notebook/miscellaneous/git/" />
+<meta property="og:url" content="https://teuder.github.io/notebook/miscellaneous/git/" /><meta property="article:section" content="miscellaneous" />
 <meta property="article:published_time" content="2019-08-26T00:00:00+00:00" />
 <meta property="article:modified_time" content="2022-08-25T14:02:00+09:00" />
+
 <title>git | notebook</title>
 <link rel="icon" href="/notebook/favicon.png" type="image/x-icon">
 
 
-<link rel="stylesheet" href="/notebook/book.min.07c38dce7b6800da2a75a565d4d975e38f837294e24d00b5aae363037012d64b.css" integrity="sha256-B8ONzntoANoqdaVl1Nl144&#43;DcpTiTQC1quNjA3AS1ks=">
+<link rel="stylesheet" href="/notebook/book.min.2771458f1d859600effb70312702cd7e488eefb7c2c5ed4c083e65b6b95e5cae.css" integrity="sha256-J3FFjx2FlgDv&#43;3AxJwLNfkiO77fCxe1MCD5ltrleXK4=">
 
 
-<script defer src="/notebook/search.min.59aba8ad73f64e9bcc717f4672059c7caf9bec1ba569218018477a201303075e.js" integrity="sha256-WauorXP2TpvMcX9GcgWcfK&#43;b7BulaSGAGEd6IBMDB14="></script>
+<script defer src="/notebook/search.min.d19bca4ea00c90e1207092b4772a90945a205559e45263d0a5d203fda190da10.js" integrity="sha256-0ZvKTqAMkOEgcJK0dyqQlFogVVnkUmPQpdID/aGQ2hA="></script>
 
 <!--
 Made with Book Theme
@@ -1073,17 +1074,17 @@ https://github.com/alex-shpak/hugo-book
 <h3 id="add">add</h3>
 <p>作成したファイルを git の管理下に追加する（ステージングする）。一度追加したら同じファイルを再度追加する必要はない。</p>
 <p>git は add されたファイルの変更を検出し、</p>
-<pre><code>git add path_to_file
+<pre tabindex="0"><code>git add path_to_file
 git add . # カレント以下の全てのファイル
 git add *.java # 拡張子が .java
 </code></pre><h4 id="add-の取り消し">add の取り消し</h4>
-<pre><code>git reset HEAD [ファイル名/ファイルパス]
+<pre tabindex="0"><code>git reset HEAD [ファイル名/ファイルパス]
 </code></pre><h3 id="commit">commit</h3>
 <p>ステージングしたファイルの変更内容を記録する（コミットする）</p>
-<pre><code>git commit -m 'コメント'
+<pre tabindex="0"><code>git commit -m 'コメント'
 </code></pre><h3 id="push-リモートレポジトリに反映する">push リモートレポジトリに反映する</h3>
 <p>現状のローカルレポジトリの最新 コミット 状態を、リモートレポジトリに反映する（プッシュする）</p>
-<pre><code>git push レポジトリ ブランチ
+<pre tabindex="0"><code>git push レポジトリ ブランチ
 </code></pre><p>例：<code>git push origin master</code></p>
 <p>ここで <code>origin</code> レポジトリは、このレポジトリの大本である、リモートにあるレポジトリを意味する（<code>clone</code> するもとになったやつ）</p>
 <h2 id="ブランチ">ブランチ</h2>
@@ -1091,17 +1092,17 @@ git add *.java # 拡張子が .java
 <p>レポジトリを作成したときにできる最初のブランチが <code>master</code></p>
 <p>ローカルレポジトリとリモートレポジトリの</p>
 <h3 id="既存のブランチを確認する">既存のブランチを確認する</h3>
-<pre><code>git branch
+<pre tabindex="0"><code>git branch
 </code></pre><h3 id="ブランチの作成--branch">ブランチの作成 : branch</h3>
-<pre><code>git branch ブランチ名 # ブランチの作成
+<pre tabindex="0"><code>git branch ブランチ名 # ブランチの作成
 git checkout -b ブランチ名 #ブランチの作成とそのブランチへの切り替え
 </code></pre><p><code>git branch ブランチ名</code> だとブランチを作成するだけだが、<code>git checkout -b ブランチ名</code> にするとブランチを作成して、そのブランチに切り替える（<code>git branch ブランチ名; git checkout ブランチ名;</code> と同じ）</p>
 <h3 id="ブランチの切り替え--checkout">ブランチの切り替え : checkout</h3>
 <p>ブランチを切り替えると、フォルダの中身の状態が、そのブランチの最新の状態になる</p>
-<pre><code>git checkout ブランチ名
+<pre tabindex="0"><code>git checkout ブランチ名
 </code></pre><h3 id="カレントブランチの確認">カレントブランチの確認</h3>
 <p>カレントブランチには <code>*</code> が付く</p>
-<pre><code>$ git branch --contains
+<pre tabindex="0"><code>$ git branch --contains
 * develop
   master
 </code></pre><h3 id="ブランチの削除">ブランチの削除</h3>
@@ -1111,20 +1112,20 @@ git branch -d [ブランチ名]
 git branch -D [ブランチ名]</p>
 <h3 id="ブランチをマージする">ブランチをマージする</h3>
 <p>branchA に branchB の内容を統合する</p>
-<pre><code># まずは branchA にチェックアウトして
+<pre tabindex="0"><code># まずは branchA にチェックアウトして
 git checkout branchA
 
 # そこに branchB をマージする
 git merge branchB
 </code></pre><h3 id="リモートにあるブランチをローカルに持ってくる">リモートにあるブランチをローカルに持ってくる</h3>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#75715e"># 最初にリモートブランチにチェックアウトして</span>
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#75715e"># 最初にリモートブランチにチェックアウトして</span>
 git checkout origin/<span style="color:#f92672">[</span>ブランチ名<span style="color:#f92672">]</span>
 
 <span style="color:#75715e"># 次にしそれをローカルブランチとしてコピーする</span>
 git checkout -b <span style="color:#f92672">[</span>ブランチ名<span style="color:#f92672">]</span>
 </code></pre></div><p>最初のコマンドを打った後に次のようなメッセージが出る。
 最初のコマンドを売った状態だと、リモートレポジトリの内容を見て、試しに変更したりできるけど、変更を commit してもリモートにもローカルにも反映されないらしい。変更をローカルレポジトリとしてコピーするために2番目のコマンドを使う。その後は、commit した変更を保存することができる。</p>
-<pre><code>Note: checking out 'origin/[ブランチ名]'.
+<pre tabindex="0"><code>Note: checking out 'origin/[ブランチ名]'.
 
 You are in 'detached HEAD' state. You can look around, make experimental
 changes and commit them, and you can discard any commits you make in this
@@ -1137,7 +1138,7 @@ do so (now or later) by using -b with the checkout command again. Example:
 
 HEAD is now at a3fe87c updated where the tables are saved, and fixed source and source_ssvid fields. Also made small edit to extract_top_match.sql.j2
 </code></pre><h3 id="ローカルで作成したブランチをリモートにプッシュする">ローカルで作成したブランチをリモートにプッシュする</h3>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#75715e"># ローカルに新しいブランチを作成する</span>
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#75715e"># ローカルに新しいブランチを作成する</span>
 git checkout -b <span style="color:#f92672">[</span>ブランチ名<span style="color:#f92672">]</span>
 
 
@@ -1145,7 +1146,7 @@ git checkout -b <span style="color:#f92672">[</span>ブランチ名<span style="
 <span style="color:#75715e"># この場合、「リモートレポジトリのmainブランチ」(origin)が、作成したブランチの上流ブランチとして設定される。</span>
 git push --set-upstream origin <span style="color:#f92672">[</span>ブランチ名<span style="color:#f92672">]</span>
 </code></pre></div><h3 id="ローカルブランチをコピーして別のローカルブランチを作る">ローカルブランチをコピーして別のローカルブランチを作る</h3>
-<pre><code># コピーしたいローカルブランチ(hoge)にチェックアウトする
+<pre tabindex="0"><code># コピーしたいローカルブランチ(hoge)にチェックアウトする
 git checkout hoge
 
 # そこで新しいレポジトリ(hoge_copied)を作る
@@ -1153,33 +1154,33 @@ git checkout -b hoge_copied
 
 </code></pre><h3 id="ローカルとリモートのブランチ名を変更する">ローカルとリモートのブランチ名を変更する</h3>
 <p>ブランチ名を hoge から foo に変更する例</p>
-<pre><code># ローカルのブランチ名変更
+<pre tabindex="0"><code># ローカルのブランチ名変更
 git branch -m hoge foo
 # リモートのブランチを消す
 git push origin :hoge
 # 変更済みローカルブランチをプッシュ
 git push origin foo
 </code></pre><h2 id="レポジトリの状態を表示する--status">レポジトリの状態を表示する : status</h2>
-<pre><code>git status
+<pre tabindex="0"><code>git status
 </code></pre><p>新たに作成されたけど <code>add</code> されていないファイルや、編集されたけど <code>commit</code> されていないファイルなどを表示する。</p>
 <h2 id="ファイルフォルダを復元する">ファイル/フォルダを復元する</h2>
 <p>以前にコミットした状態に復元する</p>
-<pre><code>git checkout [コミット番号] [ファイルパス]
+<pre tabindex="0"><code>git checkout [コミット番号] [ファイルパス]
 </code></pre><h2 id="ファイルへの操作">ファイルへの操作</h2>
 <p>基本的に、名前の変更や削除など、ファイル・ディレクトリに対する操作は全て git を通して行う。そうしないと git がそれらの変更をトラッキングできない。</p>
 <p>ファイル名を変えて内容を変更するとき、git を使わないでファイル名を変更すると、元のファイルとは別のファイルとして扱われるので、どこを変更したのかわからなくなる。</p>
-<pre><code># ファイルの削除
+<pre tabindex="0"><code># ファイルの削除
 git rm
 # ファイルの移動・名前変更
 git mv
 </code></pre><h3 id="ファイル名を変更する移動する--git-mv">ファイル名を変更する・移動する : git mv</h3>
-<pre><code>git mv 
+<pre tabindex="0"><code>git mv 
 
 </code></pre><h3 id="ローカルで削除したファイルフォルダをリモートレポジトリからも削除する">ローカルで削除したファイル・フォルダを、リモートレポジトリからも削除する</h3>
 <p><code>git rm</code> を使ってファイルを削除した場合には、その変更を commit &amp; push すればリモートレポジトリからもファイルは削除される。
 しかし、それ以外の方法でファイルを削除して　commit &amp; push　してもリモートレポジトリにはファイルが残ってしまう。</p>
 <p>リモートレポジトリにあるファイルを削除するには以下のようにする。</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#75715e"># キャッシュを削除する</span>
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#75715e"># キャッシュを削除する</span>
 git rm --cached    /path/to/消したいファイル.txt
 git rm --cached -r /path/to/消したいフォルダ
 
@@ -1196,7 +1197,7 @@ git push
 </ul>
 <p><code>.gitignore</code> に新たにファイルやフォルダを追加した場合も同じ</p>
 <p>あるいは、以前は追跡していたファイル・フォルダの追跡をやめて、リモートレポジトリから削除したい場合</p>
-<pre><code># .gitignore に追加した後、あるいは、ファイルやフォルダを削除した後
+<pre tabindex="0"><code># .gitignore に追加した後、あるいは、ファイルやフォルダを削除した後
 
 # キャッシュを削除する
 git rm --cached    /path/to/消したいファイル.txt

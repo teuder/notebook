@@ -45,6 +45,7 @@ DataFrameを何回も再帰代入するより、メソッドを繋いだほう�
 
 ## ファイルの読み書き
 
+### 読み込み
 ```python
 import pandas as pd
 
@@ -55,14 +56,17 @@ df = pd.read_excel("test.xlsx", sheet_name="mysheet", skiprows = 1)
 # pd.read_parquet()
 # pd.read_feather()
 
+```
 
+### 書き出し
+
+```python
 # 書き出し
 df.to_excel(filepath, index=False)
 # df.to_csv()
 # df.to_parquet()
 # df.to_feather()
 ```
-
 
 ## 列の選択
 
@@ -213,6 +217,9 @@ df.iat[0,1]    # 行番号と列番号で単一要素の取り出し
 
 ## 列の加工
 
+
+### 加工列の作成
+
 既存の列を加工して新しい列を追加する。
 
 ```python
@@ -239,8 +246,24 @@ df = (
 )
 ```
 
+### 列名の変更.rename()
 
+```python
+df_renamed = df.rename(columns={
+    'size': '件数',
+    '③成分名': '成分',
+    '⑫製造販売業者の\n「出荷対応」の状況': '出荷状況'
+})
+```
 
+## 行をソートする
+
+```python
+df_sorted = df.sort_values(
+    by=['列A', '列B'],        # ソート基準の列
+    ascending=[False, False]  # どちらも降順
+)
+```
 
 
 
@@ -258,6 +281,11 @@ df = pd.DataFrame({
     'price': [100, 200, 150, 250, 120],
     'quantity': [1, 2, 1, 1, 3]
 })
+
+
+# 2つの列でグループ化し、件数をカウント
+grouped = df.groupby(['列A', '列B'], as_index=False).size().reset_index(name='件数')
+
 
 # 基本はこの形で覚える
 result = (
@@ -319,23 +347,40 @@ result = (
 
 
 
+## データフレームの結合
 
+### pd.merge
 
+```python
+pd.merge(df1, df2, on='キー列', how='left')
 
+# 複数列
+pd.merge(df1, df2, on=['成分名', '製造会社名'], how='outer')
+
+# キーとなる列名が異なる場合
+pd.merge(df1, df2, left_on='df1側の列', right_on='df2側の列', how='inner')
+```
+
+how	'inner', 'left', 'right', 'outer'
 
 ## データの変形
 
 https://pandas.pydata.org/pandas-docs/stable/user_guide/reshaping.html
 
-### df.melt(), df.pivot()
+### 縦持ち変換.melt() 横持ち変換.pivot()
+
+#### 縦持ち変換
 
 `df.melt(id_vars=None, value_vars=None, var_name=None, value_name='value', ...)`
 
-縦長に変形。Rでいう `tidyr::pivot_longer()`。 
+Rでいう `tidyr::pivot_longer()`。 
+
+
+#### 横持ち変換
 
 `df.pivot(index=None, columns=None, values=None)`
 
-横長に変形。Rでいう `tidyr::pivot_wider()`。
+Rでいう `tidyr::pivot_wider()`。
 
 
 

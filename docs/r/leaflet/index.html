@@ -6,17 +6,18 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0"><meta property="og:title" content="leaflet" />
 <meta property="og:description" content="leaflet leaflet はインタラクティブな地図の可視化をするためのパッケージ https://rstudio.github.io/leaflet/ 例 df &lt;- data.frame( lon = rnorm(10, 140, 1), lat = rnorm(10, 35.7, 1), val1 = LETTERS[1:10], val2 = runif(10, 1, 100) ) df %&gt;% mutate(caption = paste(&#34;lon=&#34;, lon, &#34;&lt;br&gt; lat = &#34;, lat)) %&gt;% leaflet::leaflet() %&gt;% leaflet::addTiles() %&gt;% leaflet::setView(lng" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://teuder.github.io/notebook/r/leaflet/" />
+<meta property="og:url" content="https://teuder.github.io/notebook/r/leaflet/" /><meta property="article:section" content="R" />
 <meta property="article:published_time" content="2019-09-17T00:00:00+00:00" />
 <meta property="article:modified_time" content="2021-04-29T14:16:38+09:00" />
+
 <title>leaflet | notebook</title>
 <link rel="icon" href="/notebook/favicon.png" type="image/x-icon">
 
 
-<link rel="stylesheet" href="/notebook/book.min.07c38dce7b6800da2a75a565d4d975e38f837294e24d00b5aae363037012d64b.css" integrity="sha256-B8ONzntoANoqdaVl1Nl144&#43;DcpTiTQC1quNjA3AS1ks=">
+<link rel="stylesheet" href="/notebook/book.min.2771458f1d859600effb70312702cd7e488eefb7c2c5ed4c083e65b6b95e5cae.css" integrity="sha256-J3FFjx2FlgDv&#43;3AxJwLNfkiO77fCxe1MCD5ltrleXK4=">
 
 
-<script defer src="/notebook/search.min.59aba8ad73f64e9bcc717f4672059c7caf9bec1ba569218018477a201303075e.js" integrity="sha256-WauorXP2TpvMcX9GcgWcfK&#43;b7BulaSGAGEd6IBMDB14="></script>
+<script defer src="/notebook/search.min.d19bca4ea00c90e1207092b4772a90945a205559e45263d0a5d203fda190da10.js" integrity="sha256-0ZvKTqAMkOEgcJK0dyqQlFogVVnkUmPQpdID/aGQ2hA="></script>
 
 <!--
 Made with Book Theme
@@ -959,7 +960,7 @@ https://github.com/alex-shpak/hugo-book
 <p><code>leaflet</code> はインタラクティブな地図の可視化をするためのパッケージ</p>
 <p><a href="https://rstudio.github.io/leaflet/">https://rstudio.github.io/leaflet/</a></p>
 <h1 id="例">例</h1>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#111">df</span> <span style="color:#f92672">&lt;-</span>
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#111">df</span> <span style="color:#f92672">&lt;-</span>
   <span style="color:#75af00">data.frame</span><span style="color:#111">(</span>
     <span style="color:#111">lon</span> <span style="color:#f92672">=</span> <span style="color:#75af00">rnorm</span><span style="color:#111">(</span><span style="color:#ae81ff">10</span><span style="color:#111">,</span> <span style="color:#ae81ff">140</span><span style="color:#111">,</span> <span style="color:#ae81ff">1</span><span style="color:#111">),</span>
     <span style="color:#111">lat</span> <span style="color:#f92672">=</span> <span style="color:#75af00">rnorm</span><span style="color:#111">(</span><span style="color:#ae81ff">10</span><span style="color:#111">,</span> <span style="color:#ae81ff">35.7</span><span style="color:#111">,</span> <span style="color:#ae81ff">1</span><span style="color:#111">),</span>
@@ -983,10 +984,10 @@ https://github.com/alex-shpak/hugo-book
   <span style="color:#111">)</span>
 </code></pre></div><h1 id="leafletleaflet">leaflet::leaflet()</h1>
 <p><code>ggplot()</code> と同様に、データを最初に <code>leaflet()</code> に渡して描画オブジェクトを作成し、それにレイヤーを <code>%&gt;%</code> で追加してゆく。</p>
-<pre><code>leaflet::leaflet() %&gt;% 
+<pre tabindex="0"><code>leaflet::leaflet() %&gt;% 
     leaflet::addTiles() %&gt;% # 背景とする地図レイヤー
     leaflet::setView(lng=-100,lat=-2,zoom=5) # 初期位置とズームレベル
-</code></pre><pre><code>leaflet(
+</code></pre><pre tabindex="0"><code>leaflet(
   data = NULL,
   width = NULL,
   height = NULL,
@@ -1005,12 +1006,12 @@ https://github.com/alex-shpak/hugo-book
 <li>緯度経度を格納したベクター</li>
 </ul>
 <h2 id="addmarkers">addMarkers()</h2>
-<pre><code>addMarkers(map, lng = NULL, lat = NULL, layerId = NULL,
+<pre tabindex="0"><code>addMarkers(map, lng = NULL, lat = NULL, layerId = NULL,
   group = NULL, icon = NULL, popup = NULL, popupOptions = NULL,
   label = NULL, labelOptions = NULL, options = markerOptions(),
   clusterOptions = NULL, clusterId = NULL, data = getMapData(map))
 </code></pre><h2 id="addcirclemarkers">addCircleMarkers()</h2>
-<pre><code>addCircleMarkers(map, lng = NULL, lat = NULL, radius = 10,
+<pre tabindex="0"><code>addCircleMarkers(map, lng = NULL, lat = NULL, radius = 10,
   layerId = NULL, group = NULL, stroke = TRUE, color = &quot;#03F&quot;,
   weight = 5, opacity = 0.5, fill = TRUE, fillColor = color,
   fillOpacity = 0.2, dashArray = NULL, popup = NULL,
@@ -1018,12 +1019,12 @@ https://github.com/alex-shpak/hugo-book
   options = pathOptions(), clusterOptions = NULL, clusterId = NULL,
   data = getMapData(map))
 </code></pre><h2 id="addlabelonlymarkers">addLabelOnlyMarkers</h2>
-<pre><code>addLabelOnlyMarkers(map, lng = NULL, lat = NULL, layerId = NULL,
+<pre tabindex="0"><code>addLabelOnlyMarkers(map, lng = NULL, lat = NULL, layerId = NULL,
   group = NULL, icon = NULL, label = NULL, labelOptions = NULL,
   options = markerOptions(), clusterOptions = NULL, clusterId = NULL,
   data = getMapData(map))
 </code></pre><h1 id="その他関数">その他関数</h1>
-<pre><code>addControl(map, html, position = c(&quot;topleft&quot;, &quot;topright&quot;, &quot;bottomleft&quot;,
+<pre tabindex="0"><code>addControl(map, html, position = c(&quot;topleft&quot;, &quot;topright&quot;, &quot;bottomleft&quot;,
   &quot;bottomright&quot;), layerId = NULL, className = &quot;info legend&quot;,
   data = getMapData(map))
 

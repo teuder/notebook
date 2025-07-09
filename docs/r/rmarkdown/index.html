@@ -6,16 +6,18 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0"><meta property="og:title" content="Rmarkdown" />
 <meta property="og:description" content="Rmarkdown Rmarkdown (.Rmd) から、html などに出力するパッケージは２つある knitr と rmarkdown、rmarkdown は内部で knitr を使用している。rmarkdown" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://teuder.github.io/notebook/r/rmarkdown/" />
+<meta property="og:url" content="https://teuder.github.io/notebook/r/rmarkdown/" /><meta property="article:section" content="R" />
+
 <meta property="article:modified_time" content="2022-06-03T10:59:17+09:00" />
+
 <title>Rmarkdown | notebook</title>
 <link rel="icon" href="/notebook/favicon.png" type="image/x-icon">
 
 
-<link rel="stylesheet" href="/notebook/book.min.07c38dce7b6800da2a75a565d4d975e38f837294e24d00b5aae363037012d64b.css" integrity="sha256-B8ONzntoANoqdaVl1Nl144&#43;DcpTiTQC1quNjA3AS1ks=">
+<link rel="stylesheet" href="/notebook/book.min.2771458f1d859600effb70312702cd7e488eefb7c2c5ed4c083e65b6b95e5cae.css" integrity="sha256-J3FFjx2FlgDv&#43;3AxJwLNfkiO77fCxe1MCD5ltrleXK4=">
 
 
-<script defer src="/notebook/search.min.59aba8ad73f64e9bcc717f4672059c7caf9bec1ba569218018477a201303075e.js" integrity="sha256-WauorXP2TpvMcX9GcgWcfK&#43;b7BulaSGAGEd6IBMDB14="></script>
+<script defer src="/notebook/search.min.d19bca4ea00c90e1207092b4772a90945a205559e45263d0a5d203fda190da10.js" integrity="sha256-0ZvKTqAMkOEgcJK0dyqQlFogVVnkUmPQpdID/aGQ2hA="></script>
 
 <!--
 Made with Book Theme
@@ -970,7 +972,7 @@ https://github.com/alex-shpak/hugo-book
 <h1 id="出力形式の指定">出力形式の指定</h1>
 <p>公式 <a href="https://bookdown.org/yihui/rmarkdown/output-formats.html">2.4 Output formats</a></p>
 <p><code>.Rmd</code> ファイルの先頭の <code>YAML</code> ヘッダの <code>output:</code> セクションに記述する</p>
-<pre><code>---
+<pre tabindex="0"><code>---
 title: &quot;Title of this document&quot;
 
 output: rmarkdown::github_document
@@ -994,9 +996,9 @@ output: rmarkdown::github_document
 <h1 id="出力先の変更">出力先の変更</h1>
 <p>デフォルトでは <code>.Rmd</code> ファイルと同じフォルダに出力される。</p>
 <p><code>rmarkdown::render()</code> を使って出力する場合には、以下のようにする。</p>
-<pre><code>rmarkdown::render('my.Rmd', output_file = 'folder/my.html')
+<pre tabindex="0"><code>rmarkdown::render('my.Rmd', output_file = 'folder/my.html')
 </code></pre><p>RStudio の <code>Knit</code> ボタンを押したときの出力先を指定するには <code>.Rmd</code> ファイルの先頭の <code>YAML</code> ヘッダの <code>knit:</code> セクションに以下のように <code>output_dir</code> を指定する。パスの指定は <code>.Rmd</code> ファイルからの相対パス。</p>
-<pre><code>---
+<pre tabindex="0"><code>---
 title: &quot;Title of this document&quot;
 
 output: rmarkdown::github_document
@@ -1024,26 +1026,26 @@ knit: (function(inputFile, encoding) {
 <li><code>child='path/to/other/document'</code> : 外部ファイルの埋め込み</li>
 </ul>
 <p>ドキュメント全体で共通の chunk option を設定する</p>
-<pre><code>```{r, setup, include=FALSE}
+<pre tabindex="0"><code>```{r, setup, include=FALSE}
 knitr::opts_chunk$set(fig.width = 8, collapse = TRUE)
-</code></pre><pre><code>
+</code></pre><pre tabindex="0"><code>
 chunk option の中で、Rの式を評価できるので、事前の実行結果を利用して、以降のchunkを実行するかどうかを制御することもできる。
 
-</code></pre><pre><code class="language-{r}" data-lang="{r}">x &lt;- TRUE
-</code></pre><pre><code class="language-{r," data-lang="{r,">y = rnorm(100)
-</code></pre><pre><code>
+</code></pre><pre tabindex="0"><code class="language-{r}" data-lang="{r}">x &lt;- TRUE
+</code></pre><pre tabindex="0"><code class="language-{r," data-lang="{r,">y = rnorm(100)
+</code></pre><pre tabindex="0"><code>
 
 
 
 # 既存の画像ファイルを埋め込む
 
-</code></pre><pre><code class="language-{r," data-lang="{r,">knitr::include_graphics('images/hex-rmarkdown.png')
-</code></pre><pre><code>
+</code></pre><pre tabindex="0"><code class="language-{r," data-lang="{r,">knitr::include_graphics('images/hex-rmarkdown.png')
+</code></pre><pre tabindex="0"><code>
 # テーブルを埋め込む
 
 
-</code></pre><pre><code class="language-{r}" data-lang="{r}">knitr::kable(iris[1:5, ], caption = 'A caption')
-</code></pre><pre><code>
+</code></pre><pre tabindex="0"><code class="language-{r}" data-lang="{r}">knitr::kable(iris[1:5, ], caption = 'A caption')
+</code></pre><pre tabindex="0"><code>
 高度なテーブル操作は `kableExtra` パッケージを使う
 
 

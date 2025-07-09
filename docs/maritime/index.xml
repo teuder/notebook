@@ -5,11 +5,7 @@
     <link>https://teuder.github.io/notebook/maritime/</link>
     <description>Recent content in Maritime on notebook</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>ja-JP</language>
-    
-	<atom:link href="https://teuder.github.io/notebook/maritime/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <language>ja-JP</language><atom:link href="https://teuder.github.io/notebook/maritime/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>glossary</title>
       <link>https://teuder.github.io/notebook/maritime/glossary/</link>

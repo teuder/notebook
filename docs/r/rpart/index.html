@@ -6,16 +6,18 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0"><meta property="og:title" content="rpart" />
 <meta property="og:description" content="rpart 決定木 rpart.object https://rdrr.io/cran/rpart/man/rpart.object.html rpart() による学習結果のオブジェクト rpart.object の要素 frame: データフレーム、tree を表現する var: 分割に使用される変数、&lt;leaf&gt; は末端" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://teuder.github.io/notebook/r/rpart/" />
+<meta property="og:url" content="https://teuder.github.io/notebook/r/rpart/" /><meta property="article:section" content="R" />
+
 <meta property="article:modified_time" content="2020-08-17T01:50:58+09:00" />
+
 <title>rpart | notebook</title>
 <link rel="icon" href="/notebook/favicon.png" type="image/x-icon">
 
 
-<link rel="stylesheet" href="/notebook/book.min.07c38dce7b6800da2a75a565d4d975e38f837294e24d00b5aae363037012d64b.css" integrity="sha256-B8ONzntoANoqdaVl1Nl144&#43;DcpTiTQC1quNjA3AS1ks=">
+<link rel="stylesheet" href="/notebook/book.min.2771458f1d859600effb70312702cd7e488eefb7c2c5ed4c083e65b6b95e5cae.css" integrity="sha256-J3FFjx2FlgDv&#43;3AxJwLNfkiO77fCxe1MCD5ltrleXK4=">
 
 
-<script defer src="/notebook/search.min.59aba8ad73f64e9bcc717f4672059c7caf9bec1ba569218018477a201303075e.js" integrity="sha256-WauorXP2TpvMcX9GcgWcfK&#43;b7BulaSGAGEd6IBMDB14="></script>
+<script defer src="/notebook/search.min.d19bca4ea00c90e1207092b4772a90945a205559e45263d0a5d203fda190da10.js" integrity="sha256-0ZvKTqAMkOEgcJK0dyqQlFogVVnkUmPQpdID/aGQ2hA="></script>
 
 <!--
 Made with Book Theme
@@ -997,7 +999,7 @@ https://github.com/alex-shpak/hugo-book
 <h2 id="rpartpredictrpart">rpart:::predict.rpart()</h2>
 <p><code>rpart.object</code> を使って <code>predict()</code> したときに呼び出されるメソッド</p>
 <p><a href="https://www.rdocumentation.org/packages/rpart/versions/4.1-15/topics/predict.rpart">https://www.rdocumentation.org/packages/rpart/versions/4.1-15/topics/predict.rpart</a></p>
-<pre><code>predict(object, newdata,
+<pre tabindex="0"><code>predict(object, newdata,
        type = c(&quot;vector&quot;, &quot;prob&quot;, &quot;class&quot;, &quot;matrix&quot;),
        na.action = na.pass, …)
 </code></pre><p><code>type</code>: 分類ではデフォルトは <code>prob</code> クラス確率, <code>class</code> なら予測された目的変数 (<code>facor</code>) の値、<code>vector</code> なら目的変数 <code>factor</code> の <code>levels</code> 属性の要素番号、回帰の場合は デフォルトは <code>vector</code> で目的変数の値（多分）</p>
@@ -1011,7 +1013,7 @@ https://github.com/alex-shpak/hugo-book
 <h2 id="rpartplotrpartpredict">rpart.plot::rpart.predict()</h2>
 <p>新しいデータに対して予測する</p>
 <p><code>rpart::predict.rpart()</code> と同じだが、予測値のノード番号とルールを出力できる</p>
-<pre><code>rpart.plot::rpart.predict(object, newdata,
+<pre tabindex="0"><code>rpart.plot::rpart.predict(object, newdata,
          type = c(&quot;vector&quot;, &quot;prob&quot;, &quot;class&quot;, &quot;matrix&quot;),
          na.action = na.pass,
          nn=FALSE, rules=FALSE, ...)
@@ -1022,7 +1024,7 @@ https://github.com/alex-shpak/hugo-book
 </ul>
 <h2 id="rpartplotrpartrules">rpart.plot::rpart.rules</h2>
 <p><code>rpart.object</code> から 各リーフに至るルールを表示する</p>
-<pre><code>rpart.rules(x = stop(&quot;no 'x' argument&quot;),
+<pre tabindex="0"><code>rpart.rules(x = stop(&quot;no 'x' argument&quot;),
             style = &quot;wide&quot;, cover = FALSE, nn = FALSE,
             roundint = TRUE, clip.facs = FALSE,
             varorder = NULL, ...)
@@ -1037,7 +1039,7 @@ https://github.com/alex-shpak/hugo-book
 </ul>
 <p>行名: おそらく <code>rpart.object$frame</code> の行名に対応する？</p>
 <h2 id="treeclustrpartpredictleaves">treeClust::rpart.predict.leaves()</h2>
-<pre><code>rpart.predict.leaves(rp, newdata, type = &quot;where&quot;)
+<pre tabindex="0"><code>rpart.predict.leaves(rp, newdata, type = &quot;where&quot;)
 </code></pre><ul>
 <li><code>type</code>
 <ul>

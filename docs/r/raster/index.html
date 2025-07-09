@@ -6,17 +6,18 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0"><meta property="og:title" content="raster" />
 <meta property="og:description" content="raster # GooTiffの読み込み data &lt;- raster::raster(&quot;path/data.tif&quot;) 値と座標のデータフレームに変換する df &lt;- raster::rasterToPoint(data) 緯度経度と値のデータフレームからラスタデータを作成する test &lt;- raster::rasterize(x = data[c(&quot;lon&quot;,&quot;lat&quot;)], #" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://teuder.github.io/notebook/r/raster/" />
+<meta property="og:url" content="https://teuder.github.io/notebook/r/raster/" /><meta property="article:section" content="R" />
 <meta property="article:published_time" content="2019-08-26T00:00:00+00:00" />
 <meta property="article:modified_time" content="2020-05-27T18:54:29+09:00" />
+
 <title>raster | notebook</title>
 <link rel="icon" href="/notebook/favicon.png" type="image/x-icon">
 
 
-<link rel="stylesheet" href="/notebook/book.min.07c38dce7b6800da2a75a565d4d975e38f837294e24d00b5aae363037012d64b.css" integrity="sha256-B8ONzntoANoqdaVl1Nl144&#43;DcpTiTQC1quNjA3AS1ks=">
+<link rel="stylesheet" href="/notebook/book.min.2771458f1d859600effb70312702cd7e488eefb7c2c5ed4c083e65b6b95e5cae.css" integrity="sha256-J3FFjx2FlgDv&#43;3AxJwLNfkiO77fCxe1MCD5ltrleXK4=">
 
 
-<script defer src="/notebook/search.min.59aba8ad73f64e9bcc717f4672059c7caf9bec1ba569218018477a201303075e.js" integrity="sha256-WauorXP2TpvMcX9GcgWcfK&#43;b7BulaSGAGEd6IBMDB14="></script>
+<script defer src="/notebook/search.min.d19bca4ea00c90e1207092b4772a90945a205559e45263d0a5d203fda190da10.js" integrity="sha256-0ZvKTqAMkOEgcJK0dyqQlFogVVnkUmPQpdID/aGQ2hA="></script>
 
 <!--
 Made with Book Theme
@@ -956,12 +957,12 @@ https://github.com/alex-shpak/hugo-book
 
       
 <article class="markdown"><h1 id="raster">raster</h1>
-<pre><code class="language-{r}" data-lang="{r}"># GooTiffの読み込み
+<pre tabindex="0"><code class="language-{r}" data-lang="{r}"># GooTiffの読み込み
 data &lt;- raster::raster(&quot;path/data.tif&quot;)
 </code></pre><p>値と座標のデータフレームに変換する</p>
-<pre><code>df &lt;- raster::rasterToPoint(data)
+<pre tabindex="0"><code>df &lt;- raster::rasterToPoint(data)
 </code></pre><h1 id="緯度経度と値のデータフレームからラスタデータを作成する">緯度経度と値のデータフレームからラスタデータを作成する</h1>
-<pre><code>test &lt;- 
+<pre tabindex="0"><code>test &lt;- 
   raster::rasterize(x = data[c(&quot;lon&quot;,&quot;lat&quot;)], # データフレームの経度、緯度のカラムの指定、n行2列の行列でもいい
           y = raster::raster(ncols=32512, nrows=24576), # 雛形となるラスタオブジェクト（ピクセル数を指定する）
           field = data$rad, # 値のベクター
@@ -973,7 +974,7 @@ data &lt;- raster::raster(&quot;path/data.tif&quot;)
 
 </code></pre><h1 id="関数">関数</h1>
 <h2 id="rasterize">rasterize</h2>
-<pre><code>## S4 method for signature 'matrix,Raster'
+<pre tabindex="0"><code>## S4 method for signature 'matrix,Raster'
 rasterize(x, y, field, fun='last', background=NA,
      mask=FALSE, update=FALSE, updateValue='all', filename=&quot;&quot;, na.rm=TRUE, ...)
 
@@ -1007,7 +1008,7 @@ x が Spatial*DataFrame の場合は、カラム名を指定することがで�
 <p>If missing, the attribute index is used (i.e. numbers from 1 to the number of features). You can also provide a vector with the same length as the number of spatial features, or a matrix where the number of rows matches the number of spatial features</p>
 <p>fun
 function or character. To determine what values to assign to cells that are covered by multiple spatial features. You can use functions such as min, max, or mean, or one of the following character values: &lsquo;first&rsquo;, &lsquo;last&rsquo;, &lsquo;count&rsquo;. The default value is &lsquo;last&rsquo;. In the case of SpatialLines*, &lsquo;length&rsquo; is also allowed (currently for planar coordinate systems only).</p>
-<p>If x represents points, fun must accept a na.rm argument, either explicitly or through &lsquo;dots&rsquo;. This means that fun=length fails, but fun=function(x,&hellip;)length(x) works, although it ignores the na.rm argument. To use the na.rm argument you can use a function like this: fun=function(x, na.rm)if (na.rm) length(na.omit(x)) else (length(x), or use a function that removes NA values in all cases, like this function to compute the number of unique values per grid cell &ldquo;richness&rdquo;: fun=function(x, &hellip;) {length(unique(na.omit(x)))} . If you want to count the number of points in each grid cell, you can use fun='count&rsquo; or fun=function(x,&hellip;){length(x)}.</p>
+<p>If x represents points, fun must accept a na.rm argument, either explicitly or through &lsquo;dots&rsquo;. This means that fun=length fails, but fun=function(x,&hellip;)length(x) works, although it ignores the na.rm argument. To use the na.rm argument you can use a function like this: fun=function(x, na.rm)if (na.rm) length(na.omit(x)) else (length(x), or use a function that removes NA values in all cases, like this function to compute the number of unique values per grid cell &ldquo;richness&rdquo;: fun=function(x, &hellip;) {length(unique(na.omit(x)))} . If you want to count the number of points in each grid cell, you can use fun=&lsquo;count&rsquo; or fun=function(x,&hellip;){length(x)}.</p>
 <p>You can also pass multiple functions using a statement like fun=function(x, &hellip;) c(length(x),mean(x)), in which case the returned object is a RasterBrick (multiple layers).</p>
 <p>background
 numeric. Value to put in the cells that are not covered by any of the features of x. Default is NA</p>

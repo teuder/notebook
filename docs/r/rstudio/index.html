@@ -6,16 +6,18 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0"><meta property="og:title" content="RStudio" />
 <meta property="og:description" content="RStudio インストール WSL の Ubuntu 18.04 にインストール Ubuntuの場合と同じ、事前に Rをインストールしておく sudo apt-get install gdebi-core wget https://download2.rstudio.org/server/bionic/amd64/rstudio-server-1.3.959-amd64.deb sudo gdebi rstudio-server-1.3.959-amd64.deb しかし、次のようなエラーが出た" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://teuder.github.io/notebook/r/rstudio/" />
+<meta property="og:url" content="https://teuder.github.io/notebook/r/rstudio/" /><meta property="article:section" content="R" />
+
 <meta property="article:modified_time" content="2020-08-17T01:50:58+09:00" />
+
 <title>RStudio | notebook</title>
 <link rel="icon" href="/notebook/favicon.png" type="image/x-icon">
 
 
-<link rel="stylesheet" href="/notebook/book.min.07c38dce7b6800da2a75a565d4d975e38f837294e24d00b5aae363037012d64b.css" integrity="sha256-B8ONzntoANoqdaVl1Nl144&#43;DcpTiTQC1quNjA3AS1ks=">
+<link rel="stylesheet" href="/notebook/book.min.2771458f1d859600effb70312702cd7e488eefb7c2c5ed4c083e65b6b95e5cae.css" integrity="sha256-J3FFjx2FlgDv&#43;3AxJwLNfkiO77fCxe1MCD5ltrleXK4=">
 
 
-<script defer src="/notebook/search.min.59aba8ad73f64e9bcc717f4672059c7caf9bec1ba569218018477a201303075e.js" integrity="sha256-WauorXP2TpvMcX9GcgWcfK&#43;b7BulaSGAGEd6IBMDB14="></script>
+<script defer src="/notebook/search.min.d19bca4ea00c90e1207092b4772a90945a205559e45263d0a5d203fda190da10.js" integrity="sha256-0ZvKTqAMkOEgcJK0dyqQlFogVVnkUmPQpdID/aGQ2hA="></script>
 
 <!--
 Made with Book Theme
@@ -958,39 +960,39 @@ https://github.com/alex-shpak/hugo-book
 <h2 id="インストール">インストール</h2>
 <h3 id="wsl-の-ubuntu-1804-にインストール">WSL の Ubuntu 18.04 にインストール</h3>
 <p>Ubuntuの場合と同じ、事前に <a href="https://teuder.github.io/notebook/r/#ubuntu">Rをインストール</a>しておく</p>
-<pre><code>sudo apt-get install gdebi-core
+<pre tabindex="0"><code>sudo apt-get install gdebi-core
 wget https://download2.rstudio.org/server/bionic/amd64/rstudio-server-1.3.959-amd64.deb
 sudo gdebi rstudio-server-1.3.959-amd64.deb
 </code></pre><p>しかし、次のようなエラーが出た</p>
-<pre><code>$sudo gdebi rstudio-server-1.3.959-amd64.deb
+<pre tabindex="0"><code>$sudo gdebi rstudio-server-1.3.959-amd64.deb
 Traceback (most recent call last):
   File &quot;/usr/bin/gdebi&quot;, line 38, in &lt;module&gt;
     from GDebi.GDebiCli import GDebiCli
   File &quot;/usr/share/gdebi/GDebi/GDebiCli.py&quot;, line 103
     def get_dependencies_info(self):
 </code></pre><p>ロケールを設定して再度インストールして解決</p>
-<pre><code>export LC_ALL=en_US.UTF-8
+<pre tabindex="0"><code>export LC_ALL=en_US.UTF-8
 </code></pre><h2 id="rstudio-server-の起動">RStudio Server の起動</h2>
-<pre><code>sudo service rstudio-server start
+<pre tabindex="0"><code>sudo service rstudio-server start
 </code></pre><p>その後、ブラウザから <code>http://localhost:8787/</code> にアクセスする</p>
 <p>おまけ</p>
 <p><a href="https://qiita.com/t-yui/items/62eeb5ac39f5cd360118">WSLにインストールしたRStudio Serverの起動を楽にする</a></p>
 <h2 id="rstudio-server-のアップデート">RStudio Server のアップデート</h2>
 <p><a href="https://support.rstudio.com/hc/en-us/articles/216079967-Upgrading-RStudio-Server">RStudio Server のパージョンを新しくする</a></p>
 <p>実行中のRセッションの確認</p>
-<pre><code>sudo rstudio-server active-sessions
+<pre tabindex="0"><code>sudo rstudio-server active-sessions
 </code></pre><p>実行中のRセッションの停止</p>
-<pre><code>sudo rstudio-server suspend-all
+<pre tabindex="0"><code>sudo rstudio-server suspend-all
 </code></pre><p>オフラインモードにする</p>
-<pre><code>sudo rstudio-server offline
+<pre tabindex="0"><code>sudo rstudio-server offline
 </code></pre><p>新しいバージョンのRStudio Serverをインストール</p>
 <p><a href="https://rstudio.com/products/rstudio/download-server/">Download RStudio Server</a></p>
-<pre><code>sudo gdebi &lt;rstudio-server-package.deb&gt;
+<pre tabindex="0"><code>sudo gdebi &lt;rstudio-server-package.deb&gt;
 # or
 sudo yum install --nogpgcheck &lt;rstudio-server-package.rpm&gt;
 </code></pre><p>アップデートしたサーバーを再起動</p>
-<pre><code>sudo rstudio-server restart
-</code></pre><pre><code>sudo rstudio-server online
+<pre tabindex="0"><code>sudo rstudio-server restart
+</code></pre><pre tabindex="0"><code>sudo rstudio-server online
 </code></pre></article>
 
       
