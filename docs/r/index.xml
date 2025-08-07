@@ -98,6 +98,15 @@
     </item>
     
     <item>
+      <title>graph</title>
+      <link>https://teuder.github.io/notebook/r/graph/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://teuder.github.io/notebook/r/graph/</guid>
+      <description>グラフ関連パッケージ igraph, tidygraph, sfnetworks の3つのグラフ関連パッケージをまとめて解説 igraph : 低レベルの基本的グラフ構造とアルゴリズムを定義 igraph クラス tidygraph : igrap</description>
+    </item>
+    
+    <item>
       <title>lubridate</title>
       <link>https://teuder.github.io/notebook/r/lubridate/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
