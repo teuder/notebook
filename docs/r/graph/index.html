@@ -8,7 +8,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://teuder.github.io/notebook/r/graph/" /><meta property="article:section" content="R" />
 
-
+<meta property="article:modified_time" content="2025-08-07T10:37:09+09:00" />
 
 <title>graph | notebook</title>
 <link rel="icon" href="/notebook/favicon.png" type="image/x-icon">
@@ -17,7 +17,7 @@
 <link rel="stylesheet" href="/notebook/book.min.2771458f1d859600effb70312702cd7e488eefb7c2c5ed4c083e65b6b95e5cae.css" integrity="sha256-J3FFjx2FlgDv&#43;3AxJwLNfkiO77fCxe1MCD5ltrleXK4=">
 
 
-<script defer src="/notebook/search.min.adecc9dd139d39e7c66a2b0ea25ed0bed30a96b50b9f4f24d2f125bdca4ed934.js" integrity="sha256-rezJ3ROdOefGaisOol7QvtMKlrULn08k0vElvcpO2TQ="></script>
+<script defer src="/notebook/search.min.b85637df922abffca4c9b24d079033c5b72ff94b157b0404dde8e7250ec0e893.js" integrity="sha256-uFY335Iqv/ykybJNB5Azxbcv&#43;UsVewQE3ejnJQ7A6JM="></script>
 
 <!--
 Made with Book Theme
@@ -973,13 +973,87 @@ https://github.com/alex-shpak/hugo-book
 <li><code>tidygraph</code> : igraphをtidyverseで扱いやすくするラッパー <code>tbl_graph</code> クラス（nodeとedgeを格納した2つのテーブルを合体したオブジェクト）</li>
 <li><code>sfnetworks</code> : <code>tidygraph</code> と <code>sf</code> の合体、位置情報を持ったノードとエッジを使える</li>
 </ul>
+<h2 id="igraph"><code>igraph</code></h2>
+<p>グラフのデータ構造とグラフアルゴリズムを定義しているパッケージ。<code>tidygraph</code>, <code>sfnetworks</code>の基盤となっている。</p>
+<p>igraphでは：頂点は <code>vertices</code> と表記される</p>
+<h3 id="グラフの作成--属性の追加">グラフの作成 &amp; 属性の追加</h3>
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#75715e"># 3ノードの輪グラフ</span>
+<span style="color:#111">g</span> <span style="color:#f92672">&lt;-</span> <span style="color:#111">igraph</span><span style="color:#f92672">::</span><span style="color:#75af00">make_ring</span><span style="color:#111">(</span><span style="color:#ae81ff">3</span><span style="color:#111">)</span>
+
+<span style="color:#75715e"># 頂点と辺を確認</span>
+
+<span style="color:#75715e">#0 列 3 行のデータフレーム</span>
+<span style="color:#75715e"># 行番号は頂点のインデックスになっている</span>
+<span style="color:#111">igraph</span><span style="color:#f92672">::</span><span style="color:#75af00">as_data_frame</span><span style="color:#111">(</span><span style="color:#111">g</span><span style="color:#111">,</span> <span style="color:#111">what</span> <span style="color:#f92672">=</span> <span style="color:#d88200">&#34;vertices&#34;</span><span style="color:#111">)</span>
+
+<span style="color:#75715e"># from to に始点終点のノード番号が格納されている</span>
+<span style="color:#111">igraph</span><span style="color:#f92672">::</span><span style="color:#75af00">as_data_frame</span><span style="color:#111">(</span><span style="color:#111">g</span><span style="color:#111">,</span> <span style="color:#111">what</span> <span style="color:#f92672">=</span> <span style="color:#d88200">&#34;edges&#34;</span><span style="color:#111">)</span>
+<span style="color:#75715e">#   from to</span>
+<span style="color:#75715e"># 1    1  2</span>
+<span style="color:#75715e"># 2    2  3</span>
+<span style="color:#75715e"># 3    1  3</span>
+
+<span style="color:#75715e">#頂点に属性nameを付ける</span>
+<span style="color:#111">igraph</span><span style="color:#f92672">::</span><span style="color:#75af00">V</span><span style="color:#111">(</span><span style="color:#111">g</span><span style="color:#111">)</span><span style="color:#f92672">$</span><span style="color:#111">name</span> <span style="color:#f92672">&lt;-</span> <span style="color:#75af00">c</span><span style="color:#111">(</span><span style="color:#d88200">&#34;A&#34;</span><span style="color:#111">,</span> <span style="color:#d88200">&#34;B&#34;</span><span style="color:#111">,</span> <span style="color:#d88200">&#34;C&#34;</span><span style="color:#111">)</span>
+<span style="color:#75715e">#   name</span>
+<span style="color:#75715e"># A    A</span>
+<span style="color:#75715e"># B    B</span>
+<span style="color:#75715e"># C    C</span>
+
+<span style="color:#75715e">#エッジに属性weightを付ける</span>
+<span style="color:#111">igraph</span><span style="color:#f92672">::</span><span style="color:#75af00">E</span><span style="color:#111">(</span><span style="color:#111">g</span><span style="color:#111">)</span><span style="color:#f92672">$</span><span style="color:#111">weight</span> <span style="color:#f92672">&lt;-</span> <span style="color:#75af00">c</span><span style="color:#111">(</span><span style="color:#ae81ff">10</span><span style="color:#111">,</span> <span style="color:#ae81ff">20</span><span style="color:#111">,</span> <span style="color:#ae81ff">30</span><span style="color:#111">)</span>
+<span style="color:#75715e">#   from to weight</span>
+<span style="color:#75715e"># 1    A  B     10</span>
+<span style="color:#75715e"># 2    B  C     20</span>
+<span style="color:#75715e"># 3    A  C     30</span>
+
+
+
+<span style="color:#75715e"># グラフの頂点に任意の属性を追加して</span>
+<span style="color:#111">igraph</span><span style="color:#f92672">::</span><span style="color:#75af00">V</span><span style="color:#111">(</span><span style="color:#111">g</span><span style="color:#111">)</span><span style="color:#f92672">$</span><span style="color:#111">hoge</span> <span style="color:#f92672">&lt;-</span> <span style="color:#d88200">&#34;hoge&#34;</span>
+<span style="color:#111">igraph</span><span style="color:#f92672">::</span><span style="color:#75af00">E</span><span style="color:#111">(</span><span style="color:#111">g</span><span style="color:#111">)</span><span style="color:#f92672">$</span><span style="color:#111">fuga</span> <span style="color:#f92672">&lt;-</span> <span style="color:#75af00">c</span><span style="color:#111">(</span><span style="color:#d88200">&#34;A&#34;</span><span style="color:#111">,</span><span style="color:#d88200">&#34;B&#34;</span><span style="color:#111">,</span><span style="color:#d88200">&#34;C&#34;</span><span style="color:#111">)</span>
+
+<span style="color:#75715e"># データフレームに変換してそれを確認</span>
+<span style="color:#111">igraph</span><span style="color:#f92672">::</span><span style="color:#75af00">as_data_frame</span><span style="color:#111">(</span><span style="color:#111">g</span><span style="color:#111">,</span> <span style="color:#111">what</span> <span style="color:#f92672">=</span> <span style="color:#d88200">&#34;vertices&#34;</span><span style="color:#111">)</span>
+<span style="color:#75715e">#   name hoge</span>
+<span style="color:#75715e"># A    A hoge</span>
+<span style="color:#75715e"># B    B hoge</span>
+<span style="color:#75715e"># C    C hoge</span>
+
+<span style="color:#111">igraph</span><span style="color:#f92672">::</span><span style="color:#75af00">as_data_frame</span><span style="color:#111">(</span><span style="color:#111">g</span><span style="color:#111">,</span> <span style="color:#111">what</span> <span style="color:#f92672">=</span> <span style="color:#d88200">&#34;edges&#34;</span><span style="color:#111">)</span>
+<span style="color:#75715e">#   from to weight fuga</span>
+<span style="color:#75715e"># 1    A  B     10    A</span>
+<span style="color:#75715e"># 2    B  C     20    B</span>
+<span style="color:#75715e"># 3    A  C     30    C</span>
+
+</code></pre></div><h3 id="グラフ要素へのアクセス">グラフ要素へのアクセス</h3>
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#75715e"># 頂点名</span>
+<span style="color:#111">igraph</span><span style="color:#f92672">::</span><span style="color:#75af00">V</span><span style="color:#111">(</span><span style="color:#111">g</span><span style="color:#111">)</span><span style="color:#f92672">$</span><span style="color:#111">name</span>
+<span style="color:#75715e"># [1] &#34;A&#34; &#34;B&#34; &#34;C&#34;</span>
+
+<span style="color:#75715e"># エッジの重み</span>
+<span style="color:#111">igraph</span><span style="color:#f92672">::</span><span style="color:#75af00">E</span><span style="color:#111">(</span><span style="color:#111">g</span><span style="color:#111">)</span><span style="color:#f92672">$</span><span style="color:#111">weight</span>
+<span style="color:#75715e"># [1] 10 20 30</span>
+</code></pre></div><h1 id="ノードやエッジをデータフレームに変換する">ノードやエッジをデータフレームに変換する</h1>
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#75715e"># 頂点とエッジ一覧</span>
+<span style="color:#111">igraph</span><span style="color:#f92672">::</span><span style="color:#75af00">as_data_frame</span><span style="color:#111">(</span><span style="color:#111">g</span><span style="color:#111">,</span> <span style="color:#111">what</span> <span style="color:#f92672">=</span> <span style="color:#d88200">&#34;vertices&#34;</span><span style="color:#111">)</span>
+<span style="color:#111">igraph</span><span style="color:#f92672">::</span><span style="color:#75af00">as_data_frame</span><span style="color:#111">(</span><span style="color:#111">g</span><span style="color:#111">,</span> <span style="color:#111">what</span> <span style="color:#f92672">=</span> <span style="color:#d88200">&#34;edges&#34;</span><span style="color:#111">)</span>
+</code></pre></div><h1 id="heading"></h1>
 <h1 id="sfnetworks">sfnetworks</h1>
 <p>R から BigQuery を操作するためのパッケージ</p>
 <h1 id="コネクションの作成">コネクションの作成</h1>
 </article>
 
       
-<div class="book-footer justify-end">
+<div class="book-footer justify-between">
+  
+  <div>
+    
+    <a class="flex align-center" href="https://github.com/teuder/notebook/commit/5d498338776bda105190e3cfd8cd7c619dd11107" title='Last modified 2025-08-07 by Masaki Tsuda' target="_blank" rel="noopener">
+      <img src="/notebook/svg/calendar.svg" alt="Changed" />
+      <span>2025-08-07</span>
+    </a>
+  </div>
   
   
   <div>
@@ -1001,7 +1075,16 @@ https://github.com/alex-shpak/hugo-book
   
 
   <aside class="book-toc level-3 fixed">
-    <nav id="TableOfContents"></nav>
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#igraph"><code>igraph</code></a>
+      <ul>
+        <li><a href="#グラフの作成--属性の追加">グラフの作成 &amp; 属性の追加</a></li>
+        <li><a href="#グラフ要素へのアクセス">グラフ要素へのアクセス</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
   </aside>
 
 
