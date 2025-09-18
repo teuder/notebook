@@ -17,7 +17,7 @@
 <link rel="stylesheet" href="/notebook/book.min.2771458f1d859600effb70312702cd7e488eefb7c2c5ed4c083e65b6b95e5cae.css" integrity="sha256-J3FFjx2FlgDv&#43;3AxJwLNfkiO77fCxe1MCD5ltrleXK4=">
 
 
-<script defer src="/notebook/search.min.b85637df922abffca4c9b24d079033c5b72ff94b157b0404dde8e7250ec0e893.js" integrity="sha256-uFY335Iqv/ykybJNB5Azxbcv&#43;UsVewQE3ejnJQ7A6JM="></script>
+<script defer src="/notebook/search.min.996e386222ce7a49d96d9e95dc3fff004b46f595b7a4a45e10bbcbf121d36504.js" integrity="sha256-mW44YiLOeknZbZ6V3D//AEtG9ZW3pKReELvL8SHTZQQ="></script>
 
 <!--
 Made with Book Theme
@@ -988,7 +988,20 @@ https://github.com/alex-shpak/hugo-book
 </code></pre></div><p>cols: １つの列にまとめたい列を複数指定する。
 names_to: 指定した列をまとめて作成される列の名前</p>
 <h2 id="1列を複数列に分ける">1列を複数列に分ける</h2>
+<h3 id="横持ち変換">横持ち変換</h3>
 <div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#75af00">pivot_wider</span><span style="color:#111">()</span>
+</code></pre></div><h3 id="文字列の列を分割して複数の列にする">文字列の列を分割して複数の列にする</h3>
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#111">df</span> <span style="color:#f92672">&lt;-</span> <span style="color:#75af00">tibble</span><span style="color:#111">(</span><span style="color:#111">id</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span><span style="color:#f92672">:</span><span style="color:#ae81ff">3</span><span style="color:#111">,</span> <span style="color:#111">x</span> <span style="color:#f92672">=</span> <span style="color:#75af00">c</span><span style="color:#111">(</span><span style="color:#d88200">&#34;m-123&#34;</span><span style="color:#111">,</span> <span style="color:#d88200">&#34;f-455&#34;</span><span style="color:#111">,</span> <span style="color:#d88200">&#34;f-123&#34;</span><span style="color:#111">))</span>
+
+<span style="color:#75715e"># 1. 区切り文字を使って分割（多分区切り文字に正規表現も使える）</span>
+<span style="color:#111">df</span> <span style="color:#f92672">%&gt;%</span> <span style="color:#75af00">separate_wider_delim</span><span style="color:#111">(</span><span style="color:#111">x</span><span style="color:#111">,</span> <span style="color:#111">delim</span> <span style="color:#f92672">=</span> <span style="color:#d88200">&#34;-&#34;</span><span style="color:#111">,</span> <span style="color:#111">names</span> <span style="color:#f92672">=</span> <span style="color:#75af00">c</span><span style="color:#111">(</span><span style="color:#d88200">&#34;gender&#34;</span><span style="color:#111">,</span> <span style="color:#d88200">&#34;unit&#34;</span><span style="color:#111">))</span>
+
+<span style="color:#75715e"># 2. 文字列の位置で分割</span>
+<span style="color:#111">df</span> <span style="color:#f92672">%&gt;%</span> <span style="color:#75af00">separate_wider_position</span><span style="color:#111">(</span><span style="color:#111">x</span><span style="color:#111">,</span> <span style="color:#75af00">c</span><span style="color:#111">(</span><span style="color:#111">gender</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span><span style="color:#111">,</span> <span style="color:#ae81ff">1</span><span style="color:#111">,</span> <span style="color:#111">unit</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span><span style="color:#111">))</span>
+
+<span style="color:#75715e"># 3. 正規表現で分割</span>
+<span style="color:#111">df</span> <span style="color:#f92672">%&gt;%</span> <span style="color:#75af00">separate_wider_regex</span><span style="color:#111">(</span><span style="color:#111">x</span><span style="color:#111">,</span> <span style="color:#75af00">c</span><span style="color:#111">(</span><span style="color:#111">gender</span> <span style="color:#f92672">=</span> <span style="color:#d88200">&#34;.&#34;</span><span style="color:#111">,</span> <span style="color:#d88200">&#34;.&#34;</span><span style="color:#111">,</span> <span style="color:#111">unit</span> <span style="color:#f92672">=</span> <span style="color:#d88200">&#34;\\d+&#34;</span><span style="color:#111">))</span>
+
 </code></pre></div><h2 id="行を複製する">行を複製する</h2>
 </article>
 
@@ -1026,7 +1039,12 @@ names_to: 指定した列をまとめて作成される列の名前</p>
     <nav id="TableOfContents">
   <ul>
     <li><a href="#複数列を1列にまとめる">複数列を1列にまとめる</a></li>
-    <li><a href="#1列を複数列に分ける">1列を複数列に分ける</a></li>
+    <li><a href="#1列を複数列に分ける">1列を複数列に分ける</a>
+      <ul>
+        <li><a href="#横持ち変換">横持ち変換</a></li>
+        <li><a href="#文字列の列を分割して複数の列にする">文字列の列を分割して複数の列にする</a></li>
+      </ul>
+    </li>
     <li><a href="#行を複製する">行を複製する</a></li>
   </ul>
 </nav>
